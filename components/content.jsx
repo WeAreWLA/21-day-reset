@@ -273,11 +273,11 @@ const TestimonialsSection = () => (
             { name: 'BARBARA, 58', img: 'assets/barbara-before-after.png' },
             { name: 'MEMBER, 5', img: 'assets/member-05-before-after.png' },
             { name: 'MEMBER, 6', img: 'assets/member-06-before-after.png' },
-            { name: 'MEMBER, 7', img: 'assets/member-07-before-after.png' },
+            { name: 'MEMBER, 7', img: 'assets/member-07-before-after.png', fit: 'cover' },
             { name: 'MEMBER, 8', img: 'assets/member-08-before-after.jpeg' },
-            { name: 'MEMBER, 9', img: 'assets/member-09-before-after.png' },
-            { name: 'MEMBER, 10', img: 'assets/member-10-before-after.png' },
-            { name: 'MEMBER, 11', img: 'assets/member-11-before-after.png' },
+            { name: 'MEMBER, 9', img: 'assets/member-09-before-after.png', fit: 'cover' },
+            { name: 'MEMBER, 10', img: 'assets/member-10-before-after.png', fit: 'cover' },
+            { name: 'MEMBER, 11', img: 'assets/member-11-before-after.png', fit: 'cover' },
             { name: 'MEMBER, 12', img: 'assets/member-12-before-after.png' },
           ].map((item, i) => (
             <div key={i}>
@@ -289,7 +289,7 @@ const TestimonialsSection = () => (
                   background: '#F9F7F4',
                 }}>
                   <img src={item.img} alt={`Before and after of ${item.name}`} style={{
-                    width: '100%', height: '100%', objectFit: 'contain', display: 'block',
+                    width: '100%', height: '100%', objectFit: item.fit || 'contain', display: 'block',
                   }} />
                 </div>
               ) : (
