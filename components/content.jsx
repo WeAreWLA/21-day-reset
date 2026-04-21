@@ -56,9 +56,6 @@ const IncludedSection = () => (
             Everything you need.<br /><Italic>Nothing you don't.</Italic>
           </SerifH>
         </div>
-        <Body size={17} muted>
-          Eight guides, a workbook, daily coaching, and weekly live sessions. Built to be opened on a Monday morning before work — not studied like a textbook.
-        </Body>
       </div>
 
       <div style={{
