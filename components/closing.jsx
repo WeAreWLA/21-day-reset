@@ -11,7 +11,7 @@ const PricingSection = () => (
         One price. <Italic>One reset.</Italic> Everything included.
       </SerifH>
       <Body size={18} muted style={{ maxWidth: 560, margin: '0 auto 48px' }}>
-        No upsells. No hidden tiers. £17 today gets you the full Reset, all guides, live coaching, and the early-bird bonus.
+        £17 today gets you the full Reset, all guides, live coaching, and the early-bird bonus.
       </Body>
 
       <div style={{
