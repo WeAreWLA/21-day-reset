@@ -275,6 +275,10 @@ const TestimonialsSection = () => (
             { name: 'MEMBER, 6', img: 'assets/member-06-before-after.png' },
             { name: 'MEMBER, 7', img: 'assets/member-07-before-after.png' },
             { name: 'MEMBER, 8', img: 'assets/member-08-before-after.png' },
+            { name: 'MEMBER, 9', img: 'assets/member-09-before-after.png' },
+            { name: 'MEMBER, 10', img: 'assets/member-10-before-after.png' },
+            { name: 'MEMBER, 11', img: 'assets/member-11-before-after.png' },
+            { name: 'MEMBER, 12', img: 'assets/member-12-before-after.png' },
           ].map((item, i) => (
             <div key={i}>
               {item.img ? (
