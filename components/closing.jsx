@@ -160,7 +160,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "When does it start?",
-    a: "The pre-week starts Monday 4th May. You'll get access the moment you join, with the meal guide and tools dropping Friday 1st May so you're ready to begin.",
+    a: "You'll get access to the FREE The 3 Week Fat Loss Accelerator Meal Plan the moment you join. The pre-week starts Monday 4th May. The reset tools will be shared on Friday 1st May so you're ready to begin.",
   },
   {
     q: "Will my grocery bill go up?",
