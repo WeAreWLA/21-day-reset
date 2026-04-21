@@ -136,11 +136,11 @@ const PricingSection = () => (
 const FAQ_ITEMS = [
   {
     q: "I've tried everything. Why would this work now?",
-    a: "Because most of what you've tried wasn't designed for a midlife body. The Reset is built specifically around peri- and post-menopausal physiology: stable blood sugar, protein targets for muscle protection, cortisol-aware routines, and sustainable carb intake. It's the opposite of Slimming World and 1,200-calorie plans.",
+    a: "Because most of what you've tried hasn't shown you how to properly fuel your body for fat loss and is not sustainable. The Reset is built around simple, balanced nutrition: keeping blood sugar steady, prioritising protein to support your metabolism, creating meals that keep you full, and including carbs in a way that actually works. It's the opposite of restrictive diets and low-calorie plans that leave you hungry and stuck in the same cycle.",
   },
   {
     q: "Will this work during menopause?",
-    a: "It was designed for exactly this stage. The SHIFT Method™ is hormone-aware — meaning your changing cortisol, insulin, and estrogen are factored in rather than ignored. Many members report improvements in symptoms like puffiness, evening cravings, and low energy alongside fat loss.",
+    a: "Yes, the Reset focuses on fuelling your body properly, keeping your energy steady, and giving you a simple structure you can stick to. Most women find that once they're eating the right balance of foods again, cravings settle, energy improves, and weight loss starts to feel much easier.",
   },
   {
     q: "Do I need to exercise?",
