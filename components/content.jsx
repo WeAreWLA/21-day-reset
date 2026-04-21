@@ -399,4 +399,101 @@ const AboutSection = () => (
   </section>
 );
 
-Object.assign(window, { IncludedSection, TestimonialsSection, AboutSection });
+// Video testimonials (Vimeo embeds)
+const VIDEO_TESTIMONIALS = [
+  {
+    id: '1147300902',
+    hash: '58fbd0c85a',
+    name: 'Vicky',
+    quote: '"I started the WLA a size 20 and am now a 10/12"',
+  },
+  {
+    id: '1147300577',
+    hash: '65f81455af',
+    name: 'Ruth',
+    quote: '"I lost 12 pounds, sugar cravings vanished and my menopause symptoms significantly improved."',
+  },
+  {
+    id: '1147300457',
+    hash: '4d750b2063',
+    name: 'Lisa',
+    quote: '"My biggest NSV (non scale victory) is getting into size 10 and buying small gym leggings."',
+  },
+  {
+    id: '1147299763',
+    hash: 'a1064cfe85',
+    name: 'Lucy',
+    quote: '"2 ½ stone down, not counted a calorie in over a year and bought a crop top for the first time in my life"',
+  },
+];
+
+const VideoTestimonialsSection = () => (
+  <section style={{
+    padding: '120px 32px',
+    background: 'var(--bg)',
+  }}>
+    <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: 64 }}>
+        <Eyebrow>Member stories</Eyebrow>
+        <SerifH size={52} style={{ marginTop: 20, maxWidth: 820, marginInline: 'auto' }}>
+          Hear what some of our <Italic>WLA members</Italic> have achieved
+        </SerifH>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: 48,
+      }}>
+        {VIDEO_TESTIMONIALS.map((v, i) => (
+          <div key={i}>
+            <div style={{
+              aspectRatio: '16 / 9',
+              borderRadius: 12,
+              overflow: 'hidden',
+              background: '#000',
+              border: '1px solid var(--hairline)',
+              boxShadow: '0 20px 40px -22px rgba(0, 48, 96, 0.25)',
+            }}>
+              <iframe
+                src={`https://player.vimeo.com/video/${v.id}?h=${v.hash}&title=0&byline=0&portrait=0`}
+                style={{ width: '100%', height: '100%', border: 0 }}
+                title={`${v.name} testimonial`}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+            <div style={{
+              marginTop: 20,
+              fontFamily: '"Libre Baskerville", serif',
+              fontStyle: 'italic',
+              fontSize: 18,
+              lineHeight: 1.5,
+              color: 'var(--ink)',
+              textAlign: 'center',
+              maxWidth: 500,
+              marginInline: 'auto',
+            }}>
+              {v.quote}
+            </div>
+            <div style={{
+              marginTop: 12,
+              textAlign: 'center',
+              fontFamily: '"Alegreya Sans", sans-serif',
+              fontSize: 12,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--blush-deep)',
+              fontWeight: 600,
+            }}>
+              — {v.name} —
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+Object.assign(window, { IncludedSection, TestimonialsSection, AboutSection, VideoTestimonialsSection });
