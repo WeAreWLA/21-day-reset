@@ -13,7 +13,7 @@ All CTA buttons point to: **https://sales.thewlacademy.com/may-reset/**
 ## File structure
 
 ```
-21 Day Reset.html          # Main entry. Hero + app shell + tweaks panel + responsive CSS
+index.html                 # Main entry. Hero + app shell + tweaks panel + responsive CSS
 components/
   sections.jsx             # Shared primitives: Eyebrow, SerifH, Italic, Body, PrimaryCTA,
                            # Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider
@@ -35,7 +35,7 @@ assets/
 
 ## Brand system
 
-### Colors (CSS variables in `21 Day Reset.html`)
+### Colors (CSS variables in `index.html`)
 
 | Token           | Hex       | Role                                    |
 |-----------------|-----------|-----------------------------------------|
@@ -92,7 +92,7 @@ Defaults are persisted inside the `/*EDITMODE-BEGIN*/…/*EDITMODE-END*/` block 
 
 ## Responsive
 
-Breakpoints in the `<style>` block of `21 Day Reset.html`:
+Breakpoints in the `<style>` block of `index.html`:
 
 - **≤ 960px (tablet)** — all grids collapse to single column; nav links hidden; headline sizes shrink; floating hero chips stack under the image
 - **641–960px** — before/after photo grid shows 2 columns
@@ -103,7 +103,7 @@ Breakpoints in the `<style>` block of `21 Day Reset.html`:
 ## Editing content
 
 - **Copy changes** — edit the relevant component in `components/` (e.g. testimonials in `content.jsx`, FAQ in `closing.jsx`).
-- **Hero headline variants** — edit the `HEADLINES` object inside `21 Day Reset.html`.
+- **Hero headline variants** — edit the `HEADLINES` object inside `index.html`.
 - **Swap a photo** — drop the file into `assets/` and update the `src` in the relevant component.
 - **CTA destination** — all primary CTAs use `https://sales.thewlacademy.com/may-reset/`, defined in `components/sections.jsx` (`PrimaryCTA` component) and `components/closing.jsx` (sticky bar).
 - **Support email** — `support@theweightloss-academy.com` in the FAQ section (`components/closing.jsx`).
@@ -114,4 +114,4 @@ Breakpoints in the `<style>` block of `21 Day Reset.html`:
 
 - React 18.3.1 + Babel Standalone 7.29.0 (inline JSX, no build step)
 - Google Fonts (Libre Baskerville + Alegreya Sans)
-- No framework, no bundler — open `21 Day Reset.html` directly in a browser or host statically.
+- No framework, no bundler — open `index.html` directly in a browser or host statically.
