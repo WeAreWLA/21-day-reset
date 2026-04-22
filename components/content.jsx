@@ -267,18 +267,18 @@ const TestimonialsSection = () => (
           gap: 16,
         }}>
           {[
-            { name: 'VICKY, 56', img: 'assets/vicky-before-after.png' },
-            { name: 'LAURA, 52', img: 'assets/jill-before-after.jpg' },
-            { name: 'RUTH, 54', img: 'assets/ruth-before-after.jpg' },
-            { name: 'BARBARA, 58', img: 'assets/barbara-before-after.png' },
-            { name: 'MEMBER, 5', img: 'assets/member-05-before-after.png' },
-            { name: 'MEMBER, 6', img: 'assets/member-06-before-after.png' },
-            { name: 'MEMBER, 7', img: 'assets/member-07-before-after.png', fit: 'cover', pos: 'center 25%' },
-            { name: 'MEMBER, 8', img: 'assets/member-08-before-after.jpeg' },
-            { name: 'MEMBER, 9', img: 'assets/member-09-before-after.png', fit: 'cover', pos: 'center 25%' },
-            { name: 'MEMBER, 10', img: 'assets/member-10-before-after.png', fit: 'cover' },
-            { name: 'MEMBER, 11', img: 'assets/member-11-before-after.png', fit: 'cover', pos: 'center 25%' },
-            { name: 'MEMBER, 12', img: 'assets/member-12-before-after.png' },
+            { name: 'VICKY, 56', img: '/assets/vicky-before-after.png' },
+            { name: 'LAURA, 52', img: '/assets/jill-before-after.jpg' },
+            { name: 'RUTH, 54', img: '/assets/ruth-before-after.jpg' },
+            { name: 'BARBARA, 58', img: '/assets/barbara-before-after.png' },
+            { name: 'MEMBER, 5', img: '/assets/member-05-before-after.png' },
+            { name: 'MEMBER, 6', img: '/assets/member-06-before-after.png' },
+            { name: 'MEMBER, 7', img: '/assets/member-07-before-after.png', fit: 'cover', pos: 'center 25%' },
+            { name: 'MEMBER, 8', img: '/assets/member-08-before-after.jpeg' },
+            { name: 'MEMBER, 9', img: '/assets/member-09-before-after.png', fit: 'cover', pos: 'center 25%' },
+            { name: 'MEMBER, 10', img: '/assets/member-10-before-after.png', fit: 'cover' },
+            { name: 'MEMBER, 11', img: '/assets/member-11-before-after.png', fit: 'cover', pos: 'center 25%' },
+            { name: 'MEMBER, 12', img: '/assets/member-12-before-after.png' },
           ].map((item, i) => (
             <div key={i}>
               {item.img ? (
@@ -339,7 +339,7 @@ const AboutSection = () => (
           overflow: 'hidden',
           background: '#F9F7F4',
         }}>
-          <img src="assets/anna-portrait.jpg" alt="Anna Wareham" style={{
+          <img src="/assets/anna-portrait.jpg" alt="Anna Wareham" style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
           }} />
         </div>
