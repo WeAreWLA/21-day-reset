@@ -26,6 +26,20 @@
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--body-ink); font-family: "Alegreya Sans", sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
   ::selection { background: var(--peach); }
+  /* Hero image: 4:5 aspect ratio with padding-bottom fallback for older Android browsers */
+  .hero-image-frame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%; /* 5/4 */
+    height: 0;
+  }
+  @supports (aspect-ratio: 1) {
+    .hero-image-frame {
+      aspect-ratio: 4 / 5;
+      padding-bottom: 0;
+      height: auto;
+    }
+  }
   /* Announcement bar: animated gradient + pulsing dot */
   @keyframes banner-shimmer {
     0%   { background-position: 0% 50%; }
@@ -41,8 +55,10 @@
     background-size: 260% 100% !important;
     animation: banner-shimmer 14s ease-in-out infinite;
     padding: 12px 24px !important;
+    font-family: "Libre Baskerville", serif !important;
     font-size: 14px !important;
-    font-weight: 500;
+    font-weight: 400;
+    letter-spacing: 0.02em !important;
   }
   .announcement-dot {
     display: inline-block; width: 8px; height: 8px; border-radius: 50%;
@@ -107,10 +123,12 @@
     /* Stat pills wrap */
     section > div > div[style*="border-top"][style*="gap: 48"] { flex-wrap: wrap !important; gap: 24px !important; }
     /* Pricing card padding — keep top spacious so Early Bird pill floats clear of £17 */
-    section#join > div > div[style*="border-radius: 24"] { padding: 60px 20px 32px !important; }
-    /* Push Early Bird pill further above the card edge on mobile */
+    section#join > div > div[style*="border-radius: 24"] { padding: 72px 20px 32px !important; }
+    /* Early Bird pill: thicker + higher on mobile so it sits well above the £17 */
     section#join > div > div[style*="border-radius: 24"] > div[style*="top: -14"] {
-      top: -18px !important;
+      top: -26px !important;
+      padding: 10px 24px !important;
+      font-size: 12px !important;
     }
     section#join div[style*="font-size: 100"] { font-size: 72px !important; }
     /* FAQ sticky column becomes static */
@@ -321,14 +339,16 @@ function TweakableHero({ headline }) {
       </div>
 
       <div style={{ position: 'relative' }}>
-        <div style={{
-          aspectRatio: '4/5',
+        <div className="hero-image-frame" style={{
           borderRadius: 4,
           overflow: 'hidden',
           background: '#F9F7F4',
         }}>
           <img src="assets/anna-hero.jpg" alt="Anna Wareham" style={{
-            width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+            position: 'absolute', top: 0, left: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: '70% center',
+            display: 'block',
           }} />
         </div>
 
