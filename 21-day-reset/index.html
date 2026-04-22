@@ -295,7 +295,11 @@ function App() {
       <TestimonialsSection />
       <AboutSection />
       <TransformSection />
-      <PricingSection showHeading={false} />
+      <PricingSection showHeading={false} bridgeHeading={
+        <SerifH size={40} style={{ lineHeight: 1.3 }}>
+          Join now to lock in the <Italic>£17 early bird rate</Italic>
+        </SerifH>
+      } />
       <VideoTestimonialsSection />
       <FAQSection />
       <FinalCTA />

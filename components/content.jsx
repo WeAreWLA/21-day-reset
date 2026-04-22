@@ -382,7 +382,7 @@ const AboutSection = () => (
             Especially for women in midlife, where most advice simply misses the mark.
           </Body>
           <Body size={18} style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', color: 'var(--blush-deep)', fontSize: 21 }}>
-            50,000 clients later, this Reset is the distilled version of everything that actually works.
+            50,000 clients later, this is the simplest approach that actually gets results.
           </Body>
         </div>
       </div>

@@ -1,6 +1,6 @@
 // Pricing, FAQ, Final CTA, Sticky bar, Footer
 
-const PricingSection = ({ sectionId = "join", showHeading = true }) => (
+const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading = null }) => (
   <section id={sectionId} style={{
     padding: '120px 32px',
     background: 'var(--cream-deep)',
@@ -16,6 +16,11 @@ const PricingSection = ({ sectionId = "join", showHeading = true }) => (
             Join today for £17, save £80 and access your FREE 3-Week Fat Loss Accelerator Meal Plan (limited available) with the early bird promo.
           </Body>
         </>
+      )}
+      {bridgeHeading && (
+        <div style={{ marginBottom: 48 }}>
+          {bridgeHeading}
+        </div>
       )}
 
       <div style={{
