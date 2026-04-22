@@ -95,6 +95,7 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     .problem-thoughts-grid { margin-bottom: 24px !important; }
     .problem-paragraphs { padding-top: 28px !important; }
     /* Tighter vertical rhythm on mobile only */
+    .hero-section { padding-top: 20px !important; }
     .early-bird-banner-section { padding-top: 16px !important; padding-bottom: 12px !important; }
     .whatchanges-section { padding-top: 40px !important; }
     .whythisworks-section { padding-bottom: 20px !important; }
@@ -338,7 +339,7 @@ function App() {
 function TweakableHero({ headline }) {
   return (
     <>
-    <section style={{
+    <section className="hero-section" style={{
       maxWidth: 1240,
       margin: '0 auto',
       padding: '40px 32px 80px',
