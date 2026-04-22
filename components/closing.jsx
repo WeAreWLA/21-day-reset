@@ -1,7 +1,7 @@
 // Pricing, FAQ, Final CTA, Sticky bar, Footer
 
-const PricingSection = () => (
-  <section id="join" style={{
+const PricingSection = ({ sectionId = "join" }) => (
+  <section id={sectionId} style={{
     padding: '120px 32px',
     background: 'var(--cream-deep)',
   }}>
@@ -360,4 +360,96 @@ const Footer = () => (
   </footer>
 );
 
-Object.assign(window, { PricingSection, FAQSection, FinalCTA, StickyCTA, Footer });
+// Fast Action Bonus — limited-spots peach banner for the Accelerator Meal Plan
+const FastActionBonusSection = () => (
+  <section style={{
+    padding: '100px 32px',
+    background: 'var(--bg)',
+  }}>
+    <div style={{
+      maxWidth: 820,
+      margin: '0 auto',
+      background: `linear-gradient(135deg, var(--peach) 0%, #F8C4B0 100%)`,
+      border: '2px dashed var(--blush-deep)',
+      borderRadius: 22,
+      padding: '48px 48px 52px',
+      position: 'relative',
+      textAlign: 'center',
+      boxShadow: '0 30px 60px -30px rgba(232, 127, 99, 0.35)',
+    }}>
+      <div style={{
+        position: 'absolute',
+        top: -18, left: '50%', transform: 'translateX(-50%)',
+        background: 'var(--blush-deep)', color: 'var(--paper)',
+        padding: '8px 22px', borderRadius: 999,
+        fontFamily: '"Alegreya Sans", sans-serif',
+        fontSize: 12, fontWeight: 600,
+        letterSpacing: '0.16em', textTransform: 'uppercase',
+        whiteSpace: 'nowrap',
+      }}>
+        🎁 Fast action bonus (limited)
+      </div>
+
+      <SerifH size={40} style={{ marginTop: 16, marginBottom: 18, color: 'var(--ink)', lineHeight: 1.2 }}>
+        The first 75 women who join receive my<br />
+        <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic> — completely FREE.
+      </SerifH>
+
+      <Body size={17} muted style={{ maxWidth: 560, margin: '0 auto 32px' }}>
+        This is your head-start plan, so you can begin before the Reset even starts.
+      </Body>
+
+      <div style={{
+        background: 'var(--paper)',
+        borderRadius: 14,
+        padding: '28px 32px',
+        marginBottom: 28,
+        textAlign: 'left',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 14,
+      }}>
+        {[
+          'Know exactly what to eat from your next meal',
+          'Start making progress straight away',
+          'Build momentum before Day 1',
+        ].map((item, i) => (
+          <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+            <span style={{ fontSize: 16, flexShrink: 0, marginTop: 2 }}>✔️</span>
+            <Body size={16}>{item}</Body>
+          </div>
+        ))}
+      </div>
+
+      <div style={{
+        fontFamily: '"Libre Baskerville", serif',
+        fontStyle: 'italic',
+        fontSize: 19,
+        color: 'var(--ink)',
+        marginBottom: 22,
+        lineHeight: 1.4,
+      }}>
+        👉 So when the Reset begins… <strong style={{ fontWeight: 700, color: 'var(--blush-deep)' }}>you’re already ahead.</strong>
+      </div>
+
+      <div style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 10,
+        background: 'var(--ink)',
+        color: 'var(--paper)',
+        padding: '10px 20px',
+        borderRadius: 999,
+        fontFamily: '"Alegreya Sans", sans-serif',
+        fontSize: 13,
+        fontWeight: 600,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+      }}>
+        ⚠️ Only available for the first 75 women
+      </div>
+    </div>
+  </section>
+);
+
+Object.assign(window, { PricingSection, FAQSection, FinalCTA, StickyCTA, Footer, FastActionBonusSection });

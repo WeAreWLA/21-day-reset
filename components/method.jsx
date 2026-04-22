@@ -50,45 +50,290 @@ const ProblemSection = () => {
         </div>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 80,
-          alignItems: 'start',
-          padding: '48px 0 0',
+          maxWidth: 780,
+          margin: '0 auto',
+          paddingTop: 48,
           borderTop: '1px solid var(--hairline)',
+          textAlign: 'center',
         }}>
-          <div>
-            <Body size={19}>
-              You’re not imagining it, perimenopause and menopause do change how your body responds to food, stress, and fat storage
-            </Body>
-            <Body size={19} muted style={{ marginTop: 18 }}>
-              The approaches that used to work, like eating less, skipping meals, or doing lots of cardio can start to feel harder to sustain and often leave you feeling more hungry, more tired, and stuck in a cycle of starting and stopping
-            </Body>
+          <Body size={19}>
+            You’re not imagining it — perimenopause and menopause do change how your body responds to food, stress, and fat storage.
+          </Body>
+          <Body size={19} muted style={{ marginTop: 18 }}>
+            The approaches that used to work — eating less, skipping meals, or doing lots of cardio — start to feel harder to sustain and often leave you more hungry, more tired, and stuck in a cycle of starting and stopping.
+          </Body>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Section A: Here's What Can Change In Just 21 Days
+const WhatChangesIn21DaysSection = () => {
+  const changes = [
+    'Drop a dress size and start seeing real changes',
+    'Lose up to a stone without extreme dieting',
+    'Feel back in control around food (no more all-or-nothing)',
+    'Wake up feeling lighter, less bloated, and more comfortable in your clothes',
+    'Have steady energy that actually lasts all day',
+  ];
+
+  return (
+    <section style={{
+      padding: '120px 32px',
+      background: 'var(--bg)',
+    }}>
+      <div style={{ maxWidth: 920, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <Eyebrow>In just 21 days</Eyebrow>
+          <SerifH size={56} style={{ marginTop: 20 }}>
+            Here’s what can change <Italic>in just 21 days…</Italic>
+          </SerifH>
+        </div>
+
+        <div style={{
+          background: 'var(--paper)',
+          border: '1px solid var(--hairline)',
+          borderRadius: 18,
+          padding: '44px 48px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 18,
+          boxShadow: '0 20px 40px -28px rgba(0, 48, 96, 0.2)',
+        }}>
+          {changes.map((c, i) => (
+            <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+              <span style={{ fontSize: 22, lineHeight: 1.2, flexShrink: 0 }}>✨</span>
+              <Body size={18} style={{ lineHeight: 1.55 }}>{c}</Body>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 48, textAlign: 'center' }}>
+          <div style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontStyle: 'italic',
+            fontSize: 20,
+            color: 'var(--ink)',
+            marginBottom: 8,
+            lineHeight: 1.5,
+          }}>
+            This isn’t about being perfect…
           </div>
           <div style={{
-            background: 'var(--paper)',
-            padding: '32px 36px',
-            borderRadius: 14,
-            border: '1px solid var(--hairline)',
+            fontFamily: '"Libre Baskerville", serif',
+            fontStyle: 'italic',
+            fontSize: 24,
+            color: 'var(--blush-deep)',
+            lineHeight: 1.4,
           }}>
-            <div style={{
-              fontFamily: '"Libre Baskerville", serif',
-              fontStyle: 'italic',
-              fontSize: 13,
-              color: 'var(--blush-deep)',
-              letterSpacing: '0.04em',
-              marginBottom: 10,
-            }}>The honest truth…</div>
-            <Body size={18} style={{ lineHeight: 1.55 }}>
-              You don't need more discipline. You don't need to try harder.
-              <br />You need a <strong style={{ color: 'var(--blush-deep)' }}>nutrition formula you can actually stick to</strong>.
-            </Body>
+            It’s about finally building momentum that lasts.
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+// Section B: The Honest Truth — expanded standalone section
+const HonestTruthSection = () => (
+  <section style={{
+    padding: '120px 32px',
+    background: 'var(--ink)',
+    color: 'var(--paper)',
+  }}>
+    <div style={{ maxWidth: 860, margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: 48 }}>
+        <Eyebrow color="var(--peach)">The honest truth…</Eyebrow>
+        <SerifH size={56} style={{ color: 'var(--paper)', marginTop: 20 }}>
+          You don’t struggle because you <Italic>don’t know what to do.</Italic>
+        </SerifH>
+      </div>
+
+      <div style={{
+        display: 'flex', flexDirection: 'column', gap: 20,
+        fontFamily: '"Alegreya Sans", sans-serif',
+        fontSize: 19, lineHeight: 1.6,
+      }}>
+        <p style={{ margin: 0, color: 'var(--paper)', textAlign: 'center' }}>
+          And it’s not because you lack willpower.
+        </p>
+        <p style={{
+          margin: 0, textAlign: 'center',
+          fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic',
+          fontSize: 22, color: 'var(--peach)', lineHeight: 1.5,
+        }}>
+          👉 You’ve just never had a plan you can actually stick to.
+        </p>
+      </div>
+
+      <div style={{
+        marginTop: 48,
+        background: 'rgba(253, 251, 248, 0.06)',
+        border: '1px solid rgba(245, 217, 206, 0.2)',
+        borderRadius: 16,
+        padding: '32px 36px',
+      }}>
+        <div style={{
+          fontFamily: '"Alegreya Sans", sans-serif',
+          fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase',
+          color: 'var(--peach)', marginBottom: 16, fontWeight: 600,
+        }}>
+          Most diets rely on
+        </div>
+        {['Being perfect', 'Cutting everything out', 'Motivation that doesn’t last'].map((item, i) => (
+          <div key={i} style={{
+            display: 'flex', gap: 14, alignItems: 'flex-start',
+            padding: '12px 0',
+            borderBottom: i < 2 ? '1px solid rgba(245, 217, 206, 0.15)' : 'none',
+          }}>
+            <span style={{ fontSize: 18, flexShrink: 0 }}>❌</span>
+            <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 17, color: 'var(--paper)' }}>{item}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 40, textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 18, color: 'var(--paper)', opacity: 0.85 }}>
+          So you start strong…
+        </div>
+        <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 18, color: 'var(--paper)', opacity: 0.85 }}>
+          Then life gets busy…
+        </div>
+        <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 18, color: 'var(--paper)', opacity: 0.85 }}>
+          And you fall back into the same cycle.
+        </div>
+      </div>
+
+      <div style={{
+        marginTop: 56,
+        textAlign: 'center',
+        fontFamily: '"Libre Baskerville", serif',
+        fontSize: 26, fontStyle: 'italic',
+        color: 'var(--peach)', lineHeight: 1.4,
+      }}>
+        That’s not your fault.<br />
+        It’s the <strong style={{ fontWeight: 700 }}>approach</strong> that’s been wrong.
+      </div>
+    </div>
+  </section>
+);
+
+// Section C: Why This Reset Works When Others Haven't
+const WhyThisResetWorksSection = () => (
+  <section style={{
+    padding: '120px 32px',
+    background: 'var(--bg)',
+  }}>
+    <div style={{ maxWidth: 980, margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: 56 }}>
+        <Eyebrow>The difference</Eyebrow>
+        <SerifH size={54} style={{ marginTop: 20 }}>
+          Why this reset works <Italic>when others haven’t</Italic>
+        </SerifH>
+      </div>
+
+      <div style={{
+        background: 'var(--paper)',
+        border: '1px solid var(--hairline)',
+        borderRadius: 18,
+        padding: '44px 48px',
+        marginBottom: 32,
+        textAlign: 'center',
+      }}>
+        <Body size={18} muted style={{ marginBottom: 14 }}>
+          Instead of extremes, this Reset focuses on one thing:
+        </Body>
+        <div style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontSize: 26, fontStyle: 'italic',
+          color: 'var(--blush-deep)', lineHeight: 1.4,
+          marginBottom: 28,
+        }}>
+          👉 Helping you fuel your body properly for fat loss
+        </div>
+
+        <Body size={17} muted style={{ marginBottom: 20 }}>So you can:</Body>
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: 12,
+          maxWidth: 520, margin: '0 auto 8px',
+          textAlign: 'left',
+        }}>
+          {[
+            'Stay full and satisfied',
+            'Reduce cravings naturally',
+            'Have more energy throughout the day',
+            'Actually stick to it',
+          ].map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+              <span style={{ fontSize: 18, flexShrink: 0 }}>✔️</span>
+              <Body size={17}>{item}</Body>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 16,
+        marginBottom: 48,
+      }}>
+        {['No cutting everything out.', 'No 1,200 calorie plans.', 'No starting again next week.'].map((item, i) => (
+          <div key={i} style={{
+            background: 'var(--cream-deep)',
+            borderRadius: 10,
+            padding: '20px 22px',
+            textAlign: 'center',
+            fontFamily: '"Libre Baskerville", serif',
+            fontStyle: 'italic',
+            fontSize: 16,
+            color: 'var(--ink)',
+            lineHeight: 1.4,
+          }}>
+            {item}
+          </div>
+        ))}
+      </div>
+
+      <div style={{ textAlign: 'center', marginBottom: 40 }}>
+        <Body size={19} style={{ fontWeight: 500 }}>
+          Just a simple structure that works in real life.
+        </Body>
+      </div>
+
+      <div style={{
+        background: 'var(--peach)',
+        borderRadius: 18,
+        padding: '36px 40px',
+        textAlign: 'center',
+      }}>
+        <div style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontSize: 15, fontStyle: 'italic',
+          color: 'var(--ink)', letterSpacing: '0.04em',
+          marginBottom: 8,
+        }}>
+          And the best part?
+        </div>
+        <div style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontSize: 24, fontStyle: 'italic',
+          color: 'var(--blush-deep)', lineHeight: 1.4,
+          marginBottom: 20,
+        }}>
+          👉 You can simply try it for yourself.
+        </div>
+        <Body size={17} style={{ marginBottom: 24 }}>
+          It’s just <strong style={{ color: 'var(--blush-deep)' }}>£17</strong>, and you’re covered by a <strong>7-day money-back guarantee</strong>.
+        </Body>
+        <Body size={16} muted style={{ fontStyle: 'italic' }}>
+          So you’ve got nothing to lose… and everything to gain.
+        </Body>
+      </div>
+    </div>
+  </section>
+);
 
 // WLA Reset Method
 const SHIFT_STEPS = [
@@ -254,4 +499,57 @@ const TransformSection = () => {
   );
 };
 
-Object.assign(window, { ProblemSection, MethodSection, TransformSection });
+// Section D: Here's What Happens When You Follow The Reset
+const WhatHappensSection = () => {
+  const outcomes = [
+    'Follow a simple, proven formula used by 50,000+ women',
+    'Reduce cravings and feel in control — without cutting everything out',
+    'Feel lighter, less bloated, and more energised within days',
+    'Know exactly what to eat with flexible, family-friendly meals',
+    'Stay on track even on busy days with quick, easy options',
+    'Boost your energy and mood through simple daily habits',
+    'Track progress properly — without obsessing over the scales',
+  ];
+
+  return (
+    <section style={{
+      padding: '120px 32px',
+      background: 'var(--bg)',
+    }}>
+      <div style={{ maxWidth: 960, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <Eyebrow>What happens next</Eyebrow>
+          <SerifH size={52} style={{ marginTop: 20 }}>
+            Here’s what happens when <Italic>you follow the Reset</Italic>
+          </SerifH>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: 16,
+        }}>
+          {outcomes.map((o, i) => (
+            <div key={i} style={{
+              background: 'var(--paper)',
+              border: '1px solid var(--hairline)',
+              borderRadius: 12,
+              padding: '22px 26px',
+              display: 'flex',
+              gap: 14,
+              alignItems: 'flex-start',
+            }}>
+              <span style={{ fontSize: 18, flexShrink: 0, marginTop: 2 }}>✔️</span>
+              <Body size={16} style={{ lineHeight: 1.5 }}>{o}</Body>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+Object.assign(window, {
+  ProblemSection, MethodSection, TransformSection,
+  WhatChangesIn21DaysSection, HonestTruthSection, WhyThisResetWorksSection, WhatHappensSection,
+});
