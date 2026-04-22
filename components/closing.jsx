@@ -8,7 +8,7 @@ const PricingSection = () => (
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
       <Eyebrow>Secure your place</Eyebrow>
       <SerifH size={62} style={{ marginTop: 20, marginBottom: 16 }}>
-        One price. <Italic>One reset.</Italic> Everything included.
+        One price.<br /><Italic>One reset.</Italic><br />Everything included.
       </SerifH>
       <Body size={18} muted style={{ maxWidth: 560, margin: '0 auto 48px' }}>
         £17 today gets you the full Reset, all guides, live coaching, and the early-bird bonus.
