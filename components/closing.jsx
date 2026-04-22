@@ -105,9 +105,40 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         </div>
       </div>
 
-      {/* Guarantee callout */}
+      {/* Early-bird bonus callout */}
       <div style={{
         marginTop: 48,
+        display: 'grid',
+        gridTemplateColumns: '80px 1fr',
+        gap: 24,
+        alignItems: 'center',
+        background: 'var(--paper)',
+        border: '1px dashed var(--blush-deep)',
+        borderRadius: 16,
+        padding: '28px 36px',
+        textAlign: 'left',
+      }}>
+        <div style={{
+          width: 80,
+          height: 80,
+          borderRadius: '50%',
+          background: 'var(--peach)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 36,
+        }}>🎁</div>
+        <div>
+          <SerifH size={22} style={{ marginBottom: 6 }}>Early-bird bonus</SerifH>
+          <Body size={15}>
+            Get the <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic> free. First 100 women only · instant access on signup.
+          </Body>
+        </div>
+      </div>
+
+      {/* Guarantee callout */}
+      <div style={{
+        marginTop: 24,
         display: 'grid',
         gridTemplateColumns: '80px 1fr',
         gap: 24,
@@ -371,8 +402,8 @@ const Footer = () => (
 
 // Fast Action Bonus — limited-spots peach banner for the Accelerator Meal Plan
 const FastActionBonusSection = () => (
-  <section style={{
-    padding: '100px 32px 48px',
+  <section className="fastaction-section" style={{
+    padding: '40px 32px 48px',
     background: 'var(--bg)',
   }}>
     <div style={{

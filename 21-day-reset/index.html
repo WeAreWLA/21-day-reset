@@ -101,7 +101,8 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     .whythisworks-section { padding-bottom: 20px !important; }
     section#method { padding-top: 40px !important; padding-bottom: 32px !important; }
     .whathappens-section { padding-top: 32px !important; padding-bottom: 24px !important; }
-    .included-section { padding-top: 32px !important; }
+    .included-section { padding-top: 32px !important; padding-bottom: 20px !important; }
+    .fastaction-section { padding-top: 24px !important; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -294,40 +295,6 @@ function App() {
       <IncludedSection />
       <FastActionBonusSection />
       <PricingSection sectionId="join-early" />
-      <section className="early-bird-banner-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 40px' }}>
-        <div style={{
-          padding: '22px 28px',
-          background: 'var(--peach)',
-          borderRadius: 14,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 20,
-          flexWrap: 'wrap',
-        }}>
-          <div style={{ fontSize: 26 }} className="early-bird-icon">🎁</div>
-          <div style={{ flex: 1, minWidth: 260 }}>
-            <div style={{
-              fontFamily: '"Libre Baskerville", serif',
-              fontWeight: 700,
-              fontSize: 20,
-              color: 'var(--ink)',
-            }}>
-              <span className="early-bird-icon-inline" style={{ marginRight: 8 }}>🎁</span>Early-bird bonus:<span className="early-bird-plan"> <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></span>
-            </div>
-            <Body size={14} style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
-          </div>
-          <div style={{
-            fontFamily: '"Alegreya Sans", sans-serif',
-            fontSize: 12,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: 'var(--blush-deep)',
-            fontWeight: 600,
-          }}>
-            Included free
-          </div>
-        </div>
-      </section>
       <TestimonialsSection />
       <AboutSection />
       <TransformSection />

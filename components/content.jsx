@@ -45,7 +45,7 @@ const INCLUDED = [
 
 const IncludedSection = () => (
   <section id="included" className="included-section" style={{
-    padding: '72px 32px 120px',
+    padding: '72px 32px 40px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 1160, margin: '0 auto' }}>
