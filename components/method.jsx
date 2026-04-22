@@ -352,7 +352,7 @@ const SHIFT_STEPS = [
 
 const MethodSection = () => (
   <section id="method" style={{
-    padding: '72px 32px 110px',
+    padding: '72px 32px 60px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 1160, margin: '0 auto' }}>
@@ -505,8 +505,8 @@ const WhatHappensSection = () => {
   ];
 
   return (
-    <section style={{
-      padding: '120px 32px',
+    <section className="whathappens-section" style={{
+      padding: '64px 32px 120px',
       background: 'var(--bg)',
     }}>
       <div style={{ maxWidth: 960, margin: '0 auto' }}>
