@@ -26,20 +26,6 @@
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--body-ink); font-family: "Alegreya Sans", sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
   ::selection { background: var(--peach); }
-  /* Hero image: 4:5 aspect ratio with padding-bottom fallback for older Android browsers */
-  .hero-image-frame {
-    position: relative;
-    width: 100%;
-    padding-bottom: 125%; /* 5/4 */
-    height: 0;
-  }
-  @supports (aspect-ratio: 1) {
-    .hero-image-frame {
-      aspect-ratio: 4 / 5;
-      padding-bottom: 0;
-      height: auto;
-    }
-  }
   /* Announcement bar: animated gradient + pulsing dot */
   @keyframes banner-shimmer {
     0%   { background-position: 0% 50%; }
@@ -339,16 +325,14 @@ function TweakableHero({ headline }) {
       </div>
 
       <div style={{ position: 'relative' }}>
-        <div className="hero-image-frame" style={{
+        <div style={{
+          aspectRatio: '4/5',
           borderRadius: 4,
           overflow: 'hidden',
           background: '#F9F7F4',
         }}>
           <img src="assets/anna-hero.jpg" alt="Anna Wareham" style={{
-            position: 'absolute', top: 0, left: 0,
-            width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: '70% center',
-            display: 'block',
+            width: '100%', height: '100%', objectFit: 'cover', display: 'block',
           }} />
         </div>
 
