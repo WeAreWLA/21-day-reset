@@ -225,8 +225,7 @@ const HonestTruthSection = () => (
             fontFamily: '"Libre Baskerville", serif',
             fontStyle: 'italic',
             fontSize: 19,
-            color: 'var(--paper)',
-            opacity: 0.8,
+            color: '#ffffff',
             lineHeight: 1.5,
           }}>
             {line}
