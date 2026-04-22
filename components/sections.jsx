@@ -57,11 +57,25 @@ const Body = ({ children, size = 17, muted = false, style = {} }) => (
   }}>{children}</p>
 );
 
-const PrimaryCTA = ({ children, small = false, onClick, style = {} }) => (
+// GA4 click tracker — safe no-op if gtag is missing (e.g. local dev, ad blockers)
+function trackCtaClick(location, label) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', 'cta_click', {
+      cta_location: location,
+      cta_label: label,
+    });
+  }
+}
+
+const PrimaryCTA = ({ children, small = false, onClick, style = {}, location = 'primary' }) => (
   <a
     href="https://sales.thewlacademy.com/may-reset/"
     target="_blank"
     rel="noopener"
+    onClick={(e) => {
+      trackCtaClick(location, typeof children === 'string' ? children : 'Primary CTA');
+      if (onClick) onClick(e);
+    }}
     style={{
       display: 'inline-flex',
       alignItems: 'center',
@@ -171,4 +185,5 @@ const Divider = ({ style = {} }) => (
 
 Object.assign(window, {
   Eyebrow, SerifH, Italic, Body, PrimaryCTA, Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider,
+  trackCtaClick,
 });

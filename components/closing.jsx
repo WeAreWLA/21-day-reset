@@ -73,7 +73,7 @@ const PricingSection = () => (
           ))}
         </div>
 
-        <PrimaryCTA style={{ width: '100%', maxWidth: 460 }}>
+        <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 460 }}>
           Join the Reset — £17
         </PrimaryCTA>
 
@@ -269,7 +269,7 @@ const FinalCTA = () => (
       <Body size={19} muted style={{ maxWidth: 620, margin: '0 auto 40px' }}>
         21 days. £17. A reset designed to finally get you results led by a registered nutritionist who has walked 50,000 women through it.
       </Body>
-      <PrimaryCTA>Join the 21 Day Reset — £17</PrimaryCTA>
+      <PrimaryCTA location="final">Join the 21 Day Reset — £17</PrimaryCTA>
       <div style={{
         marginTop: 22,
         fontFamily: '"Alegreya Sans", sans-serif',
@@ -314,7 +314,9 @@ const StickyCTA = ({ visible }) => (
       <span style={{ color: 'var(--peach)' }}>●</span> 21 Day Reset · <strong>£17</strong>
       <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>Price rises soon</span>
     </div>
-    <a href="https://sales.thewlacademy.com/may-reset/" target="_blank" rel="noopener" className="sticky-cta-button" style={{
+    <a href="https://sales.thewlacademy.com/may-reset/" target="_blank" rel="noopener" className="sticky-cta-button"
+      onClick={() => window.trackCtaClick && window.trackCtaClick('sticky', 'Secure your place')}
+      style={{
       background: 'var(--blush-deep)',
       color: 'var(--paper)',
       padding: '12px 22px',
