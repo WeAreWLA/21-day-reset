@@ -95,7 +95,7 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     .problem-thoughts-grid { margin-bottom: 24px !important; }
     .problem-paragraphs { padding-top: 28px !important; }
     /* Tighter vertical rhythm on mobile only */
-    .hero-section { padding-top: 20px !important; }
+    .hero-section { padding-top: 40px !important; }
     .early-bird-banner-section { padding-top: 16px !important; padding-bottom: 12px !important; }
     .whatchanges-section { padding-top: 40px !important; }
     .whythisworks-section { padding-bottom: 20px !important; }
@@ -292,8 +292,42 @@ function App() {
       <MethodSection />
       <WhatHappensSection />
       <IncludedSection />
-      <PricingSection sectionId="join-early" />
       <FastActionBonusSection />
+      <PricingSection sectionId="join-early" />
+      <section className="early-bird-banner-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 40px' }}>
+        <div style={{
+          padding: '22px 28px',
+          background: 'var(--peach)',
+          borderRadius: 14,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 20,
+          flexWrap: 'wrap',
+        }}>
+          <div style={{ fontSize: 26 }} className="early-bird-icon">🎁</div>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{
+              fontFamily: '"Libre Baskerville", serif',
+              fontWeight: 700,
+              fontSize: 20,
+              color: 'var(--ink)',
+            }}>
+              <span className="early-bird-icon-inline" style={{ marginRight: 8 }}>🎁</span>Early-bird bonus:<span className="early-bird-plan"> <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></span>
+            </div>
+            <Body size={14} style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
+          </div>
+          <div style={{
+            fontFamily: '"Alegreya Sans", sans-serif',
+            fontSize: 12,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: 'var(--blush-deep)',
+            fontWeight: 600,
+          }}>
+            Included free
+          </div>
+        </div>
+      </section>
       <TestimonialsSection />
       <AboutSection />
       <TransformSection />

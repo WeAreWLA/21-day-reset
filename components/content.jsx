@@ -82,37 +82,6 @@ const IncludedSection = () => (
         ))}
       </div>
 
-      <div style={{
-        marginTop: 28,
-        padding: '22px 28px',
-        background: 'var(--peach)',
-        borderRadius: 14,
-        display: 'flex',
-        alignItems: 'center',
-        gap: 20,
-        flexWrap: 'wrap',
-      }}>
-        <div style={{ fontSize: 26 }}>🎁</div>
-        <div style={{ flex: 1, minWidth: 260 }}>
-          <div style={{
-            fontFamily: '"Libre Baskerville", serif',
-            fontWeight: 700,
-              fontSize: 20,
-            color: 'var(--ink)',
-          }}>Early-bird bonus: <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></div>
-          <Body size={14} style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
-        </div>
-        <div style={{
-          fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 12,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: 'var(--blush-deep)',
-          fontWeight: 600,
-        }}>
-          Included free
-        </div>
-      </div>
     </div>
   </section>
 );
