@@ -82,17 +82,12 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     background: var(--peach);
     animation: dot-pulse 1.8s ease-out infinite;
   }
-  .announcement-cta {
-    background: var(--paper); color: var(--ink) !important;
-    padding: 5px 14px; border-radius: 999px;
-    font-weight: 600; letter-spacing: 0.04em;
-    text-decoration: none !important;
-    transition: transform .2s, box-shadow .2s;
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .announcement-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px -6px rgba(0,0,0,0.35);
+  /* Early-bird banner: desktop uses standalone emoji, mobile inlines it */
+  .early-bird-icon-inline { display: none; }
+  @media (max-width: 640px) {
+    .early-bird-icon { display: none !important; }
+    .early-bird-icon-inline { display: inline !important; }
+    .early-bird-plan { display: block; margin-top: 4px; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -411,14 +406,16 @@ function TweakableHero({ headline }) {
         gap: 20,
         flexWrap: 'wrap',
       }}>
-        <div style={{ fontSize: 26 }}>🎁</div>
+        <div style={{ fontSize: 26 }} className="early-bird-icon">🎁</div>
         <div style={{ flex: 1, minWidth: 260 }}>
           <div style={{
             fontFamily: '"Libre Baskerville", serif',
             fontWeight: 700,
             fontSize: 20,
             color: 'var(--ink)',
-          }}>Early-bird bonus: <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></div>
+          }}>
+            <span className="early-bird-icon-inline" style={{ marginRight: 8 }}>🎁</span>Early-bird bonus:<span className="early-bird-plan"> <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></span>
+          </div>
           <Body size={14} muted style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
         </div>
         <div style={{
