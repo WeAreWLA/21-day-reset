@@ -84,10 +84,14 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
   }
   /* Early-bird banner: desktop uses standalone emoji, mobile inlines it */
   .early-bird-icon-inline { display: none; }
+  /* Mobile-only helpers */
+  .mobile-break { display: none; }
   @media (max-width: 640px) {
     .early-bird-icon { display: none !important; }
     .early-bird-icon-inline { display: inline !important; }
     .early-bird-plan { display: block; margin-top: 4px; }
+    .mobile-break { display: inline; }
+    .mobile-no-italic { font-style: normal !important; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -416,7 +420,7 @@ function TweakableHero({ headline }) {
           }}>
             <span className="early-bird-icon-inline" style={{ marginRight: 8 }}>🎁</span>Early-bird bonus:<span className="early-bird-plan"> <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></span>
           </div>
-          <Body size={14} muted style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
+          <Body size={14} style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
         </div>
         <div style={{
           fontFamily: '"Alegreya Sans", sans-serif',

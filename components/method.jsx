@@ -87,7 +87,7 @@ const WhatChangesIn21DaysSection = () => {
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <Eyebrow>In just 21 days</Eyebrow>
           <SerifH size={56} style={{ marginTop: 20 }}>
-            Here’s what can change <Italic>in just 21 days…</Italic>
+            Here’s what can change<br className="mobile-break" /> <Italic>in just 21 days…</Italic>
           </SerifH>
         </div>
 
@@ -123,7 +123,7 @@ const WhatChangesIn21DaysSection = () => {
         </div>
 
         <div style={{ marginTop: 48, textAlign: 'center' }}>
-          <div style={{
+          <div className="mobile-no-italic" style={{
             fontFamily: '"Libre Baskerville", serif',
             fontStyle: 'italic',
             fontSize: 20,
@@ -161,7 +161,7 @@ const HonestTruthSection = () => (
         You don’t struggle because you <Italic>don’t know what to do.</Italic>
       </SerifH>
 
-      <div style={{
+      <div className="mobile-no-italic" style={{
         fontFamily: '"Libre Baskerville", serif',
         fontStyle: 'italic',
         fontSize: 26,
@@ -221,7 +221,7 @@ const HonestTruthSection = () => (
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 64 }}>
         {['So you start strong…', 'Then life gets busy…', 'And you fall back into the same cycle.'].map((line, i) => (
-          <div key={i} style={{
+          <div key={i} className="mobile-no-italic" style={{
             fontFamily: '"Libre Baskerville", serif',
             fontStyle: 'italic',
             fontSize: 19,

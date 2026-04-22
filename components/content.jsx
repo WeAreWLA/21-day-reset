@@ -100,7 +100,7 @@ const IncludedSection = () => (
               fontSize: 20,
             color: 'var(--ink)',
           }}>Early-bird bonus: <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></div>
-          <Body size={14} muted style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
+          <Body size={14} style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
         </div>
         <div style={{
           fontFamily: '"Alegreya Sans", sans-serif',
