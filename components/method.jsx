@@ -259,14 +259,7 @@ const WhyThisResetWorksSection = () => (
         </SerifH>
       </div>
 
-      <div style={{
-        background: 'var(--paper)',
-        border: '1px solid var(--hairline)',
-        borderRadius: 18,
-        padding: '44px 48px',
-        marginBottom: 32,
-        textAlign: 'center',
-      }}>
+      <div style={{ textAlign: 'center', marginBottom: 40, maxWidth: 720, margin: '0 auto 40px' }}>
         <Body size={17} muted style={{ marginBottom: 16 }}>
           Instead of extremes, this Reset focuses on one thing:
         </Body>
@@ -283,7 +276,7 @@ const WhyThisResetWorksSection = () => (
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 18,
-          maxWidth: 680, margin: '0 auto',
+          maxWidth: 640, margin: '0 auto',
           textAlign: 'left',
         }}>
           {[
@@ -304,6 +297,7 @@ const WhyThisResetWorksSection = () => (
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: 16,
+        marginBottom: 56,
       }}>
         {['No cutting everything out.', 'No 1,200 calorie plans.', 'No starting again next week.'].map((item, i) => (
           <div key={i} style={{
@@ -320,6 +314,48 @@ const WhyThisResetWorksSection = () => (
             {item}
           </div>
         ))}
+      </div>
+
+      <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
+        <Body size={19} style={{ fontWeight: 500, marginBottom: 40 }}>
+          Just a simple structure that works in real life.
+        </Body>
+
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          gap: 14, marginBottom: 18,
+        }}>
+          <span style={{ flex: '0 0 36px', height: 1, background: 'var(--hairline)' }} />
+          <div style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontStyle: 'italic',
+            fontSize: 16,
+            color: 'var(--ink-muted)',
+            letterSpacing: '0.02em',
+          }}>
+            And the best part?
+          </div>
+          <span style={{ flex: '0 0 36px', height: 1, background: 'var(--hairline)' }} />
+        </div>
+
+        <div style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontStyle: 'italic',
+          fontSize: 26,
+          color: 'var(--blush-deep)',
+          lineHeight: 1.3,
+          marginBottom: 24,
+        }}>
+          You can simply try it for yourself.
+        </div>
+
+        <Body size={18} style={{ marginBottom: 20 }}>
+          It’s just <strong style={{ color: 'var(--blush-deep)' }}>£17</strong>, and you’re covered by a <strong>7-day money-back guarantee</strong>.
+        </Body>
+
+        <Body size={17} muted style={{ fontStyle: 'italic' }}>
+          So you’ve got nothing to lose… and everything to gain.
+        </Body>
       </div>
     </div>
   </section>

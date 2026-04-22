@@ -400,27 +400,18 @@ const FastActionBonusSection = () => (
       </Body>
 
       <div style={{
-        background: 'var(--paper)',
-        borderRadius: 14,
-        padding: '8px 32px',
-        marginBottom: 32,
+        maxWidth: 460, margin: '0 auto 32px',
+        display: 'flex', flexDirection: 'column', gap: 14,
         textAlign: 'left',
       }}>
         {[
           'Know exactly what to eat from your next meal',
           'Start making progress straight away',
           'Build momentum before Day 1',
-        ].map((item, i, arr) => (
-          <div key={i} style={{
-            display: 'grid',
-            gridTemplateColumns: '24px 1fr',
-            gap: 14,
-            alignItems: 'center',
-            padding: '18px 0',
-            borderBottom: i < arr.length - 1 ? '1px solid var(--hairline)' : 'none',
-          }}>
+        ].map((item, i) => (
+          <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start', justifyContent: 'center' }}>
             <Tick />
-            <Body size={16}>{item}</Body>
+            <Body size={16} style={{ flex: 'none' }}>{item}</Body>
           </div>
         ))}
       </div>
