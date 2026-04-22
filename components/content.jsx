@@ -288,7 +288,7 @@ const TestimonialsSection = () => (
                   overflow: 'hidden',
                   background: '#F9F7F4',
                 }}>
-                  <img src={item.img} alt={`Before and after of ${item.name}`} style={{
+                  <img src={item.img} alt={`Before and after of ${item.name}`} loading="lazy" decoding="async" style={{
                     width: '100%', height: '100%', objectFit: item.fit || 'contain', objectPosition: item.pos || 'center center', display: 'block',
                   }} />
                 </div>
@@ -339,7 +339,7 @@ const AboutSection = () => (
           overflow: 'hidden',
           background: '#F9F7F4',
         }}>
-          <img src="/assets/anna-portrait.jpg" alt="Anna Wareham" style={{
+          <img src="/assets/anna-portrait.jpg" alt="Anna Wareham" loading="lazy" decoding="async" style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
           }} />
         </div>
