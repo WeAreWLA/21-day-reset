@@ -388,8 +388,8 @@ const VIDEO_TESTIMONIALS = [
 ];
 
 const VideoTestimonialsSection = () => (
-  <section style={{
-    padding: '120px 32px',
+  <section className="video-testimonials-section" style={{
+    padding: '120px 32px 48px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 1160, margin: '0 auto' }}>

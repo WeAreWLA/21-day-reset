@@ -256,8 +256,8 @@ const FAQItem = ({ item, isOpen, onToggle }) => (
 const FAQSection = () => {
   const [open, setOpen] = React.useState(0);
   return (
-    <section id="faq" style={{
-      padding: '120px 32px',
+    <section id="faq" className="faq-section" style={{
+      padding: '48px 32px 120px',
       background: 'var(--bg)',
     }}>
       <div style={{
