@@ -94,6 +94,11 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     .mobile-no-italic { font-style: normal !important; }
     .problem-thoughts-grid { margin-bottom: 24px !important; }
     .problem-paragraphs { padding-top: 28px !important; }
+    /* Tighter vertical rhythm on mobile only */
+    .early-bird-banner-section { padding-bottom: 12px !important; }
+    .whatchanges-section { padding-top: 40px !important; }
+    .whythisworks-section { padding-bottom: 20px !important; }
+    section#method { padding-top: 40px !important; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -402,7 +407,7 @@ function TweakableHero({ headline }) {
       </div>
     </section>
 
-    <section style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 8px' }}>
+    <section className="early-bird-banner-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 40px' }}>
       <div style={{
         padding: '22px 28px',
         background: 'var(--peach)',

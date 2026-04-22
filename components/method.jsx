@@ -79,8 +79,8 @@ const WhatChangesIn21DaysSection = () => {
   ];
 
   return (
-    <section style={{
-      padding: '40px 32px 96px',
+    <section className="whatchanges-section" style={{
+      padding: '72px 32px 120px',
       background: 'var(--bg)',
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
@@ -250,8 +250,8 @@ const HonestTruthSection = () => (
 
 // Section C: Why This Reset Works When Others Haven't
 const WhyThisResetWorksSection = () => (
-  <section style={{
-    padding: '120px 32px 24px',
+  <section className="whythisworks-section" style={{
+    padding: '120px 32px 64px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 980, margin: '0 auto' }}>
@@ -352,7 +352,7 @@ const SHIFT_STEPS = [
 
 const MethodSection = () => (
   <section id="method" style={{
-    padding: '40px 32px 110px',
+    padding: '72px 32px 110px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 1160, margin: '0 auto' }}>
