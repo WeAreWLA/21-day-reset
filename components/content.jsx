@@ -44,7 +44,7 @@ const INCLUDED = [
 ];
 
 const IncludedSection = () => (
-  <section id="included" style={{
+  <section id="included" className="included-section" style={{
     padding: '72px 32px 120px',
     background: 'var(--bg)',
   }}>
