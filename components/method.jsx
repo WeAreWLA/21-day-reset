@@ -80,7 +80,7 @@ const WhatChangesIn21DaysSection = () => {
 
   return (
     <section style={{
-      padding: '72px 32px 120px',
+      padding: '40px 32px 96px',
       background: 'var(--bg)',
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
@@ -251,7 +251,7 @@ const HonestTruthSection = () => (
 // Section C: Why This Reset Works When Others Haven't
 const WhyThisResetWorksSection = () => (
   <section style={{
-    padding: '120px 32px 64px',
+    padding: '120px 32px 24px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 980, margin: '0 auto' }}>
@@ -352,7 +352,7 @@ const SHIFT_STEPS = [
 
 const MethodSection = () => (
   <section id="method" style={{
-    padding: '72px 32px 110px',
+    padding: '40px 32px 110px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 1160, margin: '0 auto' }}>
@@ -496,7 +496,7 @@ const TransformSection = () => {
 const WhatHappensSection = () => {
   const outcomes = [
     'Follow a simple, proven formula used by 50,000+ women',
-    'Reduce cravings and feel in control — without cutting everything out',
+    'Reduce cravings and feel in control without cutting everything out',
     'Feel lighter, less bloated, and more energised within days',
     'Know exactly what to eat with flexible, family-friendly meals',
     'Stay on track even on busy days with quick, easy options',

@@ -396,7 +396,7 @@ const FastActionBonusSection = () => (
 
       <SerifH size={40} style={{ marginTop: 16, marginBottom: 18, color: 'var(--ink)', lineHeight: 1.2 }}>
         The first 75 women who join receive my<br />
-        <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic><br />completely FREE.
+        <Italic>3-week fat loss accelerator meal plan</Italic><br />completely FREE.
       </SerifH>
 
       <Body size={17} style={{ maxWidth: 560, margin: '0 auto 32px' }}>
