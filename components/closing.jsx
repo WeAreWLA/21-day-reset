@@ -283,7 +283,7 @@ const FinalCTA = () => (
 );
 
 const StickyCTA = ({ visible }) => (
-  <div style={{
+  <div className="sticky-cta" style={{
     position: 'fixed',
     bottom: visible ? 20 : -120,
     left: '50%',
@@ -299,18 +299,22 @@ const StickyCTA = ({ visible }) => (
     boxShadow: '0 20px 40px -15px rgba(0,0,0,0.4)',
     zIndex: 100,
     flexWrap: 'nowrap',
-    maxWidth: 'calc(100vw - 40px)',
+    maxWidth: 'calc(100vw - 24px)',
+    boxSizing: 'border-box',
   }}>
-    <div style={{
+    <div className="sticky-cta-text" style={{
       fontFamily: '"Alegreya Sans", sans-serif',
       fontSize: 13,
       letterSpacing: '0.02em',
       whiteSpace: 'nowrap',
+      minWidth: 0,
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     }}>
       <span style={{ color: 'var(--peach)' }}>●</span> 21 Day Reset · <strong>£17</strong>
-      <span style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>Price rises soon</span>
+      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>Price rises soon</span>
     </div>
-    <a href="https://sales.thewlacademy.com/may-reset/" target="_blank" rel="noopener" style={{
+    <a href="https://sales.thewlacademy.com/may-reset/" target="_blank" rel="noopener" className="sticky-cta-button" style={{
       background: 'var(--blush-deep)',
       color: 'var(--paper)',
       padding: '12px 22px',
@@ -320,6 +324,7 @@ const StickyCTA = ({ visible }) => (
       fontWeight: 600,
       textDecoration: 'none',
       whiteSpace: 'nowrap',
+      flexShrink: 0,
     }}>Secure your place →</a>
   </div>
 );

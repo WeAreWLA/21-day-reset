@@ -96,18 +96,22 @@
     }
     /* Pull the Ruth quote chip up to the corner so it doesn't cover Anna's face */
     section > div[style*="position: relative"] > div[style*="rotate(-2deg)"] {
-      top: -18px !important;
-      left: 10px !important;
+      top: -22px !important;
+      left: -10px !important;
       right: auto !important;
       bottom: auto !important;
-      max-width: 210px !important;
+      max-width: 200px !important;
     }
     /* Big numbers in SHIFT method: shrink */
     section#method div[style*="font-size: 92"] { font-size: 56px !important; }
     /* Stat pills wrap */
     section > div > div[style*="border-top"][style*="gap: 48"] { flex-wrap: wrap !important; gap: 24px !important; }
     /* Pricing card padding — keep top spacious so Early Bird pill floats clear of £17 */
-    section#join > div > div[style*="border-radius: 24"] { padding: 48px 20px 32px !important; }
+    section#join > div > div[style*="border-radius: 24"] { padding: 60px 20px 32px !important; }
+    /* Push Early Bird pill further above the card edge on mobile */
+    section#join > div > div[style*="border-radius: 24"] > div[style*="top: -14"] {
+      top: -18px !important;
+    }
     section#join div[style*="font-size: 100"] { font-size: 72px !important; }
     /* FAQ sticky column becomes static */
     section#faq div[style*="position: sticky"] { position: static !important; }
@@ -130,6 +134,17 @@
     section > div > div[style*="border-radius"][style*="padding: 32"] { padding: 22px !important; }
     /* Tweaks panel shrinks */
     .tweaks-panel { width: calc(100vw - 40px) !important; right: 20px !important; }
+    /* Sticky CTA: compact layout so button doesn't overflow on narrow Androids */
+    .sticky-cta { padding: 6px 6px 6px 16px !important; gap: 10px !important; }
+    .sticky-cta-text { font-size: 12px !important; }
+    .sticky-cta-secondary { display: none !important; }
+    .sticky-cta-button { padding: 10px 14px !important; font-size: 13px !important; }
+  }
+  @media (max-width: 420px) {
+    /* Even tighter for small phones */
+    .sticky-cta { padding: 5px 5px 5px 12px !important; gap: 8px !important; }
+    .sticky-cta-text { font-size: 11px !important; }
+    .sticky-cta-button { padding: 9px 12px !important; font-size: 12px !important; }
   }
 </style>
 </head>
