@@ -1,26 +1,31 @@
 // Hero + announcement bar
 
 const AnnouncementBar = () => (
-  <div style={{
-    background: 'var(--ink)',
+  <div className="announcement-bar" style={{
     color: 'var(--paper)',
-    padding: '10px 24px',
     fontFamily: '"Alegreya Sans", sans-serif',
-    fontSize: 13,
     textAlign: 'center',
     letterSpacing: '0.04em',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 16,
+    gap: 18,
     flexWrap: 'wrap',
   }}>
-    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-      <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--blush-deep)' }} />
-      Pre-week starts Monday 4th May
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+      <span className="announcement-dot" />
+      Pre-week starts <strong style={{ color: 'var(--peach)' }}>Monday 4th May</strong>
     </span>
-    <span style={{ opacity: 0.4 }}>·</span>
-    <span>Just <strong style={{ color: 'var(--peach)' }}>£17</strong> <span style={{ opacity: 0.6, textDecoration: 'line-through' }}>£97</span> — price rises soon</span>
+    <span style={{ opacity: 0.5 }}>·</span>
+    <span>
+      Just <strong style={{ color: 'var(--peach)', fontSize: '1.05em' }}>£17</strong>
+      {' '}
+      <span style={{ opacity: 0.65, textDecoration: 'line-through' }}>£97</span>
+      {' '}— price rises soon
+    </span>
+    <a href="https://sales.thewlacademy.com/may-reset/" target="_blank" rel="noopener" className="announcement-cta">
+      Secure your place <span style={{ fontSize: 14 }}>→</span>
+    </a>
   </div>
 );
 
