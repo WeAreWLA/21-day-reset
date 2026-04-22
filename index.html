@@ -46,8 +46,8 @@
     section { padding-left: 20px !important; padding-right: 20px !important; }
     /* Shrink huge display text */
     h1, h2 { font-size: clamp(34px, 7vw, 56px) !important; line-height: 1.15 !important; }
-    /* Hide nav links (keep just the logo + CTA) */
-    nav > div:last-child a:not([href*="sales.thewlacademy"]) { display: none !important; }
+    /* Hide entire nav (logo + CTA) on mobile */
+    nav { display: none !important; }
     /* Announcement bar smaller */
     body > div:first-child { font-size: 12px !important; padding: 8px 16px !important; }
     /* Hero image block: reset absolute floating chips so they don't overflow viewport */
