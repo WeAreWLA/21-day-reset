@@ -480,7 +480,7 @@ const FastActionBonusSection = () => (
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
       }}>
-        ⚠️ Only available for the first 75 women
+        ⚠️ Only available for the first 100 women
       </div>
     </div>
   </section>
