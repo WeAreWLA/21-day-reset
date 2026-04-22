@@ -100,12 +100,13 @@ const WhatChangesIn21DaysSection = () => {
         }}>
           {changes.map((c, i) => (
             <div key={i} style={{
-              display: 'grid',
-              gridTemplateColumns: '56px 1fr',
-              gap: 20,
+              display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              padding: '22px 32px',
+              gap: 10,
+              padding: '26px 32px',
               borderBottom: i < changes.length - 1 ? '1px solid var(--hairline)' : 'none',
+              textAlign: 'center',
             }}>
               <div style={{
                 fontFamily: '"Libre Baskerville", serif',
@@ -116,7 +117,7 @@ const WhatChangesIn21DaysSection = () => {
               }}>
                 {String(i + 1).padStart(2, '0')}
               </div>
-              <Body size={18} style={{ lineHeight: 1.5 }}>{c}</Body>
+              <Body size={18} style={{ lineHeight: 1.5, maxWidth: 540 }}>{c}</Body>
             </div>
           ))}
         </div>
@@ -161,10 +162,12 @@ const HonestTruthSection = () => (
       </SerifH>
 
       <div style={{
-        fontFamily: '"Alegreya Sans", sans-serif',
-        fontSize: 19, lineHeight: 1.6,
-        color: 'var(--paper)', opacity: 0.85,
-        marginBottom: 40,
+        fontFamily: '"Libre Baskerville", serif',
+        fontStyle: 'italic',
+        fontSize: 26,
+        lineHeight: 1.4,
+        color: 'var(--paper)',
+        marginBottom: 48,
       }}>
         And it’s not because you lack willpower.
       </div>
@@ -188,27 +191,27 @@ const HonestTruthSection = () => (
       </div>
 
       <div style={{
-        background: 'rgba(253, 251, 248, 0.04)',
-        border: '1px solid rgba(245, 217, 206, 0.22)',
+        background: 'var(--peach)',
         borderRadius: 16,
         padding: '40px 40px 32px',
         marginBottom: 56,
+        boxShadow: '0 30px 60px -24px rgba(232, 127, 99, 0.35)',
       }}>
         <div style={{
           fontFamily: '"Alegreya Sans", sans-serif',
           fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
-          color: 'var(--peach)', marginBottom: 26, fontWeight: 600,
+          color: 'var(--blush-deep)', marginBottom: 26, fontWeight: 600,
         }}>
           Most diets rely on
         </div>
         {['Being perfect', 'Cutting everything out', 'Motivation that doesn’t last'].map((item, i) => (
           <div key={i} style={{
             padding: '18px 0',
-            borderBottom: i < 2 ? '1px solid rgba(245, 217, 206, 0.16)' : 'none',
+            borderBottom: i < 2 ? '1px solid rgba(0, 48, 96, 0.15)' : 'none',
             fontFamily: '"Libre Baskerville", serif',
             fontStyle: 'italic',
             fontSize: 22,
-            color: 'var(--paper)',
+            color: 'var(--ink)',
             lineHeight: 1.4,
           }}>
             {item}
@@ -317,9 +320,9 @@ const WhyThisResetWorksSection = () => (
       </div>
 
       <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
-        <Body size={19} style={{ fontWeight: 500, marginBottom: 40 }}>
-          Just a simple structure that works in real life.
-        </Body>
+        <SerifH size={36} style={{ marginBottom: 44, lineHeight: 1.3 }}>
+          Just a <Italic>simple structure</Italic> that works in real life.
+        </SerifH>
 
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
