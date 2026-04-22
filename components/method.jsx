@@ -95,16 +95,28 @@ const WhatChangesIn21DaysSection = () => {
           background: 'var(--paper)',
           border: '1px solid var(--hairline)',
           borderRadius: 18,
-          padding: '44px 48px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 18,
+          overflow: 'hidden',
           boxShadow: '0 20px 40px -28px rgba(0, 48, 96, 0.2)',
         }}>
           {changes.map((c, i) => (
-            <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-              <span style={{ fontSize: 22, lineHeight: 1.2, flexShrink: 0 }}>✨</span>
-              <Body size={18} style={{ lineHeight: 1.55 }}>{c}</Body>
+            <div key={i} style={{
+              display: 'grid',
+              gridTemplateColumns: '56px 1fr',
+              gap: 20,
+              alignItems: 'center',
+              padding: '22px 32px',
+              borderBottom: i < changes.length - 1 ? '1px solid var(--hairline)' : 'none',
+            }}>
+              <div style={{
+                fontFamily: '"Libre Baskerville", serif',
+                fontStyle: 'italic',
+                fontSize: 22,
+                color: 'var(--blush-deep)',
+                lineHeight: 1,
+              }}>
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <Body size={18} style={{ lineHeight: 1.5 }}>{c}</Body>
             </div>
           ))}
         </div>
@@ -135,82 +147,96 @@ const WhatChangesIn21DaysSection = () => {
   );
 };
 
-// Section B: The Honest Truth — expanded standalone section
+// Section B: The Honest Truth — standalone navy section
 const HonestTruthSection = () => (
   <section style={{
     padding: '120px 32px',
     background: 'var(--ink)',
     color: 'var(--paper)',
   }}>
-    <div style={{ maxWidth: 860, margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: 48 }}>
-        <Eyebrow color="var(--peach)">The honest truth…</Eyebrow>
-        <SerifH size={56} style={{ color: 'var(--paper)', marginTop: 20 }}>
-          You don’t struggle because you <Italic>don’t know what to do.</Italic>
-        </SerifH>
-      </div>
+    <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
+      <Eyebrow color="var(--peach)">The honest truth…</Eyebrow>
+      <SerifH size={56} style={{ color: 'var(--paper)', marginTop: 20, marginBottom: 28 }}>
+        You don’t struggle because you <Italic>don’t know what to do.</Italic>
+      </SerifH>
 
       <div style={{
-        display: 'flex', flexDirection: 'column', gap: 20,
         fontFamily: '"Alegreya Sans", sans-serif',
         fontSize: 19, lineHeight: 1.6,
+        color: 'var(--paper)', opacity: 0.85,
+        marginBottom: 40,
       }}>
-        <p style={{ margin: 0, color: 'var(--paper)', textAlign: 'center' }}>
-          And it’s not because you lack willpower.
-        </p>
-        <p style={{
-          margin: 0, textAlign: 'center',
-          fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic',
-          fontSize: 22, color: 'var(--peach)', lineHeight: 1.5,
-        }}>
-          👉 You’ve just never had a plan you can actually stick to.
-        </p>
+        And it’s not because you lack willpower.
       </div>
 
       <div style={{
-        marginTop: 48,
-        background: 'rgba(253, 251, 248, 0.06)',
-        border: '1px solid rgba(245, 217, 206, 0.2)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        gap: 16, marginBottom: 64,
+      }}>
+        <span style={{ flex: '0 0 40px', height: 1, background: 'var(--peach)', opacity: 0.45 }} />
+        <div style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontStyle: 'italic',
+          fontSize: 28,
+          color: 'var(--peach)',
+          lineHeight: 1.35,
+          maxWidth: 600,
+        }}>
+          You’ve just never had a plan you can actually stick to.
+        </div>
+        <span style={{ flex: '0 0 40px', height: 1, background: 'var(--peach)', opacity: 0.45 }} />
+      </div>
+
+      <div style={{
+        background: 'rgba(253, 251, 248, 0.04)',
+        border: '1px solid rgba(245, 217, 206, 0.22)',
         borderRadius: 16,
-        padding: '32px 36px',
+        padding: '40px 40px 32px',
+        marginBottom: 56,
       }}>
         <div style={{
           fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase',
-          color: 'var(--peach)', marginBottom: 16, fontWeight: 600,
+          fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'var(--peach)', marginBottom: 26, fontWeight: 600,
         }}>
           Most diets rely on
         </div>
         {['Being perfect', 'Cutting everything out', 'Motivation that doesn’t last'].map((item, i) => (
           <div key={i} style={{
-            display: 'flex', gap: 14, alignItems: 'flex-start',
-            padding: '12px 0',
-            borderBottom: i < 2 ? '1px solid rgba(245, 217, 206, 0.15)' : 'none',
+            padding: '18px 0',
+            borderBottom: i < 2 ? '1px solid rgba(245, 217, 206, 0.16)' : 'none',
+            fontFamily: '"Libre Baskerville", serif',
+            fontStyle: 'italic',
+            fontSize: 22,
+            color: 'var(--paper)',
+            lineHeight: 1.4,
           }}>
-            <span style={{ fontSize: 18, flexShrink: 0 }}>❌</span>
-            <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 17, color: 'var(--paper)' }}>{item}</div>
+            {item}
           </div>
         ))}
       </div>
 
-      <div style={{ marginTop: 40, textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 18, color: 'var(--paper)', opacity: 0.85 }}>
-          So you start strong…
-        </div>
-        <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 18, color: 'var(--paper)', opacity: 0.85 }}>
-          Then life gets busy…
-        </div>
-        <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 18, color: 'var(--paper)', opacity: 0.85 }}>
-          And you fall back into the same cycle.
-        </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 64 }}>
+        {['So you start strong…', 'Then life gets busy…', 'And you fall back into the same cycle.'].map((line, i) => (
+          <div key={i} style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontStyle: 'italic',
+            fontSize: 19,
+            color: 'var(--paper)',
+            opacity: 0.8,
+            lineHeight: 1.5,
+          }}>
+            {line}
+          </div>
+        ))}
       </div>
 
       <div style={{
-        marginTop: 56,
-        textAlign: 'center',
         fontFamily: '"Libre Baskerville", serif',
-        fontSize: 26, fontStyle: 'italic',
-        color: 'var(--peach)', lineHeight: 1.4,
+        fontSize: 28,
+        fontStyle: 'italic',
+        color: 'var(--peach)',
+        lineHeight: 1.4,
       }}>
         That’s not your fault.<br />
         It’s the <strong style={{ fontWeight: 700 }}>approach</strong> that’s been wrong.
@@ -241,22 +267,23 @@ const WhyThisResetWorksSection = () => (
         marginBottom: 32,
         textAlign: 'center',
       }}>
-        <Body size={18} muted style={{ marginBottom: 14 }}>
+        <Body size={17} muted style={{ marginBottom: 16 }}>
           Instead of extremes, this Reset focuses on one thing:
         </Body>
         <div style={{
           fontFamily: '"Libre Baskerville", serif',
-          fontSize: 26, fontStyle: 'italic',
-          color: 'var(--blush-deep)', lineHeight: 1.4,
-          marginBottom: 28,
+          fontSize: 28, fontStyle: 'italic',
+          color: 'var(--blush-deep)', lineHeight: 1.3,
+          marginBottom: 36,
         }}>
-          👉 Helping you fuel your body properly for fat loss
+          Helping you fuel your body properly for fat loss.
         </div>
 
-        <Body size={17} muted style={{ marginBottom: 20 }}>So you can:</Body>
         <div style={{
-          display: 'flex', flexDirection: 'column', gap: 12,
-          maxWidth: 520, margin: '0 auto 8px',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: 18,
+          maxWidth: 680, margin: '0 auto',
           textAlign: 'left',
         }}>
           {[
@@ -265,8 +292,8 @@ const WhyThisResetWorksSection = () => (
             'Have more energy throughout the day',
             'Actually stick to it',
           ].map((item, i) => (
-            <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-              <span style={{ fontSize: 18, flexShrink: 0 }}>✔️</span>
+            <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+              <Tick />
               <Body size={17}>{item}</Body>
             </div>
           ))}
@@ -277,13 +304,12 @@ const WhyThisResetWorksSection = () => (
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: 16,
-        marginBottom: 48,
       }}>
         {['No cutting everything out.', 'No 1,200 calorie plans.', 'No starting again next week.'].map((item, i) => (
           <div key={i} style={{
             background: 'var(--cream-deep)',
             borderRadius: 10,
-            padding: '20px 22px',
+            padding: '22px 22px',
             textAlign: 'center',
             fontFamily: '"Libre Baskerville", serif',
             fontStyle: 'italic',
@@ -294,42 +320,6 @@ const WhyThisResetWorksSection = () => (
             {item}
           </div>
         ))}
-      </div>
-
-      <div style={{ textAlign: 'center', marginBottom: 40 }}>
-        <Body size={19} style={{ fontWeight: 500 }}>
-          Just a simple structure that works in real life.
-        </Body>
-      </div>
-
-      <div style={{
-        background: 'var(--peach)',
-        borderRadius: 18,
-        padding: '36px 40px',
-        textAlign: 'center',
-      }}>
-        <div style={{
-          fontFamily: '"Libre Baskerville", serif',
-          fontSize: 15, fontStyle: 'italic',
-          color: 'var(--ink)', letterSpacing: '0.04em',
-          marginBottom: 8,
-        }}>
-          And the best part?
-        </div>
-        <div style={{
-          fontFamily: '"Libre Baskerville", serif',
-          fontSize: 24, fontStyle: 'italic',
-          color: 'var(--blush-deep)', lineHeight: 1.4,
-          marginBottom: 20,
-        }}>
-          👉 You can simply try it for yourself.
-        </div>
-        <Body size={17} style={{ marginBottom: 24 }}>
-          It’s just <strong style={{ color: 'var(--blush-deep)' }}>£17</strong>, and you’re covered by a <strong>7-day money-back guarantee</strong>.
-        </Body>
-        <Body size={16} muted style={{ fontStyle: 'italic' }}>
-          So you’ve got nothing to lose… and everything to gain.
-        </Body>
       </div>
     </div>
   </section>
@@ -525,22 +515,25 @@ const WhatHappensSection = () => {
         </div>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 16,
+          background: 'var(--paper)',
+          border: '1px solid var(--hairline)',
+          borderRadius: 18,
+          overflow: 'hidden',
+          maxWidth: 780,
+          margin: '0 auto',
+          boxShadow: '0 20px 40px -28px rgba(0, 48, 96, 0.2)',
         }}>
           {outcomes.map((o, i) => (
             <div key={i} style={{
-              background: 'var(--paper)',
-              border: '1px solid var(--hairline)',
-              borderRadius: 12,
-              padding: '22px 26px',
-              display: 'flex',
-              gap: 14,
-              alignItems: 'flex-start',
+              display: 'grid',
+              gridTemplateColumns: '28px 1fr',
+              gap: 18,
+              alignItems: 'center',
+              padding: '20px 32px',
+              borderBottom: i < outcomes.length - 1 ? '1px solid var(--hairline)' : 'none',
             }}>
-              <span style={{ fontSize: 18, flexShrink: 0, marginTop: 2 }}>✔️</span>
-              <Body size={16} style={{ lineHeight: 1.5 }}>{o}</Body>
+              <Tick />
+              <Body size={17} style={{ lineHeight: 1.5 }}>{o}</Body>
             </div>
           ))}
         </div>

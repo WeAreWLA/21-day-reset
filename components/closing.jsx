@@ -402,20 +402,24 @@ const FastActionBonusSection = () => (
       <div style={{
         background: 'var(--paper)',
         borderRadius: 14,
-        padding: '28px 32px',
-        marginBottom: 28,
+        padding: '8px 32px',
+        marginBottom: 32,
         textAlign: 'left',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 14,
       }}>
         {[
           'Know exactly what to eat from your next meal',
           'Start making progress straight away',
           'Build momentum before Day 1',
-        ].map((item, i) => (
-          <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-            <span style={{ fontSize: 16, flexShrink: 0, marginTop: 2 }}>✔️</span>
+        ].map((item, i, arr) => (
+          <div key={i} style={{
+            display: 'grid',
+            gridTemplateColumns: '24px 1fr',
+            gap: 14,
+            alignItems: 'center',
+            padding: '18px 0',
+            borderBottom: i < arr.length - 1 ? '1px solid var(--hairline)' : 'none',
+          }}>
+            <Tick />
             <Body size={16}>{item}</Body>
           </div>
         ))}
@@ -424,12 +428,12 @@ const FastActionBonusSection = () => (
       <div style={{
         fontFamily: '"Libre Baskerville", serif',
         fontStyle: 'italic',
-        fontSize: 19,
+        fontSize: 21,
         color: 'var(--ink)',
-        marginBottom: 22,
+        marginBottom: 24,
         lineHeight: 1.4,
       }}>
-        👉 So when the Reset begins… <strong style={{ fontWeight: 700, color: 'var(--blush-deep)' }}>you’re already ahead.</strong>
+        So when the Reset begins… <strong style={{ fontWeight: 700, color: 'var(--blush-deep)' }}>you’re already ahead.</strong>
       </div>
 
       <div style={{
