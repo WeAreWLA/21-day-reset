@@ -57,12 +57,21 @@ const Body = ({ children, size = 17, muted = false, style = {} }) => (
   }}>{children}</p>
 );
 
-// GA4 click tracker — safe no-op if gtag is missing (e.g. local dev, ad blockers)
+// CTA click tracker: fires both GA4 and Meta Pixel events.
+// Safe no-op if either tag is missing (e.g. local dev, ad blockers).
 function trackCtaClick(location, label) {
+  // Google Analytics 4
   if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
     window.gtag('event', 'cta_click', {
       cta_location: location,
       cta_label: label,
+    });
+  }
+  // Meta Pixel — Lead event signals strong intent to Facebook's optimiser
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    window.fbq('track', 'Lead', {
+      content_name: label,
+      content_category: location,
     });
   }
 }
