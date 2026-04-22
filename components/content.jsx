@@ -3,12 +3,12 @@
 const INCLUDED = [
   {
     title: '21-Day Flexible Meal Guide',
-    body: 'Breakfasts, lunches, dinners. Family-friendly. Budget-friendly. Designed around midlife protein and fibre targets.',
+    body: 'Weight loss breakfasts, lunches and dinners flexible meal guides. Family-friendly. Designed to keep you full, satisfied, on track and lighter within days.',
     tag: 'Core',
   },
   {
     title: 'Daily Coaching & Check-ins',
-    body: 'A prompt every day inside the members group. Stay accountable without feeling monitored.',
+    body: 'Guidance inside the reset group each day so you stay on track, without feeling like you\'re doing it alone. Stay consistent and motivated every step of the way.',
     tag: 'Core',
   },
   {
@@ -18,7 +18,7 @@ const INCLUDED = [
   },
   {
     title: 'Reset Workbook',
-    body: 'Goal-setting and weekly reflection designed specifically for midlife women — not a generic wellness journal.',
+    body: 'Set clear goals, stay focused, and track your progress each week, so you actually follow through and see results.',
     tag: 'Core',
   },
   {
@@ -28,17 +28,17 @@ const INCLUDED = [
   },
   {
     title: 'Drinks & Hydration Guide',
-    body: 'What to drink, what to swap, how alcohol fits, and why hydration looks different after 50.',
+    body: 'What to drink, what to swap, how alcohol fits, and how to stay hydrated in a way that actually supports fat loss.',
     tag: 'Reference',
   },
   {
     title: 'Easy Freezer Dinner Pack',
-    body: 'Batch-cook dinners that take the stress out of Tuesday nights and keep your plan intact.',
+    body: 'No-cook meals you can have ready without effort, perfect for busy days when you don\'t want to think about what to eat.',
     tag: 'Bonus',
   },
   {
     title: 'No-Prep Food List',
-    body: 'Grab-and-go staples for travel, busy days, and low-energy evenings.',
+    body: 'Grab-and-go foods that keep you on track even on your busiest or lowest-energy days.',
     tag: 'Reference',
   },
 ];
@@ -259,7 +259,7 @@ const TestimonialsSection = () => (
           marginBottom: 24,
           letterSpacing: '0.04em',
         }}>
-          Before &amp; after · women of the WLA
+          Real results from women just like you
         </div>
         <div style={{
           display: 'grid',
@@ -369,8 +369,7 @@ const AboutSection = () => (
             lineHeight: 1.5,
           }}>
             BSc Food &amp; Nutrition<br />
-            Reg. Associate Nutritionist<br />
-            NLP &amp; Success Coach
+            Reg. Associate Nutritionist
           </div>
         </div>
       </div>
@@ -378,17 +377,17 @@ const AboutSection = () => (
       <div>
         <Eyebrow>Meet your nutritionist</Eyebrow>
         <SerifH size={58} style={{ marginTop: 20, marginBottom: 24 }}>
-          I'm Anna — and I've been the woman <Italic>starting over every Monday.</Italic>
+          I'm Anna and I've been the woman <Italic>starting over every Monday.</Italic>
         </SerifH>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <Body size={18}>
             I used to try a new diet every week. By evening I'd be bingeing and by Monday I'd be starting again. Exhausting. Shame-filled. Getting nowhere.
           </Body>
           <Body size={18}>
-            So I went back to university. Four years. A degree in Food &amp; Nutrition. I became a Registered Associate Nutritionist, added NLP and coaching qualifications, and spent the next ten years quietly dismantling what I'd been taught about women's weight loss.
+            So I went back to university. Four years. A degree in Food &amp; Nutrition. I became a Registered Associate Nutritionist and have spent over 10 years helping women get real, lasting results.
           </Body>
           <Body size={18}>
-            Especially what I'd been taught about women in midlife — which, it turns out, was mostly written by men for 30-year-olds.
+            Especially for women in midlife, where most advice simply misses the mark.
           </Body>
           <Body size={18} style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', color: 'var(--blush-deep)', fontSize: 21 }}>
             50,000 clients later, this Reset is the distilled version of everything that actually works.

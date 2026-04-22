@@ -78,11 +78,10 @@ const ProblemSection = () => {
               color: 'var(--blush-deep)',
               letterSpacing: '0.04em',
               marginBottom: 10,
-            }}>The honest truth</div>
+            }}>The honest truth…</div>
             <Body size={18} style={{ lineHeight: 1.55 }}>
-              You don't need more discipline.
-              You don't need to try harder.
-              You need a <strong style={{ color: 'var(--blush-deep)' }}>plan designed for the body you have now</strong>, not the one you had at 32.
+              You don't need more discipline. You don't need to try harder.
+              <br />You need a <strong style={{ color: 'var(--blush-deep)' }}>nutrition formula you can actually stick to</strong>.
             </Body>
           </div>
         </div>
@@ -122,10 +121,10 @@ const MethodSection = () => (
       <div style={{ textAlign: 'center', marginBottom: 72 }}>
         <Eyebrow>The WLA Reset Method</Eyebrow>
         <SerifH size={62} style={{ marginTop: 20, marginBottom: 20, maxWidth: 840, marginInline: 'auto' }}>
-          Three simple principles. <Italic>Built for the body you have now.</Italic>
+          Three simple principles. <Italic>Designed to help you get results now.</Italic>
         </SerifH>
         <Body size={18} muted style={{ maxWidth: 620, margin: '0 auto' }}>
-          Evidence-based. Designed around the physiology of women 45+, not recycled from a 2010 weight-loss book.
+          Evidence-based. Built around real life, not recycled from outdated weight-loss advice.
         </Body>
       </div>
 

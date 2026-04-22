@@ -11,7 +11,7 @@ const PricingSection = () => (
         One price.<br /><Italic>One reset.</Italic><br />Everything included.
       </SerifH>
       <Body size={18} muted style={{ maxWidth: 560, margin: '0 auto 48px' }}>
-        £17 today gets you the full Reset, all guides, live coaching, and the early-bird bonus.
+        Join today for £17, save £80 and access your FREE 3-Week Fat Loss Accelerator Meal Plan (limited available) with the early bird promo.
       </Body>
 
       <div style={{
@@ -60,10 +60,10 @@ const PricingSection = () => (
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, textAlign: 'left', maxWidth: 460, margin: '0 auto 36px' }}>
           {[
-            'Full 21-Day Flexible Meal Guide',
+            'Full 21-day flexible nutrition and weight meal guide + recipes',
             'Daily coaching + weekly live Zoom with Anna',
-            'All 7 supporting guides & workbook',
-            '🎁 Early-bird bonus: 3-Week Accelerator Meal Plan',
+            'Multiple supporting guides & workbook',
+            'Early-bird bonus: FREE 3-Week Fat Loss Accelerator Meal Plan',
             '7-day money-back guarantee',
           ].map((f, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
@@ -267,7 +267,7 @@ const FinalCTA = () => (
         <br />long enough to see results.
       </SerifH>
       <Body size={19} muted style={{ maxWidth: 620, margin: '0 auto 40px' }}>
-        21 days. £17. A reset designed for the body you have now — led by a registered nutritionist who has walked 50,000 women through it.
+        21 days. £17. A reset designed to finally get you results led by a registered nutritionist who has walked 50,000 women through it.
       </Body>
       <PrimaryCTA>Join the 21 Day Reset — £17</PrimaryCTA>
       <div style={{
