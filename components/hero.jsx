@@ -23,10 +23,6 @@ const AnnouncementBar = () => (
       <span style={{ opacity: 0.65, textDecoration: 'line-through' }}>£97</span>
       {' '}— price rises soon
     </span>
-    <a href="https://sales.thewlacademy.com/may-reset/" target="_blank" rel="noopener" className="announcement-cta"
-      onClick={() => window.trackCtaClick && window.trackCtaClick('announcement', 'Secure your place')}>
-      Secure your place <span style={{ fontSize: 14 }}>→</span>
-    </a>
   </div>
 );
 

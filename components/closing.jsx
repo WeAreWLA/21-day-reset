@@ -12,7 +12,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true }) => (
           <SerifH size={62} style={{ marginTop: 20, marginBottom: 16 }}>
             One price.<br /><Italic>One reset.</Italic><br />Everything included.
           </SerifH>
-          <Body size={18} muted style={{ maxWidth: 560, margin: '0 auto 48px' }}>
+          <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             Join today for £17, save £80 and access your FREE 3-Week Fat Loss Accelerator Meal Plan (limited available) with the early bird promo.
           </Body>
         </>
@@ -35,11 +35,11 @@ const PricingSection = ({ sectionId = "join", showHeading = true }) => (
           color: 'var(--paper)',
           padding: '6px 20px',
           borderRadius: 999,
-          fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 11,
-          fontWeight: 600,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
+          fontFamily: '"Libre Baskerville", serif',
+          fontSize: 13,
+          fontStyle: 'italic',
+          fontWeight: 400,
+          letterSpacing: '0.04em',
         }}>Early bird · save £80</div>
 
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 14, marginBottom: 10 }}>
@@ -58,8 +58,8 @@ const PricingSection = ({ sectionId = "join", showHeading = true }) => (
             textDecoration: 'line-through',
           }}>£97</div>
         </div>
-        <Body size={15} muted style={{ marginBottom: 32 }}>
-          One-time payment · full access · lifetime materials
+        <Body size={15} style={{ marginBottom: 32 }}>
+          One-time payment · full access
         </Body>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, textAlign: 'left', maxWidth: 460, margin: '0 auto 36px' }}>
@@ -212,7 +212,7 @@ const FAQItem = ({ item, isOpen, onToggle }) => (
       transition: 'max-height .35s ease, padding .25s ease',
       paddingBottom: isOpen ? 28 : 0,
     }}>
-      <Body size={17} muted style={{ maxWidth: 780 }}>{item.a}</Body>
+      <Body size={17} style={{ maxWidth: 780 }}>{item.a}</Body>
     </div>
   </div>
 );
@@ -237,8 +237,8 @@ const FAQSection = () => {
           <SerifH size={52} style={{ marginTop: 20, marginBottom: 18 }}>
             Questions from<br /><Italic>women like you.</Italic>
           </SerifH>
-          <Body size={15} muted>
-            Can't find what you're looking for? Email <span style={{ color: 'var(--blush-deep)' }}>support@theweightloss-academy.com</span> — we answer every message.
+          <Body size={15}>
+            Can't find what you're looking for? Email <a href="mailto:support@theweightloss-academy.com" style={{ color: 'var(--blush-deep)', textDecoration: 'none' }}>support@theweightloss-academy.com</a> — we answer every message.
           </Body>
         </div>
         <div>
@@ -270,7 +270,7 @@ const FinalCTA = () => (
         <br />You need something you can stick to
         <br />long enough to see results.
       </SerifH>
-      <Body size={19} muted style={{ maxWidth: 620, margin: '0 auto 40px' }}>
+      <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
         21 days. £17. A reset designed to finally get you results led by a registered nutritionist who has walked 50,000 women through it.
       </Body>
       <PrimaryCTA location="final">Join the 21 Day Reset — £17</PrimaryCTA>
@@ -399,7 +399,7 @@ const FastActionBonusSection = () => (
         <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic> — completely FREE.
       </SerifH>
 
-      <Body size={17} muted style={{ maxWidth: 560, margin: '0 auto 32px' }}>
+      <Body size={17} style={{ maxWidth: 560, margin: '0 auto 32px' }}>
         This is your head-start plan, so you can begin before the Reset even starts.
       </Body>
 

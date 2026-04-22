@@ -57,9 +57,9 @@ const ProblemSection = () => {
           textAlign: 'center',
         }}>
           <Body size={19}>
-            You’re not imagining it — perimenopause and menopause do change how your body responds to food, stress, and fat storage.
+            You’re not imagining it, perimenopause and menopause do change how your body responds to food, stress and fat storage.
           </Body>
-          <Body size={19} muted style={{ marginTop: 18 }}>
+          <Body size={19} style={{ marginTop: 18 }}>
             The approaches that used to work — eating less, skipping meals, or doing lots of cardio — start to feel harder to sustain and often leave you more hungry, more tired, and stuck in a cycle of starting and stopping.
           </Body>
         </div>
@@ -156,7 +156,7 @@ const HonestTruthSection = () => (
     color: 'var(--paper)',
   }}>
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
-      <Eyebrow color="var(--peach)">The honest truth…</Eyebrow>
+      <Eyebrow color="#F79F83">The honest truth…</Eyebrow>
       <SerifH size={56} style={{ color: 'var(--paper)', marginTop: 20, marginBottom: 28 }}>
         You don’t struggle because you <Italic>don’t know what to do.</Italic>
       </SerifH>
@@ -176,18 +176,18 @@ const HonestTruthSection = () => (
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         gap: 16, marginBottom: 64,
       }}>
-        <span style={{ flex: '0 0 40px', height: 1, background: 'var(--peach)', opacity: 0.45 }} />
+        <span style={{ flex: '0 0 40px', height: 1, background: '#F79F83', opacity: 0.45 }} />
         <div style={{
           fontFamily: '"Libre Baskerville", serif',
           fontStyle: 'italic',
           fontSize: 28,
-          color: 'var(--peach)',
+          color: '#F79F83',
           lineHeight: 1.35,
           maxWidth: 600,
         }}>
           You’ve just never had a plan you can actually stick to.
         </div>
-        <span style={{ flex: '0 0 40px', height: 1, background: 'var(--peach)', opacity: 0.45 }} />
+        <span style={{ flex: '0 0 40px', height: 1, background: '#F79F83', opacity: 0.45 }} />
       </div>
 
       <div style={{
@@ -238,7 +238,7 @@ const HonestTruthSection = () => (
         fontFamily: '"Libre Baskerville", serif',
         fontSize: 28,
         fontStyle: 'italic',
-        color: 'var(--peach)',
+        color: '#F79F83',
         lineHeight: 1.4,
       }}>
         That’s not your fault.<br />
@@ -263,7 +263,7 @@ const WhyThisResetWorksSection = () => (
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: 40, maxWidth: 720, margin: '0 auto 40px' }}>
-        <Body size={17} muted style={{ marginBottom: 16 }}>
+        <Body size={17} style={{ marginBottom: 16 }}>
           Instead of extremes, this Reset focuses on one thing:
         </Body>
         <div style={{
@@ -320,45 +320,9 @@ const WhyThisResetWorksSection = () => (
       </div>
 
       <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
-        <SerifH size={36} style={{ marginBottom: 44, lineHeight: 1.3 }}>
+        <SerifH size={36} style={{ lineHeight: 1.3 }}>
           Just a <Italic>simple structure</Italic> that works in real life.
         </SerifH>
-
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          gap: 14, marginBottom: 18,
-        }}>
-          <span style={{ flex: '0 0 36px', height: 1, background: 'var(--hairline)' }} />
-          <div style={{
-            fontFamily: '"Libre Baskerville", serif',
-            fontStyle: 'italic',
-            fontSize: 16,
-            color: 'var(--ink-muted)',
-            letterSpacing: '0.02em',
-          }}>
-            And the best part?
-          </div>
-          <span style={{ flex: '0 0 36px', height: 1, background: 'var(--hairline)' }} />
-        </div>
-
-        <div style={{
-          fontFamily: '"Libre Baskerville", serif',
-          fontStyle: 'italic',
-          fontSize: 26,
-          color: 'var(--blush-deep)',
-          lineHeight: 1.3,
-          marginBottom: 24,
-        }}>
-          You can simply try it for yourself.
-        </div>
-
-        <Body size={18} style={{ marginBottom: 20 }}>
-          It’s just <strong style={{ color: 'var(--blush-deep)' }}>£17</strong>, and you’re covered by a <strong>7-day money-back guarantee</strong>.
-        </Body>
-
-        <Body size={17} muted style={{ fontStyle: 'italic' }}>
-          So you’ve got nothing to lose… and everything to gain.
-        </Body>
       </div>
     </div>
   </section>
@@ -369,19 +333,19 @@ const SHIFT_STEPS = [
   {
     letter: '1',
     word: 'Stabilise',
-    title: 'Stabilising blood sugar: stops cravings',
+    title: <>Stabilising blood sugar: <strong style={{ fontWeight: 700 }}>stops cravings</strong></>,
     body: 'Protein-forward meals that end the 4pm crash and the evening snacking. When blood sugar steadies, cravings quiet down, usually within 3–4 days.',
   },
   {
     letter: '2',
     word: 'Structure',
-    title: 'Structuring meals properly: no overeating',
+    title: <>Structuring meals properly: <strong style={{ fontWeight: 700 }}>no overeating</strong></>,
     body: 'The right balance of protein, fibre and smart carbs on the plate, at the right times. You finish meals satisfied, not hungry an hour later.',
   },
   {
     letter: '3',
     word: 'Simplify',
-    title: 'Simple daily habits: results without thinking',
+    title: <>Simple daily habits: <strong style={{ fontWeight: 700 }}>results without thinking</strong></>,
     body: 'Small, repeatable routines that run in the background of a busy life. No tracking, no willpower battles, just habits that quietly do the work for you.',
   },
 ];
@@ -397,7 +361,7 @@ const MethodSection = () => (
         <SerifH size={62} style={{ marginTop: 20, marginBottom: 20, maxWidth: 840, marginInline: 'auto' }}>
           Three simple principles. <Italic>Designed to help you get results now.</Italic>
         </SerifH>
-        <Body size={18} muted style={{ maxWidth: 620, margin: '0 auto' }}>
+        <Body size={18} style={{ maxWidth: 620, margin: '0 auto' }}>
           Evidence-based. Built around real life, not recycled from outdated weight-loss advice.
         </Body>
       </div>
@@ -436,7 +400,7 @@ const MethodSection = () => (
             </div>
             <div>
               <Body size={18} style={{ marginBottom: 8, fontWeight: 500 }}>{s.title}</Body>
-              <Body size={16} muted style={{ maxWidth: 540 }}>{s.body}</Body>
+              <Body size={16} style={{ maxWidth: 540 }}>{s.body}</Body>
             </div>
           </div>
         ))}

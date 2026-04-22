@@ -76,15 +76,6 @@ const IncludedSection = () => (
             flexDirection: 'column',
             gap: 12,
           }}>
-            <div style={{
-              fontFamily: '"Alegreya Sans", sans-serif',
-              fontSize: 11,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: item.tag === 'Bonus' ? 'var(--blush-deep)' : 'var(--ink-muted)',
-            }}>
-              {item.tag} · 0{i + 1}
-            </div>
             <SerifH size={22} style={{ lineHeight: 1.2 }}>{item.title}</SerifH>
             <Body size={14} muted style={{ marginTop: 'auto' }}>{item.body}</Body>
           </div>
@@ -253,11 +244,12 @@ const TestimonialsSection = () => (
         <div style={{
           fontFamily: '"Libre Baskerville", serif',
           fontStyle: 'italic',
-          fontSize: 15,
+          fontSize: 28,
           color: 'var(--peach)',
           textAlign: 'center',
-          marginBottom: 24,
-          letterSpacing: '0.04em',
+          marginBottom: 32,
+          letterSpacing: '0.02em',
+          lineHeight: 1.3,
         }}>
           Real results from women just like you
         </div>
@@ -309,7 +301,7 @@ const TestimonialsSection = () => (
         marginTop: 40,
         fontFamily: '"Alegreya Sans", sans-serif',
         fontSize: 12,
-        color: 'oklch(0.6 0.02 50)',
+        color: '#ffffff',
         letterSpacing: '0.04em',
       }}>
         *Results vary depending on the individual. There is no guarantee of specific results.
