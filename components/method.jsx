@@ -25,7 +25,7 @@ const ProblemSection = () => {
           </SerifH>
         </div>
 
-        <div style={{
+        <div className="problem-thoughts-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: 16,
@@ -49,7 +49,7 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        <div style={{
+        <div className="problem-paragraphs" style={{
           maxWidth: 780,
           margin: '0 auto',
           paddingTop: 48,
@@ -251,7 +251,7 @@ const HonestTruthSection = () => (
 // Section C: Why This Reset Works When Others Haven't
 const WhyThisResetWorksSection = () => (
   <section style={{
-    padding: '120px 32px',
+    padding: '120px 32px 64px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 980, margin: '0 auto' }}>
@@ -352,7 +352,7 @@ const SHIFT_STEPS = [
 
 const MethodSection = () => (
   <section id="method" style={{
-    padding: '130px 32px 110px',
+    padding: '72px 32px 110px',
     background: 'var(--bg)',
   }}>
     <div style={{ maxWidth: 1160, margin: '0 auto' }}>

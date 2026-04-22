@@ -367,7 +367,7 @@ const Footer = () => (
 // Fast Action Bonus — limited-spots peach banner for the Accelerator Meal Plan
 const FastActionBonusSection = () => (
   <section style={{
-    padding: '100px 32px',
+    padding: '100px 32px 48px',
     background: 'var(--bg)',
   }}>
     <div style={{
@@ -422,13 +422,12 @@ const FastActionBonusSection = () => (
 
       <div style={{
         fontFamily: '"Libre Baskerville", serif',
-        fontStyle: 'italic',
         fontSize: 21,
         color: 'var(--ink)',
         marginBottom: 24,
         lineHeight: 1.4,
       }}>
-        So when the Reset begins… <strong style={{ fontWeight: 700, color: 'var(--blush-deep)' }}>you’re already ahead.</strong>
+        So when the Reset begins…<br /><strong style={{ fontWeight: 700, color: 'var(--blush-deep)' }}>you’re already ahead.</strong>
       </div>
 
       <div style={{
