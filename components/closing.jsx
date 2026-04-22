@@ -1,8 +1,8 @@
 // Pricing, FAQ, Final CTA, Sticky bar, Footer
 
 const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading = null }) => (
-  <section id={sectionId} style={{
-    padding: '120px 32px',
+  <section id={sectionId} className={bridgeHeading ? 'pricing-bridge' : ''} style={{
+    padding: bridgeHeading ? '48px 32px 120px' : '120px 32px',
     background: 'var(--cream-deep)',
   }}>
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
@@ -463,7 +463,7 @@ const FastActionBonusSection = () => (
         marginBottom: 24,
         lineHeight: 1.4,
       }}>
-        So when the Reset begins…<br /><strong style={{ fontWeight: 700, color: 'var(--blush-deep)' }}>you’re already ahead.</strong>
+        So when the Reset begins…<br /><em style={{ fontStyle: 'italic', fontWeight: 700, color: 'var(--blush-deep)' }}>You’re already ahead.</em>
       </div>
 
       <div style={{

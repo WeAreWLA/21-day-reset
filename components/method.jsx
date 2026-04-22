@@ -428,8 +428,8 @@ const TransformSection = () => {
   ];
 
   return (
-    <section style={{
-      padding: '100px 32px',
+    <section className="transform-section" style={{
+      padding: '100px 32px 48px',
       background: 'var(--cream-deep)',
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -505,7 +505,7 @@ const WhatHappensSection = () => {
 
   return (
     <section className="whathappens-section" style={{
-      padding: '64px 32px 120px',
+      padding: '64px 32px 56px',
       background: 'var(--bg)',
     }}>
       <div style={{ maxWidth: 960, margin: '0 auto' }}>
