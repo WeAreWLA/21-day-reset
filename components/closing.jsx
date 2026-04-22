@@ -1,18 +1,22 @@
 // Pricing, FAQ, Final CTA, Sticky bar, Footer
 
-const PricingSection = ({ sectionId = "join" }) => (
+const PricingSection = ({ sectionId = "join", showHeading = true }) => (
   <section id={sectionId} style={{
     padding: '120px 32px',
     background: 'var(--cream-deep)',
   }}>
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
-      <Eyebrow>Secure your place</Eyebrow>
-      <SerifH size={62} style={{ marginTop: 20, marginBottom: 16 }}>
-        One price.<br /><Italic>One reset.</Italic><br />Everything included.
-      </SerifH>
-      <Body size={18} muted style={{ maxWidth: 560, margin: '0 auto 48px' }}>
-        Join today for £17, save £80 and access your FREE 3-Week Fat Loss Accelerator Meal Plan (limited available) with the early bird promo.
-      </Body>
+      {showHeading && (
+        <>
+          <Eyebrow>Secure your place</Eyebrow>
+          <SerifH size={62} style={{ marginTop: 20, marginBottom: 16 }}>
+            One price.<br /><Italic>One reset.</Italic><br />Everything included.
+          </SerifH>
+          <Body size={18} muted style={{ maxWidth: 560, margin: '0 auto 48px' }}>
+            Join today for £17, save £80 and access your FREE 3-Week Fat Loss Accelerator Meal Plan (limited available) with the early bird promo.
+          </Body>
+        </>
+      )}
 
       <div style={{
         background: 'var(--paper)',
@@ -409,9 +413,9 @@ const FastActionBonusSection = () => (
           'Start making progress straight away',
           'Build momentum before Day 1',
         ].map((item, i) => (
-          <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start', justifyContent: 'center' }}>
+          <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
             <Tick />
-            <Body size={16} style={{ flex: 'none' }}>{item}</Body>
+            <Body size={16} style={{ flex: 1, minWidth: 0 }}>{item}</Body>
           </div>
         ))}
       </div>

@@ -140,14 +140,14 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     /* Stat pills wrap */
     section > div > div[style*="border-top"][style*="gap: 48"] { flex-wrap: wrap !important; gap: 24px !important; }
     /* Pricing card padding — keep top spacious so Early Bird pill floats clear of £17 */
-    section#join > div > div[style*="border-radius: 24"] { padding: 72px 20px 32px !important; }
+    section[id^="join"] > div > div[style*="border-radius: 24"] { padding: 72px 20px 32px !important; }
     /* Early Bird pill: thicker + higher on mobile so it sits well above the £17 */
-    section#join > div > div[style*="border-radius: 24"] > div[style*="top: -14"] {
+    section[id^="join"] > div > div[style*="border-radius: 24"] > div[style*="top: -14"] {
       top: -26px !important;
       padding: 10px 24px !important;
       font-size: 12px !important;
     }
-    section#join div[style*="font-size: 100"] { font-size: 72px !important; }
+    section[id^="join"] div[style*="font-size: 100"] { font-size: 72px !important; }
     /* FAQ sticky column becomes static */
     section#faq div[style*="position: sticky"] { position: static !important; }
     /* Sticky CTA full width text sizing */
@@ -288,7 +288,7 @@ function App() {
       <IncludedSection />
       <TestimonialsSection />
       <AboutSection />
-      <PricingSection />
+      <PricingSection showHeading={false} />
       <VideoTestimonialsSection />
       <FAQSection />
       <FinalCTA />

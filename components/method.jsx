@@ -564,15 +564,14 @@ const WhatHappensSection = () => {
         }}>
           {outcomes.map((o, i) => (
             <div key={i} style={{
-              display: 'grid',
-              gridTemplateColumns: '28px 1fr',
-              gap: 18,
+              display: 'flex',
+              gap: 16,
               alignItems: 'center',
               padding: '20px 32px',
               borderBottom: i < outcomes.length - 1 ? '1px solid var(--hairline)' : 'none',
             }}>
               <Tick />
-              <Body size={17} style={{ lineHeight: 1.5 }}>{o}</Body>
+              <Body size={17} style={{ lineHeight: 1.5, flex: 1, minWidth: 0 }}>{o}</Body>
             </div>
           ))}
         </div>
