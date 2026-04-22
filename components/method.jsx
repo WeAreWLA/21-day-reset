@@ -80,7 +80,7 @@ const WhatChangesIn21DaysSection = () => {
 
   return (
     <section style={{
-      padding: '120px 32px',
+      padding: '72px 32px 120px',
       background: 'var(--bg)',
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
@@ -501,7 +501,7 @@ const WhatHappensSection = () => {
     'Know exactly what to eat with flexible, family-friendly meals',
     'Stay on track even on busy days with quick, easy options',
     'Boost your energy and mood through simple daily habits',
-    'Track progress properly — without obsessing over the scales',
+    'Track progress properly without obsessing over the scales',
   ];
 
   return (
