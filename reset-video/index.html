@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<base href="/reset-video/" />
+<title>The 21 Day Reset · Weight Loss Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<script>
+/* ------- Tweakable defaults ------- */
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "palette": "classic",
+  "heroLayout": "centered",
+  "showCountdown": true,
+  "showGallery": true,
+  "galleryFirst": false
+}/*EDITMODE-END*/;
+</script>
+
+<style>
+/* ================ TOKENS ================ */
+:root{
+  --navy: #003060;
+  --navy-ink: #00213f;
+  --cream: #F9F7F4;
+  --blush: #F79F83;
+  --blush-deep: #e8815f;
+  --beige: #E9DFD3;
+  --beige-deep: #d9cab8;
+  --ink: #333333;
+  --muted: #6b6b6b;
+  --line: rgba(0,48,96,.12);
+
+  --serif: "Libre Baskerville", Georgia, serif;
+  --sans: "Alegreya Sans", system-ui, sans-serif;
+
+  --container: 1120px;
+  --radius: 4px;
+}
+
+/* Palette variants (tweaks) */
+[data-palette="sage"]{
+  --blush: #8FA68A;
+  --blush-deep: #6e8769;
+  --beige: #E6E9DF;
+  --beige-deep: #cdd3c3;
+}
+[data-palette="terracotta"]{
+  --blush: #C87E5A;
+  --blush-deep: #a85f3f;
+  --beige: #EFE3D4;
+}
+[data-palette="mono"]{
+  --blush: #003060;
+  --blush-deep: #00213f;
+  --beige: #EDE7DE;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,h2,h3,h4{
+  font-family: var(--serif);
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 .4em;
+  text-wrap: balance;
+}
+p{margin:0 0 1em; text-wrap: pretty}
+a{color: var(--navy); text-decoration: none}
+img{max-width:100%; display:block}
+
+.eyebrow{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--blush-deep);
+  margin: 0 0 18px;
+}
+.container{max-width: var(--container); margin: 0 auto; padding: 0 28px}
+
+/* ================ TOP BAR ================ */
+.topbar{
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 20px;
+}
+.topbar strong{color: var(--blush); font-weight: 700; letter-spacing: .18em}
+
+.nav{
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.nav .logo{height: 22px; width:auto; opacity:.92}
+.nav .creds{
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ================ HERO ================ */
+.hero{
+  padding: 24px 0 80px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute; inset: 0;
+  background:
+    radial-gradient(1000px 400px at 10% -10%, rgba(247,159,131,.14), transparent 60%),
+    radial-gradient(800px 400px at 100% 10%, rgba(0,48,96,.05), transparent 60%);
+  pointer-events:none;
+}
+.hero .inner{position:relative; z-index:1}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-top: 24px;
+}
+[data-hero-layout="centered"] .hero-grid{
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+[data-hero-layout="centered"] .hero-text{max-width: 820px; margin: 0 auto}
+[data-hero-layout="centered"] .hero-bullets{justify-content:center}
+[data-hero-layout="centered"] .video-wrap{margin-top: 40px}
+
+[data-hero-layout="video-first"] .hero-grid{
+  grid-template-columns: 1fr;
+  text-align:center;
+}
+[data-hero-layout="video-first"] .hero-text{order:2; max-width: 820px; margin: 0 auto}
+[data-hero-layout="video-first"] .video-wrap{order:1; margin-bottom: 40px}
+[data-hero-layout="video-first"] .hero-bullets{justify-content:center}
+
+.sparkle{
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: var(--beige);
+  border-radius: 100px;
+  margin-bottom: 22px;
+}
+.sparkle::before, .sparkle::after{content:"✦"; color: var(--blush-deep); font-size: 11px}
+
+.hero h1{
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.08;
+  margin-bottom: 22px;
+}
+.hero h1 em{
+  font-style: italic;
+  color: var(--blush-deep);
+  font-weight: 400;
+}
+
+.hero-sub{
+  font-size: 19px;
+  color: var(--ink);
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+[data-hero-layout="centered"] .hero-sub,
+[data-hero-layout="video-first"] .hero-sub{margin-left:auto; margin-right:auto}
+
+.hero-bullets{
+  list-style:none; padding:0; margin: 0 0 32px;
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+}
+.hero-bullets li{
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--navy);
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+}
+.hero-bullets li::before{
+  content:"";
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--blush);
+  display:inline-flex;
+  align-items:center; justify-content:center;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2.5 6.2 L5 8.5 L9.5 3.8' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+/* ================ VIDEO FRAME ================ */
+.video-wrap{
+  position: relative;
+}
+.video-frame{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #111;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7) inset,
+    0 30px 60px -20px rgba(0,48,96,.35),
+    0 10px 30px -10px rgba(0,48,96,.22);
+}
+.video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.video-lead{
+  max-width: 720px;
+  margin: 0 auto 28px;
+  text-align: center;
+  padding: 22px 28px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.video-lead-mark{
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blush-deep);
+  font-weight: 600;
+  padding: 7px 18px;
+  background: var(--cream);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.video-lead p{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--navy);
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0;
+}
+.video-lead p strong{font-style: normal; color: var(--blush-deep); font-weight: 700}
+.video-stamp{
+  position: absolute;
+  top: -18px; right: -18px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: var(--blush);
+  color: #fff;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(8deg);
+  box-shadow: 0 14px 28px -10px rgba(232,129,95,.55);
+  padding: 10px;
+  z-index: 2;
+}
+
+/* ================ CTA BUTTON ================ */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  color: #fff !important;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border-radius: 2px;
+  border: 0;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 10px 24px -12px rgba(0,48,96,.5);
+}
+.btn:hover{background: var(--navy-ink); transform: translateY(-1px); box-shadow: 0 14px 28px -10px rgba(0,48,96,.55)}
+.btn.accent{background: var(--blush); color: var(--navy) !important}
+.btn.accent:hover{background: var(--blush-deep); color: #fff !important}
+.btn .arrow{
+  display:inline-block;
+  transition: transform .2s ease;
+}
+.btn:hover .arrow{transform: translateX(3px)}
+
+/* ================ SECTION SHARED ================ */
+section{padding: 100px 0}
+.section-head{
+  text-align:center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+.section-head h2{
+  font-size: clamp(30px, 3.6vw, 44px);
+  line-height: 1.15;
+}
+.section-head h2 em{font-style: italic; color: var(--blush-deep); font-weight:400}
+.section-head p{color: var(--muted); font-size: 17px}
+
+.divider-mark{
+  display:flex; align-items:center; justify-content:center;
+  gap: 14px; color: var(--blush-deep);
+  margin: 0 auto 18px; font-size: 12px;
+  letter-spacing: .3em;
+}
+.divider-mark::before, .divider-mark::after{
+  content:""; width: 40px; height: 1px; background: currentColor; opacity:.5;
+}
+
+/* ================ COUNTDOWN ================ */
+.countdown-section{
+  background: var(--beige);
+  padding: 70px 0;
+  position: relative;
+}
+.countdown-inner{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+.countdown-inner h2{font-size: clamp(26px, 3vw, 36px); margin-bottom: 6px}
+.countdown-inner .muted{color: var(--muted); font-family: var(--sans); font-size: 16px; margin:0}
+.countdown-clocks{
+  display:flex; gap: 14px;
+}
+.clock{
+  background: var(--cream);
+  border: 1px solid var(--line);
+  min-width: 88px;
+  padding: 16px 8px 10px;
+  text-align: center;
+  border-radius: 3px;
+}
+.clock .num{
+  font-family: var(--serif);
+  font-size: 38px;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1;
+  display:block;
+  font-variant-numeric: tabular-nums;
+}
+.clock .lbl{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+  display:block;
+}
+
+/* ================ OFFER / INTAKE ================ */
+.offer-section{background: var(--cream); padding: 60px 0 100px}
+.intake-card{
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 6px;
+  padding: 72px 56px 52px;
+  text-align: center;
+  box-shadow: 0 40px 80px -40px rgba(0,48,96,.6);
+  overflow: hidden;
+}
+.intake-card::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(600px 300px at 50% -10%, rgba(247,159,131,.22), transparent 60%),
+    radial-gradient(400px 200px at 100% 100%, rgba(247,159,131,.1), transparent 60%);
+  pointer-events: none;
+}
+.intake-card > *{position: relative; z-index: 1}
+
+.intake-ribbon{
+  position: absolute;
+  top: 24px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.intake-ribbon span{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--blush);
+  padding: 4px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.intake-ribbon span::before,
+.intake-ribbon span::after{
+  content:"";
+  width: 24px;
+  height: 1px;
+  background: var(--blush);
+  opacity: .6;
+}
+
+.intake-date{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--serif);
+  color: #fff;
+  margin: 24px 0 10px;
+}
+.intake-date .dl-day{
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.intake-date .dl-day sup{
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--blush);
+  margin-left: 2px;
+  top: -.5em;
+}
+.intake-date .dl-sep{
+  width: 1px;
+  height: 60px;
+  background: rgba(255,255,255,.25);
+}
+.intake-date .dl-month{
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--blush);
+  line-height: 1;
+}
+
+.intake-lede{
+  font-family: var(--sans);
+  font-size: 15px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  margin: 0 0 28px;
+}
+
+.intake-rule{
+  width: 40px;
+  height: 1px;
+  background: var(--blush);
+  margin: 0 auto 28px;
+  opacity: .7;
+}
+
+.intake-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 36px;
+  max-width: 420px;
+  text-align: left;
+}
+.intake-list li{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #e8ecf3;
+  line-height: 1.4;
+}
+.intake-list .il-ico{
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(247,159,131,.18);
+  border: 1px solid var(--blush);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2.5 6.2 L5 8.5 L9.5 3.8' stroke='%23F79F83' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 2px;
+}
+.intake-list li.bonus .il-ico{
+  /* match the other bullets */
+}
+.intake-list .bonus-tag{
+  display: inline-block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--blush);
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.intake-cta{
+  width: 100%;
+  max-width: 340px;
+  justify-content: center;
+  padding: 18px 28px;
+  margin: 0 auto !important;
+}
+
+.intake-foot{
+  font-family: var(--serif);
+  font-style: italic;
+  color: rgba(255,255,255,.6);
+  font-size: 14px;
+  margin: 22px 0 0;
+}
+
+@media (max-width: 640px){
+  .intake-card{padding: 64px 28px 44px}
+  .intake-date .dl-day{font-size: 64px}
+  .intake-date .dl-day sup{font-size: 20px}
+  .intake-date .dl-month{font-size: 34px}
+  .intake-date .dl-sep{height: 44px}
+  .intake-list .bonus-tag{display: block; margin: 6px 0 0}
+}
+
+/* legacy (unused) */
+.offer-card{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 56px;
+  position: relative;
+  box-shadow: 0 30px 60px -40px rgba(0,48,96,.25);
+}
+.offer-card.single{
+  grid-template-columns: 1fr;
+  text-align: center;
+  padding: 56px 48px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.offer-card.single::before{display:none}
+.offer-card.single .offer-includes{max-width: 520px; margin: 0 auto 28px; text-align: left}
+.offer-card::before{
+  content:"EARLY BIRD";
+  position: absolute;
+  top: -14px; left: 56px;
+  background: var(--blush);
+  color: var(--navy);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .28em;
+  padding: 7px 14px;
+  border-radius: 2px;
+}
+.offer-price{
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.offer-price .now{
+  font-family: var(--serif);
+  font-size: 72px;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1;
+}
+.offer-price .was{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--blush-deep);
+}
+.offer-lede{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--navy);
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.offer-includes{
+  list-style:none; padding:0; margin: 0 0 28px;
+}
+.offer-includes li{
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  color: var(--ink);
+}
+.offer-includes li:last-child{border-bottom:0}
+.offer-includes li::before{
+  content:"";
+  flex: 0 0 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--navy);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M2.5 6.2 L5 8.5 L9.5 3.8' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat:no-repeat;
+  background-position:center;
+  margin-top: 1px;
+}
+.offer-includes li.bonus{color: var(--navy); font-weight: 500}
+.offer-includes li.bonus::before{background-color: var(--blush)}
+.offer-foot{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--blush-deep);
+  font-size: 15px;
+}
+.offer-intake{
+  background: var(--beige);
+  padding: 36px;
+  border-radius: 4px;
+  align-self: start;
+}
+.offer-intake .label{
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.offer-intake .date{
+  font-family: var(--serif);
+  font-size: 42px;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.offer-intake .date em{font-style: italic; color: var(--blush-deep); font-weight: 400}
+.offer-intake .spots{
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(0,48,96,.15);
+  display:flex; align-items: center; gap: 10px;
+}
+.offer-intake .spots .dot{
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--blush-deep);
+  box-shadow: 0 0 0 4px rgba(247,159,131,.25);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow: 0 0 0 4px rgba(247,159,131,.25)}
+  50%{box-shadow: 0 0 0 8px rgba(247,159,131,.1)}
+}
+
+/* ================ TESTIMONIALS ================ */
+.testimonials-section{background: var(--beige)}
+.testimonials-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 28px;
+}
+.t-card{
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.t-card:hover{transform: translateY(-4px); box-shadow: 0 24px 48px -28px rgba(0,48,96,.35)}
+.t-video{
+  aspect-ratio: 16 / 9;
+  background: #111;
+  position: relative;
+}
+.t-video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.t-body{padding: 24px 22px 26px}
+.t-quote{
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--navy);
+  margin: 0 0 14px;
+  text-wrap: pretty;
+}
+.t-quote::before{content:"\201C"; color: var(--blush-deep); font-size: 28px; margin-right: 2px}
+.t-quote::after{content:"\201D"; color: var(--blush-deep); font-size: 28px; margin-left: 2px}
+.t-name{
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--blush-deep);
+  font-weight: 500;
+}
+
+/* ================ GALLERY ================ */
+.gallery-section{background: var(--cream)}
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.g-card{
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  background: var(--beige);
+  border: 1px solid var(--line);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.g-card:hover{transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgba(0,48,96,.35)}
+.g-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================ FAQ ================ */
+.faq-section{background: var(--beige)}
+.faq-list{max-width: 820px; margin: 0 auto}
+.faq-item{
+  border-bottom: 1px solid rgba(0,48,96,.18);
+}
+.faq-item summary{
+  list-style:none;
+  cursor: pointer;
+  padding: 26px 50px 26px 0;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--navy);
+  position: relative;
+  transition: color .2s ease;
+  line-height: 1.3;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:"";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateY(-50%);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><path d='M2 5 L7 10 L12 5' stroke='%23003060' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform .25s ease;
+}
+.faq-item[open] summary::after{transform: translateY(-50%) rotate(180deg)}
+.faq-item[open] summary{color: var(--blush-deep)}
+.faq-body{
+  padding: 0 0 28px;
+  color: var(--ink);
+  font-size: 16.5px;
+  overflow: hidden;
+}
+.faq-item:not([open]) .faq-body{
+  display: none;
+}
+.faq-item[open] .faq-body{
+  animation: faqOpen .28s ease-out;
+}
+@keyframes faqOpen{
+  from{opacity: 0; transform: translateY(-6px)}
+  to{opacity: 1; transform: translateY(0)}
+}
+.faq-body p{margin-bottom: 14px}
+.faq-body ul{padding-left: 20px; margin: 0 0 14px}
+.faq-body li{margin-bottom: 6px}
+.faq-body strong{color: var(--navy)}
+
+/* ================ FOOTER ================ */
+.anna-section{
+  background: var(--navy);
+  color: #e8ecf3;
+  padding: 100px 0;
+}
+.anna-grid{
+  display:grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+.anna-photo{
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  background: linear-gradient(155deg, var(--beige) 0%, var(--blush) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: center;
+  color: var(--navy);
+  font-family: var(--serif);
+  font-style: italic;
+}
+.anna-photo .ph-tag{
+  position:absolute; top: 18px; left: 18px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.8);
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+.anna-photo .ph-name{
+  padding: 0 0 22px;
+  font-size: 15px;
+}
+.anna-section .eyebrow{color: var(--blush)}
+.anna-section h2{color: #fff; font-size: clamp(30px, 3.4vw, 42px); margin-bottom: 22px}
+.anna-section h2 em{color: var(--blush); font-style: italic; font-weight: 400}
+.anna-section p{color: #c9d4e2; font-size: 17px; margin-bottom: 16px}
+.anna-creds{
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 22px;
+}
+.anna-creds .cred{
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 100px;
+  color: #e8ecf3;
+}
+
+footer.site-foot{
+  background: var(--navy-ink);
+  color: #8ea5bf;
+  padding: 28px 0 32px;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .08em;
+}
+footer.site-foot img{height: 16px; opacity:.7; margin: 0 auto 10px; filter: brightness(2)}
+
+/* ================ STICKY CTA ================ */
+.sticky-cta{
+  position: fixed;
+  left: 20px; right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 4px;
+  padding: 14px 20px;
+  box-shadow: 0 18px 40px -14px rgba(0,0,0,.45);
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.sticky-cta.visible{display: flex}
+.sticky-cta .msg{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  flex: 1 1 auto;
+}
+.sticky-cta .btn{padding: 12px 20px; font-size: 13px; background: var(--blush); color: var(--navy) !important}
+.sticky-cta .btn:hover{background:#fff}
+
+/* ================ TWEAKS PANEL ================ */
+.tweaks-panel{
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  width: 280px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 20px 50px -20px rgba(0,48,96,.4);
+  padding: 20px;
+  z-index: 100;
+  font-family: var(--sans);
+  display: none;
+}
+.tweaks-panel.open{display:block}
+.tweaks-panel h4{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+.tweaks-panel .tweak-row{margin-bottom: 18px}
+.tweaks-panel .swatches{display:flex; gap: 8px; margin-top: 8px}
+.tweaks-panel .sw{
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform .15s ease;
+}
+.tweaks-panel .sw:hover{transform: scale(1.08)}
+.tweaks-panel .sw.active{border-color: var(--navy)}
+.tweaks-panel select, .tweaks-panel button.opt{
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  font-family: var(--sans);
+  font-size: 13px;
+  border-radius: 3px;
+  color: var(--ink);
+  cursor: pointer;
+  margin-top: 6px;
+}
+.tweaks-panel .opt-grid{display:grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px}
+.tweaks-panel .opt-grid button{margin-top:0; padding: 8px 6px}
+.tweaks-panel .opt-grid button.active{background: var(--navy); color:#fff; border-color: var(--navy)}
+.tweaks-panel label.toggle{
+  display:flex; align-items:center; justify-content: space-between;
+  font-size: 13px; color: var(--ink); cursor: pointer;
+  margin-top: 8px;
+}
+.tweaks-panel .toggle input{accent-color: var(--navy)}
+.tweaks-title{
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--navy);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ================ RESPONSIVE ================ */
+@media (max-width: 900px){
+  .hero-grid, .offer-card, .anna-grid, .countdown-inner{grid-template-columns: 1fr; gap: 32px}
+  .offer-card{padding: 32px 24px}
+  .offer-card::before{left: 24px}
+  .testimonials-grid{grid-template-columns: 1fr; max-width: 420px; margin: 0 auto}
+  .gallery-grid{grid-template-columns: repeat(2, 1fr)}
+  section{padding: 70px 0}
+  .hero{padding-bottom: 50px}
+  .video-stamp{width: 86px; height: 86px; font-size: 12px; top: -12px; right: -12px}
+  .offer-price .now{font-size: 56px}
+  .countdown-clocks{gap: 8px}
+  .clock{min-width: 64px; padding: 12px 4px 8px}
+  .clock .num{font-size: 28px}
+  .anna-section{padding: 70px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<header class="nav">
+  <img src="assets/wla-logo.png" alt="Weight Loss Academy" class="logo" />
+</header>
+
+<!-- ========== HERO ========== -->
+<main id="wrap" data-palette="classic" data-hero-layout="video-first">
+
+<section class="hero">
+  <div class="container inner">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="sparkle">You're in</div>
+        <h1>Here's how to drop a dress size<br>in <em>21 days</em>.</h1>
+        <p class="hero-sub">Watch the video below. Then head back to our chat and let me know what you think.</p>
+        <ul class="hero-bullets">
+          <li>30-minute breakdown</li>
+          <li>Real food, real life</li>
+          <li>Built for busy women</li>
+        </ul>
+      </div>
+
+      <div class="video-wrap">
+        <div class="video-lead">
+          <span class="video-lead-mark">👇 Watch the full video below (30 mins)</span>
+          <p>I break down exactly how the Reset works, what you'll eat, and the results my clients are getting. <strong>Stick around until the end</strong> — there's something important 😊</p>
+        </div>
+        <div class="video-stamp">Watch til<br>the end ✨</div>
+        <div class="video-frame">
+          <iframe
+            src="https://player.vimeo.com/video/1185825640?h=ed5ccbeb1f&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            title="The 21 Day Reset"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ========== OFFER ========== -->
+<section class="offer-section">
+  <div class="container">
+    <div class="intake-card">
+      <div class="intake-ribbon"><span>Next Intake</span></div>
+
+      <div class="intake-date">
+        <span class="dl-day">4<sup>th</sup></span>
+        <span class="dl-sep"></span>
+        <span class="dl-month">May</span>
+      </div>
+
+      <p class="intake-lede">Limited spots available.</p>
+
+      <div class="intake-rule"></div>
+
+      <ul class="intake-list">
+        <li>
+          <span class="il-ico"></span>
+          <span>The full 21 Day Reset nutrition plan</span>
+        </li>
+        <li>
+          <span class="il-ico"></span>
+          <span>Private community + direct support from me</span>
+        </li>
+        <li class="bonus">
+          <span class="il-ico"></span>
+          <span>Free 3 Week Fat Loss Accelerator Meal Plan <em class="bonus-tag">Early bird bonus</em></span>
+        </li>
+      </ul>
+
+      <a href="#cta" class="btn accent intake-cta" style="display:none">Secure my spot <span class="arrow">→</span></a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials-section" id="results">
+  <div class="container">
+    <div class="divider-mark">RESULTS</div>
+    <div class="section-head">
+      <h2>What others have <em>achieved</em>.</h2>
+      <p>Real women. Real results.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <!-- 1 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147300902?h=58fbd0c85a&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Vicky"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I started the WLA a size 20 and am now a 10/12</p>
+          <div class="t-name">— Vicky —</div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147300457?h=4d750b2063&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Lisa"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I have lost weight and I am now the slimmest I have been since I got married 16 years ago</p>
+          <div class="t-name">— Lisa —</div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147299534?h=312ee062c6&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Charlie"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I lost over 25kg without ever feeling like I was on a diet</p>
+          <div class="t-name">— Charlie —</div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147299877?h=06a3985c51&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Tara"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I have lost 2 stone, dropped 1-2 dress sizes, but most importantly, I understand and enjoy food in a way that is positive and healthy</p>
+          <div class="t-name">— Tara —</div>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147299763?h=a1064cfe85&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Lucy"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">2½ stone down, not counted a calorie in over a year and bought a crop top for the first time in my life</p>
+          <div class="t-name">— Lucy —</div>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147300003?h=f928fa459f&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Anna"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I lost almost 2 stone and saw my perimenopause symptoms disappear.</p>
+          <div class="t-name">— Anna —</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY (before/after) ========== -->
+<section class="gallery-section" id="gallery-section">
+  <div class="container">
+    <div class="divider-mark">TRANSFORMATIONS</div>
+    <div class="section-head">
+      <h2>See why so many women <em>live by the WLA</em>.</h2>
+      <p>A snapshot of what happens when the right plan meets real life.</p>
+    </div>
+
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- 12 placeholder before/afters populated via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="divider-mark">QUESTIONS</div>
+    <div class="section-head">
+      <h2>Frequently asked <em>questions</em>.</h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>I'm really busy. How much time does this actually take?</summary>
+        <div class="faq-body">
+          <p>Honestly? Less than you'd think. The Reset is built specifically for women juggling work, kids, partners, and everything else life throws at you. Meals take around 15–20 minutes, there's no Sunday meal prep marathon required, and the daily check-ins take 2 minutes. If you can find 20 minutes to eat (which you're already doing), you can do this. Most of my clients say they actually save time because they stop the "what's for dinner?" spiral every evening.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does the food actually look like? Am I going to be eating sad salads for 21 days?</summary>
+        <div class="faq-body">
+          <p>Absolutely not 🙌 You'll be eating real, proper food, think pasta, curries, roast dinners, stir-fries, wraps, pancakes for breakfast. No shakes, no meal replacements, no cutting out whole food groups, no "diet" food. You'll get a full recipe library with family-friendly meals (so you're not cooking separately for the kids), plus a shopping list that makes it stupidly simple to stay on plan. Wine lovers, yes, you can still have a glass. I'll show you how.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need to join a gym or do loads of exercise?</summary>
+        <div class="faq-body">
+          <p>No. The Reset is a nutrition-led programme, which means the results come from what you're eating, not hours on a treadmill. Movement is encouraged — walks, whatever you enjoy — but there's no gym requirement, no HIIT workouts you have to force yourself through, and nothing that needs equipment. If you already train, brilliant, it'll complement what you do. If you don't, also brilliant, you don't need to start.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if I fall off halfway through? I've started things before and not finished.</summary>
+        <div class="faq-body">
+          <p>First, you're not alone, this is the #1 worry my clients tell me before they start. The reason most plans fail isn't willpower, it's that they're unrealistic. The Reset is designed so falling off is actually hard to do, because:</p>
+          <ul>
+            <li>You've got a private group and direct support from me</li>
+            <li>The plan flexes around real life (meals out, family events, the odd glass of wine)</li>
+            <li>If you have an off-day, we reset the next meal — not the next Monday</li>
+          </ul>
+          <p>You're not doing this alone, and there's no "starting over" punishment. That's the whole point.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I've tried everything and nothing's worked for me. Why would this be different?</summary>
+        <div class="faq-body">
+          <p>Honestly, I hear this every single intake and it's almost never because the woman is the problem. It's because most weight loss plans are designed for 22-year-olds with no kids and no stress, not for women in their 30s, 40s, and 50s whose hormones, lifestyles, and schedules are completely different.</p>
+          <p>The Reset is built specifically for women like you: real life, real responsibilities, real hormones. That's why my clients who've "tried everything" are finally getting results, it's the first plan actually designed for them.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>When does it start?</summary>
+        <div class="faq-body">
+          <p>The May group kicks off <strong>4th May</strong>. </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Okay I'm interested. What's the next step?</summary>
+        <div class="faq-body">
+          <p>Amazing 🙌 Head back to our DMs and let me know you're in (or drop any questions you've still got). I'll walk you through getting signed up and answer anything you're unsure about. No pressure, I only want women in the group who genuinely want to be there.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ANNA / FOOTER ========== -->
+<section class="anna-section" id="cta">
+  <div class="container anna-grid">
+    <div class="anna-photo" style="background-image:url('assets/anna.jpg'); background-size:cover; background-position: center">
+      <span class="ph-tag">Founder</span>
+    </div>
+    <div>
+      <div class="eyebrow">Hi, I'm Anna</div>
+      <h2>The Reset is the plan I wish I'd had <em>20 years ago</em>.</h2>
+      <p>I used to be the biggest yo-yo dieter: laxatives, cabbage soup, the dreaded Special K challenge. I was stuck. Studying Food and Nutrition at university changed everything. I lost the weight, and I've never gained it back.</p>
+      <p>Today, I've coached over 50,000 women worldwide and built a plan designed for women in their 30s, 40s and 50s with real jobs, real families, and real hormones. That's the Reset.</p>
+      <div class="anna-creds">
+        <span class="cred">Registered Associate Nutritionist</span>
+        <span class="cred">10+ Years Coaching</span>
+        <span class="cred">50,000+ Clients</span>
+      </div>
+      <a href="#" class="btn accent" id="main-cta" style="margin-top: 30px">Message me on Instagram <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <img src="assets/wla-logo.png" alt="Weight Loss Academy" />
+  <div>© 2026 AW Nutrition Solutions Ltd · The 21 Day Reset</div>
+</footer>
+
+<!-- ========== STICKY CTA ========== -->
+<div class="sticky-cta" id="sticky">
+  <div class="msg">Ready to join the <strong>May intake</strong>?</div>
+  <a href="#" class="btn" id="sticky-btn">DM me <span class="arrow">→</span></a>
+</div>
+
+<!-- ========== TWEAKS PANEL ========== -->
+<div class="tweaks-panel" id="tweaks">
+  <div class="tweaks-title">Tweaks</div>
+
+  <div class="tweak-row">
+    <h4>Palette</h4>
+    <div class="swatches" id="sw-row">
+      <div class="sw" data-pal="classic" style="background: linear-gradient(135deg, #003060 0 50%, #F79F83 50% 100%)" title="Classic (navy + blush)"></div>
+      <div class="sw" data-pal="sage" style="background: linear-gradient(135deg, #003060 0 50%, #8FA68A 50% 100%)" title="Sage"></div>
+      <div class="sw" data-pal="terracotta" style="background: linear-gradient(135deg, #003060 0 50%, #C87E5A 50% 100%)" title="Terracotta"></div>
+      <div class="sw" data-pal="mono" style="background: linear-gradient(135deg, #003060 0 50%, #00213f 50% 100%)" title="Mono navy"></div>
+    </div>
+  </div>
+
+  <div class="tweak-row">
+    <h4>Hero layout</h4>
+    <div class="opt-grid">
+      <button class="opt" data-hero="video-first">Video first</button>
+      <button class="opt" data-hero="split">Split</button>
+      <button class="opt" data-hero="centered">Centered</button>
+    </div>
+  </div>
+
+  <div class="tweak-row">
+    <h4>Sections</h4>
+    <label class="toggle">Show countdown <input type="checkbox" id="t-countdown" checked></label>
+    <label class="toggle">Show gallery <input type="checkbox" id="t-gallery" checked></label>
+    <label class="toggle">Gallery before testimonials <input type="checkbox" id="t-galleryfirst"></label>
+  </div>
+</div>
+
+<script>
+/* ============ Populate gallery with real transformation images ============ */
+(function(){
+  const grid = document.getElementById('gallery-grid');
+  const items = [
+    'assets/transform-01.png',
+    'assets/transform-02.png',
+    'assets/transform-03.png',
+    'assets/transform-04.png',
+    'assets/transform-05.png',
+    'assets/transform-06.jpg',
+    'assets/transform-07.png',
+    'assets/transform-08.png',
+    'assets/transform-09.png',
+    'assets/transform-10.png',
+    'assets/transform-11.jpeg',
+    'assets/transform-12.png',
+  ];
+  grid.innerHTML = items.map((src, i)=>`
+    <div class="g-card">
+      <img src="${src}" alt="Client transformation ${i+1}" loading="lazy" />
+    </div>
+  `).join('');
+})();
+
+/* ============ FAQ exclusive accordion ============ */
+(function(){
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item => {
+    const summary = item.querySelector('summary');
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      const wasOpen = item.hasAttribute('open');
+      items.forEach(other => other.removeAttribute('open'));
+      if (!wasOpen) item.setAttribute('open', '');
+    });
+  });
+})();
+
+/* ============ Sticky CTA after hero ============ */
+(function(){
+  const sticky = document.getElementById('sticky');
+  const hero = document.querySelector('.hero');
+  window.addEventListener('scroll', ()=>{
+    const past = window.scrollY > (hero.offsetHeight + 200);
+    sticky.classList.toggle('visible', past);
+  });
+})();
+
+/* ============ CTAs open Instagram ============ */
+const IG_URL = "https://www.instagram.com/iamannawallace/";
+document.querySelectorAll('#main-cta, #sticky-btn').forEach(a=>{
+  a.setAttribute('href', IG_URL);
+  a.setAttribute('target', '_blank');
+  a.setAttribute('rel', 'noopener');
+});
+
+/* ============ TWEAKS ============ */
+(function(){
+  const wrap = document.getElementById('wrap');
+  const panel = document.getElementById('tweaks');
+  const state = Object.assign({}, TWEAK_DEFAULTS);
+
+  // Register listener FIRST, then announce
+  window.addEventListener('message', (e)=>{
+    if (!e.data || !e.data.type) return;
+    if (e.data.type === '__activate_edit_mode') panel.classList.add('open');
+    if (e.data.type === '__deactivate_edit_mode') panel.classList.remove('open');
+  });
+  try{ window.parent.postMessage({type:'__edit_mode_available'}, '*'); }catch(e){}
+
+  function persist(patch){
+    try{ window.parent.postMessage({type:'__edit_mode_set_keys', edits: patch}, '*'); }catch(e){}
+  }
+
+  function apply(){
+    wrap.setAttribute('data-palette', state.palette);
+    wrap.setAttribute('data-hero-layout', state.heroLayout);
+    const cd = document.getElementById('countdown-section');
+    if (cd) cd.style.display = state.showCountdown ? '' : 'none';
+    const gs = document.getElementById('gallery-section');
+    if (gs) gs.style.display = state.showGallery ? '' : 'none';
+
+    // Sync UI
+    panel.querySelectorAll('.sw').forEach(el=>el.classList.toggle('active', el.dataset.pal === state.palette));
+    panel.querySelectorAll('[data-hero]').forEach(el=>el.classList.toggle('active', el.dataset.hero === state.heroLayout));
+    document.getElementById('t-countdown').checked = state.showCountdown;
+    document.getElementById('t-gallery').checked = state.showGallery;
+    document.getElementById('t-galleryfirst').checked = state.galleryFirst;
+
+    // Reorder gallery / testimonials
+    const gal = document.getElementById('gallery-section');
+    const tes = document.querySelector('.testimonials-section');
+    if (state.galleryFirst && gal && tes && gal.nextElementSibling !== tes){
+      tes.parentNode.insertBefore(gal, tes);
+    } else if (!state.galleryFirst && gal && tes && tes.nextElementSibling !== gal){
+      tes.parentNode.insertBefore(gal, tes.nextElementSibling);
+    }
+  }
+
+  panel.querySelectorAll('.sw').forEach(el=>{
+    el.addEventListener('click', ()=>{ state.palette = el.dataset.pal; apply(); persist({palette: state.palette}); });
+  });
+  panel.querySelectorAll('[data-hero]').forEach(el=>{
+    el.addEventListener('click', ()=>{ state.heroLayout = el.dataset.hero; apply(); persist({heroLayout: state.heroLayout}); });
+  });
+  document.getElementById('t-countdown').addEventListener('change', e=>{ state.showCountdown = e.target.checked; apply(); persist({showCountdown: state.showCountdown}); });
+  document.getElementById('t-gallery').addEventListener('change', e=>{ state.showGallery = e.target.checked; apply(); persist({showGallery: state.showGallery}); });
+  document.getElementById('t-galleryfirst').addEventListener('change', e=>{ state.galleryFirst = e.target.checked; apply(); persist({galleryFirst: state.galleryFirst}); });
+
+  apply();
+})();
+</script>
+</body>
+</html>
