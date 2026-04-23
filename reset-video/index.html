@@ -228,6 +228,9 @@ img{max-width:100%; display:block}
 .video-wrap{
   position: relative;
 }
+.video-stage{
+  position: relative;
+}
 .video-frame{
   position: relative;
   aspect-ratio: 16 / 9;
@@ -1010,9 +1013,6 @@ footer.site-foot img{height: 16px; opacity:.7; margin: 0 auto 10px; filter: brig
   .gallery-grid{grid-template-columns: repeat(2, 1fr)}
   section{padding: 70px 0}
   .hero{padding-bottom: 50px}
-  /* Mobile: video above text; stamp sits just above the video, not over the text */
-  [data-hero-layout="centered"] .video-wrap{order: 1; margin-top: 0; margin-bottom: 8px}
-  [data-hero-layout="centered"] .hero-text{order: 2}
   .video-stamp{width: 86px; height: 86px; font-size: 12px; top: -12px; right: -12px}
   .offer-price .now{font-size: 56px}
   .countdown-clocks{gap: 8px}
@@ -1051,14 +1051,16 @@ footer.site-foot img{height: 16px; opacity:.7; margin: 0 auto 10px; filter: brig
           <span class="video-lead-mark">👇 Watch the full video below (30 mins)</span>
           <p>I break down exactly how the Reset works, what you'll eat, and the results my clients are getting. <strong>Stick around until the end</strong> — there's something important 😊</p>
         </div>
-        <div class="video-stamp">Watch til<br>the end ✨</div>
-        <div class="video-frame">
-          <iframe
-            src="https://player.vimeo.com/video/1185825640?h=ed5ccbeb1f&badge=0&autopause=0&player_id=0&app_id=58479"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-            title="The 21 Day Reset"></iframe>
+        <div class="video-stage">
+          <div class="video-stamp">Watch til<br>the end ✨</div>
+          <div class="video-frame">
+            <iframe
+              src="https://player.vimeo.com/video/1185825640?h=ed5ccbeb1f&badge=0&autopause=0&player_id=0&app_id=58479"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+              title="The 21 Day Reset"></iframe>
+          </div>
         </div>
       </div>
     </div>
