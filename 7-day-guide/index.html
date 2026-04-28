@@ -108,9 +108,9 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     .video-testimonials-section { padding-bottom: 24px !important; }
     section#faq.faq-section { padding-top: 32px !important; }
     /* Thank-you banner shrinks on mobile */
-    .thank-you-banner { padding: 22px 20px !important; }
-    .thank-you-banner-title { font-size: 22px !important; }
-    .thank-you-banner-body { font-size: 14px !important; }
+    .thank-you-banner { padding: 28px 20px !important; }
+    .thank-you-banner-title { font-size: 32px !important; }
+    .thank-you-banner-body { font-size: 16px !important; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -247,45 +247,45 @@ const HEADLINES = {
 function ThankYouBanner() {
   return (
     <div className="thank-you-banner" style={{
-      background: 'var(--peach)',
+      background: '#E9DFD3',
       borderBottom: '1px solid var(--blush-deep)',
-      padding: '28px 32px',
+      padding: '40px 32px',
       textAlign: 'center',
     }}>
       <div style={{ maxWidth: 880, margin: '0 auto' }}>
         <div className="thank-you-banner-title" style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: 10,
+          gap: 14,
           fontFamily: '"Libre Baskerville", serif',
-          fontSize: 26,
+          fontSize: 44,
           fontWeight: 700,
           color: 'var(--ink)',
-          marginBottom: 10,
+          marginBottom: 20,
           lineHeight: 1.2,
         }}>
           <span style={{
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: 32, height: 32,
+            width: 44, height: 44,
             borderRadius: '50%',
             background: 'var(--blush-deep)',
             color: 'var(--paper)',
-            fontSize: 18,
+            fontSize: 24,
           }}>✓</span>
           You’re in!
         </div>
         <div className="thank-you-banner-body" style={{
           fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 16,
+          fontSize: 20,
           color: 'var(--body-ink)',
-          lineHeight: 1.55,
+          lineHeight: 1.6,
           maxWidth: 720,
           margin: '0 auto',
         }}>
-          Your <strong>7 Day Meal Guide</strong> is on the way to your inbox.{' '}
-          <strong style={{ color: 'var(--blush-deep)' }}>Wait — don’t close this page.</strong>{' '}
+          Your <strong>7 Day Meal Guide</strong> is on the way to your inbox.<br />
+          <strong style={{ color: 'var(--blush-deep)' }}>Wait! Don’t close this page.</strong><br />
           A one-time offer for new subscribers is below ↓
         </div>
       </div>
