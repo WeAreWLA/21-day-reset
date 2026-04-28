@@ -117,11 +117,13 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     section#faq.faq-section { padding-top: 32px !important; }
     /* Thank-you banner shrinks on mobile */
     .thank-you-banner { padding: 32px 20px 40px !important; }
-    .thank-you-banner-title { font-size: 32px !important; }
-    .thank-you-banner-body { font-size: 16px !important; }
+    .thank-you-banner-title { font-size: 24px !important; }
     .thank-you-email-card { padding: 18px 22px !important; max-width: 100% !important; }
     .thank-you-warning { font-size: 24px !important; }
-    .thank-you-cta { font-size: 18px !important; }
+    .thank-you-offer { padding: 20px 22px !important; }
+    .thank-you-offer-eyebrow { font-size: 11px !important; letter-spacing: 0.14em !important; }
+    .thank-you-offer-headline { font-size: 20px !important; }
+    .thank-you-offer-date { font-size: 14px !important; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -264,39 +266,29 @@ function ThankYouBanner() {
       textAlign: 'center',
     }}>
       <div style={{ maxWidth: 880, margin: '0 auto' }}>
-        <div className="thank-you-banner-title" style={{
+        <div style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: 14,
+          justifyContent: 'center',
+          width: 48, height: 48,
+          borderRadius: '50%',
+          background: 'var(--blush-deep)',
+          color: 'var(--paper)',
+          fontSize: 26,
+          marginBottom: 18,
+        }}>✓</div>
+
+        <h1 className="thank-you-banner-title" style={{
           fontFamily: '"Libre Baskerville", serif',
-          fontSize: 48,
+          fontSize: 36,
           fontWeight: 700,
           color: 'var(--ink)',
-          marginBottom: 22,
-          lineHeight: 1.2,
+          margin: '0 auto 32px',
+          maxWidth: 720,
+          lineHeight: 1.3,
         }}>
-          <span style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 48, height: 48,
-            borderRadius: '50%',
-            background: 'var(--blush-deep)',
-            color: 'var(--paper)',
-            fontSize: 26,
-          }}>✓</span>
-          You’re in!
-        </div>
-
-        <div className="thank-you-banner-body" style={{
-          fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 20,
-          color: 'var(--body-ink)',
-          lineHeight: 1.6,
-          marginBottom: 28,
-        }}>
-          Your <strong>7 Day Meal Guide</strong> is on the way to your inbox.
-        </div>
+          Your 7 Day Meal Guide is on the way to your inbox.
+        </h1>
 
         <div className="thank-you-email-card" style={{
           background: 'var(--paper)',
@@ -344,21 +336,49 @@ function ThankYouBanner() {
           fontSize: 34,
           fontWeight: 700,
           color: 'var(--blush-deep)',
-          marginBottom: 14,
+          marginBottom: 28,
           lineHeight: 1.25,
         }}>
           Wait! Don’t close this page.
         </div>
 
-        <div className="thank-you-cta" style={{
-          fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 24,
-          fontWeight: 700,
-          color: 'var(--ink)',
-          lineHeight: 1.4,
+        <div className="thank-you-offer" style={{
+          background: 'var(--paper)',
+          border: '2px dashed var(--blush-deep)',
+          borderRadius: 14,
+          padding: '24px 28px',
+          maxWidth: 560,
+          margin: '0 auto',
+          boxShadow: '0 14px 30px -16px rgba(0, 48, 96, 0.18)',
         }}>
-          A one-time offer for new subscribers is below{' '}
-          <span className="thank-you-arrow" style={{ display: 'inline-block', marginLeft: 4 }}>↓</span>
+          <div className="thank-you-offer-eyebrow" style={{
+            fontFamily: '"Alegreya Sans", sans-serif',
+            fontSize: 12,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'var(--blush-deep)',
+            fontWeight: 700,
+            marginBottom: 12,
+          }}>
+            A one time offer available on this page only
+          </div>
+          <div className="thank-you-offer-headline" style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontSize: 26,
+            fontWeight: 700,
+            color: 'var(--ink)',
+            lineHeight: 1.3,
+            marginBottom: 10,
+          }}>
+            Join The 21 Day Fat Loss Reset – only £17 <span style={{ color: 'var(--blush-deep)' }}>(save £80)</span>
+          </div>
+          <div className="thank-you-offer-date" style={{
+            fontFamily: '"Alegreya Sans", sans-serif',
+            fontSize: 16,
+            color: 'var(--body-ink)',
+          }}>
+            We start Monday 4th May <span className="thank-you-arrow" style={{ display: 'inline-block', marginLeft: 4 }}>↓</span>
+          </div>
         </div>
       </div>
     </div>
