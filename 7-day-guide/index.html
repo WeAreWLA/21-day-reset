@@ -288,7 +288,14 @@ function Hero() {
     }).finally(() => {
       if (window.fbq) window.fbq('track', 'Lead', { content_name: '7 Day Meal Guide', content_category: 'optin' });
       if (window.gtag) window.gtag('event', 'generate_lead', { freebie: '7_day_meal_guide' });
-      window.location.href = '/7-day-guide/ty/';
+      // Forward UTM params to the thank-you page so analytics on /ty/ can attribute conversions
+      const qs = new URLSearchParams();
+      if (utm.utm_source)   qs.set('utm_source',   utm.utm_source);
+      if (utm.utm_medium)   qs.set('utm_medium',   utm.utm_medium);
+      if (utm.utm_campaign) qs.set('utm_campaign', utm.utm_campaign);
+      if (utm.utm_content)  qs.set('utm_content',  utm.utm_content);
+      const tail = qs.toString();
+      window.location.href = '/7-day-guide/ty/' + (tail ? '?' + tail : '');
     });
   };
 
