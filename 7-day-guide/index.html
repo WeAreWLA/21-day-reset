@@ -76,7 +76,11 @@ ml('account', '1287540');
   .nav-cta .arrow { transition: transform .2s; }
   .nav-cta:hover .arrow { transform: translateX(3px); }
   @media (max-width: 880px) { .nav-links { display: none; } }
-  @media (max-width: 640px) { .nav { display: none; } }
+  .mobile-only-br { display: none; }
+  @media (max-width: 640px) {
+    .nav { display: none; }
+    .mobile-only-br { display: inline; }
+  }
 
   .hero { max-width: 1240px; margin: 0 auto; padding: 56px 28px 44px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
@@ -335,7 +339,7 @@ function Inside() {
     <section className="inside" id="inside">
       <div className="section-head">
         <span className="eyebrow">What's inside</span>
-        <h2 className="serif">A complete <em>7-day reset</em><br />not just another PDF.</h2>
+        <h2 className="serif">A complete<br className="mobile-only-br" /> <em>7-day reset</em><br />not just another<br className="mobile-only-br" /> PDF.</h2>
         <p>This is the same framework Anna and her team use with paying clients, distilled into a guide you can start using tonight.</p>
       </div>
       <div className="inside-grid">
