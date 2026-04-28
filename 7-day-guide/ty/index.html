@@ -82,6 +82,14 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     background: var(--peach);
     animation: dot-pulse 1.8s ease-out infinite;
   }
+  /* Thank-you banner: bouncing arrow */
+  @keyframes arrow-bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(8px); }
+  }
+  .thank-you-arrow {
+    animation: arrow-bounce 1.4s ease-in-out infinite;
+  }
   /* Early-bird banner: desktop uses standalone emoji, mobile inlines it */
   .early-bird-icon-inline { display: none; }
   /* Mobile-only helpers */
@@ -108,9 +116,12 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     .video-testimonials-section { padding-bottom: 24px !important; }
     section#faq.faq-section { padding-top: 32px !important; }
     /* Thank-you banner shrinks on mobile */
-    .thank-you-banner { padding: 28px 20px !important; }
+    .thank-you-banner { padding: 32px 20px 40px !important; }
     .thank-you-banner-title { font-size: 32px !important; }
     .thank-you-banner-body { font-size: 16px !important; }
+    .thank-you-email-card { padding: 18px 22px !important; max-width: 100% !important; }
+    .thank-you-warning { font-size: 24px !important; }
+    .thank-you-cta { font-size: 18px !important; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -249,7 +260,7 @@ function ThankYouBanner() {
     <div className="thank-you-banner" style={{
       background: '#E9DFD3',
       borderBottom: '1px solid var(--blush-deep)',
-      padding: '40px 32px',
+      padding: '48px 32px 56px',
       textAlign: 'center',
     }}>
       <div style={{ maxWidth: 880, margin: '0 auto' }}>
@@ -258,35 +269,96 @@ function ThankYouBanner() {
           alignItems: 'center',
           gap: 14,
           fontFamily: '"Libre Baskerville", serif',
-          fontSize: 44,
+          fontSize: 48,
           fontWeight: 700,
           color: 'var(--ink)',
-          marginBottom: 20,
+          marginBottom: 22,
           lineHeight: 1.2,
         }}>
           <span style={{
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: 44, height: 44,
+            width: 48, height: 48,
             borderRadius: '50%',
             background: 'var(--blush-deep)',
             color: 'var(--paper)',
-            fontSize: 24,
+            fontSize: 26,
           }}>✓</span>
           You’re in!
         </div>
+
         <div className="thank-you-banner-body" style={{
           fontFamily: '"Alegreya Sans", sans-serif',
           fontSize: 20,
           color: 'var(--body-ink)',
           lineHeight: 1.6,
-          maxWidth: 720,
-          margin: '0 auto',
+          marginBottom: 28,
         }}>
-          Your 7 Day Meal Guide is on the way to your inbox. The email will say <strong>Your meal guide is inside</strong> and is sent by <strong>Anna Wallace</strong>.<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--blush-deep)', fontWeight: 600 }}>Wait! Don’t close this page.</em><br />
-          <strong>A one-time offer</strong> for new subscribers is below ↓
+          Your <strong>7 Day Meal Guide</strong> is on the way to your inbox.
+        </div>
+
+        <div className="thank-you-email-card" style={{
+          background: 'var(--paper)',
+          border: '1px solid var(--hairline)',
+          borderRadius: 14,
+          padding: '22px 28px',
+          maxWidth: 460,
+          margin: '0 auto 40px',
+          textAlign: 'left',
+          boxShadow: '0 14px 30px -16px rgba(0, 48, 96, 0.18)',
+        }}>
+          <div style={{
+            fontFamily: '"Alegreya Sans", sans-serif',
+            fontSize: 11,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: 'var(--ink-muted)',
+            marginBottom: 10,
+            fontWeight: 600,
+          }}>
+            The email will say
+          </div>
+          <div style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontSize: 20,
+            fontWeight: 700,
+            color: 'var(--ink)',
+            marginBottom: 6,
+            lineHeight: 1.3,
+          }}>
+            Your meal guide is inside
+          </div>
+          <div style={{
+            fontFamily: '"Alegreya Sans", sans-serif',
+            fontSize: 14,
+            color: 'var(--ink-muted)',
+          }}>
+            from <strong style={{ color: 'var(--ink)' }}>Anna Wallace</strong>
+          </div>
+        </div>
+
+        <div className="thank-you-warning" style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontStyle: 'italic',
+          fontSize: 34,
+          fontWeight: 700,
+          color: 'var(--blush-deep)',
+          marginBottom: 14,
+          lineHeight: 1.25,
+        }}>
+          Wait! Don’t close this page.
+        </div>
+
+        <div className="thank-you-cta" style={{
+          fontFamily: '"Alegreya Sans", sans-serif',
+          fontSize: 24,
+          fontWeight: 700,
+          color: 'var(--ink)',
+          lineHeight: 1.4,
+        }}>
+          A one-time offer for new subscribers is below{' '}
+          <span className="thank-you-arrow" style={{ display: 'inline-block', marginLeft: 4 }}>↓</span>
         </div>
       </div>
     </div>
