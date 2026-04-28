@@ -133,9 +133,12 @@ ml('account', '1287540');
   .trust-item .lab { color: var(--muted); font-size: 14px; line-height: 1.35; }
   .stars { color: var(--coral); letter-spacing: 1.5px; font-size: 16px; }
   @media (max-width: 640px) {
-    .trust { padding: 24px 20px; }
-    .trust-inner { flex-direction: column; align-items: center; gap: 18px; }
-    .trust-item { width: 220px; justify-content: flex-start; }
+    .trust { padding: 22px 12px; }
+    .trust-inner { flex-direction: row; gap: 8px; justify-content: space-between; flex-wrap: nowrap; }
+    .trust-item { flex-direction: column; text-align: center; gap: 6px; flex: 1 1 0; align-items: center; }
+    .trust-item .num { font-size: 24px; }
+    .trust-item .lab { font-size: 11px; line-height: 1.35; }
+    .trust-item .stars { font-size: 12px; letter-spacing: 1px; }
   }
 
   .inside { padding: 96px 28px; background: var(--cream); }
@@ -323,7 +326,7 @@ function Trust() {
       <div className="trust-inner">
         <div className="trust-item"><div className="num">50,000+</div><div className="lab">women supported<br/>worldwide</div></div>
         <div className="trust-item"><div className="num">10</div><div className="lab">years coaching<br/>sustainable fat loss</div></div>
-        <div className="trust-item"><div><div className="stars">★★★★★</div><div className="lab" style={{marginTop: 4}}>Rated 4.9 by past clients</div></div></div>
+        <div className="trust-item"><div className="num">4.9</div><div className="lab"><span className="stars">★★★★★</span><br/>rated by past clients</div></div>
       </div>
     </div>
   );
