@@ -118,13 +118,15 @@ ml('account', '1287540');
   .form-foot .item { display: inline-flex; align-items: center; gap: 6px; }
   .form-foot svg { width: 13px; height: 13px; }
   @media (max-width: 980px) {
-    .hero { grid-template-columns: 1fr; padding: 36px 22px 60px; gap: 36px; }
+    .hero { grid-template-columns: 1fr; padding: 16px 22px 60px; gap: 18px; }
     .testimonial-bubble { display: none; }
     /* On mobile, surface the form above the fold by reordering: headline → form → supporting copy */
     .hero-text { display: contents; }
     .hero-headline { order: 1; }
     .form-wrap { order: 2; }
     .hero-supporting { order: 3; }
+    .hero-headline .eyebrow { margin-bottom: 10px; }
+    .hero .h1 { font-size: 34px; line-height: 1.08; margin: 0; }
   }
   .trust { background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); border-bottom: 1px solid rgba(14,39,70,0.06); padding: 30px 28px; }
   .trust-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-around; gap: 32px; flex-wrap: wrap; }
@@ -334,8 +336,8 @@ function Trust() {
 
 function Inside() {
   const items = [
-    { ic: <IcPlate />, t: '21 Real-Food Recipes', d: 'Three meals a day for seven days, built by a qualified nutritionist around the eating rhythm that actually controls cravings.' },
-    { ic: <IcList />, t: 'Done-For-You Shopping List', d: 'Print it, take it to the supermarket, you\'re sorted. Organised by aisle so you\'re in and out in 20 minutes.' },
+    { ic: <IcPlate />, t: 'Full 7 Day Meal Guide', d: 'Twelve simple, nutritionist-built recipes spread across seven days, with my guidelines so you know exactly how each meal fits and how to keep it going beyond the week.' },
+    { ic: <IcList />, t: 'Tips & Mini-Guides', d: 'Drink tips, snack tips, breakfast guidance, the WLA Nutrition Formula, plus short reads on why blood sugar matters and how to cut sugar cravings in 7 days. The why behind the plan, not just the meals.' },
     { ic: <IcLeaf />, t: 'The Craving Reset Protocol', d: 'The exact macro balance and meal timing that breaks the sugar/snack cycle in around 72 hours, without willpower.' },
   ];
   return (
@@ -343,7 +345,7 @@ function Inside() {
       <div className="section-head">
         <span className="eyebrow">What's inside</span>
         <h2 className="serif">A complete<br className="mobile-only-br" /> <em>7-day reset</em><br />not just another<br className="mobile-only-br" /> PDF.</h2>
-        <p>This is the same framework Anna and her team use with paying clients, distilled into a guide you can start using tonight.</p>
+        <p>This is the same framework Anna and her team use with paying clients, distilled into a guide you can start using right away.</p>
       </div>
       <div className="inside-grid">
         {items.map((it, i) => (
@@ -415,7 +417,7 @@ function BottomCTA() {
     <section className="bottom-cta">
       <div className="bottom-cta-inner">
         <span className="eyebrow" style={{justifyContent: 'center'}}>Ready when you are</span>
-        <h2 className="serif">Your first <em>5 lbs</em> is closer than you think.</h2>
+        <h2 className="serif">Your first <em>5 lbs loss</em> is closer than you think.</h2>
         <p>Grab the 7-Day Meal Guide free, start tonight, and notice the difference by Wednesday.</p>
         <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Send Me The Guide <Arrow /></a>
       </div>
