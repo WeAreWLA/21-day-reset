@@ -58,7 +58,7 @@ ml('account', '1287540');
   }
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
-  body { font-family: "Alegreya Sans", sans-serif; color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; }
+  body { font-family: "Alegreya Sans", sans-serif; color: #333333; background: var(--cream); -webkit-font-smoothing: antialiased; }
   .serif { font-family: 'Libre Baskerville', serif; font-optical-sizing: auto; }
   .italic { font-style: italic; }
   a { color: inherit; text-decoration: none; }
@@ -76,21 +76,22 @@ ml('account', '1287540');
   .nav-cta .arrow { transition: transform .2s; }
   .nav-cta:hover .arrow { transform: translateX(3px); }
   @media (max-width: 880px) { .nav-links { display: none; } }
+  @media (max-width: 640px) { .nav { display: none; } }
 
   .hero { max-width: 1240px; margin: 0 auto; padding: 56px 28px 80px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
   .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
-  .h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(44px, 5.6vw, 78px); line-height: 0.98; letter-spacing: -0.015em; font-weight: 600; margin: 0 0 8px; }
+  .h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(40px, 5.2vw, 70px); line-height: 1.12; letter-spacing: 0; font-weight: 700; margin: 0 0 8px; }
   .h1 .accent { display: block; color: var(--coral); font-style: italic; font-weight: 500; margin-top: 6px; }
-  .lede { font-size: 18px; line-height: 1.55; color: #3d4658; max-width: 520px; margin: 28px 0 32px; }
-  .lede strong { color: var(--ink); font-weight: 600; }
+  .lede { font-size: 18px; line-height: 1.55; color: #333333; max-width: 520px; margin: 28px 0 32px; }
+  .lede strong { color: #333333; font-weight: 700; }
   .bullet-list { list-style: none; padding: 0; margin: 0 0 36px; display: grid; gap: 14px; }
-  .bullet-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 16px; color: #2a3447; line-height: 1.45; }
+  .bullet-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 16px; color: #333333; line-height: 1.45; }
   .check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); display: grid; place-items: center; margin-top: 1px; }
   .check svg { width: 13px; height: 13px; stroke: var(--cream); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
   .form-wrap { position: relative; }
-  .testimonial-bubble { position: absolute; top: -18px; left: -28px; background: var(--cream-2); border: 1px solid rgba(14,39,70,0.06); padding: 14px 18px; border-radius: 10px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: var(--navy); max-width: 240px; line-height: 1.4; box-shadow: 0 12px 30px -18px rgba(14,39,70,.25); z-index: 3; transform: rotate(-2deg); }
+  .testimonial-bubble { position: absolute; top: -18px; right: -28px; left: auto; background: var(--cream-2); border: 1px solid rgba(14,39,70,0.06); padding: 14px 18px; border-radius: 10px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: var(--navy); max-width: 240px; line-height: 1.4; box-shadow: 0 12px 30px -18px rgba(14,39,70,.25); z-index: 3; transform: rotate(2deg); }
   .testimonial-bubble .who { display: block; font-style: normal; font-family: "Alegreya Sans", sans-serif; font-size: 11px; color: var(--coral); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 6px; font-weight: 600; }
   .form-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; padding: 36px 36px 32px; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); position: relative; z-index: 2; }
   .form-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(46,125,91,0.10); color: var(--ok); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; margin-bottom: 18px; }
@@ -98,7 +99,7 @@ ml('account', '1287540');
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(46,125,91,.5); } 70% { box-shadow: 0 0 0 8px rgba(46,125,91,0); } 100% { box-shadow: 0 0 0 0 rgba(46,125,91,0); } }
   .form-title { font-family: 'Libre Baskerville', serif; font-size: 30px; color: var(--navy); line-height: 1.1; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
   .form-title em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .form-sub { font-size: 14.5px; color: var(--muted); line-height: 1.5; margin: 0 0 22px; }
+  .form-sub { font-size: 14.5px; color: #333333; line-height: 1.5; margin: 0 0 22px; }
   .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
   .field label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: var(--navy); text-transform: uppercase; }
   .field input { appearance: none; border: 1.5px solid rgba(14,39,70,0.18); background: #fff; padding: 14px 16px; border-radius: 10px; font: 15px "Alegreya Sans", sans-serif; color: var(--ink); transition: border-color .15s, box-shadow .15s; }
@@ -127,13 +128,13 @@ ml('account', '1287540');
   .section-head .eyebrow::after { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .section-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 4.5vw, 56px); color: var(--navy); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; font-weight: 600; }
   .section-head h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .section-head p { font-size: 17px; line-height: 1.6; color: #3d4658; margin: 0; }
+  .section-head p { font-size: 17px; line-height: 1.6; color: #333333; margin: 0; }
   .inside-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
   .feat { background: var(--paper); border: 1px solid rgba(14,39,70,0.06); border-radius: 16px; padding: 32px 28px; transition: transform .2s, box-shadow .2s; }
   .feat:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgba(14,39,70,.2); }
   .feat .ic { width: 48px; height: 48px; border-radius: 12px; background: var(--cream-2); color: var(--coral); display: grid; place-items: center; margin-bottom: 18px; }
   .feat h3 { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); margin: 0 0 10px; font-weight: 600; }
-  .feat p { font-size: 15px; line-height: 1.55; color: var(--muted); margin: 0; }
+  .feat p { font-size: 15px; line-height: 1.55; color: #333333; margin: 0; }
   @media (max-width: 880px) { .inside-grid { grid-template-columns: 1fr; } .inside { padding: 64px 22px; } }
 
   .founder { background: var(--paper); padding: 96px 28px; border-top: 1px solid rgba(14,39,70,0.06); }
@@ -144,7 +145,7 @@ ml('account', '1287540');
   .signature-tag .name { color: var(--coral); display: block; font-size: 16px; font-weight: 500; }
   .founder h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 3.6vw, 46px); color: var(--navy); line-height: 1.05; margin: 0 0 24px; font-weight: 600; letter-spacing: -0.01em; }
   .founder h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .founder .body p { font-size: 16.5px; line-height: 1.7; color: #2a3447; margin: 0 0 16px; }
+  .founder .body p { font-size: 16.5px; line-height: 1.7; color: #333333; margin: 0 0 16px; }
   .founder .body p:first-of-type::first-letter { font-family: 'Libre Baskerville', serif; font-size: 56px; float: left; line-height: 0.85; padding: 6px 12px 0 0; color: var(--coral); font-weight: 600; }
   .signature { margin-top: 28px; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: 28px; }
   @media (max-width: 880px) { .founder-inner { grid-template-columns: 1fr; gap: 36px; } .founder { padding: 64px 22px; } }
@@ -170,7 +171,7 @@ ml('account', '1287540');
   .bottom-cta-inner { max-width: 760px; margin: 0 auto; background: var(--paper); border-radius: 24px; padding: 56px 40px; border: 1px solid rgba(14,39,70,0.08); box-shadow: 0 30px 60px -30px rgba(14,39,70,0.2); }
   .bottom-cta h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(34px, 4vw, 50px); color: var(--navy); line-height: 1.05; margin: 0 0 14px; font-weight: 600; letter-spacing: -0.01em; }
   .bottom-cta h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .bottom-cta p { font-size: 17px; color: var(--muted); margin: 0 0 28px; line-height: 1.55; }
+  .bottom-cta p { font-size: 17px; color: #333333; margin: 0 0 28px; line-height: 1.55; }
   .bottom-cta .submit-btn { max-width: 320px; margin: 0 auto; }
 
   .foot { padding: 36px 28px; background: var(--cream); border-top: 1px solid rgba(14,39,70,0.08); color: var(--muted); font-size: 13px; }
@@ -259,10 +260,10 @@ function Hero() {
         <h1 className="h1 serif">Eliminate sugar cravings in 3 days<span className="accent italic">lose up to 5lbs in 7 days</span></h1>
         <p className="lede">A <strong>7-day expert-built meal plan</strong> with simple recipes, a done-for-you shopping list, and the exact eating rhythm that's helped <strong>50,000+ women</strong> drop pounds without hunger, willpower, or starting over on Monday.</p>
         <ul className="bullet-list">
-          <li><span className="check"><Check /></span><span><strong>Curb sugar cravings in 72 hours</strong> — no shakes, no shortcuts</span></li>
-          <li><span className="check"><Check /></span><span>21 nutritionist-approved recipes — breakfast, lunch &amp; dinner</span></li>
-          <li><span className="check"><Check /></span><span>Print-ready shopping list, prep tips, and portion guide</span></li>
-          <li><span className="check"><Check /></span><span>Built around real food — no calorie counting, no banned lists</span></li>
+          <li><span className="check"><Check /></span><span><strong>Curb sugar cravings in 72 hours.</strong> No shakes, no shortcuts.</span></li>
+          <li><span className="check"><Check /></span><span>21 nutritionist-approved recipes. Breakfast, lunch &amp; dinner.</span></li>
+          <li><span className="check"><Check /></span><span>Print-ready shopping list, prep tips and portion guide.</span></li>
+          <li><span className="check"><Check /></span><span>Built around real food. No calorie counting, no banned lists.</span></li>
         </ul>
       </div>
 
@@ -310,9 +311,9 @@ function Trust() {
 
 function Inside() {
   const items = [
-    { ic: <IcPlate />, t: '21 Real-Food Recipes', d: 'Three meals a day for seven days — built by a qualified nutritionist around the eating rhythm that actually controls cravings.' },
+    { ic: <IcPlate />, t: '21 Real-Food Recipes', d: 'Three meals a day for seven days, built by a qualified nutritionist around the eating rhythm that actually controls cravings.' },
     { ic: <IcList />, t: 'Done-For-You Shopping List', d: 'Print it, take it to the supermarket, you\'re sorted. Organised by aisle so you\'re in and out in 20 minutes.' },
-    { ic: <IcLeaf />, t: 'The Craving Reset Protocol', d: 'The exact macro balance and meal timing that breaks the sugar/snack cycle in around 72 hours — without willpower.' },
+    { ic: <IcLeaf />, t: 'The Craving Reset Protocol', d: 'The exact macro balance and meal timing that breaks the sugar/snack cycle in around 72 hours, without willpower.' },
   ];
   return (
     <section className="inside" id="inside">
@@ -340,15 +341,15 @@ function Founder() {
       <div className="founder-inner">
         <div className="portrait">
           <img src="/assets/anna-portrait.jpg" alt="Anna Wallace" />
-          <div className="signature-tag"><span className="name">Anna Wallace</span>BSc Food &amp; Nutrition</div>
+          <div className="signature-tag"><span className="name">Anna Wallace</span>BSc Food &amp; Nutrition<br />Registered Associate Nutritionist</div>
         </div>
         <div>
           <span className="eyebrow">A note from our founder</span>
-          <h2 className="serif">I was the <em>"fat one"</em> in my family — until I found a different way.</h2>
+          <h2 className="serif">I was the <em>"fat one"</em> in my family, until I found a different way.</h2>
           <div className="body">
-            <p>I once started every day full of determination, then resorted to the Special K diet, skipping meals, or going hours without food. Evenings would end with a takeaway, eating too much, or a glass of wine I didn't really want — just to cope.</p>
+            <p>I once started every day full of determination, then resorted to the Special K diet, skipping meals, or going hours without food. Evenings would end with a takeaway, eating too much, or a glass of wine I didn't really want, just to cope.</p>
             <p>After hitting rock bottom, I enrolled at university to study Food &amp; Nutrition. That decision changed everything. I lost the weight and kept it off, even after pregnancy. Then I founded The Weight Loss Academy and have spent the last 9 years supporting <strong>over 50,000 clients worldwide</strong>.</p>
-            <p>Our approach burns body fat simply and flexibly, restores confidence, and eliminates sugar cravings. If you're reading this and feel like you've tried everything — your journey matters, and the right approach can change everything. This guide is where it starts.</p>
+            <p>Our approach burns body fat simply and flexibly, restores confidence, and eliminates sugar cravings. If you're reading this and feel like you've tried everything, your journey matters and the right approach can change everything. This guide is where it starts.</p>
           </div>
           <div className="signature">— Anna</div>
         </div>
