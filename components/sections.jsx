@@ -76,12 +76,29 @@ function trackCtaClick(location, label) {
   }
 }
 
+// Build the Thrivecart checkout URL, forwarding any UTM parameters
+// from the current page's query string so attribution carries through.
+const CHECKOUT_BASE_URL = 'https://sales.thewlacademy.com/may-reset/';
+function getCheckoutUrl() {
+  if (typeof window === 'undefined' || !window.location) return CHECKOUT_BASE_URL;
+  const incoming = new URLSearchParams(window.location.search);
+  const out = new URLSearchParams();
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((k) => {
+    const v = incoming.get(k);
+    if (v) out.set(k, v);
+  });
+  const tail = out.toString();
+  return tail ? CHECKOUT_BASE_URL + '?' + tail : CHECKOUT_BASE_URL;
+}
+
 const PrimaryCTA = ({ children, small = false, onClick, style = {}, location = 'primary' }) => (
   <a
-    href="https://sales.thewlacademy.com/may-reset/"
+    href={getCheckoutUrl()}
     target="_blank"
     rel="noopener"
     onClick={(e) => {
+      // Re-resolve href at click time in case the URL has changed since render.
+      e.currentTarget.href = getCheckoutUrl();
       trackCtaClick(location, typeof children === 'string' ? children : 'Primary CTA');
       if (onClick) onClick(e);
     }}
@@ -194,5 +211,5 @@ const Divider = ({ style = {} }) => (
 
 Object.assign(window, {
   Eyebrow, SerifH, Italic, Body, PrimaryCTA, Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider,
-  trackCtaClick,
+  trackCtaClick, getCheckoutUrl,
 });

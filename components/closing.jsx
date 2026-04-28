@@ -354,8 +354,11 @@ const StickyCTA = ({ visible }) => (
       <span style={{ color: 'var(--peach)' }}>●</span> 21 Day Reset · <strong>£17</strong>
       <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>Price rises soon</span>
     </div>
-    <a href="https://sales.thewlacademy.com/may-reset/" target="_blank" rel="noopener" className="sticky-cta-button"
-      onClick={() => window.trackCtaClick && window.trackCtaClick('sticky', 'Secure your place')}
+    <a href={typeof window !== 'undefined' && window.getCheckoutUrl ? window.getCheckoutUrl() : 'https://sales.thewlacademy.com/may-reset/'} target="_blank" rel="noopener" className="sticky-cta-button"
+      onClick={(e) => {
+        if (window.getCheckoutUrl) e.currentTarget.href = window.getCheckoutUrl();
+        if (window.trackCtaClick) window.trackCtaClick('sticky', 'Secure your place');
+      }}
       style={{
       background: 'var(--blush-deep)',
       color: 'var(--paper)',
