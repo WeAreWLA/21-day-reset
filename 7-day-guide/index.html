@@ -78,7 +78,7 @@ ml('account', '1287540');
   @media (max-width: 880px) { .nav-links { display: none; } }
   @media (max-width: 640px) { .nav { display: none; } }
 
-  .hero { max-width: 1240px; margin: 0 auto; padding: 56px 28px 80px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+  .hero { max-width: 1240px; margin: 0 auto; padding: 56px 28px 44px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
   .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(40px, 5.2vw, 70px); line-height: 1.12; letter-spacing: 0; font-weight: 700; margin: 0 0 8px; }
@@ -114,12 +114,17 @@ ml('account', '1287540');
   .form-foot .item { display: inline-flex; align-items: center; gap: 6px; }
   .form-foot svg { width: 13px; height: 13px; }
   @media (max-width: 980px) { .hero { grid-template-columns: 1fr; padding: 36px 22px 60px; gap: 36px; } .testimonial-bubble { display: none; } }
-  .trust { background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); border-bottom: 1px solid rgba(14,39,70,0.06); padding: 22px 28px; }
-  .trust-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .trust-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--ink); }
-  .trust-item .num { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: 24px; line-height: 1; }
-  .trust-item .lab { color: var(--muted); font-size: 13px; line-height: 1.3; }
-  .stars { color: var(--coral); letter-spacing: 1px; font-size: 14px; }
+  .trust { background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); border-bottom: 1px solid rgba(14,39,70,0.06); padding: 30px 28px; }
+  .trust-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-around; gap: 32px; flex-wrap: wrap; }
+  .trust-item { display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--ink); }
+  .trust-item .num { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: 30px; line-height: 1; }
+  .trust-item .lab { color: var(--muted); font-size: 14px; line-height: 1.35; }
+  .stars { color: var(--coral); letter-spacing: 1.5px; font-size: 16px; }
+  @media (max-width: 640px) {
+    .trust { padding: 24px 20px; }
+    .trust-inner { flex-direction: column; align-items: center; gap: 18px; }
+    .trust-item { width: 220px; justify-content: flex-start; }
+  }
 
   .inside { padding: 96px 28px; background: var(--cream); }
   .section-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
@@ -303,7 +308,6 @@ function Trust() {
         <div className="trust-item"><div className="num">50,000+</div><div className="lab">women supported<br/>worldwide</div></div>
         <div className="trust-item"><div className="num">10</div><div className="lab">years coaching<br/>sustainable fat loss</div></div>
         <div className="trust-item"><div><div className="stars">★★★★★</div><div className="lab" style={{marginTop: 4}}>Rated 4.9 by past clients</div></div></div>
-        <div className="trust-item"><div className="num serif italic" style={{fontStyle: 'italic', color: 'var(--coral)'}}>BSc</div><div className="lab">Food &amp; Nutrition<br/>qualified founder</div></div>
       </div>
     </div>
   );
