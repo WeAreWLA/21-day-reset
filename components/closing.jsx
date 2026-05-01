@@ -1,6 +1,116 @@
 // Pricing, FAQ, Final CTA, Sticky bar, Footer
 
-const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading = null }) => (
+// Live countdown — counts to May 4 (early-bird ends) or May 11 (kickoff).
+// Hidden once the campaign is live. Phase is recomputed every second so
+// it transitions automatically across midnight thresholds.
+function computeCountdownTick(phase) {
+  const now = Date.now();
+  let target;
+  if (phase === 'pre-launch')        target = window.CAMPAIGN_EARLY_BIRD_END;
+  else if (phase === 'pre-kickoff')  target = window.CAMPAIGN_KICKOFF;
+  else return null;
+  const diff = Math.max(0, target - now);
+  return {
+    days:    Math.floor(diff / 86400000),
+    hours:   Math.floor((diff % 86400000) / 3600000),
+    minutes: Math.floor((diff % 3600000) / 60000),
+    seconds: Math.floor((diff % 60000) / 1000),
+  };
+}
+
+const CountdownSection = () => {
+  const [phase, setPhase] = React.useState(() => window.getCampaignPhase());
+  const [tick, setTick]   = React.useState(() => computeCountdownTick(phase));
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      const newPhase = window.getCampaignPhase();
+      if (newPhase !== phase) setPhase(newPhase);
+      setTick(computeCountdownTick(newPhase));
+    }, 1000);
+    return () => clearInterval(id);
+  }, [phase]);
+
+  if (phase === 'expired' || !tick) return null;
+
+  const eyebrow = phase === 'pre-launch' ? 'Early-bird bonus expires in' : 'Reset kicks off in';
+  const subtitle = phase === 'pre-launch'
+    ? 'When the timer hits zero, the £17 early-bird price and bonus expire.'
+    : 'Your 21 Day Reset begins Monday 11th May. Save your seat now.';
+
+  return (
+    <section className="countdown-section" style={{
+      background: 'var(--peach)',
+      padding: '60px 32px',
+      textAlign: 'center',
+    }}>
+      <div style={{ maxWidth: 920, margin: '0 auto' }}>
+        <div style={{
+          fontFamily: '"Alegreya Sans", sans-serif',
+          fontSize: 13, fontWeight: 600,
+          letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'var(--blush-deep)', marginBottom: 22,
+        }}>
+          {eyebrow}
+        </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 14,
+          maxWidth: 720,
+          margin: '0 auto 28px',
+        }}>
+          {[
+            { n: tick.days,    l: 'days' },
+            { n: tick.hours,   l: 'hours' },
+            { n: tick.minutes, l: 'mins' },
+            { n: tick.seconds, l: 'secs' },
+          ].map((item, i) => (
+            <div key={i} style={{
+              background: 'var(--paper)',
+              border: '1px solid var(--blush-deep)',
+              borderRadius: 14,
+              padding: '24px 8px',
+              boxShadow: '0 14px 30px -16px rgba(232, 127, 99, 0.4)',
+            }}>
+              <div className="countdown-num" style={{
+                fontFamily: '"Libre Baskerville", serif',
+                fontSize: 52, fontWeight: 700,
+                color: 'var(--ink)', lineHeight: 1,
+                fontVariantNumeric: 'tabular-nums',
+              }}>
+                {String(item.n).padStart(2, '0')}
+              </div>
+              <div className="countdown-lab" style={{
+                fontFamily: '"Alegreya Sans", sans-serif',
+                fontSize: 12, letterSpacing: '0.16em',
+                textTransform: 'uppercase', color: 'var(--blush-deep)',
+                fontWeight: 600, marginTop: 12,
+              }}>
+                {item.l}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontStyle: 'italic',
+          fontSize: 17,
+          color: 'var(--ink)',
+          maxWidth: 540, margin: '0 auto',
+          lineHeight: 1.5,
+        }}>
+          {subtitle}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading = null, phase: phaseProp }) => {
+  const phase = phaseProp || (typeof window !== 'undefined' && window.getCampaignPhase ? window.getCampaignPhase() : 'pre-launch');
+  const isEarlyBird = phase === 'pre-launch';
+  return (
   <section id={sectionId} className={bridgeHeading ? 'pricing-bridge' : ''} style={{
     padding: bridgeHeading ? '48px 32px 120px' : '120px 32px',
     background: 'var(--cream-deep)',
@@ -13,7 +123,9 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             One price.<br /><Italic>One reset.</Italic><br />Everything included.
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
-            Join today for £17, save £80 and access your FREE 3-Week Fat Loss Accelerator Meal Plan (limited available) with the early bird promo.
+            {isEarlyBird
+              ? 'Join today for £17, save £80 and access your FREE 3-Week Fat Loss Accelerator Meal Plan (limited available) with the early bird promo.'
+              : 'Join today for £17 and start the Reset on Monday 11th May.'}
           </Body>
         </>
       )}
@@ -31,7 +143,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         boxShadow: '0 30px 60px -30px rgba(80, 40, 20, 0.25)',
         position: 'relative',
       }}>
-        <div style={{
+        {isEarlyBird && <div style={{
           position: 'absolute',
           top: -14,
           left: '50%',
@@ -45,7 +157,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           fontStyle: 'italic',
           fontWeight: 400,
           letterSpacing: '0.04em',
-        }}>Early bird · save £80</div>
+        }}>Early bird · save £80</div>}
 
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 14, marginBottom: 10 }}>
           <div style={{
@@ -55,13 +167,13 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             color: 'var(--ink)',
             lineHeight: 1,
           }}>£17</div>
-          <div style={{
+          {isEarlyBird && <div style={{
             fontFamily: '"Libre Baskerville", serif',
             fontStyle: 'italic',
             fontSize: 22,
             color: 'var(--ink-muted)',
             textDecoration: 'line-through',
-          }}>£97</div>
+          }}>£97</div>}
         </div>
         <Body size={15} style={{ marginBottom: 32 }}>
           One-time payment · full access
@@ -72,9 +184,9 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             'Full 21-day flexible nutrition and weight meal guide + recipes',
             'Daily coaching + weekly live Zoom with Anna',
             'Multiple supporting guides & workbook',
-            'Early-bird bonus: FREE 3-Week Fat Loss Accelerator Meal Plan',
+            isEarlyBird ? 'Early-bird bonus: FREE 3-Week Fat Loss Accelerator Meal Plan' : null,
             '7-day money-back guarantee',
-          ].map((f, i) => (
+          ].filter(Boolean).map((f, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
               <Tick />
               <Body size={16}>{f}</Body>
@@ -106,7 +218,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
       </div>
 
       {/* Early-bird bonus callout */}
-      <div style={{
+      {isEarlyBird && <div style={{
         marginTop: 48,
         display: 'grid',
         gridTemplateColumns: '80px 1fr',
@@ -134,11 +246,11 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             Get the <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic> free. First 100 women only · instant access on signup.
           </Body>
         </div>
-      </div>
+      </div>}
 
       {/* Guarantee callout */}
       <div style={{
-        marginTop: 24,
+        marginTop: isEarlyBird ? 24 : 48,
         display: 'grid',
         gridTemplateColumns: '80px 1fr',
         gap: 24,
@@ -171,7 +283,8 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const FAQ_ITEMS = [
   {
@@ -489,4 +602,4 @@ const FastActionBonusSection = () => (
   </section>
 );
 
-Object.assign(window, { PricingSection, FAQSection, FinalCTA, StickyCTA, Footer, FastActionBonusSection });
+Object.assign(window, { PricingSection, FAQSection, FinalCTA, StickyCTA, Footer, FastActionBonusSection, CountdownSection });

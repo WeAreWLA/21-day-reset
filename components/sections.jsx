@@ -91,6 +91,20 @@ function getCheckoutUrl() {
   return tail ? CHECKOUT_BASE_URL + '?' + tail : CHECKOUT_BASE_URL;
 }
 
+// Campaign timeline:
+//   pre-launch  → now < Monday 4th May 2026 00:00 BST  (early-bird + £17 bonus active)
+//   pre-kickoff → 4 May 00:00 BST ≤ now < Monday 11th May 2026 00:00 BST  (early-bird removed,
+//                 countdown points at the Reset kickoff)
+//   expired     → now ≥ 11 May 00:00 BST  (Reset is live; countdown hidden)
+const CAMPAIGN_EARLY_BIRD_END = new Date('2026-05-04T00:00:00+01:00').getTime();
+const CAMPAIGN_KICKOFF        = new Date('2026-05-11T00:00:00+01:00').getTime();
+function getCampaignPhase() {
+  const now = Date.now();
+  if (now < CAMPAIGN_EARLY_BIRD_END) return 'pre-launch';
+  if (now < CAMPAIGN_KICKOFF)        return 'pre-kickoff';
+  return 'expired';
+}
+
 const PrimaryCTA = ({ children, small = false, onClick, style = {}, location = 'primary' }) => (
   <a
     href={getCheckoutUrl()}
@@ -211,5 +225,6 @@ const Divider = ({ style = {} }) => (
 
 Object.assign(window, {
   Eyebrow, SerifH, Italic, Body, PrimaryCTA, Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider,
-  trackCtaClick, getCheckoutUrl,
+  trackCtaClick, getCheckoutUrl, getCampaignPhase,
+  CAMPAIGN_EARLY_BIRD_END, CAMPAIGN_KICKOFF,
 });

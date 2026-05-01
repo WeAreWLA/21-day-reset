@@ -107,6 +107,9 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     .pricing-bridge { padding-top: 32px !important; }
     .video-testimonials-section { padding-bottom: 24px !important; }
     section#faq.faq-section { padding-top: 32px !important; }
+    .countdown-section { padding: 40px 16px !important; }
+    .countdown-num { font-size: 36px !important; }
+    .countdown-lab { font-size: 10px !important; letter-spacing: 0.12em !important; }
   }
   /* Tweaks panel */
   .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; font-family: "Alegreya Sans", sans-serif; font-size: 14px; width: 260px; box-shadow: 0 20px 40px -20px rgba(0,48,96,.2); z-index: 200; }
@@ -244,6 +247,18 @@ function App() {
   const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
   const [tweaksOpen, setTweaksOpen] = React.useState(false);
   const [stickyVisible, setStickyVisible] = React.useState(false);
+  const [phase, setPhase] = React.useState(() => (window.getCampaignPhase ? window.getCampaignPhase() : 'pre-launch'));
+
+  // Re-check the campaign phase every minute so the page transitions
+  // automatically across May 4 / May 11 midnight without a refresh.
+  React.useEffect(() => {
+    if (!window.getCampaignPhase) return;
+    const id = setInterval(() => {
+      const p = window.getCampaignPhase();
+      setPhase((prev) => (prev !== p ? p : prev));
+    }, 60000);
+    return () => clearInterval(id);
+  }, []);
 
   // Apply CTA style
   React.useEffect(() => {
@@ -289,7 +304,8 @@ function App() {
       <AnnouncementBar />
       <Nav />
       {/* Tweakable hero wrapper */}
-      <TweakableHero headline={headline} />
+      <TweakableHero headline={headline} phase={phase} />
+      <CountdownSection />
       <WhatChangesIn21DaysSection />
       <ProblemSection />
       <HonestTruthSection />
@@ -297,14 +313,16 @@ function App() {
       <MethodSection />
       <WhatHappensSection />
       <IncludedSection />
-      <FastActionBonusSection />
-      <PricingSection sectionId="join-early" />
+      {phase === 'pre-launch' && <FastActionBonusSection />}
+      <PricingSection sectionId="join-early" phase={phase} />
       <TestimonialsSection />
       <AboutSection />
       <TransformSection />
-      <PricingSection showHeading={false} bridgeHeading={
+      <PricingSection showHeading={false} phase={phase} bridgeHeading={
         <SerifH size={40} style={{ lineHeight: 1.3 }}>
-          Join now to lock in the <Italic>£17 early bird rate</Italic>
+          {phase === 'pre-launch'
+            ? <>Join now to lock in the <Italic>£17 early bird rate</Italic></>
+            : <>Join the <Italic>21 Day Fat Loss Reset</Italic> for £17</>}
         </SerifH>
       } />
       <VideoTestimonialsSection />
@@ -342,7 +360,7 @@ function App() {
 
 }
 
-function TweakableHero({ headline }) {
+function TweakableHero({ headline, phase = 'pre-launch' }) {
   return (
     <>
     <section className="hero-section" style={{
@@ -419,6 +437,7 @@ function TweakableHero({ headline }) {
       </div>
     </section>
 
+    {phase === 'pre-launch' &&
     <section className="early-bird-banner-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 40px' }}>
       <div style={{
         padding: '22px 28px',
@@ -453,6 +472,7 @@ function TweakableHero({ headline }) {
         </div>
       </div>
     </section>
+    }
     </>);
 
 }
