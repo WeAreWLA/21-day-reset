@@ -387,7 +387,7 @@ function TweakableHero({ headline, phase = 'pre-launch' }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <Tick /> 7-day money-back guarantee
             </div>
-            <div style={{ marginTop: 4, opacity: 0.75 }}>Regular price £97 · Pre-week Mon 4 May</div>
+            <div style={{ marginTop: 4, opacity: 0.75 }}>{phase === 'pre-launch' ? 'Regular price £97 · Kickoff Mon 11 May' : 'Kickoff Mon 11 May'}</div>
           </div>
         </div>
 

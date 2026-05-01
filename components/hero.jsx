@@ -1,30 +1,34 @@
 // Hero + announcement bar
 
-const AnnouncementBar = () => (
-  <div className="announcement-bar" style={{
-    color: 'var(--paper)',
-    fontFamily: '"Alegreya Sans", sans-serif',
-    textAlign: 'center',
-    letterSpacing: '0.04em',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 18,
-    flexWrap: 'wrap',
-  }}>
-    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-      <span className="announcement-dot" />
-      Pre-week starts <strong style={{ color: 'var(--peach)' }}>Monday 4th May</strong>
-    </span>
-    <span style={{ opacity: 0.5 }}>·</span>
-    <span>
-      Just <strong style={{ color: 'var(--peach)', fontSize: '1.05em' }}>£17</strong>
-      {' '}
-      <span style={{ opacity: 0.65, textDecoration: 'line-through' }}>£97</span>
-      {' '}— price rises soon
-    </span>
-  </div>
-);
+const AnnouncementBar = () => {
+  const phase = (typeof window !== 'undefined' && window.getCampaignPhase) ? window.getCampaignPhase() : 'pre-launch';
+  const isEarlyBird = phase === 'pre-launch';
+  return (
+    <div className="announcement-bar" style={{
+      color: 'var(--paper)',
+      fontFamily: '"Alegreya Sans", sans-serif',
+      textAlign: 'center',
+      letterSpacing: '0.04em',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 18,
+      flexWrap: 'wrap',
+    }}>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+        <span className="announcement-dot" />
+        Kickoff <strong style={{ color: 'var(--peach)' }}>Monday 11th May</strong>
+      </span>
+      <span style={{ opacity: 0.5 }}>·</span>
+      <span>
+        Just <strong style={{ color: 'var(--peach)', fontSize: '1.05em' }}>£17</strong>
+        {isEarlyBird && <>{' '}<span style={{ opacity: 0.65, textDecoration: 'line-through' }}>£97</span></>}
+      </span>
+      <span style={{ opacity: 0.5 }}>·</span>
+      <span>Limited spaces left</span>
+    </div>
+  );
+};
 
 const Nav = () => (
   <nav style={{
