@@ -17,7 +17,9 @@ const AnnouncementBar = () => {
     }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
         <span className="announcement-dot" />
-        Kickoff <strong style={{ color: 'var(--peach)' }}>Monday 11th May</strong>
+        {isEarlyBird
+          ? <>Pre-week starts <strong style={{ color: 'var(--peach)' }}>Monday 4th May</strong></>
+          : <>Kickoff <strong style={{ color: 'var(--peach)' }}>Monday 11th May</strong></>}
       </span>
       <span style={{ opacity: 0.5 }}>·</span>
       <span>

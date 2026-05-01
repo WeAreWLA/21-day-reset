@@ -258,6 +258,8 @@ const HEADLINES = {
 };
 
 function ThankYouBanner() {
+  const phase = (typeof window !== 'undefined' && window.getCampaignPhase) ? window.getCampaignPhase() : 'pre-launch';
+  const startDate = phase === 'pre-launch' ? 'Monday 4th May' : 'Monday 11th May';
   return (
     <div className="thank-you-banner" style={{
       background: '#E9DFD3',
@@ -377,7 +379,7 @@ function ThankYouBanner() {
             fontSize: 15,
             color: 'var(--body-ink)',
           }}>
-            We start Monday 11th May <span className="thank-you-arrow" style={{ display: 'inline-block', marginLeft: 4 }}>↓</span>
+            We start {startDate} <span className="thank-you-arrow" style={{ display: 'inline-block', marginLeft: 4 }}>↓</span>
           </div>
         </div>
       </div>

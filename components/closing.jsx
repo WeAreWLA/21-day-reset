@@ -368,6 +368,15 @@ const FAQItem = ({ item, isOpen, onToggle }) => (
 
 const FAQSection = () => {
   const [open, setOpen] = React.useState(0);
+  const phase = (typeof window !== 'undefined' && window.getCampaignPhase) ? window.getCampaignPhase() : 'pre-launch';
+  const isEarlyBird = phase === 'pre-launch';
+  const items = FAQ_ITEMS.map((item) => (
+    item.q === 'When does it start?'
+      ? { ...item, a: isEarlyBird
+            ? "The pre-week starts Monday 4th May. Tools release Friday 1st May so you're ready to begin."
+            : 'We start on Monday 11th May and tools release will be Friday 1st May.' }
+      : item
+  ));
   return (
     <section id="faq" className="faq-section" style={{
       padding: '48px 32px 120px',
@@ -391,7 +400,7 @@ const FAQSection = () => {
           </Body>
         </div>
         <div>
-          {FAQ_ITEMS.map((item, i) => (
+          {items.map((item, i) => (
             <FAQItem
               key={i}
               item={item}
