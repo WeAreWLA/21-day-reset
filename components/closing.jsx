@@ -53,7 +53,7 @@ const CountdownSection = () => {
         }}>
           {eyebrow}
         </div>
-        <div style={{
+        <div className="countdown-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
           gap: 14,
@@ -66,7 +66,7 @@ const CountdownSection = () => {
             { n: tick.minutes, l: 'mins' },
             { n: tick.seconds, l: 'secs' },
           ].map((item, i) => (
-            <div key={i} style={{
+            <div key={i} className="countdown-box" style={{
               background: 'var(--paper)',
               border: '1px solid var(--blush-deep)',
               borderRadius: 14,
