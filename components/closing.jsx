@@ -35,7 +35,7 @@ const CountdownSection = () => {
 
   const eyebrow = phase === 'pre-launch' ? 'Early-bird bonus expires in' : 'Reset kicks off in';
   const subtitle = phase === 'pre-launch'
-    ? 'When the timer hits zero, the £17 early-bird price and bonus expire.'
+    ? 'When the timer hits zero, the early-bird bonus expires.'
     : 'Your 21 Day Reset begins Monday 11th May. Save your seat now.';
 
   return (
