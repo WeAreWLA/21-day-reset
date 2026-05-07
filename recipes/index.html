@@ -307,22 +307,21 @@ function Hero() {
           <h1 className="h1 serif">Free<br />WLA Recipes<span className="accent italic">simple, family-friendly, balanced</span></h1>
         </div>
         <div className="hero-supporting">
-          <p className="lede">A <strong>free recipe pack</strong> from the WLA library. Real-food breakfasts, lunches and dinners that the whole family can eat, built by a Registered Associate Nutritionist for women 45+.</p>
+          <p className="lede">A <strong>free Meal Prep Weight Loss Recipes</strong> from our Weight Loss Academy library.</p>
           <ul className="bullet-list">
-            <li><span className="check"><Check /></span><span><strong>Real-food breakfasts, lunches &amp; dinners.</strong> Nothing weird, nothing strict.</span></li>
-            <li><span className="check"><Check /></span><span>Family-friendly portions — one meal, everyone eats.</span></li>
+            <li><span className="check"><Check /></span><span>Real breakfast, lunch and dinner recipes. Nothing weird, nothing strict.</span></li>
+            <li><span className="check"><Check /></span><span>Family-friendly portions. One meal, everyone eats.</span></li>
             <li><span className="check"><Check /></span><span>Balanced for steady energy and easy fat loss.</span></li>
-            <li><span className="check"><Check /></span><span>Print-ready, with simple ingredients you'll already have.</span></li>
+            <li><span className="check"><Check /></span><span>Print-ready so you can get started straight away.</span></li>
           </ul>
         </div>
       </div>
 
       <div className="form-wrap">
-        <div className="testimonial-bubble">"Even my husband eats these and didn't notice they were 'diet'."<span className="who">— Ruth, 54</span></div>
         <div className="form-card">
           <span className="form-tag"><span className="pulse" />100% Free · Instant Download</span>
           <h2 className="form-title serif">Get your <em>free recipes</em></h2>
-          <p className="form-sub">Tell us where to send them — recipes arrive in seconds.</p>
+          <p className="form-sub">Tell us where to send them. Your recipes will arrive in seconds.</p>
           <form onSubmit={onSubmit} noValidate>
             <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
             <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
@@ -372,9 +371,9 @@ function Trust() {
 
 function Inside() {
   const items = [
-    { ic: <IcPlate />, t: 'Real-Food Recipes', d: 'A taster from the WLA recipe library — breakfasts, lunches, dinners and a sweet treat or two. Real ingredients, simple methods.' },
+    { ic: <IcPlate />, t: 'Real-Food Recipes', d: 'A taster from the WLA recipe library including breakfast, lunch and dinner. Real ingredients, simple methods.' },
     { ic: <IcList />, t: 'Family-Friendly Portions', d: 'Cook one meal, the whole household eats it. No separate "diet" food, no awkward conversations at the dinner table.' },
-    { ic: <IcLeaf />, t: 'Balanced for Easy Fat Loss', d: 'Built around protein, fibre and smart carbs so you stay full, energised and steady — without counting a thing.' },
+    { ic: <IcLeaf />, t: 'Balanced for Easy Fat Loss', d: 'Built around protein, fibre and smart carbs so you stay full, energised and steady, without counting a thing.' },
   ];
   return (
     <section className="inside" id="inside">
