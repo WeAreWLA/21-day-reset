@@ -25,11 +25,20 @@
     'Christine A.', 'Maureen S.', 'Patricia W.', 'Gail B.', 'Sandra T.',
     'Janet F.', 'Yvonne K.', 'Hazel R.', 'Brenda L.', 'Wendy O.',
   ];
-  var firstDelay = cfg.firstDelay || 5000;
-  var showFor = cfg.showFor || 6000;
-  var gapMin = cfg.gapMin || 12000;
-  var gapMax = cfg.gapMax || 30000;
+  var firstDelay = cfg.firstDelay || 4000;
+  var showFor = cfg.showFor || 9000;
+  var gapMin = cfg.gapMin || 5000;
+  var gapMax = cfg.gapMax || 15000;
   var position = cfg.position || 'bottom-left';
+
+  // Default checkout URL — uses window.getCheckoutUrl() if loaded (so any
+  // UTM params on the current URL forward through to Thrivecart) and falls
+  // back to the bare URL on pages where that helper isn't present.
+  function checkoutUrl() {
+    if (typeof window.getCheckoutUrl === 'function') return window.getCheckoutUrl();
+    return cfg.ctaUrl || 'https://sales.thewlacademy.com/may-reset/';
+  }
+  var ctaLabel = cfg.ctaLabel || 'Join now';
 
   // ─── styles ─────────────────────────────────────────────────────────────
   var css = ''
@@ -48,6 +57,11 @@
     + '.wla-notif-body{flex:1;min-width:0;}'
     + '.wla-notif-name{font-weight:700;color:#0e2746;}'
     + '.wla-notif-time{color:#888;font-size:11px;margin-top:3px;letter-spacing:0.02em;}'
+    + '.wla-notif-cta{display:inline-block;margin-top:8px;padding:6px 14px;'
+    + 'background:#003060;color:#fff !important;text-decoration:none !important;'
+    + 'border-radius:999px;font-size:12px;font-weight:600;letter-spacing:0.02em;'
+    + 'transition:background .15s,transform .15s;}'
+    + '.wla-notif-cta:hover{background:#091a30;transform:translateY(-1px);}'
     + '.wla-notif-close{position:absolute;top:6px;right:8px;cursor:pointer;color:#bbb;'
     + 'background:none;border:none;font-size:18px;line-height:1;padding:4px;}'
     + '.wla-notif-close:hover{color:#333;}'
@@ -97,6 +111,7 @@
     + '<div class="wla-notif-body">'
     +   '<div><span class="wla-notif-name"></span> <span class="wla-notif-action"></span></div>'
     +   '<div class="wla-notif-time"></div>'
+    +   '<a class="wla-notif-cta" target="_blank" rel="noopener">' + ctaLabel + ' →</a>'
     + '</div>'
     + '<button class="wla-notif-close" aria-label="Dismiss">×</button>';
 
@@ -107,7 +122,14 @@
   var nameEl = el.querySelector('.wla-notif-name');
   var actionEl = el.querySelector('.wla-notif-action');
   var timeEl = el.querySelector('.wla-notif-time');
+  var ctaEl = el.querySelector('.wla-notif-cta');
   var closeBtn = el.querySelector('.wla-notif-close');
+
+  ctaEl.addEventListener('click', function () {
+    if (typeof window.trackCtaClick === 'function') {
+      window.trackCtaClick('notification', ctaLabel);
+    }
+  });
 
   var hideTimer, nextTimer, dismissed = false;
 
@@ -117,6 +139,7 @@
     nameEl.textContent = name;
     actionEl.textContent = 'joined the ' + offer;
     timeEl.textContent = timeAgo(randomMinutesAgo());
+    ctaEl.setAttribute('href', checkoutUrl());
     el.classList.add('show');
     hideTimer = setTimeout(hide, showFor);
   }
