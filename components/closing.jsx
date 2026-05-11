@@ -516,11 +516,11 @@ const Footer = () => (
       © 2026 AW Nutrition Solutions Limited · All rights reserved
     </div>
     <div style={{ display: 'flex', justifyContent: 'center', gap: 24, opacity: 0.7 }}>
-      <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</a>
+      <a href="https://www.wearewla.com/privacy-policy" target="_blank" rel="noopener" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</a>
       <span>·</span>
-      <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Service</a>
+      <a href="https://www.wearewla.com/terms-of-service" target="_blank" rel="noopener" style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Service</a>
       <span>·</span>
-      <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</a>
+      <a href="mailto:support@theweightloss-academy.com" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</a>
     </div>
   </footer>
 );
