@@ -9,8 +9,8 @@ DTSTAMP:20260511T000000Z
 DTSTART;VALUE=DATE:20260525
 DTEND;VALUE=DATE:20260526
 SUMMARY:Free 5 Day Reset · Prep Day
-DESCRIPTION:Bank Holiday Prep Day with Anna Wallace. Shop\, batch cook\, and walk into Tuesday ready. About 60-90 minutes total. The WhatsApp group link is in your welcome email.
-LOCATION:WhatsApp group
+DESCRIPTION:Bank Holiday Prep Day with Anna Wallace. Shop\, batch cook\, and walk into Tuesday ready. About 60-90 minutes total. The Facebook group link is in your welcome email.
+LOCATION:Facebook group
 END:VEVENT
 BEGIN:VEVENT
 UID:free-reset-live-week-2026@wearewla.com
@@ -18,7 +18,7 @@ DTSTAMP:20260511T000000Z
 DTSTART;VALUE=DATE:20260526
 DTEND;VALUE=DATE:20260531
 SUMMARY:Free 5 Day Reset · Live with Anna
-DESCRIPTION:Daily live coaching (around 20-30 min) plus a daily check-in. Sessions are recorded and posted in the WhatsApp group if you can't make them live.
-LOCATION:WhatsApp group
+DESCRIPTION:Daily live coaching (around 20-30 min) plus a daily check-in. Sessions are recorded and posted in the Facebook group if you can't make them live.
+LOCATION:Facebook group
 END:VEVENT
 END:VCALENDAR
