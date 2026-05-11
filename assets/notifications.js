@@ -5,6 +5,7 @@
 //
 // Optional config keys:
 //   offer     (string)   — what each customer "joined". Default: '21 Day Reset'.
+//   action    (string)   — verb phrase before the offer ("joined the", "registered for the"). Default: 'joined the'.
 //   customers (string[]) — override the default 30-name list.
 //   firstDelay (ms)      — delay before first toast. Default: 5000.
 //   showFor   (ms)       — how long each toast stays visible. Default: 6000.
@@ -17,6 +18,7 @@
 
   var cfg = window.WLA_NOTIFICATIONS || {};
   var offer = cfg.offer || '21 Day Reset';
+  var action = cfg.action || 'joined the';
   var customers = (cfg.customers && cfg.customers.length) ? cfg.customers : [
     'Ruth H.', 'Sarah M.', 'Vicky T.', 'Laura B.', 'Lisa P.',
     'Barbara F.', 'Tara K.', 'Lucy W.', 'Jenny T.', 'Carol N.',
@@ -111,7 +113,7 @@
     + '<div class="wla-notif-body">'
     +   '<div><span class="wla-notif-name"></span> <span class="wla-notif-action"></span></div>'
     +   '<div class="wla-notif-time"></div>'
-    +   '<a class="wla-notif-cta" target="_blank" rel="noopener">' + ctaLabel + ' →</a>'
+    +   '<a class="wla-notif-cta">' + ctaLabel + ' →</a>'
     + '</div>'
     + '<button class="wla-notif-close" aria-label="Dismiss">×</button>';
 
@@ -137,9 +139,17 @@
     if (dismissed) return;
     var name = nextCustomer();
     nameEl.textContent = name;
-    actionEl.textContent = 'joined the ' + offer;
+    actionEl.textContent = action + ' ' + offer;
     timeEl.textContent = timeAgo(randomMinutesAgo());
-    ctaEl.setAttribute('href', checkoutUrl());
+    var url = checkoutUrl();
+    ctaEl.setAttribute('href', url);
+    if (url.charAt(0) === '#') {
+      ctaEl.removeAttribute('target');
+      ctaEl.removeAttribute('rel');
+    } else {
+      ctaEl.setAttribute('target', '_blank');
+      ctaEl.setAttribute('rel', 'noopener');
+    }
     el.classList.add('show');
     hideTimer = setTimeout(hide, showFor);
   }
