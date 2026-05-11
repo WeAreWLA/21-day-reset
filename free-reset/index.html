@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Free 5 Day Fat Loss Reset · Women Over 45 — Weight Loss Academy</title>
-<meta name="description" content="A free 5 day fat loss reset designed for women over 45. Live coaching, daily check-ins, batch cook bonus and a private WhatsApp group. Starts Tuesday 26th May." />
+<meta name="description" content="A free 5 day fat loss reset designed for women over 45. Live coaching, daily check-ins, batch cook bonus and a private Facebook group. Starts Tuesday 26th May." />
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -197,12 +197,22 @@ ml('account', '1287540');
   @media (max-width: 980px) { .results-tile { flex: 0 0 calc((100% - 32px) / 3); } .results-nav.prev { left: -10px; } .results-nav.next { right: -10px; } }
   @media (max-width: 640px) { .results-tile { flex: 0 0 calc((100% - 16px) / 2); } .results { padding: 64px 22px; } .results-nav { width: 40px; height: 40px; font-size: 20px; } .results-nav.prev { left: -6px; } .results-nav.next { right: -6px; } }
 
+  .outcomes { padding: 56px 28px 96px; background: var(--cream-2); border-top: 1px solid rgba(14,39,70,0.06); }
+  .outcomes-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .outcome { position: relative; background: var(--paper); border: 1px solid rgba(14,39,70,0.06); border-radius: 16px; padding: 36px 28px 28px; display: flex; flex-direction: column; gap: 12px; transition: transform .2s, box-shadow .2s; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
+  .outcome:hover { transform: translateY(-4px); box-shadow: 0 24px 44px -24px rgba(14,39,70,.22); }
+  .outcome::before { content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 4px; background: var(--coral); border-radius: 0 0 4px 4px; }
+  .outcome .stat { font-family: 'Libre Baskerville', serif; font-size: 32px; line-height: 1.05; color: var(--coral); font-style: italic; font-weight: 500; letter-spacing: -0.01em; }
+  .outcome h3 { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3; }
+  .outcome p { font-size: 15.5px; line-height: 1.55; color: #333333; margin: 0; }
+  @media (max-width: 880px) { .outcomes-grid { grid-template-columns: 1fr; } .outcomes { padding: 48px 22px 72px; } }
+
   .inside { padding: 56px 28px 96px; background: var(--cream); }
   .section-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
   .section-head .eyebrow { display: inline-flex; gap: 12px; justify-content: center; margin-bottom: 18px; }
   .section-head .eyebrow::before { display: none; }
   .section-head .eyebrow::after { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
-  .section-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 4.5vw, 56px); color: var(--navy); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 44px; font-weight: 600; }
+  .section-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 4.5vw, 56px); color: var(--navy); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 56px; font-weight: 600; }
   .section-head h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .section-head p { font-size: 17px; line-height: 1.6; color: #333333; margin: 0; }
   .inside-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -351,7 +361,7 @@ function Nav() {
           <a href="#schedule">Schedule</a>
           <a href="#faq">FAQ</a>
         </div>
-        <a href="#optin" className="nav-cta">Register Free <Arrow /></a>
+        <a href="#optin" className="nav-cta">Register For Free <Arrow /></a>
       </div>
     </nav>
   );
@@ -421,7 +431,7 @@ function Hero() {
           <ul className="bullet-list">
             <li><span className="check"><Check /></span><span><strong>Daily live coaching</strong> from a Registered Nutritionist.</span></li>
             <li><span className="check"><Check /></span><span>Bank Holiday <strong>Prep Day</strong> so you start strong, not stressed.</span></li>
-            <li><span className="check"><Check /></span><span>Private <strong>WhatsApp group</strong> + daily check-ins to keep you going.</span></li>
+            <li><span className="check"><Check /></span><span>Private <strong>Facebook group</strong> + daily check-ins to keep you going.</span></li>
             <li><span className="check"><Check /></span><span>Bonus <strong>Batch Cook &amp; Easy Prep Cookbook</strong> — yours to keep.</span></li>
           </ul>
           <div className="hero-info">
@@ -467,7 +477,7 @@ function Hero() {
               <input type="email" className={errs.email ? 'err' : ''} placeholder="you@example.com" value={vals.email} onChange={onChange('email')} />
             </div>
             <button className="submit-btn" type="submit" disabled={loading}>
-              {loading ? 'Registering…' : <>Register Free <Arrow /></>}
+              {loading ? 'Registering…' : <>Register For Free <Arrow /></>}
             </button>
             <div className="form-foot">
               <span className="item"><Lock /> Secure</span>
@@ -509,6 +519,35 @@ function Problem() {
           <p>None of this is laziness. None of it is willpower. It's hormones, blood sugar, and a body that needs a different approach to the one that worked in your thirties.</p>
           <p>That's exactly what these 5 days are for.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Outcomes() {
+  const items = [
+    { stat: '3–7 lbs',     t: 'Scale shift by Day 5',           d: 'The typical 5-day weight loss women report — without 1,200-calorie plans or cutting out carbs.' },
+    { stat: '72 hrs',      t: 'Sugar cravings handled',          d: 'By Wednesday afternoon the 4pm pull starts to fade and the snack cycle breaks.' },
+    { stat: 'All day',     t: 'Steady, even energy',             d: 'No more afternoon slump, no more post-dinner crash. Your blood sugar evens out.' },
+    { stat: 'Real food',   t: 'No banned lists',                 d: 'Proper meals built around protein, vegetables and the right carbs at the right time.' },
+    { stat: 'Confidence',  t: 'Back in your kitchen',            d: 'A rhythm you understand, can explain, and can repeat next week without thinking about it.' },
+    { stat: '5 days +',    t: 'A reset you can keep going',      d: 'Habits that compound for the next 4 weeks. Not a one-off you start over from on Monday.' },
+  ];
+  return (
+    <section className="outcomes" id="outcomes">
+      <div className="section-head">
+        <span className="eyebrow">What you'll walk away with</span>
+        <h2 className="serif">Your <em>5-day wins.</em></h2>
+        <p>What most women experience by Saturday. Yours will vary — but this is what real previous resetters have reported.</p>
+      </div>
+      <div className="outcomes-grid">
+        {items.map((it, i) => (
+          <div className="outcome" key={i}>
+            <div className="stat">{it.stat}</div>
+            <h3>{it.t}</h3>
+            <p>{it.d}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -609,11 +648,11 @@ function Results() {
 function Inside() {
   const items = [
     { ic: <IcBook />,     t: '5 Day Reset Protocol Guide',        d: 'Your exact eating rhythm, macro balance and meal structure for the 5 days. Designed to cut sugar cravings within 72 hours and put real fat loss on the scale by Day 5.' },
-    { ic: <IcLive />,     t: 'Live Daily Coaching',                d: 'Show up each day for a short live session with me — Q&A, mindset, the day\'s focus, and how to handle the inevitable wobble.' },
+    { ic: <IcLive />,     t: 'Live Daily Coaching',                d: 'Show up each day for a short live session with me. Q&A, mindset, the day\'s focus, and how to handle the inevitable wobble.' },
     { ic: <IcPrep />,     t: 'Bank Holiday Prep Day',              d: 'On Mon 25 May we prep together: shopping list, batch cook, swaps for tricky meals. You start the reset on Tuesday already winning.' },
     { ic: <IcChef />,     t: 'Batch Cook & Easy Prep Cookbook',   d: 'A free bonus cookbook of low-effort, blood-sugar-friendly meals for busy weeks. Yours to keep, regardless.', bonus: true },
     { ic: <IcWhatsApp />, t: 'Private Facebook Group',             d: 'Real-time support, the other women in your cohort, and a place to ask the questions you\'ve been Googling at 11pm.' },
-    { ic: <IcCheckBox />, t: 'Daily Check-Ins',                    d: 'A daily check-in to keep you on track, on plan and accountable. Five days, five wins — not five reasons to start over on Monday.' },
+    { ic: <IcCheckBox />, t: 'Daily Check-Ins',                    d: 'A daily check-in to keep you on track, on plan and accountable. Five days, five wins. Not five reasons to start over on Monday.' },
   ];
   return (
     <section className="inside" id="whats-inside">
@@ -641,7 +680,7 @@ function Why() {
     { t: 'Built for women over 45',     d: 'Designed around midlife hormones, slower recovery and stubborn middle weight, not a 25-year-old metabolism.' },
     { t: 'No 1,200-calorie plans',       d: 'You\'ll eat enough to function, sleep and think. Restriction creates rebounds. We\'re doing the opposite.' },
     { t: 'Real food, no cutting carbs',  d: 'A blood-sugar-friendly plate built around proper meals, not shakes, replacements or "diet versions" of anything.' },
-    { t: 'Coached, not handed a PDF',    d: 'You get live sessions, a WhatsApp group and a daily check-in. Five days, properly supported.' },
+    { t: 'Coached, not handed a PDF',    d: 'You get live sessions, a Facebook group and a daily check-in. Five days, properly supported.' },
   ];
   return (
     <section className="why">
@@ -719,24 +758,24 @@ function Testimonials() {
   const items = [
     { i: 'B', n: 'Betty Wright',     loss: 'Lost 7 lbs · ½" hips, ½" waist, 1" bust',
       q: 'I jumped on the scales this morning — I\'ve lost 7lbs. I am sooo thrilled. I\'ve lost ½ inch from my hips, ½ inch from my waist and 1 inch from my boobs! I\'ve got into winter clothes that were very snug last year and up a notch on my jeans belt. On top of that I am getting more sleep and good quality sleep — who knew I could be a morning person! I\'ve got more energy and I feel like I have a new lease of life. Absolutely amazing.' },
+    { i: 'S', n: 'Sharon Nesbitt',   loss: 'Lost 7 lbs',
+      q: 'I can\'t believe it — I have lost 7lb. I am so amazed considering how my first day went.' },
+    { i: 'H', n: 'Holly Heather',    loss: 'Lost 5 lbs · Sweet cravings handled',
+      q: 'I\'ve always been the chubby one. My sisters used to make me be Pumbaa if we played Lion King together. WLA has given me the motivation to lose weight for good without being on a "diet" for the rest of my life. I am learning more about food and my children are learning from me and making healthy choices. 5lbs down this week — and I learnt I can satisfy my sweet cravings with something healthy and not full of sugar.' },
+    { i: 'D', n: 'Denise Hamilton',  loss: 'Lost 4 lbs · Beat the wine-o\'clock demons',
+      q: '4lbs off in total. I\'ve waited and dreamed of this start for months after failing in the usual slimming groups. Last night I had to fight the demons — it was cold, the fire was lit, and that\'s when I normally have a glass of wine. But I made a hot water with lemon and woke up feeling quite smug about my choices.' },
+    { i: 'M', n: 'Mary Moane',       loss: 'Lost 2.5 lbs · 4.5 inches off',
+      q: 'I\'m 2.5lbs less, but from my waist I have lost 2 inches, from my hips 1 inch and my thighs 1.5 inches. I call that a massive win over 5 days. You have really smashed it with this reset.' },
+    { i: 'J', n: 'Jo Allen',         loss: 'Lost 2 lbs · No Diet Coke, less cravings',
+      q: 'I\'ve lost 2lb which I\'m soooooo happy with. Normally I struggle to lose half a pound a week when I try really hard. My big win — I\'ve had no Diet Coke. Normally I have at least one a day. Less cravings, much more control, and I\'m feeling so much better in myself.' },
+    { i: 'L', n: 'Lorraine Carroll', loss: 'Dress taken in 4 inches',
+      q: 'I\'m so happy I could cry. I\'m off to a masquerade ball next weekend and I needed to get my new dress taken up a few inches — but I\'ve also had to get my dress taken in 4 inches! I haven\'t a clue what I weigh because I\'m not going to be defined by numbers on a scale — but I FEEL AMAZING right now.' },
     { i: 'J', n: 'Joanna Harvey',    loss: 'Walked straight past the sweets',
       q: 'For the very, and I mean very first time in my whole life I walked past the sweets, cakes and bread sections in the supermarket. That\'s the best achievement for me as I always had to buy those just "in case". I have tried everything on this planet before and nothing worked — this works.' },
     { i: 'F', n: 'Fiona Embleton',   loss: 'Healthier family habits, no shame',
       q: 'I\'m inspired about taking accountability but without the shame of not managing to follow strict diets. The WLA plan doesn\'t just work for me, it works for my family too — and I love sharing a healthier way of life with my wee boys.' },
-    { i: 'D', n: 'Denise Hamilton',  loss: 'Lost 4 lbs · Beat the wine-o\'clock demons',
-      q: '4lbs off in total. I\'ve waited and dreamed of this start for months after failing in the usual slimming groups. Last night I had to fight the demons — it was cold, the fire was lit, and that\'s when I normally have a glass of wine. But I made a hot water with lemon and woke up feeling quite smug about my choices.' },
-    { i: 'J', n: 'Jo Allen',         loss: 'Lost 2 lbs · No Diet Coke, less cravings',
-      q: 'I\'ve lost 2lb which I\'m soooooo happy with. Normally I struggle to lose half a pound a week when I try really hard. My big win — I\'ve had no Diet Coke. Normally I have at least one a day. Less cravings, much more control, and I\'m feeling so much better in myself.' },
-    { i: 'H', n: 'Holly Heather',    loss: 'Lost 5 lbs · Sweet cravings handled',
-      q: 'I\'ve always been the chubby one. My sisters used to make me be Pumbaa if we played Lion King together. WLA has given me the motivation to lose weight for good without being on a "diet" for the rest of my life. I am learning more about food and my children are learning from me and making healthy choices. 5lbs down this week — and I learnt I can satisfy my sweet cravings with something healthy and not full of sugar.' },
-    { i: 'L', n: 'Lorraine Carroll', loss: 'Dress taken in 4 inches',
-      q: 'I\'m so happy I could cry. I\'m off to a masquerade ball next weekend and I needed to get my new dress taken up a few inches — but I\'ve also had to get my dress taken in 4 inches! I haven\'t a clue what I weigh because I\'m not going to be defined by numbers on a scale — but I FEEL AMAZING right now.' },
     { i: 'K', n: 'Kathy Roberts',    loss: 'Better sleep · Confidence boost',
       q: 'It has done me the power of good. Sleep patterns improved, my colleagues have mentioned I seem more relaxed. I wore a skirt and top to a function yesterday that hadn\'t fitted in months — felt and looked good. Massive confidence boost. I will be watching from the sidelines — the best thing I did was joining the WLA Academy 4 years ago!' },
-    { i: 'S', n: 'Sharon Nesbitt',   loss: 'Lost 7 lbs',
-      q: 'I can\'t believe it — I have lost 7lb. I am so amazed considering how my first day went.' },
-    { i: 'M', n: 'Mary Moane',       loss: 'Lost 2.5 lbs · 4.5 inches off',
-      q: 'I\'m 2.5lbs less, but from my waist I have lost 2 inches, from my hips 1 inch and my thighs 1.5 inches. I call that a massive win over 5 days. You have really smashed it with this reset.' },
   ];
 
   const trackRef = React.useRef(null);
@@ -832,7 +871,7 @@ function FAQ() {
     { q: 'Do I need any equipment or supplements?',           a: 'Just food, water, and 5 days of commitment.' },
     { q: 'Do I need to count calories or cut out carbs?',     a: 'No to both. You\'ll eat real meals built around protein, vegetables, healthy fats and the right carbs at the right time. No calorie counting, no banned food lists.' },
     { q: 'Is there exercise involved?',                       a: 'No required exercise. Movement is encouraged, a daily walk is ideal, but this isn\'t a workout programme.' },
-    { q: 'I\'m busy / I have to feed a family — will this work?', a: 'Yes. The Prep Day exists exactly for this. The recipes are family-friendly, the batch-cook cookbook makes evenings easier, and the WhatsApp group is full of women navigating the same.' },
+    { q: 'I\'m busy / I have to feed a family — will this work?', a: 'Yes. The Prep Day exists exactly for this. The recipes are family-friendly, the batch-cook cookbook makes evenings easier, and the Facebook group is full of women navigating the same.' },
     { q: 'What if I can\'t make a live session?',             a: 'Every live is recorded and posted in the group within a couple of hours. You can do the whole reset asynchronously if you need to.' },
     { q: 'Will I lose weight in 5 days?',                     a: 'Most women lose between 3–7 lbs in the reset week, but the bigger win is breaking the sugar cycle and restarting the habits that compound for the next 4 weeks.' },
   ];
@@ -863,7 +902,7 @@ function BottomCTA() {
         <span className="doors-pill">Doors close Sun 24 May · Limited spaces</span>
         <h2 className="serif">Come and reset with us, <em>26th–30th May.</em></h2>
         <p>Free this round. Real coaching. A proper structure to break the sugar cycle and feel like yourself again in 5 days.</p>
-        <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Register Free <Arrow /></a>
+        <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Register For Free <Arrow /></a>
       </div>
     </section>
   );
@@ -883,7 +922,7 @@ function Footer() {
 }
 
 function App() {
-  return (<><Nav /><Hero /><Trust /><Problem /><Results /><Inside /><Why /><Schedule /><Founder /><Testimonials /><FAQ /><BottomCTA /><Footer /></>);
+  return (<><Nav /><Hero /><Trust /><Problem /><Outcomes /><Inside /><Why /><Schedule /><Results /><Founder /><Testimonials /><FAQ /><BottomCTA /><Footer /></>);
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
