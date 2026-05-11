@@ -164,13 +164,13 @@ ml('account', '1287540');
   .problem h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .problem p { font-size: 17px; line-height: 1.7; color: #333333; margin: 0 0 18px; }
   .problem .lead-in { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--navy); text-align: center; margin-bottom: 32px; }
-  .problem .signal-eyebrow { text-align: center; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 18px; }
-  .problem .signal-list { list-style: none; padding: 0; margin: 0 auto 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 880px; counter-reset: signal; }
-  .problem .signal-list li { counter-increment: signal; display: flex; gap: 16px; align-items: center; font-family: 'Libre Baskerville', serif; font-size: 16.5px; color: var(--navy); line-height: 1.4; padding: 20px 22px; background: var(--paper); border-radius: 14px; border: 1px solid rgba(14,39,70,0.06); box-shadow: 0 14px 28px -22px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
+  .problem .signal-list { list-style: none; padding: 0; margin: 0 auto 32px; display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 640px; counter-reset: signal; }
+  .problem .signal-list li { counter-increment: signal; display: flex; gap: 18px; align-items: center; font-family: 'Libre Baskerville', serif; font-size: 16.5px; color: var(--navy); line-height: 1.4; padding: 18px 22px; background: var(--paper); border-radius: 14px; border: 1px solid rgba(14,39,70,0.06); box-shadow: 0 14px 28px -22px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
   .problem .signal-list li:hover { transform: translateY(-2px); box-shadow: 0 20px 32px -22px rgba(14,39,70,0.22); }
   .problem .signal-list li::before { content: counter(signal); flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--cream-2); color: var(--coral); font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: 17px; display: grid; place-items: center; }
-  .problem .signal-list li:last-child { grid-column: 1 / -1; justify-content: center; text-align: left; max-width: 580px; margin: 0 auto; width: 100%; }
-  @media (max-width: 720px) { .problem .signal-list { grid-template-columns: 1fr; } .problem .signal-list li:last-child { max-width: none; } }
+  .problem .verdict { margin: 36px auto 0; max-width: 640px; padding: 28px 32px; background: var(--cream-2); border-radius: 14px; border-left: 4px solid var(--coral); }
+  .problem .verdict p { font-family: 'Libre Baskerville', serif; font-size: 18px; line-height: 1.6; color: var(--navy); margin: 0 0 14px; font-style: italic; }
+  .problem .verdict p:last-child { margin-bottom: 0; font-style: normal; font-weight: 700; color: var(--coral); font-size: 20px; }
   @media (max-width: 880px) { .problem { padding: 64px 22px; } }
 
   .inside { padding: 56px 28px 96px; background: var(--cream); }
@@ -252,7 +252,7 @@ ml('account', '1287540');
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-family: "Alegreya Sans", sans-serif; font-weight: 500; color: var(--coral); font-size: 26px; line-height: 1; flex: none; transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p { font-size: 15.5px; line-height: 1.6; color: #333333; margin: 14px 0 0; }
+  .faq-item p { font-size: 17px; line-height: 1.65; color: #333333; margin: 14px 0 0; }
   @media (max-width: 720px) { .faq { padding: 64px 22px; } }
 
   .bottom-cta { padding: 56px 28px 80px; background: var(--paper); text-align: center; border-top: 1px solid rgba(14,39,70,0.06); }
@@ -459,7 +459,6 @@ function Problem() {
       <div className="problem-inner">
         <h2 className="serif">If you're a woman over 45, you've probably noticed <em>everything's changed.</em></h2>
         <p className="lead-in">The weight that used to come off with a bit of effort now won't budge. The plans that used to work feel like a punishment.</p>
-        <div className="signal-eyebrow">Tick the ones that sound like you</div>
         <ul className="signal-list">
           <li>You're eating less than ever, and the scale isn't moving.</li>
           <li>The 4pm sugar pull has become non-negotiable.</li>
@@ -467,8 +466,10 @@ function Problem() {
           <li>Your middle has thickened in a way the rest of you didn't.</li>
           <li>You've started so many "Mondays" you've lost count.</li>
         </ul>
-        <p>None of this is laziness. None of it is willpower. It's hormones, blood sugar, and a body that needs a different approach to the one that worked in your thirties.</p>
-        <p><strong>That's exactly what these 5 days are for.</strong></p>
+        <div className="verdict">
+          <p>None of this is laziness. None of it is willpower. It's hormones, blood sugar, and a body that needs a different approach to the one that worked in your thirties.</p>
+          <p>That's exactly what these 5 days are for.</p>
+        </div>
       </div>
     </section>
   );

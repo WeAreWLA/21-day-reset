@@ -80,12 +80,19 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .steps li .desc { font-size: 15px; line-height: 1.55; color: #333333; }
   .steps li .desc strong { color: var(--navy); }
 
-  .schedule-strip { background: var(--cream-2); border-radius: 14px; padding: 24px 26px; margin: 28px auto 0; max-width: 100%; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .schedule-strip .icon { font-size: 30px; }
-  .schedule-strip .copy { flex: 1; min-width: 220px; }
+  .schedule-strip { background: var(--cream-2); border-radius: 14px; padding: 24px 26px; margin: 28px auto 0; max-width: 100%; display: grid; grid-template-columns: 56px 1fr; column-gap: 20px; row-gap: 18px; align-items: center; }
+  .schedule-strip .icon { font-size: 30px; grid-column: 1; grid-row: 1; }
+  .schedule-strip .copy { grid-column: 2; grid-row: 1; }
   .schedule-strip .copy h3 { font-family: 'Libre Baskerville', serif; color: var(--navy); margin: 0 0 4px; font-size: 17px; font-weight: 700; }
   .schedule-strip .copy p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.4; }
   .schedule-strip .copy p strong { color: var(--ink); }
+  .cal-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 4px; border-top: 1px solid rgba(14,39,70,0.08); margin-top: 4px; padding-top: 16px; }
+  .cal-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff !important; padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; letter-spacing: 0.01em; text-decoration: none !important; transition: background .15s, transform .15s; }
+  .cal-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
+  .cal-btn svg { width: 14px; height: 14px; }
+  .cal-btn.secondary { background: transparent; color: var(--navy) !important; border: 1px solid rgba(14,39,70,0.18); }
+  .cal-btn.secondary:hover { background: rgba(14,39,70,0.05); }
+  @media (max-width: 480px) { .cal-actions { flex-direction: column; align-items: stretch; } .cal-btn { justify-content: center; } }
 
   .small-print { font-size: 13px; color: var(--muted); text-align: center; margin-top: 36px; line-height: 1.55; }
   .small-print a { color: var(--coral); }
@@ -110,7 +117,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   </div>
   <div style="text-align:center"><span class="eyebrow">You're registered</span></div>
   <h1 class="ty-title serif">You're in. Welcome to the <em>5 Day Reset.</em></h1>
-  <p class="ty-sub">Your confirmation email is on its way — it has your <strong>WhatsApp group link</strong> and the <strong>5 Day Reset Protocol Guide</strong>. Please check your inbox now (and spam, just in case) and whitelist the sender so you don't miss the daily lives.</p>
+  <p class="ty-sub">Your confirmation email is on its way. It has your <strong>WhatsApp group link</strong> and the <strong>5 Day Reset Protocol Guide</strong>. Please check your inbox now (and spam, just in case) and whitelist the sender so you don't miss the daily lives.</p>
 
   <div class="email-card">
     <div class="label">The email will say</div>
@@ -124,7 +131,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
       <li>
         <div>
           <div class="title">Confirm your email and whitelist us</div>
-          <div class="desc">Open the email from <strong>Anna Wallace</strong> and reply with a quick "yes" — it tells your inbox we're a real sender so the daily lives don't end up in spam.</div>
+          <div class="desc">Open the email from <strong>Anna Wallace</strong> and reply with a quick "yes". It tells your inbox we're a real sender so the daily lives don't end up in spam.</div>
         </div>
       </li>
       <li>
@@ -136,7 +143,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
       <li>
         <div>
           <div class="title">Block out Bank Holiday Monday for Prep Day</div>
-          <div class="desc">On <strong>Mon 25 May</strong> we prep together — shop, batch cook, and walk into Tuesday already winning. Plan about 60–90 minutes.</div>
+          <div class="desc">On <strong>Mon 25 May</strong> we prep together: shop, batch cook, and walk into Tuesday already winning. Plan about 60–90 minutes.</div>
         </div>
       </li>
     </ol>
@@ -146,6 +153,18 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
       <div class="copy">
         <h3>Save the dates</h3>
         <p><strong>Mon 25 May</strong> Prep Day · <strong>Tue 26 – Sat 30 May</strong> Live Reset</p>
+      </div>
+      <div class="cal-actions">
+        <a class="cal-btn" href="/assets/free-reset.ics" download="free-5-day-reset.ics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+          Add to my calendar (Apple, Outlook)
+        </a>
+        <a class="cal-btn secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Free+5+Day+Reset+%C2%B7+Prep+Day&amp;dates=20260525/20260526&amp;details=Bank+Holiday+Prep+Day+with+Anna+Wallace.+Shop%2C+batch+cook%2C+and+walk+into+Tuesday+ready.+About+60-90+min.+WhatsApp+link+in+your+welcome+email.&amp;location=WhatsApp+group" target="_blank" rel="noopener">
+          Google Calendar: Prep Day
+        </a>
+        <a class="cal-btn secondary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Free+5+Day+Reset+%C2%B7+Live+with+Anna&amp;dates=20260526/20260531&amp;details=Daily+live+coaching+%28around+20-30+min%29+plus+a+daily+check-in.+Sessions+are+recorded+and+posted+in+the+WhatsApp+group+if+you+can%27t+make+them+live.&amp;location=WhatsApp+group" target="_blank" rel="noopener">
+          Google Calendar: Live Week
+        </a>
       </div>
     </div>
   </div>
