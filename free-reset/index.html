@@ -120,9 +120,9 @@ ml('account', '1287540');
   .form-title { font-family: 'Libre Baskerville', serif; font-size: 28px; color: var(--navy); line-height: 1.1; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
   .form-title em { color: var(--coral); font-style: italic; font-weight: 500; }
   .form-bullets { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 14px; }
-  .form-bullets li { font-family: 'Libre Baskerville', serif; font-size: 22px; line-height: 1.25; color: var(--navy); font-weight: 600; letter-spacing: -0.01em; display: flex; align-items: flex-start; gap: 14px; }
-  .form-bullets li::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); margin-top: 11px; }
-  .form-bullets em { color: #F79F83; font-style: italic; font-weight: 500; }
+  .form-bullets li { font-family: 'Libre Baskerville', serif; font-size: 22px; line-height: 1.25; color: var(--navy); font-weight: 600; letter-spacing: -0.01em; position: relative; padding-left: 22px; }
+  .form-bullets li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+  .form-bullets em { color: var(--coral); font-style: italic; font-weight: 500; }
   .form-sub { font-size: 14.5px; color: #333333; line-height: 1.5; margin: 0 0 22px; }
   .price-strike { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); margin-bottom: 18px; }
   .price-strike .was { text-decoration: line-through; }
@@ -154,8 +154,8 @@ ml('account', '1287540');
     .form-title { font-size: 22px; line-height: 1.2; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 18px; color: var(--navy); }
     .form-title em { color: var(--coral); font-style: italic; font-weight: 500; }
     .form-bullets { margin: 0 0 18px; gap: 12px; }
-    .form-bullets li { font-size: 20px; }
-    .form-bullets li::before { margin-top: 10px; }
+    .form-bullets li { font-size: 20px; padding-left: 20px; }
+    .form-bullets li::before { top: 10px; }
   }
 
   .trust { background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); border-bottom: 1px solid rgba(14,39,70,0.06); padding: 30px 28px; }
