@@ -147,15 +147,30 @@ ml('account', '1287540');
     .trust-item .stars { font-size: 12px; letter-spacing: 1px; }
   }
 
+  .hero-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 520px; margin: 0; }
+  .hero-info-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 24px -20px rgba(14,39,70,0.18); }
+  .hero-info-card .ic { width: 36px; height: 36px; flex: none; border-radius: 9px; background: var(--cream-2); color: var(--coral); display: grid; place-items: center; }
+  .hero-info-card .ic svg { width: 18px; height: 18px; }
+  .hero-info-card .label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; line-height: 1; margin-bottom: 5px; }
+  .hero-info-card .value { font-family: 'Libre Baskerville', serif; font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.15; }
+  .hero-info-card .value .accent { color: var(--coral); font-style: italic; font-weight: 500; }
+  .hero-info-card .small { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.3; }
+  .hero-info-card .strike { text-decoration: line-through; }
+  @media (max-width: 980px) { .hero-info { grid-template-columns: 1fr; } }
+
   .problem { padding: 96px 28px; background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); }
   .problem-inner { max-width: 880px; margin: 0 auto; }
   .problem h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 4vw, 48px); color: var(--navy); line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 28px; font-weight: 600; text-align: center; }
   .problem h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .problem p { font-size: 17px; line-height: 1.7; color: #333333; margin: 0 0 18px; }
   .problem .lead-in { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--navy); text-align: center; margin-bottom: 32px; }
-  .problem .signal-list { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; max-width: 720px; margin-left: auto; margin-right: auto; }
-  .problem .signal-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 16px; color: #333333; line-height: 1.5; padding: 14px 18px; background: var(--cream); border-radius: 10px; border: 1px solid rgba(14,39,70,0.05); }
-  .problem .signal-list li::before { content: '—'; color: var(--coral); font-weight: 700; flex: none; }
+  .problem .signal-eyebrow { text-align: center; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 18px; }
+  .problem .signal-list { list-style: none; padding: 0; margin: 0 auto 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 880px; counter-reset: signal; }
+  .problem .signal-list li { counter-increment: signal; display: flex; gap: 16px; align-items: center; font-family: 'Libre Baskerville', serif; font-size: 16.5px; color: var(--navy); line-height: 1.4; padding: 20px 22px; background: var(--paper); border-radius: 14px; border: 1px solid rgba(14,39,70,0.06); box-shadow: 0 14px 28px -22px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
+  .problem .signal-list li:hover { transform: translateY(-2px); box-shadow: 0 20px 32px -22px rgba(14,39,70,0.22); }
+  .problem .signal-list li::before { content: counter(signal); flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--cream-2); color: var(--coral); font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: 17px; display: grid; place-items: center; }
+  .problem .signal-list li:last-child { grid-column: 1 / -1; justify-content: center; text-align: left; max-width: 580px; margin: 0 auto; width: 100%; }
+  @media (max-width: 720px) { .problem .signal-list { grid-template-columns: 1fr; } .problem .signal-list li:last-child { max-width: none; } }
   @media (max-width: 880px) { .problem { padding: 64px 22px; } }
 
   .inside { padding: 56px 28px 96px; background: var(--cream); }
@@ -203,8 +218,10 @@ ml('account', '1287540');
   .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .signature-tag { position: absolute; bottom: 18px; left: 18px; background: rgba(255,255,255,0.92); backdrop-filter: blur(6px); padding: 10px 14px; border-radius: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy); font-size: 14px; line-height: 1.2; }
   .signature-tag .name { color: var(--coral); display: block; font-size: 16px; font-weight: 500; }
-  .founder h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 3.6vw, 46px); color: var(--navy); line-height: 1.05; margin: 0 0 24px; font-weight: 600; letter-spacing: -0.01em; }
+  .founder h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 3.6vw, 46px); color: var(--navy); line-height: 1.1; margin: 0 0 24px; font-weight: 600; letter-spacing: -0.01em; }
   .founder h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .founder h2 .founder-intro { display: block; font-family: "Alegreya Sans", sans-serif; font-size: 14px; font-style: normal; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); margin-bottom: 18px; }
+  .founder h2 .founder-intro::after { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--coral); vertical-align: middle; margin-left: 12px; transform: translateY(-2px); }
   .founder .body p { font-size: 16.5px; line-height: 1.7; color: #333333; margin: 0 0 16px; }
   .founder .body p:first-of-type::first-letter { font-family: 'Libre Baskerville', serif; font-size: 56px; float: left; line-height: 0.85; padding: 6px 12px 0 0; color: var(--coral); font-weight: 600; }
   .signature { margin-top: 28px; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: 28px; }
@@ -367,10 +384,24 @@ function Hero() {
             <li><span className="check"><Check /></span><span>Private <strong>WhatsApp group</strong> + daily check-ins to keep you going.</span></li>
             <li><span className="check"><Check /></span><span>Bonus <strong>Batch Cook &amp; Easy Prep Cookbook</strong> — yours to keep.</span></li>
           </ul>
-          <p className="italic" style={{fontFamily: "'Libre Baskerville', serif", fontStyle: 'italic', fontSize: 16, lineHeight: 1.55, color: '#333333', margin: '-12px 0 0', maxWidth: 520}}>
-            Starts Tuesday 26th May (with a bonus Prep Day on Bank Holiday Monday).<br />
-            Free — usually £47.
-          </p>
+          <div className="hero-info">
+            <div className="hero-info-card">
+              <div className="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></div>
+              <div>
+                <div className="label">Starts</div>
+                <div className="value">Tue 26 May</div>
+                <div className="small">+ Prep Day, Bank Hol Mon</div>
+              </div>
+            </div>
+            <div className="hero-info-card">
+              <div className="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.6 13.4L13 21l-9-9V4h8z"/><circle cx="8" cy="8" r="1.5"/></svg></div>
+              <div>
+                <div className="label">Price</div>
+                <div className="value"><span className="accent">Free this round</span></div>
+                <div className="small"><span className="strike">Usually £47</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -428,6 +459,7 @@ function Problem() {
       <div className="problem-inner">
         <h2 className="serif">If you're a woman over 45, you've probably noticed <em>everything's changed.</em></h2>
         <p className="lead-in">The weight that used to come off with a bit of effort now won't budge. The plans that used to work feel like a punishment.</p>
+        <div className="signal-eyebrow">Tick the ones that sound like you</div>
         <ul className="signal-list">
           <li>You're eating less than ever, and the scale isn't moving.</li>
           <li>The 4pm sugar pull has become non-negotiable.</li>
@@ -538,8 +570,7 @@ function Founder() {
           <div className="signature-tag"><span className="name">Anna Wallace</span>BSc Food &amp; Nutrition<br />Registered Associate Nutritionist</div>
         </div>
         <div>
-          <span className="eyebrow">Who's running this</span>
-          <h2 className="serif">Hi, I'm Anna — and this is the reset I built for the women <em>I've spent 10 years coaching.</em></h2>
+          <h2 className="serif"><span className="founder-intro">Hi, I'm Anna</span>This is the reset I built from <em>10 years coaching women in midlife.</em></h2>
           <div className="body">
             <p>I'm a Registered Associate Nutritionist (BSc Food &amp; Nutrition) and the founder of The Weight Loss Academy. Over the last 10 years my team and I have supported over <strong>50,000 women</strong>, the majority of them in midlife, to lose weight without 1,200-calorie plans, banned food lists or starting over every Monday.</p>
             <p>This 5 Day Reset is the entry point. It's the exact rhythm I use with paying clients to break the sugar cycle in 72 hours, settle blood sugar, and put a structure in place that actually fits a midlife week.</p>
