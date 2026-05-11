@@ -133,18 +133,16 @@ ml('account', '1287540');
   }
 
   .trust { background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); border-bottom: 1px solid rgba(14,39,70,0.06); padding: 30px 28px; }
-  .trust-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-around; gap: 32px; flex-wrap: wrap; }
-  .trust-item { display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--ink); }
-  .trust-item .num { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: 30px; line-height: 1; }
-  .trust-item .lab { color: var(--muted); font-size: 14px; line-height: 1.35; }
-  .stars { color: var(--coral); letter-spacing: 1.5px; font-size: 16px; }
+  .trust-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-around; gap: 48px; flex-wrap: wrap; }
+  .trust-item { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+  .trust-item .num { font-family: 'Libre Baskerville', serif; font-weight: 600; color: var(--navy); font-size: 32px; line-height: 1; letter-spacing: -0.01em; }
+  .trust-item .lab { color: var(--muted); font-size: 12px; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
   @media (max-width: 640px) {
     .trust { padding: 22px 12px; }
     .trust-inner { flex-direction: row; gap: 8px; justify-content: space-between; flex-wrap: nowrap; }
-    .trust-item { flex-direction: column; text-align: center; gap: 6px; flex: 1 1 0; align-items: center; }
-    .trust-item .num { font-size: 24px; }
-    .trust-item .lab { font-size: 11px; line-height: 1.35; }
-    .trust-item .stars { font-size: 12px; letter-spacing: 1px; }
+    .trust-item { flex: 1 1 0; }
+    .trust-item .num { font-size: 22px; }
+    .trust-item .lab { font-size: 10px; letter-spacing: 0.06em; }
   }
 
   .hero-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 520px; margin: 0; }
@@ -163,7 +161,9 @@ ml('account', '1287540');
   .problem h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 4vw, 48px); color: var(--navy); line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 28px; font-weight: 600; text-align: center; }
   .problem h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .problem p { font-size: 17px; line-height: 1.7; color: #333333; margin: 0 0 18px; }
-  .problem .lead-in { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--navy); text-align: center; margin-bottom: 32px; }
+  .problem .lead-in { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--navy); text-align: center; margin-bottom: 32px; line-height: 1.55; }
+  .problem .lead-in .break { display: block; }
+  @media (max-width: 720px) { .problem .lead-in .break { display: inline; } }
   .problem .signal-list { list-style: none; padding: 0; margin: 0 auto 32px; display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 640px; counter-reset: signal; }
   .problem .signal-list li { counter-increment: signal; display: flex; gap: 18px; align-items: center; font-family: 'Libre Baskerville', serif; font-size: 16.5px; color: var(--navy); line-height: 1.4; padding: 18px 22px; background: var(--paper); border-radius: 14px; border: 1px solid rgba(14,39,70,0.06); box-shadow: 0 14px 28px -22px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
   .problem .signal-list li:hover { transform: translateY(-2px); box-shadow: 0 20px 32px -22px rgba(14,39,70,0.22); }
@@ -387,8 +387,8 @@ function Hero() {
     <section className="hero" id="optin">
       <div className="hero-text">
         <div className="hero-headline">
-          <span className="eyebrow">Women Over 45 Edition · Live 26–30 May</span>
-          <h1 className="h1 serif">The 5 Day<br />Fat Loss Reset<span className="accent italic">for women over 45</span></h1>
+          <span className="eyebrow">Live 26th–30th May · Limited spaces</span>
+          <h1 className="h1 serif">The 5 Day<br />Fat Loss Reset<span className="accent italic">for women<br />over 45</span></h1>
         </div>
         <div className="hero-supporting">
           <p className="lede">A free 5-day live reset built to <strong>lose your first few pounds, kill the cravings and feel like yourself again.</strong></p>
@@ -405,7 +405,6 @@ function Hero() {
               <div>
                 <div className="label">Starts</div>
                 <div className="value">Tue 26 May</div>
-                <div className="small">+ Prep Day, Bank Hol Mon</div>
               </div>
             </div>
             <div className="hero-info-card">
@@ -422,7 +421,7 @@ function Hero() {
 
       <div className="form-wrap">
         <div className="form-card">
-          <span className="form-tag"><span className="pulse" />Free this round · Starts Tue 26 May</span>
+          <span className="form-tag"><span className="pulse" />Free this round · Limited spaces · Starts Tue 26 May</span>
           <h2 className="form-title serif">Register for the <em>Free 5 Day Reset</em></h2>
           <p className="form-sub">Pop your details in and we'll send everything — guide, schedule and WhatsApp link.</p>
           <div className="price-strike">
@@ -460,9 +459,9 @@ function Trust() {
   return (
     <div className="trust">
       <div className="trust-inner">
-        <div className="trust-item"><div className="num">50,000+</div><div className="lab">women supported<br/>worldwide</div></div>
-        <div className="trust-item"><div className="num">10</div><div className="lab">years coaching<br/>midlife fat loss</div></div>
-        <div className="trust-item"><div className="num">4.9</div><div className="lab"><span className="stars">★★★★★</span><br/>rated by past clients</div></div>
+        <div className="trust-item"><div className="num">50,000+</div><div className="lab">WOMEN SUPPORTED</div></div>
+        <div className="trust-item"><div className="num">10 yrs</div><div className="lab">CLINICAL PRACTICE</div></div>
+        <div className="trust-item"><div className="num">4.9 ★</div><div className="lab">MEMBER RATING</div></div>
       </div>
     </div>
   );
@@ -473,12 +472,12 @@ function Problem() {
     <section className="problem">
       <div className="problem-inner">
         <h2 className="serif">If you're a woman over 45, you've probably noticed <em>everything's changed.</em></h2>
-        <p className="lead-in">The weight that used to come off with a bit of effort now won't budge. The plans that used to work feel like a punishment.</p>
+        <p className="lead-in">The weight that used to come off with a bit of effort now won't budge.<span className="break"> </span>The plans that used to work feel like a punishment.</p>
         <ul className="signal-list">
           <li>You're eating less than ever, and the scale isn't moving.</li>
           <li>The 4pm sugar pull has become non-negotiable.</li>
           <li>Energy crashes mid-afternoon and again after dinner.</li>
-          <li>Your middle has thickened in a way the rest of you didn't.</li>
+          <li>Your favourite jeans feel different, but the scale isn't telling the full story.</li>
           <li>You've started so many "Mondays" you've lost count.</li>
         </ul>
         <div className="verdict">
@@ -741,7 +740,7 @@ function BottomCTA() {
   return (
     <section className="bottom-cta">
       <div className="bottom-cta-inner">
-        <span className="doors-pill">Doors close Sun 24 May</span>
+        <span className="doors-pill">Doors close Sun 24 May · Limited spaces</span>
         <h2 className="serif">Come and reset with us, <em>26–30 May.</em></h2>
         <p>Free this round. Real coaching. A proper structure to break the sugar cycle and feel like yourself again in 5 days.</p>
         <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Register Free <Arrow /></a>
