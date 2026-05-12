@@ -123,7 +123,7 @@ ml('account', '1287540');
   .form-trust { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(14,39,70,0.08); }
   .form-trust-top { display: inline-flex; align-items: center; gap: 12px; background: var(--cream); border: 1px solid rgba(14,39,70,0.08); border-radius: 999px; padding: 6px 18px 6px 8px; margin-bottom: 12px; max-width: 100%; }
   .form-trust-avatars { display: flex; flex: none; }
-  .form-trust-avatars .a { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--coral), var(--coral-soft)); border: 2px solid var(--paper); display: grid; place-items: center; color: #fff; font-family: 'Libre Baskerville', serif; font-weight: 600; font-size: 15px; margin-left: -12px; box-shadow: 0 4px 10px -4px rgba(217,119,87,0.4); background-size: cover; background-position: center; }
+  .form-trust-avatars .a { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--paper); object-fit: cover; display: block; margin-left: -12px; box-shadow: 0 4px 10px -4px rgba(217,119,87,0.4); background: linear-gradient(135deg, var(--coral), var(--coral-soft)); }
   .form-trust-avatars .a:first-child { margin-left: 0; }
   .form-trust-text { font-size: 14px; line-height: 1.3; color: var(--navy); text-align: left; }
   .form-trust-text strong { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 16px; display: block; }
@@ -167,7 +167,7 @@ ml('account', '1287540');
     .form-trust { margin-bottom: 18px; padding-bottom: 18px; }
     .form-card { padding: 24px 18px 22px; }
     .form-trust-top { padding: 5px 14px 5px 6px; gap: 10px; }
-    .form-trust-avatars .a { width: 30px; height: 30px; font-size: 12px; margin-left: -10px; border-width: 2px; }
+    .form-trust-avatars .a { width: 30px; height: 30px; margin-left: -10px; }
     .form-trust-text { font-size: 12px; line-height: 1.3; }
     .form-trust-text strong { font-size: 14px; }
   }
@@ -503,10 +503,10 @@ function Hero() {
           <div className="form-trust" style={{marginBottom: 6}}>
             <div className="form-trust-top">
               <div className="form-trust-avatars" aria-hidden="true">
-                <div className="a">B</div>
-                <div className="a">S</div>
-                <div className="a">H</div>
-                <div className="a">M</div>
+                <img className="a" src="/assets/avatar-1.png" alt="" loading="lazy" decoding="async" />
+                <img className="a" src="/assets/avatar-2.png" alt="" loading="lazy" decoding="async" />
+                <img className="a" src="/assets/avatar-3.png" alt="" loading="lazy" decoding="async" />
+                <img className="a" src="/assets/avatar-4.png" alt="" loading="lazy" decoding="async" />
               </div>
               <div className="form-trust-text">
                 <strong>50,000+ women</strong>
