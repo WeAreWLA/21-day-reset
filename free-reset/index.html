@@ -120,6 +120,17 @@ ml('account', '1287540');
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(46,125,91,.5); } 70% { box-shadow: 0 0 0 8px rgba(46,125,91,0); } 100% { box-shadow: 0 0 0 0 rgba(46,125,91,0); } }
   .form-title { font-family: 'Libre Baskerville', serif; font-size: 28px; color: var(--navy); line-height: 1.1; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
   .form-title em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .form-trust { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(14,39,70,0.08); }
+  .form-trust-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .form-trust-avatars { display: flex; flex: none; }
+  .form-trust-avatars .a { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--coral), var(--coral-soft)); border: 2px solid var(--paper); display: grid; place-items: center; color: #fff; font-family: 'Libre Baskerville', serif; font-weight: 600; font-size: 14px; margin-left: -10px; box-shadow: 0 4px 10px -4px rgba(217,119,87,0.4); background-size: cover; background-position: center; }
+  .form-trust-avatars .a:first-child { margin-left: 0; }
+  .form-trust-text { font-size: 14px; line-height: 1.4; color: var(--navy); }
+  .form-trust-text strong { font-family: 'Libre Baskerville', serif; font-weight: 700; }
+  .form-trust-row { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4; color: #333; margin-top: 10px; }
+  .form-trust-row:first-of-type { margin-top: 0; }
+  .form-trust-icon { color: var(--coral); flex: none; display: inline-flex; line-height: 0; margin-top: 1px; }
+  .form-trust-row strong { color: var(--navy); font-weight: 700; }
   .form-bullets { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
   .form-bullets li { font-family: 'Libre Baskerville', serif; font-size: 22px; line-height: 1.25; color: var(--navy); font-weight: 600; letter-spacing: -0.01em; position: relative; padding-left: 22px; }
   .form-bullets li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
@@ -153,6 +164,8 @@ ml('account', '1287540');
     .form-bullets { margin: 20px 0 0; gap: 12px; }
     .form-bullets li { font-size: 20px; padding-left: 20px; }
     .form-bullets li::before { top: 10px; }
+    .form-card .form-title { display: none; }
+    .form-trust { margin-bottom: 18px; padding-bottom: 18px; }
   }
 
   .trust { background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); border-bottom: 1px solid rgba(14,39,70,0.06); padding: 30px 28px; }
@@ -448,7 +461,7 @@ function Hero() {
           <span className="eyebrow">Live 26th–30th May · Limited spaces</span>
           <h1 className="h1 serif">The 5 Day<br />Fat Loss Reset<span className="accent italic">for women 45+</span></h1>
           <ul className="form-bullets">
-            <li>Lose your <em>first few pounds</em></li>
+            <li>Kickstart your <em>weight loss</em></li>
             <li>Gain energy &amp; <em>confidence</em></li>
             <li>Reduce <em>cravings</em></li>
           </ul>
@@ -483,6 +496,34 @@ function Hero() {
 
       <div className="form-wrap">
         <div className="form-card">
+          <div className="form-trust">
+            <div className="form-trust-top">
+              <div className="form-trust-avatars" aria-hidden="true">
+                <div className="a">B</div>
+                <div className="a">S</div>
+                <div className="a">H</div>
+                <div className="a">M</div>
+              </div>
+              <div className="form-trust-text">
+                <strong>50,000+ women</strong> have joined The Weight Loss Academy
+              </div>
+            </div>
+            <div className="form-trust-row">
+              <span className="form-trust-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="20 12 20 22 4 22 4 12" />
+                  <rect x="2" y="7" width="20" height="5" />
+                  <line x1="12" y1="22" x2="12" y2="7" />
+                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                </svg>
+              </span>
+              <span>Free this round</span>
+            </div>
+            <div className="form-trust-row">
+              Limited spaces. Only available until <strong>30th May</strong>.
+            </div>
+          </div>
           <h2 className="form-title serif">Register for the <em>Free 5 Day Reset</em></h2>
           <div className="price-strike">
             <span className="was">Usually £47</span>
