@@ -127,7 +127,7 @@ ml('account', '1287540');
   .form-trust-avatars .a:first-child { margin-left: 0; }
   .form-trust-text { font-size: 12.5px; line-height: 1.25; color: var(--navy); text-align: left; }
   .form-trust-text strong { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 14px; display: block; }
-  .form-trust-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(217,119,87,0.12); color: var(--coral); font-weight: 700; font-size: 13px; letter-spacing: 0.02em; padding: 6px 14px; border-radius: 999px; margin-bottom: 10px; }
+  .form-trust-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(46,125,91,0.10); color: var(--ok); font-weight: 700; font-size: 13px; letter-spacing: 0.02em; padding: 6px 14px; border-radius: 999px; margin-bottom: 10px; }
   .form-trust-pill svg { width: 14px; height: 14px; flex: none; }
   .form-trust-line { font-size: 13.5px; line-height: 1.4; color: #333; }
   .form-trust-line strong { color: var(--navy); font-weight: 700; }
@@ -524,10 +524,6 @@ function Hero() {
             </div>
           </div>
           <h2 className="form-title serif">Register for the <em>Free 5 Day Reset</em></h2>
-          <div className="price-strike">
-            <span className="was">Usually £47</span>
-            <span className="free">Free this round</span>
-          </div>
           <form onSubmit={onSubmit} noValidate>
             <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
             <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
