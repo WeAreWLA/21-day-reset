@@ -120,7 +120,7 @@ ml('account', '1287540');
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(46,125,91,.5); } 70% { box-shadow: 0 0 0 8px rgba(46,125,91,0); } 100% { box-shadow: 0 0 0 0 rgba(46,125,91,0); } }
   .form-title { font-family: 'Libre Baskerville', serif; font-size: 28px; color: var(--navy); line-height: 1.1; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
   .form-title em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .form-trust { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(14,39,70,0.08); }
+  .form-trust { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(14,39,70,0.08); }
   .form-trust-top { display: inline-flex; align-items: center; gap: 12px; background: var(--cream); border: 1px solid rgba(14,39,70,0.08); border-radius: 999px; padding: 6px 18px 6px 8px; margin-bottom: 12px; max-width: 100%; }
   .form-trust-avatars { display: flex; flex: none; }
   .form-trust-avatars .a { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--paper); object-fit: cover; display: block; margin-left: -12px; box-shadow: 0 4px 10px -4px rgba(217,119,87,0.4); background: linear-gradient(135deg, var(--coral), var(--coral-soft)); }
@@ -168,7 +168,7 @@ ml('account', '1287540');
     .form-bullets { margin: 32px 0 0; gap: 12px; }
     .form-bullets li { font-size: 20px; padding-left: 20px; }
     .form-bullets li::before { top: 10px; }
-    .form-trust { margin-bottom: 18px; padding-bottom: 18px; }
+    .form-trust { margin-top: 18px; padding-top: 18px; }
     .form-card { padding: 24px 18px 22px; }
     .form-trust-top { padding: 5px 14px 5px 6px; gap: 10px; }
     .form-trust-avatars .a { width: 30px; height: 30px; margin-left: -10px; }
@@ -504,7 +504,28 @@ function Hero() {
 
       <div className="form-wrap">
         <div className="form-card">
-          <div className="form-trust" style={{marginBottom: 6}}>
+          <form onSubmit={onSubmit} noValidate>
+            <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
+            <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
+            <input type="hidden" name="fields[utm_campaign]" value={utm.utm_campaign} readOnly />
+            <input type="hidden" name="fields[utm_content]"  value={utm.utm_content}  readOnly />
+            <div className="field">
+              <label>First Name</label>
+              <input className={errs.first ? 'err' : ''} placeholder="Your first name" value={vals.first} onChange={onChange('first')} />
+            </div>
+            <div className="field">
+              <label>Email Address</label>
+              <input type="email" className={errs.email ? 'err' : ''} placeholder="you@example.com" value={vals.email} onChange={onChange('email')} />
+            </div>
+            <button className="submit-btn" type="submit" disabled={loading}>
+              {loading ? 'Registering…' : <>Register For Free <Arrow /></>}
+            </button>
+            <div className="form-foot">
+              <span className="item"><Lock /> Secure</span>
+              <span className="item"><Mail /> No spam, ever</span>
+            </div>
+          </form>
+          <div className="form-trust">
             <div className="form-trust-top">
               <div className="form-trust-avatars" aria-hidden="true">
                 <img className="a" src="/assets/avatar-1.jpg" alt="" loading="lazy" decoding="async" />
@@ -528,30 +549,9 @@ function Hero() {
               Free this round
             </div>
             <div className="form-trust-line">
-              Limited spaces available · Starts <strong>26th May</strong>
+              Limited spaces available · Starts <strong>Tuesday 26th May</strong>
             </div>
           </div>
-          <form onSubmit={onSubmit} noValidate>
-            <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
-            <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
-            <input type="hidden" name="fields[utm_campaign]" value={utm.utm_campaign} readOnly />
-            <input type="hidden" name="fields[utm_content]"  value={utm.utm_content}  readOnly />
-            <div className="field">
-              <label>First Name</label>
-              <input className={errs.first ? 'err' : ''} placeholder="Your first name" value={vals.first} onChange={onChange('first')} />
-            </div>
-            <div className="field">
-              <label>Email Address</label>
-              <input type="email" className={errs.email ? 'err' : ''} placeholder="you@example.com" value={vals.email} onChange={onChange('email')} />
-            </div>
-            <button className="submit-btn" type="submit" disabled={loading}>
-              {loading ? 'Registering…' : <>Register For Free <Arrow /></>}
-            </button>
-            <div className="form-foot">
-              <span className="item"><Lock /> Secure</span>
-              <span className="item"><Mail /> No spam, ever</span>
-            </div>
-          </form>
         </div>
       </div>
     </section>
@@ -716,7 +716,7 @@ function Inside() {
   const items = [
     { ic: <IcBook />,     t: '5 Day Reset Protocol Guide',        d: 'Your exact eating rhythm, macro balance and meal structure for the 5 days. Designed to cut sugar cravings within 72 hours and put real fat loss on the scale by Day 5.' },
     { ic: <IcLive />,     t: 'Live Daily Coaching',                d: 'Show up each day for a short live session with me. Q&A, mindset, the day\'s focus, and how to handle the inevitable wobble.' },
-    { ic: <IcPrep />,     t: 'Bank Holiday Prep Day',              d: 'On Mon 25 May we prep together: shopping list, batch cook, swaps for tricky meals. You start the reset on Tuesday already winning.' },
+    { ic: <IcPrep />,     t: 'Bank Holiday Prep Day',              d: 'On Mon 25th May we prep together: shopping list, batch cook, swaps for tricky meals. You start the reset on Tuesday already winning.' },
     { ic: <IcChef />,     t: 'Batch Cook Recipe Cookbook',   d: 'A free bonus cookbook of low-effort, blood-sugar-friendly meals for busy weeks. Yours to keep, regardless.', bonus: true },
     { ic: <IcWhatsApp />, t: 'Private Facebook Group',             d: 'Real-time support, the other women in your cohort, and a place to ask the questions you\'ve been Googling at 11pm.' },
     { ic: <IcCheckBox />, t: 'Daily Check-Ins',                    d: 'A daily check-in to keep you on track, on plan and accountable. Five days, five wins. Not five reasons to start over on Monday.' },
@@ -771,12 +771,12 @@ function Why() {
 
 function Schedule() {
   const days = [
-    { weekday: 'Mon', date: '25 May', label: 'Prep Day',  what: 'Bank Holiday shopping, batch cook and meal prep so you walk into Tuesday ready. No live session today.', prep: true },
-    { weekday: 'Tue', date: '26 May', label: 'Day 1',     what: 'Reset begins. Live kickoff coaching call and the protocol explained in plain English.' },
-    { weekday: 'Wed', date: '27 May', label: 'Day 2',     what: 'Blood sugar starts to even out. The 4pm sugar pull begins to fade and you notice.' },
-    { weekday: 'Thu', date: '28 May', label: 'Day 3',     what: 'Lower cravings. Energy steadier. Daily live + check-in to keep momentum honest.' },
-    { weekday: 'Fri', date: '29 May', label: 'Day 4',     what: 'Habits land. Live coaching on the "what next" question so this doesn\'t end on Saturday.' },
-    { weekday: 'Sat', date: '30 May', label: 'Wrap',      what: 'Final live, results, and exactly how to carry the next 4 weeks without starting over.' },
+    { weekday: 'Mon', date: '25th May', label: 'Prep Day',  what: 'Bank Holiday shopping, batch cook and meal prep so you walk into Tuesday ready. No live session today.', prep: true },
+    { weekday: 'Tue', date: '26th May', label: 'Day 1',     what: 'Reset begins. Live kickoff coaching call and the protocol explained in plain English.' },
+    { weekday: 'Wed', date: '27th May', label: 'Day 2',     what: 'Blood sugar starts to even out. The 4pm sugar pull begins to fade and you notice.' },
+    { weekday: 'Thu', date: '28th May', label: 'Day 3',     what: 'Lower cravings. Energy steadier. Daily live + check-in to keep momentum honest.' },
+    { weekday: 'Fri', date: '29th May', label: 'Day 4',     what: 'Habits land. Live coaching on the "what next" question so this doesn\'t end on Saturday.' },
+    { weekday: 'Sat', date: '30th May', label: 'Wrap',      what: 'Final live, results, and exactly how to carry the next 4 weeks without starting over.' },
   ];
   return (
     <section className="schedule" id="schedule">
