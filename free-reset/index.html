@@ -120,7 +120,10 @@ ml('account', '1287540');
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(46,125,91,.5); } 70% { box-shadow: 0 0 0 8px rgba(46,125,91,0); } 100% { box-shadow: 0 0 0 0 rgba(46,125,91,0); } }
   .form-title { font-family: 'Libre Baskerville', serif; font-size: 28px; color: var(--navy); line-height: 1.1; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
   .form-title em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .form-trust { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(14,39,70,0.08); }
+  .form-trust-above { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(14,39,70,0.08); }
+  .form-trust-below { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(14,39,70,0.08); }
+  .form-trust-above .form-trust-pill { margin-bottom: 10px; }
+  .form-trust-above .form-trust-line { margin-bottom: 0; }
   .form-trust-top { display: inline-flex; align-items: center; gap: 12px; background: var(--cream); border: 1px solid rgba(14,39,70,0.08); border-radius: 999px; padding: 6px 18px 6px 8px; margin-bottom: 12px; max-width: 100%; }
   .form-trust-avatars { display: flex; flex: none; }
   .form-trust-avatars .a { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--paper); object-fit: cover; display: block; margin-left: -12px; box-shadow: 0 4px 10px -4px rgba(217,119,87,0.4); background: linear-gradient(135deg, var(--coral), var(--coral-soft)); }
@@ -168,7 +171,8 @@ ml('account', '1287540');
     .form-bullets { margin: 32px 0 0; gap: 12px; }
     .form-bullets li { font-size: 20px; padding-left: 20px; }
     .form-bullets li::before { top: 10px; }
-    .form-trust { margin-top: 18px; padding-top: 18px; }
+    .form-trust-above { margin-bottom: 16px; padding-bottom: 16px; }
+    .form-trust-below { margin-top: 18px; padding-top: 18px; }
     .form-card { padding: 24px 18px 22px; }
     .form-trust-top { padding: 5px 14px 5px 6px; gap: 10px; }
     .form-trust-avatars .a { width: 30px; height: 30px; margin-left: -10px; }
@@ -504,6 +508,21 @@ function Hero() {
 
       <div className="form-wrap">
         <div className="form-card">
+          <div className="form-trust-above">
+            <div className="form-trust-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="20 12 20 22 4 22 4 12" />
+                <rect x="2" y="7" width="20" height="5" />
+                <line x1="12" y1="22" x2="12" y2="7" />
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+              </svg>
+              Free this round
+            </div>
+            <div className="form-trust-line">
+              Limited spaces available · Starts <strong>Tuesday 26th May</strong>
+            </div>
+          </div>
           <form onSubmit={onSubmit} noValidate>
             <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
             <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
@@ -525,7 +544,7 @@ function Hero() {
               <span className="item"><Mail /> No spam, ever</span>
             </div>
           </form>
-          <div className="form-trust">
+          <div className="form-trust-below">
             <div className="form-trust-top">
               <div className="form-trust-avatars" aria-hidden="true">
                 <img className="a" src="/assets/avatar-1.jpg" alt="" loading="lazy" decoding="async" />
@@ -537,19 +556,6 @@ function Hero() {
                 <strong>50,000+ women</strong>
                 have joined The Weight Loss Academy
               </div>
-            </div>
-            <div className="form-trust-pill">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <polyline points="20 12 20 22 4 22 4 12" />
-                <rect x="2" y="7" width="20" height="5" />
-                <line x1="12" y1="22" x2="12" y2="7" />
-                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-              </svg>
-              Free this round
-            </div>
-            <div className="form-trust-line">
-              Limited spaces available · Starts <strong>Tuesday 26th May</strong>
             </div>
           </div>
         </div>
@@ -594,7 +600,7 @@ function Problem() {
 
 function Outcomes() {
   const items = [
-    { stat: '2–7 lbs',     t: 'Scale shift by day 5',           d: 'Many women notice the scales drop within the first 5 days, largely from reduced bloating and water retention that builds up from processed foods, sugar and inconsistent eating habits.' },
+    { stat: '2–7 lbs',     t: 'Scales shift by day 5',          d: 'Many women notice the scales drop by day 5, largely from reduced bloating and water retention that builds up from processed foods, sugar and inconsistent eating habits.' },
     { stat: '72 hrs',      t: 'Sugar cravings handled',          d: 'By Wednesday afternoon the 4pm pull starts to fade and the snack cycle breaks.' },
     { stat: 'All day',     t: 'Steady, even energy',             d: 'No more afternoon slump, no more post-dinner crash. Your blood sugar evens out.' },
     { stat: 'Real food',   t: 'No banned lists',                 d: 'Proper meals built around protein, vegetables and the right carbs at the right time.' },
