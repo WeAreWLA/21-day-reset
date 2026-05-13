@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>IG Story · Cookbook Bonus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; background: #e9dfd3; font-family: 'Alegreya Sans', sans-serif; color: #003060; overflow: hidden; }
+  .stage { position: relative; width: 1080px; height: 1920px; padding: 240px 80px 260px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .top { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+  .pill { display: inline-flex; align-items: center; gap: 14px; background: rgba(217,122,94,0.16); color: #d97a5e; font-size: 24px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700; padding: 14px 28px; border-radius: 999px; }
+  .headline { font-family: 'Libre Baskerville', serif; font-size: 84px; line-height: 1.08; letter-spacing: -0.005em; font-weight: 400; max-width: 900px; }
+  .headline em { font-style: italic; color: #f79f83; font-weight: 400; }
+  .book-wrap { margin-top: 60px; position: relative; perspective: 1800px; display: flex; justify-content: center; align-items: center; }
+  .book { width: 540px; height: 720px; transform: rotateY(-12deg) rotateX(2deg); transform-origin: center; box-shadow: 0 60px 100px -40px rgba(0,48,96,0.45), 0 30px 50px -20px rgba(0,48,96,0.25); border-radius: 6px; background: linear-gradient(135deg, #fdf6ef 0%, #f9f7f4 100%); position: relative; overflow: hidden; padding: 80px 50px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; border: 1px solid rgba(0,48,96,0.10); }
+  .book::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 18px; background: linear-gradient(90deg, rgba(0,48,96,0.18), transparent); }
+  .book-top { display: flex; flex-direction: column; gap: 26px; align-items: center; }
+  .book-eyebrow { font-size: 16px; letter-spacing: 0.38em; text-transform: uppercase; color: #d97a5e; font-weight: 700; }
+  .book-title { font-family: 'Libre Baskerville', serif; font-size: 56px; line-height: 1.05; font-weight: 700; color: #003060; }
+  .book-title em { font-style: italic; color: #f79f83; font-weight: 400; }
+  .book-mark { width: 80px; height: 80px; border: 3px solid #003060; border-radius: 6px; display: grid; place-items: center; font-family: 'Libre Baskerville', serif; font-weight: 700; color: #003060; font-size: 22px; line-height: 1; letter-spacing: 0.05em; padding: 8px; }
+  .book-mark span { display: block; }
+  .book-bottom { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .book-bottom-line { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; color: #003060; opacity: 0.7; }
+  .book-bottom-tag { font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: #003060; opacity: 0.5; font-weight: 600; }
+</style></head>
+<body>
+  <div class="stage">
+    <div class="top">
+      <div class="pill">🎁 Free Bonus</div>
+      <div class="headline">Plus this <em>brand new bonus</em> 👀</div>
+    </div>
+    <div class="book-wrap">
+      <div class="book">
+        <div class="book-top">
+          <div class="book-eyebrow">Bonus Cookbook</div>
+          <div class="book-mark"><span>W</span><span>LA</span></div>
+          <div class="book-title">Batch Cook<br /><em>Recipe</em><br />Cookbook</div>
+        </div>
+        <div class="book-bottom">
+          <div class="book-bottom-line">Anna Wallace</div>
+          <div class="book-bottom-tag">The Weight Loss Academy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body></html>

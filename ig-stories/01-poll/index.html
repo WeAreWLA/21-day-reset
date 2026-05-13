@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>IG Story · Poll</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; background: #f9f7f4; font-family: 'Alegreya Sans', sans-serif; color: #003060; overflow: hidden; }
+  .stage { position: relative; width: 1080px; height: 1920px; padding: 200px 80px 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 56px; }
+  .eyebrow { font-size: 28px; letter-spacing: 0.34em; text-transform: uppercase; color: #003060; font-weight: 600; opacity: 0.8; display: inline-flex; align-items: center; gap: 24px; }
+  .eyebrow::before, .eyebrow::after { content: ''; width: 60px; height: 1px; background: #003060; opacity: 0.55; }
+  .headline { font-family: 'Libre Baskerville', serif; font-size: 76px; line-height: 1.12; letter-spacing: -0.005em; text-align: center; font-weight: 400; max-width: 900px; }
+  .headline em { font-style: italic; color: #f79f83; font-weight: 400; }
+  .options { display: flex; flex-direction: column; gap: 22px; width: 100%; max-width: 820px; }
+  .opt { background: #fff; border: 1.5px solid rgba(0,48,96,0.10); border-radius: 22px; padding: 28px 36px; display: flex; align-items: center; gap: 24px; font-size: 36px; font-family: 'Libre Baskerville', serif; color: #003060; letter-spacing: -0.005em; box-shadow: 0 12px 32px -22px rgba(0,48,96,0.18); }
+  .opt .box { width: 32px; height: 32px; border: 2.5px solid #003060; border-radius: 7px; flex: none; }
+  .opt em { font-style: italic; color: #d97a5e; font-weight: 400; }
+  .footer { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 28px; color: #003060; opacity: 0.65; }
+</style></head>
+<body>
+  <div class="stage">
+    <div class="eyebrow">👀 Quick One</div>
+    <div class="headline">Women over 45 — what's the <em>#1 thing</em> that's stopped working in the last few years?</div>
+    <div class="options">
+      <div class="opt"><div class="box"></div>Cravings out of control</div>
+      <div class="opt"><div class="box"></div>Energy gone</div>
+      <div class="opt"><div class="box"></div>Scale won't budge</div>
+      <div class="opt"><div class="box"></div>Belly bloat</div>
+      <div class="opt"><div class="box"></div><em>All of the above (send help)</em></div>
+    </div>
+  </div>
+</body></html>

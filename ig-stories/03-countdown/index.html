@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>IG Story · Countdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; background: #f9f7f4; font-family: 'Alegreya Sans', sans-serif; color: #003060; overflow: hidden; }
+  .stage { position: relative; width: 1080px; height: 1920px; padding: 290px 80px 320px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; }
+  .top { display: flex; flex-direction: column; align-items: center; gap: 40px; }
+  .eyebrow { font-size: 28px; letter-spacing: 0.34em; text-transform: uppercase; color: #003060; font-weight: 700; display: inline-flex; align-items: center; gap: 24px; }
+  .eyebrow::before, .eyebrow::after { content: ''; width: 60px; height: 1px; background: #003060; opacity: 0.6; }
+  .headline { font-family: 'Libre Baskerville', serif; font-size: 80px; line-height: 1.06; letter-spacing: -0.005em; font-weight: 400; }
+  .headline em { font-style: italic; color: #f79f83; font-weight: 400; }
+  .clock-row { display: flex; align-items: baseline; gap: 0; justify-content: center; margin: 60px 0; }
+  .time { font-family: 'Libre Baskerville', serif; font-size: 380px; line-height: 0.88; letter-spacing: -0.02em; font-weight: 400; color: #003060; }
+  .time .am { font-size: 120px; font-style: italic; color: #f79f83; margin-left: 16px; vertical-align: top; line-height: 1; }
+  .day { font-family: 'Alegreya Sans', sans-serif; font-size: 36px; letter-spacing: 0.4em; text-transform: uppercase; color: #003060; font-weight: 600; margin-top: 28px; }
+  .bottom { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .bottom .sub { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 36px; opacity: 0.7; }
+  .bottom .arrow { font-size: 60px; line-height: 1; color: #f79f83; }
+</style></head>
+<body>
+  <div class="stage">
+    <div class="top">
+      <div class="eyebrow">Doors Open</div>
+      <div class="headline">Set a reminder — <em>you don't want to miss it.</em></div>
+      <div>
+        <div class="time">6<span class="am">am</span></div>
+        <div class="day">Tomorrow Morning</div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="sub">Tap the countdown to get notified</div>
+      <div class="arrow">↓</div>
+    </div>
+  </div>
+</body></html>
