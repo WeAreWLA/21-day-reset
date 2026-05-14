@@ -1,6 +1,7 @@
-// Render all IG story HTML files in this folder to JPGs.
-// Usage: node render-all.mjs        — renders all stories
-//        node render-all.mjs 01-poll — renders one story
+// Render all IG story HTML files to JPGs.
+// Usage: node render-all.mjs               — renders every story (incl. Drafts/)
+//        node render-all.mjs 05-recap      — renders one story by folder name
+//        node render-all.mjs Drafts/01-poll — renders one draft by relative path
 import { chromium } from 'playwright';
 import { fileURLToPath } from 'url';
 import { readdirSync, statSync } from 'fs';
@@ -8,23 +9,40 @@ import path from 'path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Collect story folders: top-level ones, plus anything inside Drafts/.
+function collectStories() {
+  const out = [];
+  for (const name of readdirSync(__dirname)) {
+    if (name === 'node_modules') continue;
+    const full = path.join(__dirname, name);
+    if (!statSync(full).isDirectory()) continue;
+    if (name === 'Drafts') {
+      for (const sub of readdirSync(full)) {
+        const subFull = path.join(full, sub);
+        if (statSync(subFull).isDirectory()) out.push(path.join('Drafts', sub));
+      }
+    } else {
+      out.push(name);
+    }
+  }
+  return out;
+}
+
 const only = process.argv[2];
-const folders = readdirSync(__dirname)
-  .filter(name => statSync(path.join(__dirname, name)).isDirectory())
-  .filter(name => !only || name === only);
+const stories = collectStories().filter(s => !only || s === only);
 
 const browser = await chromium.launch({
   executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
   args: ['--no-sandbox'],
 });
 
-for (const folder of folders) {
-  const htmlPath = path.join(__dirname, folder, 'index.html');
-  const outPath = path.join(__dirname, folder, 'render.jpg');
+for (const story of stories) {
+  const htmlPath = path.join(__dirname, story, 'index.html');
+  const outPath = path.join(__dirname, story, 'render.jpg');
   try {
     statSync(htmlPath);
   } catch {
-    console.log('Skipping', folder, '(no index.html)');
+    console.log('Skipping', story, '(no index.html)');
     continue;
   }
 
@@ -44,7 +62,7 @@ for (const folder of folders) {
     clip: { x: 0, y: 0, width: 1080, height: 1920 },
   });
   await context.close();
-  console.log('✓', folder, '→', outPath);
+  console.log('✓', story, '→', outPath);
 }
 
 await browser.close();
