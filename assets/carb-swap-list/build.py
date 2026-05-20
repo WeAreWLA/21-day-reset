@@ -73,7 +73,7 @@ ROWS = [
     ("Lentils or Split peas", "3 tablespoons", "> 3 tablespoons"),
     ("Oat Flakes or Porridge Oats", "1 tablespoon - 40g (½ cup)", "> 40g"),
     ("Potatoes or Sweet Potatoes", "< 100g", "> 100g"),
-    ("Rice, Buckwheat, Bulgar Wheat, Couscous, Orzo or Quinoa",
+    ("Rice, Buckwheat, Bulgur Wheat, Couscous, Orzo or Quinoa",
      "30-40g", "> 40g"),
     ("Sugar Free Muesli", "30g (⅓ cup)", "> 30g"),
     ("Wholewheat Pasta", "30-40g", "> 40g"),

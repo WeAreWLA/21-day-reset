@@ -43,7 +43,7 @@ g.diagram_title("How To Build A Medium Carb Meal")
 g.diagram("medium-plate")
 g.bullets([
     "STEP 1: Fill more than ½ of your plate with vegetables and fruits",
-    "STEP 2: Fill ⅛ of your plate with complex carbohydrates (i.e half "
+    "STEP 2: Fill ⅛ of your plate with complex carbohydrates (i.e. half "
     "the amount of carbohydrate used in the high-carbohydrate meal)",
     "STEP 3: Fill ¼ of your plate with lean protein",
     "STEP 4: Add a small portion of healthy fats",
@@ -56,8 +56,8 @@ g.diagram_title("Medium Carbohydrate Meals With A "
 g.diagram("medium-legume-plate")
 g.bullets([
     "STEP 1: Fill more than ½ of your plate with vegetables and fruits",
-    "STEP 2: Fill ⅓ of your plate with legumes [i.e chickpeas, beans "
-    "etc. (3 tbsp or falafel (2-3 pieces)]",
+    "STEP 2: Fill ⅓ of your plate with legumes [i.e. chickpeas, beans "
+    "etc. (3 tbsp) or falafel (2-3 pieces)]",
     "STEP 3: Add a small portion of healthy fats",
 ], bold_prefix=True)
 
@@ -86,7 +86,7 @@ g.select_table(
         ["Side Salad", "Steamed Veg", "Stir Fry Veg", "Roasted Veg"],
         ["Wholemeal Pasta (30-40g)", "Wholegrain Rice (30-40g)",
          "Potatoes (<100g)", "Sweet Potatoes (<100g)",
-         "Coucous (30-40g)", "Wholemeal Bread (1 slice)",
+         "Couscous (30-40g)", "Wholemeal Bread (1 slice)",
          "Noodles (30-40g)", "Quinoa (30-40g)"],
         ["Olive Oil", "Nuts", "Seeds", "Nut Butter", "Avocado",
          "Greek Yoghurt"],
@@ -105,7 +105,7 @@ g.list_table("LUNCH OR DINNER", [
     "Meat (Chicken, Fish, Veggie Alternative) With Veggies (Steamed, "
     "Roasted, Stir-Fry) and a medium portion of rice/pasta/noodles/"
     "quinoa etc.",
-    "Falafel (2-3) with With Salad or Veggies",
+    "Falafel (2-3) with Salad or Veggies",
     "Any beans/chickpeas (3 tbsp) With Salad or Veggies",
 ])
 g.note("Within the 12-week meal plans (winter and summer) the medium "

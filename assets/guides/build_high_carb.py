@@ -72,7 +72,7 @@ g.diagram_title("High Carbohydrate Meals With A "
 g.diagram("high-legume-plate")
 g.bullets([
     "STEP 1: Fill ½ of your plate with vegetables and fruits",
-    "STEP 2: Fill ⅓ of your plate with legumes [i.e chickpeas, beans "
+    "STEP 2: Fill ⅓ of your plate with legumes [i.e. chickpeas, beans "
     "etc. (3 tbsp) or falafel (2-3 pieces)]",
     "STEP 3: Fill ⅙ of your plate with complex carbohydrates",
     "STEP 4: Add a small portion of healthy fats",
@@ -90,7 +90,7 @@ g.diagram_title("High Carbohydrate Meals With Only A "
 g.diagram("high-legume-only-plate")
 g.bullets([
     "Step 1: Fill ½ of your plate with vegetables and fruits",
-    "Step 2: Fill ½ of your plate with legumes [i.e chickpeas, beans "
+    "Step 2: Fill ½ of your plate with legumes [i.e. chickpeas, beans "
     "etc. (6 tbsp) or falafels (5-6 pieces)]",
     "Step 3: Add a small portion of healthy fats",
 ], bold_prefix=True)
@@ -127,8 +127,8 @@ g.select_table(
          "Vegetarian Alternatives (Tofu, Tempeh, Quorn)"],
     ],
 )
-g.note("Depending on the quantity adding a carb element is may not "
-       "applicable or need reduced to the medium carb portion.")
+g.note("Depending on the quantity adding a carb element may not be "
+       "applicable or need to be reduced to the medium carb portion.")
 
 g.keep_together(280)
 g.subhead([("Some ", "lb"), ("examples of high carb meals", "lbi"),
@@ -141,7 +141,7 @@ g.list_table("LUNCH OR DINNER", [
     "Meat (Chicken, Fish, Veggie Alternative) With Veggies (Steamed, "
     "Roasted, Stir-Fry) and a large portion of rice/pasta/noodles/"
     "quinoa etc. (approx. ¼ of the plate)",
-    "Falafel (6 falafel) with With Salad or Veggies",
+    "Falafel (6 falafel) with Salad or Veggies",
     "Any beans/chickpeas (3 tbsp) With Salad or Veggies and a smaller "
     "portion of rice/pasta/noodles/quinoa etc. (30-40g)",
 ])

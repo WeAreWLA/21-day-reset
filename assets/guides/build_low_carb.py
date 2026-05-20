@@ -55,7 +55,7 @@ g.bullets([
 g.select_table(
     ["Select Your Protein", "Select Your Veg/Fruit", "Add A Healthy Fat"],
     [
-        ["1-2 Eggs (Boiled, Scrambled, Omelette, Frittata",
+        ["1-2 Eggs (Boiled, Scrambled, Omelette, Frittata)",
          "Canned Fish (Tuna, Salmon, Mackerel)",
          "Cold Meats (Ham, Rotisserie Chicken Etc)",
          "Cheese or Dairy (Halloumi, Feta, Greek Yoghurt)",
