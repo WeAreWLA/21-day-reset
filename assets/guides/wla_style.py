@@ -51,10 +51,17 @@ _FRAC = {"½": "1/2", "⅓": "1/3", "⅔": "2/3", "¼": "1/4", "¾": "3/4",
 
 
 def norm(s):
-    for k, v in _FRAC.items():
-        if k in s:
-            s = s.replace(k, v)
-    return s
+    if not any(k in s for k in _FRAC):
+        return s
+    out = []
+    for ch in s:
+        if ch in _FRAC:
+            if out and out[-1][-1:].isdigit():   # mixed number e.g. 2⅔
+                out.append(" ")
+            out.append(_FRAC[ch])
+        else:
+            out.append(ch)
+    return "".join(out)
 
 
 def tw(text, font, size):
@@ -209,6 +216,15 @@ class Guide:
         base = self.y + size * 0.80
         self.segs(LEFT, base, segments, size, color)
         self.y = base + size * 0.28 + gap_after
+
+    def coral_heading(self, text, size=20, gap_before=14, gap_after=13):
+        """Blush italic heading that wraps across the column."""
+        self.y += gap_before
+        for ln in wrap(text, "lbi", size, CW):
+            self.ensure(size * 1.3)
+            self.text(LEFT, self.y + size * 0.80, ln, "lbi", size, BLUSH)
+            self.y += size * 1.28
+        self.y += gap_after
 
     def diagram_title(self, text, size=16.5, gap_before=6, gap_after=12):
         lines = wrap(text, "lb", size, CW - 30)
@@ -434,6 +450,179 @@ class Guide:
                     ty += line_h
             ry += h
         self.y = ry + gap_after
+
+    def section_label(self, text, gap_before=18, gap_after=10):
+        """Coral uppercase section divider label."""
+        self.ensure(30 + gap_before)
+        self.y += gap_before
+        base = self.y + 9
+        self.tracked(LEFT, base, text.upper(), "asb", 11, BLUSH, 1.5)
+        self.y = base + 6
+        self.page.draw_line((LEFT, self.y), (LEFT + 42, self.y),
+                            color=BLUSH, width=2.2)
+        self.y += gap_after
+
+    def matrix_table(self, col_headers, rows, label_header="",
+                     gap_before=10, gap_after=14, label_w=74, size=8.7):
+        """Navy-header grid. rows = [(label, [values]), ...]."""
+        n = len(col_headers)
+        col_w = (CW - label_w) / n
+        header_h = 34
+        line_h = size + 2
+        white = (1, 1, 1)
+
+        def cl(s, w, fnt="as"):
+            return wrap(s, fnt, size, w - 8)
+
+        heights = []
+        for label, vals in rows:
+            mx = max([len(cl(label, label_w, "asm"))] +
+                     [len(cl(v, col_w)) for v in vals])
+            heights.append(max(34, mx * line_h + 16))
+
+        self.y += gap_before
+        self.ensure(header_h + heights[0])
+        top = self.y
+
+        def draw_header(t):
+            self.page.draw_rect(fitz.Rect(LEFT, t, LEFT + label_w,
+                                          t + header_h), color=None, fill=NAVY)
+            if label_header:
+                self.text_center(LEFT + label_w / 2, t + header_h / 2 + 3,
+                                 label_header.upper(), "asb", 8.5, white)
+            for i, h in enumerate(col_headers):
+                x = LEFT + label_w + i * col_w
+                self.page.draw_rect(fitz.Rect(x, t, x + col_w, t + header_h),
+                                    color=CREAM, fill=NAVY, width=0.6)
+                hl = cl(h.upper(), col_w, "asb")
+                ty = t + header_h / 2 - (len(hl) - 1) * 5.3 + 3
+                for ln in hl:
+                    self.text_center(x + col_w / 2, ty, ln, "asb", 8.5, white)
+                    ty += 10.6
+            return t + header_h
+
+        ry = draw_header(top)
+        for (label, vals), h in zip(rows, heights):
+            if ry + h > CONTENT_BOTTOM:
+                self._new_content_page()
+                ry = draw_header(self.y)
+            self.page.draw_rect(fitz.Rect(LEFT, ry, LEFT + label_w, ry + h),
+                                color=RULE, fill=None, width=0.7)
+            ll = cl(label, label_w, "asm")
+            ty = ry + h / 2 - (len(ll) - 1) * line_h / 2 + 3
+            for ln in ll:
+                self.text_center(LEFT + label_w / 2, ty, ln, "asm", size, NAVY)
+                ty += line_h
+            for i, v in enumerate(vals):
+                x = LEFT + label_w + i * col_w
+                self.page.draw_rect(fitz.Rect(x, ry, x + col_w, ry + h),
+                                    color=RULE, fill=None, width=0.7)
+                vl = cl(v, col_w)
+                ty = ry + h / 2 - (len(vl) - 1) * line_h / 2 + 3
+                for ln in vl:
+                    self.text_center(x + col_w / 2, ty, ln, "as", size, INK)
+                    ty += line_h
+            ry += h
+        self.y = ry + gap_after
+
+    def cards(self, items, gap_before=14, gap_after=14):
+        """Row of info cards: items = [(header, body), ...]."""
+        n = len(items)
+        gap = 11
+        cw = (CW - (n - 1) * gap) / n
+        head_h = 26
+        size = 9
+        bmax = max(len(wrap(b, "as", size, cw - 16)) for _, b in items)
+        body_h = max(70, bmax * 12 + 30)
+        H = head_h + body_h
+        self.ensure(H + gap_before + gap_after)
+        self.y += gap_before
+        top = self.y
+        for i, (htxt, btxt) in enumerate(items):
+            x = LEFT + i * (cw + gap)
+            self.page.draw_rect(fitz.Rect(x, top, x + cw, top + head_h),
+                                color=None, fill=NAVY)
+            self.text_center(x + cw / 2, top + head_h / 2 + 3.2, htxt,
+                             "asb", 9, (1, 1, 1))
+            self.page.draw_rect(fitz.Rect(x, top + head_h, x + cw, top + H),
+                                color=None, fill=BLUSH)
+            bl = wrap(btxt, "as", size, cw - 16)
+            ty = top + head_h + (body_h - (len(bl) - 1) * 12) / 2
+            for ln in bl:
+                self.text_center(x + cw / 2, ty, ln, "as", size, (1, 1, 1))
+                ty += 12
+        self.y = top + H + gap_after
+
+    def recipe(self, title, serves, ingredients, instructions,
+               note=None, gap_after=24):
+        """Two-column recipe block."""
+        size = 10
+        lh = 13.1
+        gap = 26
+        lw = (CW - gap) * 0.45
+        rw = (CW - gap) * 0.55
+        rx = LEFT + lw + gap
+        title_lines = wrap(title, "lbi", 17, CW)
+
+        def col_h(items, w, ind):
+            h = 24
+            for it in items:
+                h += len(wrap(it, "as", size, w - ind)) * lh + 3.5
+            return h
+
+        body_h = max(col_h(ingredients, lw, 14),
+                     col_h(instructions, rw, 19))
+        if note:
+            body_h += len(wrap(note, "asi", 10, rw)) * 13 + 8
+        total = len(title_lines) * 21 + 6 + 20 + body_h + gap_after
+        self.keep_together(min(total, 540))
+
+        for tl in title_lines:
+            self.text(LEFT, self.y + 14, tl, "lbi", 17, BLUSH)
+            self.y += 21
+        self.y += 4
+        self.text(LEFT, self.y + 9, f"Serves: {serves}", "asb", 10, NAVY)
+        self.y += 21
+        coltop = self.y
+
+        self.text(LEFT, coltop + 9, "Ingredients:", "asi", 11, NAVY)
+        yL = coltop + 26
+        for it in ingredients:
+            self.page.draw_circle((LEFT + 4, yL + 4), 1.6, color=None,
+                                  fill=BLUSH)
+            for ln in wrap(it, "as", size, lw - 14):
+                self.text(LEFT + 14, yL + 8, ln, "as", size, INK)
+                yL += lh
+            yL += 3.5
+
+        self.text(rx, coltop + 9, "Instructions:", "asi", 11, NAVY)
+        yR = coltop + 26
+        for k, it in enumerate(instructions, 1):
+            self.text(rx, yR + 8, f"{k}.", "asb", size, BLUSH)
+            for ln in wrap(it, "as", size, rw - 19):
+                self.text(rx + 19, yR + 8, ln, "as", size, INK)
+                yR += lh
+            yR += 3.5
+        if note:
+            yR += 5
+            for ln in wrap(note, "asi", 10, rw):
+                self.text(rx, yR + 8, ln, "asi", 10, INK)
+                yR += 13
+
+        self.y = max(yL, yR) + gap_after
+
+    def divider(self, top_italic, bottom):
+        """Full-page chapter divider."""
+        page = self._blank_page()
+        self.page = page
+        size = 58
+        cy = PAGE_H * 0.40
+        self.text_center(PAGE_W / 2, cy, top_italic, "lbi", size, NAVY)
+        self.text_center(PAGE_W / 2, cy + size * 1.0, bottom, "lb", size, NAVY)
+        rule_y = cy + size * 1.0 + 34
+        self.page.draw_line((PAGE_W / 2 - 26, rule_y), (PAGE_W / 2 + 26,
+                            rule_y), color=BLUSH, width=2.6)
+        self.y = 1e6  # force next content onto a fresh page
 
     # -------------------------------------------------- finalise
     def save(self, meta):
