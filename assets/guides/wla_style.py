@@ -314,15 +314,16 @@ class Guide:
 
     # -------------------------------------------------- tables
     def select_table(self, headers, columns, gap_before=8, gap_after=14):
-        """Grid table: headers list, columns = list of cell-lists."""
-        n = len(headers)
+        """Grid table. headers = list (or None for no header band).
+        columns = list of cell-lists. Robust across page breaks."""
+        n = len(columns)
         col_w = CW / n
         size = 10.5 if n >= 4 else 11
         hsize = 9 if n >= 4 else 9.5
         line_h = 13.2
         pad = 7
         nrows = max(len(c) for c in columns)
-        header_h = 34
+        header_h = 34 if headers else 0
 
         def cell_lines(s):
             return wrap(s, "as", size, col_w - 14) if s else []
@@ -334,17 +335,27 @@ class Guide:
                     mx = max(mx, len(cell_lines(c[ri])))
             return max(40, mx * line_h + 2 * pad)
 
+        def vrules(t, b):
+            for i in range(1, n):
+                x = LEFT + i * col_w
+                self.page.draw_line((x, t), (x, b), color=RULE, width=0.7)
+
         def draw_header(top):
-            self.page.draw_rect(fitz.Rect(LEFT, top, RIGHT, top + header_h),
-                                color=None, fill=BEIGE)
-            for i, htxt in enumerate(headers):
-                cx = LEFT + i * col_w + col_w / 2
-                hl = wrap(htxt, "asb", hsize, col_w - 12)
-                ty = top + header_h / 2 - (len(hl) - 1) * 6.4 + 3
-                for hln in hl:
-                    self.text_center(cx, ty, hln, "asb", hsize, NAVY)
-                    ty += 12.8
-            return top + header_h
+            if headers:
+                self.page.draw_rect(fitz.Rect(LEFT, top, RIGHT,
+                                    top + header_h), color=None, fill=BEIGE)
+                for i, htxt in enumerate(headers):
+                    cx = LEFT + i * col_w + col_w / 2
+                    hl = wrap(htxt, "asb", hsize, col_w - 12)
+                    ty = top + header_h / 2 - (len(hl) - 1) * 6.4 + 3
+                    for hln in hl:
+                        self.text_center(cx, ty, hln, "asb", hsize, NAVY)
+                        ty += 12.8
+                vrules(top, top + header_h)
+                return top + header_h
+            self.page.draw_line((LEFT, top), (RIGHT, top), color=RULE,
+                                width=0.7)
+            return top
 
         self.y += gap_before
         self.ensure(header_h + row_h(0))
@@ -354,7 +365,6 @@ class Guide:
         while ri < nrows:
             h = row_h(ri)
             if top + h > CONTENT_BOTTOM:
-                self.y = top
                 self._new_content_page()
                 top = draw_header(self.y)
             for ci, col in enumerate(columns):
@@ -367,36 +377,40 @@ class Guide:
                         ty += line_h
             self.page.draw_line((LEFT, top + h), (RIGHT, top + h),
                                 color=RULE, width=0.7)
+            vrules(top, top + h)
             top += h
             ri += 1
-        # vertical separators
-        for i in range(1, n):
-            x = LEFT + i * col_w
-            self.page.draw_line((x, self.y), (x, top), color=RULE, width=0.7)
         self.y = top + gap_after
 
     def list_table(self, header, rows, gap_before=8, gap_after=14):
         size = 11
         line_h = 14.5
         pad = 9
-        header_h = 32
+        header_h = 32 if header else 0
 
         def row_h(s):
             return max(38, len(wrap(s, "as", size, CW - 40)) * line_h + 2 * pad)
 
+        def draw_header(top):
+            if header:
+                self.page.draw_rect(fitz.Rect(LEFT, top, RIGHT,
+                                    top + header_h), color=None, fill=BEIGE)
+                self.tracked(
+                    PAGE_W / 2 - self.tracked_w(header, "asb", 10, 1.3) / 2,
+                    top + header_h / 2 + 3.4, header, "asb", 10, NAVY, 1.3)
+                return top + header_h
+            self.page.draw_line((LEFT, top), (RIGHT, top), color=RULE,
+                                width=0.7)
+            return top
+
         self.y += gap_before
         self.ensure(header_h + row_h(rows[0]))
-        # header band
-        self.page.draw_rect(fitz.Rect(LEFT, self.y, RIGHT, self.y + header_h),
-                            color=None, fill=BEIGE)
-        self.tracked(PAGE_W / 2 - self.tracked_w(header, "asb", 10, 1.3) / 2,
-                     self.y + header_h / 2 + 3.4, header, "asb", 10, NAVY, 1.3)
-        top = self.y + header_h
+        top = draw_header(self.y)
         for s in rows:
             h = row_h(s)
             if top + h > CONTENT_BOTTOM:
                 self._new_content_page()
-                top = self.y
+                top = draw_header(self.y)
             cl = wrap(s, "as", size, CW - 40)
             ty = top + h / 2 - (len(cl) - 1) * line_h / 2 + size * 0.34
             for cln in cl:

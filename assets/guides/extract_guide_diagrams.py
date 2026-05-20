@@ -25,6 +25,8 @@ JOBS = [
      fitz.Rect(54, 343, 482, 765), "water-balance"),
     ("52190e95-SS_The_Importance_Of_Water.pdf", 6,
      fitz.Rect(54, 343, 540, 560), "water-urine"),
+    ("016c5f94-SS__Snack_Guide.pdf", 2,
+     fitz.Rect(56, 292, 543, 654), "snack-bloodsugar"),
 ]
 
 
