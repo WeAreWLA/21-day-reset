@@ -99,7 +99,7 @@ g.select_table(
 g.note("***Note, to keep these meals simple, any frozen item that has "
        "breadcrumbs /pastry etc serve with 1/2 plate of salad or "
        "vegetables, rather than an additional carbohydrate. If the food "
-       "item is plain ie plain chicken breast or piece of fish, feel "
+       "item is plain i.e. plain chicken breast or piece of fish, feel "
        "free to add carbohydrate element from WLA swap list. One side "
        "can be added to each meal.")
 

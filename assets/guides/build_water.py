@@ -170,7 +170,7 @@ g.bullets([
 g.keep_together(240)
 g.heading([[("Dehydration", True)]])
 g.paragraph("Dehydration is when the body does not have as much water "
-            "as it needs (i.e the body is losing more fluids than "
+            "as it needs (i.e. the body is losing more fluids than "
             "taken in).")
 g.paragraph("Symptoms of dehydration include feeling thirsty, dark "
             "yellow pee and dizziness.")

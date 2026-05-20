@@ -147,7 +147,7 @@ g.matrix_table(MEALS, [
     ("3", ["Green Smoothie Bowl", "Small Handful Of Blueberries",
            "Mini Eggplant Pizzas and Salad", "Small Handful Of Nuts",
            "Feta & Egg Bake", "1 Apple"]),
-    ("4", ["Fruit Salad & Yoghurt", "1 Pear", "Quorn Maire Rose Salad",
+    ("4", ["Fruit Salad & Yoghurt", "1 Pear", "Quorn Marie Rose Salad",
            "Apple Slices With 1 Tbsp Peanut Butter",
            "Halloumi & Mediterranean Vegetable Medley", "1 Orange"]),
     ("5", ["Mango & Passionfruit Smoothie Bowl", "1 Apple",
