@@ -526,7 +526,9 @@ def grid_page(pg, n, week, kind):
         for c, w in enumerate(rowcells):
             x0 = GX0 + c * (cw + CG)
             y0 = GY0 + r * (rh + RG)
-            w.rect = fitz.Rect(x0, y0, x0 + cw, y0 + rh)
+            d.rect(x0, y0, x0 + cw, y0 + rh, fill=WHITE, stroke=RULE)
+            # multiline input inset so typing starts at the cell centre
+            w.rect = fitz.Rect(x0, y0 + 32, x0 + cw, y0 + rh - 4)
             w.field_flags = w.field_flags | 4096
             w.update()
     for c, name in enumerate(["Breakfast", "Snack", "Lunch", "Snack",
@@ -608,9 +610,20 @@ results_text(doc[22], 23, [
     "and if not, why?",
     "Personal reflections / journaling space."])
 
-for page in doc:
+FOOD_PAGES = {5, 6, 9, 10, 13, 14, 17, 18}
+for i, page in enumerate(doc):
     for w in page.widgets():
-        style_field(w)
+        if (i in FOOD_PAGES and w.field_type_string == "Text"
+                and w.rect.y0 >= 100):
+            # meal cells: transparent input over the drawn white box
+            w.border_width = 0
+            w.border_color = None
+            w.fill_color = None
+            w.text_color = INK
+            w.field_value = ""
+            w.update()
+        else:
+            style_field(w)
 
 # clear any demo values left in the original (update() ignores "")
 for page in doc:
