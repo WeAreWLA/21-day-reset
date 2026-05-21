@@ -527,7 +527,7 @@ def grid_page(pg, n, week, kind):
             x0 = GX0 + c * (cw + CG)
             y0 = GY0 + r * (rh + RG)
             w.rect = fitz.Rect(x0, y0, x0 + cw, y0 + rh)
-            w.field_flags = w.field_flags & ~4096
+            w.field_flags = w.field_flags | 4096
             w.update()
     for c, name in enumerate(["Breakfast", "Snack", "Lunch", "Snack",
                               "Dinner"]):
