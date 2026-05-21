@@ -434,6 +434,10 @@ def habit_tracker(pg, n, week):
     tx = texts(pg)
     action = sorted([t for t in tx if t.rect.x0 < 60],
                     key=lambda t: t.rect.y0)
+    for a in action:
+        r = a.rect
+        a.rect = fitz.Rect(M, r.y0, 300, r.y1)
+        a.update()
     tpw = sorted([t for t in tx if 90 < t.rect.x0 < 160
                   and t.rect.y0 < 560], key=lambda t: t.rect.y0)
     ach = sorted([t for t in tx if t.rect.x0 > 340
@@ -509,27 +513,32 @@ def grid_page(pg, n, week, kind):
         fr = focus[0].rect
         d.tr(fr.x0 - 8, (fr.y0 + fr.y1) / 2 + 3, "Focus of the week:",
              "asm", 9.5, NAVY)
+    # normalise the 35 meal cells onto a uniform 7 x 5 grid
     cells = sorted([t for t in tx if t.rect.y0 >= 100],
-                   key=lambda t: (round(t.rect.y0 / 10), t.rect.x0))
-    rows = rows_of(cells, tol=20)
-    cols = ["Breakfast", "Snack", "Lunch", "Snack", "Dinner"]
-    if rows:
-        r0 = rows[0]
-        by0 = r0[0].rect.y0 - 24
-        for c, name in zip(r0, cols):
-            cr = c.rect
-            d.rect(cr.x0, by0, cr.x1, by0 + 22, fill=BLUSH)
-            d.tc((cr.x0 + cr.x1) / 2, by0 + 15, name.upper(), "asb",
-                 8.5, WHITE)
-    DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    for row, day in zip(rows, DAYS):
-        if not row:
-            continue
-        ry0 = min(c.rect.y0 for c in row)
-        ry1 = max(c.rect.y1 for c in row)
-        x1 = row[0].rect.x0 - 4
-        d.rect(14, ry0, x1, ry1, fill=BLUSH)
-        d.tc((14 + x1) / 2, (ry0 + ry1) / 2 + 3, day.upper(), "asb",
+                   key=lambda t: t.rect.y0)
+    GX0, GX1, CG = 56, 563, 7
+    GY0, GY1, RG = 130, 808, 8
+    cw = (GX1 - GX0 - 4 * CG) / 5
+    rh = (GY1 - GY0 - 6 * RG) / 7
+    for r in range(7):
+        rowcells = sorted(cells[r * 5:r * 5 + 5],
+                          key=lambda t: t.rect.x0)
+        for c, w in enumerate(rowcells):
+            x0 = GX0 + c * (cw + CG)
+            y0 = GY0 + r * (rh + RG)
+            w.rect = fitz.Rect(x0, y0, x0 + cw, y0 + rh)
+            w.field_flags = w.field_flags & ~4096
+            w.update()
+    for c, name in enumerate(["Breakfast", "Snack", "Lunch", "Snack",
+                              "Dinner"]):
+        x0 = GX0 + c * (cw + CG)
+        d.rect(x0, GY0 - 24, x0 + cw, GY0 - 2, fill=BLUSH)
+        d.tc(x0 + cw / 2, GY0 - 9, name.upper(), "asb", 8.5, WHITE)
+    for r, day in enumerate(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
+                             "Sun"]):
+        y0 = GY0 + r * (rh + RG)
+        d.rect(14, y0, GX0 - 4, y0 + rh, fill=BLUSH)
+        d.tc((14 + GX0 - 4) / 2, y0 + rh / 2 + 3, day.upper(), "asb",
              8.5, WHITE)
     d.pageno(n)
 
@@ -540,6 +549,16 @@ def review(pg, n, week):
     d.heading([("Week Review ", False), (f"— Week {week}", True)],
               54, size=23)
     ws = sorted(texts(pg), key=lambda w: w.rect.y0)
+    # normalise all answer boxes to one width; first three multiline,
+    # the Date field single-line
+    for i, w in enumerate(ws):
+        r = w.rect
+        w.rect = fitz.Rect(223, r.y0, 564, r.y1)
+        if i < 3:
+            w.field_flags = w.field_flags | 4096
+        else:
+            w.field_flags = w.field_flags & ~4096
+        w.update()
     labels = ["Review of meals for the week",
               "What went well? (Specify your non-scale victories)",
               "Areas to focus on next week",
@@ -599,6 +618,26 @@ for page in doc:
         if w.field_type_string == "Text" and w.field_value not in ("", None):
             doc.xref_set_key(w.xref, "V", "()")
             doc.xref_set_key(w.xref, "AP", "null")
+
+# centre-align the meal-grid cells and the weekly-review Date fields.
+# Q sets the alignment; clearing AP + NeedAppearances makes viewers
+# regenerate the field appearance and honour it.
+for idx in (5, 6, 9, 10, 13, 14, 17, 18):
+    for w in doc[idx].widgets():
+        if w.field_type_string == "Text" and w.rect.y0 >= 100:
+            doc.xref_set_key(w.xref, "Q", "1")
+            doc.xref_set_key(w.xref, "AP", "null")
+for idx in (7, 11, 15, 19):
+    rv = sorted([w for w in doc[idx].widgets()
+                 if w.field_type_string == "Text"],
+                key=lambda w: w.rect.y0)
+    if rv:
+        doc.xref_set_key(rv[-1].xref, "Q", "1")
+        doc.xref_set_key(rv[-1].xref, "AP", "null")
+
+_af = doc.xref_get_key(doc.pdf_catalog(), "AcroForm")
+if _af[0] == "xref":
+    doc.xref_set_key(int(_af[1].split()[0]), "NeedAppearances", "true")
 
 doc.set_metadata({
     "title": "4 Week Weight Loss Sprint Workbook",
