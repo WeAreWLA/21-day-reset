@@ -118,12 +118,9 @@ ml('account', '1287540');
   .lede strong { color: #333333; font-weight: 700; }
   .offer-callout { position: relative; max-width: 520px; margin: 28px 0 32px; padding: 18px 22px 18px 24px; background: linear-gradient(135deg, rgba(217,119,87,0.10), rgba(217,119,87,0.04)); border: 1px solid rgba(217,119,87,0.30); border-left: 4px solid var(--coral); border-radius: 12px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 6px 18px rgba(14,39,70,0.06); }
   .offer-callout .offer-lead { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: 17px; font-weight: 700; letter-spacing: 0.01em; }
-  .offer-callout .offer-meta { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .offer-callout .offer-meta .offer-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--coral); opacity: 0.7; }
   .offer-callout .offer-price { font-size: 15px; color: var(--muted); font-weight: 500; }
   .offer-callout .offer-price s { color: var(--muted); opacity: 0.85; }
-  .offer-callout .offer-date { color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-  .offer-callout .offer-cta { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; line-height: 1.15; color: var(--coral); font-weight: 700; margin-top: 2px; }
+  .offer-callout .offer-date { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; line-height: 1.15; color: var(--coral); font-weight: 500; margin-top: 2px; }
   .bullet-list { list-style: none; padding: 0; margin: 0 0 36px; display: grid; gap: 14px; }
   .bullet-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 16px; color: #333333; line-height: 1.45; }
   .check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); display: grid; place-items: center; margin-top: 1px; }
@@ -499,12 +496,8 @@ function Hero() {
         <div className="hero-supporting">
           <div className="offer-callout">
             <span className="offer-lead">Limited Free Spaces Available</span>
-            <span className="offer-meta">
-              <span className="offer-price">Normally <s>£47</s></span>
-              <span className="offer-sep" aria-hidden="true"></span>
-              <span className="offer-date">Live 1st–5th June</span>
-            </span>
-            <span className="offer-cta">Get FREE Access!</span>
+            <span className="offer-price">Normally <s>£47</s></span>
+            <span className="offer-date">Live 1st–5th June</span>
           </div>
           <ul className="bullet-list">
             <li><span className="check"><Check /></span><span><strong>Daily live coaching</strong> from a Registered Nutritionist.</span></li>
