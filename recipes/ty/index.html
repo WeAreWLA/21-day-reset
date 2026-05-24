@@ -116,6 +116,11 @@ ml('account', '1287540');
   .h1 .accent { display: block; color: var(--coral); font-style: italic; font-weight: 500; margin-top: 6px; }
   .lede { font-size: 18px; line-height: 1.55; color: #333333; max-width: 520px; margin: 28px 0 32px; }
   .lede strong { color: #333333; font-weight: 700; }
+  .offer-callout { position: relative; max-width: 520px; margin: 28px 0 32px; padding: 18px 22px 18px 24px; background: linear-gradient(135deg, rgba(217,119,87,0.10), rgba(217,119,87,0.04)); border: 1px solid rgba(217,119,87,0.30); border-left: 4px solid var(--coral); border-radius: 12px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 6px 18px rgba(14,39,70,0.06); }
+  .offer-callout .offer-lead { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: 17px; font-weight: 700; letter-spacing: 0.01em; }
+  .offer-callout .offer-price { font-size: 15px; color: var(--muted); font-weight: 500; }
+  .offer-callout .offer-price s { color: var(--muted); opacity: 0.85; }
+  .offer-callout .offer-cta { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; line-height: 1.15; color: var(--coral); font-weight: 700; margin-top: 2px; }
   .bullet-list { list-style: none; padding: 0; margin: 0 0 36px; display: grid; gap: 14px; }
   .bullet-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 16px; color: #333333; line-height: 1.45; }
   .check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); display: grid; place-items: center; margin-top: 1px; }
@@ -484,13 +489,17 @@ function Hero() {
           <span className="eyebrow">Live 1st–5th June · Limited spaces</span>
           <h1 className="h1 serif">The 5 Day<br />Fat Loss Reset<span className="accent italic">for women 45+</span></h1>
           <ul className="form-bullets">
-            <li><em>Limited Free Spaces</em> Available</li>
-            <li>Normally <em>£47!</em></li>
-            <li>Get <em>FREE Access!</em></li>
+            <li>Lose Up To <em>5 Pounds</em></li>
+            <li>Gain <em>Energy &amp; Confidence</em></li>
+            <li>Say Goodbye To <em>Sugar Cravings</em> in 5 Days</li>
           </ul>
         </div>
         <div className="hero-supporting">
-          <p className="lede">Lose Up To 5 Pounds, Gain Energy, Confidence and Say Goodbye To Sugar Cravings in 5 Days</p>
+          <div className="offer-callout">
+            <span className="offer-lead">Limited Free Spaces Available</span>
+            <span className="offer-price">Normally <s>£47</s></span>
+            <span className="offer-cta">Get FREE Access!</span>
+          </div>
           <ul className="bullet-list">
             <li><span className="check"><Check /></span><span><strong>Daily live coaching</strong> from a Registered Nutritionist.</span></li>
             <li><span className="check"><Check /></span><span>Private <strong>Facebook group</strong> + daily check-ins to keep you going.</span></li>
