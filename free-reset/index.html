@@ -109,7 +109,7 @@ ml('account', '1287540');
   .offer-callout .offer-lead { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: 17px; font-weight: 700; letter-spacing: 0.01em; }
   .offer-callout .offer-price { font-size: 15px; color: var(--muted); font-weight: 500; }
   .offer-callout .offer-price s { color: var(--muted); opacity: 0.85; }
-  .offer-callout .offer-date { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; line-height: 1.15; color: var(--coral); font-weight: 500; margin-top: 2px; }
+  .offer-callout .offer-date { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; line-height: 1.15; color: var(--coral); font-weight: 500; }
   .bullet-list { list-style: none; padding: 0; margin: 0 0 36px; display: grid; gap: 14px; }
   .bullet-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 16px; color: #333333; line-height: 1.45; }
   .check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); display: grid; place-items: center; margin-top: 1px; }
@@ -484,9 +484,9 @@ function Hero() {
         </div>
         <div className="hero-supporting">
           <div className="offer-callout">
-            <span className="offer-lead">Limited Free Spaces Available</span>
-            <span className="offer-price">Normally <s>£47</s></span>
             <span className="offer-date">Live 1st–5th June</span>
+            <span className="offer-price">Normally <s>£47</s></span>
+            <span className="offer-lead">Limited Free Spaces Available</span>
           </div>
           <ul className="bullet-list">
             <li><span className="check"><Check /></span><span><strong>Daily live coaching</strong> from a Registered Nutritionist.</span></li>
