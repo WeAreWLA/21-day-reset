@@ -78,7 +78,7 @@ def stat_block(label, value):
 
 
 # =========================================================== cover
-# custom cover — no top kicker; adds "for women 45+" accent line
+# clean cover — no top kicker
 page = g._blank_page()
 g.page = page
 title_lines = [("The", "lbi", NAVY),
@@ -88,19 +88,15 @@ target = 408
 T = min(fit_size(t[0], t[1], target) for t in title_lines)
 T = min(T, 78)
 LH = T * 1.18
-b1 = 240
+b1 = 286
 for i, (txt, font, color) in enumerate(title_lines):
     g.text(LEFT, b1 + i * LH, txt, font, T, color)
-# accent line — "for women 45+"
-accent_y = b1 + (len(title_lines) - 1) * LH + 56
-g.text(LEFT, accent_y, "for women 45+", "lbi", 28, BLUSH)
-# subtitle from the registration page
-subtitle = ("Break the sugar cycle, steady your energy and start "
-            "losing fat again — without 1,200-calorie plans or "
-            "cutting out carbs.")
-sy = accent_y + 50
-for ln in wrap(subtitle, "lbi", 13, 392):
-    g.text(LEFT, sy, ln, "lbi", 13, INK)
+subtitle = ("Start today, kickstart fat loss and lose up to 5lbs in "
+            "5 days. A simple, no-fluff reset for women ready to "
+            "feel lighter and more in control.")
+sy = b1 + (len(title_lines) - 1) * LH + 56
+for ln in wrap(subtitle, "lbi", 13, 348):
+    g.text(LEFT, sy, ln, "lbi", 13, BLUSH)
     sy += 20.5
 
 
