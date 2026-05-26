@@ -11,7 +11,7 @@ import fitz
 from wla_style import (Guide, PAGE_W, PAGE_H, LEFT, RIGHT, CW, MARGIN,
                        CONTENT_TOP, CONTENT_BOTTOM,
                        NAVY, BLUSH, INK, BEIGE, CREAM, RULE,
-                       wrap, tw)
+                       wrap, tw, fit_size)
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    "..", "5-Day-Fat-Loss-Reset-Guide.pdf")
@@ -78,15 +78,30 @@ def stat_block(label, value):
 
 
 # =========================================================== cover
-g.cover(
-    "A FREE GUIDE", "THE WEIGHT LOSS ACADEMY",
-    [("The", "lbi", NAVY),
-     ("5 Day", "lb", BLUSH),
-     ("Fat Loss Reset.", "lbi", NAVY)],
-    "Start today, kickstart fat loss and lose up to 5lbs in 5 days. "
-    "A simple, no-fluff reset for women ready to feel lighter and "
-    "more in control.",
-)
+# custom cover — no top kicker; adds "for women 45+" accent line
+page = g._blank_page()
+g.page = page
+title_lines = [("The", "lbi", NAVY),
+               ("5 Day", "lb", BLUSH),
+               ("Fat Loss Reset.", "lbi", NAVY)]
+target = 408
+T = min(fit_size(t[0], t[1], target) for t in title_lines)
+T = min(T, 78)
+LH = T * 1.18
+b1 = 240
+for i, (txt, font, color) in enumerate(title_lines):
+    g.text(LEFT, b1 + i * LH, txt, font, T, color)
+# accent line — "for women 45+"
+accent_y = b1 + (len(title_lines) - 1) * LH + 56
+g.text(LEFT, accent_y, "for women 45+", "lbi", 28, BLUSH)
+# subtitle from the registration page
+subtitle = ("Break the sugar cycle, steady your energy and start "
+            "losing fat again — without 1,200-calorie plans or "
+            "cutting out carbs.")
+sy = accent_y + 50
+for ln in wrap(subtitle, "lbi", 13, 392):
+    g.text(LEFT, sy, ln, "lbi", 13, INK)
+    sy += 20.5
 
 
 # =========================================================== table of contents
@@ -117,19 +132,25 @@ toc([
 g._new_content_page()
 g.heading([[("Hello, ", False), ("Welcome to", True)],
            [("The WLA Community!", False)]])
-g.paragraph("Really excited that you have registered for our 5 Day "
-            "Fat Loss Reset. Start today, kickstart fat loss and lose "
-            "up to 5lbs in 5 days.")
-g.paragraph("A simple, no-fluff reset for women ready to ignite fat "
-            "loss and feel lighter, leaner and more in control.")
-g.subhead([("What you can expect", "lbi")])
+g.paragraph("Really excited that you've registered for the 5 Day Fat "
+            "Loss Reset — a midlife-friendly week designed to break "
+            "the sugar cycle, settle your blood sugar and get the "
+            "scales moving again.")
+g.paragraph("No 1,200-calorie plans. No banned food lists. No "
+            "starting over every Monday. Real food, real life, "
+            "and a structure that actually fits a busy week.")
+g.subhead([("Your 5-day wins", "lbi")])
 g.bullets([
-    "Kickstart up to 5 pounds of fat loss",
-    "More stable energy",
-    "Less mindless snacking",
-    "Reduced sugar cravings",
-    "Less bloated feeling",
-    "Brighter skin",
+    "Kickstart your weight loss — most women see 2-7 lbs shift by "
+    "day 5, largely from reduced bloating and water retention.",
+    "Sugar cravings handled — the afternoon snack pull starts "
+    "fading within the first 1-3 days.",
+    "Steady, balanced energy — no more mid-afternoon crashes or "
+    "post-dinner slumps.",
+    "Lighter, less bloated — clothes start fitting better by the "
+    "end of the week.",
+    "A reset you can keep going — habits that compound for the "
+    "next 4 weeks, not a one-off you start over from on Monday.",
 ])
 g.paragraph("Ready to feel better faster? Let's dive in.",
             font="asb", color=NAVY)
@@ -190,28 +211,63 @@ g.note("Join us on a journey back to your happy place in your body. "
 g._new_content_page()
 g.heading([[("A Note From ", False)],
            [("Our Founder", True)]])
-g.subhead([("Anna Wallace", "lbi")], color=BLUSH)
-g.paragraph("I once struggled with my weight, starting each day with "
-            "determination but often resorting to unhealthy habits "
-            "like the Special K diet or just going hours without "
-            "food.")
-g.paragraph("Evenings would often end with takeaway, excessive "
-            "eating, or alcohol to cope.")
-g.paragraph("Feeling lost and unhappy, I believed I was the “fat” "
-            "one in my family and didn't know how to change.")
-g.paragraph("After hitting rock bottom, I enrolled in University to "
-            "study Food and Nutrition. This decision transformed me — "
-            "I lost weight and maintained it, even after pregnancy.")
-g.paragraph("I founded The Weight Loss Academy, supporting over "
-            "50,000 clients globally over 9 years.")
-g.paragraph("Our WLA Approach helps to burn body fat simply and "
-            "flexibly, restoring confidence and igniting sustainable "
-            "fat loss.")
-g.paragraph("If you're reading this, know that achieving your goals "
-            "is possible, even if you've tried everything and feel "
-            "like giving up. Your journey matters — and, like mine, "
-            "finding the right weight loss approach can change "
-            "everything.")
+# portrait placeholder + body — two-column treatment
+photo_w = CW * 0.42
+photo_h = 280
+photo_top = g.y
+g.page.draw_rect(fitz.Rect(LEFT, photo_top, LEFT + photo_w,
+                           photo_top + photo_h),
+                 color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 - 12,
+              "[ Anna portrait ]", "lbi", 11, (0.55, 0.55, 0.55))
+# white signature card overlay near the bottom of the photo
+pill_y = photo_top + photo_h - 56
+g.page.draw_rect(fitz.Rect(LEFT + 14, pill_y, LEFT + photo_w - 14,
+                           pill_y + 44),
+                 color=None, fill=(1, 1, 1))
+g.text(LEFT + 22, pill_y + 16, "Anna Wallace", "lbi", 12, BLUSH)
+g.text(LEFT + 22, pill_y + 28, "BSc Food & Nutrition", "asi", 9, NAVY)
+g.text(LEFT + 22, pill_y + 39, "Registered Associate Nutritionist",
+       "asi", 9, NAVY)
+# body — right column
+tx = LEFT + photo_w + 26
+tw_body = CW - photo_w - 26
+ty = photo_top + 4
+# big italic intro line
+intro = ("This is the reset I built from 10 years coaching "
+         "women over 45.")
+for ln in wrap(intro, "lbi", 13.5, tw_body):
+    g.text(tx, ty + 11, ln, "lbi", 13.5, NAVY)
+    ty += 19
+ty += 6
+# body paragraphs
+for txt in [
+    "I'm a Registered Associate Nutritionist (BSc Food & "
+    "Nutrition) and the founder of The Weight Loss Academy. Over "
+    "the last 10 years my team and I have supported over 50,000 "
+    "women — the majority of them in midlife — to lose weight "
+    "without 1,200-calorie plans, banned food lists or starting "
+    "over every Monday.",
+    "This 5 Day Reset is the entry point. It's the exact rhythm "
+    "I use with paying clients to break the sugar cycle in 72 "
+    "hours, settle blood sugar, and put a structure in place "
+    "that actually fits a midlife week.",
+    "I once struggled with my weight too — Special K breakfasts, "
+    "hours without food, evenings ending with takeaway or wine. "
+    "Studying nutrition transformed me, and I built the WLA to "
+    "give other women that same shift without the punishment.",
+    "If you're reading this, know that your goals are possible — "
+    "even if you've tried everything else. Like mine, finding the "
+    "right approach can change everything.",
+]:
+    for ln in wrap(txt, "as", 10.5, tw_body):
+        g.text(tx, ty + 8, ln, "as", 10.5, INK)
+        ty += 14.4
+    ty += 7
+# signature
+g.y = max(photo_top + photo_h + 22, ty + 8)
+g.text(LEFT, g.y + 18, "— Anna", "lbi", 20, BLUSH)
+g.y += 30
 
 
 # =========================================================== member results
@@ -264,9 +320,7 @@ g.bullets([
     "soup, have a piece of protein on the side such as a boiled "
     "egg or some meat / fish.",
 ])
-
-g._new_content_page()
-g.subhead([("Drinks", "lbi")], gap_before=0)
+g.subhead([("Drinks", "lbi")])
 g.bullets([
     "Aim to have only one milky coffee per day (i.e. latte / "
     "cappuccino). Tea and coffee with small amounts of milk are "
@@ -281,6 +335,7 @@ g.bullets([
     "appetite and sugar cravings. Snacking at other times of the "
     "day is fine — but only when physically hungry.",
 ])
+g.keep_together(140)
 g.subhead([("Portions", "lbi")])
 g.bullets([
     "If you feel it's too much food for you, don't eat it all. "
@@ -290,7 +345,12 @@ g.bullets([
 ])
 g.subhead([("A note on perfection", "lbi")])
 g.bullets([
-    "Don't expect perfection — just do your best.",
+    "Don't expect perfection — just do your best. Five focused "
+    "days beat five perfect ones you never start.",
+    "If you slip up at lunch, the next meal is your chance to "
+    "reset. Nothing is ruined.",
+    "Tick off each day in the Facebook group — accountability "
+    "compounds. By Friday you'll feel the difference.",
 ])
 
 
@@ -298,20 +358,57 @@ g.bullets([
 g._new_content_page()
 g.heading([[("The 5 Day Fat Loss", False)],
            [("Reset ", False), ("Guidelines", True)]])
-g.paragraph("Stick to these seven simple principles and the reset "
+g.paragraph("Stick to these eight simple principles and the reset "
             "will do the heavy lifting for you.")
-g.bullets([
-    "Eat breakfast within 1 hour of waking (if possible).",
-    "Ensure every breakfast has a protein element.",
-    "Include protein with every meal.",
-    "Reduce processed foods and added sugars.",
-    "Eat 3 healthy meals per day with healthy snacks in between "
-    "when hungry.",
-    "Stay hydrated by drinking at least 8 glasses of water per day.",
-    "Move your body daily — even a 20-minute walk counts.",
-])
-g.note("If using dairy-free milk at breakfast, add a scoop of "
-       "protein powder to keep protein levels up.")
+
+CARDS = [
+    ("01", "Eat breakfast",
+     "Within 1 hour of waking, every day."),
+    ("02", "Protein at breakfast",
+     "Sets satiety and steadies blood sugar for the day."),
+    ("03", "Protein at every meal",
+     "The single biggest lever for staying full."),
+    ("04", "Reduce processed foods",
+     "And added sugars — cut packaged shortcuts where you can."),
+    ("05", "3 meals + smart snacks",
+     "Eat 3 meals; snack only when truly hungry."),
+    ("06", "Hydrate",
+     "At least 8 glasses of water per day."),
+    ("07", "Move daily",
+     "Even a 20-minute walk counts."),
+    ("08", "Dairy-free at breakfast?",
+     "Add a scoop of protein powder to keep protein up."),
+]
+
+CG = 18          # gap between cards
+CH = 110         # card height
+ccw = (CW - CG) / 2
+
+g.ensure(CH * 4 + CG * 3 + 8)
+top = g.y
+for i, (num, title, desc) in enumerate(CARDS):
+    r = i // 2
+    c = i % 2
+    x0 = LEFT + c * (ccw + CG)
+    y0 = top + r * (CH + CG)
+    # subtle border + cream fill
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + ccw, y0 + CH),
+                     color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+    # coral left accent strip
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + CH),
+                     color=None, fill=BLUSH)
+    # coral number, tracked
+    g.tracked(x0 + 22, y0 + 30, num, "asb", 11, BLUSH, 1.6)
+    # navy title
+    g.text(x0 + 22, y0 + 58, title, "lb", 15, NAVY)
+    # italic descriptor (wrapped)
+    desc_lines = wrap(desc, "asi", 10.5, ccw - 44)
+    ty = y0 + 79
+    for ln in desc_lines:
+        g.text(x0 + 22, ty, ln, "asi", 10.5, INK)
+        ty += 13.5
+g.y = top + 4 * (CH + CG)
+g.gap(4)
 
 
 # =========================================================== meal overview
