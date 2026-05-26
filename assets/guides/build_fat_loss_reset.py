@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""The 5 Day Fat Loss Reset Guide — WLA house style (No-Fuss Cookbook).
+"""The 5 Day Fat Loss Reset Guide, WLA house style (No-Fuss Cookbook).
 
 A scaffold matching the editorial design of the No-Fuss Batch Cookbook.
-Framing content (mission, founder note, tips, guidelines, swop list,
+Framing content (mission, founder note, tips, guidelines, swap list,
 drink / snack tips, educational pages) is fully written. Member-results
 photos and the recipe content are intentionally left as placeholders.
 """
@@ -47,7 +47,7 @@ def photo_placeholder(width=CW, height=240, caption="[ photo ]"):
 
 def grid_placeholder(rows, cols, item_h=180, caption="[ photo ]",
                      gap=14):
-    """Image grid placeholder — used for member-results pages."""
+    """Image grid placeholder, used for member-results pages."""
     cw = (CW - gap * (cols - 1)) / cols
     total_h = rows * item_h + (rows - 1) * gap
     g.ensure(total_h + 8)
@@ -78,7 +78,7 @@ def stat_block(label, value):
 
 
 # =========================================================== cover
-# clean cover — no top kicker
+# clean cover, no top kicker
 page = g._blank_page()
 g.page = page
 title_lines = [("The", "lbi", NAVY),
@@ -104,7 +104,7 @@ for ln in wrap(subtitle, "lbi", 13, 348):
 toc([
     ("About Us",                                       "03"),
     ("The WLA Mission",                                "04-05"),
-    ("A Note From Our Founder — Anna Wallace",          "06"),
+    ("A Note From Our Founder, Anna Wallace",          "06"),
     ("WLA Members Results / Our Community Success",    "07-09"),
     ("Important Tips for Getting Started",             "10-11"),
     ("The 5 Day Fat Loss Reset Guidelines",            "12"),
@@ -113,7 +113,7 @@ toc([
     ("Lunch Recipes",                                  "17-19"),
     ("Dinner Recipes",                                 "20-23"),
     ("Mid-Afternoon Snack Recipes",                    "24-26"),
-    ("The Swop List",                                  "27-40"),
+    ("The Swap List",                                  "27-40"),
     ("Drink Tips",                                     "41"),
     ("Snack Tips",                                     "42-45"),
     ("Why Balanced Blood Sugar Supports Fat Loss",     "46"),
@@ -129,7 +129,7 @@ g._new_content_page()
 g.heading([[("Hello, ", False), ("Welcome to", True)],
            [("The WLA Community!", False)]])
 g.paragraph("Really excited that you've registered for the 5 Day Fat "
-            "Loss Reset — a midlife-friendly week designed to break "
+            "Loss Reset, a midlife-friendly week designed to break "
             "the sugar cycle, settle your blood sugar and get the "
             "scales moving again.")
 g.paragraph("No 1,200-calorie plans. No banned food lists. No "
@@ -137,15 +137,15 @@ g.paragraph("No 1,200-calorie plans. No banned food lists. No "
             "and a structure that actually fits a busy week.")
 g.subhead([("Your 5-day wins", "lbi")])
 g.bullets([
-    "Kickstart your weight loss — most women see 2-7 lbs shift by "
+    "Kickstart your weight loss, most women see 2-7 lbs shift by "
     "day 5, largely from reduced bloating and water retention.",
-    "Sugar cravings handled — the afternoon snack pull starts "
+    "Sugar cravings handled, the afternoon snack pull starts "
     "fading within the first 1-3 days.",
-    "Steady, balanced energy — no more mid-afternoon crashes or "
+    "Steady, balanced energy, no more mid-afternoon crashes or "
     "post-dinner slumps.",
-    "Lighter, less bloated — clothes start fitting better by the "
+    "Lighter, less bloated, clothes start fitting better by the "
     "end of the week.",
-    "A reset you can keep going — habits that compound for the "
+    "A reset you can keep going, habits that compound for the "
     "next 4 weeks, not a one-off you start over from on Monday.",
 ])
 g.paragraph("Ready to feel better faster? Let's dive in.",
@@ -189,25 +189,24 @@ g.paragraph("Promotes easy weight loss with a flexible approach to "
             "consistently, increase your energy and say goodbye to "
             "fad diets.")
 g.subhead([("Behavioural Change Strategies", "lbi")])
-g.paragraph("Centred around the psychology behind weight loss — lose "
+g.paragraph("Centred around the psychology behind weight loss, lose "
             "weight but keep it off. Have food freedom and say "
             "goodbye to self-sabotaging food guilt.")
 g.subhead([("Expert Coaching", "lbi")])
 g.paragraph("Focuses on consistency strategies so you finally stop "
             "“falling off track”. We guide you every step of the "
             "way with our professional, women-only and "
-            "non-judgemental coaching community — focusing on "
+            "non-judgemental coaching community, focusing on "
             "accountability, staying on track and empowerment.")
 g.note("Join us on a journey back to your happy place in your body. "
        "It's time to feel lighter, more confident, healthier and more "
-       "energised — without minimal calories and extreme workouts.")
+       "energised, without minimal calories and extreme workouts.")
 
 
 # =========================================================== founder
 g._new_content_page()
-g.heading([[("A Note From ", False)],
-           [("Our Founder", True)]])
-# portrait placeholder + body — two-column treatment
+g.heading([[("A Note From ", False), ("Our Founder", True)]])
+# portrait placeholder + body, two-column treatment
 photo_w = CW * 0.42
 photo_h = 280
 photo_top = g.y
@@ -225,7 +224,7 @@ g.text(LEFT + 22, pill_y + 16, "Anna Wallace", "lbi", 12, BLUSH)
 g.text(LEFT + 22, pill_y + 28, "BSc Food & Nutrition", "asi", 9, NAVY)
 g.text(LEFT + 22, pill_y + 39, "Registered Associate Nutritionist",
        "asi", 9, NAVY)
-# body — right column
+# body, right column
 tx = LEFT + photo_w + 26
 tw_body = CW - photo_w - 26
 ty = photo_top + 4
@@ -235,35 +234,27 @@ intro = ("This is the reset I built from 10 years coaching "
 for ln in wrap(intro, "lbi", 13.5, tw_body):
     g.text(tx, ty + 11, ln, "lbi", 13.5, NAVY)
     ty += 19
-ty += 6
-# body paragraphs
+ty += 8
+# body paragraphs (Anna's exact copy)
 for txt in [
     "I'm a Registered Associate Nutritionist (BSc Food & "
     "Nutrition) and the founder of The Weight Loss Academy. Over "
     "the last 10 years my team and I have supported over 50,000 "
-    "women — the majority of them in midlife — to lose weight "
+    "women, the majority of them in midlife, to lose weight "
     "without 1,200-calorie plans, banned food lists or starting "
     "over every Monday.",
     "This 5 Day Reset is the entry point. It's the exact rhythm "
     "I use with paying clients to break the sugar cycle in 72 "
     "hours, settle blood sugar, and put a structure in place "
     "that actually fits a midlife week.",
-    "I once struggled with my weight too — Special K breakfasts, "
-    "hours without food, evenings ending with takeaway or wine. "
-    "Studying nutrition transformed me, and I built the WLA to "
-    "give other women that same shift without the punishment.",
-    "If you're reading this, know that your goals are possible — "
-    "even if you've tried everything else. Like mine, finding the "
-    "right approach can change everything.",
+    "It's normally a paid programme. This round is free and yes, "
+    "you get me live for the full five days.",
 ]:
-    for ln in wrap(txt, "as", 10.5, tw_body):
-        g.text(tx, ty + 8, ln, "as", 10.5, INK)
-        ty += 14.4
-    ty += 7
-# signature
+    for ln in wrap(txt, "as", 10.8, tw_body):
+        g.text(tx, ty + 8, ln, "as", 10.8, INK)
+        ty += 15
+    ty += 8
 g.y = max(photo_top + photo_h + 22, ty + 8)
-g.text(LEFT, g.y + 18, "— Anna", "lbi", 20, BLUSH)
-g.y += 30
 
 
 # =========================================================== member results
@@ -279,7 +270,7 @@ grid_placeholder(2, 2, item_h=265,
 
 g._new_content_page()
 g.heading([[("Our ", False), ("Community Success", True)]])
-g.paragraph("Real posts and messages from our community — to be "
+g.paragraph("Real posts and messages from our community, to be "
             "added.", font="asi")
 grid_placeholder(3, 2, item_h=150,
                  caption="[ Member post screenshot ]")
@@ -290,7 +281,7 @@ g._new_content_page()
 g.heading([[("Important Tips for", False)],
            [("Getting Started", True)]])
 g.paragraph("The 5 Day Fat Loss Reset meal guide can include "
-            "whatever variation of the meal options you want — it's "
+            "whatever variation of the meal options you want, it's "
             "fully adjustable depending on the recipes and "
             "ingredients you like.")
 g.paragraph("Pick the recipe you like most from the reset meal "
@@ -329,7 +320,7 @@ g.subhead([("Snacks", "lbi")])
 g.bullets([
     "Aim for one bigger snack between lunch and dinner to manage "
     "appetite and sugar cravings. Snacking at other times of the "
-    "day is fine — but only when physically hungry.",
+    "day is fine, but only when physically hungry.",
 ])
 g.keep_together(140)
 g.subhead([("Portions", "lbi")])
@@ -341,11 +332,11 @@ g.bullets([
 ])
 g.subhead([("A note on perfection", "lbi")])
 g.bullets([
-    "Don't expect perfection — just do your best. Five focused "
+    "Don't expect perfection, just do your best. Five focused "
     "days beat five perfect ones you never start.",
     "If you slip up at lunch, the next meal is your chance to "
     "reset. Nothing is ruined.",
-    "Tick off each day in the Facebook group — accountability "
+    "Tick off each day in the Facebook group, accountability "
     "compounds. By Friday you'll feel the difference.",
 ])
 
@@ -365,7 +356,7 @@ CARDS = [
     ("03", "Protein at every meal",
      "The single biggest lever for staying full."),
     ("04", "Reduce processed foods",
-     "And added sugars — cut packaged shortcuts where you can."),
+     "And added sugars, cut packaged shortcuts where you can."),
     ("05", "3 meals + smart snacks",
      "Eat 3 meals; snack only when truly hungry."),
     ("06", "Hydrate",
@@ -416,30 +407,30 @@ g.paragraph("Choose any breakfast, lunch or dinner option for each "
             "day.")
 
 g.subhead([("Breakfast Options", "lbi")])
-g.bullets(["Option 1 — [ recipe ]",
-           "Option 2 — [ recipe ]",
-           "Option 3 — [ recipe ]"])
+g.bullets(["Option 1, [ recipe ]",
+           "Option 2, [ recipe ]",
+           "Option 3, [ recipe ]"])
 
 g.subhead([("Morning Snack", "lbi")])
-g.paragraph("Opt for a smaller snack — a portion of fruit or "
+g.paragraph("Opt for a smaller snack, a portion of fruit or "
             "vegetables if hungry. (See snack tips for more info.)")
 
 g.subhead([("Lunch Options", "lbi")])
-g.bullets(["Option 1 — [ recipe ]",
-           "Option 2 — [ recipe ]",
-           "Option 3 — [ recipe ]",
-           "Option 4 — [ recipe ]"])
+g.bullets(["Option 1, [ recipe ]",
+           "Option 2, [ recipe ]",
+           "Option 3, [ recipe ]",
+           "Option 4, [ recipe ]"])
 
 g.subhead([("Mid-Afternoon Snack", "lbi")])
-g.paragraph("Opt for a bigger snack — select one of our snack "
+g.paragraph("Opt for a bigger snack, select one of our snack "
             "recipes or bigger snack options later in the guide.")
 
 g.subhead([("Dinner Options", "lbi")])
-g.bullets(["Option 1 — [ recipe ]",
-           "Option 2 — [ recipe ]",
-           "Option 3 — [ recipe ]",
-           "Option 4 — [ recipe ]",
-           "Option 5 — [ recipe ]"])
+g.bullets(["Option 1, [ recipe ]",
+           "Option 2, [ recipe ]",
+           "Option 3, [ recipe ]",
+           "Option 4, [ recipe ]",
+           "Option 5, [ recipe ]"])
 
 
 # =========================================================== recipes
@@ -447,7 +438,7 @@ def placeholder_recipe(slot=None):
     ingredients = [f"[ ingredient {i + 1} ]" for i in range(8)]
     instructions = [f"[ step {i + 1} ]" for i in range(6)]
     g.recipe("[ Recipe Name ]", "?", ingredients, instructions,
-             note=(f"[ {slot} — Anna to add recipe ]" if slot
+             note=(f"[ {slot}, Anna to add recipe ]" if slot
                    else "[ Anna to add recipe ]"))
 
 
@@ -475,10 +466,10 @@ placeholder_recipe()
 placeholder_recipe()
 
 
-# =========================================================== swop list
+# =========================================================== swap list
 g._new_content_page()
-g.heading([[("The Food ", False), ("Swop List", True)]])
-g.coral_heading("Every single ingredient can easily be changed — just "
+g.heading([[("The Food ", False), ("Swap List", True)]])
+g.coral_heading("Every single ingredient can easily be changed, just "
                 "swap with foods from the same group.")
 g.paragraph("The meals and recipes are flexible. Leave out any "
             "ingredients you do not enjoy, or replace with another "
@@ -493,16 +484,16 @@ g.paragraph("If you do not want chicken, swap with another meat. If "
 g.paragraph("You can leave out ingredients you do not want, add or "
             "decrease herbs and spices, and taste everything to suit "
             "your preferences.")
-g.paragraph("Everything can be adjusted — as long as the adjustment "
+g.paragraph("Everything can be adjusted, as long as the adjustment "
             "is done within the right group, you can still get the "
             "best possible results.")
 
-# the swop tables — using list_table for 2-col, select_table for 3-col
+# the swap tables, using list_table for 2-col, select_table for 3-col
 PROTEIN_ANIMAL = [
-    ("Beef, lamb or pork mince", "100g (3½ oz) — 140g (5 oz)"),
+    ("Beef, lamb or pork mince", "100g (3½ oz) to 140g (5 oz)"),
     ("Beef pieces", "100g (3½ oz)"),
     ("Beef sirloin steak", "1 small, approx. 120g (4 oz)"),
-    ("Chicken fillet", "Medium, 100g (3½ oz) — 130g (4¾ oz)"),
+    ("Chicken fillet", "Medium, 100g (3½ oz) to 130g (4¾ oz)"),
     ("Chicken thigh", "1 large or 2 small"),
     ("Chorizo", "30g (1 oz)"),
     ("Cod fillet", "175g (6 oz) approx"),
@@ -519,7 +510,7 @@ PROTEIN_ANIMAL = [
     ("Smoked salmon", "55g (2 oz)"),
     ("Tuna steak", "1 small approx. 110g (3¾ oz)"),
     ("Tuna (tinned)", "1 small can approx. 70g (2½ oz)"),
-    ("Turkey or chicken mince", "100g (3½ oz) — 130g (4¾ oz)"),
+    ("Turkey or chicken mince", "100g (3½ oz) to 130g (4¾ oz)"),
     ("White fish fillets", "185g (6½ oz)"),
 ]
 PROTEIN_VEGGIE = [
@@ -532,10 +523,10 @@ PROTEIN_VEGGIE = [
     ("Quorn mince", "75g (3oz)"),
     ("Quorn pieces", "75g (3oz)"),
     ("Ricotta cheese", "30g (2 tablespoons)"),
-    ("Semi-skimmed milk", "100ml — 250ml (1 cup)"),
+    ("Semi-skimmed milk", "100ml to 250ml (1 cup)"),
     ("Seitan", "100g (⅔ cup)"),
     ("Tempeh", "100g (⅔ cup)"),
-    ("Tofu", "¼ block (115g (4 oz) approx) — 125g (½ cup)"),
+    ("Tofu", "¼ block (115g (4 oz) approx) to 125g (½ cup)"),
     ("Vegetarian sausages", "2 sausages"),
 ]
 LEGUMES = [
@@ -563,9 +554,9 @@ CARBS = [
     ("Couscous, whole wheat", "30-40g", "> 40g"),
     ("Flour, wholewheat", "1-2 tablespoons", "> 2 tablespoons"),
     ("Giant couscous, whole wheat", "30-40g", "> 40g"),
-    ("Oat flakes", "1 tbsp — 40g (½ cup)", "> 40g"),
+    ("Oat flakes", "1 tbsp to 40g (½ cup)", "> 40g"),
     ("Orzo", "30-40g", "> 40g"),
-    ("Porridge oats", "1 tbsp — 40g (½ cup)", "> 40g"),
+    ("Porridge oats", "1 tbsp to 40g (½ cup)", "> 40g"),
     ("Potatoes", "< 100g", "> 100g"),
     ("Quinoa", "30-40g", "> 40g"),
     ("Soba noodles", "30-40g", "> 40g"),
@@ -580,12 +571,12 @@ CARBS = [
 ]
 FRUITS_VEG = [
     ("Apple", "1 small"), ("Aubergine", "½ average"),
-    ("Avocado", "½ small / ¼ large"), ("Banana", "½ — 1 small"),
+    ("Avocado", "½ small / ¼ large"), ("Banana", "½ to 1 small"),
     ("Beansprouts", "100g (1¼ cups)"), ("Blueberries", "15 pieces"),
     ("Broccoli", "140g (2 cups)"),
-    ("Butternut squash", "70g (½ cup) — 140g (1 cup)"),
+    ("Butternut squash", "70g (½ cup) to 140g (1 cup)"),
     ("Cabbage", "80g"),
-    ("Canned tomatoes", "150g (¾ cup) — 200g (1 cup)"),
+    ("Canned tomatoes", "150g (¾ cup) to 200g (1 cup)"),
     ("Carrot", "1 medium"), ("Cauliflower", "100g (½ cup)"),
     ("Cherry tomatoes", "6 pieces"),
     ("Chopped tomatoes", "100g (½ cup)"),
@@ -593,11 +584,11 @@ FRUITS_VEG = [
     ("Courgette", "80g (½ cup)"),
     ("Cranberries, fresh or frozen", "40g (½ cup)"),
     ("Cucumber", "½ average or 4 mini"), ("Dates", "2-3 dates"),
-    ("Dried fruit (raisins, sultanas)", "1 tablespoon — 30g"),
-    ("Frozen mango", "70g (½ cup) — 125g (¾ cup)"),
+    ("Dried fruit (raisins, sultanas)", "1 tablespoon to 30g"),
+    ("Frozen mango", "70g (½ cup) to 125g (¾ cup)"),
     ("Frozen peas", "3 tablespoons"),
     ("Fruit salad of your choice", "100g (¾ cup)"),
-    ("Green beans", "4 tablespoons — 80g (1 cup)"),
+    ("Green beans", "4 tablespoons to 80g (1 cup)"),
     ("Green pepper", "½ average"), ("Kale", "4 tablespoons"),
     ("Mangetout", "10 pieces"),
     ("Mixed berries, frozen", "3 tablespoons"),
@@ -607,7 +598,7 @@ FRUITS_VEG = [
     ("Portobello mushrooms", "2 mushrooms"),
     ("Raspberries", "50g (½ cup)"), ("Red pepper", "½ average"),
     ("Rocket", "50g (2 cups)"), ("Sauté vegetables", "250g (2 cups)"),
-    ("Spinach leaves", "1 cup — 40g (1¼ cup) / 1 cereal bowl"),
+    ("Spinach leaves", "1 cup to 40g (1¼ cup) / 1 cereal bowl"),
     ("Strawberries", "7-8 pieces"), ("Sundried tomato", "3 pieces"),
     ("Sweetcorn", "2 tablespoons"),
     ("Vegetable stir-fry packet", "200g"), ("Watercress", "1 cup"),
@@ -618,7 +609,7 @@ FATS = [
     ("Cheddar cheese", "15-30g (⅓ cup)"),
     ("Chia seeds", "1 teaspoon"),
     ("Chocolate chips, dark", "1 tsp up to 80g (⅓ cup)"),
-    ("Coconut milk, canned", "100g (½ cup) — 200g (1 cup)"),
+    ("Coconut milk, canned", "100g (½ cup) to 200g (1 cup)"),
     ("Cream", "1 tablespoon"), ("Cream cheese", "1 tablespoon"),
     ("Creme fraiche, full-fat", "1 tablespoon"),
     ("Desiccated coconut", "1 tsp up to 45g (½ cup)"),
@@ -627,7 +618,7 @@ FATS = [
     ("Full-fat goats cheese", "30g (¼ cup)"),
     ("Green pesto", "1 tablespoon"),
     ("Mayonnaise, full-fat", "1 teaspoon"),
-    ("Mixed nuts", "1 tablespoon — 30g"), ("Olive oil", "1 teaspoon"),
+    ("Mixed nuts", "1 tablespoon to 30g"), ("Olive oil", "1 teaspoon"),
     ("Olives", "6 pieces"), ("Parmesan cheese", "15-30g (⅓ cup)"),
     ("Peanut butter", "1 tablespoon"),
     ("Salad cream, full-fat", "1 teaspoon"),
@@ -649,7 +640,7 @@ OTHER = [
     ("Soy sauce, reduced-salt", "1 tablespoon"),
     ("Teriyaki sauce", "2 tablespoons"),
     ("Tomato ketchup, reduced sugar", "1 teaspoon"),
-    ("Tomato puree", "1 tbsp — 120ml (1½ cup)"),
+    ("Tomato puree", "1 tbsp to 120ml (1½ cup)"),
     ("Worcestershire sauce", "1 tablespoon"),
 ]
 
@@ -668,10 +659,10 @@ def three_col(items):
 
 
 g._new_content_page()
-g.subhead([("Protein — Animal Sources", "lbi")], gap_before=0)
+g.subhead([("Protein, Animal Sources", "lbi")], gap_before=0)
 two_col(PROTEIN_ANIMAL)
 g._new_content_page()
-g.subhead([("Protein — Vegetarian Sources", "lbi")], gap_before=0)
+g.subhead([("Protein, Vegetarian Sources", "lbi")], gap_before=0)
 two_col(PROTEIN_VEGGIE)
 g._new_content_page()
 g.subhead([("Legumes", "lbi")], gap_before=0)
@@ -697,10 +688,10 @@ g.coral_heading("Hydration is one of the quickest wins of the reset.")
 
 g.subhead([("1. Get a pretty reusable water bottle", "lbi")])
 g.paragraph("Keeping a water bottle handy serves as a visual "
-            "reminder to drink more. Fill it before you leave home — "
+            "reminder to drink more. Fill it before you leave home, "
             "and it's better for the planet than single-use bottles.")
 g.subhead([("2. Add water to your daily routine", "lbi")])
-g.paragraph("Drink at set points during the day — as soon as you "
+g.paragraph("Drink at set points during the day, as soon as you "
             "wake, before a meal, while at your desk. Sipping "
             "consistently throughout the day makes hitting your "
             "fluid goals effortless.")
@@ -713,7 +704,7 @@ g.paragraph("Foods like lettuce, celery, cucumber, watermelon and "
             "grapefruit are loaded with water and packed with "
             "vitamins, minerals and antioxidants.")
 g.note("You can have one milky coffee (latte or cappuccino) per "
-       "day. Multiple teas with a little milk are also fine — just "
+       "day. Multiple teas with a little milk are also fine, just "
        "make sure you're drinking water alongside.")
 
 
@@ -736,7 +727,7 @@ g.paragraph("The gap between lunch and dinner tends to be longer, "
             "“bigger” snacks. They help you avoid the 3pm slump and "
             "reduce the temptation to reach for sugary or processed "
             "foods.")
-g.subhead([("Snack amounts — what's right for you?", "lbi")])
+g.subhead([("Snack amounts, what's right for you?", "lbi")])
 g.bullets([
     "Very active or exercise regularly? You may benefit from "
     "additional bigger snacks to fuel your energy needs.",
@@ -747,9 +738,9 @@ g.note("We recommend limiting bananas to one per day, as they're "
        "more calorie-dense than other fruits.")
 g.subhead([("Final tips", "lbi")])
 g.bullets([
-    "Eat when you're hungry — not out of boredom or habit.",
+    "Eat when you're hungry, not out of boredom or habit.",
     "Pause and check in with your body before reaching for a snack.",
-    "Aim for nourishment — every bite is a chance to fuel your "
+    "Aim for nourishment, every bite is a chance to fuel your "
     "body well.",
 ])
 
@@ -785,7 +776,7 @@ g.paragraph("Some women only need one bigger snack per day, others "
 g.paragraph("We recommend a bigger snack between lunch and dinner to "
             "prevent sugar cravings. You may need another in the "
             "evening. Some days you may need two bigger snacks and "
-            "some days one — tune in and be flexible.")
+            "some days one, tune in and be flexible.")
 g.bullets([
     "3 crackers with nut butter, cream cheese, cottage cheese, "
     "hummus, avocado, cheddar or tuna",
@@ -842,17 +833,17 @@ g.heading([[("Easily ", False), ("Kickstart Fat Loss", True),
             (" in 5 Days", False)]])
 g.paragraph("When the right amount of food is consumed at the right "
             "times, this results in balanced blood sugar levels "
-            "throughout the day. The body can handle some sugar — "
+            "throughout the day. The body can handle some sugar, "
             "but excessive amounts have an impact on fat loss.")
 g.subhead([("The ideal blood sugar pattern", "lbi")])
 g.bullets([
-    "Gentle peaks after each meal or snack — think balanced meals.",
+    "Gentle peaks after each meal or snack, think balanced meals.",
     "Small peaks and troughs, not extremes.",
     "A blood sugar dip is your body's signal to eat.",
 ])
 
 g._new_content_page()
-g.subhead([("The rollercoaster — highs and lows", "lbi")],
+g.subhead([("The rollercoaster, highs and lows", "lbi")],
           gap_before=0)
 g.paragraph("Without balance, the day looks like this:")
 g.bullets([
@@ -860,7 +851,7 @@ g.bullets([
     "Extreme lows",
     "Low mood / high mood",
     "Unbalanced overall",
-    "More sugar cravings — and generally more sugar overall",
+    "More sugar cravings, and generally more sugar overall",
 ])
 g.note("Fat loss can be extremely difficult on this pattern.")
 
@@ -875,13 +866,13 @@ g.paragraph("When breakfast is skipped, blood sugar levels continue "
             "stabilise.")
 g.paragraph("Including a protein element with breakfast helps with "
             "satiety (feeling of fullness) and sets the body up for "
-            "the day — meaning less snacking on less nutrient-dense "
+            "the day, meaning less snacking on less nutrient-dense "
             "options throughout the day, which is exactly what "
             "supports fat loss.")
 g.subhead([("The skip-breakfast cycle", "lbi")])
 g.bullets([
     "Blood sugar dips due to skipping breakfast.",
-    "Body searches for a quick “hit” — shaky, hungry, tired — so "
+    "Body searches for a quick “hit”, shaky, hungry, tired, so "
     "sugar gets reached for.",
     "High spike followed by a big hit of insulin.",
     "Extreme high followed by extreme slump.",
@@ -892,20 +883,20 @@ g.bullets([
 g._new_content_page()
 g.heading([[("Why ", False), ("Snacking", True),
             (" Is Important", False)]])
-g.paragraph("Snacking is really important — it helps keep blood "
+g.paragraph("Snacking is really important, it helps keep blood "
             "sugar levels steady during the day. If food is eaten at "
             "regular intervals, dips in blood sugar are less likely, "
             "and reaching for less nutrient-dense foods for a kick of "
             "energy won't happen.")
 g.paragraph("Snacking bridges the gap between breakfast and lunch, "
             "and then lunch and dinner. However, snacks should not "
-            "be eaten just for the sake of it — snacking is meant to "
+            "be eaten just for the sake of it, snacking is meant to "
             "tide you over until the next meal.")
 g.subhead([("With healthy snacks you get", "lbi")])
 g.bullets([
     "Gentle peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
-    "A blood sugar dip is your body's signal to eat — not stress.",
+    "A blood sugar dip is your body's signal to eat, not stress.",
 ])
 
 
@@ -916,23 +907,23 @@ g.paragraph("At The WLA, we use our unique Nutrition Formula to "
             "help kickstart fat loss in as little as 5 days and "
             "support visible weight loss within a week.")
 g.paragraph("This formula is built around portion control and a "
-            "healthy balance of all food groups — carbohydrates, "
-            "protein, and fats — rather than restriction or "
+            "healthy balance of all food groups, carbohydrates, "
+            "protein, and fats, rather than restriction or "
             "elimination.")
 g.paragraph("The WLA Nutrition Formula focuses on building meals "
             "that are high in protein and adjusted to be low, "
             "medium, or higher in carbohydrates, depending on the "
             "meal and the individual. This teaches you how to "
             "create nutritionally balanced meals that support fat "
-            "loss, improve health, and help reduce sugar cravings — "
+            "loss, improve health, and help reduce sugar cravings, "
             "while staying realistic and sustainable long term.")
 g.paragraph("Your 5 Day Fat Loss Reset has been designed using this "
             "formula for maximum results. You don't need to "
-            "calculate or overthink anything — simply follow the "
+            "calculate or overthink anything, simply follow the "
             "guide.")
 g.subhead([("The formula focuses on", "lbi")])
 g.bullets([
-    "Reducing carbohydrate intake (not eliminating — just "
+    "Reducing carbohydrate intake (not eliminating, just "
     "adjusting amounts).",
     "Reducing processed foods and added sugars.",
     "Prioritising whole, nourishing foods.",
