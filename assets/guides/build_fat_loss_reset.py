@@ -1135,7 +1135,7 @@ def image_above_checks(image_name, items, image_w=0.7,
         h = 240
     line_size = 11
     line_h = 15.5
-    item_gap = 8
+    item_gap = 4
     items_h = 0
     for it in items:
         ln_count = len(wrap(it, "as", line_size, CW - 30))
@@ -1353,7 +1353,7 @@ image_above_checks("ideal-blood-sugar", [
     "Peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "Blood sugar level dips = signal to eat.",
-], image_w=0.55, img_max_h=270, gap_between=14)
+], image_w=0.55, img_max_h=270, gap_between=4)
 
 g._new_content_page()
 g.subhead([("The ", "lbi"),
@@ -1362,7 +1362,7 @@ image_above_checks("rollercoaster-danger", [
     "High spike, a more volatile reaction to the muffin.",
     "Body releases a big hit of insulin to clear the sugar.",
     "Extreme high followed by extreme slump.",
-], image_w=0.55, img_max_h=270, gap_between=14)
+], image_w=0.55, img_max_h=270, gap_between=4)
 
 g._new_content_page()
 g.subhead([("The Rollercoaster, ", "lbi"),
@@ -1373,7 +1373,7 @@ image_above_checks("rollercoaster-highs-lows", [
     "Low mood / high mood.",
     "Unbalanced overall.",
     "More sugar cravings and generally eating more sugar overall.",
-], image_w=0.55, img_max_h=270, gap_between=14)
+], image_w=0.55, img_max_h=270, gap_between=4)
 callout("Side note, weight loss can be extremely difficult here.",
         font="asi", gap_before=10)
 
