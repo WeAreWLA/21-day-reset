@@ -146,16 +146,16 @@ toc([
     ("The 5 Day Fat Loss Reset Guidelines",            "12"),
     ("The 5 Day Fat Loss Reset Meal Overview",         "13"),
     ("Breakfast Recipes",                              "14-18"),
-    ("Lunch Recipes",                                  "19-21"),
-    ("Dinner Recipes",                                 "22-25"),
-    ("The Swap List",                                  "26-38"),
-    ("Drink Tips",                                     "39"),
-    ("Snack Tips",                                     "40-43"),
-    ("What Balanced Blood Sugar Gives You",            "44"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "45-46"),
-    ("Why Breakfast is Important",                     "47"),
-    ("Why Snacking is Important",                      "48"),
-    ("The WLA Nutrition Formula",                      "49"),
+    ("Lunch Recipes",                                  "19-23"),
+    ("Dinner Recipes",                                 "24-28"),
+    ("The Swap List",                                  "29-41"),
+    ("Drink Tips",                                     "42"),
+    ("Snack Tips",                                     "43-46"),
+    ("What Balanced Blood Sugar Gives You",            "47"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "48-49"),
+    ("Why Breakfast is Important",                     "50"),
+    ("Why Snacking is Important",                      "51"),
+    ("The WLA Nutrition Formula",                      "52"),
 ])
 
 
@@ -683,8 +683,6 @@ g.recipe(
         "30ml honey",
         "1 tsp vanilla essence",
         "40g goji berries",
-        "To serve (per portion): 125g full-fat Greek "
-        "yoghurt and fruit of your choice",
     ],
     [
         "Preheat the air fryer to 160C.",
@@ -708,7 +706,15 @@ g.recipe(
         "Serve each portion with Greek yoghurt and a "
         "portion of fruit of your choice.",
     ],
-    note="This recipe serves 4. Store any leftovers in an "
+    kicker=("Recipe 01", "Breakfast"),
+    time="20 mins",
+    subtitle="Crunchy, naturally sweet, batched once and "
+             "ready all week.",
+    to_serve=[
+        "125g full-fat Greek yoghurt",
+        "A portion of fruit of your choice",
+    ],
+    note="Makes 4 portions. Store any leftovers in an "
          "airtight container for up to 2 weeks.",
     image=recipe_image("breakfast", "air-fryer-granola"),
 )
@@ -730,11 +736,14 @@ g.recipe(
         "Top with the mixed seeds, peanut butter, honey, "
         "raspberries and blueberries and serve.",
     ],
-    note="Serves 1 and is best enjoyed fresh. Swap the "
-         "berries for whatever you have available. Not "
-         "sure which kefir to buy? The vanilla one from "
-         "Tesco is a great option, highly rated and easy "
-         "to enjoy on its own as a quick drink snack.",
+    kicker=("Recipe 02", "Breakfast"),
+    time="5 mins",
+    subtitle="A high-protein bowl that keeps you full for "
+             "hours.",
+    note="Best enjoyed fresh. Swap the berries for "
+         "whatever you have available. The vanilla kefir "
+         "from Tesco is a great option, highly rated and "
+         "easy to enjoy on its own as a quick drink snack.",
     image=recipe_image("breakfast", "protein-fibre-yoghurt"),
 )
 
@@ -753,9 +762,12 @@ g.recipe(
         "Blend until smooth, around 1 minute. Serve "
         "immediately.",
     ],
-    note="Top tip, advance prep. Freeze some ice cubes "
-         "the night before so the smoothie blends thick "
-         "and cold.",
+    kicker=("Recipe 03", "Breakfast"),
+    time="2 mins",
+    subtitle="Sunshine in a glass, blended in under two "
+             "minutes.",
+    note="Advance prep. Freeze some ice cubes the night "
+         "before so the smoothie blends thick and cold.",
     image=recipe_image("breakfast", "pina-colada-smoothie"),
 )
 
@@ -773,6 +785,10 @@ g.recipe(
         "Add your fruit to the bowl, or serve on the "
         "side, and enjoy.",
     ],
+    kicker=("Recipe 04", "Breakfast"),
+    time="2 mins",
+    subtitle="A lower-sugar cereal that still feels like a "
+             "treat.",
     image=recipe_image("breakfast", "multigrain-hoops"),
 )
 
@@ -796,10 +812,13 @@ g.recipe(
         "scrambled, made into an omelette or boiled).",
         "Serve everything together and enjoy.",
     ],
-    note="Recipe adjustments. Want to remove the meat? "
-         "Replace the sausages with 2 vegetarian sausages "
-         "or any vegetarian alternative using the food "
-         "swap list.",
+    kicker=("Recipe 05", "Lunch  ·  Family Fav"),
+    time="15 mins",
+    subtitle="A proper weekend plate, full of flavour and "
+             "no bloat.",
+    note="Want to remove the meat? Replace the sausages "
+         "with 2 vegetarian sausages or any vegetarian "
+         "alternative from the food swap list.",
 )
 
 g.recipe(
@@ -809,11 +828,6 @@ g.recipe(
         "2 eggs",
         "Salt and pepper for seasoning",
         "30g cheddar cheese, grated",
-        "For the salad: handful of rocket",
-        "6 cherry tomatoes, halved",
-        "1/2 small avocado, sliced",
-        "1 tsp balsamic vinegar (optional)",
-        "Or serve with any salad ingredients",
     ],
     [
         "Heat a non-stick frying pan over medium-low "
@@ -831,6 +845,16 @@ g.recipe(
         "Once the eggs are cooked and the cheese has "
         "melted, carefully transfer them onto the plate "
         "and serve immediately.",
+    ],
+    kicker=("Recipe 06", "Lunch  ·  10 Min Option"),
+    time="10 mins",
+    subtitle="Melty cheese, runny yolks, fresh side salad.",
+    to_serve=[
+        "Handful of rocket",
+        "6 cherry tomatoes, halved",
+        "1/2 small avocado, sliced",
+        "1 tsp balsamic vinegar (optional)",
+        "Or any salad ingredients you have",
     ],
     image=recipe_image("lunch", "cheesy-fried-eggs"),
 )
@@ -864,9 +888,12 @@ g.recipe(
         "peppers and cucumber on a plate, spoon over the "
         "chicken mixture and top with flaked almonds.",
     ],
-    note="Can be eaten right away or store the chicken "
-         "mixture in the fridge until its best-before "
-         "date.",
+    kicker=("Recipe 07", "Lunch  ·  Batch Prep"),
+    time="10 mins",
+    subtitle="Lightly spiced, batch friendly, perfect for "
+             "the prep.",
+    note="Eat straight away or store the chicken mixture "
+         "in the fridge until its best-before date.",
 )
 
 g.recipe(
@@ -899,6 +926,9 @@ g.recipe(
         "at a restaurant and ask for the dressing on the "
         "side.",
     ],
+    kicker=("Recipe 08", "Lunch  ·  No Cook"),
+    time="2 mins",
+    subtitle="A shop-bought win, pick smart and eat well.",
 )
 
 g.divider("Dinner", "Recipes.")
@@ -940,6 +970,10 @@ g.recipe(
         "Transfer to a bowl, sprinkle with parmesan and "
         "serve immediately.",
     ],
+    kicker=("Recipe 09", "Dinner  ·  20 Min Option"),
+    time="20 mins",
+    subtitle="Crispy gnocchi, smoky bacon, all the Caesar "
+             "feels.",
     note="No air fryer? Heat 1 tsp olive oil in a "
          "non-stick pan over medium-high heat and cook "
          "the gnocchi for 8 to 10 minutes, turning "
@@ -947,8 +981,7 @@ g.recipe(
          "batch, store the prepped ingredients "
          "separately in airtight containers in the "
          "fridge for up to 3 days, then cook a fresh "
-         "portion of gnocchi and toss everything "
-         "together when ready to eat.",
+         "portion of gnocchi when ready to eat.",
     image=recipe_image("dinner", "chicken-caesar-gnocchi"),
 )
 
@@ -1002,6 +1035,10 @@ g.recipe(
         "Serve over the wholegrain rice and scatter with "
         "fresh coriander if using.",
     ],
+    kicker=("Recipe 10", "Dinner  ·  Fakeaway Inspo"),
+    time="25 mins",
+    subtitle="One pan, rich and warming, takeaway feels at "
+             "home.",
     note="Store in an airtight container in the fridge "
          "for up to 2 days. Reheat thoroughly before "
          "serving. The sauce may naturally thicken in "
@@ -1032,10 +1069,13 @@ g.recipe(
         "Add the cooked Spanish tortilla on the side and "
         "serve.",
     ],
-    note="Serves 1 and is best enjoyed fresh. Swap the "
-         "tortilla for 1/4 of a quiche or another "
-         "protein option such as chicken, tuna, eggs or "
-         "halloumi depending on what you have available.",
+    kicker=("Recipe 11", "Dinner  ·  Easy Option"),
+    time="5 mins",
+    subtitle="Big-board energy with zero cooking required.",
+    note="Best enjoyed fresh. Swap the tortilla for 1/4 "
+         "of a quiche or another protein option such as "
+         "chicken, tuna, eggs or halloumi depending on "
+         "what you have available.",
     image=recipe_image("dinner", "lazy-snacky-plate"),
 )
 
@@ -1065,10 +1105,13 @@ g.recipe(
         "Serve with 1 tbsp tzatziki, coleslaw or "
         "low-sugar tomato sauce and enjoy.",
     ],
-    note="Top tip. If you choose 2 sausages, 1 plain "
-         "fish fillet or 1 plain chicken fillet as your "
-         "protein, add a carbohydrate element from the "
-         "food swap list to keep the plate balanced.",
+    kicker=("Recipe 12", "Dinner  ·  No Fuss Option"),
+    time="15 mins",
+    subtitle="The pick-and-mix plate for evenings off.",
+    note="If you choose 2 sausages, 1 plain fish fillet "
+         "or 1 plain chicken fillet as your protein, add "
+         "a carbohydrate element from the food swap list "
+         "to keep the plate balanced.",
     image=recipe_image("dinner", "no-cook-freezer-dinner"),
 )
 

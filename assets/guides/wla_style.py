@@ -592,68 +592,110 @@ class Guide:
         self.y = top + H + gap_after
 
     def recipe(self, title, serves, ingredients, instructions,
-               note=None, image=None, image_h=210, gap_after=24):
-        """Two-column recipe block, with an optional hero image on top."""
-        size = 10
-        lh = 13.1
-        gap = 26
-        lw = (CW - gap) * 0.45
-        rw = (CW - gap) * 0.55
-        rx = LEFT + lw + gap
-        title_lines = wrap(title, "lbi", 17, CW)
-
-        def col_h(items, w, ind):
-            h = 24
-            for it in items:
-                h += len(wrap(it, "as", size, w - ind)) * lh + 3.5
-            return h
-
-        body_h = max(col_h(ingredients, lw, 14),
-                     col_h(instructions, rw, 19))
-        if note:
-            body_h += len(wrap(note, "asi", 10, rw)) * 13 + 8
-        img_block = (image_h + 14) if image else 0
-        total = img_block + len(title_lines) * 21 + 6 + 20 + body_h + gap_after
-        self.keep_together(min(total, 640))
+               note=None, image=None, time=None, subtitle=None,
+               kicker=None, to_serve=None, image_h=320, **_):
+        """WLA Weight Loss Cookbook style recipe page (one per page)."""
+        self._new_content_page()
 
         if image:
-            rect = fitz.Rect(LEFT, self.y, RIGHT, self.y + image_h)
+            rect = fitz.Rect(0, 0, PAGE_W, image_h)
             self._insert_cover_image(rect, image)
-            self.y += image_h + 14
+            y = image_h + 34
+        else:
+            y = CONTENT_TOP + 8
 
-        for tl in title_lines:
-            self.text(LEFT, self.y + 14, tl, "lbi", 17, BLUSH)
-            self.y += 21
-        self.y += 4
-        self.text(LEFT, self.y + 9, f"Serves: {serves}", "asb", 10, NAVY)
-        self.y += 21
-        coltop = self.y
+        # kicker: ("RECIPE 01", "BREAKFAST") -> "RECIPE 01  ·  BREAKFAST"
+        if kicker:
+            ka, kb = (kicker if isinstance(kicker, (tuple, list))
+                      else (kicker, None))
+            kx = self.tracked(LEFT, y, ka.upper(), "asb", 8.5, BLUSH, 1.4)
+            if kb:
+                dx = kx + 10
+                self.text(dx, y, "·", "asb", 8.5, BLUSH)
+                self.tracked(dx + 12, y, kb.upper(), "asb", 8.5, BLUSH, 1.4)
+            y += 26
 
-        self.text(LEFT, coltop + 9, "Ingredients:", "asi", 11, NAVY)
-        yL = coltop + 26
-        for it in ingredients:
-            self.page.draw_circle((LEFT + 4, yL + 4), 1.6, color=None,
-                                  fill=BLUSH)
-            for ln in wrap(it, "as", size, lw - 14):
-                self.text(LEFT + 14, yL + 8, ln, "as", size, INK)
-                yL += lh
-            yL += 3.5
+        # title
+        tsize = 25
+        for tl in wrap(title, "lbi", tsize, CW):
+            self.text(LEFT, y + tsize * 0.78, tl, "lbi", tsize, NAVY)
+            y += tsize * 1.1
 
-        self.text(rx, coltop + 9, "Instructions:", "asi", 11, NAVY)
-        yR = coltop + 26
-        for k, it in enumerate(instructions, 1):
-            self.text(rx, yR + 8, f"{k}.", "asb", size, BLUSH)
-            for ln in wrap(it, "as", size, rw - 19):
-                self.text(rx + 19, yR + 8, ln, "as", size, INK)
+        # subtitle
+        if subtitle:
+            y += 6
+            for sl in wrap(subtitle, "lbi", 12, CW):
+                self.text(LEFT, y + 10, sl, "lbi", 12, BLUSH)
+                y += 16
+
+        # serves + time row
+        y += 22
+        col_w = 132
+        self.tracked(LEFT, y, "SERVES", "asb", 8.5, BLUSH, 1.4)
+        if time:
+            self.tracked(LEFT + col_w, y, "TIME", "asb", 8.5, BLUSH, 1.4)
+        y += 18
+        self.text(LEFT, y + 12, str(serves), "lbi", 17, NAVY)
+        if time:
+            self.text(LEFT + col_w, y + 12, str(time), "lbi", 17, NAVY)
+        y += 26
+
+        # hairline rule
+        self.page.draw_line((LEFT, y), (RIGHT, y), color=RULE, width=0.6)
+        y += 22
+
+        # two-column body
+        col_gap = 28
+        lw = (CW - col_gap) * 0.40
+        rw = (CW - col_gap) * 0.60
+        rx = LEFT + lw + col_gap
+
+        self.tracked(LEFT, y, "INGREDIENTS", "asb", 8.5, BLUSH, 1.4)
+        self.tracked(rx, y, "METHOD", "asb", 8.5, BLUSH, 1.4)
+        y_top = y + 18
+
+        size = 9.5
+        lh = 12.6
+
+        def render_ing(items, x, max_w, start_y, label=None):
+            yL = start_y
+            if label:
+                self.text(x, yL + 10, label, "lbi", 11, BLUSH)
+                yL += 18
+            for it in items:
+                self.text(x, yL + 9, "—", "as", size, INK)
+                for ln in wrap(it, "as", size, max_w - 16):
+                    self.text(x + 16, yL + 9, ln, "as", size, INK)
+                    yL += lh
+                yL += 3.5
+            return yL
+
+        yL = render_ing(ingredients, LEFT, lw, y_top)
+        if to_serve:
+            yL += 6
+            yL = render_ing(to_serve, LEFT, lw, yL, label="To serve")
+
+        # method
+        yR = y_top
+        for k, step in enumerate(instructions, 1):
+            self.tracked(rx, yR + 9, f"{k:02d}", "asb", 8.5, BLUSH, 1.4)
+            for ln in wrap(step, "as", size, rw - 28):
+                self.text(rx + 28, yR + 9, ln, "as", size, INK)
                 yR += lh
-            yR += 3.5
-        if note:
-            yR += 5
-            for ln in wrap(note, "asi", 10, rw):
-                self.text(rx, yR + 8, ln, "asi", 10, INK)
-                yR += 13
+            yR += 4
 
-        self.y = max(yL, yR) + gap_after
+        body_end = max(yL, yR)
+
+        # WLA TIP
+        if note:
+            ty = body_end + 22
+            self.tracked(LEFT, ty, "WLA TIP", "asb", 8.5, BLUSH, 1.4)
+            ty += 18
+            for ln in wrap(note, "asi", 10, CW):
+                self.text(LEFT, ty + 10, ln, "asi", 10, INK)
+                ty += 14
+
+        self.y = 1e6  # force a fresh page for the next block
 
     def divider(self, top_italic, bottom):
         """Full-page chapter divider."""
