@@ -148,15 +148,14 @@ toc([
     ("Breakfast Recipes",                              "14-18"),
     ("Lunch Recipes",                                  "19-21"),
     ("Dinner Recipes",                                 "22-25"),
-    ("Mid-Afternoon Snack Recipes",                    "26-28"),
-    ("The Swap List",                                  "29-41"),
-    ("Drink Tips",                                     "42"),
-    ("Snack Tips",                                     "43-46"),
-    ("What Balanced Blood Sugar Gives You",            "47"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "48-49"),
-    ("Why Breakfast is Important",                     "50"),
-    ("Why Snacking is Important",                      "51"),
-    ("The WLA Nutrition Formula",                      "52"),
+    ("The Swap List",                                  "26-38"),
+    ("Drink Tips",                                     "39"),
+    ("Snack Tips",                                     "40-43"),
+    ("What Balanced Blood Sugar Gives You",            "44"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "45-46"),
+    ("Why Breakfast is Important",                     "47"),
+    ("Why Snacking is Important",                      "48"),
+    ("The WLA Nutrition Formula",                      "49"),
 ])
 
 
@@ -627,10 +626,10 @@ g.paragraph("Choose any breakfast, lunch or dinner option for each "
 
 g.subhead([("Breakfast Options", "lbi")], gap_after=8)
 option_grid([
-    (None, None, "[ recipe ]"),
-    (None, None, "[ recipe ]"),
-    (None, None, "[ recipe ]"),
-    (None, None, "[ recipe ]"),
+    ("1", None, "High Fibre Air Fryer Granola"),
+    ("2", None, "Protein & Fibre Yoghurt Bowl"),
+    ("3", None, "Pina Colada Smoothie"),
+    ("4", None, "Multigrain Hoops Cereal + Fruit"),
 ], with_header=False)
 
 g.subhead([("Morning Snack", "lbi")], gap_after=4)
@@ -640,29 +639,23 @@ g.paragraph("Opt for a smaller snack, a portion of fruit or "
 
 g.subhead([("Lunch Options", "lbi")], gap_after=8)
 option_grid([
-    ("1", "Family Fav",   "[ recipe ]"),
-    ("2", "10 Min Option","[ recipe ]"),
-    ("3", "Batch Prep",   "[ recipe ]"),
-    ("4", "No Cook",      "[ recipe ]"),
+    ("1", "Family Fav",   "Weekend Brunch (V) (LC)"),
+    ("2", "10 Min Option","Cheesy Fried Eggs (V) (LC)"),
+    ("3", "Batch Prep",   "Coronation Chicken Salad (LC)"),
+    ("4", "No Cook",      "M&S Naked Chicken Caesar Salad (LC)"),
 ])
 
-g.subhead([("Mid-Afternoon Snack Options", "lbi")], gap_after=4)
-g.paragraph("Opt for a bigger snack, select one of our snack "
-            "recipes or bigger snack options later in the guide.",
+g.subhead([("Mid-Afternoon Snack", "lbi")], gap_after=4)
+g.paragraph("Opt for a bigger snack if hungry, see the snack tips "
+            "and bigger snack inspiration pages for ideas.",
             gap_after=6)
-option_grid([
-    (None, None, "[ snack ]"),
-    (None, None, "[ snack ]"),
-    (None, None, "[ snack ]"),
-    (None, None, "[ snack ]"),
-], with_header=False)
 
 g.subhead([("Dinner Options", "lbi")], gap_after=8)
 option_grid([
-    ("1", "20 Min Option",  "[ recipe ]"),
-    ("2", "Fakeaway Inspo", "[ recipe ]"),
-    ("3", "Easy Option",    "[ recipe ]"),
-    ("4", "No Fuss Option", "[ recipe ]"),
+    ("1", "20 Min Option",  "Chicken Caesar Air Fryer Gnocchi (HC)"),
+    ("2", "Fakeaway Inspo", "One Pan Thai Red Curry Salmon (HC)"),
+    ("3", "Easy Option",    "Lazy Snacky Plate (HC)"),
+    ("4", "No Fuss Option", "No Cook Freezer Dinner (HC)"),
 ])
 
 
@@ -1078,11 +1071,6 @@ g.recipe(
          "food swap list to keep the plate balanced.",
     image=recipe_image("dinner", "no-cook-freezer-dinner"),
 )
-
-g.divider("Snack", "Recipes.")
-for _ in range(4):
-    placeholder_recipe()
-
 
 # =========================================================== swap list
 g._new_content_page()
