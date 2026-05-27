@@ -148,10 +148,10 @@ toc([
     ("Drink Tips",                                     "40"),
     ("Snack Tips",                                     "41-44"),
     ("What Balanced Blood Sugar Gives You",            "45"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "46-47"),
-    ("Why Breakfast is Important",                     "48"),
-    ("Why Snacking is Important",                      "49"),
-    ("The WLA Nutrition Formula",                      "50"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "46-48"),
+    ("Why Breakfast is Important",                     "49"),
+    ("Why Snacking is Important",                      "50"),
+    ("The WLA Nutrition Formula",                      "51"),
 ])
 
 
@@ -1139,7 +1139,7 @@ def image_above_checks(image_name, items, image_w=0.7,
     items_h = 0
     for it in items:
         ln_count = len(wrap(it, "as", line_size, CW - 30))
-        items_h += max(ln_count * line_h, 22) + item_gap
+        items_h += ln_count * line_h + item_gap
     g.ensure(h + gap_between + items_h + gap_after)
     top = g.y
     # image centred horizontally
@@ -1353,13 +1353,16 @@ image_above_checks("ideal-blood-sugar", [
     "Peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "Blood sugar level dips = signal to eat.",
-], image_w=0.5, img_max_h=190, gap_between=8, gap_after=12)
+], image_w=0.55, img_max_h=270, gap_between=14)
 
+g._new_content_page()
+g.subhead([("The ", "lbi"),
+           ("Rollercoaster Blood Sugar Levels", "lb")], gap_before=0)
 image_above_checks("rollercoaster-danger", [
     "High spike, a more volatile reaction to the muffin.",
     "Body releases a big hit of insulin to clear the sugar.",
     "Extreme high followed by extreme slump.",
-], image_w=0.58, img_max_h=160, gap_between=8, gap_after=10)
+], image_w=0.55, img_max_h=270, gap_between=14)
 
 g._new_content_page()
 g.subhead([("The Rollercoaster, ", "lbi"),
@@ -1370,7 +1373,7 @@ image_above_checks("rollercoaster-highs-lows", [
     "Low mood / high mood.",
     "Unbalanced overall.",
     "More sugar cravings and generally eating more sugar overall.",
-], image_w=0.6, img_max_h=320, gap_between=14)
+], image_w=0.55, img_max_h=270, gap_between=14)
 callout("Side note, weight loss can be extremely difficult here.",
         font="asi", gap_before=10)
 
