@@ -21,15 +21,30 @@ DIAGRAMS = os.path.join(HERE, "diagrams")
 OUT = os.path.join(HERE, "..", "5-Day-Fat-Loss-Reset-Guide.pdf")
 
 
-def find_snack_image(stem):
-    """Match a snack name fragment against files in the snacks folder."""
-    if not os.path.isdir(SNACK_IMAGES):
+def find_file(folder, stem):
+    """Find first image file in folder whose name starts with stem
+    (case-insensitive). Returns full path or None."""
+    if not os.path.isdir(folder):
         return None
     stem = stem.lower()
-    for f in sorted(os.listdir(SNACK_IMAGES)):
-        if f.lower().startswith(stem) and \
-                f.lower().endswith((".jpg", ".jpeg", ".png")):
-            return os.path.join(SNACK_IMAGES, f)
+    for f in sorted(os.listdir(folder)):
+        if (f.lower().startswith(stem)
+                and f.lower().endswith((".jpg", ".jpeg", ".png"))):
+            return os.path.join(folder, f)
+    return None
+
+
+def find_snack_image(stem):
+    return find_file(SNACK_IMAGES, stem)
+
+
+def find_founder_photo():
+    """Look for the founder photo in a few sensible places."""
+    for folder in (TESTI_PHOTOS, HERE,
+                   os.path.join(HERE, "testimonials")):
+        f = find_file(folder, "anna-before-after")
+        if f:
+            return f
     return None
 
 g = Guide(OUT)
@@ -271,15 +286,25 @@ g.y = _qtop + _qh + 14
 # =========================================================== founder
 g._new_content_page()
 g.heading([[("A Note From ", False), ("Our Founder", True)]])
-# portrait placeholder + body, two-column treatment
+# portrait + body, two-column treatment
 photo_w = CW * 0.42
 photo_h = 280
 photo_top = g.y
-g.page.draw_rect(fitz.Rect(LEFT, photo_top, LEFT + photo_w,
-                           photo_top + photo_h),
-                 color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
-g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 - 12,
-              "[ Anna portrait ]", "lbi", 11, (0.55, 0.55, 0.55))
+photo_path = find_founder_photo()
+if photo_path:
+    g.page.insert_image(fitz.Rect(LEFT, photo_top, LEFT + photo_w,
+                                  photo_top + photo_h),
+                        filename=photo_path, keep_proportion=True)
+else:
+    g.page.draw_rect(fitz.Rect(LEFT, photo_top, LEFT + photo_w,
+                               photo_top + photo_h),
+                     color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+    g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 - 6,
+                  "[ image placeholder ]", "lbi", 11,
+                  (0.5, 0.5, 0.55))
+    g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 + 12,
+                  "upload as: anna-before-after.png", "asi", 9.5,
+                  (0.55, 0.55, 0.6))
 # white signature card overlay near the bottom of the photo
 pill_y = photo_top + photo_h - 56
 g.page.draw_rect(fitz.Rect(LEFT + 14, pill_y, LEFT + photo_w - 14,
@@ -1200,7 +1225,7 @@ g.paragraph("Maintaining balanced blood sugar levels is a key "
             "blood sugar steady, you can enhance your well-being "
             "and support your fat loss goals.")
 g.paragraph("Here's why balanced blood sugar is so important:",
-            font="asb", color=NAVY)
+            font="asb", color=NAVY, gap_after=24)
 
 BENEFITS = [
     (_icon_sugar_cubes, "Reduced desire for sugar"),
@@ -1216,7 +1241,7 @@ bcols = 4
 bgap = 12
 bcw = (CW - bgap * (bcols - 1)) / bcols
 bch = 100
-g.gap(10)
+g.gap(20)
 g.ensure(2 * bch + bgap + 10)
 top = g.y
 # row 1: first 4
@@ -1248,14 +1273,13 @@ image_with_checks("ideal-blood-sugar", [
     "Peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "Blood sugar level dips = signal to eat.",
-], image_w=0.48, img_max_h=240)
+], image_w=0.46, img_max_h=220)
 
 image_with_checks("rollercoaster-danger", [
     "High spike, a more volatile reaction to the muffin.",
-    "Body will release a big hit of insulin to remove the sugar "
-    "from the blood to the cells.",
+    "Body releases a big hit of insulin to clear the sugar.",
     "Extreme high followed by extreme slump.",
-], image_w=0.52, img_max_h=200)
+], image_w=0.46, img_max_h=220)
 
 g._new_content_page()
 g.subhead([("The Rollercoaster, ", "lbi"), ("Highs and Lows", "lb")],
