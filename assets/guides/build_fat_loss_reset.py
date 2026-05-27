@@ -286,9 +286,9 @@ g.y = _qtop + _qh + 14
 # =========================================================== founder
 g._new_content_page()
 g.heading([[("A Note From ", False), ("Our Founder", True)]])
-# portrait + body, two-column treatment
-photo_w = CW * 0.42
-photo_h = 280
+# square portrait + body
+photo_w = 240
+photo_h = 240
 photo_top = g.y
 photo_path = find_founder_photo()
 if photo_path:
@@ -305,31 +305,28 @@ else:
     g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 + 12,
                   "upload as: anna-before-after.png", "asi", 9.5,
                   (0.55, 0.55, 0.6))
-# white signature card overlay near the bottom of the photo
-pill_y = photo_top + photo_h - 56
-g.page.draw_rect(fitz.Rect(LEFT + 14, pill_y, LEFT + photo_w - 14,
+# white signature card overlay over the bottom of the photo
+pill_y = photo_top + photo_h - 52
+g.page.draw_rect(fitz.Rect(LEFT + 12, pill_y, LEFT + photo_w - 12,
                            pill_y + 44),
                  color=None, fill=(1, 1, 1))
 g.text(LEFT + 22, pill_y + 16, "Anna Wallace", "lbi", 12, BLUSH)
 g.text(LEFT + 22, pill_y + 28, "BSc Food & Nutrition", "asi", 9, NAVY)
 g.text(LEFT + 22, pill_y + 39, "Registered Associate Nutritionist",
        "asi", 9, NAVY)
-# body, right column for the pull-quote and the first paragraphs
-# while the photo is in view, then full width once we pass it.
+# body, right column then full width
 tx_narrow = LEFT + photo_w + 26
 tw_narrow = CW - photo_w - 26
 tx_full = LEFT
 tw_full = CW
 ty = photo_top + 4
 photo_bottom = photo_top + photo_h
-# pull-quote
 intro = ("This is the reset I built from 10 years coaching "
          "women over 45.")
 for ln in wrap(intro, "lbi", 13.5, tw_narrow):
     g.text(tx_narrow, ty + 11, ln, "lbi", 13.5, NAVY)
     ty += 19
-ty += 6
-# body paragraphs (Anna's exact copy)
+ty += 8
 paragraphs = [
     "I once struggled with my weight, starting each day with "
     "determination but often resorting to unhealthy habits like "
@@ -345,13 +342,8 @@ paragraphs = [
     "clients globally over 10 years.",
     "Our WLA Approach helps to burn body fat simply and flexibly, "
     "restoring confidence and eliminating sugar cravings.",
-    "If you're reading this, know that achieving your goals is "
-    "possible, even if you've tried everything and feel like "
-    "giving up. Your journey matters, and like mine, finding the "
-    "right weight loss approach can change everything.",
 ]
 for txt in paragraphs:
-    # choose column based on whether we're still beside the photo
     use_full = ty > photo_bottom - 14
     tx = tx_full if use_full else tx_narrow
     twb = tw_full if use_full else tw_narrow
@@ -360,6 +352,27 @@ for txt in paragraphs:
         ty += 14.6
     ty += 7
 g.y = max(photo_bottom + 22, ty + 8)
+
+# closing pull-quote that stands out
+g.gap(8)
+g.ensure(96)
+_qtop = g.y
+_qtext = ("If you're reading this, know that achieving your goals "
+          "is possible, even if you've tried everything and feel "
+          "like giving up. Your journey matters, and like mine, "
+          "finding the right weight loss approach can change "
+          "everything.")
+_lines = wrap(_qtext, "lbi", 12.5, CW - 36)
+_qh = 22 + len(_lines) * 18
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, RIGHT, _qtop + _qh),
+                 color=None, fill=BEIGE)
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, LEFT + 5, _qtop + _qh),
+                 color=None, fill=BLUSH)
+_ty = _qtop + 18
+for ln in _lines:
+    g.text(LEFT + 22, _ty, ln, "lbi", 12.5, NAVY)
+    _ty += 18
+g.y = _qtop + _qh + 8
 
 
 # =========================================================== member results
@@ -400,12 +413,14 @@ _shots = _images_in(TESTI_SHOTS)
 
 g._new_content_page()
 g.heading([[("WLA Members ", False), ("Results", True)]])
-image_grid(_photos[:4], 2, 2, item_h=265,
+# square cells, no padding mismatch with the 1080x1080 sources
+_cw = (CW - 14) / 2
+image_grid(_photos[:4], 2, 2, item_h=_cw,
            caption="[ Member before / after photo ]")
 
 g._new_content_page()
 g.heading([[("WLA Members ", False), ("Results", True)]])
-image_grid(_photos[4:8], 2, 2, item_h=265,
+image_grid(_photos[4:8], 2, 2, item_h=_cw,
            caption="[ Member before / after photo ]")
 
 g._new_content_page()
@@ -1031,12 +1046,13 @@ def check_box(x, y, size=14):
 
 
 def image_with_checks(image_name, items, image_w=0.5,
-                      img_max_h=320, gap_after=14):
+                      img_max_h=320, gap_after=14,
+                      image_y=0, text_y=0):
     """Place an image on the left and a checkbox list on the right.
-    Falls back to a labelled placeholder if the image isn't present."""
+    Falls back to a labelled placeholder if the image isn't present.
+    image_y/text_y let callers shift each column vertically."""
     path = os.path.join(DIAGRAMS, f"{image_name}.png")
     have_image = os.path.exists(path)
-    # text geometry first
     tx0 = LEFT + CW * image_w + 22
     tw_box = CW - (CW * image_w) - 22
     line_size = 11
@@ -1046,7 +1062,6 @@ def image_with_checks(image_name, items, image_w=0.5,
     for it in items:
         ln_count = len(wrap(it, "as", line_size, tw_box - 26))
         items_h += max(ln_count * line_h, 22) + item_gap
-    # image geometry
     if have_image:
         pm = fitz.Pixmap(path)
         ar = pm.width / pm.height
@@ -1058,25 +1073,26 @@ def image_with_checks(image_name, items, image_w=0.5,
     else:
         w = CW * image_w
         h = min(img_max_h, max(items_h, 200))
-    block_h = max(h, items_h)
+    block_h = max(h + max(0, image_y),
+                  items_h + max(0, text_y))
     g.ensure(block_h + gap_after)
     top = g.y
-    # image (or placeholder) — top-aligned with the text
     x0 = LEFT
+    img_top = top + image_y
     if have_image:
-        g.page.insert_image(fitz.Rect(x0, top, x0 + w, top + h),
+        g.page.insert_image(fitz.Rect(x0, img_top, x0 + w,
+                                      img_top + h),
                             filename=path, keep_proportion=True)
     else:
-        g.page.draw_rect(fitz.Rect(x0, top, x0 + w, top + h),
+        g.page.draw_rect(fitz.Rect(x0, img_top, x0 + w, img_top + h),
                          color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
-        g.text_center(x0 + w / 2, top + h / 2 - 6,
+        g.text_center(x0 + w / 2, img_top + h / 2 - 6,
                       "[ image placeholder ]", "lbi", 11,
                       (0.5, 0.5, 0.55))
-        g.text_center(x0 + w / 2, top + h / 2 + 12,
+        g.text_center(x0 + w / 2, img_top + h / 2 + 12,
                       f"upload as: {image_name}.png", "asi", 9.5,
                       (0.55, 0.55, 0.6))
-    # checkbox list — also top-aligned (same start y)
-    ty = top + 4
+    ty = top + 4 + text_y
     for it in items:
         ln_count = len(wrap(it, "as", line_size, tw_box - 26))
         row_h = max(ln_count * line_h, 22)
@@ -1273,13 +1289,13 @@ image_with_checks("ideal-blood-sugar", [
     "Peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "Blood sugar level dips = signal to eat.",
-], image_w=0.46, img_max_h=220)
+], image_w=0.52, img_max_h=300)
 
 image_with_checks("rollercoaster-danger", [
     "High spike, a more volatile reaction to the muffin.",
     "Body releases a big hit of insulin to clear the sugar.",
     "Extreme high followed by extreme slump.",
-], image_w=0.46, img_max_h=220)
+], image_w=0.52, img_max_h=300)
 
 g._new_content_page()
 g.subhead([("The Rollercoaster, ", "lbi"), ("Highs and Lows", "lb")],
@@ -1290,7 +1306,7 @@ image_with_checks("rollercoaster-highs-lows", [
     "Low mood / high mood.",
     "Unbalanced overall.",
     "More sugar cravings and generally eating more sugar overall.",
-], image_w=0.48, img_max_h=300)
+], image_w=0.48, img_max_h=300, image_y=-18)
 callout("Side note, weight loss can be extremely difficult here.",
         font="asi", gap_before=12)
 
@@ -1318,7 +1334,7 @@ image_with_checks("breakfast-sugar-insulin", [
     "sugar from the blood to the cells.",
     "Extreme high followed by extreme slump.",
     "The cycle continues.",
-], image_w=0.45, img_max_h=320)
+], image_w=0.45, img_max_h=240, image_y=60)
 
 
 # =========================================================== why snacking
@@ -1340,7 +1356,7 @@ image_with_checks("snacking-curves", [
     "Gentle peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "A blood sugar dip is your body's signal to eat, not stress.",
-], image_w=0.55, img_max_h=240)
+], image_w=0.55, img_max_h=240, text_y=30)
 
 
 # =========================================================== nutrition formula
