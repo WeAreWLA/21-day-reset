@@ -148,10 +148,10 @@ toc([
     ("Drink Tips",                                     "40"),
     ("Snack Tips",                                     "41-44"),
     ("What Balanced Blood Sugar Gives You",            "45"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "46-48"),
-    ("Why Breakfast is Important",                     "49"),
-    ("Why Snacking is Important",                      "50"),
-    ("The WLA Nutrition Formula",                      "51"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "46-47"),
+    ("Why Breakfast is Important",                     "48"),
+    ("Why Snacking is Important",                      "49"),
+    ("The WLA Nutrition Formula",                      "50"),
 ])
 
 
@@ -1353,11 +1353,8 @@ image_above_checks("ideal-blood-sugar", [
     "Peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "Blood sugar level dips = signal to eat.",
-], image_w=0.55, img_max_h=270, gap_between=4)
+], image_w=0.55, img_max_h=270, gap_between=4, gap_after=16)
 
-g._new_content_page()
-g.subhead([("The ", "lbi"),
-           ("Rollercoaster Blood Sugar Levels", "lb")], gap_before=0)
 image_above_checks("rollercoaster-danger", [
     "High spike, a more volatile reaction to the muffin.",
     "Body releases a big hit of insulin to clear the sugar.",
