@@ -8,10 +8,17 @@ instructions (list of strings), note (optional), image (filename).
 Sections (order in the cookbook):
   1. Breakfast & Lunch
   2. Slow Cooker
-  3. Traybakes
-  4. Bowls
-  5. Pasta & Comfort Dinners
+  3. Bowls
+  4. Dinners
 """
+
+NAME = "The WLA Weight Loss Cookbook"
+TAGLINE = (
+    "15 fuss-free, macro-balanced recipes — designed by a nutritionist "
+    "to make weight loss feel easy, not restrictive."
+)
+
+SECTIONS = ["Breakfast & Lunch", "Slow Cooker", "Bowls", "Dinners"]
 
 RECIPES = [
     # ============================== BREAKFAST & LUNCH
@@ -138,6 +145,165 @@ RECIPES = [
             "Best enjoyed fresh. The cottage cheese can be left out "
             "if preferred for a more traditional scrambled egg "
             "texture."
+        ),
+    },
+
+    # ============================== SLOW COOKER
+    {
+        "section": "Slow Cooker",
+        "title": "Slow Cooker Thai Green Curry",
+        "tagline": "Restaurant-style curry with five minutes of prep.",
+        "serves": 4,
+        "time": "4 hrs (high) / 6–8 hrs (low)",
+        "image": "slow-cooker-thai-green-curry.jpg",
+        "ingredients": [
+            "4 chicken fillets",
+            "1 large onion, sliced",
+            "1 red pepper, sliced",
+            "1 courgette, sliced",
+            "130g baby corn",
+            "1 tsp garlic powder",
+            "1 tsp ground ginger",
+            "Black pepper, for seasoning",
+            "3–4 tbsp curry paste (Thai green)",
+            "2 tbsp soy sauce",
+            "1 chicken or vegetable stock cube (low sodium)",
+            "1 tin coconut milk",
+        ],
+        "to_serve": [
+            "60g wholewheat noodles",
+            "1 spring onion, finely sliced",
+            "1 tbsp fresh coriander, chopped (optional)",
+            "Squeeze of lime juice",
+        ],
+        "instructions": [
+            "Add all ingredients to the slow cooker. Stir well to "
+            "combine.",
+            "Cover and cook on high for 4 hours or on low for 6–8 "
+            "hours.",
+            "About 30 minutes before serving, shred or slice the "
+            "chicken using two forks and return it to the slow "
+            "cooker.",
+            "Taste and adjust seasoning or spices if needed.",
+            "Cook the noodles according to the packet instructions.",
+            "To serve, add noodles to a bowl and top with the "
+            "chicken curry. Sprinkle over the spring onion, "
+            "coriander (if using) and a squeeze of lime juice.",
+        ],
+        "note": (
+            "Store leftovers in an airtight container in the fridge "
+            "for up to 3 days, or freeze for up to 2 months."
+        ),
+    },
+    {
+        "section": "Slow Cooker",
+        "title": "Slow Cooker Katsu Noodles",
+        "tagline": "All the cosy comfort of katsu — done while you get on with your day.",
+        "serves": 4,
+        "time": "6–7 hrs (low) / 3–4 hrs (high)",
+        "image": "slow-cooker-katsu-noodles.jpg",
+        "ingredients": [
+            "1 onion, diced",
+            "3–4 carrots, peeled and sliced",
+            "1 red pepper, diced",
+            "4 chicken fillets, diced",
+            "Black pepper, for seasoning",
+            "1 tsp garlic powder",
+            "1 heaped tsp curry powder",
+            "4 tbsp katsu curry paste",
+            "2 tbsp soy sauce, low sodium",
+            "1 tin coconut milk",
+            "1 chicken stock cube, low sodium",
+            "240g noodles",
+            "12 tbsp peas",
+        ],
+        "to_serve": [
+            "1 spring onion, sliced (optional)",
+            "1 tsp sesame seeds (optional)",
+            "1 tbsp fresh coriander, chopped (optional)",
+        ],
+        "instructions": [
+            "Add the onion, carrots, red pepper and diced chicken "
+            "to the slow cooker.",
+            "Season with black pepper, then add the garlic powder "
+            "and curry powder.",
+            "Stir in the katsu curry paste and soy sauce, ensuring "
+            "everything is well coated.",
+            "Pour in the coconut milk and crumble in the stock "
+            "cube. Stir gently to combine.",
+            "Place the lid on and cook on low for 6–7 hours or high "
+            "for 3–4 hours, until the chicken is fully cooked and "
+            "tender.",
+            "Around 15–20 minutes before serving, cook the noodles "
+            "according to the packet instructions and cook the "
+            "peas until tender (or any vegetables of your choice).",
+            "Taste the curry and adjust seasoning if needed.",
+            "Add the cooked noodles and peas to the slow cooker "
+            "and mix well. Add a splash of water if needed to "
+            "loosen the sauce.",
+            "Serve in bowls and top with spring onions, sesame "
+            "seeds and fresh coriander (all optional).",
+        ],
+        "note": (
+            "Store leftovers in an airtight container in the fridge "
+            "for up to 3–4 days, or freeze in portions (without "
+            "noodles for best texture) for up to 3 months."
+        ),
+    },
+    {
+        "section": "Slow Cooker",
+        "title": "Slow Cooker Sausages + Beans",
+        "tagline": "Hearty, smoky, and packed with veg — proper comfort food.",
+        "serves": 4,
+        "time": "6–7 hrs (low) / 3–4 hrs (high)",
+        "image": "slow-cooker-sausages-beans.jpg",
+        "ingredients": [
+            "1 tsp olive oil",
+            "8 sausages (pork, beef, chicken/turkey or veggie)",
+            "1 red pepper, diced",
+            "1 onion, diced",
+            "1 celery stick, diced",
+            "2–3 carrots, diced",
+            "1 tin cannellini beans, drained and rinsed",
+            "400g potatoes, washed and cubed (skin on)",
+            "Black pepper, for seasoning",
+            "1 heaped tsp garlic",
+            "1 heaped tsp smoked paprika",
+            "1 heaped tsp cumin",
+            "2 tbsp tomato puree",
+            "2 tbsp Worcestershire sauce",
+            "1 tin tomatoes",
+            "1 low-salt stock cube",
+            "400ml water",
+        ],
+        "to_serve": [
+            "30g grated cheese (optional)",
+            "1 tbsp fresh parsley, chopped (optional)",
+        ],
+        "instructions": [
+            "Heat a frying pan with olive oil over a medium heat "
+            "and cook the sausages until lightly browned on the "
+            "outside. They don't need to be fully cooked through at "
+            "this stage. Slice into bite-sized pieces if desired.",
+            "Add the browned sausages to the slow cooker along with "
+            "the red pepper, onion, celery, carrots, cannellini "
+            "beans and cubed potatoes.",
+            "Season with black pepper, then add the garlic, smoked "
+            "paprika and cumin. Stir in the tomato puree, "
+            "Worcestershire sauce, tinned tomatoes and crumble in "
+            "the stock cube.",
+            "Pour in the 400ml water, then stir gently so everything "
+            "is evenly coated.",
+            "Place the lid on the slow cooker and cook on low for "
+            "6–7 hours or high for 3–4 hours, until the potatoes "
+            "are tender and the sausages are fully cooked through.",
+            "Stir well before serving and taste for seasoning.",
+            "Top with cheese and fresh parsley (both optional).",
+        ],
+        "note": (
+            "Serves 4. Store any leftovers in an airtight container "
+            "in the fridge for up to 4 days, or freeze in single "
+            "portions for up to 3 months."
         ),
     },
 
@@ -365,9 +531,9 @@ RECIPES = [
         ),
     },
 
-    # ============================== PASTA & COMFORT DINNERS
+    # ============================== DINNERS
     {
-        "section": "Pasta & Comfort Dinners",
+        "section": "Dinners",
         "title": "Marry Me Meatballs",
         "tagline": "Creamy, herby meatballs in a sun-dried tomato sauce.",
         "serves": 1,
@@ -431,7 +597,7 @@ RECIPES = [
         ),
     },
     {
-        "section": "Pasta & Comfort Dinners",
+        "section": "Dinners",
         "title": "Chicken, Broccoli and Mushroom Pasta",
         "tagline": "Creamy, savoury pasta with tender chicken and greens.",
         "serves": 1,
@@ -478,7 +644,7 @@ RECIPES = [
         "note": None,
     },
     {
-        "section": "Pasta & Comfort Dinners",
+        "section": "Dinners",
         "title": "Deconstructed Fish Pie",
         "tagline": "All the comfort of fish pie, in fresh, lighter form.",
         "serves": 2,
@@ -543,7 +709,7 @@ RECIPES = [
         ),
     },
     {
-        "section": "Pasta & Comfort Dinners",
+        "section": "Dinners",
         "title": "Steak Fajitas",
         "tagline": "Smoky, spiced beef with all the toppings.",
         "serves": 1,
@@ -601,17 +767,58 @@ RECIPES = [
             "also be frozen for up to 2 months."
         ),
     },
-]
-
-# Recipes still to come from Anna (text already in original PDF, just
-# need fresh-styled images uploaded as JPEGs):
-IMAGES_NEEDED = [
-    ("Slow Cooker", "Slow Cooker Thai Green Curry",
-     "slow-cooker-thai-green-curry.jpg"),
-    ("Slow Cooker", "Slow Cooker Katsu Noodles",
-     "slow-cooker-katsu-noodles.jpg"),
-    ("Traybakes", "Cheesy Tomato Sausage Traybake",
-     "cheesy-tomato-sausage-traybake.jpg"),
-    ("Traybakes", "One Tray Harissa Traybake (V)",
-     "one-tray-harissa-traybake.jpg"),
+    {
+        "section": "Dinners",
+        "title": "One Tray Harissa Traybake (V)",
+        "tagline": "Spiced chickpeas, halloumi, and roasted veg with a coriander yoghurt drizzle.",
+        "serves": "1 (easily scaled)",
+        "time": "35 mins",
+        "image": "one-tray-harissa-traybake.jpg",
+        "ingredients": [
+            "½ red onion, sliced",
+            "½ red pepper, sliced",
+            "6 cherry tomatoes",
+            "½ courgette, sliced",
+            "6 tbsp chickpeas, rinsed and drained",
+            "½ tsp garlic powder",
+            "½ tsp dried thyme",
+            "½ tsp oregano",
+            "Pinch of black pepper",
+            "1 tsp olive oil",
+            "4 tsp harissa paste",
+            "70g halloumi, sliced",
+            "3–4 falafels (optional)",
+            "Handful of baby spinach (or rocket)",
+        ],
+        "ingredients_sub": [
+            ("For the coriander dressing", [
+                "1 heaped tbsp full-fat Greek yoghurt",
+                "1 heaped tsp mayonnaise",
+                "1 tbsp fresh coriander, chopped",
+            ]),
+        ],
+        "instructions": [
+            "Preheat the oven to 200°C.",
+            "In a large bowl, add all the ingredients except the "
+            "halloumi, falafels, spinach and 1 tsp of harissa. Mix "
+            "until well coated.",
+            "Spread the spiced vegetables and chickpeas on a "
+            "baking tray and roast for 15–20 minutes, until tender "
+            "and golden.",
+            "Mix the halloumi with the remaining 1 tsp of harissa.",
+            "Place the halloumi slices on top of the roasted "
+            "vegetables along with the falafels (if using). Return "
+            "to the oven for 8–10 minutes, until the halloumi is "
+            "golden and slightly crisp.",
+            "While the traybake is cooking, mix the dressing "
+            "ingredients in a small bowl.",
+            "To serve, plate up the traybake, add the spinach (or "
+            "rocket), then drizzle with the coriander dressing.",
+        ],
+        "note": (
+            "Easy to batch cook — just scale up the vegetables, "
+            "chickpeas and halloumi. Increase harissa, herbs and "
+            "spices gradually and adjust to taste."
+        ),
+    },
 ]
