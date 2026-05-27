@@ -295,6 +295,30 @@ class Guide:
             self.y += lh
         self.y += gap_after
 
+    # -------------------------------------------------- image cover-fit
+    def _insert_cover_image(self, rect, path):
+        """Insert path into rect with cover-fit (no distortion, center-crop)."""
+        from PIL import Image
+        import tempfile, hashlib
+        with Image.open(path) as im:
+            im = im.convert("RGB")
+            iw, ih = im.size
+            src_ar = iw / ih
+            dst_ar = rect.width / rect.height
+            if src_ar > dst_ar:
+                new_w = int(ih * dst_ar)
+                x0 = (iw - new_w) // 2
+                box = (x0, 0, x0 + new_w, ih)
+            else:
+                new_h = int(iw / dst_ar)
+                y0 = (ih - new_h) // 2
+                box = (0, y0, iw, y0 + new_h)
+            cropped = im.crop(box)
+            key = hashlib.md5(f"{path}-{box}".encode()).hexdigest()[:10]
+            tmp = os.path.join(tempfile.gettempdir(), f"wla_cover_{key}.jpg")
+            cropped.save(tmp, "JPEG", quality=88, optimize=True)
+        self.page.insert_image(rect, filename=tmp)
+
     # -------------------------------------------------- diagram
     def diagram(self, name, gap_before=4, gap_after=14, max_w=CW):
         path = os.path.join(DIAGRAM_DIR, f"{name}.png")
@@ -568,8 +592,8 @@ class Guide:
         self.y = top + H + gap_after
 
     def recipe(self, title, serves, ingredients, instructions,
-               note=None, gap_after=24):
-        """Two-column recipe block."""
+               note=None, image=None, image_h=210, gap_after=24):
+        """Two-column recipe block, with an optional hero image on top."""
         size = 10
         lh = 13.1
         gap = 26
@@ -588,8 +612,14 @@ class Guide:
                      col_h(instructions, rw, 19))
         if note:
             body_h += len(wrap(note, "asi", 10, rw)) * 13 + 8
-        total = len(title_lines) * 21 + 6 + 20 + body_h + gap_after
-        self.keep_together(min(total, 540))
+        img_block = (image_h + 14) if image else 0
+        total = img_block + len(title_lines) * 21 + 6 + 20 + body_h + gap_after
+        self.keep_together(min(total, 640))
+
+        if image:
+            rect = fitz.Rect(LEFT, self.y, RIGHT, self.y + image_h)
+            self._insert_cover_image(rect, image)
+            self.y += image_h + 14
 
         for tl in title_lines:
             self.text(LEFT, self.y + 14, tl, "lbi", 17, BLUSH)

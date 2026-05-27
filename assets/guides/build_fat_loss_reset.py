@@ -17,8 +17,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TESTI_PHOTOS = os.path.join(HERE, "testimonials", "before-after")
 TESTI_SHOTS = os.path.join(HERE, "testimonials", "screenshots")
 SNACK_IMAGES = os.path.join(HERE, "recommended-snacks")
+RECIPE_IMAGES = os.path.join(HERE, "recipes")
 DIAGRAMS = os.path.join(HERE, "diagrams")
 OUT = os.path.join(HERE, "..", "5-Day-Fat-Loss-Reset-Guide.pdf")
+
+
+def recipe_image(section, stem):
+    return find_file(os.path.join(RECIPE_IMAGES, section), stem)
 
 
 def find_file(folder, stem):
@@ -140,18 +145,18 @@ toc([
     ("Important Tips for Getting Started",             "10-11"),
     ("The 5 Day Fat Loss Reset Guidelines",            "12"),
     ("The 5 Day Fat Loss Reset Meal Overview",         "13"),
-    ("Breakfast Recipes",                              "14-16"),
-    ("Lunch Recipes",                                  "17-19"),
-    ("Dinner Recipes",                                 "20-22"),
-    ("Mid-Afternoon Snack Recipes",                    "23-25"),
-    ("The Swap List",                                  "26-38"),
-    ("Drink Tips",                                     "39"),
-    ("Snack Tips",                                     "40-43"),
-    ("What Balanced Blood Sugar Gives You",            "44"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "45-46"),
-    ("Why Breakfast is Important",                     "47"),
-    ("Why Snacking is Important",                      "48"),
-    ("The WLA Nutrition Formula",                      "49"),
+    ("Breakfast Recipes",                              "14-18"),
+    ("Lunch Recipes",                                  "19-21"),
+    ("Dinner Recipes",                                 "22-25"),
+    ("Mid-Afternoon Snack Recipes",                    "26-28"),
+    ("The Swap List",                                  "29-41"),
+    ("Drink Tips",                                     "42"),
+    ("Snack Tips",                                     "43-46"),
+    ("What Balanced Blood Sugar Gives You",            "47"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "48-49"),
+    ("Why Breakfast is Important",                     "50"),
+    ("Why Snacking is Important",                      "51"),
+    ("The WLA Nutrition Formula",                      "52"),
 ])
 
 
@@ -671,20 +676,408 @@ def placeholder_recipe(slot=None):
 
 
 g.divider("Breakfast", "Recipes.")
-for _ in range(4):
-    placeholder_recipe()
+
+g.recipe(
+    "High Fibre Air Fryer Granola", "4",
+    [
+        "80g oats",
+        "2 tbsp ground flaxseeds",
+        "2 tbsp mixed seeds (pumpkin, sunflower, etc.)",
+        "60g mixed nuts, roughly chopped",
+        "2 tbsp desiccated coconut",
+        "1/2 tsp ground cinnamon",
+        "20ml olive oil",
+        "30ml honey",
+        "1 tsp vanilla essence",
+        "40g goji berries",
+        "To serve (per portion): 125g full-fat Greek "
+        "yoghurt and fruit of your choice",
+    ],
+    [
+        "Preheat the air fryer to 160C.",
+        "In a large mixing bowl, combine the oats, "
+        "flaxseeds, mixed seeds, mixed nuts, desiccated "
+        "coconut and cinnamon. Mix well so everything is "
+        "evenly distributed.",
+        "Pour the olive oil, honey and vanilla essence "
+        "into the dry ingredients and stir until evenly "
+        "coated.",
+        "Line the air fryer basket with parchment paper "
+        "and spread the granola mixture evenly (you may "
+        "need to cook in batches depending on the size of "
+        "your air fryer).",
+        "Cook for 10 to 12 minutes, stirring every 2 to 3 "
+        "minutes for even cooking and to prevent burning.",
+        "Once golden and slightly crisp, remove from the "
+        "air fryer, stir through the goji berries and "
+        "allow to cool completely. It will crisp up "
+        "further as it cools.",
+        "Serve each portion with Greek yoghurt and a "
+        "portion of fruit of your choice.",
+    ],
+    note="This recipe serves 4. Store any leftovers in an "
+         "airtight container for up to 2 weeks.",
+    image=recipe_image("breakfast", "air-fryer-granola"),
+)
+
+g.recipe(
+    "Protein and Fibre Yoghurt Bowl", "1",
+    [
+        "125g full-fat Greek yoghurt",
+        "80g vanilla kefir",
+        "1 tsp mixed seeds",
+        "1 tsp peanut butter",
+        "1 tsp honey",
+        "Handful of fresh raspberries",
+        "Handful of fresh blueberries",
+    ],
+    [
+        "Add the Greek yoghurt and kefir to a bowl and "
+        "mix until smooth and combined.",
+        "Top with the mixed seeds, peanut butter, honey, "
+        "raspberries and blueberries and serve.",
+    ],
+    note="Serves 1 and is best enjoyed fresh. Swap the "
+         "berries for whatever you have available. Not "
+         "sure which kefir to buy? The vanilla one from "
+         "Tesco is a great option, highly rated and easy "
+         "to enjoy on its own as a quick drink snack.",
+    image=recipe_image("breakfast", "protein-fibre-yoghurt"),
+)
+
+g.recipe(
+    "Pina Colada Smoothie", "1",
+    [
+        "1 banana",
+        "80g pineapple chunks, canned or fresh",
+        "150ml coconut milk",
+        "2 tbsp full-fat Greek yoghurt",
+        "A few ice cubes",
+        "1 heaped tsp desiccated coconut",
+    ],
+    [
+        "Combine all ingredients in a blender.",
+        "Blend until smooth, around 1 minute. Serve "
+        "immediately.",
+    ],
+    note="Top tip, advance prep. Freeze some ice cubes "
+         "the night before so the smoothie blends thick "
+         "and cold.",
+    image=recipe_image("breakfast", "pina-colada-smoothie"),
+)
+
+g.recipe(
+    "Multigrain Hoops Cereal and Fruit", "1",
+    [
+        "30g M&S Only... Ingredients Multigrain Hoops",
+        "125ml milk of your choice",
+        "Your choice of topping (a handful of berries, "
+        "1 banana, 30g dried fruit, etc.)",
+    ],
+    [
+        "Place the cereal in a serving bowl and pour over "
+        "the milk.",
+        "Add your fruit to the bowl, or serve on the "
+        "side, and enjoy.",
+    ],
+    image=recipe_image("breakfast", "multigrain-hoops"),
+)
 
 g.divider("Lunch", "Recipes.")
-placeholder_recipe("Family Fav")
-placeholder_recipe("10 Min Option")
-placeholder_recipe("Batch Prep")
-placeholder_recipe("No Cook")
+
+g.recipe(
+    "Weekend Brunch", "1",
+    [
+        "2 sausages (chicken, pork, turkey or "
+        "vegetarian)",
+        "4 mushrooms",
+        "4 cherry tomatoes",
+        "2 eggs",
+        "1/2 avocado",
+    ],
+    [
+        "Cook the sausages as per the packet instructions.",
+        "Grill the mushrooms and tomatoes.",
+        "Slice the avocado.",
+        "Poach the eggs (eggs can also be fried, "
+        "scrambled, made into an omelette or boiled).",
+        "Serve everything together and enjoy.",
+    ],
+    note="Recipe adjustments. Want to remove the meat? "
+         "Replace the sausages with 2 vegetarian sausages "
+         "or any vegetarian alternative using the food "
+         "swap list.",
+)
+
+g.recipe(
+    "Cheesy Fried Eggs", "1",
+    [
+        "1 tsp olive oil",
+        "2 eggs",
+        "Salt and pepper for seasoning",
+        "30g cheddar cheese, grated",
+        "For the salad: handful of rocket",
+        "6 cherry tomatoes, halved",
+        "1/2 small avocado, sliced",
+        "1 tsp balsamic vinegar (optional)",
+        "Or serve with any salad ingredients",
+    ],
+    [
+        "Heat a non-stick frying pan over medium-low "
+        "heat and add the olive oil.",
+        "Crack the eggs into the pan and cook to your "
+        "preference (sunny side up or over easy).",
+        "Season lightly with salt and pepper, then "
+        "sprinkle the grated cheddar evenly over the "
+        "eggs.",
+        "Cover the pan with a lid for 30 to 60 seconds to "
+        "let the cheese melt.",
+        "Add the rocket, tomatoes and avocado to a plate "
+        "for a simple side salad. Drizzle with balsamic "
+        "vinegar if using.",
+        "Once the eggs are cooked and the cheese has "
+        "melted, carefully transfer them onto the plate "
+        "and serve immediately.",
+    ],
+    image=recipe_image("lunch", "cheesy-fried-eggs"),
+)
+
+g.recipe(
+    "Coronation Chicken Salad", "1",
+    [
+        "1 heaped tsp mayonnaise",
+        "1 heaped tbsp full-fat Greek yoghurt",
+        "1 heaped tbsp mango chutney",
+        "1/2 tsp curry powder",
+        "1 tsp soy sauce",
+        "Black pepper for seasoning",
+        "1 cooked chicken breast, sliced",
+        "1/2 red onion, thinly sliced (optional)",
+        "1 handful of mixed salad leaves",
+        "3 cherry tomatoes, quartered",
+        "1/2 pepper (any colour), thinly sliced",
+        "25g cucumber, diced into bite-sized pieces",
+        "1 heaped tbsp flaked almonds",
+    ],
+    [
+        "Add the mayonnaise, Greek yoghurt, mango "
+        "chutney, curry powder, black pepper, soy sauce "
+        "and a drop of water to a bowl.",
+        "Mix together, taste and add more black pepper "
+        "to season if you like.",
+        "Add the sliced chicken and red onion (optional) "
+        "to the bowl and mix to coat.",
+        "To serve, arrange the mixed leaves, tomatoes, "
+        "peppers and cucumber on a plate, spoon over the "
+        "chicken mixture and top with flaked almonds.",
+    ],
+    note="Can be eaten right away or store the chicken "
+         "mixture in the fridge until its best-before "
+         "date.",
+)
+
+g.recipe(
+    "M&S Naked Chicken Caesar Salad", "1",
+    [
+        "1 M&S Naked Chicken Caesar Salad, or any "
+        "ready-made salad",
+        "Optional extra protein (cooked chicken, tuna, "
+        "boiled eggs or cheese)",
+        "Dressing on the side if possible",
+    ],
+    [
+        "Choose ready-made salads with a base of plenty "
+        "of vegetables or salad leaves and avoid those "
+        "with starchy carbohydrates like pasta, couscous, "
+        "rice or potatoes.",
+        "If the salad doesn't already include a protein "
+        "source, add one of your own. Cooked chicken, "
+        "tuna, boiled eggs or cheese are great additions.",
+        "Be mindful of dressings, sauces and mayonnaise "
+        "that often come with pre-packed salads. Ideally, "
+        "pick a salad where the dressing is packaged "
+        "separately so you can control how much you use.",
+        "Check the front of the packaging for the "
+        "traffic-light system, which gives a quick "
+        "overview of fat, saturated fat, salt and sugar. "
+        "The more green on the label, the healthier the "
+        "choice.",
+        "This works when eating out too. Choose a salad "
+        "at a restaurant and ask for the dressing on the "
+        "side.",
+    ],
+)
 
 g.divider("Dinner", "Recipes.")
-placeholder_recipe("20 Min Option")
-placeholder_recipe("Fakeaway Inspo")
-placeholder_recipe("Easy Option")
-placeholder_recipe("No Fuss Option")
+
+g.recipe(
+    "Chicken Caesar Air Fryer Gnocchi", "1",
+    [
+        "125g fresh gnocchi",
+        "1 tsp olive oil",
+        "Black pepper, to taste",
+        "100g cooked or roasted chicken, diced or "
+        "shredded",
+        "2 bacon slices, grilled and diced",
+        "6 cherry tomatoes, halved",
+        "1/2 red onion, finely sliced",
+        "1 tsp Italian herbs",
+        "1 heaped tbsp real Caesar dressing",
+        "1 heaped tbsp Greek yoghurt",
+        "A large handful of rocket",
+        "30g parmesan",
+    ],
+    [
+        "Preheat the air fryer to 200C / 392F.",
+        "Toss the gnocchi with the olive oil and a pinch "
+        "of black pepper. Spread out in a single layer in "
+        "the air fryer basket and cook for 10 to 15 "
+        "minutes, shaking halfway through, until golden "
+        "and crispy on the outside.",
+        "Prepare the salad base. In a large bowl, add the "
+        "chicken, grilled bacon, cherry tomatoes and red "
+        "onion. Season with black pepper and Italian "
+        "herbs.",
+        "Add the Caesar dressing and Greek yoghurt to the "
+        "bowl and toss everything together until evenly "
+        "coated.",
+        "Add the rocket and crispy gnocchi to the bowl "
+        "and gently toss through.",
+        "Taste and add additional seasoning if needed.",
+        "Transfer to a bowl, sprinkle with parmesan and "
+        "serve immediately.",
+    ],
+    note="No air fryer? Heat 1 tsp olive oil in a "
+         "non-stick pan over medium-high heat and cook "
+         "the gnocchi for 8 to 10 minutes, turning "
+         "occasionally, until golden and crispy. To "
+         "batch, store the prepped ingredients "
+         "separately in airtight containers in the "
+         "fridge for up to 3 days, then cook a fresh "
+         "portion of gnocchi and toss everything "
+         "together when ready to eat.",
+    image=recipe_image("dinner", "chicken-caesar-gnocchi"),
+)
+
+g.recipe(
+    "One Pan Thai Red Curry Salmon", "1",
+    [
+        "60g wholegrain rice",
+        "1 salmon fillet (approx 110g)",
+        "Black pepper, to taste",
+        "1 tsp olive oil",
+        "1/2 onion, sliced",
+        "1/2 tsp garlic powder",
+        "1 tbsp Thai red curry paste",
+        "1 tsp soy sauce, reduced sodium",
+        "1/2 tin coconut milk",
+        "1/2 stock cube, low sodium",
+        "1 tsp fish sauce",
+        "1 tsp honey",
+        "140g broccolini or regular broccoli",
+        "80g green beans",
+        "Handful of spinach",
+        "Juice of 1/2 lime",
+        "Handful of fresh coriander, chopped (optional)",
+    ],
+    [
+        "Cook the wholegrain rice according to packet "
+        "instructions.",
+        "Season the salmon with black pepper. Heat the "
+        "olive oil in a large frying pan over medium "
+        "heat and cook the salmon for 2 to 3 minutes on "
+        "each side until golden but not fully cooked "
+        "through. Remove from the pan and set aside.",
+        "In the same pan, add the sliced onion and "
+        "garlic powder. Cook for 2 to 3 minutes until "
+        "softened.",
+        "Stir in the Thai red curry paste and soy sauce "
+        "and cook for 1 minute, stirring continuously "
+        "until fragrant.",
+        "Pour in the coconut milk and crumble in the "
+        "stock cube. Add the fish sauce and honey, stir "
+        "well and bring to a gentle simmer.",
+        "Add the broccolini and green beans and simmer "
+        "for 4 to 5 minutes until just tender.",
+        "Return the salmon to the pan, nestling it into "
+        "the sauce. Add the spinach and cook for a "
+        "further 2 to 3 minutes until the spinach has "
+        "wilted and the salmon is cooked through.",
+        "Stir through the lime juice and taste test. "
+        "Add extra lime for freshness or a little more "
+        "soy sauce if preferred.",
+        "Serve over the wholegrain rice and scatter with "
+        "fresh coriander if using.",
+    ],
+    note="Store in an airtight container in the fridge "
+         "for up to 2 days. Reheat thoroughly before "
+         "serving. The sauce may naturally thicken in "
+         "the fridge, so add a splash of water before "
+         "reheating if needed.",
+    image=recipe_image("dinner", "thai-red-curry-salmon"),
+)
+
+g.recipe(
+    "Lazy Snacky Plate", "1",
+    [
+        "1/4 Spanish tortilla (shop bought)",
+        "Large handful of rocket",
+        "1 tomato, sliced",
+        "4 slices roasted peppers",
+        "1 tbsp pickled red onions",
+        "4 to 5 slices of pickled beetroot",
+        "1 tbsp coleslaw",
+        "1/4 large or 1/2 small avocado",
+        "30g cheese, grated",
+    ],
+    [
+        "Heat the Spanish tortilla in a pan until warmed "
+        "through.",
+        "Add the rocket, sliced tomato, roasted peppers, "
+        "pickled red onions, pickled beetroot, coleslaw, "
+        "avocado and cheese to a plate.",
+        "Add the cooked Spanish tortilla on the side and "
+        "serve.",
+    ],
+    note="Serves 1 and is best enjoyed fresh. Swap the "
+         "tortilla for 1/4 of a quiche or another "
+         "protein option such as chicken, tuna, eggs or "
+         "halloumi depending on what you have available.",
+    image=recipe_image("dinner", "lazy-snacky-plate"),
+)
+
+g.recipe(
+    "No Cook Freezer Dinner", "1",
+    [
+        "Any protein from this list:",
+        "1 piece of breaded fish",
+        "1 fish cake",
+        "3 chicken goujons",
+        "3 fish goujons",
+        "1 chicken Kiev",
+        "1/4 quiche (with pastry)",
+        "1 vegetarian burger",
+        "4 falafels",
+        "2 sausages",
+        "1 plain fish fillet",
+        "1 plain chicken fillet",
+        "Frozen vegetables or salad",
+        "1 tbsp tzatziki, coleslaw or low-sugar tomato "
+        "sauce",
+    ],
+    [
+        "Pick any one of the protein elements from the "
+        "ingredients list.",
+        "Add frozen vegetables or salad alongside.",
+        "Serve with 1 tbsp tzatziki, coleslaw or "
+        "low-sugar tomato sauce and enjoy.",
+    ],
+    note="Top tip. If you choose 2 sausages, 1 plain "
+         "fish fillet or 1 plain chicken fillet as your "
+         "protein, add a carbohydrate element from the "
+         "food swap list to keep the plate balanced.",
+    image=recipe_image("dinner", "no-cook-freezer-dinner"),
+)
 
 g.divider("Snack", "Recipes.")
 for _ in range(4):
