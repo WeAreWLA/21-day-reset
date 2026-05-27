@@ -953,7 +953,7 @@ g.paragraph("We recommend a bigger snack between lunch and dinner to "
             "prevent sugar cravings. You may need another in the "
             "evening. Some days you may need two bigger snacks and "
             "some days one, tune in and be flexible.")
-diagram_tall("bigger-snack-inspiration", max_h=540, max_w=CW * 0.78)
+diagram_tall("bigger-snack-inspiration", max_h=640, max_w=CW * 0.85)
 
 g._new_content_page()
 g.heading([[("Some ", False), ("Recommended Snacks", True)]])
@@ -1007,35 +1007,51 @@ def check_box(x, y, size=14):
 
 def image_with_checks(image_name, items, image_w=0.5,
                       img_max_h=320, gap_after=14):
-    """Place an image on the left and a checkbox list on the right."""
+    """Place an image on the left and a checkbox list on the right.
+    Falls back to a labelled placeholder if the image isn't present."""
     path = os.path.join(DIAGRAMS, f"{image_name}.png")
-    pm = fitz.Pixmap(path)
-    ar = pm.width / pm.height
-    w = CW * image_w
-    h = w / ar
-    if h > img_max_h:
-        h = img_max_h
-        w = h * ar
-    # estimate text height
+    have_image = os.path.exists(path)
+    # text geometry first
     tx0 = LEFT + CW * image_w + 22
     tw_box = CW - (CW * image_w) - 22
     line_size = 11
     line_h = 15.5
-    items_h = 0
     item_gap = 10
+    items_h = 0
     for it in items:
         ln_count = len(wrap(it, "as", line_size, tw_box - 26))
         items_h += max(ln_count * line_h, 22) + item_gap
+    # image geometry
+    if have_image:
+        pm = fitz.Pixmap(path)
+        ar = pm.width / pm.height
+        w = CW * image_w
+        h = w / ar
+        if h > img_max_h:
+            h = img_max_h
+            w = h * ar
+    else:
+        w = CW * image_w
+        h = min(img_max_h, max(items_h, 200))
     block_h = max(h, items_h)
     g.ensure(block_h + gap_after)
     top = g.y
-    # image left
+    # image (or placeholder) — top-aligned with the text
     x0 = LEFT
-    img_top = top + max(0, (block_h - h) / 2)
-    g.page.insert_image(fitz.Rect(x0, img_top, x0 + w, img_top + h),
-                        filename=path, keep_proportion=True)
-    # checkbox list right
-    ty = top + max(0, (block_h - items_h) / 2) + 4
+    if have_image:
+        g.page.insert_image(fitz.Rect(x0, top, x0 + w, top + h),
+                            filename=path, keep_proportion=True)
+    else:
+        g.page.draw_rect(fitz.Rect(x0, top, x0 + w, top + h),
+                         color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+        g.text_center(x0 + w / 2, top + h / 2 - 6,
+                      "[ image placeholder ]", "lbi", 11,
+                      (0.5, 0.5, 0.55))
+        g.text_center(x0 + w / 2, top + h / 2 + 12,
+                      f"upload as: {image_name}.png", "asi", 9.5,
+                      (0.55, 0.55, 0.6))
+    # checkbox list — also top-aligned (same start y)
+    ty = top + 4
     for it in items:
         ln_count = len(wrap(it, "as", line_size, tw_box - 26))
         row_h = max(ln_count * line_h, 22)
@@ -1050,6 +1066,129 @@ def image_with_checks(image_name, items, image_w=0.5,
 
 
 # =========================================================== Why balanced blood sugar
+def _icon_sugar_cubes(cx, cy, s=14):
+    """3 stacked cube outlines."""
+    g.page.draw_rect(fitz.Rect(cx - s + 1, cy - s/3, cx - 1, cy + s/3),
+                     color=NAVY, fill=None, width=1.0)
+    g.page.draw_rect(fitz.Rect(cx + 1, cy - s/3, cx + s - 1, cy + s/3),
+                     color=NAVY, fill=None, width=1.0)
+    g.page.draw_rect(fitz.Rect(cx - s/2, cy - s, cx + s/2, cy - s/3),
+                     color=NAVY, fill=None, width=1.0)
+
+
+def _icon_smile(cx, cy, s=14):
+    g.page.draw_circle((cx, cy), s, color=NAVY, fill=None, width=1.0)
+    g.page.draw_circle((cx - s/3, cy - s/4), 0.9,
+                       color=None, fill=NAVY)
+    g.page.draw_circle((cx + s/3, cy - s/4), 0.9,
+                       color=None, fill=NAVY)
+    # smile arc — short bezier as 4 line segments
+    pts = [(cx - s/2.2, cy + s/5), (cx - s/4, cy + s/2.2),
+           (cx + s/4, cy + s/2.2), (cx + s/2.2, cy + s/5)]
+    for a, b in zip(pts, pts[1:]):
+        g.page.draw_line(a, b, color=NAVY, width=1.0)
+
+
+def _icon_plate(cx, cy, s=14):
+    # plate (circle) with fork left and knife right
+    g.page.draw_circle((cx, cy), s * 0.85, color=NAVY, fill=None,
+                       width=1.0)
+    # pie slice marker inside plate (small line)
+    g.page.draw_line((cx, cy), (cx + s/2, cy - s/3),
+                     color=NAVY, width=0.8)
+    # fork
+    fx = cx - s * 1.4
+    g.page.draw_line((fx, cy - s), (fx, cy + s),
+                     color=NAVY, width=1.0)
+    for dx in (-0.3, 0, 0.3):
+        g.page.draw_line((fx + dx * s/2, cy - s),
+                         (fx + dx * s/2, cy - s/2),
+                         color=NAVY, width=0.8)
+    # knife
+    kx = cx + s * 1.4
+    g.page.draw_line((kx, cy - s), (kx, cy + s),
+                     color=NAVY, width=1.0)
+    g.page.draw_line((kx - s/4, cy - s), (kx, cy - s/2),
+                     color=NAVY, width=0.8)
+    g.page.draw_line((kx, cy - s/2), (kx, cy - s),
+                     color=NAVY, width=0.8)
+
+
+def _icon_scale(cx, cy, s=14):
+    # bathroom scale — rectangle with display circle
+    g.page.draw_rect(fitz.Rect(cx - s, cy - s*0.7, cx + s, cy + s*0.7),
+                     color=NAVY, fill=None, width=1.0)
+    g.page.draw_circle((cx, cy + s*0.1), s * 0.35,
+                       color=NAVY, fill=None, width=0.8)
+    # display tick at top
+    g.page.draw_line((cx, cy + s*0.1 - s*0.35),
+                     (cx + s*0.15, cy + s*0.1 - s*0.18),
+                     color=NAVY, width=0.8)
+
+
+def _icon_donut(cx, cy, s=14):
+    # outer + inner circle
+    g.page.draw_circle((cx, cy), s, color=NAVY, fill=None, width=1.2)
+    g.page.draw_circle((cx, cy), s * 0.38, color=NAVY, fill=None,
+                       width=1.0)
+    # sprinkle marks
+    for ang_deg, _ in [(40, 1), (130, 1), (220, 1), (310, 1)]:
+        import math
+        ang = math.radians(ang_deg)
+        x1, y1 = cx + s*0.65*math.cos(ang), cy + s*0.65*math.sin(ang)
+        x2, y2 = cx + s*0.8*math.cos(ang), cy + s*0.8*math.sin(ang)
+        g.page.draw_line((x1, y1), (x2, y2), color=NAVY, width=0.9)
+
+
+def _icon_appetite(cx, cy, s=14):
+    # fork + down arrow
+    fx = cx - s * 0.55
+    g.page.draw_line((fx, cy - s), (fx, cy + s),
+                     color=NAVY, width=1.0)
+    for dx in (-1, 0, 1):
+        g.page.draw_line((fx + dx * s*0.25, cy - s),
+                         (fx + dx * s*0.25, cy - s*0.45),
+                         color=NAVY, width=0.8)
+    # down arrow on right
+    ax = cx + s * 0.6
+    g.page.draw_line((ax, cy - s*0.8), (ax, cy + s*0.8),
+                     color=NAVY, width=1.2)
+    g.page.draw_line((ax - s*0.35, cy + s*0.3),
+                     (ax, cy + s*0.8), color=NAVY, width=1.2)
+    g.page.draw_line((ax + s*0.35, cy + s*0.3),
+                     (ax, cy + s*0.8), color=NAVY, width=1.2)
+
+
+def _icon_chart_down(cx, cy, s=14):
+    # zigzag down with arrowhead
+    pts = [(cx - s*0.95, cy - s*0.6), (cx - s*0.3, cy + s*0.1),
+           (cx + s*0.2, cy - s*0.35), (cx + s*0.95, cy + s*0.6)]
+    for a, b in zip(pts, pts[1:]):
+        g.page.draw_line(a, b, color=NAVY, width=1.2)
+    # arrowhead at last point
+    ex, ey = pts[-1]
+    g.page.draw_line((ex, ey), (ex - s*0.35, ey + s*0.05),
+                     color=NAVY, width=1.0)
+    g.page.draw_line((ex, ey), (ex - s*0.1, ey - s*0.32),
+                     color=NAVY, width=1.0)
+
+
+def icon_card(x0, y0, w, h, draw_fn, label):
+    """Beige badge with the icon + 2-line label below."""
+    badge_r = 28
+    cx = x0 + w / 2
+    cy = y0 + badge_r + 6
+    g.page.draw_circle((cx, cy), badge_r, color=None,
+                       fill=(0.93, 0.88, 0.83))
+    draw_fn(cx, cy, s=14)
+    # label below
+    lines = wrap(label, "as", 10.5, w - 14)
+    ty = y0 + badge_r + 22
+    for ln in lines:
+        g.text_center(cx, ty + 10, ln, "as", 10.5, INK)
+        ty += 13
+
+
 g._new_content_page()
 g.heading([[("What balanced ", False), ("blood sugar", True)],
            [("gives you.", False)]])
@@ -1062,7 +1201,38 @@ g.paragraph("Maintaining balanced blood sugar levels is a key "
             "and support your fat loss goals.")
 g.paragraph("Here's why balanced blood sugar is so important:",
             font="asb", color=NAVY)
-g.diagram("blood-sugar-benefits", max_w=CW * 0.95)
+
+BENEFITS = [
+    (_icon_sugar_cubes, "Reduced desire for sugar"),
+    (_icon_smile,        "Improved mood"),
+    (_icon_plate,        "More control around food"),
+    (_icon_scale,        "Weight stabilises /\nweight reduction"),
+    (_icon_donut,        "Reduced cravings"),
+    (_icon_appetite,     "Appetite falls and stabilises"),
+    (_icon_chart_down,   "No extreme highs followed by\nsevere plummets"),
+]
+
+bcols = 4
+bgap = 12
+bcw = (CW - bgap * (bcols - 1)) / bcols
+bch = 100
+g.gap(10)
+g.ensure(2 * bch + bgap + 10)
+top = g.y
+# row 1: first 4
+for i, (draw_fn, label) in enumerate(BENEFITS[:4]):
+    x0 = LEFT + i * (bcw + bgap)
+    icon_card(x0, top, bcw, bch, draw_fn,
+              label.replace("\n", " "))
+# row 2: last 3 centered
+rem = BENEFITS[4:]
+row2_w = len(rem) * bcw + (len(rem) - 1) * bgap
+x_start = LEFT + (CW - row2_w) / 2
+for i, (draw_fn, label) in enumerate(rem):
+    x0 = x_start + i * (bcw + bgap)
+    icon_card(x0, top + bch + bgap, bcw, bch, draw_fn,
+              label.replace("\n", " "))
+g.y = top + 2 * bch + bgap + 14
 
 
 # =========================================================== easily reduce sugar cravings
@@ -1177,13 +1347,9 @@ g.bullets([
     "Reducing carbohydrate intake (not eliminating carbohydrates, "
     "just adjusting amounts).",
     "Reducing processed foods and added sugars.",
-])
-# the prioritising bullet has a nested list
-g.ensure(120)
-g.page.draw_circle((LEFT + 7, g.y + 11), 1.7, color=None, fill=BLUSH)
-g.text(LEFT + 20, g.y + 14, "Prioritising whole, nourishing foods "
-       "including:", "as", 11.5, INK)
-g.y += 18
+    "Prioritising whole, nourishing foods including:",
+], gap_after=0)
+# nested sub-items (tight, no extra gap above)
 for sub in ["Wholegrain carbohydrates", "Lean meats and fish",
             "Full-fat dairy", "Healthy fats",
             "Fruits and vegetables"]:
