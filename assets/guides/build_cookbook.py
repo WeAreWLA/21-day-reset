@@ -18,7 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 IMG_DIR = os.path.join(HERE, "cookbook-recipes")
 OUT = os.path.join(HERE, "..", "The-WLA-Weight-Loss-Cookbook.pdf")
 
-PHOTO_H = 232  # hero photo height in points
+PHOTO_H = 200  # hero photo height in points
 
 g = Guide(OUT)
 
@@ -76,7 +76,7 @@ g.paragraph(
     size=12.5, lh=17.5, gap_after=12)
 g.paragraph(
     "These 15 recipes are designed to take the thinking out of it. "
-    "They're built around protein, fibre and flavour — so you stay "
+    "They're built around protein, fibre and flavour, so you stay "
     "full, hit your macros, and lose weight without feeling like "
     "you're missing out. Some are slow-cooker dump-and-go meals. "
     "Some are quick weekday bowls. All of them are family-friendly, "
@@ -233,7 +233,8 @@ def draw_recipe(idx, r):
     rx = LEFT + lw + col_gap
     coltop = g.y
 
-    # estimate content density and pick font sizes
+    # estimate content density and pick font sizes; we keep a
+    # readable floor of 9.6pt even for the densest recipes.
     def count_items():
         n = 0
         for sub in (r.get("ingredients_sub") or []):
@@ -245,28 +246,31 @@ def draw_recipe(idx, r):
     meth_count = len(r["instructions"])
     note_len = len(r.get("note") or "")
     has_subs = bool(r.get("ingredients_sub")) or bool(r.get("to_serve"))
-    # consider all factors that make a page tight
     score = ing_count + meth_count + (note_len // 90) + (2 if has_subs else 0)
 
     if score >= 26:
-        size, lh, item_gap = 8.8, 11.5, 1.6
+        size, lh, item_gap = 9.6, 12.4, 1.8
     elif score >= 22:
-        size, lh, item_gap = 9.0, 11.8, 1.8
+        size, lh, item_gap = 9.9, 12.8, 2.0
     elif score >= 18:
-        size, lh, item_gap = 9.2, 12.1, 2.0
+        size, lh, item_gap = 10.2, 13.3, 2.2
     else:
-        size, lh, item_gap = 9.5, 12.6, 2.5
+        size, lh, item_gap = 10.5, 13.8, 2.6
 
-    g.text(LEFT, coltop + 9, "INGREDIENTS", "asb", 9, NAVY)
+    head_size = 10
+    sub_head_size = max(9.6, size - 0.4)
+    bullet_indent = max(13, int(size * 1.3))
+
+    g.text(LEFT, coltop + 9, "INGREDIENTS", "asb", head_size, NAVY)
     yL = coltop + 24
 
     def render_ing_list(items, x0, w, y):
         for it in items:
-            lines = wrap(it, "as", size, w - 14)
+            lines = wrap(it, "as", size, w - bullet_indent - 1)
             for i, ln in enumerate(lines):
                 if i == 0:
                     g.text(x0, y + 8, "—", "as", size, BLUSH)
-                g.text(x0 + 12, y + 8, ln, "as", size, INK)
+                g.text(x0 + bullet_indent, y + 8, ln, "as", size, INK)
                 y += lh
             y += item_gap
         return y
@@ -277,23 +281,24 @@ def draw_recipe(idx, r):
     if r.get("ingredients_sub"):
         for sub_head, sub_items in r["ingredients_sub"]:
             yL += 3
-            g.text(LEFT, yL + 9, sub_head, "asi", 9.3, NAVY)
-            yL += 17
+            g.text(LEFT, yL + 9, sub_head, "asi", sub_head_size, NAVY)
+            yL += sub_head_size + 8
             yL = render_ing_list(sub_items, LEFT, lw, yL)
     if r.get("to_serve"):
         yL += 3
-        g.text(LEFT, yL + 9, "To serve", "asi", 9.3, NAVY)
-        yL += 17
+        g.text(LEFT, yL + 9, "To serve", "asi", sub_head_size, NAVY)
+        yL += sub_head_size + 8
         yL = render_ing_list(r["to_serve"], LEFT, lw, yL)
 
-    # RIGHT: method
-    g.text(rx, coltop + 9, "METHOD", "asb", 9, NAVY)
+    # RIGHT: instructions
+    step_indent = max(22, int(size * 2.4))
+    g.text(rx, coltop + 9, "INSTRUCTIONS", "asb", head_size, NAVY)
     yR = coltop + 24
     for k, step in enumerate(r["instructions"], 1):
         num = f"{k:02d}"
         g.text(rx, yR + 8, num, "asb", size, BLUSH)
-        for ln in wrap(step, "as", size, rw - 22):
-            g.text(rx + 22, yR + 8, ln, "as", size, INK)
+        for ln in wrap(step, "as", size, rw - step_indent):
+            g.text(rx + step_indent, yR + 8, ln, "as", size, INK)
             yR += lh
         yR += item_gap
 
@@ -304,15 +309,15 @@ def draw_recipe(idx, r):
         # leave a comfortable gap above the footer
         SAFE_BOTTOM = CONTENT_BOTTOM - 22
         header_h = 20
-        candidates = [(9.5, 12.5), (9.2, 12.1), (9.0, 11.9),
-                      (8.7, 11.5), (8.4, 11.1), (8.0, 10.6)]
+        candidates = [(10.5, 13.6), (10.2, 13.2), (10.0, 12.9),
+                      (9.8, 12.6), (9.6, 12.3)]
         for sz, lh_ in candidates:
             note_h = len(wrap(r["note"], "asi", sz, CW)) * lh_
             if end_y + header_h + note_h <= SAFE_BOTTOM:
                 tip_size, tip_lh = sz, lh_
                 break
         else:
-            tip_size, tip_lh = 7.6, 10.2
+            tip_size, tip_lh = 9.4, 12.0
         g.tracked(LEFT, end_y + 9, "WLA TIP", "asb", 8.5, BLUSH, 1.5)
         end_y += header_h
         for ln in wrap(r["note"], "asi", tip_size, CW):
