@@ -148,10 +148,10 @@ toc([
     ("Drink Tips",                                     "40"),
     ("Snack Tips",                                     "41-44"),
     ("What Balanced Blood Sugar Gives You",            "45"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "46-47"),
-    ("Why Breakfast is Important",                     "48"),
-    ("Why Snacking is Important",                      "49"),
-    ("The WLA Nutrition Formula",                      "50"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "46-48"),
+    ("Why Breakfast is Important",                     "49"),
+    ("Why Snacking is Important",                      "50"),
+    ("The WLA Nutrition Formula",                      "51"),
 ])
 
 
@@ -305,17 +305,18 @@ else:
     g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 + 12,
                   "upload as: anna-before-after.png", "asi", 9.5,
                   (0.55, 0.55, 0.6))
-# white signature card sitting just under the photo, so the photo
-# itself isn't covered
-pill_y = photo_top + photo_h + 6
+# white signature card sitting OVER the bottom edge of the photo
+# (drawn after the image so it renders on top), most of it extends
+# below the photo so it doesn't obscure the portrait
+pill_y = photo_top + photo_h - 12
 g.page.draw_rect(fitz.Rect(LEFT, pill_y, LEFT + photo_w,
-                           pill_y + 46),
+                           pill_y + 50),
                  color=None, fill=(1, 1, 1))
-g.page.draw_rect(fitz.Rect(LEFT, pill_y, LEFT + 4, pill_y + 46),
+g.page.draw_rect(fitz.Rect(LEFT, pill_y, LEFT + 4, pill_y + 50),
                  color=None, fill=BLUSH)
-g.text(LEFT + 14, pill_y + 16, "Anna Wallace", "lbi", 12, BLUSH)
-g.text(LEFT + 14, pill_y + 30, "BSc Food & Nutrition", "asi", 9, NAVY)
-g.text(LEFT + 14, pill_y + 41, "Registered Associate Nutritionist",
+g.text(LEFT + 14, pill_y + 18, "Anna Wallace", "lbi", 12, BLUSH)
+g.text(LEFT + 14, pill_y + 32, "BSc Food & Nutrition", "asi", 9, NAVY)
+g.text(LEFT + 14, pill_y + 43, "Registered Associate Nutritionist",
        "asi", 9, NAVY)
 # body, right column then full width
 tx_narrow = LEFT + photo_w + 26
@@ -323,7 +324,7 @@ tw_narrow = CW - photo_w - 26
 tx_full = LEFT
 tw_full = CW
 ty = photo_top + 4
-photo_bottom = photo_top + photo_h + 54  # photo + sig card
+photo_bottom = photo_top + photo_h + 44  # photo + overlapping card
 intro = ("This is the reset I built from 10 years coaching "
          "women over 45.")
 for ln in wrap(intro, "lbi", 13.5, tw_narrow):
@@ -1109,6 +1110,57 @@ def image_with_checks(image_name, items, image_w=0.5,
     g.y = top + block_h + gap_after
 
 
+def image_above_checks(image_name, items, image_w=0.7,
+                       img_max_h=360, gap_after=18, gap_between=14):
+    """Big image centred on top, with the checkbox list below it."""
+    path = os.path.join(DIAGRAMS, f"{image_name}.png")
+    have_image = os.path.exists(path)
+    if have_image:
+        pm = fitz.Pixmap(path)
+        ar = pm.width / pm.height
+        w = CW * image_w
+        h = w / ar
+        if h > img_max_h:
+            h = img_max_h
+            w = h * ar
+    else:
+        w = CW * image_w
+        h = 240
+    line_size = 11
+    line_h = 15.5
+    item_gap = 8
+    items_h = 0
+    for it in items:
+        ln_count = len(wrap(it, "as", line_size, CW - 30))
+        items_h += max(ln_count * line_h, 22) + item_gap
+    g.ensure(h + gap_between + items_h + gap_after)
+    top = g.y
+    # image centred horizontally
+    x0 = LEFT + (CW - w) / 2
+    if have_image:
+        g.page.insert_image(fitz.Rect(x0, top, x0 + w, top + h),
+                            filename=path, keep_proportion=True)
+    else:
+        g.page.draw_rect(fitz.Rect(x0, top, x0 + w, top + h),
+                         color=RULE, fill=(0.97, 0.93, 0.90),
+                         width=0.6)
+        g.text_center(x0 + w / 2, top + h / 2 - 6,
+                      "[ image placeholder ]", "lbi", 11,
+                      (0.5, 0.5, 0.55))
+        g.text_center(x0 + w / 2, top + h / 2 + 12,
+                      f"upload as: {image_name}.png", "asi", 9.5,
+                      (0.55, 0.55, 0.6))
+    # checkbox list, full-width below
+    ty = top + h + gap_between
+    for it in items:
+        check_box(LEFT, ty + 2, size=14)
+        for ln in wrap(it, "as", line_size, CW - 30):
+            g.text(LEFT + 22, ty + 12, ln, "as", line_size, INK)
+            ty += line_h
+        ty += item_gap
+    g.y = top + h + gap_between + items_h + gap_after
+
+
 # =========================================================== Why balanced blood sugar
 def _icon_sugar_cubes(cx, cy, s=14):
     """3 stacked cube outlines."""
@@ -1290,28 +1342,31 @@ g.paragraph("When the right amount of food is consumed at the right "
             "throughout the day (when less sugar is consumed "
             "overall). The body can handle some sugar but excessive "
             "amounts have an impact.")
-image_with_checks("ideal-blood-sugar", [
+image_above_checks("ideal-blood-sugar", [
     "Peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "Blood sugar level dips = signal to eat.",
-], image_w=0.52, img_max_h=300)
+], image_w=0.72, img_max_h=360)
 
-image_with_checks("rollercoaster-danger", [
+g._new_content_page()
+g.subhead([("The ", "lbi"), ("Rollercoaster Blood Sugar Levels",
+                              "lb")], gap_before=0)
+image_above_checks("rollercoaster-danger", [
     "High spike, a more volatile reaction to the muffin.",
     "Body releases a big hit of insulin to clear the sugar.",
     "Extreme high followed by extreme slump.",
-], image_w=0.52, img_max_h=300)
+], image_w=0.78, img_max_h=320)
 
 g._new_content_page()
-g.subhead([("The Rollercoaster, ", "lbi"), ("Highs and Lows", "lb")],
-          gap_before=0)
-image_with_checks("rollercoaster-highs-lows", [
+g.subhead([("The Rollercoaster, ", "lbi"),
+           ("Highs and Lows", "lb")], gap_before=0)
+image_above_checks("rollercoaster-highs-lows", [
     "Extreme highs.",
     "Extreme lows.",
     "Low mood / high mood.",
     "Unbalanced overall.",
     "More sugar cravings and generally eating more sugar overall.",
-], image_w=0.48, img_max_h=300, image_y=-18)
+], image_w=0.66, img_max_h=380)
 callout("Side note, weight loss can be extremely difficult here.",
         font="asi", gap_before=12)
 
