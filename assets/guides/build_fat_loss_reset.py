@@ -142,16 +142,16 @@ toc([
     ("The 5 Day Fat Loss Reset Meal Overview",         "13"),
     ("Breakfast Recipes",                              "14-16"),
     ("Lunch Recipes",                                  "17-19"),
-    ("Dinner Recipes",                                 "20-23"),
-    ("Mid-Afternoon Snack Recipes",                    "24-26"),
-    ("The Swap List",                                  "27-39"),
-    ("Drink Tips",                                     "40"),
-    ("Snack Tips",                                     "41-44"),
-    ("What Balanced Blood Sugar Gives You",            "45"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "46-47"),
-    ("Why Breakfast is Important",                     "48"),
-    ("Why Snacking is Important",                      "49"),
-    ("The WLA Nutrition Formula",                      "50"),
+    ("Dinner Recipes",                                 "20-22"),
+    ("Mid-Afternoon Snack Recipes",                    "23-25"),
+    ("The Swap List",                                  "26-38"),
+    ("Drink Tips",                                     "39"),
+    ("Snack Tips",                                     "40-43"),
+    ("What Balanced Blood Sugar Gives You",            "44"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "45-46"),
+    ("Why Breakfast is Important",                     "47"),
+    ("Why Snacking is Important",                      "48"),
+    ("The WLA Nutrition Formula",                      "49"),
 ])
 
 
@@ -564,6 +564,55 @@ g.gap(4)
 
 
 # =========================================================== meal overview
+def option_grid(items, with_header=True, gap=8, gap_after=12):
+    """Small per-meal table. items = list of (number, tag, recipe).
+    with_header=False renders a single-row grid with just recipe names."""
+    n = len(items)
+    cw = (CW - gap * (n - 1)) / n
+    if with_header:
+        head_h = 36
+        body_h = 56
+        total_h = head_h + body_h
+    else:
+        total_h = 60
+    g.ensure(total_h + gap_after)
+    top = g.y
+    for i, (num, tag, recipe) in enumerate(items):
+        x0 = LEFT + i * (cw + gap)
+        if with_header:
+            # navy header
+            g.page.draw_rect(fitz.Rect(x0, top, x0 + cw, top + head_h),
+                             color=None, fill=NAVY)
+            g.text_center(x0 + cw / 2, top + 16, f"Option {num}",
+                          "asb", 10, (1, 1, 1))
+            if tag:
+                g.text_center(x0 + cw / 2, top + 29,
+                              f"[ {tag} ]", "asi", 9, BLUSH)
+            # cream body with hairline border
+            g.page.draw_rect(fitz.Rect(x0, top + head_h, x0 + cw,
+                                       top + total_h),
+                             color=RULE,
+                             fill=(0.985, 0.97, 0.95), width=0.7)
+            # recipe name (wrapped, centred)
+            r_lines = wrap(recipe, "lb", 11, cw - 12)
+            ty = top + head_h + body_h / 2 - (len(r_lines) - 1) * 7 + 3
+            for ln in r_lines:
+                g.text_center(x0 + cw / 2, ty, ln, "lb", 11, NAVY)
+                ty += 14
+        else:
+            g.page.draw_rect(fitz.Rect(x0, top, x0 + cw, top + total_h),
+                             color=RULE,
+                             fill=(0.985, 0.97, 0.95), width=0.7)
+            g.page.draw_rect(fitz.Rect(x0, top, x0 + 4, top + total_h),
+                             color=None, fill=BLUSH)
+            r_lines = wrap(recipe, "lb", 11, cw - 16)
+            ty = top + total_h / 2 - (len(r_lines) - 1) * 7 + 3
+            for ln in r_lines:
+                g.text_center(x0 + cw / 2, ty, ln, "lb", 11, NAVY)
+                ty += 14
+    g.y = top + total_h + gap_after
+
+
 g._new_content_page()
 g.heading([[("The Reset ", False), ("Meal Overview", True)]])
 g.paragraph("Choose any breakfast, lunch or dinner option for each "
@@ -571,31 +620,45 @@ g.paragraph("Choose any breakfast, lunch or dinner option for each "
             "Batch cook to repeat a recipe or choose a new one each "
             "day.")
 
-g.subhead([("Breakfast Options", "lbi")])
-g.bullets(["Option 1, [ recipe ]",
-           "Option 2, [ recipe ]",
-           "Option 3, [ recipe ]"])
+g.subhead([("Breakfast Options", "lbi")], gap_after=8)
+option_grid([
+    (None, None, "[ recipe ]"),
+    (None, None, "[ recipe ]"),
+    (None, None, "[ recipe ]"),
+    (None, None, "[ recipe ]"),
+], with_header=False)
 
-g.subhead([("Morning Snack", "lbi")])
+g.subhead([("Morning Snack", "lbi")], gap_after=4)
 g.paragraph("Opt for a smaller snack, a portion of fruit or "
-            "vegetables if hungry. (See snack tips for more info.)")
+            "vegetables if hungry. (See snack tips for more info.)",
+            gap_after=6)
 
-g.subhead([("Lunch Options", "lbi")])
-g.bullets(["Option 1, [ recipe ]",
-           "Option 2, [ recipe ]",
-           "Option 3, [ recipe ]",
-           "Option 4, [ recipe ]"])
+g.subhead([("Lunch Options", "lbi")], gap_after=8)
+option_grid([
+    ("1", "Family Fav",   "[ recipe ]"),
+    ("2", "10 Min Option","[ recipe ]"),
+    ("3", "Batch Prep",   "[ recipe ]"),
+    ("4", "No Cook",      "[ recipe ]"),
+])
 
-g.subhead([("Mid-Afternoon Snack", "lbi")])
+g.subhead([("Mid-Afternoon Snack Options", "lbi")], gap_after=4)
 g.paragraph("Opt for a bigger snack, select one of our snack "
-            "recipes or bigger snack options later in the guide.")
+            "recipes or bigger snack options later in the guide.",
+            gap_after=6)
+option_grid([
+    (None, None, "[ snack ]"),
+    (None, None, "[ snack ]"),
+    (None, None, "[ snack ]"),
+    (None, None, "[ snack ]"),
+], with_header=False)
 
-g.subhead([("Dinner Options", "lbi")])
-g.bullets(["Option 1, [ recipe ]",
-           "Option 2, [ recipe ]",
-           "Option 3, [ recipe ]",
-           "Option 4, [ recipe ]",
-           "Option 5, [ recipe ]"])
+g.subhead([("Dinner Options", "lbi")], gap_after=8)
+option_grid([
+    ("1", "20 Min Option",  "[ recipe ]"),
+    ("2", "Fakeaway Inspo", "[ recipe ]"),
+    ("3", "Easy Option",    "[ recipe ]"),
+    ("4", "No Fuss Option", "[ recipe ]"),
+])
 
 
 # =========================================================== recipes
@@ -608,27 +671,24 @@ def placeholder_recipe(slot=None):
 
 
 g.divider("Breakfast", "Recipes.")
-placeholder_recipe()
-placeholder_recipe()
-placeholder_recipe()
+for _ in range(4):
+    placeholder_recipe()
 
 g.divider("Lunch", "Recipes.")
-placeholder_recipe("15 Min Option")
-placeholder_recipe("Easy Batch")
 placeholder_recipe("Family Fav")
-placeholder_recipe("No Fuss, Zero Time")
+placeholder_recipe("10 Min Option")
+placeholder_recipe("Batch Prep")
+placeholder_recipe("No Cook")
 
 g.divider("Dinner", "Recipes.")
 placeholder_recipe("20 Min Option")
-placeholder_recipe("Family Fav")
-placeholder_recipe("Easy Batch")
-placeholder_recipe("Easy Batch")
-placeholder_recipe("No Fuss, Zero Time")
+placeholder_recipe("Fakeaway Inspo")
+placeholder_recipe("Easy Option")
+placeholder_recipe("No Fuss Option")
 
 g.divider("Snack", "Recipes.")
-placeholder_recipe()
-placeholder_recipe()
-placeholder_recipe()
+for _ in range(4):
+    placeholder_recipe()
 
 
 # =========================================================== swap list
