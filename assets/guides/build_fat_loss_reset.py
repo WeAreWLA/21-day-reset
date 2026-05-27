@@ -148,10 +148,10 @@ toc([
     ("Drink Tips",                                     "40"),
     ("Snack Tips",                                     "41-44"),
     ("What Balanced Blood Sugar Gives You",            "45"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "46-48"),
-    ("Why Breakfast is Important",                     "49"),
-    ("Why Snacking is Important",                      "50"),
-    ("The WLA Nutrition Formula",                      "51"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "46-47"),
+    ("Why Breakfast is Important",                     "48"),
+    ("Why Snacking is Important",                      "49"),
+    ("The WLA Nutrition Formula",                      "50"),
 ])
 
 
@@ -324,7 +324,7 @@ tw_narrow = CW - photo_w - 26
 tx_full = LEFT
 tw_full = CW
 ty = photo_top + 4
-photo_bottom = photo_top + photo_h + 44  # photo + overlapping card
+photo_bottom = photo_top + photo_h + 56  # photo + overlapping card
 intro = ("This is the reset I built from 10 years coaching "
          "women over 45.")
 for ln in wrap(intro, "lbi", 13.5, tw_narrow):
@@ -357,25 +357,32 @@ for txt in paragraphs:
     ty += 7
 g.y = max(photo_bottom + 22, ty + 8)
 
-# closing pull-quote that stands out
+# closing pull-quote that stands out — two sentences with a gap
 g.gap(8)
-g.ensure(96)
+_qparas = [
+    ("If you're reading this, know that achieving your goals is "
+     "possible, even if you've tried everything and feel like "
+     "giving up."),
+    ("Your journey matters, and like mine, finding the right "
+     "weight loss approach can change everything."),
+]
+_qlines = []
+for p in _qparas:
+    _qlines.append(wrap(p, "lbi", 12.5, CW - 36))
+_total_lines = sum(len(L) for L in _qlines)
+_qh = 24 + _total_lines * 18 + (len(_qparas) - 1) * 10
+g.ensure(_qh)
 _qtop = g.y
-_qtext = ("If you're reading this, know that achieving your goals "
-          "is possible, even if you've tried everything and feel "
-          "like giving up. Your journey matters, and like mine, "
-          "finding the right weight loss approach can change "
-          "everything.")
-_lines = wrap(_qtext, "lbi", 12.5, CW - 36)
-_qh = 22 + len(_lines) * 18
 g.page.draw_rect(fitz.Rect(LEFT, _qtop, RIGHT, _qtop + _qh),
                  color=None, fill=BEIGE)
 g.page.draw_rect(fitz.Rect(LEFT, _qtop, LEFT + 5, _qtop + _qh),
                  color=None, fill=BLUSH)
-_ty = _qtop + 18
-for ln in _lines:
-    g.text(LEFT + 22, _ty, ln, "lbi", 12.5, NAVY)
-    _ty += 18
+_ty = _qtop + 20
+for lines in _qlines:
+    for ln in lines:
+        g.text(LEFT + 22, _ty, ln, "lbi", 12.5, NAVY)
+        _ty += 18
+    _ty += 10
 g.y = _qtop + _qh + 8
 
 
@@ -1346,16 +1353,13 @@ image_above_checks("ideal-blood-sugar", [
     "Peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "Blood sugar level dips = signal to eat.",
-], image_w=0.72, img_max_h=360)
+], image_w=0.5, img_max_h=190, gap_between=8, gap_after=12)
 
-g._new_content_page()
-g.subhead([("The ", "lbi"), ("Rollercoaster Blood Sugar Levels",
-                              "lb")], gap_before=0)
 image_above_checks("rollercoaster-danger", [
     "High spike, a more volatile reaction to the muffin.",
     "Body releases a big hit of insulin to clear the sugar.",
     "Extreme high followed by extreme slump.",
-], image_w=0.78, img_max_h=320)
+], image_w=0.58, img_max_h=160, gap_between=8, gap_after=10)
 
 g._new_content_page()
 g.subhead([("The Rollercoaster, ", "lbi"),
@@ -1366,9 +1370,9 @@ image_above_checks("rollercoaster-highs-lows", [
     "Low mood / high mood.",
     "Unbalanced overall.",
     "More sugar cravings and generally eating more sugar overall.",
-], image_w=0.66, img_max_h=380)
+], image_w=0.6, img_max_h=320, gap_between=14)
 callout("Side note, weight loss can be extremely difficult here.",
-        font="asi", gap_before=12)
+        font="asi", gap_before=10)
 
 
 # =========================================================== why breakfast
