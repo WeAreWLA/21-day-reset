@@ -651,11 +651,11 @@ class Guide:
         rx = LEFT + lw + col_gap
 
         self.tracked(LEFT, y, "INGREDIENTS", "asb", 8.5, BLUSH, 1.4)
-        self.tracked(rx, y, "METHOD", "asb", 8.5, BLUSH, 1.4)
+        self.tracked(rx, y, "INSTRUCTIONS", "asb", 8.5, BLUSH, 1.4)
         y_top = y + 16
 
-        size = 9
-        lh = 11.6
+        size = 9.7
+        lh = 12.4
 
         def render_ing(items, x, max_w, start_y, label=None):
             yL = start_y
