@@ -13,8 +13,24 @@ from wla_style import (Guide, PAGE_W, PAGE_H, LEFT, RIGHT, CW, MARGIN,
                        NAVY, BLUSH, INK, BEIGE, CREAM, RULE,
                        wrap, tw, fit_size)
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   "..", "5-Day-Fat-Loss-Reset-Guide.pdf")
+HERE = os.path.dirname(os.path.abspath(__file__))
+TESTI_PHOTOS = os.path.join(HERE, "testimonials", "before-after")
+TESTI_SHOTS = os.path.join(HERE, "testimonials", "screenshots")
+SNACK_IMAGES = os.path.join(HERE, "recommended-snacks")
+DIAGRAMS = os.path.join(HERE, "diagrams")
+OUT = os.path.join(HERE, "..", "5-Day-Fat-Loss-Reset-Guide.pdf")
+
+
+def find_snack_image(stem):
+    """Match a snack name fragment against files in the snacks folder."""
+    if not os.path.isdir(SNACK_IMAGES):
+        return None
+    stem = stem.lower()
+    for f in sorted(os.listdir(SNACK_IMAGES)):
+        if f.lower().startswith(stem) and \
+                f.lower().endswith((".jpg", ".jpeg", ".png")):
+            return os.path.join(SNACK_IMAGES, f)
+    return None
 
 g = Guide(OUT)
 
@@ -81,9 +97,9 @@ def stat_block(label, value):
 # clean cover, no top kicker
 page = g._blank_page()
 g.page = page
-title_lines = [("The", "lbi", NAVY),
-               ("5 Day", "lb", BLUSH),
-               ("Fat Loss Reset.", "lbi", NAVY)]
+title_lines = [("The 5 Day", "lb", NAVY),
+               ("Fat Loss", "lbi", BLUSH),
+               ("Reset", "lb", NAVY)]
 target = 408
 T = min(fit_size(t[0], t[1], target) for t in title_lines)
 T = min(T, 78)
@@ -96,7 +112,7 @@ subtitle = ("Start today, kickstart fat loss and lose up to 5lbs in "
             "feel lighter and more in control.")
 sy = b1 + (len(title_lines) - 1) * LH + 56
 for ln in wrap(subtitle, "lbi", 13, 348):
-    g.text(LEFT, sy, ln, "lbi", 13, BLUSH)
+    g.text(LEFT, sy, ln, "lbi", 13, NAVY)
     sy += 20.5
 
 
@@ -113,14 +129,14 @@ toc([
     ("Lunch Recipes",                                  "17-19"),
     ("Dinner Recipes",                                 "20-23"),
     ("Mid-Afternoon Snack Recipes",                    "24-26"),
-    ("The Swap List",                                  "27-40"),
-    ("Drink Tips",                                     "41"),
-    ("Snack Tips",                                     "42-45"),
-    ("Why Balanced Blood Sugar Supports Fat Loss",     "46"),
-    ("Easily Kickstart Fat Loss in 5 Days",            "47-48"),
-    ("Why Breakfast is Important",                     "49"),
-    ("Why Snacking is Important",                      "50"),
-    ("The WLA Nutrition Formula",                      "51"),
+    ("The Swap List",                                  "27-39"),
+    ("Drink Tips",                                     "40"),
+    ("Snack Tips",                                     "41-44"),
+    ("What Balanced Blood Sugar Gives You",            "45"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "46-47"),
+    ("Why Breakfast is Important",                     "48"),
+    ("Why Snacking is Important",                      "49"),
+    ("The WLA Nutrition Formula",                      "50"),
 ])
 
 
@@ -135,24 +151,55 @@ g.paragraph("Really excited that you've registered for the 5 Day Fat "
 g.paragraph("No 1,200-calorie plans. No banned food lists. No "
             "starting over every Monday. Real food, real life, "
             "and a structure that actually fits a busy week.")
+
 g.subhead([("Your 5-day wins", "lbi")])
-g.bullets([
-    "Kickstart your weight loss, most women see 2-7 lbs shift by "
-    "day 5, largely from reduced bloating and water retention.",
-    "Sugar cravings handled, the afternoon snack pull starts "
-    "fading within the first 1-3 days.",
-    "Steady, balanced energy, no more mid-afternoon crashes or "
-    "post-dinner slumps.",
-    "Lighter, less bloated, clothes start fitting better by the "
-    "end of the week.",
-    "A reset you can keep going, habits that compound for the "
-    "next 4 weeks, not a one-off you start over from on Monday.",
-])
-g.paragraph("Ready to feel better faster? Let's dive in.",
-            font="asb", color=NAVY)
+WINS = [
+    "Lose up to 5 pounds",
+    "Calmer cravings in 72 hours",
+    "More stable energy",
+    "Less mindless snacking",
+    "Less bloated feeling",
+    "Brighter skin",
+]
+# 3 col × 2 row mini-cards with coral check badge + navy benefit text
+wcols = 3
+wgap = 14
+wcw = (CW - wgap * (wcols - 1)) / wcols
+wch = 80
+g.ensure(2 * wch + wgap + 8)
+top = g.y
+for i, w in enumerate(WINS):
+    r = i // wcols
+    c = i % wcols
+    x0 = LEFT + c * (wcw + wgap)
+    y0 = top + r * (wch + wgap)
+    # coral left strip
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + wch),
+                     color=None, fill=BLUSH)
+    # cream cell
+    g.page.draw_rect(fitz.Rect(x0 + 4, y0, x0 + wcw, y0 + wch),
+                     color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+    # coral check disc top-left
+    cx, cy, r_ = x0 + 24, y0 + 24, 10
+    g.page.draw_circle((cx, cy), r_, color=None, fill=BLUSH)
+    g.page.draw_line((cx - 4, cy + 0.5), (cx - 1, cy + 4),
+                     color=(1, 1, 1), width=1.6)
+    g.page.draw_line((cx - 1, cy + 4), (cx + 5, cy - 3),
+                     color=(1, 1, 1), width=1.6)
+    # benefit label
+    for j, ln in enumerate(wrap(w, "lb", 11.5, wcw - 28)):
+        g.text(x0 + 14, y0 + 56 + j * 14, ln, "lb", 11.5, NAVY)
+g.y = top + 2 * (wch + wgap) + 4
+
+# closing lines
+g.gap(8)
+g.paragraph("Ready to feel better faster?", font="asb", size=13,
+            color=NAVY, lh=18, gap_after=4)
+g.paragraph("Let's dive in.", font="lbi", size=18, color=BLUSH,
+            lh=24, gap_after=14)
 g.paragraph("Before you start the reset, we want to introduce The "
-            "Weight Loss Academy (WLA) very briefly and share useful "
-            "tips for getting started in the easiest way.")
+            "Weight Loss Academy (WLA) very briefly and share "
+            "useful tips for getting started in the easiest way.")
 
 
 # =========================================================== mission
@@ -178,7 +225,7 @@ g.bullets([
 ])
 
 g._new_content_page()
-g.heading([[("Our ", False), ("Three Pillars", True)]])
+g.heading([[("The ", False), ("WLA Mission", True)]])
 g.paragraph("The WLA focuses on three main core strategies in our "
             "signature WLA Approach to support clients with every "
             "tool needed for long-lasting, transformative change.")
@@ -198,9 +245,27 @@ g.paragraph("Focuses on consistency strategies so you finally stop "
             "way with our professional, women-only and "
             "non-judgemental coaching community, focusing on "
             "accountability, staying on track and empowerment.")
-g.note("Join us on a journey back to your happy place in your body. "
-       "It's time to feel lighter, more confident, healthier and more "
-       "energised, without minimal calories and extreme workouts.")
+# pull-quote callout
+g.gap(14)
+g.ensure(110)
+_qtop = g.y
+_qh = 96
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, RIGHT, _qtop + _qh),
+                 color=None, fill=BEIGE)
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, LEFT + 5, _qtop + _qh),
+                 color=None, fill=BLUSH)
+_qx = LEFT + 22
+_qmax = CW - 36
+_qtext = ("Join us on a journey back to your happy place in your "
+          "body. It's time to feel lighter, more confident, "
+          "healthier and more energised, without minimal calories "
+          "or extreme workouts.")
+_lines = wrap(_qtext, "lbi", 13, _qmax)
+_ty = _qtop + (_qh - (len(_lines) - 1) * 19) / 2 + 4
+for ln in _lines:
+    g.text(_qx, _ty, ln, "lbi", 13, NAVY)
+    _ty += 19
+g.y = _qtop + _qh + 14
 
 
 # =========================================================== founder
@@ -224,56 +289,107 @@ g.text(LEFT + 22, pill_y + 16, "Anna Wallace", "lbi", 12, BLUSH)
 g.text(LEFT + 22, pill_y + 28, "BSc Food & Nutrition", "asi", 9, NAVY)
 g.text(LEFT + 22, pill_y + 39, "Registered Associate Nutritionist",
        "asi", 9, NAVY)
-# body, right column
-tx = LEFT + photo_w + 26
-tw_body = CW - photo_w - 26
+# body, right column for the pull-quote and the first paragraphs
+# while the photo is in view, then full width once we pass it.
+tx_narrow = LEFT + photo_w + 26
+tw_narrow = CW - photo_w - 26
+tx_full = LEFT
+tw_full = CW
 ty = photo_top + 4
-# big italic intro line
+photo_bottom = photo_top + photo_h
+# pull-quote
 intro = ("This is the reset I built from 10 years coaching "
          "women over 45.")
-for ln in wrap(intro, "lbi", 13.5, tw_body):
-    g.text(tx, ty + 11, ln, "lbi", 13.5, NAVY)
+for ln in wrap(intro, "lbi", 13.5, tw_narrow):
+    g.text(tx_narrow, ty + 11, ln, "lbi", 13.5, NAVY)
     ty += 19
-ty += 8
+ty += 6
 # body paragraphs (Anna's exact copy)
-for txt in [
-    "I'm a Registered Associate Nutritionist (BSc Food & "
-    "Nutrition) and the founder of The Weight Loss Academy. Over "
-    "the last 10 years my team and I have supported over 50,000 "
-    "women, the majority of them in midlife, to lose weight "
-    "without 1,200-calorie plans, banned food lists or starting "
-    "over every Monday.",
-    "This 5 Day Reset is the entry point. It's the exact rhythm "
-    "I use with paying clients to break the sugar cycle in 72 "
-    "hours, settle blood sugar, and put a structure in place "
-    "that actually fits a midlife week.",
-    "It's normally a paid programme. This round is free and yes, "
-    "you get me live for the full five days.",
-]:
-    for ln in wrap(txt, "as", 10.8, tw_body):
-        g.text(tx, ty + 8, ln, "as", 10.8, INK)
-        ty += 15
-    ty += 8
-g.y = max(photo_top + photo_h + 22, ty + 8)
+paragraphs = [
+    "I once struggled with my weight, starting each day with "
+    "determination but often resorting to unhealthy habits like "
+    "the Special K diet or just going hours without food.",
+    "Evenings would often end with takeaway, excessive eating, "
+    "or alcohol to cope.",
+    "Feeling lost and unhappy, I believed I was the \"fat\" one "
+    "in my family and didn't know how to change.",
+    "After hitting rock bottom, I enrolled in University to study "
+    "Food and Nutrition. This decision transformed me. I lost "
+    "weight and maintained it, even after pregnancy.",
+    "I founded The Weight Loss Academy, supporting over 50,000 "
+    "clients globally over 10 years.",
+    "Our WLA Approach helps to burn body fat simply and flexibly, "
+    "restoring confidence and eliminating sugar cravings.",
+    "If you're reading this, know that achieving your goals is "
+    "possible, even if you've tried everything and feel like "
+    "giving up. Your journey matters, and like mine, finding the "
+    "right weight loss approach can change everything.",
+]
+for txt in paragraphs:
+    # choose column based on whether we're still beside the photo
+    use_full = ty > photo_bottom - 14
+    tx = tx_full if use_full else tx_narrow
+    twb = tw_full if use_full else tw_narrow
+    for ln in wrap(txt, "as", 10.6, twb):
+        g.text(tx, ty + 8, ln, "as", 10.6, INK)
+        ty += 14.6
+    ty += 7
+g.y = max(photo_bottom + 22, ty + 8)
 
 
 # =========================================================== member results
-g._new_content_page()
-g.heading([[("WLA Members ", False), ("Results", True)]])
-grid_placeholder(2, 2, item_h=265,
-                 caption="[ Member before / after photo ]")
+def _images_in(folder):
+    if not os.path.isdir(folder):
+        return []
+    return sorted([os.path.join(folder, f)
+                   for f in os.listdir(folder)
+                   if f.lower().endswith((".jpg", ".jpeg", ".png"))])
+
+
+def image_grid(files, rows, cols, item_h=265, gap=14, caption=""):
+    """Tile up to rows*cols image files into a grid.  Pads with empty
+    placeholders when fewer files are provided."""
+    cw = (CW - gap * (cols - 1)) / cols
+    total_h = rows * item_h + (rows - 1) * gap
+    g.ensure(total_h + 8)
+    top = g.y
+    n = rows * cols
+    for i in range(n):
+        r = i // cols
+        c = i % cols
+        x0 = LEFT + c * (cw + gap)
+        y0 = top + r * (item_h + gap)
+        rect = fitz.Rect(x0, y0, x0 + cw, y0 + item_h)
+        if i < len(files):
+            g.page.insert_image(rect, filename=files[i], keep_proportion=True)
+        else:
+            g.page.draw_rect(rect, color=RULE,
+                             fill=(0.97, 0.93, 0.90), width=0.6)
+            g.text_center(x0 + cw / 2, y0 + item_h / 2 + 4,
+                          caption, "lbi", 11, (0.55, 0.55, 0.55))
+    g.y = top + total_h + 12
+
+
+_photos = _images_in(TESTI_PHOTOS)
+_shots = _images_in(TESTI_SHOTS)
 
 g._new_content_page()
 g.heading([[("WLA Members ", False), ("Results", True)]])
-grid_placeholder(2, 2, item_h=265,
-                 caption="[ Member before / after photo ]")
+image_grid(_photos[:4], 2, 2, item_h=265,
+           caption="[ Member before / after photo ]")
+
+g._new_content_page()
+g.heading([[("WLA Members ", False), ("Results", True)]])
+image_grid(_photos[4:8], 2, 2, item_h=265,
+           caption="[ Member before / after photo ]")
 
 g._new_content_page()
 g.heading([[("Our ", False), ("Community Success", True)]])
-g.paragraph("Real posts and messages from our community, to be "
-            "added.", font="asi")
-grid_placeholder(3, 2, item_h=150,
-                 caption="[ Member post screenshot ]")
+if not _shots:
+    g.paragraph("Real posts and messages from our community, to be "
+                "added.", font="asi")
+image_grid(_shots[:6], 3, 2, item_h=150,
+           caption="[ Member post screenshot ]")
 
 
 # =========================================================== tips
@@ -336,8 +452,6 @@ g.bullets([
     "days beat five perfect ones you never start.",
     "If you slip up at lunch, the next meal is your chance to "
     "reset. Nothing is ruined.",
-    "Tick off each day in the Facebook group, accountability "
-    "compounds. By Friday you'll feel the difference.",
 ])
 
 
@@ -631,8 +745,8 @@ FATS = [
 ]
 OTHER = [
     ("Balsamic vinegar", "1 tablespoon"),
-    ("Brown sauce", "1 teaspoon"), ("Chilli sauce", "1 teaspoon"),
-    ("Crackers (cream crackers, rye crispbread etc.)", "3 pieces"),
+    ("Chilli sauce", "1 teaspoon"),
+    ("Crackers (cream / rye crispbread)", "3 pieces"),
     ("Curry paste", "1 tablespoon"), ("Honey", "1 teaspoon"),
     ("Jam", "1 teaspoon"), ("Lentil crisps", "20-25g"),
     ("Maple syrup", "1 teaspoon"), ("Popcorn, plain", "20-25g"),
@@ -681,31 +795,95 @@ g.subhead([("Other", "lbi")], gap_before=0)
 two_col(OTHER)
 
 
+# --------------------------------------------------- card layout helpers
+def numbered_cards(cards, ch=120, gap=18, cols=2):
+    """2-column (or other) card grid: coral number, navy title, italic body."""
+    cw = (CW - gap * (cols - 1)) / cols
+    rows = (len(cards) + cols - 1) // cols
+    g.ensure(ch * rows + gap * (rows - 1) + 8)
+    top = g.y
+    for i, (num, title, desc) in enumerate(cards):
+        r = i // cols
+        c = i % cols
+        x0 = LEFT + c * (cw + gap)
+        y0 = top + r * (ch + gap)
+        g.page.draw_rect(fitz.Rect(x0, y0, x0 + cw, y0 + ch),
+                         color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+        g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + ch),
+                         color=None, fill=BLUSH)
+        g.tracked(x0 + 22, y0 + 30, num, "asb", 11, BLUSH, 1.6)
+        # title
+        title_lines = wrap(title, "lb", 15, cw - 44)
+        ty = y0 + 56
+        for ln in title_lines:
+            g.text(x0 + 22, ty, ln, "lb", 15, NAVY)
+            ty += 18
+        # descriptor
+        ty += 4
+        for ln in wrap(desc, "as", 10.5, cw - 44):
+            g.text(x0 + 22, ty, ln, "as", 10.5, INK)
+            ty += 13.5
+    g.y = top + rows * ch + (rows - 1) * gap + 4
+
+
+def diagram_tall(name, max_h=560, max_w=CW, gap_before=4, gap_after=14):
+    """Embed a diagram with a higher height cap than g.diagram()."""
+    path = os.path.join(DIAGRAMS, f"{name}.png")
+    pm = fitz.Pixmap(path)
+    ar = pm.width / pm.height
+    w = min(max_w, CW)
+    h = w / ar
+    if h > max_h:
+        h = max_h
+        w = h * ar
+    g.ensure(h + gap_before + gap_after)
+    g.y += gap_before
+    x0 = LEFT + (CW - w) / 2
+    g.page.insert_image(fitz.Rect(x0, g.y, x0 + w, g.y + h),
+                        filename=path, keep_proportion=True)
+    g.y += h + gap_after
+
+
+def callout(text, font="asi", size=10.8, lh=14.5,
+            fill=BEIGE, gap_before=14, pad=14):
+    g.y += gap_before
+    lines = wrap(text, font, size, CW - 2 * pad)
+    h = lh * len(lines) + 2 * pad
+    g.ensure(h + 4)
+    top = g.y
+    g.page.draw_rect(fitz.Rect(LEFT, top, RIGHT, top + h),
+                     color=None, fill=fill)
+    ty = top + pad + size * 0.6
+    for ln in lines:
+        g.text(LEFT + pad, ty, ln, font, size, INK)
+        ty += lh
+    g.y = top + h + 6
+
+
 # =========================================================== drink tips
 g._new_content_page()
 g.heading([[("Drink ", False), ("Tips", True)]])
 g.coral_heading("Hydration is one of the quickest wins of the reset.")
-
-g.subhead([("1. Get a pretty reusable water bottle", "lbi")])
-g.paragraph("Keeping a water bottle handy serves as a visual "
-            "reminder to drink more. Fill it before you leave home, "
-            "and it's better for the planet than single-use bottles.")
-g.subhead([("2. Add water to your daily routine", "lbi")])
-g.paragraph("Drink at set points during the day, as soon as you "
-            "wake, before a meal, while at your desk. Sipping "
-            "consistently throughout the day makes hitting your "
-            "fluid goals effortless.")
-g.subhead([("3. Make it fruity", "lbi")])
-g.paragraph("Add lemon, lime, orange, cucumber, watermelon, kiwi or "
-            "strawberries. A few fresh mint leaves or other herbs "
-            "work beautifully too.")
-g.subhead([("4. Eat your water", "lbi")])
-g.paragraph("Foods like lettuce, celery, cucumber, watermelon and "
-            "grapefruit are loaded with water and packed with "
-            "vitamins, minerals and antioxidants.")
-g.note("You can have one milky coffee (latte or cappuccino) per "
-       "day. Multiple teas with a little milk are also fine, just "
-       "make sure you're drinking water alongside.")
+g.paragraph("Four small habits make hitting eight glasses a day "
+            "almost automatic.")
+numbered_cards([
+    ("01", "Get a pretty reusable bottle",
+     "A bottle on your desk or in your bag is a constant nudge to "
+     "sip. Fill it before you leave home and you're already winning."),
+    ("02", "Anchor water to your routine",
+     "First thing on waking, before each meal, while you're at the "
+     "computer. Tie it to things you already do and it sticks."),
+    ("03", "Make it fruity",
+     "Lemon, lime, orange, cucumber, watermelon, kiwi or "
+     "strawberries. A few fresh mint leaves work beautifully too."),
+    ("04", "Eat your water",
+     "Lettuce, celery, cucumber, watermelon and grapefruit are "
+     "loaded with water plus vitamins, minerals and antioxidants."),
+], ch=128)
+callout("Tea & coffee count, sort of. You can have one milky "
+        "coffee (latte or cappuccino) per day. Multiple teas with a "
+        "little milk are fine, just keep drinking water alongside.",
+        gap_before=20)
 
 
 # =========================================================== snack tips
@@ -713,30 +891,28 @@ g._new_content_page()
 g.heading([[("Snack ", False), ("Tips", True)]])
 g.coral_heading("Three balanced meals, with snacks only when truly "
                 "hungry.")
-g.paragraph("The key is to listen to your body and respond to your "
-            "own hunger signals.")
-g.subhead([("Mid-morning snacks", "lbi")])
-g.paragraph("Most people find they don't need a snack between "
-            "breakfast and lunch. If you do feel genuinely hungry, "
-            "choose a light option like a piece of fruit or raw "
-            "vegetables.")
-g.subhead([("Afternoon snacks", "lbi")])
-g.paragraph("The gap between lunch and dinner tends to be longer, "
-            "which is why many people benefit from a more "
-            "substantial snack in the afternoon. We call these the "
-            "“bigger” snacks. They help you avoid the 3pm slump and "
-            "reduce the temptation to reach for sugary or processed "
-            "foods.")
-g.subhead([("Snack amounts, what's right for you?", "lbi")])
-g.bullets([
-    "Very active or exercise regularly? You may benefit from "
-    "additional bigger snacks to fuel your energy needs.",
-    "Less active or sedentary? You might find you need fewer "
-    "snacks.",
-])
-g.note("We recommend limiting bananas to one per day, as they're "
-       "more calorie-dense than other fruits.")
-g.subhead([("Final tips", "lbi")])
+g.paragraph("Listen to your body and respond to your own hunger "
+            "signals, not the clock or the biscuit tin.")
+numbered_cards([
+    ("01", "Mid-morning",
+     "Most people don't need a snack between breakfast and lunch. "
+     "If you're genuinely hungry, a piece of fruit or raw veg is "
+     "plenty."),
+    ("02", "Afternoon",
+     "The lunch to dinner gap is longer, this is where the "
+     "afternoon \"bigger\" snack lives. It heads off the 3pm slump "
+     "and stops you reaching for sugar."),
+    ("03", "Very active?",
+     "If you exercise regularly, you'll likely benefit from an "
+     "additional bigger snack to fuel your energy needs."),
+    ("04", "Less active?",
+     "If you're mostly sedentary, you may find you need fewer "
+     "snacks. Hunger is the dial, not habit."),
+], ch=128)
+callout("Bananas only once a day, please. They're more calorie-"
+        "dense than other fruits, one is plenty.",
+        gap_before=18)
+g.subhead([("Final tips", "lbi")], gap_before=14)
 g.bullets([
     "Eat when you're hungry, not out of boredom or habit.",
     "Pause and check in with your body before reaching for a snack.",
@@ -777,135 +953,209 @@ g.paragraph("We recommend a bigger snack between lunch and dinner to "
             "prevent sugar cravings. You may need another in the "
             "evening. Some days you may need two bigger snacks and "
             "some days one, tune in and be flexible.")
-g.bullets([
-    "3 crackers with nut butter, cream cheese, cottage cheese, "
-    "hummus, avocado, cheddar or tuna",
-    "1 natural cereal bar of your choice (Nakd is a great option)",
-    "Apple slices with 1 tablespoon of nut butter",
-    "Small handful of nuts and raisins",
-    "1 banana sliced and topped with 1 tablespoon of nut butter",
-    "2 medjool dates with cream cheese or nut butter",
-    "1 cup of grapes and 1 boiled egg",
-    "2 boiled eggs",
-    "30g dark chocolate",
-    "1 cup of homemade popcorn",
-    "125g Greek yoghurt and fruit",
-])
+diagram_tall("bigger-snack-inspiration", max_h=540, max_w=CW * 0.78)
 
 g._new_content_page()
 g.heading([[("Some ", False), ("Recommended Snacks", True)]])
 g.paragraph("Brands we genuinely like for when you want something "
             "from the shop.")
-g.bullets([
-    "Lindt Dark Chocolate (70%+ cocoa)",
-    "Propercorn Sweet & Salty",
-    "Nakd Bars",
-    "Deliciously Ella Hazelnut Bites",
-    "Deliciously Ella Dipped Almonds",
-    "Nush Strawberry Yoghurt & Berries",
-    "Bear Fruit Rolls",
-    "Deliciously Ella Oat Bars",
-])
+
+SNACKS = [
+    ("lindt",     "Lindt Dark Chocolate", "70%+ cocoa"),
+    ("propercorn","Propercorn", "Sweet & Salty"),
+    ("nakd",      "Nakd Bars", "natural fruit & nut"),
+    ("hazelnut",  "Deliciously Ella", "Hazelnut Bites"),
+    ("almonds",   "Deliciously Ella", "Dipped Almonds"),
+    ("nush",      "Nush", "Strawberry yoghurt + berries"),
+    ("bear",      "Bear Fruit Rolls", "yoyos & strips"),
+    ("oat-bars",  "Deliciously Ella", "Oat Bars"),
+]
+cols, rows = 4, 2
+gap = 14
+cw = (CW - gap * (cols - 1)) / cols
+img_h = 140
+label_h = 38
+ch = img_h + label_h
+g.ensure(rows * (ch + gap) + 8)
+top = g.y
+for i, (stem, name, sub) in enumerate(SNACKS):
+    r = i // cols
+    c = i % cols
+    x0 = LEFT + c * (cw + gap)
+    y0 = top + r * (ch + gap)
+    img = find_snack_image(stem)
+    if img:
+        g.page.insert_image(fitz.Rect(x0, y0, x0 + cw, y0 + img_h),
+                            filename=img, keep_proportion=True)
+    else:
+        g.page.draw_rect(fitz.Rect(x0, y0, x0 + cw, y0 + img_h),
+                         color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+        g.text_center(x0 + cw / 2, y0 + img_h / 2 + 4,
+                      "[ product ]", "lbi", 10, (0.55, 0.55, 0.55))
+    # name + sub
+    g.text_center(x0 + cw / 2, y0 + img_h + 14, name, "lb", 9.5, NAVY)
+    g.text_center(x0 + cw / 2, y0 + img_h + 28, sub, "asi", 9, INK)
+g.y = top + rows * (ch + gap) + 8
 
 
-# =========================================================== educational
+# --------------------------------------------------- check-list helper
+def check_box(x, y, size=14):
+    """Draw a navy outline check box."""
+    g.page.draw_rect(fitz.Rect(x, y, x + size, y + size),
+                     color=NAVY, fill=None, width=1.0)
+
+
+def image_with_checks(image_name, items, image_w=0.5,
+                      img_max_h=320, gap_after=14):
+    """Place an image on the left and a checkbox list on the right."""
+    path = os.path.join(DIAGRAMS, f"{image_name}.png")
+    pm = fitz.Pixmap(path)
+    ar = pm.width / pm.height
+    w = CW * image_w
+    h = w / ar
+    if h > img_max_h:
+        h = img_max_h
+        w = h * ar
+    # estimate text height
+    tx0 = LEFT + CW * image_w + 22
+    tw_box = CW - (CW * image_w) - 22
+    line_size = 11
+    line_h = 15.5
+    items_h = 0
+    item_gap = 10
+    for it in items:
+        ln_count = len(wrap(it, "as", line_size, tw_box - 26))
+        items_h += max(ln_count * line_h, 22) + item_gap
+    block_h = max(h, items_h)
+    g.ensure(block_h + gap_after)
+    top = g.y
+    # image left
+    x0 = LEFT
+    img_top = top + max(0, (block_h - h) / 2)
+    g.page.insert_image(fitz.Rect(x0, img_top, x0 + w, img_top + h),
+                        filename=path, keep_proportion=True)
+    # checkbox list right
+    ty = top + max(0, (block_h - items_h) / 2) + 4
+    for it in items:
+        ln_count = len(wrap(it, "as", line_size, tw_box - 26))
+        row_h = max(ln_count * line_h, 22)
+        check_box(tx0, ty + 2, size=14)
+        lines = wrap(it, "as", line_size, tw_box - 26)
+        ly = ty + 12
+        for ln in lines:
+            g.text(tx0 + 22, ly, ln, "as", line_size, INK)
+            ly += line_h
+        ty += row_h + item_gap
+    g.y = top + block_h + gap_after
+
+
+# =========================================================== Why balanced blood sugar
 g._new_content_page()
-g.heading([[("Why Balanced Blood Sugar", False)],
-           [("Supports ", False), ("Fat Loss", True)]])
-g.paragraph("Maintaining balanced blood sugar levels is a key part "
-            "of fat loss. Fluctuations in blood sugar drive "
-            "cravings, energy crashes and over-eating. Keeping "
-            "blood sugar steady supports your fat loss goals and "
-            "your energy at the same time.")
-g.subhead([("What balanced blood sugar gives you", "lbi")])
-g.bullets([
-    "Reduced desire for sugar",
-    "Improved mood",
-    "More control around food",
-    "Weight stabilises / weight reduction",
-    "Reduced cravings",
-    "Appetite falls and stabilises",
-    "No extreme highs followed by severe plummets",
-])
+g.heading([[("What balanced ", False), ("blood sugar", True)],
+           [("gives you.", False)]])
+g.paragraph("Maintaining balanced blood sugar levels is a key "
+            "component of overall health and wellness. Fluctuations "
+            "in blood sugar can impact many aspects of your daily "
+            "life, from your energy levels to your mood and even "
+            "your long-term health. By focusing on keeping your "
+            "blood sugar steady, you can enhance your well-being "
+            "and support your fat loss goals.")
+g.paragraph("Here's why balanced blood sugar is so important:",
+            font="asb", color=NAVY)
+g.diagram("blood-sugar-benefits", max_w=CW * 0.95)
 
+
+# =========================================================== easily reduce sugar cravings
 g._new_content_page()
-g.heading([[("Easily ", False), ("Kickstart Fat Loss", True),
+g.heading([[("Easily ", False), ("Reduce Sugar Cravings", True),
             (" in 5 Days", False)]])
 g.paragraph("When the right amount of food is consumed at the right "
-            "times, this results in balanced blood sugar levels "
-            "throughout the day. The body can handle some sugar, "
-            "but excessive amounts have an impact on fat loss.")
-g.subhead([("The ideal blood sugar pattern", "lbi")])
-g.bullets([
-    "Gentle peaks after each meal or snack, think balanced meals.",
-    "Small peaks and troughs, not extremes.",
-    "A blood sugar dip is your body's signal to eat.",
-])
+            "times this will result in balanced blood sugar levels "
+            "throughout the day (when less sugar is consumed "
+            "overall). The body can handle some sugar but excessive "
+            "amounts have an impact.")
+image_with_checks("ideal-blood-sugar", [
+    "Peaks after each meal or snack (think balanced meals).",
+    "Small peaks and troughs.",
+    "Blood sugar level dips = signal to eat.",
+], image_w=0.48, img_max_h=240)
+
+image_with_checks("rollercoaster-danger", [
+    "High spike, a more volatile reaction to the muffin.",
+    "Body will release a big hit of insulin to remove the sugar "
+    "from the blood to the cells.",
+    "Extreme high followed by extreme slump.",
+], image_w=0.52, img_max_h=200)
 
 g._new_content_page()
-g.subhead([("The rollercoaster, highs and lows", "lbi")],
+g.subhead([("The Rollercoaster, ", "lbi"), ("Highs and Lows", "lb")],
           gap_before=0)
-g.paragraph("Without balance, the day looks like this:")
-g.bullets([
-    "Extreme highs",
-    "Extreme lows",
-    "Low mood / high mood",
-    "Unbalanced overall",
-    "More sugar cravings, and generally more sugar overall",
-])
-g.note("Fat loss can be extremely difficult on this pattern.")
+image_with_checks("rollercoaster-highs-lows", [
+    "Extreme highs.",
+    "Extreme lows.",
+    "Low mood / high mood.",
+    "Unbalanced overall.",
+    "More sugar cravings and generally eating more sugar overall.",
+], image_w=0.48, img_max_h=300)
+callout("Side note, weight loss can be extremely difficult here.",
+        font="asi", gap_before=12)
 
 
+# =========================================================== why breakfast
 g._new_content_page()
 g.heading([[("Why ", False), ("Breakfast", True),
             (" Is Important", False)]])
-g.paragraph("When breakfast is skipped, blood sugar levels continue "
-            "to dip and it becomes more likely that foods high in "
-            "sugar will be reached for. Having breakfast within an "
-            "hour of waking allows blood sugar and insulin levels to "
-            "stabilise.")
-g.paragraph("Including a protein element with breakfast helps with "
-            "satiety (feeling of fullness) and sets the body up for "
-            "the day, meaning less snacking on less nutrient-dense "
-            "options throughout the day, which is exactly what "
-            "supports fat loss.")
-g.subhead([("The skip-breakfast cycle", "lbi")])
-g.bullets([
-    "Blood sugar dips due to skipping breakfast.",
-    "Body searches for a quick “hit”, shaky, hungry, tired, so "
-    "sugar gets reached for.",
-    "High spike followed by a big hit of insulin.",
+g.paragraph("When breakfast is skipped, blood sugar levels will "
+            "continue to dip and it will be more likely that foods "
+            "high in sugar for energy will be consumed. Having "
+            "breakfast within an hour of waking will allow blood "
+            "sugar and insulin levels to stabilise.")
+g.paragraph("In addition, having a protein element with breakfast "
+            "will help with satiety levels (feeling of fullness) "
+            "and sets the body up for the day, meaning there will "
+            "likely be less snacking on less nutrient-dense options "
+            "throughout the day.")
+image_with_checks("breakfast-sugar-insulin", [
+    "Blood sugar levels dip due to skipping breakfast.",
+    "This results in looking for something to give a quick \"hit\" "
+    "to stop feeling shaky, hungry, tired, have crazy cravings and "
+    "so more sugar is reached for.",
+    "High spike followed by a big hit of insulin to remove the "
+    "sugar from the blood to the cells.",
     "Extreme high followed by extreme slump.",
     "The cycle continues.",
-])
+], image_w=0.45, img_max_h=320)
 
 
+# =========================================================== why snacking
 g._new_content_page()
 g.heading([[("Why ", False), ("Snacking", True),
             (" Is Important", False)]])
-g.paragraph("Snacking is really important, it helps keep blood "
-            "sugar levels steady during the day. If food is eaten at "
-            "regular intervals, dips in blood sugar are less likely, "
-            "and reaching for less nutrient-dense foods for a kick of "
-            "energy won't happen.")
-g.paragraph("Snacking bridges the gap between breakfast and lunch, "
-            "and then lunch and dinner. However, snacks should not "
-            "be eaten just for the sake of it, snacking is meant to "
-            "tide you over until the next meal.")
-g.subhead([("With healthy snacks you get", "lbi")])
-g.bullets([
+g.paragraph("Snacking is really important as it helps keep blood "
+            "sugar levels steady during the day. If food is eaten "
+            "at regular intervals throughout the day, having a dip "
+            "in the blood sugar levels will be less likely and "
+            "therefore reaching for less nutrient-dense foods for a "
+            "kick of energy will not happen.")
+g.paragraph("Snacking is important to bridge the gap between "
+            "breakfast and lunch and then lunch and dinner. "
+            "However, snacks should not be eaten just for the sake "
+            "of it, snacking is supposed to tide the body over "
+            "until the next meal.")
+image_with_checks("snacking-curves", [
     "Gentle peaks after each meal or snack (think balanced meals).",
     "Small peaks and troughs.",
     "A blood sugar dip is your body's signal to eat, not stress.",
-])
+], image_w=0.55, img_max_h=240)
 
 
+# =========================================================== nutrition formula
 g._new_content_page()
 g.heading([[("The ", False), ("WLA Nutrition", True)],
            [("Formula.", False)]])
 g.paragraph("At The WLA, we use our unique Nutrition Formula to "
-            "help kickstart fat loss in as little as 5 days and "
-            "support visible weight loss within a week.")
+            "help reduce sugar cravings in as little as 3 days and "
+            "support visible weight loss within 5 days.")
 g.paragraph("This formula is built around portion control and a "
             "healthy balance of all food groups, carbohydrates, "
             "protein, and fats, rather than restriction or "
@@ -913,20 +1163,36 @@ g.paragraph("This formula is built around portion control and a "
 g.paragraph("The WLA Nutrition Formula focuses on building meals "
             "that are high in protein and adjusted to be low, "
             "medium, or higher in carbohydrates, depending on the "
-            "meal and the individual. This teaches you how to "
-            "create nutritionally balanced meals that support fat "
-            "loss, improve health, and help reduce sugar cravings, "
-            "while staying realistic and sustainable long term.")
-g.paragraph("Your 5 Day Fat Loss Reset has been designed using this "
-            "formula for maximum results. You don't need to "
-            "calculate or overthink anything, simply follow the "
-            "guide.")
-g.subhead([("The formula focuses on", "lbi")])
+            "meal and the individual. This structure teaches you "
+            "how to create nutritionally balanced meals that "
+            "support fat loss, improve health, and help reduce "
+            "sugar cravings, while still being realistic and "
+            "sustainable long term.")
+g.paragraph("Your 5 Day Fat Loss Reset Guide has been designed "
+            "using this formula for maximum results. You don't "
+            "need to calculate or overthink anything, simply "
+            "follow the guide and the setup provided.")
+g.subhead([("The WLA Nutrition Formula focuses on", "lbi")])
 g.bullets([
-    "Reducing carbohydrate intake (not eliminating, just "
-    "adjusting amounts).",
+    "Reducing carbohydrate intake (not eliminating carbohydrates, "
+    "just adjusting amounts).",
     "Reducing processed foods and added sugars.",
-    "Prioritising whole, nourishing foods.",
+])
+# the prioritising bullet has a nested list
+g.ensure(120)
+g.page.draw_circle((LEFT + 7, g.y + 11), 1.7, color=None, fill=BLUSH)
+g.text(LEFT + 20, g.y + 14, "Prioritising whole, nourishing foods "
+       "including:", "as", 11.5, INK)
+g.y += 18
+for sub in ["Wholegrain carbohydrates", "Lean meats and fish",
+            "Full-fat dairy", "Healthy fats",
+            "Fruits and vegetables"]:
+    g.page.draw_circle((LEFT + 30, g.y + 9), 1.4, color=None,
+                       fill=BLUSH)
+    g.text(LEFT + 42, g.y + 13, sub, "as", 11, INK)
+    g.y += 16
+g.y += 8
+g.bullets([
     "Including snacks when guided by hunger signals.",
     "Using an 80:20 approach across the week.",
     "Drinking adequate water (around 8 glasses per day).",
