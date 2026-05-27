@@ -14,8 +14,8 @@ Sections (order in the cookbook):
 
 NAME = "The WLA Weight Loss Cookbook"
 TAGLINE = (
-    "15 fuss-free, macro-balanced recipes — designed by a nutritionist "
-    "to make weight loss feel easy, not restrictive."
+    "15 fuss-free, macro-balanced recipes. Designed by a "
+    "nutritionist to make weight loss feel easy, not restrictive."
 )
 
 SECTIONS = ["Breakfast & Lunch", "Slow Cooker", "Bowls", "Dinners"]

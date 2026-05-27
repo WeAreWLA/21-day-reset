@@ -39,11 +39,6 @@ def section_index_of(title):
 page = g._blank_page()
 g.page = page
 
-# top kicker
-kx = g.tracked(LEFT, 60, "A FREE GUIDE", "asb", 9, NAVY, 1.6)
-g.text(kx + 11, 60, "·", "asb", 9, BLUSH)
-g.tracked(kx + 22, 60, "THE WEIGHT LOSS ACADEMY", "asb", 9, NAVY, 1.6)
-
 # title block
 title_lines = [
     ("The WLA", "lb", NAVY),
@@ -63,9 +58,6 @@ sy = b1 + (len(title_lines) - 1) * LH + 56
 for ln in wrap(TAGLINE, "lbi", 13, 360):
     g.text(LEFT, sy, ln, "lbi", 13, NAVY)
     sy += 20.5
-
-# small "WEIGHT LOSS ACADEMY" mark near bottom
-g.tracked(LEFT, PAGE_H - 70, "WEIGHT LOSS ACADEMY", "asb", 9, NAVY, 1.8)
 
 
 # =========================================================== inside-title spread
@@ -99,13 +91,18 @@ g.paragraph(
 g._new_content_page()
 g.heading([[("What's ", False), ("Inside.", True)]])
 g.paragraph(
-    f"{len(RECIPES)} fuss-free, macro-balanced recipes — split into "
+    f"{len(RECIPES)} fuss-free, macro-balanced recipes, split into "
     f"four sections so you can flick straight to what you fancy.",
     size=11.5, lh=15.6, gap_after=18)
 
 
+# TOC entries record (toc_page_index, link_rect, target_page_index)
+# Page layout: 0=cover, 1=inside title, 2=contents, 3..=recipes
+TOC_LINKS = []
+
+
 def toc_section(name, recipes, start_page):
-    """Render a contents section. start_page is the first page number
+    """Render a contents section. start_page is the 1-based page number
     of that section. Returns the next start_page."""
     g.ensure(28)
     g.tracked(LEFT, g.y + 11, name.upper(), "asb", 9.5, BLUSH, 1.6)
@@ -115,11 +112,8 @@ def toc_section(name, recipes, start_page):
         g.ensure(20)
         y = g.y + 12
         num = f"{i:02d}"
-        # leading number in coral
         g.text(LEFT + 4, y, num, "asb", 10.4, BLUSH)
-        # title
         g.text(LEFT + 32, y, r["title"], "as", 10.8, INK)
-        # dotted leader
         x = LEFT + 32 + tw(r["title"], "as", 10.8) + 10
         pgs = f"{pg:02d}"
         while x < RIGHT - tw(pgs, "as", 10.8) - 10:
@@ -127,22 +121,21 @@ def toc_section(name, recipes, start_page):
                                fill=(0.6, 0.6, 0.6))
             x += 3.3
         g.text_right(RIGHT - 2, y, pgs, "as", 10.8, INK)
+        # capture link rect across the whole row
+        row_rect = fitz.Rect(LEFT, y - 12, RIGHT, y + 6)
+        TOC_LINKS.append((g.npages - 1, row_rect, pg - 1))
         g.y += 19
         pg += 1
     g.y += 12
     return pg
 
 
-# Recipes start on page 5 (cover=1, inside title=2, contents=3, plus 1
-# extra page slot for the section dividers? — we don't use dividers).
-# But we have one page per recipe.
-# Pages: 1 cover, 2 inside title, 3 contents, 4..N recipes, N+1 closing.
 section_groups = []
 for s in SECTIONS:
     group = [r for r in RECIPES if r["section"] == s]
     section_groups.append((s, group))
 
-start_pg = 4
+start_pg = 4  # first recipe is on page 4 (1-based)
 for name, group in section_groups:
     start_pg = toc_section(name, group, start_pg)
 
@@ -250,13 +243,19 @@ def draw_recipe(idx, r):
         return n
     ing_count = count_items()
     meth_count = len(r["instructions"])
-    is_dense = ing_count > 18 or meth_count > 10
+    note_len = len(r.get("note") or "")
+    has_subs = bool(r.get("ingredients_sub")) or bool(r.get("to_serve"))
+    # consider all factors that make a page tight
+    score = ing_count + meth_count + (note_len // 90) + (2 if has_subs else 0)
 
-    size = 9.2 if is_dense else 9.5
-    lh = 12.1 if is_dense else 12.6
-    item_gap = 2.0 if is_dense else 2.5
-    tip_size = 9.0 if is_dense else 9.5
-    tip_lh = 12.0 if is_dense else 12.5
+    if score >= 26:
+        size, lh, item_gap = 8.8, 11.5, 1.6
+    elif score >= 22:
+        size, lh, item_gap = 9.0, 11.8, 1.8
+    elif score >= 18:
+        size, lh, item_gap = 9.2, 12.1, 2.0
+    else:
+        size, lh, item_gap = 9.5, 12.6, 2.5
 
     g.text(LEFT, coltop + 9, "INGREDIENTS", "asb", 9, NAVY)
     yL = coltop + 24
@@ -298,12 +297,24 @@ def draw_recipe(idx, r):
             yR += lh
         yR += item_gap
 
-    # WLA Tip (under whichever column ended higher)
+    # WLA Tip — adaptive sizing so it never crashes into the footer
     end_y = max(yL, yR)
     if r.get("note"):
         end_y += 12
+        # leave a comfortable gap above the footer
+        SAFE_BOTTOM = CONTENT_BOTTOM - 22
+        header_h = 20
+        candidates = [(9.5, 12.5), (9.2, 12.1), (9.0, 11.9),
+                      (8.7, 11.5), (8.4, 11.1), (8.0, 10.6)]
+        for sz, lh_ in candidates:
+            note_h = len(wrap(r["note"], "asi", sz, CW)) * lh_
+            if end_y + header_h + note_h <= SAFE_BOTTOM:
+                tip_size, tip_lh = sz, lh_
+                break
+        else:
+            tip_size, tip_lh = 7.6, 10.2
         g.tracked(LEFT, end_y + 9, "WLA TIP", "asb", 8.5, BLUSH, 1.5)
-        end_y += 20
+        end_y += header_h
         for ln in wrap(r["note"], "asi", tip_size, CW):
             g.text(LEFT, end_y + 8, ln, "asi", tip_size, INK)
             end_y += tip_lh
@@ -326,7 +337,7 @@ g.gap(60)
 g.heading([[("Easy meals.", False)],
            [("Easier life.", True)]])
 g.paragraph(
-    "Eating well isn't about willpower — it's about making the "
+    "Eating well isn't about willpower. It's about making the "
     "healthy choice the easy one. The right recipes, prepped ahead, "
     "in the fridge or freezer.",
     size=12.5, lh=17.5, gap_after=12)
@@ -336,14 +347,25 @@ g.paragraph(
     "so you've got dinners waiting on the nights you don't.",
     size=12.5, lh=17.5, gap_after=12)
 g.paragraph(
-    "And remember — fat loss doesn't come from being perfect. It "
+    "And remember, fat loss doesn't come from being perfect. It "
     "comes from being consistent.",
     size=12.5, lh=17.5, gap_after=20)
 g.paragraph(
     "You've got this.",
-    size=20, lh=24, font="lbi", color=BLUSH, gap_after=24)
-g.tracked(LEFT, g.y + 12, "THE WEIGHT LOSS ACADEMY", "asb", 9.5,
-          NAVY, 1.6)
+    size=20, lh=24, font="lbi", color=BLUSH, gap_after=20)
+g.paragraph(
+    "Anna Wallace and the WLA Team",
+    size=12, lh=16, font="lbi", color=NAVY, gap_after=0)
+
+
+# =========================================================== links
+for src_page_idx, rect, target_page_idx in TOC_LINKS:
+    g.doc[src_page_idx].insert_link({
+        "kind": fitz.LINK_GOTO,
+        "from": rect,
+        "page": target_page_idx,
+        "to": fitz.Point(0, 0),
+    })
 
 
 # =========================================================== save
