@@ -305,14 +305,17 @@ else:
     g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 + 12,
                   "upload as: anna-before-after.png", "asi", 9.5,
                   (0.55, 0.55, 0.6))
-# white signature card overlay over the bottom of the photo
-pill_y = photo_top + photo_h - 52
-g.page.draw_rect(fitz.Rect(LEFT + 12, pill_y, LEFT + photo_w - 12,
-                           pill_y + 44),
+# white signature card sitting just under the photo, so the photo
+# itself isn't covered
+pill_y = photo_top + photo_h + 6
+g.page.draw_rect(fitz.Rect(LEFT, pill_y, LEFT + photo_w,
+                           pill_y + 46),
                  color=None, fill=(1, 1, 1))
-g.text(LEFT + 22, pill_y + 16, "Anna Wallace", "lbi", 12, BLUSH)
-g.text(LEFT + 22, pill_y + 28, "BSc Food & Nutrition", "asi", 9, NAVY)
-g.text(LEFT + 22, pill_y + 39, "Registered Associate Nutritionist",
+g.page.draw_rect(fitz.Rect(LEFT, pill_y, LEFT + 4, pill_y + 46),
+                 color=None, fill=BLUSH)
+g.text(LEFT + 14, pill_y + 16, "Anna Wallace", "lbi", 12, BLUSH)
+g.text(LEFT + 14, pill_y + 30, "BSc Food & Nutrition", "asi", 9, NAVY)
+g.text(LEFT + 14, pill_y + 41, "Registered Associate Nutritionist",
        "asi", 9, NAVY)
 # body, right column then full width
 tx_narrow = LEFT + photo_w + 26
@@ -320,7 +323,7 @@ tw_narrow = CW - photo_w - 26
 tx_full = LEFT
 tw_full = CW
 ty = photo_top + 4
-photo_bottom = photo_top + photo_h
+photo_bottom = photo_top + photo_h + 54  # photo + sig card
 intro = ("This is the reset I built from 10 years coaching "
          "women over 45.")
 for ln in wrap(intro, "lbi", 13.5, tw_narrow):
@@ -1053,8 +1056,8 @@ def image_with_checks(image_name, items, image_w=0.5,
     image_y/text_y let callers shift each column vertically."""
     path = os.path.join(DIAGRAMS, f"{image_name}.png")
     have_image = os.path.exists(path)
-    tx0 = LEFT + CW * image_w + 22
-    tw_box = CW - (CW * image_w) - 22
+    tx0 = LEFT + CW * image_w + 12
+    tw_box = CW - (CW * image_w) - 12
     line_size = 11
     line_h = 15.5
     item_gap = 10
@@ -1241,39 +1244,41 @@ g.paragraph("Maintaining balanced blood sugar levels is a key "
             "blood sugar steady, you can enhance your well-being "
             "and support your fat loss goals.")
 g.paragraph("Here's why balanced blood sugar is so important:",
-            font="asb", color=NAVY, gap_after=24)
+            font="asb", color=NAVY, gap_after=22)
 
 BENEFITS = [
-    (_icon_sugar_cubes, "Reduced desire for sugar"),
-    (_icon_smile,        "Improved mood"),
-    (_icon_plate,        "More control around food"),
-    (_icon_scale,        "Weight stabilises /\nweight reduction"),
-    (_icon_donut,        "Reduced cravings"),
-    (_icon_appetite,     "Appetite falls and stabilises"),
-    (_icon_chart_down,   "No extreme highs followed by\nsevere plummets"),
+    ("01", "Reduced desire for sugar"),
+    ("02", "Improved mood"),
+    ("03", "More control around food"),
+    ("04", "Weight stabilises / weight reduction"),
+    ("05", "Reduced cravings"),
+    ("06", "Appetite falls and stabilises"),
+    ("07", "No extreme highs followed by severe plummets"),
 ]
 
-bcols = 4
-bgap = 12
+# 7 numbered cards — same pattern as the Guidelines page
+bcols = 2
+bgap = 16
 bcw = (CW - bgap * (bcols - 1)) / bcols
-bch = 100
-g.gap(20)
-g.ensure(2 * bch + bgap + 10)
+bch = 76
+rows = (len(BENEFITS) + bcols - 1) // bcols
+g.ensure(rows * bch + (rows - 1) * bgap + 8)
 top = g.y
-# row 1: first 4
-for i, (draw_fn, label) in enumerate(BENEFITS[:4]):
-    x0 = LEFT + i * (bcw + bgap)
-    icon_card(x0, top, bcw, bch, draw_fn,
-              label.replace("\n", " "))
-# row 2: last 3 centered
-rem = BENEFITS[4:]
-row2_w = len(rem) * bcw + (len(rem) - 1) * bgap
-x_start = LEFT + (CW - row2_w) / 2
-for i, (draw_fn, label) in enumerate(rem):
-    x0 = x_start + i * (bcw + bgap)
-    icon_card(x0, top + bch + bgap, bcw, bch, draw_fn,
-              label.replace("\n", " "))
-g.y = top + 2 * bch + bgap + 14
+for i, (num, label) in enumerate(BENEFITS):
+    r = i // bcols
+    c = i % bcols
+    x0 = LEFT + c * (bcw + bgap)
+    y0 = top + r * (bch + bgap)
+    # cream card + coral left accent
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + bcw, y0 + bch),
+                     color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + bch),
+                     color=None, fill=BLUSH)
+    g.tracked(x0 + 22, y0 + 26, num, "asb", 11, BLUSH, 1.6)
+    # label, possibly wrapped
+    for j, ln in enumerate(wrap(label, "lb", 13, bcw - 44)):
+        g.text(x0 + 22, y0 + 50 + j * 17, ln, "lb", 13, NAVY)
+g.y = top + rows * bch + (rows - 1) * bgap + 8
 
 
 # =========================================================== easily reduce sugar cravings
@@ -1334,7 +1339,7 @@ image_with_checks("breakfast-sugar-insulin", [
     "sugar from the blood to the cells.",
     "Extreme high followed by extreme slump.",
     "The cycle continues.",
-], image_w=0.45, img_max_h=240, image_y=60)
+], image_w=0.45, img_max_h=240)
 
 
 # =========================================================== why snacking
