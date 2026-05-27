@@ -593,14 +593,14 @@ class Guide:
 
     def recipe(self, title, serves, ingredients, instructions,
                note=None, image=None, time=None, subtitle=None,
-               kicker=None, to_serve=None, image_h=320, **_):
+               kicker=None, to_serve=None, image_h=280, **_):
         """WLA Weight Loss Cookbook style recipe page (one per page)."""
         self._new_content_page()
 
         if image:
             rect = fitz.Rect(0, 0, PAGE_W, image_h)
             self._insert_cover_image(rect, image)
-            y = image_h + 34
+            y = image_h + 28
         else:
             y = CONTENT_TOP + 8
 
@@ -613,87 +613,93 @@ class Guide:
                 dx = kx + 10
                 self.text(dx, y, "·", "asb", 8.5, BLUSH)
                 self.tracked(dx + 12, y, kb.upper(), "asb", 8.5, BLUSH, 1.4)
-            y += 26
+            y += 22
 
         # title
-        tsize = 25
+        tsize = 22
         for tl in wrap(title, "lbi", tsize, CW):
             self.text(LEFT, y + tsize * 0.78, tl, "lbi", tsize, NAVY)
-            y += tsize * 1.1
+            y += tsize * 1.05
 
         # subtitle
         if subtitle:
-            y += 6
-            for sl in wrap(subtitle, "lbi", 12, CW):
-                self.text(LEFT, y + 10, sl, "lbi", 12, BLUSH)
-                y += 16
+            y += 4
+            for sl in wrap(subtitle, "lbi", 11.5, CW):
+                self.text(LEFT, y + 9, sl, "lbi", 11.5, BLUSH)
+                y += 15
 
         # serves + time row
-        y += 22
+        y += 16
         col_w = 132
         self.tracked(LEFT, y, "SERVES", "asb", 8.5, BLUSH, 1.4)
         if time:
             self.tracked(LEFT + col_w, y, "TIME", "asb", 8.5, BLUSH, 1.4)
-        y += 18
-        self.text(LEFT, y + 12, str(serves), "lbi", 17, NAVY)
+        y += 16
+        self.text(LEFT, y + 11, str(serves), "lbi", 15, NAVY)
         if time:
-            self.text(LEFT + col_w, y + 12, str(time), "lbi", 17, NAVY)
-        y += 26
+            self.text(LEFT + col_w, y + 11, str(time), "lbi", 15, NAVY)
+        y += 22
 
         # hairline rule
         self.page.draw_line((LEFT, y), (RIGHT, y), color=RULE, width=0.6)
-        y += 22
+        y += 16
 
         # two-column body
-        col_gap = 28
+        col_gap = 26
         lw = (CW - col_gap) * 0.40
         rw = (CW - col_gap) * 0.60
         rx = LEFT + lw + col_gap
 
         self.tracked(LEFT, y, "INGREDIENTS", "asb", 8.5, BLUSH, 1.4)
         self.tracked(rx, y, "METHOD", "asb", 8.5, BLUSH, 1.4)
-        y_top = y + 18
+        y_top = y + 16
 
-        size = 9.5
-        lh = 12.6
+        size = 9
+        lh = 11.6
 
         def render_ing(items, x, max_w, start_y, label=None):
             yL = start_y
             if label:
-                self.text(x, yL + 10, label, "lbi", 11, BLUSH)
-                yL += 18
+                self.text(x, yL + 9, label, "lbi", 10.5, BLUSH)
+                yL += 16
             for it in items:
-                self.text(x, yL + 9, "—", "as", size, INK)
-                for ln in wrap(it, "as", size, max_w - 16):
-                    self.text(x + 16, yL + 9, ln, "as", size, INK)
+                self.text(x, yL + 8, "—", "as", size, INK)
+                for ln in wrap(it, "as", size, max_w - 14):
+                    self.text(x + 14, yL + 8, ln, "as", size, INK)
                     yL += lh
-                yL += 3.5
+                yL += 2.5
             return yL
 
         yL = render_ing(ingredients, LEFT, lw, y_top)
         if to_serve:
-            yL += 6
+            yL += 4
             yL = render_ing(to_serve, LEFT, lw, yL, label="To serve")
 
         # method
         yR = y_top
         for k, step in enumerate(instructions, 1):
-            self.tracked(rx, yR + 9, f"{k:02d}", "asb", 8.5, BLUSH, 1.4)
-            for ln in wrap(step, "as", size, rw - 28):
-                self.text(rx + 28, yR + 9, ln, "as", size, INK)
+            self.tracked(rx, yR + 8, f"{k:02d}", "asb", 8.5, BLUSH, 1.4)
+            for ln in wrap(step, "as", size, rw - 26):
+                self.text(rx + 26, yR + 8, ln, "as", size, INK)
                 yR += lh
-            yR += 4
+            yR += 2.5
 
         body_end = max(yL, yR)
 
-        # WLA TIP
+        # WLA TIP — anchor at bottom if it would overflow, else inline
         if note:
-            ty = body_end + 22
+            tip_lines = wrap(note, "asi", 10, CW)
+            tip_h = 16 + len(tip_lines) * 13
+            anchor = body_end + 20
+            footer_top = PAGE_H - 60
+            if anchor + tip_h > footer_top:
+                anchor = footer_top - tip_h
+            ty = anchor
             self.tracked(LEFT, ty, "WLA TIP", "asb", 8.5, BLUSH, 1.4)
-            ty += 18
-            for ln in wrap(note, "asi", 10, CW):
-                self.text(LEFT, ty + 10, ln, "asi", 10, INK)
-                ty += 14
+            ty += 16
+            for ln in tip_lines:
+                self.text(LEFT, ty + 9, ln, "asi", 10, INK)
+                ty += 13
 
         self.y = 1e6  # force a fresh page for the next block
 
