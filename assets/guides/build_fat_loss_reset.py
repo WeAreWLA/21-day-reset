@@ -69,6 +69,7 @@ def toc(items):
             g.page.draw_circle((x, y - 3), 0.6, color=None, fill=(0.6, 0.6, 0.6))
             x += 3.3
         g.text_right(RIGHT - 2, y, pages, "as", 10.8, INK)
+        g.add_link(fitz.Rect(LEFT, y - 14, RIGHT, y + 6), label)
         g.y += 19
 
 
@@ -139,7 +140,8 @@ for ln in wrap(subtitle, "lbi", 13, 348):
 # =========================================================== table of contents
 toc([
     ("About Us",                                       "03"),
-    ("The WLA Mission",                                "04-05"),
+    ("The WLA Mission",                                "04"),
+    ("Our Three Pillars",                              "05"),
     ("A Note From Our Founder, Anna Wallace",          "06"),
     ("WLA Members Results / Our Community Success",    "07-09"),
     ("Important Tips for Getting Started",             "10-11"),
@@ -148,19 +150,20 @@ toc([
     ("Breakfast Recipes",                              "14-18"),
     ("Lunch Recipes",                                  "19-23"),
     ("Dinner Recipes",                                 "24-28"),
-    ("The Swap List",                                  "29-41"),
-    ("Drink Tips",                                     "42"),
-    ("Snack Tips",                                     "43-46"),
-    ("What Balanced Blood Sugar Gives You",            "47"),
-    ("Easily Reduce Sugar Cravings in 5 Days",         "48-49"),
-    ("Why Breakfast is Important",                     "50"),
-    ("Why Snacking is Important",                      "51"),
-    ("The WLA Nutrition Formula",                      "52"),
+    ("The Swap List",                                  "29-45"),
+    ("Drink Tips",                                     "46"),
+    ("Snack Tips",                                     "47-50"),
+    ("What Balanced Blood Sugar Gives You",            "51"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "52-53"),
+    ("Why Breakfast is Important",                     "54"),
+    ("Why Snacking is Important",                      "55"),
+    ("The WLA Nutrition Formula",                      "56"),
 ])
 
 
 # =========================================================== welcome
 g._new_content_page()
+g.register_target("About Us")
 g.heading([[("Hello, ", False), ("Welcome to", True)],
            [("The WLA Community!", False)]])
 g.paragraph("Really excited that you've registered for the 5 Day Fat "
@@ -223,6 +226,7 @@ g.paragraph("Before you start the reset, we want to introduce The "
 
 # =========================================================== mission
 g._new_content_page()
+g.register_target("The WLA Mission")
 g.heading([[("The ", False), ("WLA Mission", True)]])
 g.paragraph("Our mission at The WLA is to help women lose weight for "
             "the last time.")
@@ -244,7 +248,8 @@ g.bullets([
 ])
 
 g._new_content_page()
-g.heading([[("The ", False), ("WLA Mission", True)]])
+g.register_target("Our Three Pillars")
+g.heading([[("Our ", False), ("Three Pillars", True)]])
 g.paragraph("The WLA focuses on three main core strategies in our "
             "signature WLA Approach to support clients with every "
             "tool needed for long-lasting, transformative change.")
@@ -289,6 +294,7 @@ g.y = _qtop + _qh + 14
 
 # =========================================================== founder
 g._new_content_page()
+g.register_target("A Note From Our Founder, Anna Wallace")
 g.heading([[("A Note From ", False), ("Our Founder", True)]])
 # square portrait + body
 photo_w = 240
@@ -427,6 +433,7 @@ _photos = _images_in(TESTI_PHOTOS)
 _shots = _images_in(TESTI_SHOTS)
 
 g._new_content_page()
+g.register_target("WLA Members Results / Our Community Success")
 g.heading([[("WLA Members ", False), ("Results", True)]])
 # square cells, no padding mismatch with the 1080x1080 sources
 _cw = (CW - 14) / 2
@@ -449,6 +456,7 @@ image_grid(_shots[:6], 3, 2, item_h=150,
 
 # =========================================================== tips
 g._new_content_page()
+g.register_target("Important Tips for Getting Started")
 g.heading([[("Important Tips for", False)],
            [("Getting Started", True)]])
 g.paragraph("The 5 Day Fat Loss Reset meal guide can include "
@@ -512,6 +520,7 @@ g.bullets([
 
 # =========================================================== guidelines
 g._new_content_page()
+g.register_target("The 5 Day Fat Loss Reset Guidelines")
 g.heading([[("The 5 Day Fat Loss", False)],
            [("Reset ", False), ("Guidelines", True)]])
 g.paragraph("Stick to these eight simple principles and the reset "
@@ -614,10 +623,12 @@ def option_grid(items, with_header=True, gap=8, gap_after=12):
             for ln in r_lines:
                 g.text_center(x0 + cw / 2, ty, ln, "lb", 11, NAVY)
                 ty += 14
+        g.add_link(fitz.Rect(x0, top, x0 + cw, top + total_h), recipe)
     g.y = top + total_h + gap_after
 
 
 g._new_content_page()
+g.register_target("The 5 Day Fat Loss Reset Meal Overview")
 g.heading([[("The Reset ", False), ("Meal Overview", True)]])
 g.paragraph("Choose any breakfast, lunch or dinner option for each "
             "day from the overview below. Feel free to mix and match. "
@@ -629,7 +640,7 @@ option_grid([
     ("1", None, "High Fibre Air Fryer Granola"),
     ("2", None, "Protein & Fibre Yoghurt Bowl"),
     ("3", None, "Pina Colada Smoothie"),
-    ("4", None, "Multigrain Hoops Cereal + Fruit"),
+    ("4", None, "Multigrain Hoops Cereal and Fruit"),
 ], with_header=False)
 
 g.subhead([("Morning Snack", "lbi")], gap_after=4)
@@ -639,10 +650,10 @@ g.paragraph("Opt for a smaller snack, a portion of fruit or "
 
 g.subhead([("Lunch Options", "lbi")], gap_after=8)
 option_grid([
-    ("1", "Family Fav",   "Weekend Brunch (V) (LC)"),
-    ("2", "10 Min Option","Cheesy Fried Eggs (V) (LC)"),
-    ("3", "Batch Prep",   "Coronation Chicken Salad (LC)"),
-    ("4", "No Cook",      "M&S Naked Chicken Caesar Salad (LC)"),
+    ("1", "Family Fav",   "Weekend Brunch"),
+    ("2", "10 Min Option","Cheesy Fried Eggs"),
+    ("3", "Batch Prep",   "Coronation Chicken Salad"),
+    ("4", "No Cook",      "M&S Naked Chicken Caesar Salad"),
 ])
 
 g.subhead([("Mid-Afternoon Snack", "lbi")], gap_after=4)
@@ -652,10 +663,10 @@ g.paragraph("Opt for a bigger snack if hungry, see the snack tips "
 
 g.subhead([("Dinner Options", "lbi")], gap_after=8)
 option_grid([
-    ("1", "20 Min Option",  "Chicken Caesar Air Fryer Gnocchi (HC)"),
-    ("2", "Fakeaway Inspo", "One Pan Thai Red Curry Salmon (HC)"),
-    ("3", "Easy Option",    "Lazy Snacky Plate (HC)"),
-    ("4", "No Fuss Option", "No Cook Freezer Dinner (HC)"),
+    ("1", "20 Min Option",  "Chicken Caesar Air Fryer Gnocchi"),
+    ("2", "Fakeaway Inspo", "One Pan Thai Red Curry Salmon"),
+    ("3", "Easy Option",    "Lazy Snacky Plate"),
+    ("4", "No Fuss Option", "No Cook Freezer Dinner"),
 ])
 
 
@@ -1117,6 +1128,7 @@ g.recipe(
 
 # =========================================================== swap list
 g._new_content_page()
+g.register_target("The Swap List")
 g.heading([[("The Food ", False), ("Swap List", True)]])
 g.coral_heading("Every single ingredient can easily be changed, just "
                 "swap with foods from the same group.")
@@ -1142,19 +1154,23 @@ PROTEIN_ANIMAL = [
     ("Beef, lamb or pork mince", "100g (3½ oz) to 140g (5 oz)"),
     ("Beef pieces", "100g (3½ oz)"),
     ("Beef sirloin steak", "1 small, approx. 120g (4 oz)"),
-    ("Chicken fillet", "Medium, 100g (3½ oz) to 130g (4¾ oz)"),
+    ("Chicken fillet", "Medium sized, 100g (3½ oz) to 130g (4¾ oz)"),
     ("Chicken thigh", "1 large or 2 small"),
     ("Chorizo", "30g (1 oz)"),
     ("Cod fillet", "175g (6 oz) approx"),
     ("Cubed lamb", "100g (3½ oz)"),
+    ("Duck", "Small sized, 220 to 250g"),
     ("Eggs", "2 eggs"),
     ("Ham", "2 slices"),
     ("Lean bacon / rashers", "2 pieces"),
+    ("Mackerel", "1 fillet"),
     ("Pork", "Around 130g pork chop"),
     ("Pork (beef or chicken) sausages", "2 sausages"),
     ("Prawns", "140g (5 oz)"),
+    ("Protein powders", "1 scoop / 25g"),
     ("Salmon fillet", "1 small approx. 110g (3¾ oz)"),
     ("Salmon (tinned)", "Around 155g / tin"),
+    ("Sardines", "1 small can, approx. 120g"),
     ("Small beef, stewing steak", "110g (4 oz) approx."),
     ("Smoked salmon", "55g (2 oz)"),
     ("Tuna steak", "1 small approx. 110g (3¾ oz)"),
@@ -1166,11 +1182,12 @@ PROTEIN_VEGGIE = [
     ("Full-fat Greek yoghurt", "125g (½ cup)"),
     ("Full-fat cottage cheese", "100g (⅔ cup)"),
     ("Halloumi", "70g (2½ oz)"),
+    ("Kefir", "125g"),
     ("Nut roast", "150g (1 cup)"),
     ("Paneer cheese", "70g (2½ oz)"),
     ("Quorn fillet", "1 piece"),
-    ("Quorn mince", "75g (3oz)"),
-    ("Quorn pieces", "75g (3oz)"),
+    ("Quorn mince", "75g (3 oz)"),
+    ("Quorn pieces", "75g (3 oz)"),
     ("Ricotta cheese", "30g (2 tablespoons)"),
     ("Semi-skimmed milk", "100ml to 250ml (1 cup)"),
     ("Seitan", "100g (⅔ cup)"),
@@ -1178,133 +1195,185 @@ PROTEIN_VEGGIE = [
     ("Tofu", "¼ block (115g (4 oz) approx) to 125g (½ cup)"),
     ("Vegetarian sausages", "2 sausages"),
 ]
+PROTEIN_CARB = [
+    ("Breaded or battered fish", "1 fillet"),
+    ("Breaded chicken fillet", "1 fillet"),
+    ("Chicken goujons", "> 3 goujons"),
+    ("Chicken Kiev", "1 Kiev"),
+    ("Fish goujons", "> 3 goujons"),
+    ("Quiche (with pastry)", "¼ large quiche"),
+]
 LEGUMES = [
-    ("Baked beans, reduced sugar", "3 tablespoons", "> 3 tablespoons"),
-    ("Black beans", "3 tablespoons", "> 3 tablespoons"),
-    ("Butter beans", "3 tablespoons", "> 3 tablespoons"),
-    ("Cannellini beans", "3 tablespoons", "> 3 tablespoons"),
-    ("Chickpeas", "3 tablespoons", "> 3 tablespoons"),
-    ("Falafels", "2-3 pieces", "> 3 pieces"),
-    ("Haricot beans", "3 tablespoons", "> 3 tablespoons"),
-    ("Hummus", "1 tablespoon", "> 1 tablespoon"),
-    ("Pinto beans", "3 tablespoons", "> 3 tablespoons"),
-    ("Red kidney beans", "3 tablespoons", "> 3 tablespoons"),
-    ("Red lentils", "3 tablespoons", "> 3 tablespoons"),
-    ("Soya or edamame beans", "3 tablespoons", "> 3 tablespoons"),
-    ("Split peas", "3 tablespoons", "> 3 tablespoons"),
-    ("Mixed beans", "3 tablespoons", "> 3 tablespoons"),
+    ("Baked beans, reduced sugar", "> 3 tablespoons"),
+    ("Black beans", "> 3 tablespoons"),
+    ("Butter beans", "> 3 tablespoons"),
+    ("Cannellini beans", "> 3 tablespoons"),
+    ("Chickpeas", "> 3 tablespoons"),
+    ("Falafels", "> 3 pieces"),
+    ("Haricot beans", "> 3 tablespoons"),
+    ("Hummus", "> 3 tablespoons"),
+    ("Pinto beans", "> 3 tablespoons"),
+    ("Red kidney beans", "> 3 tablespoons"),
+    ("Red lentils", "> 3 tablespoons"),
+    ("Soya or edamame beans", "> 3 tablespoons"),
+    ("Split peas", "> 3 tablespoons"),
+    ("Mixed beans", "> 3 tablespoons"),
 ]
 CARBS = [
-    ("Brown bread", "1 medium slice", "2 medium slices"),
-    ("Brown bread roll", "1 small", "1 large"),
-    ("Brown rice", "30-40g", "> 40g"),
-    ("Buckwheat", "30-40g", "> 40g"),
-    ("Bulgar wheat", "30-40g", "> 40g"),
-    ("Couscous, whole wheat", "30-40g", "> 40g"),
-    ("Flour, wholewheat", "1-2 tablespoons", "> 2 tablespoons"),
-    ("Giant couscous, whole wheat", "30-40g", "> 40g"),
-    ("Oat flakes", "1 tbsp to 40g (½ cup)", "> 40g"),
-    ("Orzo", "30-40g", "> 40g"),
-    ("Porridge oats", "1 tbsp to 40g (½ cup)", "> 40g"),
-    ("Potatoes", "< 100g", "> 100g"),
-    ("Quinoa", "30-40g", "> 40g"),
-    ("Soba noodles", "30-40g", "> 40g"),
-    ("Sugar-free muesli", "30g (⅓ cup)", "> 30g"),
-    ("Sweet potato", "< 100g", "> 100g"),
-    ("Whole grain rice", "30-40g", "> 40g"),
-    ("Whole wheat tortilla wrap", "1 small wrap", "1 large wrap"),
-    ("Whole wheat pasta", "30-40g", "> 40g"),
-    ("Wholewheat bread", "1 slice", "2 slices"),
-    ("Wholewheat noodles", "30-40g", "> 40g"),
-    ("Wholewheat spaghetti", "30-40g", "> 40g"),
+    ("Bagels", "1 bagel"),
+    ("Brown bread", "2 medium slices"),
+    ("Breadcrumbs", "> 40g"),
+    ("Brown bread roll", "1 large"),
+    ("Brown rice", "> 40g"),
+    ("Buckwheat", "> 40g"),
+    ("Bulgar wheat", "> 40g"),
+    ("Burger buns", "1 burger bun"),
+    ("Couscous, whole wheat", "> 40g"),
+    ("Crackers (cream crackers, rye crispbread etc.)", "> 3 pieces"),
+    ("Flour, wholewheat", "> 2 tablespoons"),
+    ("Giant couscous, whole wheat", "> 40g"),
+    ("Gnocchi", "> 100g"),
+    ("Hash browns", "> 3 hash browns"),
+    ("Lasagne sheets", "2 lasagne sheets"),
+    ("Naan bread", "1 regular sized naan bread"),
+    ("Oat flakes", "> 40g"),
+    ("Orzo", "> 40g"),
+    ("Pitta bread", "1 regular sized pitta bread"),
+    ("Porridge oats", "> 40g"),
+    ("Potatoes", "> 100g"),
+    ("Puff pastry", "¼ sheet"),
+    ("Quinoa", "> 40g"),
+    ("Rice cakes", "> 3 rice cakes"),
+    ("Soba noodles", "> 40g"),
+    ("Sourdough", "2 small slices"),
+    ("Sugar free muesli or granola", "> 30g"),
+    ("Sweet potato", "> 100g"),
+    ("Whole grain rice", "> 40g"),
+    ("Whole wheat tortilla wrap", "1 large wrap"),
+    ("Whole wheat pasta", "> 40g"),
+    ("Wholewheat bread", "2 slices"),
+    ("Wholewheat noodles", "> 40g"),
+    ("Wholewheat spaghetti", "> 40g"),
 ]
 FRUITS_VEG = [
-    ("Apple", "1 small"), ("Aubergine", "½ average"),
-    ("Avocado", "½ small / ¼ large"), ("Banana", "½ to 1 small"),
-    ("Beansprouts", "100g (1¼ cups)"), ("Blueberries", "15 pieces"),
+    ("Apple", "1 small"),
+    ("Artichokes", "½ average"),
+    ("Aubergine", "½ average"),
+    ("Avocado", "½ small / ¼ large"),
+    ("Banana", "½ to 1 small"),
+    ("Beansprouts", "100g (1¼ cups)"),
+    ("Beetroot", "1 large / 2 small"),
+    ("Blueberries", "15 pieces"),
     ("Broccoli", "140g (2 cups)"),
-    ("Butternut squash", "70g (½ cup) to 140g (1 cup)"),
+    ("Brussels sprouts", "8 pieces"),
+    ("Butternut squash / pumpkin", "70g (½ cup) to 140g (1 cup)"),
     ("Cabbage", "80g"),
     ("Canned tomatoes", "150g (¾ cup) to 200g (1 cup)"),
-    ("Carrot", "1 medium"), ("Cauliflower", "100g (½ cup)"),
+    ("Carrot", "1 medium"),
+    ("Cauliflower", "100g (½ cup)"),
     ("Cherry tomatoes", "6 pieces"),
+    ("Clementines / satsumas", "1 to 2 small"),
     ("Chopped tomatoes", "100g (½ cup)"),
     ("Corn on the cob", "1 medium sized"),
     ("Courgette", "80g (½ cup)"),
     ("Cranberries, fresh or frozen", "40g (½ cup)"),
-    ("Cucumber", "½ average or 4 mini"), ("Dates", "2-3 dates"),
+    ("Cucumber", "½ average or 4 mini"),
+    ("Dates", "2 to 3 dates"),
     ("Dried fruit (raisins, sultanas)", "1 tablespoon to 30g"),
     ("Frozen mango", "70g (½ cup) to 125g (¾ cup)"),
     ("Frozen peas", "3 tablespoons"),
     ("Fruit salad of your choice", "100g (¾ cup)"),
+    ("Grapefruit", "½ average"),
     ("Green beans", "4 tablespoons to 80g (1 cup)"),
-    ("Green pepper", "½ average"), ("Kale", "4 tablespoons"),
+    ("Green pepper", "½ average"),
+    ("Kale", "4 tablespoons"),
+    ("Kiwi", "1 to 2 small"),
+    ("Leeks", "½ average"),
     ("Mangetout", "10 pieces"),
     ("Mixed berries, frozen", "3 tablespoons"),
     ("Mixed salad leaves", "50g (2 cups)"),
-    ("Mushrooms", "75g (⅔ cup)"), ("Parsnip", "1 small"),
+    ("Mushrooms", "75g (⅔ cup)"),
+    ("Parsnip", "1 small"),
+    ("Peaches / nectarines", "1 average"),
     ("Pineapple", "4 rings"),
+    ("Plums", "1 to 2 small"),
+    ("Pomegranate", "½ average"),
     ("Portobello mushrooms", "2 mushrooms"),
-    ("Raspberries", "50g (½ cup)"), ("Red pepper", "½ average"),
-    ("Rocket", "50g (2 cups)"), ("Sauté vegetables", "250g (2 cups)"),
+    ("Radish", "6 pieces"),
+    ("Raspberries", "50g (½ cup)"),
+    ("Red pepper", "½ average"),
+    ("Rocket", "50g (2 cups)"),
+    ("Sauté vegetables", "250g (2 cups)"),
     ("Spinach leaves", "1 cup to 40g (1¼ cup) / 1 cereal bowl"),
-    ("Strawberries", "7-8 pieces"), ("Sundried tomato", "3 pieces"),
+    ("Strawberries", "7 to 8 pieces"),
+    ("Sundried tomato", "3 pieces"),
     ("Sweetcorn", "2 tablespoons"),
-    ("Vegetable stir-fry packet", "200g"), ("Watercress", "1 cup"),
+    ("Vegetable stir-fry packet", "200g"),
+    ("Watercress", "1 cup"),
 ]
 FATS = [
-    ("Almond butter", "1 tablespoon"), ("Avocado", "¼ or 35g frozen"),
+    ("Almond butter", "1 tablespoon"),
+    ("Avocado", "¼ or 35g frozen"),
     ("Butter, unsalted", "1 teaspoon"),
-    ("Cheddar cheese", "15-30g (⅓ cup)"),
-    ("Chia seeds", "1 teaspoon"),
-    ("Chocolate chips, dark", "1 tsp up to 80g (⅓ cup)"),
+    ("Cheddar cheese", "15 to 30g (⅕ cup)"),
+    ("Chia seeds", "1 teaspoon to 1 tablespoon"),
+    ("Chocolate chips, dark", "1 teaspoon up to 80g (⅓ cup)"),
     ("Coconut milk, canned", "100g (½ cup) to 200g (1 cup)"),
-    ("Cream", "1 tablespoon"), ("Cream cheese", "1 tablespoon"),
+    ("Cream", "> 4 tablespoons"),
+    ("Cream cheese", "1 tablespoon"),
     ("Creme fraiche, full-fat", "1 tablespoon"),
-    ("Desiccated coconut", "1 tsp up to 45g (½ cup)"),
+    ("Desiccated coconut", "1 teaspoon up to 45g (½ cup)"),
     ("Feta cheese", "30g (¼ cup)"),
-    ("Flaxseed", "1 tsp up to 50g (⅓ cup)"),
+    ("Flaxseeds", "1 teaspoon to 1 tablespoon"),
     ("Full-fat goats cheese", "30g (¼ cup)"),
     ("Green pesto", "1 tablespoon"),
     ("Mayonnaise, full-fat", "1 teaspoon"),
-    ("Mixed nuts", "1 tablespoon to 30g"), ("Olive oil", "1 teaspoon"),
-    ("Olives", "6 pieces"), ("Parmesan cheese", "15-30g (⅓ cup)"),
-    ("Peanut butter", "1 tablespoon"),
+    ("Mixed nuts", "1 tablespoon to 30g"),
+    ("Olive oil", "1 teaspoon"),
+    ("Olives", "6 pieces"),
+    ("Parmesan cheese", "15 to 30g (⅕ cup)"),
+    ("Peanut butter", "1 teaspoon to 1 tablespoon"),
     ("Salad cream, full-fat", "1 teaspoon"),
-    ("Sesame seeds", "1 teaspoon"),
-    ("Shredded mozzarella cheese", "30g (⅓ cup)"),
+    ("Sesame seeds", "1 teaspoon to 1 tablespoon"),
+    ("Shredded mozzarella cheese", "30g (⅕ cup)"),
     ("Sour cream, full-fat", "1 tablespoon"),
-    ("Sunflower and pumpkin seed mix", "1 teaspoon"),
-    ("Sunflower seeds", "1 teaspoon"), ("Tzatziki", "1 tablespoon"),
-    ("Vegetarian cheddar cheese", "15-30g (⅓ cup)"),
+    ("Sunflower and pumpkin seed mix", "1 teaspoon to 1 tablespoon"),
+    ("Sunflower seeds", "1 teaspoon to 1 tablespoon"),
+    ("Tzatziki", "1 tablespoon"),
+    ("Vegetarian cheddar cheese", "15 to 30g (⅕ cup)"),
 ]
 OTHER = [
     ("Balsamic vinegar", "1 tablespoon"),
+    ("Brown sauce", "1 teaspoon"),
     ("Chilli sauce", "1 teaspoon"),
-    ("Crackers (cream / rye crispbread)", "3 pieces"),
-    ("Curry paste", "1 tablespoon"), ("Honey", "1 teaspoon"),
-    ("Jam", "1 teaspoon"), ("Lentil crisps", "20-25g"),
-    ("Maple syrup", "1 teaspoon"), ("Popcorn, plain", "20-25g"),
+    ("Cornflakes", "30g"),
+    ("Curry paste", "1 tablespoon"),
+    ("Ghee", "1 teaspoon"),
+    ("Herbs / spices",
+     "¼ teaspoon to 1 teaspoon (adjust to taste / preference)"),
+    ("Honey", "1 teaspoon"),
+    ("Jam", "1 teaspoon"),
+    ("Lentil crisps", "20 to 25g"),
+    ("Maple syrup", "1 teaspoon"),
+    ("Mustard", "1 teaspoon"),
+    ("Popcorn, plain", "20 to 25g"),
+    ("Salad dressing (Caesar, vinaigrette etc.)", "1 teaspoon"),
     ("Salsa or tomato relish, reduced sugar", "1 tablespoon"),
+    ("Sauerkraut", "1 tablespoon"),
     ("Soy sauce, reduced-salt", "1 tablespoon"),
-    ("Teriyaki sauce", "2 tablespoons"),
+    ("Stock cube (chicken, vegetable, low sodium)",
+     "¼ to ½ stock cube"),
+    ("Teriyaki sauce", "1 teaspoon to 1 tablespoon"),
     ("Tomato ketchup, reduced sugar", "1 teaspoon"),
-    ("Tomato puree", "1 tbsp to 120ml (1½ cup)"),
+    ("Tomato puree", "1 teaspoon to 1 tablespoon"),
     ("Worcestershire sauce", "1 tablespoon"),
 ]
 
 
-def two_col(items):
+def two_col(items, header_right="Portion"):
     """Render a 2-column food/portion list as a select_table."""
-    g.select_table(["Food", "Portion"],
+    g.select_table(["Food", header_right],
                    [[a for a, _ in items], [b for _, b in items]])
-
-
-def three_col(items):
-    g.select_table(["Food", "Medium carb", "High carb"],
-                   [[a for a, _, _ in items],
-                    [b for _, b, _ in items],
-                    [c for _, _, c in items]])
 
 
 g._new_content_page()
@@ -1314,20 +1383,26 @@ g._new_content_page()
 g.subhead([("Protein, Vegetarian Sources", "lbi")], gap_before=0)
 two_col(PROTEIN_VEGGIE)
 g._new_content_page()
+g.subhead([("Protein & Carbohydrates", "lbi")], gap_before=0)
+two_col(PROTEIN_CARB, header_right="High Carb")
+g._new_content_page()
 g.subhead([("Legumes", "lbi")], gap_before=0)
-three_col(LEGUMES)
+two_col(LEGUMES, header_right="High Carb")
 g._new_content_page()
-g.subhead([("Carbohydrates", "lbi")], gap_before=0)
-three_col(CARBS)
+g.subhead([("Carbohydrate Types", "lbi")], gap_before=0)
+two_col(CARBS, header_right="High Carb")
 g._new_content_page()
-g.subhead([("Fruit and Vegetables", "lbi")], gap_before=0)
+g.subhead([("Fruit & Vegetables", "lbi")], gap_before=0)
 two_col(FRUITS_VEG)
 g._new_content_page()
-g.subhead([("Fats", "lbi")], gap_before=0)
+g.subhead([("Fat Types", "lbi")], gap_before=0)
 two_col(FATS)
 g._new_content_page()
-g.subhead([("Other", "lbi")], gap_before=0)
+g.subhead([("Other Foods", "lbi")], gap_before=0)
 two_col(OTHER)
+g.note("Please note: portion sizes listed are only guidelines and may "
+       "be adjusted to suit individual needs.",
+       gap_before=10, font="as", size=10.5)
 
 
 # --------------------------------------------------- card layout helpers
@@ -1397,6 +1472,7 @@ def callout(text, font="asi", size=10.8, lh=14.5,
 
 # =========================================================== drink tips
 g._new_content_page()
+g.register_target("Drink Tips")
 g.heading([[("Drink ", False), ("Tips", True)]])
 g.coral_heading("Hydration is one of the quickest wins of the reset.")
 g.paragraph("Four small habits make hitting eight glasses a day "
@@ -1423,6 +1499,7 @@ callout("Tea & coffee count, sort of. You can have one milky "
 
 # =========================================================== snack tips
 g._new_content_page()
+g.register_target("Snack Tips")
 g.heading([[("Snack ", False), ("Tips", True)]])
 g.coral_heading("Three balanced meals, with snacks only when truly "
                 "hungry.")
@@ -1777,6 +1854,7 @@ def icon_card(x0, y0, w, h, draw_fn, label):
 
 
 g._new_content_page()
+g.register_target("What Balanced Blood Sugar Gives You")
 g.heading([[("What balanced ", False), ("blood sugar", True)],
            [("gives you.", False)]])
 g.paragraph("Maintaining balanced blood sugar levels is a key "
@@ -1826,6 +1904,7 @@ g.y = top + rows * bch + (rows - 1) * bgap + 8
 
 # =========================================================== easily reduce sugar cravings
 g._new_content_page()
+g.register_target("Easily Reduce Sugar Cravings in 5 Days")
 g.heading([[("Easily ", False), ("Reduce Sugar Cravings", True),
             (" in 5 Days", False)]])
 g.paragraph("When the right amount of food is consumed at the right "
@@ -1861,6 +1940,7 @@ callout("Side note, weight loss can be extremely difficult here.",
 
 # =========================================================== why breakfast
 g._new_content_page()
+g.register_target("Why Breakfast is Important")
 g.heading([[("Why ", False), ("Breakfast", True),
             (" Is Important", False)]])
 g.paragraph("When breakfast is skipped, blood sugar levels will "
@@ -1887,6 +1967,7 @@ image_with_checks("breakfast-sugar-insulin", [
 
 # =========================================================== why snacking
 g._new_content_page()
+g.register_target("Why Snacking is Important")
 g.heading([[("Why ", False), ("Snacking", True),
             (" Is Important", False)]])
 g.paragraph("Snacking is really important as it helps keep blood "
@@ -1909,6 +1990,7 @@ image_with_checks("snacking-curves", [
 
 # =========================================================== nutrition formula
 g._new_content_page()
+g.register_target("The WLA Nutrition Formula")
 g.heading([[("The ", False), ("WLA Nutrition", True)],
            [("Formula.", False)]])
 g.paragraph("At The WLA, we use our unique Nutrition Formula to "

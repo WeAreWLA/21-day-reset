@@ -101,6 +101,29 @@ class Guide:
         self.page = None
         self.y = 0.0
         self.npages = 0
+        # clickable link infrastructure
+        self.targets = {}      # slug -> 0-based page index
+        self.link_requests = []  # list of (page_idx, rect, slug)
+
+    # -------------------------------------------------- clickable links
+    @staticmethod
+    def slugify(s):
+        import re
+        return re.sub(r"[^a-z0-9]+", "-",
+                      s.lower().replace("&", "and")).strip("-")
+
+    def register_target(self, name, page_idx=None):
+        """Mark the given page as the destination for slug `name`."""
+        if page_idx is None:
+            page_idx = self.npages - 1
+        self.targets[self.slugify(name)] = page_idx
+
+    def add_link(self, rect, target_name, page_idx=None):
+        """Queue an internal link from `rect` to the slug `target_name`."""
+        if page_idx is None:
+            page_idx = self.npages - 1
+        self.link_requests.append((page_idx, fitz.Rect(rect),
+                                   self.slugify(target_name)))
 
     # -------------------------------------------------- low-level drawing
     def _register(self, page):
@@ -596,6 +619,7 @@ class Guide:
                kicker=None, to_serve=None, image_h=290, **_):
         """WLA Weight Loss Cookbook style recipe page (one per page)."""
         self._new_content_page()
+        self.register_target(title)
 
         if image:
             rect = fitz.Rect(0, 0, PAGE_W, image_h)
@@ -707,6 +731,7 @@ class Guide:
         """Full-page chapter divider."""
         page = self._blank_page()
         self.page = page
+        self.register_target(f"{top_italic} {bottom}")
         size = 58
         cy = PAGE_H * 0.40
         self.text_center(PAGE_W / 2, cy, top_italic, "lbi", size, NAVY)
@@ -725,6 +750,17 @@ class Guide:
             self.tracked(LEFT, fy, "THE WEIGHT LOSS ACADEMY", "asb", 7.5,
                          NAVY, 1.2)
             self.text_right(RIGHT, fy, f"{idx + 1:02d}", "as", 8.5, NAVY)
+        # resolve and insert internal links
+        for src_idx, rect, slug in self.link_requests:
+            tgt = self.targets.get(slug)
+            if tgt is None or src_idx < 0 or src_idx >= self.npages:
+                continue
+            self.doc[src_idx].insert_link({
+                "kind": fitz.LINK_GOTO,
+                "from": rect,
+                "page": tgt,
+                "to": fitz.Point(0, 0),
+            })
         self.doc.set_metadata(meta)
         self.doc.save(self.out_path, deflate=True, garbage=4)
         print(f"wrote {self.out_path}  ({self.npages} pages)")
