@@ -718,7 +718,7 @@ RECIPES = [
     },
     {
         "section": "Regular Dinners",
-        "title": "Steak Fajitas",
+        "title": "Beef Fajitas",
         "tagline": "Smoky, spiced beef with all the toppings.",
         "serves": 1,
         "time": "20 mins",
@@ -793,7 +793,8 @@ RECIPES = [
             "½ tsp oregano",
             "Pinch of black pepper",
             "1 tsp olive oil",
-            "4 tsp harissa paste",
+            "4 tsp harissa paste (or 4 tsp tomato puree with a "
+            "sprinkle of chilli powder)",
             "70g halloumi, sliced",
             "3–4 falafels (optional)",
             "Handful of baby spinach (or rocket)",
@@ -802,7 +803,8 @@ RECIPES = [
             ("For the coriander dressing", [
                 "1 heaped tbsp full-fat Greek yoghurt",
                 "1 heaped tsp mayonnaise",
-                "1 tbsp fresh coriander, chopped",
+                "1 tbsp fresh coriander, chopped (or 1/2 tsp dried "
+                "coriander leaves)",
             ]),
         ],
         "instructions": [
