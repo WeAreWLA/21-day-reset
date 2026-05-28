@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WLA 12 Week Summer Challenge · Founding Members — Weight Loss Academy</title>
+<title>WLA 12 Week Summer Challenge · Founding Members · Weight Loss Academy</title>
 <meta name="description" content="Founding Member access to the WLA 12 Week Summer Challenge. Lose up to 2 stone this summer with simple, flexible nutrition + 12 months FREE inside the brand new WLA app. £97 today. Only 1,000 places." />
 
 <!-- Google Analytics 4 -->
@@ -426,7 +426,7 @@ const CHECKOUT_URL = 'https://sales.thewlacademy.com/wla-app-1yr/';
 
 // TODO: Replace PAYPAL_HOSTED_BUTTON_ID with your PayPal hosted button ID
 // (PayPal > Pay & Get Paid > PayPal Buttons > create a "Buy Now" button > copy the hosted_button_id).
-// Until then, the PayPal button below links to a fallback PayPal.me / sales URL — feel free to swap.
+// Until then, the PayPal button below links to a fallback PayPal.me / sales URL. Feel free to swap.
 const PAYPAL_HOSTED_BUTTON_ID = '';
 const PAYPAL_FALLBACK_URL = CHECKOUT_URL;
 
@@ -439,7 +439,7 @@ const Check = () => (<svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 
 const Lock = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>);
 const Shield = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>);
 
-function CTAButtons({ size = 'large', primaryLabel = 'Yes — I Want Founding Member Access' }) {
+function CTAButtons({ size = 'large', primaryLabel = 'Yes, I Want Founding Member Access' }) {
   const paypalHref = PAYPAL_HOSTED_BUTTON_ID
     ? 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=' + PAYPAL_HOSTED_BUTTON_ID
     : PAYPAL_FALLBACK_URL;
@@ -465,8 +465,8 @@ function Hero() {
     <section className="hero" id="top">
       <div>
         <div className="founding-tag">Limited Founding Members Launch</div>
-        <h1 className="h1 serif">The WLA <span className="accent italic">12 Week Summer Challenge</span></h1>
-        <p className="h1-sub">Lose up to <strong>2 stone this summer</strong> while eating food you love — without intense exercise, miserable diets or starting over every Monday.</p>
+        <h1 className="h1 serif">The WLA<br/><span className="accent italic">12 Week<br/>Summer Challenge</span></h1>
+        <p className="h1-sub">Lose up to <strong>2 stone this summer</strong> while eating food you love, without intense exercise, miserable diets or starting over every Monday.</p>
         <p className="lede">Join today for <strong>ONLY £97</strong> and get <strong>12 months inside the brand new WLA App + Community included FREE.</strong></p>
         <ul className="bullet-list">
           <li><span className="check"><Check /></span><span>Reduce cravings and overeating</span></li>
@@ -492,7 +492,7 @@ function Hero() {
             <li><span>Daily accountability + female-only community</span></li>
             <li><span>Lowest price WLA will ever be offered at</span></li>
           </ul>
-          <CTAButtons primaryLabel="Yes — Secure My Founding Access" />
+          <CTAButtons primaryLabel="Yes, Secure My Founding Access" />
         </div>
       </div>
     </section>
@@ -517,7 +517,7 @@ function Story() {
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">For The Woman Tired Of Starting Over</span>
-          <h2 className="serif">You know what healthy eating looks like — <em>you've done this before.</em></h2>
+          <h2 className="serif">You know what healthy eating looks like. <em>You've done this before.</em></h2>
         </div>
         <p>You've probably:</p>
         <ul className="story-list">
@@ -585,7 +585,7 @@ function Lifestyle() {
         </div>
         <p>One of the biggest mistakes women make after losing weight is thinking: <em>"I'm done now."</em></p>
         <p>The accountability disappears. The routines slowly fade. Life gets busy again. Old habits creep back in. And before they know it… they're right back where they started.</p>
-        <p>That's exactly why we created this next phase of WLA. Because losing weight is one thing — <strong>maintaining it is the REAL challenge.</strong></p>
+        <p>That's exactly why we created this next phase of WLA. Because losing weight is one thing. <strong>Maintaining it is the REAL challenge.</strong></p>
         <div className="pull">The women who achieve the best long-term results are usually the ones who continue <strong>staying connected, staying accountable, following the WLA principles and living the WLA lifestyle</strong> long after the initial weight loss phase. Not perfectly. Just consistently enough to keep moving forward.</div>
         <p>That's exactly what the WLA Summer Challenge and the new app are designed to help you do.</p>
         <p><strong>This isn't about starting another diet.</strong> It's about continuing the habits, structure and support that helped create your results in the first place.</p>
@@ -604,7 +604,7 @@ function NextPhase() {
         </div>
         <p>Over the last 11 years, WLA has helped over <strong>50,000 women</strong> lose weight through simple, flexible nutrition and accountability.</p>
         <p>But one thing became very clear: losing the weight is only part of the journey. <strong>Maintaining it is the REAL challenge.</strong></p>
-        <p>That's why WLA is evolving — because this next chapter is about more than losing weight alone. It's about helping women build routines, habits and support systems that help results <strong>LAST</strong> long after the initial weight loss phase.</p>
+        <p>That's why WLA is evolving, because this next chapter is about more than losing weight alone. It's about helping women build routines, habits and support systems that help results <strong>LAST</strong> long after the initial weight loss phase.</p>
         <p>And that's exactly what the new WLA app was designed to help you do.</p>
       </div>
     </section>
@@ -649,7 +649,7 @@ function Challenge() {
 function Receive() {
   const items = [
     { t: 'The 12 Week WLA Summer Challenge', d: 'Designed specifically for women 45+ who want to lose weight, feel more confident, and finally maintain results long term.' },
-    { t: 'FREE Access To The Brand New WLA App For 12 Months', d: 'Your coaching, accountability, meal planning, recipes, tracking and support — all in ONE place.' },
+    { t: 'FREE Access To The Brand New WLA App For 12 Months', d: 'Your coaching, accountability, meal planning, recipes, tracking and support, all in ONE place.' },
     { t: 'Access To ALL WLA Challenges For 1 Full Year', d: 'Every reset, challenge and accountability event included during your founding year.' },
     { t: 'Weekly Coaching Sessions With Anna', d: 'Receive support, guidance, accountability and motivation every week to help keep results moving.' },
     { t: 'Daily Accountability + Female-Only Community Support', d: 'Feel supported every day instead of trying to do this alone.' },
@@ -674,7 +674,7 @@ function Receive() {
           ))}
         </div>
         <div className="receive-cta-wrap">
-          <div className="receive-pricing">Founding Members get the <strong>lowest price ever</strong> — pricing increases after Phase 1.</div>
+          <div className="receive-pricing">Founding Members get the <strong>lowest price ever</strong>. Pricing increases after Phase 1.</div>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Secure My Founding Member Access <Arrow /></a>
         </div>
       </div>
@@ -690,7 +690,7 @@ function App() {
     { t: 'Automatic Shopping Lists', d: 'Your shopping list is automatically created directly from your meal planner. Less stress. Less overthinking. More staying on track.' },
     { t: 'Fresh Recipes Every Friday', d: 'New meal guides, fresh recipes, quick meals, no-cook options and realistic ideas for busy lifestyles added to the app every single week.' },
     { t: 'Extensive WLA Recipe Library', d: '100s of delicious recipes built for weight loss, busy women, family life and women who want results WITHOUT restriction. No bland diet food.' },
-    { t: 'Lifestyle Tracking', d: 'Track sleep, stress, movement, water, alcohol, caffeine, mood and routines — so you can identify what\'s helping (and hurting) your results.' },
+    { t: 'Lifestyle Tracking', d: 'Track sleep, stress, movement, water, alcohol, caffeine, mood and routines, so you can identify what\'s helping (and hurting) your results.' },
     { t: 'Habit Tracking System', d: 'Build habits that actually LAST beyond motivation. Long-term results are built through routines, structure and consistency.' },
     { t: 'Weekly Coaching Sessions With Anna', d: 'Coaching, accountability, support, guidance and motivation every single week to help keep results moving forward.' },
     { t: 'Female-Only WLA Community', d: 'Stay connected with women on the same journey. Share wins, celebrate progress and stop trying to do this alone. Support in your pocket every day.' },
@@ -698,9 +698,9 @@ function App() {
   return (
     <section className="app" id="app">
       <div className="section-head">
-        <span className="eyebrow">The Brand New WLA App — Included FREE</span>
+        <span className="eyebrow">The Brand New WLA App, Included FREE</span>
         <h2 className="serif">Here's what Founding Members get <em>immediately.</em></h2>
-        <p>From the moment you join, you'll unlock the very first version of the new WLA experience — designed to help women finally stay consistent long term.</p>
+        <p>From the moment you join, you'll unlock the very first version of the new WLA experience, designed to help women finally stay consistent long term.</p>
       </div>
       <div className="intro">
         <p>And honestly? This is so much more than "just an app." It's been built to help women stay accountable, simplify weight loss, maintain momentum, and stop falling off track every time life gets busy.</p>
@@ -721,7 +721,7 @@ function App() {
 function ComingSoon() {
   const items = [
     { t: 'Personalised Protein + Fibre Targets', d: 'Designed to help women reduce cravings, stay fuller for longer, simplify nutrition and make consistency easier than ever before.' },
-    { t: 'The Updated WLA Formula', d: 'The next evolution of the WLA approach — helping women lose weight, maintain results, simplify nutrition, and build a lifestyle that actually LASTS.' },
+    { t: 'The Updated WLA Formula', d: 'The next evolution of the WLA approach, helping women lose weight, maintain results, simplify nutrition, and build a lifestyle that actually LASTS.' },
     { t: 'Meal Photo Nutrition Analysis', d: 'Simply snap a photo of your meal and receive guidance directly inside the app. Quicker, easier, and more realistic for busy lives.' },
     { t: 'On-Demand Support Inside The App', d: 'Feeling off track? Struggling with cravings? Need support during a difficult week? Guidance will be there exactly when you need it most.' },
   ];
@@ -729,7 +729,7 @@ function ComingSoon() {
     <section className="coming">
       <div className="coming-inner">
         <div className="section-head">
-          <span className="eyebrow">Plus — This Is Only The Beginning</span>
+          <span className="eyebrow">Plus, This Is Only The Beginning</span>
           <h2 className="serif">Founding Members get <em>everything coming next</em>, too.</h2>
           <p>Founding Members will also receive access to future app updates and new features as WLA continues expanding before our public Phase 2 launch in September.</p>
         </div>
@@ -743,7 +743,7 @@ function ComingSoon() {
           ))}
         </div>
         <p style={{ maxWidth: 760, margin: '36px auto 0', textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)', lineHeight: 1.55 }}>
-          This is the next evolution of WLA — not just helping women lose weight, but helping them <strong style={{color: 'var(--coral)', fontStyle: 'normal'}}>continue the lifestyle, maintain momentum, and finally build results that LAST.</strong>
+          This is the next evolution of WLA. Not just helping women lose weight, but helping them <strong style={{color: 'var(--coral)', fontStyle: 'normal'}}>continue the lifestyle, maintain momentum, and finally build results that LAST.</strong>
         </p>
       </div>
     </section>
@@ -881,7 +881,7 @@ function Imagine() {
       <div className="explainer-inner">
         <div className="section-head">
           <span className="eyebrow">Imagine This Being Your Summer</span>
-          <h2 className="serif">Imagine reaching September <em>proud of yourself</em> — not starting again.</h2>
+          <h2 className="serif">Imagine reaching September <em>proud of yourself</em>, not starting again.</h2>
         </div>
         <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'grid', gap: 12 }}>
           {[
@@ -930,7 +930,7 @@ function Limited() {
         </ul>
         <div className="closes">
           <p><strong style={{color: 'var(--coral)'}}>The women who maintain their results</strong> are usually the women who stay connected to support, accountability and the WLA lifestyle long term.</p>
-          <p>This next phase is about helping you continue the habits, routines and momentum you've already worked so hard to build. Because this isn't just about losing weight anymore — it's about keeping it off.</p>
+          <p>This next phase is about helping you continue the habits, routines and momentum you've already worked so hard to build. Because this isn't just about losing weight anymore. It's about keeping it off.</p>
         </div>
       </div>
     </section>
@@ -942,10 +942,10 @@ function FinalCTA() {
     <section className="final-cta">
       <div className="final-cta-inner">
         <div className="founding-tag" style={{ marginBottom: 18 }}>Phase 1 · Limited Spaces</div>
-        <h2 className="serif">Yes — I want <em>Founding Member access.</em></h2>
+        <h2 className="serif">Yes, I want <em>Founding Member access.</em></h2>
         <p>Join today for £97 and lock in 12 months inside the brand new WLA app, all WLA challenges for a full year, and the lowest price WLA will ever be offered at.</p>
         <div className="final-buttons">
-          <CTAButtons primaryLabel="Yes — I Want Founding Member Access" />
+          <CTAButtons primaryLabel="Yes, I Want Founding Member Access" />
         </div>
         <div className="final-foot">
           <strong>12 month app access included · ALL WLA challenges included · Lowest price ever</strong>
@@ -958,13 +958,13 @@ function FinalCTA() {
 function FAQ() {
   const qs = [
     { q: 'What exactly is the WLA 12 Week Summer Challenge?', a: 'It\'s a 12-week guided challenge built around simple, flexible nutrition and weekly coaching, designed for women (especially 45+) who want to lose weight this summer without intense exercise, miserable diets, or starting over every Monday. You also get 12 months inside the brand new WLA app and community included free.' },
-    { q: 'When does it start, and how long do I have access?', a: 'The challenge runs for 12 weeks. As a Founding Member, you get access to the new WLA app and all WLA challenges for a full year from the date you join — so you can keep using the meal planner, recipes, habit tracking and community long after the 12 weeks are done.' },
-    { q: 'Is the £97 a one-time payment or a subscription?', a: 'It\'s a one-time payment of £97 for Founding Member access — the 12 Week Summer Challenge plus 12 months inside the new WLA app and all WLA challenges. Pricing increases after Phase 1 closes.' },
+    { q: 'When does it start, and how long do I have access?', a: 'The challenge runs for 12 weeks. As a Founding Member, you get access to the new WLA app and all WLA challenges for a full year from the date you join, so you can keep using the meal planner, recipes, habit tracking and community long after the 12 weeks are done.' },
+    { q: 'Is the £97 a one-time payment or a subscription?', a: 'It\'s a one-time payment of £97 for Founding Member access, including the 12 Week Summer Challenge plus 12 months inside the new WLA app and all WLA challenges. Pricing increases after Phase 1 closes.' },
     { q: 'Can I pay with PayPal?', a: 'Yes. You can pay by card via our secure checkout, or by PayPal using the PayPal button on this page.' },
     { q: 'Is this suitable if I\'m in perimenopause / menopause?', a: 'Yes. WLA has been built around women in midlife for over a decade. The nutrition approach is hormone-friendly, doesn\'t rely on extreme calorie restriction, and focuses on real food, protein, fibre, blood sugar balance and consistency. Speak to your GP if you have specific medical needs.' },
-    { q: 'I\'ve tried everything before. How is this different?', a: 'WLA isn\'t a "diet you do until you can\'t" — it\'s a lifestyle system built around structure, accountability and habits that actually fit a real, busy life. The whole point of the new app and community is to help you keep going long after the initial weight loss, which is the part most plans never solve.' },
+    { q: 'I\'ve tried everything before. How is this different?', a: 'WLA isn\'t a "diet you do until you can\'t". It\'s a lifestyle system built around structure, accountability and habits that actually fit a real, busy life. The whole point of the new app and community is to help you keep going long after the initial weight loss, which is the part most plans never solve.' },
     { q: 'Do I need to count calories or cut out food groups?', a: 'No. No banned foods, no calorie counting, no shakes or replacements. You\'ll eat real meals built around protein, fibre, vegetables and the right carbs at the right time.' },
-    { q: 'I\'m busy and have a family to feed. Will this work?', a: 'Yes — that\'s exactly who we built this for. The meal planner, automatic shopping list and family-friendly recipes are designed for busy weeks and real-life households.' },
+    { q: 'I\'m busy and have a family to feed. Will this work?', a: 'Yes, that\'s exactly who we built this for. The meal planner, automatic shopping list and family-friendly recipes are designed for busy weeks and real-life households.' },
     { q: 'What if I\'m not happy with the program?', a: 'You\'re covered by our 7-day money-back guarantee. If you don\'t feel WLA is for you within the first 7 days, email support and we\'ll refund you, no awkwardness.' },
     { q: 'How quickly do I get access?', a: 'Immediately. The moment you join, you\'ll get login details for the new WLA app and the WLA Founding Members community.' },
     { q: 'Is there an app for iPhone and Android?', a: 'Yes, the WLA app is available on both iPhone and Android, plus through the web.' },
