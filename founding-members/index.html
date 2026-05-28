@@ -231,6 +231,16 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 720px) { .reason .pillar-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 480px) { .reason .pillar-grid { grid-template-columns: 1fr; } }
 
+  /* Video testimonials */
+  .videos { padding: 96px 28px; background: var(--cream); border-top: 1px solid rgba(14,39,70,0.06); }
+  .videos-grid { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .video-card { display: flex; flex-direction: column; }
+  .video-frame { aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; border: 1px solid rgba(14,39,70,0.08); box-shadow: 0 24px 50px -28px rgba(14,39,70,0.30); }
+  .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .video-quote { margin: 22px 0 0; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; max-width: 480px; margin-inline: auto; }
+  .video-name { margin-top: 10px; text-align: center; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
+  @media (max-width: 880px) { .videos { padding: 64px 22px; } .videos-grid { grid-template-columns: 1fr; gap: 32px; } }
+
   /* Lifestyle callout (Imagine section) */
   .lifestyle-callout { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 20px; text-align: center; box-shadow: 0 30px 60px -28px rgba(14,39,70,0.4); position: relative; overflow: hidden; }
   .lifestyle-callout::before { content: ''; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(229,145,122,0.25), transparent 65%); pointer-events: none; }
@@ -925,6 +935,41 @@ function Compare() {
   );
 }
 
+function VideoTestimonials() {
+  const videos = [
+    { id: '1147300902', hash: '58fbd0c85a', name: 'Vicky', quote: '"I started the WLA a size 20 and am now a 10/12"' },
+    { id: '1147300577', hash: '65f81455af', name: 'Ruth',  quote: '"I lost 12 pounds, sugar cravings vanished and my menopause symptoms significantly improved."' },
+    { id: '1147300457', hash: '4d750b2063', name: 'Lisa',  quote: '"My biggest NSV (non scale victory) is getting into size 10 and buying small gym leggings."' },
+    { id: '1147299763', hash: 'a1064cfe85', name: 'Lucy',  quote: '"2½ stone down, not counted a calorie in over a year and bought a crop top for the first time in my life."' },
+  ];
+  return (
+    <section className="videos" id="member-stories">
+      <div className="section-head">
+        <span className="eyebrow">Member Stories</span>
+        <h2 className="serif">Watch how these women <em>finally stopped starting over.</em></h2>
+        <p>Real WLA members. Real long-term results. The exact lifestyle the Summer Challenge is built around.</p>
+      </div>
+      <div className="videos-grid">
+        {videos.map((v, i) => (
+          <div className="video-card" key={i}>
+            <div className="video-frame">
+              <iframe
+                src={`https://player.vimeo.com/video/${v.id}?h=${v.hash}&title=0&byline=0&portrait=0`}
+                title={`${v.name} testimonial`}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+            <p className="video-quote">{v.quote}</p>
+            <div className="video-name">— {v.name} —</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Imagine() {
   return (
     <section className="explainer">
@@ -1116,6 +1161,7 @@ function Page() {
       <ComingSoon />
       <Results />
       <Compare />
+      <VideoTestimonials />
       <Imagine />
       <Limited />
       <FinalCTA />
