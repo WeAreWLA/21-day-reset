@@ -206,7 +206,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .story-chips li { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-left: 4px solid var(--coral); border-radius: 12px; font-family: 'Libre Baskerville', serif; font-size: 16px; color: var(--navy); line-height: 1.35; box-shadow: 0 12px 24px -20px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
   .story-chips li:hover { transform: translateY(-2px); box-shadow: 0 18px 30px -22px rgba(14,39,70,0.22); }
   .story-chips li em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .story-chips .chip-dot { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 4px rgba(217,119,87,0.18); }
+  .story-chips .chip-dot { display: none; }
   @media (max-width: 640px) { .story-chips { grid-template-columns: 1fr; gap: 10px; } .story-chips li { padding: 14px 18px; font-size: 15.5px; } }
   .story-cycle { background: var(--cream-2); border-radius: 14px; border-left: 4px solid var(--coral); padding: 26px 32px; margin: 28px 0; }
   .story-cycle p { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy); font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
@@ -701,27 +701,28 @@ function NextChapter() {
 
 function EvolvingInside() {
   const items = [
-    'The Weight Loss Academy is evolving into The Weight Loss & Lifestyle Academy',
-    'This group will move into our brand new coaching space',
-    'Founding members will receive early access to the brand new WLA app',
-    'More support, accountability and lifestyle tools designed to help women maintain results long term',
-    'If you have access to the Shift members area, you will continue this access until we launch our app',
-    'If you join as a founding member, you will access the Shift members area until we launch our new app',
-    'If you are an existing Shift member and want to take advantage of our founding member launch promo, it will be added onto your finished current date. Our price will increase after this Phase 1 launch.',
+    { ic: <IcSparkle />,   t: 'WLA is evolving',                              d: 'The Weight Loss Academy is becoming The Weight Loss & Lifestyle Academy.' },
+    { ic: <IcCommunity />, t: 'A brand new coaching space',                   d: 'This group will move into our brand new coaching space.' },
+    { ic: <IcPhone />,     t: 'Early access to the WLA app',                  d: 'Founding members will receive early access to the brand new WLA app.' },
+    { ic: <IcMedal />,     t: 'More support, accountability & lifestyle tools', d: 'Additional support, accountability and lifestyle tools designed to help women maintain results long term.' },
+    { ic: <IcDoc />,       t: 'Shift members keep their access',              d: 'If you have access to the Shift members area, you will continue this access until we launch our app.' },
+    { ic: <IcInfinity />,  t: 'Shift area included for founding members',     d: 'If you join as a founding member, you will access the Shift members area until we launch our new app.' },
+    { ic: <IcCalendar />,  t: 'Existing Shift members: time gets added on',   d: 'If you are an existing Shift member and want to take advantage of our founding launch promo, it will be added onto your current end date. Pricing increases after this Phase 1 launch.' },
   ];
   return (
     <section className="receive">
       <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">✨ Here's What's Evolving Inside WLA ✨</span>
-          <h2 className="serif">The next phase, <em>in plain English.</em></h2>
+          <span className="eyebrow">Behind The Scenes</span>
+          <h2 className="serif">✨ Here's what's <em>evolving inside WLA</em> ✨</h2>
         </div>
         <div className="receive-grid">
           {items.map((it, i) => (
             <div className="receive-card" key={i}>
-              <div className="check-ic"><Check /></div>
+              <div className="check-ic">{it.ic}</div>
               <div>
-                <p style={{ fontSize: 16, color: 'var(--navy)', lineHeight: 1.5 }}>{it}</p>
+                <h3>{it.t}</h3>
+                <p>{it.d}</p>
               </div>
             </div>
           ))}
