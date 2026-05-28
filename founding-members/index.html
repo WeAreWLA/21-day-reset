@@ -241,6 +241,19 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .video-name { margin-top: 10px; text-align: center; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
   @media (max-width: 880px) { .videos { padding: 64px 22px; } .videos-grid { grid-template-columns: 1fr; gap: 32px; } }
 
+  /* Special Opportunity card */
+  .opportunity-card { margin: 32px auto 0; max-width: 820px; padding: 38px 44px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.22); text-align: center; position: relative; overflow: hidden; }
+  .opportunity-card::before { content: ''; position: absolute; top: -120px; right: -120px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(217,119,87,0.18), transparent 65%); pointer-events: none; }
+  .opportunity-card .opportunity-tag { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; background: rgba(217,119,87,0.14); color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 22px; position: relative; z-index: 1; }
+  .opportunity-card p { font-size: 17px; line-height: 1.6; color: #333; margin: 0 0 14px; position: relative; z-index: 1; }
+  .opportunity-card p:last-of-type { margin-bottom: 0; }
+  .opportunity-card p strong { color: var(--navy); font-weight: 700; }
+  .opportunity-card p em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .opportunity-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; padding-top: 26px; border-top: 1px solid rgba(14,39,70,0.08); position: relative; z-index: 1; }
+  .opportunity-stat .num { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 28px; color: var(--coral); line-height: 1; margin-bottom: 8px; font-weight: 500; }
+  .opportunity-stat .lab { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; line-height: 1.3; }
+  @media (max-width: 640px) { .opportunity-card { padding: 28px 22px; } .opportunity-stats { grid-template-columns: 1fr; gap: 20px; } }
+
   /* Story pull quote (Why The WLA Exists) */
   .story-pullquote { position: relative; margin: 36px 0; padding: 30px 34px 30px 44px; background: var(--paper); border-left: 4px solid var(--coral); border-radius: 0 14px 14px 0; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(20px, 2.2vw, 24px); line-height: 1.45; color: var(--navy); box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
   .story-pullquote::before { content: '\201C'; position: absolute; top: -12px; left: 22px; font-family: 'Libre Baskerville', serif; font-size: 96px; line-height: 1; color: var(--coral); opacity: 0.22; pointer-events: none; }
@@ -506,7 +519,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 
 <nav class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top">Weight Loss Academy<span class="brand-by">by Anna Wallace</span></a>
+    <a class="brand" href="#top">The Weight Loss &amp; Lifestyle Academy<span class="brand-by">by Anna Wallace</span></a>
     <div class="nav-links">
       <a href="#challenge">The Challenge</a>
       <a href="#app">The App</a>
@@ -734,14 +747,22 @@ function EvolvingInside() {
 
 function SpecialOpportunity() {
   return (
-    <section className="explainer">
+    <section className="explainer" style={{ paddingBottom: 64 }}>
       <div className="explainer-inner">
-        <div className="section-head">
+        <div className="section-head" style={{ marginBottom: 24 }}>
           <span className="eyebrow">🌟 A Special Extension Opportunity 🌟</span>
           <h2 className="serif">For existing WLA clients <em>first.</em></h2>
         </div>
-        <p>As part of this next evolution, we are opening <strong>only 1,000 founding member places</strong> for women who want to continue inside WLA over the next 12 months.</p>
-        <p>Launching inside this group first, and everyone else next week. <strong>You get first access.</strong></p>
+        <div className="opportunity-card">
+          <div className="opportunity-tag">✦ First Access Window ✦</div>
+          <p>As part of this next evolution, we're opening <strong>only 1,000 founding member places</strong> for women who want to continue inside WLA over the next 12 months.</p>
+          <p>Launching inside this group <em>first</em>, and everyone else next week. <strong>You get first access.</strong></p>
+          <div className="opportunity-stats">
+            <div className="opportunity-stat"><div className="num">1,000</div><div className="lab">Founding places</div></div>
+            <div className="opportunity-stat"><div className="num">12 mo</div><div className="lab">Full WLA access</div></div>
+            <div className="opportunity-stat"><div className="num">7 days</div><div className="lab">Before public launch</div></div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -763,7 +784,7 @@ function ExpectedResults() {
     'Finally create a lifestyle you can realistically maintain',
   ];
   return (
-    <section className="receive">
+    <section className="receive" style={{ paddingTop: 56, paddingBottom: 64 }}>
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">✨ What Results Can You Expect? ✨</span>
@@ -792,6 +813,8 @@ const IcFork = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 const IcSparkle = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><circle cx="19" cy="5" r="1" fill="currentColor"/><circle cx="5" cy="19" r="1" fill="currentColor"/></svg>);
 const IcChef = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 12a4 4 0 1 1 2-7.5A4 4 0 0 1 16 4.5 4 4 0 1 1 18 12v6H6z"/><path d="M6 18h12"/></svg>);
 const IcDoc = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>);
+const IcRocket = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c3 0 6 3 6 7 0 3-1.5 5-3 6l-3 1-3-1c-1.5-1-3-3-3-6 0-4 3-7 6-7z"/><circle cx="12" cy="9" r="1.6" fill="currentColor"/><path d="M9 16l-2.5 1 1 2.5"/><path d="M15 16l2.5 1-1 2.5"/><path d="M10 20l2 2 2-2"/></svg>);
+const IcCompass = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15 9 10.5 10.5 9 15 13.5 13.5 15 9" fill="currentColor" stroke="none"/></svg>);
 
 function WhatsIncluded() {
   const items = [
@@ -817,7 +840,7 @@ function WhatsIncluded() {
       d: 'Early access to the next evolution of WLA — advanced daily tracking, lifestyle tracking, progress dashboards, habit tracking, meal planning, shopping lists, and future feature updates.', v: 297 },
   ];
   return (
-    <section className="receive">
+    <section className="receive" style={{ paddingTop: 56 }}>
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">🌟 What's Included 🌟</span>
@@ -852,10 +875,10 @@ function WhatsIncluded() {
 
 function FoundingMembersAlsoGet() {
   const items = [
-    { t: 'Future app updates & new features', d: 'Every update we ship through your founding year, included.' },
-    { t: 'Early access before public launch', d: "You're in before doors open to the wider audience." },
-    { t: 'The LOWEST price WLA will ever be offered at', d: 'Phase 1 pricing never returns once these spaces are gone.' },
-    { t: 'Help shape the future of WLA from the very beginning', d: 'Founding members guide what gets built next.' },
+    { ic: <IcSparkle />, t: 'Future app updates & new features', d: 'Every update we ship through your founding year, included.' },
+    { ic: <IcRocket />,  t: 'Early access before public launch', d: "You're in before doors open to the wider audience." },
+    { ic: <IcMedal />,   t: 'The LOWEST price WLA will ever be offered at', d: 'Phase 1 pricing never returns once these spaces are gone.' },
+    { ic: <IcCompass />, t: 'Help shape the future of WLA from the very beginning', d: 'Founding members guide what gets built next.' },
   ];
   return (
     <section className="explainer" style={{ background: 'var(--cream-2)' }}>
@@ -867,7 +890,7 @@ function FoundingMembersAlsoGet() {
         <div className="receive-grid">
           {items.map((it, i) => (
             <div className="receive-card" key={i}>
-              <div className="check-ic"><Check /></div>
+              <div className="check-ic">{it.ic}</div>
               <div>
                 <h3>{it.t}</h3>
                 <p>{it.d}</p>
@@ -938,7 +961,7 @@ function Results() {
   const scrollBy = (dir) => goTo(Math.min(Math.max(page + dir, 0), pageCount - 1));
 
   return (
-    <section className="results" id="results">
+    <section className="results" id="results" style={{ paddingBottom: 48 }}>
       <div className="section-head">
         <span className="eyebrow">Real women · Real results · Results that last</span>
         <h2 className="serif">See why so many women <em>live by the WLA.</em></h2>
@@ -972,7 +995,7 @@ function VideoTestimonials() {
     { id: '1147299763', hash: 'a1064cfe85', name: 'Lucy',  quote: '"2½ stone down, not counted a calorie in over a year and bought a crop top for the first time in my life."' },
   ];
   return (
-    <section className="videos" id="member-stories">
+    <section className="videos" id="member-stories" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="section-head">
         <span className="eyebrow">Member Stories</span>
         <h2 className="serif">Watch how these women <em>finally stopped starting over.</em></h2>
@@ -1001,7 +1024,7 @@ function VideoTestimonials() {
 
 function Limited() {
   return (
-    <section className="limited">
+    <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
           <div className="founding-tag" style={{ marginBottom: 22 }}>Limited Founding Member Access</div>
@@ -1055,7 +1078,7 @@ function Limited() {
 
 function FinalCTA() {
   return (
-    <section className="final-cta">
+    <section className="final-cta" style={{ paddingTop: 56 }}>
       <div className="final-cta-inner">
         <div className="founding-tag" style={{ marginBottom: 18 }}>Phase 1 · Only 1,000 Places</div>
         <h2 className="serif">This isn't about <em>starting over again.</em></h2>
