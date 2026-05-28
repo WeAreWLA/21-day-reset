@@ -318,6 +318,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-inner { max-width: 920px; margin: 0 auto; }
   .receive-grid { display: grid; gap: 18px; margin-bottom: 36px; }
   .receive-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+  .receive-grid.two-col .receive-card.span-2 { grid-column: 1 / -1; }
   @media (max-width: 880px) { .receive-grid.two-col { grid-template-columns: 1fr; } }
   .receive-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 24px 28px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: flex-start; box-shadow: 0 12px 24px -18px rgba(14,39,70,0.15); }
   .receive-card .check-ic { width: 48px; height: 48px; border-radius: 12px; background: var(--cream-2); color: var(--coral); display: grid; place-items: center; flex: none; }
@@ -328,15 +329,15 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-card .value-pill { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: 10px; padding: 5px 12px; border-radius: 999px; background: rgba(217,119,87,0.12); color: var(--coral); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
   .receive-card .value-pill .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; color: var(--coral); opacity: 0.7; }
   /* Total value reveal */
-  .total-value { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--paper); color: var(--navy); border: 1px solid rgba(14,39,70,0.10); border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.22); }
-  .total-value::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(217,119,87,0.18), transparent 65%); pointer-events: none; }
-  .total-value .lab { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
-  .total-value .total-num { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); color: #003060; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; position: relative; z-index: 1; }
-  .total-value .total-num em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .total-value .strike { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: var(--muted); margin-top: 18px; position: relative; z-index: 1; }
+  .total-value { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.38); }
+  .total-value::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
+  .total-value .lab { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
+  .total-value .total-num { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); color: #fff; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; position: relative; z-index: 1; }
+  .total-value .total-num em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+  .total-value .strike { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: rgba(244,235,220,0.7); margin-top: 18px; position: relative; z-index: 1; }
   .total-value .strike s { text-decoration-thickness: 2px; }
-  .total-value .you-pay { display: block; margin-top: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 44px); color: #003060; font-weight: 700; line-height: 1.1; position: relative; z-index: 1; }
-  .total-value .you-pay em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .total-value .you-pay { display: block; margin-top: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 44px); color: var(--coral-soft); font-weight: 700; line-height: 1.1; position: relative; z-index: 1; }
+  .total-value .you-pay em { color: #fff; font-style: italic; font-weight: 500; }
   @media (max-width: 640px) { .total-value { padding: 28px 22px; } }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
@@ -720,7 +721,7 @@ function EvolvingInside() {
         </div>
         <div className="receive-grid two-col">
           {items.map((it, i) => (
-            <div className="receive-card" key={i}>
+            <div className={'receive-card' + (i === items.length - 1 && items.length % 2 === 1 ? ' span-2' : '')} key={i}>
               <div className="check-ic">{it.ic}</div>
               <div>
                 <h3>{it.t}</h3>
@@ -848,7 +849,7 @@ function WhatsIncluded() {
           ))}
         </div>
         <div className="total-value">
-          <div className="lab">✨ Total Value ✨</div>
+          <div className="lab">Total Value</div>
           <div className="total-num">£5,750<em>+</em></div>
           <div className="strike">Founding Members Launch · <s>£5,750+</s></div>
           <div className="you-pay">You pay just <em>£97</em></div>
