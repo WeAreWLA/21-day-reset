@@ -116,6 +116,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 
   /* Hero */
   .hero { max-width: 1240px; margin: 0 auto; padding: 48px 28px 56px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
+  .hero-image-wrap { position: relative; }
+  .hero-image { aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-cta-row { margin-top: 36px; max-width: 480px; }
+  @media (max-width: 980px) { .hero-image { max-width: 480px; margin: 0 auto; } .hero-cta-row { max-width: 100%; } }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
   .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .founding-tag { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 999px; background: rgba(217,119,87,0.12); color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 22px; }
@@ -592,29 +597,18 @@ function Hero() {
         <p className="h1-sub">Lose The Weight. Live The Lifestyle.</p>
         <p className="lede">Become one of <strong>only 1,000 founding members</strong> inside the next evolution of WLA. <strong>One year of access for just £97</strong>, about <strong>26p per day</strong>.</p>
         <ul className="bullet-list">
-          <li><span className="check"><Check /></span><span>Lose weight in a realistic, sustainable way</span></li>
-          <li><span className="check"><Check /></span><span>Build routines that actually LAST</span></li>
-          <li><span className="check"><Check /></span><span>Stop "starting again Monday" for good</span></li>
-          <li><span className="check"><Check /></span><span>Create a lifestyle you can realistically maintain</span></li>
+          <li><span className="check"><Check /></span><span><strong>12 Week WLA Summer Challenge:</strong> Lose up to 2 stone this summer</span></li>
+          <li><span className="check"><Check /></span><span><strong>ALL WLA Challenges, Resets &amp; Accountability Sprints</strong> for 12 months</span></li>
+          <li><span className="check"><Check /></span><span><strong>Founding Member access</strong> to the brand new WLA app</span></li>
+          <li><span className="check"><Check /></span><span><strong>Lock in the LOWEST WLA price</strong> this round only</span></li>
         </ul>
-      </div>
-      <div>
-        <div className="hero-card">
-          <div className="pill">Phase 1 · Only 1,000 Places</div>
-          <div className="seats">Founding Members · 1 Year Access</div>
-          <div className="price-row">
-            <span className="currency">£</span><span className="price">97</span>
-            <span className="price-suffix">/ year</span>
-          </div>
-          <div className="price-meta italic">Just <strong style={{color: 'var(--coral)'}}>26p per day</strong> · Price increases after Phase 1</div>
-          <ul className="includes">
-            <li><span>The <em>12 Week WLA Summer Challenge</em></span></li>
-            <li><span>Weekly <em>LIVE coaching</em> with Anna</span></li>
-            <li><span>Daily accountability + female-only community</span></li>
-            <li><span><em>ALL WLA challenges</em> for 12 months</span></li>
-            <li><span>Founding access to the <em>brand new WLA app</em></span></li>
-          </ul>
+        <div className="hero-cta-row">
           <CTAButtons primaryLabel="Yes! I want Founding Member Access" />
+        </div>
+      </div>
+      <div className="hero-image-wrap">
+        <div className="hero-image">
+          <img src="/assets/anna-hero.jpg" alt="Anna Wallace · Founder of The Weight Loss & Lifestyle Academy" fetchpriority="high" decoding="async" />
         </div>
       </div>
     </section>
@@ -900,6 +894,25 @@ function FoundingMembersAlsoGet() {
   );
 }
 
+function ImagineSummer() {
+  return (
+    <section className="explainer" style={{ paddingTop: 56, paddingBottom: 64 }}>
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">Imagine This Being Your Summer</span>
+          <h2 className="serif">The Summer Challenge helps women <em>lose the weight.</em><br/>The Founding Year helps women <em>keep it off.</em></h2>
+        </div>
+        <p>Imagine reaching September feeling lighter, more energised, more confident, and still building momentum, instead of starting over again.</p>
+        <p>Not because you were perfect. But because you finally had the structure, the accountability, the support and the lifestyle that helped you keep going.</p>
+        <div className="story-callout">
+          <strong>That's what the WLA lifestyle is all about.</strong>
+          <p>Not just losing weight. Building results that actually LAST.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Results() {
   const tiles = [
     { name: 'Vicky, 56',  img: '/assets/vicky-before-after.png' },
@@ -1129,6 +1142,8 @@ function Page() {
     <>
       <Hero />
       <Trust />
+      <Results />
+      <VideoTestimonials />
       <WhyWLAExists />
       <NextChapter />
       <EvolvingInside />
@@ -1136,8 +1151,7 @@ function Page() {
       <ExpectedResults />
       <WhatsIncluded />
       <FoundingMembersAlsoGet />
-      <Results />
-      <VideoTestimonials />
+      <ImagineSummer />
       <Limited />
       <FinalCTA />
       <Footer />

@@ -241,16 +241,16 @@ def slide_cover():
     big2.shadow.inherit = False
 
     add_pill(s, Inches(3.4), Inches(0.9), Inches(6.5), Inches(0.55),
-             '✦  SOMETHING BIG IS HAPPENING INSIDE WLA  ✦',
+             '✦  FOUNDING MEMBERS LAUNCH  ✦',
              fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=260)
 
     add_paragraphs(s, Inches(0.7), Inches(2.1), Inches(11.9), Inches(3.5), [
         {'runs': [
-            {'text': 'The Next Phase ', 'font': SERIF, 'size': 64, 'color': NAVY, 'bold': True},
-            {'text': 'of', 'font': SERIF, 'size': 64, 'color': NAVY, 'italic': True},
+            {'text': 'The Weight Loss ', 'font': SERIF, 'size': 64, 'color': CORAL, 'italic': True},
+            {'text': '&', 'font': SERIF, 'size': 64, 'color': CORAL, 'italic': True},
          ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
         {'runs': [
-            {'text': 'The Weight Loss Academy', 'font': SERIF, 'size': 64, 'color': CORAL, 'italic': True},
+            {'text': 'Lifestyle Academy', 'font': SERIF, 'size': 72, 'color': NAVY, 'italic': True, 'bold': True},
          ], 'align': PP_ALIGN.CENTER, 'line': 1.1, 'space_after': 24},
     ])
 
@@ -632,29 +632,29 @@ def slide_reveal_app():
              '✨  INTRODUCING  ✨', fill=CORAL, color=WHITE, size=15, letter_spacing=320)
     add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(4.5), [
         {'runs': [
-            {'text': 'The Brand New ', 'font': SERIF, 'size': 64, 'color': WHITE, 'bold': True},
+            {'text': 'The Weight Loss &', 'font': SERIF, 'size': 70, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
         {'runs': [
-            {'text': 'WLA App', 'font': SERIF, 'size': 88, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+            {'text': 'Lifestyle Academy', 'font': SERIF, 'size': 80, 'color': WHITE, 'italic': True, 'bold': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.05, 'space_after': 20},
         {'runs': [
-            {'text': 'Support in your pocket. Every single day.',
+            {'text': 'Lose the weight. Live the lifestyle.',
              'font': SERIF, 'size': 24, 'color': CREAM_WARM, 'italic': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.3},
     ])
     add_footer(s, dark=True)
 
-# ---------------- 21. NOT ANOTHER CALORIE APP ----------------
+# ---------------- 21. NOT ANOTHER DIET ----------------
 def slide_not_calorie():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
     slide_eyebrow_headline(s, 'But first…',
         [{'text': 'This is ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
          {'text': 'not', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True},
-         {'text': ' another calorie-counting app.', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True}],
+         {'text': ' another diet.', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True}],
         top=Inches(0.85))
     add_runs(s, Inches(0.9), Inches(3.5), Inches(11.5), Inches(0.5),
-        [{'text': 'It’s been built to help you:', 'font': SERIF, 'size': 22,
+        [{'text': 'It’s a one-year founding membership built to help you:', 'font': SERIF, 'size': 22,
           'color': NAVY, 'italic': True}])
     bullets = [
         'hold onto your results',
@@ -715,13 +715,18 @@ def slide_phase1_intro():
     add_footer(s)
 
 # ---------------- 24–33. PHASE 1 FEATURE SLIDES ----------------
-def feature_slide(num, total, title, lead, bullets, footer_quote=None):
+def feature_slide(num, total, title, lead, bullets, footer_quote=None, value=None):
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
-    # Top-left feature counter
-    add_runs(s, Inches(0.9), Inches(0.85), Inches(6), Inches(0.5),
-        [{'text': f'WLA APP FEATURE  ·  {num:02d} / {total:02d}',
+    # Top-left included counter
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(7), Inches(0.5),
+        [{'text': f'WHAT’S INCLUDED  ·  {num:02d} / {total:02d}',
           'font': SANS, 'size': 20, 'color': CORAL, 'bold': True, 'letter_spacing': 200}])
+    # Value pill in top right
+    if value is not None:
+        pill_w = Inches(2.4); pill_x = Inches(13.333 - 0.9 - 2.4)
+        add_pill(s, pill_x, Inches(0.8), pill_w, Inches(0.55),
+                 f'VALUE  £{value:,}', fill=NAVY, color=WHITE, size=16, letter_spacing=200)
     # Star + title
     add_runs(s, Inches(0.9), Inches(1.55), Inches(0.6), Inches(0.6),
         [{'text': '✦', 'font': SERIF, 'size': 32, 'color': CORAL}])
@@ -750,114 +755,129 @@ def feature_slide(num, total, title, lead, bullets, footer_quote=None):
 
 PHASE1_FEATURES = [
     {
-        'title': 'Daily Accountability + Progress Tracking',
-        'lead':  'Stay focused without feeling overwhelmed.',
-        'bullets': ['Meals', 'Habits', 'Routines', 'Progress', 'Consistency'],
-        'footer': 'No more “I’ve completely fallen off track.”',
+        'title': 'The 12 Week WLA Summer Challenge',
+        'lead':  'Where momentum begins.',
+        'bullets': ['Lose up to 2 stone', 'Reduce cravings', 'Feel more confident this summer', 'Without miserable diets', 'Without intense exercise'],
+        'footer': 'A proven, sustainable kickstart to your founding year.',
+        'value': 147,
     },
     {
-        'title': 'Weight Loss Dashboard + Goal Tracking',
-        'lead':  'Stay motivated and watch the momentum build.',
-        'bullets': ['Weight tracking', 'Visual progress graphs', 'Milestone tracking', 'Monthly check-ins', 'Progress dashboards'],
-        'footer': 'See how far you’ve come and keep momentum high.',
-    },
-    {
-        'title': 'Smart Weekly Meal Planner',
-        'lead':  'Plan your week in minutes.',
-        'bullets': ['Drag meals into breakfast, lunch & dinner', 'Know exactly what you’re eating', 'Know exactly what to buy', 'Stay organised during busy weeks'],
-        'footer': 'Consistency becomes so much easier with a plan in place.',
-    },
-    {
-        'title': 'Automatic Shopping Lists',
-        'lead':  'Your shopping list, written for you.',
-        'bullets': ['Generated from your meal planner', 'Less stress, less overthinking', 'More staying on track'],
-        'footer': 'One tap. Sorted.',
-    },
-    {
-        'title': 'Weekly Meal Guides + Fresh Recipes Every Friday',
-        'lead':  'Never feel stuck for ideas again.',
-        'bullets': ['Fresh recipes', 'Meal inspiration', 'Simple nutrition guidance', 'Quick meals & no-cook options', 'Realistic ideas for busy lifestyles'],
-        'footer': 'New content added directly into the app every single week.',
-    },
-    {
-        'title': 'Extensive WLA Recipe Library',
-        'lead':  '100s of delicious recipes built for real life.',
-        'bullets': ['Weight loss', 'Busy women', 'Family life', 'Results without restriction'],
-        'footer': 'No bland diet food. No miserable meal plans. No living on salads.',
-    },
-    {
-        'title': 'Lifestyle Tracking For Better Results',
-        'lead':  'Because weight loss is about more than food alone.',
-        'bullets': ['Sleep', 'Stress', 'Movement', 'Water intake', 'Alcohol', 'Caffeine', 'Mood', 'Routines'],
-        'footer': 'Identify the habits helping (or hurting) your results.',
-    },
-    {
-        'title': 'Habit Tracking System',
-        'lead':  'Build habits that actually LAST beyond motivation.',
-        'bullets': ['Routines', 'Structure', 'Consistency', 'Continuing the lifestyle long after the challenge ends'],
-        'footer': 'Long-term results are built habit by habit.',
-    },
-    {
-        'title': 'Weekly Coaching Sessions With Anna',
-        'lead':  'Coaching, accountability and momentum every week.',
-        'bullets': ['Coaching', 'Accountability', 'Support', 'Guidance', 'Motivation every week'],
+        'title': 'Weekly LIVE Coaching Sessions With Anna',
+        'lead':  'Coaching, Q&As and expert guidance every single week.',
+        'bullets': ['Stay accountable', 'Stay motivated', 'Stay consistent', 'Personal guidance from Anna', 'Always know what to focus on next'],
         'footer': 'Always knowing what to focus on next.',
+        'value': 1997,
+    },
+    {
+        'title': 'Daily Coaching & Accountability Support',
+        'lead':  'Feel supported every single day, not just once a week.',
+        'bullets': ['Ongoing accountability', 'Day-to-day coaching', 'Real-time momentum', 'Help when life gets busy'],
+        'footer': 'Like having WLA in your pocket every day.',
+        'value': 997,
     },
     {
         'title': 'Female-Only WLA Community',
-        'lead':  'Stay connected with women on the same journey.',
+        'lead':  'Surround yourself with women on the same journey.',
         'bullets': ['Share wins', 'Celebrate progress', 'Stay accountable', 'Stop trying to do this alone'],
-        'footer': 'Like having support in your pocket every single day.',
+        'footer': 'Women who truly understand the struggles and the goals.',
+        'value': 997,
+    },
+    {
+        'title': 'Access To ALL WLA Challenges For 12 Months',
+        'lead':  'Resets, challenges and accountability sprints all year.',
+        'bullets': ['Every reset', 'Every challenge', 'Every accountability event', 'Momentum boosts year-round'],
+        'footer': 'Keep momentum going all year long.',
+        'value': 497,
+    },
+    {
+        'title': 'Weekly Fat Loss Meal Guides',
+        'lead':  'Simple, realistic meal guides delivered every week.',
+        'bullets': ['Make weight loss easier', 'More flexible', 'More sustainable', 'For real, busy lives'],
+        'footer': 'New guides added every single week.',
+        'value': 397,
+    },
+    {
+        'title': 'The WLA Nutrition Formula Masterclass',
+        'lead':  'Learn the exact WLA approach.',
+        'bullets': ['Flexible fat loss', 'Long-term consistency', 'No restrictive rules', 'The principles that actually last'],
+        'footer': 'The formula behind 11 years of results.',
+        'value': 197,
+    },
+    {
+        'title': 'Access To The WLA Recipe Collection',
+        'lead':  '100+ simple, family-friendly recipes.',
+        'bullets': ['Designed for fat loss', 'Family-friendly', 'No overcomplicated nutrition', 'Real food, real meals'],
+        'footer': 'No bland diet food. No miserable meal plans.',
+        'value': 197,
+    },
+    {
+        'title': 'WLA Nutrition & Lifestyle Guides',
+        'lead':  'Practical tools to support your results.',
+        'bullets': ['Snack guides', 'Food swaps', 'Fat loss boosters', 'Real-life lifestyle tools'],
+        'footer': 'The small details that make a big difference.',
+        'value': 27,
+    },
+    {
+        'title': 'Founding Member Access To The New WLA App',
+        'lead':  'Early access to the next evolution of WLA.',
+        'bullets': ['Advanced daily tracking', 'Lifestyle tracking', 'Progress dashboards', 'Habit tracking', 'Meal planning', 'Shopping lists', 'Future feature updates'],
+        'footer': 'You’re in before doors open to the wider audience.',
+        'value': 297,
     },
 ]
 
-# ---------------- 34. PLUS, ONLY THE BEGINNING ----------------
+# ---------------- TOTAL VALUE REVEAL ----------------
+def slide_total_value():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, NAVY)
+    add_pill(s, Inches(5.0), Inches(0.9), Inches(3.3), Inches(0.55),
+             'TOTAL VALUE', fill=CORAL, color=WHITE, size=15, letter_spacing=260)
+    # Big total
+    add_paragraphs(s, Inches(0.5), Inches(1.9), Inches(12.4), Inches(3.0), [
+        {'runs': [
+            {'text': '£5,750', 'font': SERIF, 'size': 140, 'color': WHITE, 'bold': True},
+            {'text': '+', 'font': SERIF, 'size': 100, 'color': CORAL_SOFT, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.0},
+    ])
+    # Strike + you pay
+    add_runs(s, Inches(0.5), Inches(4.8), Inches(12.4), Inches(0.5),
+        [{'text': 'Founding Members Launch', 'font': SANS, 'size': 14,
+          'color': CREAM_WARM, 'bold': True, 'letter_spacing': 280}], align=PP_ALIGN.CENTER)
+    add_paragraphs(s, Inches(0.5), Inches(5.4), Inches(12.4), Inches(1.5), [
+        {'runs': [
+            {'text': 'You pay just ', 'font': SERIF, 'size': 44, 'color': WHITE, 'italic': True},
+            {'text': '£97', 'font': SERIF, 'size': 70, 'color': CORAL_SOFT, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.05},
+    ])
+    add_footer(s, dark=True)
+
+# ---------------- PLUS, ONLY THE BEGINNING ----------------
 def slide_plus_beginning():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM_2)
-    add_pill(s, Inches(4.2), Inches(1.2), Inches(4.9), Inches(0.4),
-             '✨  PLUS… THIS IS ONLY THE BEGINNING',
-             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=280)
+    add_pill(s, Inches(4.0), Inches(1.2), Inches(5.3), Inches(0.55),
+             'FOUNDING MEMBERS ALSO GET',
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=260)
     add_paragraphs(s, Inches(0.9), Inches(2.5), Inches(11.5), Inches(3.5), [
         {'runs': [
-            {'text': 'Founding Members get ', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True},
-            {'text': 'everything coming next', 'font': SERIF, 'size': 40, 'color': CORAL, 'italic': True},
-            {'text': ',', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True},
+            {'text': 'A few ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
+            {'text': 'quietly significant', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
         {'runs': [
-            {'text': 'too.', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
-    ])
-    add_runs(s, Inches(0.9), Inches(5.4), Inches(11.5), Inches(0.6),
-        [{'text': 'Future app updates and new features as WLA continues expanding, before our public Phase 2 launch in September.',
-          'font': SANS, 'size': 17, 'color': BODY}], align=PP_ALIGN.CENTER)
-    add_footer(s)
-
-# ---------------- 35. COMING IN PHASE 2 INTRO ----------------
-def slide_phase2_intro():
-    s = prs.slides.add_slide(BLANK)
-    add_bg(s, CREAM)
-    add_pill(s, Inches(4.7), Inches(1.4), Inches(3.9), Inches(0.4),
-             '🚀  COMING SOON · PHASE 2',
-             fill=CORAL, color=WHITE, size=15, letter_spacing=280)
-    add_paragraphs(s, Inches(0.9), Inches(2.6), Inches(11.5), Inches(3.5), [
-        {'runs': [
-            {'text': "What’s coming next is ", 'font': SERIF, 'size': 42, 'color': NAVY, 'bold': True},
-            {'text': 'very', 'font': SERIF, 'size': 42, 'color': CORAL, 'italic': True},
-            {'text': ' exciting.', 'font': SERIF, 'size': 42, 'color': NAVY, 'bold': True},
+            {'text': 'extras.', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
     ])
     add_footer(s)
 
-# ---------------- 36–39. PHASE 2 FEATURES ----------------
+# ---------------- FOUNDING MEMBER BONUSES (1..4) ----------------
 def phase2_slide(num, title, lead, bullets):
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
-    add_runs(s, Inches(0.9), Inches(0.85), Inches(6), Inches(0.5),
-        [{'text': f'COMING IN PHASE 2  ·  {num:02d} / 04',
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(7), Inches(0.5),
+        [{'text': f'FOUNDING MEMBER BONUS  ·  {num:02d} / 04',
           'font': SANS, 'size': 20, 'color': CORAL, 'bold': True, 'letter_spacing': 200}])
     add_runs(s, Inches(0.9), Inches(1.55), Inches(0.6), Inches(0.6),
-        [{'text': '🚀', 'font': SERIF, 'size': 28, 'color': CORAL}])
+        [{'text': '✦', 'font': SERIF, 'size': 32, 'color': CORAL}])
     add_paragraphs(s, Inches(1.55), Inches(1.5), Inches(11.0), Inches(1.3),
         [{'runs': [{'text': title, 'font': SERIF, 'size': 36, 'color': NAVY, 'bold': True}], 'line': 1.15}])
     if lead:
@@ -869,18 +889,18 @@ def phase2_slide(num, title, lead, bullets):
     add_footer(s)
 
 PHASE2_FEATURES = [
-    {'title': 'Personalised Protein + Fibre Targets',
-     'lead':  'Make consistency easier than ever.',
-     'bullets': ['Reduce cravings', 'Stay fuller for longer', 'Simplify nutrition', 'Make consistency easier than ever before']},
-    {'title': 'The Updated WLA Formula',
-     'lead':  'The next evolution of the WLA approach.',
-     'bullets': ['Lose weight', 'Maintain results', 'Simplify nutrition', 'Build a lifestyle that actually LASTS']},
-    {'title': 'Meal Photo Nutrition Analysis',
-     'lead':  'Snap a photo. Get guidance.',
-     'bullets': ['Quicker', 'Easier', 'More realistic for busy lives']},
-    {'title': 'On-Demand Support Inside The App',
-     'lead':  'Support exactly when you need it most.',
-     'bullets': ['Feeling off track', 'Struggling with cravings', 'Needing support during a difficult week']},
+    {'title': 'Future Updates & New Features',
+     'lead':  'Every update we ship, included.',
+     'bullets': ['Every WLA app update', 'Every new feature we ship', 'Through your full founding year']},
+    {'title': 'Early Access Before Public Launch',
+     'lead':  'You’re in before doors open to the wider audience.',
+     'bullets': ['Phase 1 access', 'Before public launch in September', 'Earliest access to everything new']},
+    {'title': 'The LOWEST Price WLA Will Ever Be',
+     'lead':  'Phase 1 pricing never returns.',
+     'bullets': ['Founding rate locked in', 'Pricing increases after Phase 1', 'This exact offer never returns']},
+    {'title': 'Help Shape The Future Of WLA',
+     'lead':  'From the very beginning.',
+     'bullets': ['Founding members guide what gets built next', 'A real seat at the table', 'Be part of the story from day one']},
 ]
 
 # ---------------- 40. THIS IS THE NEXT EVOLUTION (CALLOUT) ----------------
@@ -998,11 +1018,12 @@ def slide_what_receive():
          {'text': 'actually keep going.', 'font': SERIF, 'size': 38, 'color': CORAL, 'italic': True}],
         top=Inches(0.85))
     items = [
-        ('The 12 Week WLA Summer Challenge', 'Designed for women 45+ to lose, feel and finally maintain.'),
-        ('FREE 12 month access to the new WLA App', 'Coaching, planning, recipes, tracking — all in one place.'),
-        ('Access to ALL WLA Challenges for 12 months', 'Every reset, challenge and accountability event.'),
-        ('Weekly Coaching With Anna', 'Support, guidance and accountability every single week.'),
-        ('Female-Only Community Support', 'Daily accountability and women on the same journey.'),
+        ('The 12 Week WLA Summer Challenge', 'Where your founding year begins.'),
+        ('Weekly LIVE Coaching With Anna', 'Stay accountable, motivated and consistent.'),
+        ('Daily Coaching & Accountability', 'Support every single day, not just once a week.'),
+        ('Female-Only WLA Community', 'Women on the same journey.'),
+        ('Access To ALL WLA Challenges For 12 Months', 'Resets, challenges and accountability sprints all year.'),
+        ('Founding Member Access To The New WLA App', 'Early access to the next evolution of WLA.'),
     ]
     y_start = Inches(3.1)
     for i, (t, d) in enumerate(items):
@@ -1036,11 +1057,11 @@ def slide_pricing():
         ], 'align': PP_ALIGN.CENTER, 'line': 1.0},
     ])
     add_runs(s, Inches(2.5), Inches(5.0), Inches(8.3), Inches(0.5),
-        [{'text': 'one-time payment  ·  12 months of WLA',
+        [{'text': '1 year access  ·  Founding membership',
           'font': SANS, 'size': 17, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
         align=PP_ALIGN.CENTER)
     add_runs(s, Inches(2.5), Inches(5.5), Inches(8.3), Inches(0.5),
-        [{'text': 'That’s less than £1.90 per week.',
+        [{'text': 'Just 26p per day.',
           'font': SERIF, 'size': 22, 'color': CORAL, 'italic': True}], align=PP_ALIGN.CENTER)
     add_runs(s, Inches(0.9), Inches(6.55), Inches(11.5), Inches(0.4),
         [{'text': 'The LOWEST price WLA will ever be offered at.',
@@ -1170,7 +1191,7 @@ def slide_close():
           'font': SANS, 'size': 18, 'color': WHITE, 'bold': True, 'letter_spacing': 240}],
         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     add_runs(s, Inches(0.5), Inches(6.15), Inches(12.4), Inches(0.4),
-        [{'text': 'sales.thewlacademy.com/wla-app-1yr',
+        [{'text': 'sales.thewlacademy.com/founding-member',
           'font': SANS, 'size': 16, 'color': CREAM_WARM, 'letter_spacing': 150}],
         align=PP_ALIGN.CENTER)
     add_footer(s, dark=True)
@@ -1203,10 +1224,11 @@ slide_inside_overview()   # 22
 slide_phase1_intro()      # 23
 total_p1 = len(PHASE1_FEATURES)
 for i, f in enumerate(PHASE1_FEATURES, start=1):  # 24..33
-    feature_slide(i, total_p1, f['title'], f['lead'], f['bullets'], f.get('footer'))
-slide_plus_beginning()    # 34
-slide_phase2_intro()      # 35
-for i, f in enumerate(PHASE2_FEATURES, start=1):  # 36..39
+    feature_slide(i, total_p1, f['title'], f['lead'], f['bullets'],
+                  f.get('footer'), value=f.get('value'))
+slide_total_value()       # 34 — £5,750+ → £97 reveal
+slide_plus_beginning()    # 35 — Founding members also get
+for i, f in enumerate(PHASE2_FEATURES, start=1):  # 36..39 — bonuses
     phase2_slide(i, f['title'], f['lead'], f['bullets'])
 slide_next_evolution()    # 40
 slide_founding_open()     # 41
@@ -1220,6 +1242,6 @@ slide_not_perfect()       # 48
 slide_your_chance()       # 49
 slide_close()             # 50
 
-out = '/home/user/21-day-reset/wla-summer-challenge-launch.pptx'
+out = '/home/user/21-day-reset/wla-founding-members-launch.pptx'
 prs.save(out)
 print('SAVED', out, 'slides=', len(prs.slides.__iter__.__self__._sldIdLst))
