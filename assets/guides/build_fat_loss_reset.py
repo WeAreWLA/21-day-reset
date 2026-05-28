@@ -830,6 +830,7 @@ g.recipe(
     note="Want to remove the meat? Replace the sausages "
          "with 2 vegetarian sausages or any vegetarian "
          "alternative from the food swap list.",
+    image=recipe_image("lunch", "weekend-brunch"),
 )
 
 g.recipe(
@@ -905,6 +906,7 @@ g.recipe(
              "the prep.",
     note="Eat straight away or store the chicken mixture "
          "in the fridge until its best-before date.",
+    image=recipe_image("lunch", "coronation-chicken-salad"),
 )
 
 g.recipe(
@@ -940,6 +942,7 @@ g.recipe(
     kicker=("Recipe 08", "Lunch  ·  No Cook"),
     time="2 mins",
     subtitle="A shop-bought win, pick smart and eat well.",
+    image=recipe_image("lunch", "m-and-s-naked-chicken-caesar-salad"),
 )
 
 g.divider("Dinner", "Recipes.")
