@@ -367,8 +367,8 @@ def slide_pillars():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
     add_runs(s, Inches(0.9), Inches(0.95), Inches(11.5), Inches(0.4),
-        [{'text': 'WHAT THE LIFESTYLE LOOKS LIKE', 'font': SANS, 'size': 12,
-          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
+        [{'text': 'WHAT THE LIFESTYLE LOOKS LIKE', 'font': SANS, 'size': 18,
+          'color': CORAL, 'bold': True, 'letter_spacing': 220}])
     add_paragraphs(s, Inches(0.9), Inches(1.45), Inches(11.5), Inches(2.0),
         [{'runs': [
             {'text': 'They build a ', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True},
@@ -436,8 +436,8 @@ def slide_quote_lifestyle():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
     add_runs(s, Inches(0.9), Inches(0.8), Inches(11.5), Inches(0.4),
-        [{'text': 'REMEMBER THIS', 'font': SANS, 'size': 12,
-          'color': CORAL, 'bold': True, 'letter_spacing': 260}])
+        [{'text': 'REMEMBER THIS', 'font': SANS, 'size': 18,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
     # Big serif quote
     add_paragraphs(s, Inches(1.2), Inches(2.1), Inches(10.9), Inches(4), [
         {'runs': [
@@ -451,7 +451,7 @@ def slide_quote_lifestyle():
     ])
     add_runs(s, Inches(1.5), Inches(5.6), Inches(10.3), Inches(0.5),
         [{'text': '— Anna Wallace, Founder of WLA',
-          'font': SANS, 'size': 13, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
+          'font': SANS, 'size': 16, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
         align=PP_ALIGN.CENTER)
     add_footer(s)
 
@@ -460,8 +460,8 @@ def slide_i_live_it():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM_2)
     add_runs(s, Inches(0.9), Inches(1.4), Inches(11.5), Inches(0.4),
-        [{'text': 'AND HONESTLY…', 'font': SANS, 'size': 12,
-          'color': CORAL, 'bold': True, 'letter_spacing': 260}])
+        [{'text': 'AND HONESTLY…', 'font': SANS, 'size': 18,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
     add_paragraphs(s, Inches(0.9), Inches(2.1), Inches(11.5), Inches(4), [
         {'runs': [
             {'text': 'I still live the ', 'font': SERIF, 'size': 56, 'color': NAVY, 'bold': True},
@@ -956,8 +956,8 @@ def slide_only_opportunity():
         coral_bullet(s, Inches(1.5), Inches(3.2) + Inches(0.65 * i), b, size=20)
     # Founding members will receive label
     add_runs(s, Inches(0.9), Inches(5.4), Inches(11.5), Inches(0.4),
-        [{'text': 'FOUNDING MEMBERS WILL RECEIVE', 'font': SANS, 'size': 12,
-          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
+        [{'text': 'FOUNDING MEMBERS WILL RECEIVE', 'font': SANS, 'size': 17,
+          'color': CORAL, 'bold': True, 'letter_spacing': 220}])
     receives = [
         'The LOWEST price WLA will ever be offered at',
         'Early access before public launch',
@@ -970,9 +970,9 @@ def slide_only_opportunity():
         x = Inches(0.9) if col == 0 else Inches(7.0)
         y = Inches(5.95) + Inches(0.45 * row)
         # check icon
-        chk = slide_check_icon(s, x, y + Inches(0.05))
-        add_runs(s, x + Inches(0.32), y, Inches(5.8), Inches(0.4),
-            [{'text': b, 'font': SANS, 'size': 14, 'color': NAVY, 'bold': True}])
+        chk = slide_check_icon(s, x, y + Inches(0.08), size=Inches(0.24))
+        add_runs(s, x + Inches(0.40), y, Inches(5.8), Inches(0.5),
+            [{'text': b, 'font': SANS, 'size': 17, 'color': NAVY, 'bold': True}])
 
 def slide_check_icon(s, x, y, size=Inches(0.18), fill=CORAL):
     box = s.shapes.add_shape(MSO_SHAPE.OVAL, x, y, size, size)
@@ -1010,7 +1010,7 @@ def slide_what_receive():
         add_runs(s, Inches(1.5), y, Inches(11), Inches(0.4),
             [{'text': t, 'font': SERIF, 'size': 19, 'color': NAVY, 'bold': True}])
         add_runs(s, Inches(1.5), y + Inches(0.36), Inches(11), Inches(0.4),
-            [{'text': d, 'font': SANS, 'size': 14, 'color': BODY}])
+            [{'text': d, 'font': SANS, 'size': 16, 'color': BODY}])
     add_footer(s)
 
 # ---------------- 45. PRICING SLIDE ----------------
@@ -1025,8 +1025,8 @@ def slide_pricing():
     card.line.color.rgb = CREAM_2
     # All for only
     add_runs(s, Inches(2.5), Inches(2.0), Inches(8.3), Inches(0.5),
-        [{'text': 'ALL FOR ONLY', 'font': SANS, 'size': 14, 'color': MUTED,
-          'bold': True, 'letter_spacing': 280}], align=PP_ALIGN.CENTER)
+        [{'text': 'ALL FOR ONLY', 'font': SANS, 'size': 18, 'color': MUTED,
+          'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
     # £97
     add_paragraphs(s, Inches(2.5), Inches(2.6), Inches(8.3), Inches(2), [
         {'runs': [
@@ -1036,7 +1036,7 @@ def slide_pricing():
     ])
     add_runs(s, Inches(2.5), Inches(5.0), Inches(8.3), Inches(0.5),
         [{'text': 'one-time payment  ·  12 months of WLA',
-          'font': SANS, 'size': 14, 'color': MUTED, 'bold': True, 'letter_spacing': 220}],
+          'font': SANS, 'size': 17, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
         align=PP_ALIGN.CENTER)
     add_runs(s, Inches(2.5), Inches(5.5), Inches(8.3), Inches(0.5),
         [{'text': 'That’s less than £1.90 per week.',
@@ -1051,8 +1051,8 @@ def slide_not_another_diet():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
     add_runs(s, Inches(0.9), Inches(1.2), Inches(11.5), Inches(0.4),
-        [{'text': 'REMEMBER', 'font': SANS, 'size': 12,
-          'color': CORAL, 'bold': True, 'letter_spacing': 280}], align=PP_ALIGN.CENTER)
+        [{'text': 'REMEMBER', 'font': SANS, 'size': 18,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
     add_paragraphs(s, Inches(0.9), Inches(2.1), Inches(11.5), Inches(3.5), [
         {'runs': [
             {'text': 'This isn’t about starting ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
@@ -1164,11 +1164,11 @@ def slide_close():
                          CORAL, radius_pct=0.5)
     add_runs(s, Inches(4.4), Inches(5.6), Inches(4.5), Inches(0.75),
         [{'text': 'JOIN AS A FOUNDING MEMBER  →',
-          'font': SANS, 'size': 14, 'color': WHITE, 'bold': True, 'letter_spacing': 260}],
+          'font': SANS, 'size': 18, 'color': WHITE, 'bold': True, 'letter_spacing': 240}],
         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     add_runs(s, Inches(0.5), Inches(6.6), Inches(12.4), Inches(0.4),
         [{'text': 'sales.thewlacademy.com/wla-app-1yr',
-          'font': SANS, 'size': 12, 'color': CREAM_WARM, 'letter_spacing': 150}],
+          'font': SANS, 'size': 16, 'color': CREAM_WARM, 'letter_spacing': 150}],
         align=PP_ALIGN.CENTER)
     add_footer(s, dark=True)
 
