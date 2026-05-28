@@ -289,6 +289,16 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .anna-side-by-side .image { aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 28px 56px -28px rgba(14,39,70,0.28); }
   .anna-side-by-side .image img { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (max-width: 640px) { .anna-side-by-side { max-width: 100%; } }
+
+  /* Image + Formula side by side */
+  .formula-pair { display: grid; grid-template-columns: 1fr 1.05fr; gap: 28px; margin: 40px auto; max-width: 1100px; align-items: stretch; }
+  .formula-pair .anna-side-by-side { margin: 0; max-width: none; }
+  .formula-pair .anna-side-by-side .image { aspect-ratio: 1 / 1; height: 100%; }
+  .formula-pair .formula-reveal { margin: 0; max-width: none; padding: 36px 36px; display: flex; flex-direction: column; justify-content: center; }
+  .formula-pair .formula-reveal p.formula-tag { font-size: 16px; max-width: none; margin-bottom: 24px; }
+  .formula-pair .formula-reveal .formula-name { font-size: clamp(34px, 4vw, 50px); }
+  .formula-pair .formula-reveal .formula-outcomes .outcome .num { font-size: 24px; }
+  @media (max-width: 880px) { .formula-pair { grid-template-columns: 1fr; gap: 20px; } .formula-pair .anna-side-by-side .image { height: auto; } }
   .lifestyle-callout { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 20px; text-align: center; box-shadow: 0 30px 60px -28px rgba(14,39,70,0.4); position: relative; overflow: hidden; }
   .lifestyle-callout::before { content: ''; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(229,145,122,0.25), transparent 65%); pointer-events: none; }
   .lifestyle-callout .lifestyle-mark { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral-soft); margin-bottom: 12px; position: relative; z-index: 1; }
@@ -581,7 +591,7 @@ function Hero() {
   return (
     <section className="hero" id="top">
       <div>
-        <div className="founding-tag">✨ Founding Members Launch ✨</div>
+        <div className="founding-tag">Founding Members Launch</div>
         <h1 className="h1 serif">The Weight Loss<br/>& <span className="accent italic">Lifestyle Academy</span></h1>
         <p className="h1-sub">Lose The Weight. Live The Lifestyle.</p>
         <p className="lede">Become one of <strong>only 1,000 founding members</strong> inside the next evolution of WLA. <strong>One year of access for just £97</strong>, about <strong>26p per day</strong>.</p>
@@ -650,22 +660,23 @@ function WhyWLAExists() {
 
         <p>That struggle became so frustrating I eventually decided to study nutrition at university, because I needed to understand <em>why I couldn't maintain the results long term.</em></p>
 
-        <div className="formula-reveal">
-          <div className="formula-eyebrow">What I built from everything I learned</div>
-          <h3 className="formula-name">The <em>WLA Formula</em></h3>
-          <p className="formula-tag">Not another quick fix. Not another restrictive diet. A simple, flexible approach that finally worked for me, and eventually, for thousands of other women too.</p>
-          <div className="formula-outcomes">
-            <div className="outcome"><div className="num">2+ stone</div><div className="lab">Lost &amp; kept off</div></div>
-            <div className="outcome"><div className="num">11 yrs</div><div className="lab">Still living it</div></div>
-            <div className="outcome"><div className="num">50,000+</div><div className="lab">Women supported</div></div>
+        <div className="formula-pair">
+          <figure className="anna-side-by-side">
+            <div className="image">
+              <img src="/assets/anna-before-after.png" alt="Anna Wallace, before and after living the WLA way" loading="lazy" decoding="async" />
+            </div>
+          </figure>
+          <div className="formula-reveal">
+            <div className="formula-eyebrow">What I built from everything I learned</div>
+            <h3 className="formula-name">The <em>WLA Formula</em></h3>
+            <p className="formula-tag">Not another quick fix. Not another restrictive diet. A simple, flexible approach that finally worked for me, and eventually, for thousands of other women too.</p>
+            <div className="formula-outcomes">
+              <div className="outcome"><div className="num">2+ stone</div><div className="lab">Lost &amp; kept off</div></div>
+              <div className="outcome"><div className="num">11 yrs</div><div className="lab">Still living it</div></div>
+              <div className="outcome"><div className="num">50,000+</div><div className="lab">Women supported</div></div>
+            </div>
           </div>
         </div>
-
-        <figure className="anna-side-by-side">
-          <div className="image">
-            <img src="/assets/anna-before-after.png" alt="Anna Wallace, before and after living the WLA way" loading="lazy" decoding="async" />
-          </div>
-        </figure>
 
         <p>People always ask me: <em>"What did you actually do? How did you maintain it?"</em> <strong>The truth is, I still live the WLA way today.</strong> Not perfectly. Just consistently enough to maintain my results, feel good in myself, and build routines that fit real life.</p>
         <p>Over the last 11 years, one thing became very clear. <strong>The women who achieve the best long-term success inside WLA are usually the women who continue living the WLA lifestyle too.</strong></p>
