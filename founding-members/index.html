@@ -231,6 +231,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 720px) { .reason .pillar-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 480px) { .reason .pillar-grid { grid-template-columns: 1fr; } }
 
+  /* Lifestyle callout (Imagine section) */
+  .lifestyle-callout { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 20px; text-align: center; box-shadow: 0 30px 60px -28px rgba(14,39,70,0.4); position: relative; overflow: hidden; }
+  .lifestyle-callout::before { content: ''; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(229,145,122,0.25), transparent 65%); pointer-events: none; }
+  .lifestyle-callout .lifestyle-mark { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral-soft); margin-bottom: 12px; position: relative; z-index: 1; }
+  .lifestyle-callout .lifestyle-text { display: block; font-family: 'Libre Baskerville', serif; font-size: clamp(26px, 3.2vw, 36px); line-height: 1.2; color: #fff; font-weight: 700; letter-spacing: -0.01em; position: relative; z-index: 1; }
+  .lifestyle-callout .lifestyle-text em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+  @media (max-width: 640px) { .lifestyle-callout { padding: 30px 24px; } }
+
   /* Two-up explainer (lifestyle / next phase) */
   .explainer { padding: 96px 28px; background: var(--cream); border-top: 1px solid rgba(14,39,70,0.06); }
   .explainer-inner { max-width: 880px; margin: 0 auto; }
@@ -259,7 +267,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-card h3 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .receive-card p { font-size: 15.5px; line-height: 1.55; color: #333; margin: 0; }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
-  .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 12px; }
+  .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
   .receive-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; padding: 18px 32px; border-radius: 999px; font-weight: 700; font-size: 16px; transition: background .15s, transform .15s; }
   .receive-cta-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
@@ -501,7 +509,7 @@ function Hero() {
     <section className="hero" id="top">
       <div>
         <div className="founding-tag">Limited Founding Members Launch</div>
-        <h1 className="h1 serif">The WLA<br/><span className="accent italic">12 Week<br/>Summer Challenge</span></h1>
+        <h1 className="h1 serif">The WLA<br/><span className="accent italic">12 Week</span><br/>Summer Challenge</h1>
         <p className="h1-sub">Lose up to <strong>2 stone this summer</strong> while eating food you love, without intense exercise, miserable diets or starting over every Monday.</p>
         <p className="lede">Join today for <strong>ONLY £97</strong> and get <strong>12 months inside the brand new WLA App + Community included FREE.</strong></p>
         <ul className="bullet-list">
@@ -942,7 +950,10 @@ function Imagine() {
           ))}
         </ul>
         <p>Now imagine doing all of that <strong>with support, with accountability, with structure, and with thousands of women doing it with you.</strong></p>
-        <p>That's what the WLA lifestyle is all about.</p>
+        <div className="lifestyle-callout">
+          <span className="lifestyle-mark">That's</span>
+          <span className="lifestyle-text">what the <em>WLA lifestyle</em> is all about.</span>
+        </div>
       </div>
     </section>
   );
