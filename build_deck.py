@@ -1197,50 +1197,525 @@ def slide_close():
     add_footer(s, dark=True)
 
 # ============================================================
+# NEW SLIDES FOR REWORKED FLOW
+# ============================================================
+
+def slide_founding_offer_overview():
+    """Slide 2: the offer + 4 bullet stack + price."""
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_pill(s, Inches(3.4), Inches(0.7), Inches(6.5), Inches(0.55),
+             'FOUNDING MEMBERS · ONE YEAR ACCESS',
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=240)
+    add_paragraphs(s, Inches(0.7), Inches(1.7), Inches(11.9), Inches(1.5), [
+        {'runs': [
+            {'text': 'Only ', 'font': SERIF, 'size': 48, 'color': NAVY, 'bold': True},
+            {'text': '£97 ', 'font': SERIF, 'size': 64, 'color': CORAL, 'italic': True},
+            {'text': '· Just 26p per day', 'font': SERIF, 'size': 30, 'color': NAVY, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
+    ])
+    add_runs(s, Inches(0.9), Inches(3.0), Inches(11.5), Inches(0.5),
+        [{'text': 'Price increases when founding members closes.',
+          'font': SANS, 'size': 14, 'color': MUTED, 'bold': True, 'letter_spacing': 220}],
+        align=PP_ALIGN.CENTER)
+    bullets = [
+        '12 Week WLA Summer Challenge: Lose up to 2 stone this summer',
+        'ALL WLA Challenges, Resets & Accountability Sprints for 12 months',
+        'Founding Member access to the brand new WLA app',
+        'Lock in the LOWEST WLA price this round only',
+    ]
+    y0 = Inches(3.9)
+    for i, b in enumerate(bullets):
+        coral_bullet(s, Inches(1.4), y0 + Inches(0.55 * i), b, size=20, color=NAVY)
+    add_footer(s)
+
+def slide_real_women_results():
+    """Real Women. Real Results."""
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM_2)
+    add_runs(s, Inches(0.9), Inches(0.95), Inches(11.5), Inches(0.45),
+        [{'text': 'REAL WOMEN', 'font': SANS, 'size': 18,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
+    add_paragraphs(s, Inches(0.9), Inches(1.55), Inches(11.5), Inches(1.5), [
+        {'runs': [
+            {'text': 'Real ', 'font': SERIF, 'size': 60, 'color': NAVY, 'bold': True},
+            {'text': 'results', 'font': SERIF, 'size': 60, 'color': CORAL, 'italic': True},
+            {'text': '.', 'font': SERIF, 'size': 60, 'color': NAVY, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
+    ])
+    # 4-tile photo grid placeholder (4 wide cream cards) — speaker shows actual photos live
+    tile_w_in = 2.7; tile_h_in = 3.0; gap_in = 0.15
+    total_w_in = tile_w_in * 4 + gap_in * 3
+    start_x_in = (13.333 - total_w_in) / 2
+    y = Inches(3.4)
+    names = ['Vicky', 'Jill', 'Ruth', 'Lisa']
+    for i in range(4):
+        x = Inches(start_x_in + (tile_w_in + gap_in) * i)
+        tile_w = Inches(tile_w_in); tile_h = Inches(tile_h_in)
+        card = add_round_rect(s, x, y, tile_w, tile_h, PAPER, radius_pct=0.04)
+        card.line.color.rgb = NAVY
+        add_runs(s, x, y + Inches(2.55), tile_w, Inches(0.4),
+            [{'text': names[i], 'font': SERIF, 'size': 18, 'color': NAVY, 'bold': True, 'italic': True}],
+            align=PP_ALIGN.CENTER)
+    add_runs(s, Inches(0.9), Inches(6.6), Inches(11.5), Inches(0.4),
+        [{'text': '*Results vary depending on the individual. There is no guarantee of specific results.',
+          'font': SANS, 'size': 12, 'color': MUTED, 'italic': True}],
+        align=PP_ALIGN.CENTER)
+    add_footer(s)
+
+def slide_why_wla_intro():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    slide_eyebrow_headline(s, 'Why The WLA Exists',
+        [{'text': 'For years, I was deeply ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
+         {'text': 'unhappy in myself.', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True}],
+        top=Inches(2.0))
+    add_footer(s)
+
+def slide_anna_struggles():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_runs(s, Inches(0.9), Inches(0.95), Inches(11.5), Inches(0.5),
+        [{'text': 'I STRUGGLED WITH', 'font': SANS, 'size': 18,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
+    bullets = [
+        'Emotional eating',
+        'Low self-esteem',
+        'Drinking alcohol to feel better',
+        'Constantly starting new diets',
+        'Never feeling comfortable in my body',
+    ]
+    y0 = Inches(2.0)
+    for i, b in enumerate(bullets):
+        col = i % 2; row = i // 2
+        x = Inches(0.95) if col == 0 else Inches(7.0)
+        y = y0 + Inches(0.85 * row)
+        # card
+        card = add_round_rect(s, x, y, Inches(5.4), Inches(0.7), PAPER, radius_pct=0.15)
+        card.line.color.rgb = CREAM_2
+        bar = add_rect(s, x, y, Emu(int(Inches(0.06).emu)), Inches(0.7), CORAL)
+        add_runs(s, x + Inches(0.25), y, Inches(5.1), Inches(0.7),
+            [{'text': b, 'font': SERIF, 'size': 19, 'color': NAVY, 'bold': True}],
+            anchor=MSO_ANCHOR.MIDDLE)
+    add_footer(s)
+
+def slide_anna_pull_quote():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, NAVY)
+    add_paragraphs(s, Inches(1.0), Inches(2.5), Inches(11.3), Inches(3.5), [
+        {'runs': [
+            {'text': '“I tried everything. But no matter how much weight I lost,', 'font': SERIF, 'size': 32, 'color': WHITE, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.3, 'space_after': 14},
+        {'runs': [
+            {'text': 'I always found myself ', 'font': SERIF, 'size': 38, 'color': WHITE, 'italic': True},
+            {'text': 'slipping back into old habits', 'font': SERIF, 'size': 38, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+            {'text': '.”', 'font': SERIF, 'size': 38, 'color': WHITE, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.3},
+    ])
+    add_footer(s, dark=True)
+
+def slide_studied_nutrition():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    slide_eyebrow_headline(s, 'So I went back to school',
+        [{'text': 'I needed to understand ', 'font': SERIF, 'size': 38, 'color': NAVY, 'bold': True},
+         {'text': 'why I couldn’t maintain', 'font': SERIF, 'size': 38, 'color': CORAL, 'italic': True}],
+        body_paras=[
+            {'runs': [{'text': 'That struggle became so frustrating I eventually decided to study nutrition at university, so I could finally understand why I couldn’t maintain the results long term.',
+                       'font': SANS, 'size': 19, 'color': BODY}], 'line': 1.55, 'space_after': 14},
+            {'runs': [{'text': 'Over time, I took everything I learned through my degree, qualifications and personal journey and created…',
+                       'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True}], 'line': 1.5},
+        ])
+    add_footer(s)
+
+def slide_wla_formula():
+    """Navy reveal block with WLA Formula + 3 stats."""
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(11.5), Inches(0.5),
+        [{'text': 'WHAT I BUILT FROM EVERYTHING I LEARNED', 'font': SANS, 'size': 17,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
+    # Big serif formula name
+    add_paragraphs(s, Inches(0.5), Inches(1.5), Inches(12.4), Inches(2.2), [
+        {'runs': [
+            {'text': 'The ', 'font': SERIF, 'size': 72, 'color': NAVY, 'bold': True},
+            {'text': 'WLA Formula', 'font': SERIF, 'size': 72, 'color': CORAL, 'italic': True, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
+    ])
+    add_runs(s, Inches(0.9), Inches(3.5), Inches(11.5), Inches(0.5),
+        [{'text': 'Not another quick fix. Not another restrictive diet. A simple, flexible approach.',
+          'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True}], align=PP_ALIGN.CENTER)
+    # 3 stats
+    stat_w_in = 3.6; gap_in = 0.2
+    total_w_in = stat_w_in * 3 + gap_in * 2
+    start_x_in = (13.333 - total_w_in) / 2
+    y = Inches(4.5); h = Inches(1.8)
+    stats = [('2+ stone', 'Lost & kept off'), ('11 yrs', 'Still living it'), ('50,000+', 'Women supported')]
+    for i, (num, lab) in enumerate(stats):
+        x = Inches(start_x_in + (stat_w_in + gap_in) * i)
+        card = add_round_rect(s, x, y, Inches(stat_w_in), h, NAVY, radius_pct=0.08)
+        add_runs(s, x, y + Inches(0.35), Inches(stat_w_in), Inches(0.7),
+            [{'text': num, 'font': SERIF, 'size': 36, 'color': CORAL_SOFT, 'italic': True, 'bold': True}],
+            align=PP_ALIGN.CENTER)
+        add_runs(s, x, y + Inches(1.05), Inches(stat_w_in), Inches(0.4),
+            [{'text': lab, 'font': SANS, 'size': 12, 'color': CREAM_WARM, 'bold': True, 'letter_spacing': 200}],
+            align=PP_ALIGN.CENTER)
+    add_footer(s)
+
+def slide_mission():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, NAVY)
+    add_runs(s, Inches(0.9), Inches(1.2), Inches(11.5), Inches(0.5),
+        [{'text': 'MY MISSION', 'font': SANS, 'size': 17,
+          'color': CORAL_SOFT, 'bold': True, 'letter_spacing': 280}], align=PP_ALIGN.CENTER)
+    add_paragraphs(s, Inches(0.5), Inches(2.4), Inches(12.4), Inches(4.0), [
+        {'runs': [
+            {'text': 'No longer just helping women ', 'font': SERIF, 'size': 42, 'color': WHITE, 'bold': True},
+            {'text': 'lose weight.', 'font': SERIF, 'size': 42, 'color': CORAL_SOFT, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2, 'space_after': 18},
+        {'runs': [
+            {'text': 'Helping women build a ', 'font': SERIF, 'size': 42, 'color': WHITE, 'bold': True},
+            {'text': 'lifestyle that lets them KEEP', 'font': SERIF, 'size': 42, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+        {'runs': [
+            {'text': 'the results too.', 'font': SERIF, 'size': 42, 'color': WHITE, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+    ])
+    add_footer(s, dark=True)
+
+def slide_about_next_chapter():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    slide_eyebrow_headline(s, 'The Weight Loss & Lifestyle Academy',
+        [{'text': 'This next chapter is about ', 'font': SERIF, 'size': 38, 'color': NAVY, 'bold': True},
+         {'text': 'more than losing weight alone.', 'font': SERIF, 'size': 38, 'color': CORAL, 'italic': True}],
+        top=Inches(0.85))
+    add_runs(s, Inches(0.9), Inches(3.3), Inches(11.5), Inches(0.5),
+        [{'text': 'It’s about helping women:', 'font': SERIF, 'size': 22,
+          'color': NAVY, 'italic': True}])
+    bullets = [
+        'Maintain momentum',
+        'Stay consistent',
+        'Build routines that LAST',
+        'And finally stop starting over',
+    ]
+    y0 = Inches(4.0)
+    for i, b in enumerate(bullets):
+        coral_bullet(s, Inches(1.5), y0 + Inches(0.55 * i), b, size=22, color=NAVY)
+    add_footer(s)
+
+def slide_evolving_intro():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM_2)
+    add_pill(s, Inches(4.2), Inches(1.5), Inches(5.0), Inches(0.55),
+             'HERE’S WHAT’S EVOLVING INSIDE WLA',
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=240)
+    add_paragraphs(s, Inches(0.5), Inches(2.8), Inches(12.4), Inches(3.0), [
+        {'runs': [
+            {'text': 'The next phase, ', 'font': SERIF, 'size': 50, 'color': NAVY, 'bold': True},
+            {'text': 'in plain English.', 'font': SERIF, 'size': 50, 'color': CORAL, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.15},
+    ])
+    add_footer(s)
+
+EVOLVING_BULLETS = [
+    'The Weight Loss Academy is evolving into The Weight Loss & Lifestyle Academy',
+    'This group will move into our brand new coaching space',
+    'Founding members will receive early access to the brand new WLA app',
+    'More support, accountability and lifestyle tools to help maintain results long term',
+    'If you have access to the Shift members area, you continue that access until we launch the app',
+    'If you join as a founding member, you get Shift members area access until the new app launches',
+    'Existing Shift members: the founding promo is added onto your current end date',
+]
+
+def slide_evolving_bullets(group):
+    """group=1 first 4, group=2 next 3."""
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(11.5), Inches(0.5),
+        [{'text': f'WHAT’S EVOLVING  ·  {group} of 2', 'font': SANS, 'size': 17,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
+    bullets = EVOLVING_BULLETS[0:4] if group == 1 else EVOLVING_BULLETS[4:]
+    y0 = Inches(1.8)
+    for i, b in enumerate(bullets):
+        coral_bullet(s, Inches(1.0), y0 + Inches(0.95 * i), b, size=17, color=NAVY)
+    add_footer(s)
+
+def slide_special_extension():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_pill(s, Inches(3.5), Inches(0.85), Inches(6.3), Inches(0.55),
+             'A SPECIAL EXTENSION OPPORTUNITY',
+             fill=CORAL, color=WHITE, size=15, letter_spacing=240)
+    add_paragraphs(s, Inches(0.5), Inches(1.9), Inches(12.4), Inches(2.5), [
+        {'runs': [
+            {'text': 'For existing WLA clients ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
+            {'text': 'first.', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+    ])
+    # 3 stats
+    stat_w_in = 3.6; gap_in = 0.2
+    total_w_in = stat_w_in * 3 + gap_in * 2
+    start_x_in = (13.333 - total_w_in) / 2
+    y = Inches(4.3); h = Inches(1.7)
+    stats = [('1,000', 'Founding places'), ('12 mo', 'Full WLA access'), ('7 days', 'Before public launch')]
+    for i, (num, lab) in enumerate(stats):
+        x = Inches(start_x_in + (stat_w_in + gap_in) * i)
+        card = add_round_rect(s, x, y, Inches(stat_w_in), h, PAPER, radius_pct=0.08)
+        card.line.color.rgb = CORAL
+        add_runs(s, x, y + Inches(0.3), Inches(stat_w_in), Inches(0.7),
+            [{'text': num, 'font': SERIF, 'size': 36, 'color': CORAL, 'italic': True, 'bold': True}],
+            align=PP_ALIGN.CENTER)
+        add_runs(s, x, y + Inches(1.0), Inches(stat_w_in), Inches(0.4),
+            [{'text': lab, 'font': SANS, 'size': 12, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
+            align=PP_ALIGN.CENTER)
+    add_runs(s, Inches(0.9), Inches(6.4), Inches(11.5), Inches(0.4),
+        [{'text': 'Launching inside this group first. Everyone else next week.',
+          'font': SERIF, 'size': 18, 'color': NAVY, 'italic': True}], align=PP_ALIGN.CENTER)
+    add_footer(s)
+
+def slide_expected_results_intro():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_pill(s, Inches(4.3), Inches(1.4), Inches(4.7), Inches(0.55),
+             'WHAT RESULTS CAN YOU EXPECT?',
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=240)
+    add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.5), [
+        {'runs': [
+            {'text': 'Designed to help you build results ', 'font': SERIF, 'size': 38, 'color': NAVY, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+        {'runs': [
+            {'text': 'you can actually keep.', 'font': SERIF, 'size': 38, 'color': CORAL, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+    ])
+    add_footer(s)
+
+EXPECTED_RESULTS = [
+    'Lose weight in a realistic, sustainable way',
+    'Reduce bloating and puffiness',
+    'Feel lighter, leaner, more comfortable in your body',
+    'Fit better into clothes again',
+    'Feel more confident in photos, holidays, social occasions',
+    'Reduce cravings, overeating and emotional eating',
+    'Have more energy throughout the day',
+    'Stop constantly thinking about food',
+    'Feel healthier, fitter and more in control',
+    'Build routines that actually LAST',
+    'Stop "starting again Monday"',
+    'Finally create a lifestyle you can realistically maintain',
+]
+
+def slide_expected_results(group):
+    """group=1 first 6, group=2 next 6."""
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(11.5), Inches(0.5),
+        [{'text': f'EXPECTED RESULTS  ·  {group} of 2', 'font': SANS, 'size': 17,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
+    bullets = EXPECTED_RESULTS[0:6] if group == 1 else EXPECTED_RESULTS[6:]
+    y0 = Inches(1.8)
+    for i, b in enumerate(bullets):
+        col = i % 2; row = i // 2
+        x = Inches(0.9) if col == 0 else Inches(7.0)
+        y = y0 + Inches(0.85 * row)
+        # card
+        card = add_round_rect(s, x, y, Inches(5.4), Inches(0.7), PAPER, radius_pct=0.15)
+        card.line.color.rgb = CREAM_2
+        bar = add_rect(s, x, y, Emu(int(Inches(0.06).emu)), Inches(0.7), CORAL)
+        add_runs(s, x + Inches(0.25), y, Inches(5.1), Inches(0.7),
+            [{'text': b, 'font': SERIF, 'size': 16, 'color': NAVY, 'bold': True}],
+            anchor=MSO_ANCHOR.MIDDLE)
+    add_footer(s)
+
+def slide_not_short_term():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, NAVY)
+    add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.0), [
+        {'runs': [
+            {'text': 'This is ', 'font': SERIF, 'size': 50, 'color': WHITE, 'bold': True},
+            {'text': 'NOT', 'font': SERIF, 'size': 50, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+            {'text': ' just short-term weight loss.', 'font': SERIF, 'size': 50, 'color': WHITE, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2, 'space_after': 22},
+        {'runs': [
+            {'text': 'It’s about helping you build results you can actually ', 'font': SERIF, 'size': 32, 'color': WHITE, 'italic': True},
+            {'text': 'KEEP', 'font': SERIF, 'size': 32, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+            {'text': '.', 'font': SERIF, 'size': 32, 'color': WHITE, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.3},
+    ])
+    add_footer(s, dark=True)
+
+def slide_summer_vs_founding_year():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_runs(s, Inches(0.9), Inches(0.9), Inches(11.5), Inches(0.5),
+        [{'text': 'TWO HALVES OF THE SAME JOURNEY', 'font': SANS, 'size': 17,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
+    # Two cards side by side
+    card_w_in = 5.6; card_h_in = 4.0; gap_in = 0.4
+    total_w_in = card_w_in * 2 + gap_in
+    start_x_in = (13.333 - total_w_in) / 2
+    start_x = Inches(start_x_in)
+    card_w = Inches(card_w_in); card_h = Inches(card_h_in)
+    y = Inches(2.0)
+    # Left card — Summer Challenge
+    left = add_round_rect(s, start_x, y, card_w, card_h, PAPER, radius_pct=0.06)
+    left.line.color.rgb = CREAM_2
+    add_runs(s, start_x, y + Inches(0.5), card_w, Inches(0.5),
+        [{'text': '12 WEEK SUMMER CHALLENGE', 'font': SANS, 'size': 14,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
+    add_paragraphs(s, start_x + Inches(0.4), y + Inches(1.3), card_w - Inches(0.8), Inches(2.0), [
+        {'runs': [
+            {'text': 'Helps women ', 'font': SERIF, 'size': 28, 'color': NAVY, 'bold': True},
+            {'text': 'lose', 'font': SERIF, 'size': 28, 'color': CORAL, 'italic': True, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+        {'runs': [
+            {'text': 'the weight.', 'font': SERIF, 'size': 28, 'color': NAVY, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+    ])
+    # Right card — Founding Year
+    right_x = Inches(start_x_in + card_w_in + gap_in)
+    right = add_round_rect(s, right_x, y, card_w, card_h, NAVY, radius_pct=0.06)
+    add_runs(s, right_x, y + Inches(0.5), card_w, Inches(0.5),
+        [{'text': 'THE FOUNDING YEAR', 'font': SANS, 'size': 14,
+          'color': CORAL_SOFT, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
+    add_paragraphs(s, right_x + Inches(0.4), y + Inches(1.3), card_w - Inches(0.8), Inches(2.0), [
+        {'runs': [
+            {'text': 'Helps women ', 'font': SERIF, 'size': 28, 'color': WHITE, 'bold': True},
+            {'text': 'KEEP', 'font': SERIF, 'size': 28, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+        {'runs': [
+            {'text': 'it off.', 'font': SERIF, 'size': 28, 'color': WHITE, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+    ])
+    add_footer(s)
+
+def slide_imagine_intro():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_pill(s, Inches(4.3), Inches(1.4), Inches(4.7), Inches(0.55),
+             'IMAGINE THIS BEING YOUR SUMMER',
+             fill=CORAL, color=WHITE, size=15, letter_spacing=240)
+    add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.0), [
+        {'runs': [
+            {'text': 'Reaching September ', 'font': SERIF, 'size': 42, 'color': NAVY, 'bold': True},
+            {'text': 'still building', 'font': SERIF, 'size': 42, 'color': CORAL, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+        {'runs': [
+            {'text': 'momentum, not starting over.', 'font': SERIF, 'size': 42, 'color': NAVY, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+    ])
+    add_footer(s)
+
+IMAGINE_BULLETS = [
+    'Putting clothes on and actually FEELING good in them',
+    'Going on holiday without worrying about covering up',
+    'Feeling lighter, leaner and more confident in your body',
+    'Looking in the mirror and feeling proud of yourself again',
+    'Not constantly thinking about food all day long',
+    'Reducing bloating, puffiness and overeating',
+    'Waking up with more energy and motivation',
+    'Finally feeling back in control around food again',
+    'Reaching September STILL building momentum instead of starting again',
+]
+
+def slide_imagine_bullets(group):
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, CREAM)
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(11.5), Inches(0.5),
+        [{'text': f'IMAGINE  ·  {group} of 2', 'font': SANS, 'size': 17,
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
+    bullets = IMAGINE_BULLETS[0:5] if group == 1 else IMAGINE_BULLETS[5:]
+    y0 = Inches(1.8)
+    for i, b in enumerate(bullets):
+        col = i % 2; row = i // 2
+        x = Inches(0.9) if col == 0 else Inches(7.0)
+        y = y0 + Inches(0.85 * row)
+        card = add_round_rect(s, x, y, Inches(5.4), Inches(0.7), PAPER, radius_pct=0.15)
+        card.line.color.rgb = CREAM_2
+        bar = add_rect(s, x, y, Emu(int(Inches(0.06).emu)), Inches(0.7), CORAL)
+        add_runs(s, x + Inches(0.25), y, Inches(5.1), Inches(0.7),
+            [{'text': b, 'font': SERIF, 'size': 15, 'color': NAVY, 'bold': True}],
+            anchor=MSO_ANCHOR.MIDDLE)
+    add_footer(s)
+
+def slide_becoming_yourself():
+    s = prs.slides.add_slide(BLANK)
+    add_bg(s, NAVY)
+    add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.5), [
+        {'runs': [
+            {'text': 'This isn’t just about ', 'font': SERIF, 'size': 38, 'color': WHITE, 'italic': True},
+            {'text': 'losing weight.', 'font': SERIF, 'size': 38, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.3, 'space_after': 22},
+        {'runs': [
+            {'text': 'It’s about ', 'font': SERIF, 'size': 44, 'color': WHITE, 'bold': True},
+            {'text': 'becoming the version of yourself', 'font': SERIF, 'size': 44, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+        {'runs': [
+            {'text': 'you ', 'font': SERIF, 'size': 44, 'color': WHITE, 'bold': True},
+            {'text': 'know', 'font': SERIF, 'size': 44, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+            {'text': ' is still in there.', 'font': SERIF, 'size': 44, 'color': WHITE, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+    ])
+    add_footer(s, dark=True)
+
+# ============================================================
 # BUILD
 # ============================================================
-slide_cover()             # 1
-slide_opening()           # 2
-slide_11_years()          # 3
-slide_hardest_part()      # 4
-slide_cycle()             # 5
-slide_keep_it_off()       # 6
-slide_pillars()           # 7
-slide_evolution()         # 8
-slide_shift()             # 9
-slide_quote_lifestyle()   # 10
-slide_i_live_it()         # 11
-slide_not_perfectly()     # 12
-slide_i_still()           # 13
-slide_never_diet()        # 14
-slide_taught_lived()      # 15
-slide_passionate()        # 16
-slide_welcome()           # 17
-slide_about()             # 18
-slide_huge()              # 19
-slide_reveal_app()        # 20
-slide_not_calorie()       # 21
-slide_inside_overview()   # 22
-slide_phase1_intro()      # 23
+slide_cover()                       # 1
+slide_founding_offer_overview()     # 2
+slide_real_women_results()          # 3
+
+# Why The WLA Exists (Anna's story)
+slide_why_wla_intro()               # 4
+slide_anna_struggles()              # 5
+slide_anna_pull_quote()             # 6
+slide_studied_nutrition()           # 7
+slide_wla_formula()                 # 8
+slide_mission()                     # 9
+
+# The Weight Loss & Lifestyle Academy
+slide_welcome()                     # 10 — existing welcome slide
+slide_about_next_chapter()          # 11
+
+# What's Evolving Inside WLA
+slide_evolving_intro()              # 12
+slide_evolving_bullets(1)           # 13
+slide_evolving_bullets(2)           # 14
+
+# A Special Extension Opportunity
+slide_special_extension()           # 15
+
+# Expected Results
+slide_expected_results_intro()      # 16
+slide_expected_results(1)           # 17
+slide_expected_results(2)           # 18
+slide_not_short_term()              # 19
+
+# What's Included
+slide_phase1_intro()                # 20
 total_p1 = len(PHASE1_FEATURES)
-for i, f in enumerate(PHASE1_FEATURES, start=1):  # 24..33
+for i, f in enumerate(PHASE1_FEATURES, start=1):  # 21..30
     feature_slide(i, total_p1, f['title'], f['lead'], f['bullets'],
                   f.get('footer'), value=f.get('value'))
-slide_total_value()       # 34 — £5,750+ → £97 reveal
-slide_plus_beginning()    # 35 — Founding members also get
-for i, f in enumerate(PHASE2_FEATURES, start=1):  # 36..39 — bonuses
+slide_total_value()                 # 31 — £5,750+ → £97
+
+# Founding Members Also Get
+slide_plus_beginning()              # 32
+for i, f in enumerate(PHASE2_FEATURES, start=1):  # 33..36
     phase2_slide(i, f['title'], f['lead'], f['bullets'])
-slide_next_evolution()    # 40
-slide_founding_open()     # 41
-slide_gone_forever()      # 42
-slide_only_opportunity()  # 43
-slide_what_receive()      # 44
-slide_pricing()           # 45
-slide_not_another_diet()  # 46
-slide_imagine_summer()    # 47
-slide_not_perfect()       # 48
-slide_your_chance()       # 49
-slide_close()             # 50
+
+# Summer / Founding Year + Imagine
+slide_summer_vs_founding_year()     # 37
+slide_imagine_intro()               # 38
+slide_imagine_bullets(1)            # 39
+slide_imagine_bullets(2)            # 40
+slide_becoming_yourself()           # 41
+
+# Scarcity + Close
+slide_founding_open()               # 42
+slide_gone_forever()                # 43
+slide_not_another_diet()            # 44
+slide_close()                       # 45
 
 out = '/home/user/21-day-reset/wla-founding-members-launch.pptx'
 prs.save(out)

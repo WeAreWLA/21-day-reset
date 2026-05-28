@@ -363,7 +363,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .total-value .strike s { text-decoration-thickness: 2px; }
   .total-value .you-pay { display: block; margin-top: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 44px); color: var(--coral-soft); font-weight: 700; line-height: 1.1; position: relative; z-index: 1; }
   .total-value .you-pay em { color: #fff; font-style: italic; font-weight: 500; }
-  @media (max-width: 640px) { .total-value { padding: 28px 22px; } }
+  .total-value .price-note { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13.5px; letter-spacing: 0.04em; color: rgba(244,235,220,0.85); font-family: "Alegreya Sans", sans-serif; position: relative; z-index: 1; }
+  @media (max-width: 640px) { .total-value { padding: 28px 22px; } .total-value .price-note { font-size: 12.5px; } }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
@@ -699,7 +700,7 @@ function WhyWLAExists() {
             </div>
           </figure>
           <div className="formula-reveal">
-            <div className="formula-eyebrow">What I built from everything I learned</div>
+            <div className="formula-eyebrow">What I created</div>
             <h3 className="formula-name">The <em>WLA Formula</em></h3>
             <p className="formula-tag">Not another quick fix. Not another restrictive diet. A simple, flexible approach that finally worked for me, and eventually, for thousands of other women too.</p>
             <div className="formula-outcomes">
@@ -748,7 +749,7 @@ function NextChapter() {
 function EvolvingInside() {
   const items = [
     { ic: <IcSparkle />,   t: 'WLA is evolving',                              d: 'The Weight Loss Academy is becoming The Weight Loss & Lifestyle Academy.' },
-    { ic: <IcCommunity />, t: 'A brand new coaching space',                   d: 'This group will move into our brand new coaching space.' },
+    { ic: <IcCommunity />, t: 'A brand new coaching space',                   d: 'This group will become our brand new WLA coaching space.' },
     { ic: <IcPhone />,     t: 'Early access to the WLA app',                  d: 'Founding members will receive early access to the brand new WLA app.' },
     { ic: <IcMedal />,     t: 'More support, accountability & lifestyle tools', d: 'Additional support, accountability and lifestyle tools designed to help women maintain results long term.' },
     { ic: <IcDoc />,       t: 'Shift members keep their access',              d: 'If you have access to the Shift members area, you will continue this access until we launch our app.' },
@@ -812,7 +813,7 @@ function ExpectedResults() {
     'Have more energy throughout the day',
     'Stop constantly thinking about food',
     'Feel healthier, fitter and more in control',
-    'Build routines that actually LAST',
+    'Build routines that actually last',
     'Stop "starting again Monday"',
     'Finally create a lifestyle you can realistically maintain',
   ];
@@ -877,7 +878,7 @@ function WhatsIncluded() {
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">What's Included</span>
-          <h2 className="serif">Everything you get inside <em>Founding Membership.</em></h2>
+          <h2 className="serif">Everything you get as a <em>WLA Founding Member.</em></h2>
         </div>
         <div className="receive-grid">
           {items.map((it, i) => (
@@ -896,6 +897,7 @@ function WhatsIncluded() {
           <div className="total-num">£5,750<em>+</em></div>
           <div className="strike">Founding Members Launch · <s>£5,750+</s></div>
           <div className="you-pay">You pay just <em>£97</em></div>
+          <div className="price-note">Lowest price available now. Price increases after the founding members round closes.</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <div className="receive-pricing">One year of access. Just <strong>26p per day</strong>.</div>

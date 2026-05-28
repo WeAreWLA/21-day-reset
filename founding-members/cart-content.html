@@ -1,0 +1,159 @@
+<!--
+  ThriveCart cart content snippet — Founding Members offer.
+  Paste this block into your ThriveCart cart page's HTML content area.
+  ThriveCart's own checkout form (name, email, card / PayPal) renders separately —
+  this is the marketing content that wraps around it.
+
+  All CSS is scoped under .wla-cart so it won't clash with ThriveCart's stylesheet.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  .wla-cart { --navy: #0e2746; --coral: #d97757; --coral-soft: #e5917a; --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8; --muted: #5a6478; --ok: #2e7d5b; }
+  .wla-cart, .wla-cart * { box-sizing: border-box; }
+  .wla-cart { font-family: "Alegreya Sans", sans-serif; color: #333; background: var(--cream); padding: 40px 24px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  .wla-cart .inner { max-width: 760px; margin: 0 auto; }
+  .wla-cart .serif { font-family: 'Libre Baskerville', serif; }
+  .wla-cart em { font-style: italic; font-weight: 500; color: var(--coral); }
+
+  /* Hero */
+  .wla-cart .hero { text-align: center; margin-bottom: 32px; }
+  .wla-cart .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: rgba(217,119,87,0.14); color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 20px; }
+  .wla-cart h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(30px, 4vw, 44px); line-height: 1.1; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .wla-cart h1 .accent { color: var(--coral); font-style: italic; font-weight: 500; }
+  .wla-cart .lede { font-size: 16.5px; line-height: 1.55; color: #333; margin: 0 auto; max-width: 560px; }
+
+  /* Order summary card */
+  .wla-cart .order-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.10); border-radius: 18px; padding: 32px 36px; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.22); margin-bottom: 28px; }
+  .wla-cart .order-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid rgba(14,39,70,0.08); margin-bottom: 18px; }
+  .wla-cart .order-head .title { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .wla-cart .order-head .meta { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+
+  /* Item list */
+  .wla-cart .items { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .wla-cart .items li { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: start; font-size: 14.5px; color: var(--navy); line-height: 1.4; padding: 4px 0; }
+  .wla-cart .items li .check { width: 18px; height: 18px; border-radius: 50%; background: rgba(46,125,91,0.14); color: var(--ok); display: grid; place-items: center; margin-top: 2px; }
+  .wla-cart .items li .check svg { width: 10px; height: 10px; stroke: var(--ok); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .wla-cart .items li .name { line-height: 1.4; }
+  .wla-cart .items li .value { font-family: 'Libre Baskerville', serif; font-weight: 700; color: #003060; font-size: 13.5px; padding: 3px 10px; border-radius: 999px; background: rgba(14,48,96,0.08); white-space: nowrap; }
+
+  /* Total summary */
+  .wla-cart .totals { margin-top: 22px; padding-top: 22px; border-top: 1px solid rgba(14,39,70,0.08); }
+  .wla-cart .total-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .wla-cart .total-row.line { color: var(--muted); font-size: 14px; padding-bottom: 6px; }
+  .wla-cart .total-row.line s { color: var(--muted); }
+  .wla-cart .total-row.you-pay { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; padding-top: 10px; }
+  .wla-cart .total-row.you-pay .price { font-size: 38px; color: #003060; line-height: 1; letter-spacing: -0.01em; }
+  .wla-cart .total-row.you-pay .price .currency { font-size: 22px; vertical-align: top; color: var(--coral); font-style: italic; font-weight: 500; margin-right: 2px; }
+  .wla-cart .total-row.you-pay .term { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+  /* Scarcity strip */
+  .wla-cart .scarcity { display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: center; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; margin-bottom: 24px; }
+  .wla-cart .scarcity svg { width: 24px; height: 24px; color: var(--coral); }
+  .wla-cart .scarcity .copy { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: 15px; line-height: 1.4; }
+  .wla-cart .scarcity .copy strong { color: var(--coral); }
+
+  /* Guarantee */
+  .wla-cart .guarantee { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: center; padding: 22px 24px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; margin-bottom: 24px; box-shadow: 0 12px 24px -18px rgba(14,39,70,0.15); }
+  .wla-cart .guarantee .badge { width: 48px; height: 48px; border-radius: 12px; background: rgba(46,125,91,0.12); color: var(--ok); display: grid; place-items: center; }
+  .wla-cart .guarantee .badge svg { width: 24px; height: 24px; }
+  .wla-cart .guarantee h3 { margin: 0 0 4px; font-family: 'Libre Baskerville', serif; font-size: 16px; color: var(--navy); font-weight: 700; }
+  .wla-cart .guarantee p { margin: 0; font-size: 14px; color: #333; line-height: 1.5; }
+
+  /* Trust strip */
+  .wla-cart .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 22px 0; border-top: 1px solid rgba(14,39,70,0.08); border-bottom: 1px solid rgba(14,39,70,0.08); }
+  .wla-cart .trust-item { text-align: center; }
+  .wla-cart .trust-item .num { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+  .wla-cart .trust-item .lab { font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+
+  /* Below-form note */
+  .wla-cart .form-note { margin-top: 22px; text-align: center; font-size: 13px; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+  .wla-cart .form-note svg { width: 14px; height: 14px; }
+  .wla-cart .form-note-wrap { text-align: center; }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .wla-cart { padding: 28px 16px; }
+    .wla-cart .order-card { padding: 22px 20px; }
+    .wla-cart .order-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .wla-cart .items li { grid-template-columns: 20px 1fr; }
+    .wla-cart .items li .value { grid-column: 2; justify-self: start; margin-top: 2px; }
+    .wla-cart .trust { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>
+
+<div class="wla-cart">
+  <div class="inner">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="pill">✦ Founding Members · Phase 1 ✦</div>
+      <h1 class="serif">You're claiming a <span class="accent">Founding Member</span> spot</h1>
+      <p class="lede">Inside <strong>The Weight Loss &amp; Lifestyle Academy</strong>. One year of access, 26p per day, locked in at the lowest price WLA will ever be offered at.</p>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="order-card">
+      <div class="order-head">
+        <div class="title">Your Founding Membership</div>
+        <div class="meta">1 Year Access</div>
+      </div>
+
+      <ul class="items">
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The 12 Week WLA Summer Challenge</span><span class="value">£147</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Weekly LIVE Coaching Sessions With Anna</span><span class="value">£1,997</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Daily Coaching &amp; Accountability Support</span><span class="value">£997</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Female-Only WLA Community</span><span class="value">£997</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To ALL WLA Challenges For 12 Months</span><span class="value">£497</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Weekly Fat Loss Meal Guides</span><span class="value">£397</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Nutrition Formula Masterclass</span><span class="value">£197</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To The WLA Recipe Collection</span><span class="value">£197</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">WLA Nutrition &amp; Lifestyle Guides</span><span class="value">£27</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Founding Member Access To The Brand New WLA App</span><span class="value">£297</span></li>
+      </ul>
+
+      <div class="totals">
+        <div class="total-row line"><span>Total Value</span><span><s>£5,750+</s></span></div>
+        <div class="total-row you-pay">
+          <span>You pay today</span>
+          <span class="price"><span class="currency">£</span>97<span class="term"> / year</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCARCITY -->
+    <div class="scarcity">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2v6"/><path d="M16 4l-4-2-4 2"/><circle cx="12" cy="15" r="7"/><polyline points="12 12 12 15 14 17"/>
+      </svg>
+      <div class="copy">
+        Only <strong>1,000 founding member places</strong> available. Once these are gone, founding pricing disappears and the price increases.
+      </div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>
+          <polyline points="9 12.5 11 14.5 15 10.5"/>
+        </svg>
+      </div>
+      <div>
+        <h3>7-Day Money-Back Guarantee</h3>
+        <p>Try WLA for 7 days. If it isn't for you, email support and we'll refund you, no awkwardness.</p>
+      </div>
+    </div>
+
+    <!-- BELOW-FORM NOTE (shows under whatever ThriveCart renders next) -->
+    <div class="form-note-wrap">
+      <span class="form-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Secure checkout · Encrypted payment processing
+      </span>
+    </div>
+
+  </div>
+</div>
