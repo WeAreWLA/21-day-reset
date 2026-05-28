@@ -643,11 +643,6 @@ option_grid([
     ("4", None, "Multigrain Hoops Cereal and Fruit"),
 ], with_header=False)
 
-g.subhead([("Morning Snack", "lbi")], gap_after=4)
-g.paragraph("Opt for a smaller snack, a portion of fruit or "
-            "vegetables if hungry. (See snack tips for more info.)",
-            gap_after=6)
-
 g.subhead([("Lunch Options", "lbi")], gap_after=8)
 option_grid([
     ("1", "Family Fav",   "Weekend Brunch"),
@@ -655,11 +650,6 @@ option_grid([
     ("3", "Batch Prep",   "Coronation Chicken Salad"),
     ("4", "No Cook",      "M&S Naked Chicken Caesar Salad"),
 ])
-
-g.subhead([("Mid-Afternoon Snack", "lbi")], gap_after=4)
-g.paragraph("Opt for a bigger snack if hungry, see the snack tips "
-            "and bigger snack inspiration pages for ideas.",
-            gap_after=6)
 
 g.subhead([("Dinner Options", "lbi")], gap_after=8)
 option_grid([
@@ -752,9 +742,13 @@ g.recipe(
     subtitle="A high-protein bowl that keeps you full for "
              "hours.",
     note="Best enjoyed fresh. Swap the berries for "
-         "whatever you have available. The vanilla kefir "
+         "whatever you have available. This vanilla kefir "
          "from Tesco is a great option, highly rated and "
-         "easy to enjoy on its own as a quick drink snack.",
+         "easy to enjoy on its own as a quick drink snack. "
+         "You can also use plain kefir if you prefer.",
+    tip_in_left_col=True,
+    tip_image=os.path.join(RECIPE_IMAGES, "extras",
+                            "biotiful-kefir.png"),
     image=recipe_image("breakfast", "protein-fibre-yoghurt"),
 )
 
@@ -880,12 +874,12 @@ g.recipe(
         "1/2 tsp curry powder",
         "1 tsp soy sauce",
         "Black pepper for seasoning",
-        "1 cooked chicken breast, sliced",
+        "100-130g cooked chicken breast, sliced",
         "1/2 red onion, thinly sliced (optional)",
         "1 handful of mixed salad leaves",
-        "3 cherry tomatoes, quartered",
+        "6 cherry tomatoes, quartered",
         "1/2 pepper (any colour), thinly sliced",
-        "25g cucumber, diced into bite-sized pieces",
+        "1/2 cucumber, diced into bite-sized pieces",
         "1 heaped tbsp flaked almonds",
     ],
     [
@@ -953,7 +947,7 @@ g.recipe(
         "125g fresh gnocchi",
         "1 tsp olive oil",
         "Black pepper, to taste",
-        "100g cooked or roasted chicken, diced or "
+        "100-130g cooked or roasted chicken, diced or "
         "shredded",
         "2 bacon slices, grilled and diced",
         "6 cherry tomatoes, halved",

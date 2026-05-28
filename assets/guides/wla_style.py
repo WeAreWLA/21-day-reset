@@ -616,7 +616,8 @@ class Guide:
 
     def recipe(self, title, serves, ingredients, instructions,
                note=None, image=None, time=None, subtitle=None,
-               kicker=None, to_serve=None, image_h=240, **_):
+               kicker=None, to_serve=None, image_h=240,
+               tip_in_left_col=False, tip_image=None, **_):
         """WLA Weight Loss Cookbook style recipe page (one per page)."""
         self._new_content_page()
         self.register_target(title)
@@ -699,6 +700,28 @@ class Guide:
             yL += 4
             yL = render_ing(to_serve, LEFT, lw, yL, label="To serve")
 
+        # WLA TIP rendered in-column under the ingredients
+        if note and tip_in_left_col:
+            tip_lines = wrap(note, "asi", 10, lw)
+            yL += 10
+            self.tracked(LEFT, yL, "WLA TIP", "asb", 8.5, NAVY, 1.4)
+            yL += 14
+            for ln in tip_lines:
+                self.text(LEFT, yL + 9, ln, "asi", 10, INK)
+                yL += 12.5
+            if tip_image:
+                yL += 6
+                pm = fitz.Pixmap(tip_image)
+                ar = pm.width / pm.height
+                # cap so the image never collides with the footer
+                avail = (PAGE_H - 80) - yL
+                img_h = min(lw / ar, avail)
+                img_w = img_h * ar
+                rect = fitz.Rect(LEFT, yL, LEFT + img_w, yL + img_h)
+                self.page.insert_image(rect, filename=tip_image,
+                                       keep_proportion=True)
+                yL += img_h
+
         # instructions
         yR = y_top
         for k, step in enumerate(instructions, 1):
@@ -712,7 +735,7 @@ class Guide:
 
         # WLA TIP — always sits below the body so it never overlaps,
         # leaning down toward the footer when the recipe runs long.
-        if note:
+        if note and not tip_in_left_col:
             tip_lines = wrap(note, "asi", 10.5, CW)
             tip_h = 17 + len(tip_lines) * 14
             footer_top = PAGE_H - 60
