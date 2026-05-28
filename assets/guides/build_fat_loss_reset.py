@@ -742,13 +742,10 @@ g.recipe(
     subtitle="A high-protein bowl that keeps you full for "
              "hours.",
     note="Best enjoyed fresh. Swap the berries for "
-         "whatever you have available. This vanilla kefir "
+         "whatever you have available. The vanilla kefir "
          "from Tesco is a great option, highly rated and "
          "easy to enjoy on its own as a quick drink snack. "
          "You can also use plain kefir if you prefer.",
-    tip_in_left_col=True,
-    tip_image=os.path.join(RECIPE_IMAGES, "extras",
-                            "biotiful-kefir.png"),
     image=recipe_image("breakfast", "protein-fibre-yoghurt"),
 )
 
