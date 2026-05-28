@@ -1,0 +1,163 @@
+<!--
+  ThriveCart upsell content snippet — VIP WLA Strategy Intensive.
+  Paste this entire block into your ThriveCart upsell page's HTML content area.
+  ThriveCart's own Add / Decline buttons should appear below this content.
+  Self-contained: fonts loaded inline, all CSS scoped under .wla-upsell so it
+  won't clash with ThriveCart's stylesheet.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  .wla-upsell { --navy: #0e2746; --coral: #d97757; --coral-soft: #e5917a; --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8; --muted: #5a6478; --ok: #2e7d5b; }
+  .wla-upsell, .wla-upsell * { box-sizing: border-box; }
+  .wla-upsell { font-family: "Alegreya Sans", sans-serif; color: #333; background: var(--cream); padding: 56px 24px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  .wla-upsell .inner { max-width: 920px; margin: 0 auto; }
+  .wla-upsell .serif { font-family: 'Libre Baskerville', serif; }
+  .wla-upsell em { font-style: italic; font-weight: 500; color: var(--coral); }
+
+  /* Hero */
+  .wla-upsell .hero { text-align: center; margin-bottom: 40px; }
+  .wla-upsell .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: rgba(217,119,87,0.14); color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 22px; }
+  .wla-upsell h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(34px, 4.4vw, 52px); line-height: 1.1; font-weight: 700; margin: 0 0 14px; letter-spacing: -0.01em; }
+  .wla-upsell h1 .accent { color: var(--coral); font-style: italic; font-weight: 500; }
+  .wla-upsell .sub { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin: 0 0 8px; }
+  .wla-upsell .limited { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 6px; }
+
+  /* Lead body */
+  .wla-upsell .lead { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 16px; padding: 32px 36px; margin-bottom: 36px; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
+  .wla-upsell .lead p { font-size: 17px; line-height: 1.6; color: #333; margin: 0 0 14px; }
+  .wla-upsell .lead p:last-child { margin-bottom: 0; }
+  .wla-upsell .lead strong { color: var(--navy); font-weight: 700; }
+  .wla-upsell .chips { list-style: none; padding: 0; margin: 18px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .wla-upsell .chips li { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--cream); border-left: 3px solid var(--coral); border-radius: 8px; font-family: 'Libre Baskerville', serif; font-size: 15px; color: var(--navy); line-height: 1.35; }
+
+  /* Section heads */
+  .wla-upsell .sec-head { text-align: center; margin: 0 0 24px; }
+  .wla-upsell .sec-head .eyebrow { display: inline-block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 12px; }
+  .wla-upsell .sec-head h2 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(26px, 3.2vw, 36px); line-height: 1.15; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+  .wla-upsell .sec-head h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+
+  /* Check list */
+  .wla-upsell .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .wla-upsell .checks li { display: flex; gap: 14px; align-items: flex-start; font-size: 16.5px; color: var(--navy); line-height: 1.45; padding: 14px 18px; background: var(--paper); border: 1px solid rgba(14,39,70,0.06); border-radius: 12px; }
+  .wla-upsell .check-ic { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--coral); display: grid; place-items: center; margin-top: 1px; }
+  .wla-upsell .check-ic svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Featured "inside" card */
+  .wla-upsell .inside-card { background: var(--cream-2); border: 1px solid var(--coral); border-radius: 16px; padding: 32px 36px; margin: 16px 0 0; position: relative; overflow: hidden; }
+  .wla-upsell .inside-card::before { content: ''; position: absolute; top: -80px; right: -80px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(217,119,87,0.20), transparent 65%); pointer-events: none; }
+  .wla-upsell .inside-card .checks li { background: var(--paper); position: relative; z-index: 1; }
+
+  /* Section spacing */
+  .wla-upsell .section { margin-top: 40px; }
+
+  /* Closing price block */
+  .wla-upsell .price-block { margin-top: 44px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.38); }
+  .wla-upsell .price-block::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
+  .wla-upsell .price-block .label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 12px; position: relative; z-index: 1; }
+  .wla-upsell .price-block .name { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; margin: 0 0 14px; color: #fff; position: relative; z-index: 1; }
+  .wla-upsell .price-block .price { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); font-weight: 700; line-height: 1; color: #fff; position: relative; z-index: 1; }
+  .wla-upsell .price-block .price .currency { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: 0.55em; vertical-align: top; margin-right: 4px; }
+  .wla-upsell .price-block .scarcity { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 8px 18px; background: var(--coral); color: #fff; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; position: relative; z-index: 1; }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .wla-upsell { padding: 40px 16px; }
+    .wla-upsell .lead { padding: 24px 22px; }
+    .wla-upsell .inside-card { padding: 24px 22px; }
+    .wla-upsell .chips { grid-template-columns: 1fr; }
+    .wla-upsell .price-block { padding: 28px 22px; }
+  }
+</style>
+
+<div class="wla-upsell">
+  <div class="inner">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="pill">✦ Only 10 Available ✦</div>
+      <h1 class="serif">Add the <span class="accent">VIP WLA Strategy Intensive</span></h1>
+      <p class="sub">For only <strong>£197</strong>.</p>
+      <p class="limited">Personalised support · Limited to 10 founding members</p>
+    </div>
+
+    <!-- LEAD -->
+    <div class="lead">
+      <p>Personalised support designed to help you get the <strong>best possible results</strong> inside our Founding Members round.</p>
+      <p>Our founding membership already gives you:</p>
+      <ul class="chips">
+        <li>The coaching</li>
+        <li>The accountability</li>
+        <li>The structure</li>
+        <li>The support</li>
+        <li>The lifestyle tools</li>
+        <li>And the community</li>
+      </ul>
+      <p>But for some women, they want <em>a more personalised strategy built specifically around them.</em></p>
+      <p>That's exactly why we created the <strong>VIP WLA Strategy Intensive.</strong></p>
+    </div>
+
+    <!-- PERFECT FOR -->
+    <div class="section">
+      <div class="sec-head">
+        <span class="eyebrow">This Is Perfect For Women Who</span>
+        <h2 class="serif">Want a strategy built <em>around them.</em></h2>
+      </div>
+      <ul class="checks">
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Want to accelerate their results</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Struggle staying consistent after busy weeks</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Keep falling into all-or-nothing thinking</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Want a clearer personalised strategy</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Want help identifying what's actually keeping them stuck</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Are tired of "starting again Monday"</span></li>
+      </ul>
+    </div>
+
+    <!-- INSIDE -->
+    <div class="section">
+      <div class="sec-head">
+        <span class="eyebrow">Inside Your VIP Strategy Intensive</span>
+        <h2 class="serif">A complete <em>1:1 strategy</em> session, built for you.</h2>
+      </div>
+      <div class="inside-card">
+        <ul class="checks">
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>WLA Nutrition &amp; Weight Loss Strategy Session</strong></span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Personalised WLA Nutrition Strategy</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Lifestyle &amp; Routine Review</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Consistency &amp; Habit Audit</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Personalised Strategy For Weekends, Holidays &amp; Busy Days</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Individual Recommendations</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Clear Action Steps &amp; Focus Areas</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DESIGNED TO HELP -->
+    <div class="section">
+      <div class="sec-head">
+        <span class="eyebrow">This Is Designed To Help You</span>
+        <h2 class="serif">Get the results, <em>and keep them.</em></h2>
+      </div>
+      <ul class="checks">
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Lose weight more consistently</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Reduce overeating &amp; emotional eating</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Feel more in control around food</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Stop self-sabotaging after imperfect days</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Build routines that realistically fit <strong>your</strong> lifestyle</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Accelerate your results with personalised support</span></li>
+        <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Finally understand what's actually keeping you stuck</span></li>
+      </ul>
+    </div>
+
+    <!-- PRICE BLOCK -->
+    <div class="price-block">
+      <div class="label">VIP WLA Strategy Intensive</div>
+      <div class="name serif">Add it to your founding membership today</div>
+      <div class="price"><span class="currency">£</span>197</div>
+      <div class="scarcity">🚨 Only 10 spaces available</div>
+    </div>
+
+  </div>
+</div>
