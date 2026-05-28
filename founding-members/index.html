@@ -241,7 +241,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .video-name { margin-top: 10px; text-align: center; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
   @media (max-width: 880px) { .videos { padding: 64px 22px; } .videos-grid { grid-template-columns: 1fr; gap: 32px; } }
 
-  /* Lifestyle callout (Imagine section) */
+  /* Anna side-by-side (Why The WLA Exists) */
+  .anna-side-by-side { margin: 36px auto; max-width: 760px; padding: 22px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 16px; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.22); }
+  .anna-side-by-side .image { aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; background: var(--cream-2); }
+  .anna-side-by-side .image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .anna-side-by-side .caption { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 16px; color: var(--navy); text-align: center; line-height: 1.4; }
+  .anna-side-by-side .caption strong { color: var(--coral); font-style: normal; font-weight: 700; }
+  .anna-side-by-side .caption .sep { width: 24px; height: 1px; background: var(--coral); flex: none; }
+  @media (max-width: 640px) { .anna-side-by-side { padding: 14px; } .anna-side-by-side .caption { font-size: 14px; gap: 10px; } }
   .lifestyle-callout { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 20px; text-align: center; box-shadow: 0 30px 60px -28px rgba(14,39,70,0.4); position: relative; overflow: hidden; }
   .lifestyle-callout::before { content: ''; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(229,145,122,0.25), transparent 65%); pointer-events: none; }
   .lifestyle-callout .lifestyle-mark { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral-soft); margin-bottom: 12px; position: relative; z-index: 1; }
@@ -596,6 +603,14 @@ function WhyWLAExists() {
         <p>I tried everything. But no matter how much weight I lost, I always found myself slipping back into old habits again.</p>
         <p>That struggle became so frustrating I eventually decided to study nutrition at university because I needed to understand <em>why I couldn't maintain the results long term.</em></p>
         <p>Over time, I took everything I learned through my degree, qualifications and personal journey and created <strong>The WLA Formula</strong>. Not another quick fix. Not another restrictive diet. A simple, flexible approach that helped me lose over 2 stone, completely change my relationship with food, build routines that actually last, and maintain my results long term.</p>
+        <figure className="anna-side-by-side">
+          <div className="image">
+            <img src="/assets/anna-before-after.jpg" alt="Anna Wallace, before and after living the WLA way" loading="lazy" decoding="async" />
+          </div>
+          <figcaption className="caption">
+            <span>Before</span><span className="sep" /><span><strong>The WLA Way</strong></span>
+          </figcaption>
+        </figure>
         <p>People always ask me: <em>"What did you actually do? How did you maintain it?"</em> The truth is, I still live the WLA way today.</p>
         <p>Over the last 11 years, one thing became very clear. <strong>The women who achieve the best long-term success inside WLA are usually the women who continue living the WLA lifestyle too.</strong></p>
         <div className="story-callout">
