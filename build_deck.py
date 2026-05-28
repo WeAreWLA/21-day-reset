@@ -721,7 +721,7 @@ def feature_slide(num, total, title, lead, bullets, footer_quote=None):
     # Top-left feature counter
     add_runs(s, Inches(0.9), Inches(0.85), Inches(6), Inches(0.5),
         [{'text': f'WLA APP FEATURE  ·  {num:02d} / {total:02d}',
-          'font': SANS, 'size': 16, 'color': CORAL, 'bold': True, 'letter_spacing': 220}])
+          'font': SANS, 'size': 20, 'color': CORAL, 'bold': True, 'letter_spacing': 200}])
     # Star + title
     add_runs(s, Inches(0.9), Inches(1.55), Inches(0.6), Inches(0.6),
         [{'text': '✦', 'font': SERIF, 'size': 32, 'color': CORAL}])
@@ -855,7 +855,7 @@ def phase2_slide(num, title, lead, bullets):
     add_bg(s, CREAM)
     add_runs(s, Inches(0.9), Inches(0.85), Inches(6), Inches(0.5),
         [{'text': f'COMING IN PHASE 2  ·  {num:02d} / 04',
-          'font': SANS, 'size': 16, 'color': CORAL, 'bold': True, 'letter_spacing': 220}])
+          'font': SANS, 'size': 20, 'color': CORAL, 'bold': True, 'letter_spacing': 200}])
     add_runs(s, Inches(0.9), Inches(1.55), Inches(0.6), Inches(0.6),
         [{'text': '🚀', 'font': SERIF, 'size': 28, 'color': CORAL}])
     add_paragraphs(s, Inches(1.55), Inches(1.5), Inches(11.0), Inches(1.3),
