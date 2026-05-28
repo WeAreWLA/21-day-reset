@@ -331,19 +331,19 @@ def slide_hardest_part():
 def slide_cycle():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, NAVY)
-    add_pill(s, Inches(5.2), Inches(1.4), Inches(2.9), Inches(0.4),
+    add_pill(s, Inches(5.2), Inches(1.7), Inches(2.9), Inches(0.5),
              'THE CYCLE', fill=CORAL, color=WHITE, size=15, letter_spacing=300)
-    add_paragraphs(s, Inches(1.2), Inches(2.4), Inches(10.9), Inches(3.5), [
+    add_paragraphs(s, Inches(1.2), Inches(2.9), Inches(10.9), Inches(4.0), [
         {'runs': [
             {'text': '“I’ll start again ', 'font': SERIF, 'size': 64, 'color': WHITE, 'italic': True},
             {'text': 'Monday', 'font': SERIF, 'size': 64, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
             {'text': '.”', 'font': SERIF, 'size': 64, 'color': WHITE, 'italic': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.15},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.15, 'space_after': 24},
+        {'runs': [
+            {'text': "And THAT is the cycle we want to help women finally break for good.",
+             'font': SANS, 'size': 20, 'color': CREAM_WARM},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.35},
     ])
-    add_runs(s, Inches(1.5), Inches(5.3), Inches(10.3), Inches(0.6),
-        [{'text': "And THAT is the cycle we want to help women finally break for good.",
-          'font': SANS, 'size': 18, 'color': CREAM_WARM}],
-        align=PP_ALIGN.CENTER)
     add_footer(s, dark=True)
 
 # ---------------- 6. WOMEN WHO KEEP IT OFF ----------------
@@ -435,24 +435,24 @@ def slide_shift():
 def slide_quote_lifestyle():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
-    add_runs(s, Inches(0.9), Inches(0.8), Inches(11.5), Inches(0.4),
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(11.5), Inches(0.5),
         [{'text': 'REMEMBER THIS', 'font': SANS, 'size': 18,
-          'color': CORAL, 'bold': True, 'letter_spacing': 240}])
-    # Big serif quote
-    add_paragraphs(s, Inches(1.2), Inches(2.1), Inches(10.9), Inches(4), [
+          'color': CORAL, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
+    # Big serif quote + attribution as one tight block
+    add_paragraphs(s, Inches(1.2), Inches(2.1), Inches(10.9), Inches(5), [
         {'runs': [
-            {'text': '“The women who keep the weight off', 'font': SERIF, 'size': 48, 'color': NAVY, 'italic': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.15},
+            {'text': '“The women who keep the weight off', 'font': SERIF, 'size': 44, 'color': NAVY, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.18},
         {'runs': [
-            {'text': 'usually ', 'font': SERIF, 'size': 48, 'color': NAVY, 'italic': True},
-            {'text': 'continue the lifestyle', 'font': SERIF, 'size': 48, 'color': CORAL, 'italic': True, 'bold': True},
-            {'text': '.”', 'font': SERIF, 'size': 48, 'color': NAVY, 'italic': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.15},
+            {'text': 'usually ', 'font': SERIF, 'size': 44, 'color': NAVY, 'italic': True},
+            {'text': 'continue the lifestyle', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True, 'bold': True},
+            {'text': '.”', 'font': SERIF, 'size': 44, 'color': NAVY, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.18, 'space_after': 28},
+        {'runs': [
+            {'text': '— Anna Wallace, Founder of WLA',
+             'font': SANS, 'size': 16, 'color': MUTED, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.3},
     ])
-    add_runs(s, Inches(1.5), Inches(5.6), Inches(10.3), Inches(0.5),
-        [{'text': '— Anna Wallace, Founder of WLA',
-          'font': SANS, 'size': 16, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
-        align=PP_ALIGN.CENTER)
     add_footer(s)
 
 # ---------------- 11. I LIVE IT TOO ----------------
@@ -628,20 +628,20 @@ def slide_huge():
 def slide_reveal_app():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, NAVY)
-    add_pill(s, Inches(4.6), Inches(1.2), Inches(4.1), Inches(0.4),
+    add_pill(s, Inches(4.6), Inches(1.4), Inches(4.1), Inches(0.5),
              '✨  INTRODUCING  ✨', fill=CORAL, color=WHITE, size=15, letter_spacing=320)
-    add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.5), [
+    add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(4.5), [
         {'runs': [
-            {'text': 'The Brand New ', 'font': SERIF, 'size': 70, 'color': WHITE, 'bold': True},
+            {'text': 'The Brand New ', 'font': SERIF, 'size': 64, 'color': WHITE, 'bold': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
         {'runs': [
-            {'text': 'WLA App', 'font': SERIF, 'size': 90, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.05},
+            {'text': 'WLA App', 'font': SERIF, 'size': 88, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.05, 'space_after': 20},
+        {'runs': [
+            {'text': 'Support in your pocket. Every single day.',
+             'font': SERIF, 'size': 24, 'color': CREAM_WARM, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.3},
     ])
-    add_runs(s, Inches(0.9), Inches(6.3), Inches(11.5), Inches(0.5),
-        [{'text': 'Support in your pocket. Every single day.',
-          'font': SERIF, 'size': 22, 'color': CREAM_WARM, 'italic': True}],
-        align=PP_ALIGN.CENTER)
     add_footer(s, dark=True)
 
 # ---------------- 21. NOT ANOTHER CALORIE APP ----------------
@@ -906,21 +906,22 @@ def slide_next_evolution():
 def slide_founding_open():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
-    add_pill(s, Inches(3.9), Inches(1.0), Inches(5.5), Inches(0.45),
+    add_pill(s, Inches(3.7), Inches(1.0), Inches(5.9), Inches(0.55),
              '🚨  FOUNDING MEMBERS ARE NOW OPENING  🚨',
-             fill=CORAL, color=WHITE, size=16, letter_spacing=260)
-    add_paragraphs(s, Inches(0.5), Inches(2.4), Inches(12.4), Inches(3.5), [
+             fill=CORAL, color=WHITE, size=16, letter_spacing=240)
+    add_paragraphs(s, Inches(0.5), Inches(2.3), Inches(12.4), Inches(4.5), [
         {'runs': [
             {'text': 'Only ', 'font': SERIF, 'size': 60, 'color': NAVY, 'bold': True},
             {'text': '1,000 places', 'font': SERIF, 'size': 60, 'color': CORAL, 'italic': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
         {'runs': [
             {'text': 'before public launch.', 'font': SERIF, 'size': 60, 'color': NAVY, 'bold': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.1},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.1, 'space_after': 28},
+        {'runs': [
+            {'text': 'Because you’re already part of WLA, YOU get first access before anyone else.',
+             'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.35},
     ])
-    add_runs(s, Inches(0.9), Inches(6.0), Inches(11.5), Inches(0.6),
-        [{'text': 'Because you’re already part of WLA, YOU get first access before anyone else.',
-          'font': SERIF, 'size': 19, 'color': NAVY, 'italic': True}], align=PP_ALIGN.CENTER)
     add_footer(s)
 
 # ---------------- 42. ONCE THEY'RE GONE (CALLOUT) ----------------
@@ -1050,23 +1051,23 @@ def slide_pricing():
 def slide_not_another_diet():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
-    add_runs(s, Inches(0.9), Inches(1.2), Inches(11.5), Inches(0.4),
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(11.5), Inches(0.5),
         [{'text': 'REMEMBER', 'font': SANS, 'size': 18,
           'color': CORAL, 'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
-    add_paragraphs(s, Inches(0.9), Inches(2.1), Inches(11.5), Inches(3.5), [
+    add_paragraphs(s, Inches(0.9), Inches(1.9), Inches(11.5), Inches(5.0), [
         {'runs': [
             {'text': 'This isn’t about starting ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
             {'text': 'another diet.', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.2},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.18, 'space_after': 28},
+        {'runs': [
+            {'text': 'It’s about continuing the habits, support and momentum you’ve already worked so hard to build.',
+             'font': SANS, 'size': 19, 'color': BODY},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.4, 'space_after': 20},
+        {'runs': [
+            {'text': 'The women who maintain their results long term are usually the women who continue living the WLA lifestyle.',
+             'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.4},
     ])
-    add_runs(s, Inches(0.9), Inches(4.4), Inches(11.5), Inches(0.6),
-        [{'text': 'It’s about continuing the habits, support and momentum you’ve already worked so hard to build.',
-          'font': SANS, 'size': 18, 'color': BODY}],
-        align=PP_ALIGN.CENTER)
-    add_runs(s, Inches(0.9), Inches(5.4), Inches(11.5), Inches(0.6),
-        [{'text': 'The women who maintain their results long term are usually the women who continue living the WLA lifestyle.',
-          'font': SERIF, 'size': 19, 'color': NAVY, 'italic': True}],
-        align=PP_ALIGN.CENTER)
     add_footer(s)
 
 # ---------------- 47. IMAGINE YOUR SUMMER ----------------
@@ -1125,32 +1126,34 @@ def slide_not_perfect():
 def slide_your_chance():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
-    add_pill(s, Inches(3.7), Inches(1.0), Inches(5.9), Inches(0.45),
+    add_pill(s, Inches(3.5), Inches(1.0), Inches(6.3), Inches(0.55),
              '✨  YOUR CHANCE TO BE PART OF THE NEXT CHAPTER  ✨',
              fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=240)
-    add_paragraphs(s, Inches(0.5), Inches(2.3), Inches(12.4), Inches(3.5), [
+    add_paragraphs(s, Inches(0.5), Inches(2.2), Inches(12.4), Inches(5.0), [
         {'runs': [
             {'text': 'From the ', 'font': SERIF, 'size': 50, 'color': NAVY, 'bold': True},
             {'text': 'very beginning', 'font': SERIF, 'size': 50, 'color': CORAL, 'italic': True},
             {'text': '.', 'font': SERIF, 'size': 50, 'color': NAVY, 'bold': True},
-        ], 'align': PP_ALIGN.CENTER, 'line': 1.15},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.15, 'space_after': 28},
+        {'runs': [
+            {'text': 'Not just losing weight. Building a lifestyle that helps you KEEP the results too.',
+             'font': SERIF, 'size': 22, 'color': NAVY, 'italic': True},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.35, 'space_after': 20},
+        {'runs': [
+            {'text': 'I truly believe this next phase of WLA is going to change everything for so many women.',
+             'font': SANS, 'size': 18, 'color': BODY},
+        ], 'align': PP_ALIGN.CENTER, 'line': 1.4},
     ])
-    add_runs(s, Inches(0.9), Inches(4.6), Inches(11.5), Inches(0.6),
-        [{'text': 'Not just losing weight. Building a lifestyle that helps you KEEP the results too.',
-          'font': SERIF, 'size': 21, 'color': NAVY, 'italic': True}], align=PP_ALIGN.CENTER)
-    add_runs(s, Inches(0.9), Inches(5.7), Inches(11.5), Inches(0.5),
-        [{'text': 'I truly believe this next phase of WLA is going to change everything for so many women.',
-          'font': SANS, 'size': 17, 'color': BODY}], align=PP_ALIGN.CENTER)
     add_footer(s)
 
 # ---------------- 50. CLOSE ----------------
 def slide_close():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, NAVY)
-    add_pill(s, Inches(4.5), Inches(1.2), Inches(4.3), Inches(0.45),
+    add_pill(s, Inches(4.3), Inches(0.95), Inches(4.7), Inches(0.55),
              'FOUNDING MEMBERS · LIMITED 1,000 PLACES',
-             fill=CORAL, color=WHITE, size=15, letter_spacing=260)
-    add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.5), [
+             fill=CORAL, color=WHITE, size=15, letter_spacing=240)
+    add_paragraphs(s, Inches(0.5), Inches(2.0), Inches(12.4), Inches(3.0), [
         {'runs': [
             {'text': 'And I cannot ', 'font': SERIF, 'size': 56, 'color': WHITE, 'bold': True},
             {'text': 'wait', 'font': SERIF, 'size': 56, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
@@ -1159,14 +1162,14 @@ def slide_close():
             {'text': 'for you to be part of it.', 'font': SERIF, 'size': 56, 'color': WHITE, 'bold': True},
         ], 'align': PP_ALIGN.CENTER, 'line': 1.15},
     ])
-    # CTA pill
-    cta = add_round_rect(s, Inches(4.4), Inches(5.6), Inches(4.5), Inches(0.75),
+    # CTA pill (tighter under headline)
+    cta = add_round_rect(s, Inches(4.2), Inches(5.1), Inches(4.9), Inches(0.85),
                          CORAL, radius_pct=0.5)
-    add_runs(s, Inches(4.4), Inches(5.6), Inches(4.5), Inches(0.75),
+    add_runs(s, Inches(4.2), Inches(5.1), Inches(4.9), Inches(0.85),
         [{'text': 'JOIN AS A FOUNDING MEMBER  →',
           'font': SANS, 'size': 18, 'color': WHITE, 'bold': True, 'letter_spacing': 240}],
         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    add_runs(s, Inches(0.5), Inches(6.6), Inches(12.4), Inches(0.4),
+    add_runs(s, Inches(0.5), Inches(6.15), Inches(12.4), Inches(0.4),
         [{'text': 'sales.thewlacademy.com/wla-app-1yr',
           'font': SANS, 'size': 16, 'color': CREAM_WARM, 'letter_spacing': 150}],
         align=PP_ALIGN.CENTER)
