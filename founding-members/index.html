@@ -267,7 +267,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .formula-eyebrow { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 14px; position: relative; z-index: 1; }
   .formula-name { font-family: 'Libre Baskerville', serif; font-size: clamp(40px, 5.4vw, 60px); font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 16px; color: #fff; position: relative; z-index: 1; }
   .formula-name em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
-  .formula-tag { font-size: 17px; line-height: 1.55; color: #fff; margin: 0 auto 28px; max-width: 560px; text-align: center; position: relative; z-index: 1; }
+  .formula-reveal p.formula-tag { font-size: 17px; line-height: 1.55; color: #fff; margin: 0 auto 28px; max-width: 560px; text-align: center; position: relative; z-index: 1; }
   .formula-outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.15); position: relative; z-index: 1; }
   .formula-outcomes .outcome { text-align: center; }
   .formula-outcomes .outcome .num { font-family: 'Libre Baskerville', serif; font-size: 30px; color: var(--coral-soft); font-style: italic; font-weight: 500; line-height: 1; margin-bottom: 8px; }
@@ -317,6 +317,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive { padding: 96px 28px; background: var(--cream); border-top: 1px solid rgba(14,39,70,0.06); }
   .receive-inner { max-width: 920px; margin: 0 auto; }
   .receive-grid { display: grid; gap: 18px; margin-bottom: 36px; }
+  .receive-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 880px) { .receive-grid.two-col { grid-template-columns: 1fr; } }
   .receive-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 24px 28px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: flex-start; box-shadow: 0 12px 24px -18px rgba(14,39,70,0.15); }
   .receive-card .check-ic { width: 48px; height: 48px; border-radius: 12px; background: var(--cream-2); color: var(--coral); display: grid; place-items: center; flex: none; }
   .receive-card .check-ic svg { width: 22px; height: 22px; }
@@ -326,15 +328,15 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-card .value-pill { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: 10px; padding: 5px 12px; border-radius: 999px; background: rgba(217,119,87,0.12); color: var(--coral); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
   .receive-card .value-pill .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; color: var(--coral); opacity: 0.7; }
   /* Total value reveal */
-  .total-value { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.38); }
-  .total-value::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
-  .total-value .lab { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
-  .total-value .total-num { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); color: #fff; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; position: relative; z-index: 1; }
-  .total-value .total-num em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
-  .total-value .strike { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: rgba(244,235,220,0.7); margin-top: 18px; position: relative; z-index: 1; }
+  .total-value { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--paper); color: var(--navy); border: 1px solid rgba(14,39,70,0.10); border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.22); }
+  .total-value::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(217,119,87,0.18), transparent 65%); pointer-events: none; }
+  .total-value .lab { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
+  .total-value .total-num { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); color: #003060; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; position: relative; z-index: 1; }
+  .total-value .total-num em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .total-value .strike { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: var(--muted); margin-top: 18px; position: relative; z-index: 1; }
   .total-value .strike s { text-decoration-thickness: 2px; }
-  .total-value .you-pay { display: block; margin-top: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 44px); color: var(--coral-soft); font-weight: 700; line-height: 1.1; position: relative; z-index: 1; }
-  .total-value .you-pay em { color: #fff; font-style: italic; font-weight: 500; }
+  .total-value .you-pay { display: block; margin-top: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 44px); color: #003060; font-weight: 700; line-height: 1.1; position: relative; z-index: 1; }
+  .total-value .you-pay em { color: var(--coral); font-style: italic; font-weight: 500; }
   @media (max-width: 640px) { .total-value { padding: 28px 22px; } }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
@@ -650,7 +652,7 @@ function WhyWLAExists() {
         <div className="formula-reveal">
           <div className="formula-eyebrow">What I built from everything I learned</div>
           <h3 className="formula-name">The <em>WLA Formula</em></h3>
-          <p className="formula-tag">Not another quick fix. Not another restrictive diet. A simple, flexible approach that finally worked — for me and, eventually, for thousands of other women too.</p>
+          <p className="formula-tag">Not another quick fix. Not another restrictive diet. A simple, flexible approach that finally worked for me, and eventually, for thousands of other women too.</p>
           <div className="formula-outcomes">
             <div className="outcome"><div className="num">2+ stone</div><div className="lab">Lost &amp; kept off</div></div>
             <div className="outcome"><div className="num">11 yrs</div><div className="lab">Still living it</div></div>
@@ -664,15 +666,8 @@ function WhyWLAExists() {
           </div>
         </figure>
 
-        <div className="story-qa">
-          <div className="story-qa-q">"What did you actually do? How did you maintain it?"</div>
-          <div className="story-qa-a"><strong>The truth is, I still live the WLA way today.</strong> Not perfectly. Just consistently enough to maintain my results, feel good in myself, and build routines that fit real life.</div>
-        </div>
-
-        <p>Over the last 11 years, one thing became very clear:</p>
-        <div className="story-cycle">
-          <p>The women who achieve the best long-term success inside WLA are usually the women who continue living the WLA lifestyle too.</p>
-        </div>
+        <p>People always ask me: <em>"What did you actually do? How did you maintain it?"</em> <strong>The truth is, I still live the WLA way today.</strong> Not perfectly. Just consistently enough to maintain my results, feel good in myself, and build routines that fit real life.</p>
+        <p>Over the last 11 years, one thing became very clear. <strong>The women who achieve the best long-term success inside WLA are usually the women who continue living the WLA lifestyle too.</strong></p>
 
         <div className="story-callout">
           <strong>My mission is no longer just helping women lose weight.</strong>
@@ -723,7 +718,7 @@ function EvolvingInside() {
           <span className="eyebrow">Behind The Scenes</span>
           <h2 className="serif">✨ Here's what's <em>evolving inside WLA</em> ✨</h2>
         </div>
-        <div className="receive-grid">
+        <div className="receive-grid two-col">
           {items.map((it, i) => (
             <div className="receive-card" key={i}>
               <div className="check-ic">{it.ic}</div>
@@ -831,13 +826,13 @@ function WhatsIncluded() {
     { ic: <IcDoc />,       t: 'WLA Nutrition & Lifestyle Guides',
       d: 'Snack guides, food swaps, fat loss boosters and practical tools to support your results.', v: 27 },
     { ic: <IcPhone />,     t: 'Founding Member Access To The Brand New WLA App',
-      d: 'Early access to the next evolution of WLA — advanced daily tracking, lifestyle tracking, progress dashboards, habit tracking, meal planning, shopping lists, and future feature updates.', v: 297 },
+      d: 'Early access to the next evolution of WLA. Advanced daily tracking, lifestyle tracking, progress dashboards, habit tracking, meal planning, shopping lists, and future feature updates.', v: 297 },
   ];
   return (
     <section className="receive" style={{ paddingTop: 56 }}>
       <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">🌟 What's Included 🌟</span>
+          <span className="eyebrow">What's Included</span>
           <h2 className="serif">Everything you get inside <em>Founding Membership.</em></h2>
         </div>
         <div className="receive-grid">
@@ -878,10 +873,10 @@ function FoundingMembersAlsoGet() {
     <section className="explainer" style={{ background: 'var(--cream-2)' }}>
       <div className="explainer-inner" style={{ maxWidth: 1100 }}>
         <div className="section-head">
-          <span className="eyebrow">🚀 Founding Members Also Get</span>
+          <span className="eyebrow">Founding Members Also Get</span>
           <h2 className="serif">A few <em>quietly significant</em> extras.</h2>
         </div>
-        <div className="receive-grid">
+        <div className="receive-grid two-col">
           {items.map((it, i) => (
             <div className="receive-card" key={i}>
               <div className="check-ic">{it.ic}</div>
@@ -1076,12 +1071,9 @@ function FinalCTA() {
       <div className="final-cta-inner">
         <div className="founding-tag" style={{ marginBottom: 18 }}>Phase 1 · Only 1,000 Places</div>
         <h2 className="serif">This isn't about <em>starting over again.</em></h2>
-        <p>It's about continuing the momentum you've already worked so hard to build. One year inside the next evolution of WLA, for just £97 — about 26p a day.</p>
+        <p>It's about continuing the momentum you've already worked so hard to build. One year inside the next evolution of WLA, for just £97. About 26p a day.</p>
         <div className="final-buttons">
           <CTAButtons primaryLabel="Yes! I Want Founding Member Access" />
-        </div>
-        <div className="final-foot">
-          <strong>1 year access · Weekly LIVE coaching · All WLA challenges · The new WLA app · Lowest price ever</strong>
         </div>
       </div>
     </section>
