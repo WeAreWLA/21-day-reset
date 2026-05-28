@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WLA 12 Week Summer Challenge · Founding Members · Weight Loss Academy</title>
-<meta name="description" content="Founding Member access to the WLA 12 Week Summer Challenge. Lose up to 2 stone this summer with simple, flexible nutrition + 12 months FREE inside the brand new WLA app. £97 today. Only 1,000 places." />
+<title>The Weight Loss &amp; Lifestyle Academy · Founding Members</title>
+<meta name="description" content="Become one of only 1,000 founding members inside the next evolution of WLA. One year of access for just £97 (about 26p per day). Weekly LIVE coaching, all WLA challenges, the brand new WLA app and more." />
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -39,9 +39,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <!-- WLA social-proof notifications -->
 <script>
   window.WLA_NOTIFICATIONS = {
-    offer: 'WLA Summer Challenge',
-    action: 'joined as a founding member of the',
-    ctaUrl: 'https://sales.thewlacademy.com/wla-app-1yr/',
+    offer: 'WLA Founding Members',
+    action: 'just joined as a founding member of',
+    ctaUrl: 'https://sales.thewlacademy.com/founding-member/',
     ctaLabel: 'Become A Founding Member',
     firstDelay: 8000,
     showFor: 8000,
@@ -276,6 +276,19 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-card h3 { font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--navy); margin: 0 0 6px; font-weight: 700; line-height: 1.25; }
   .receive-card h3 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .receive-card p { font-size: 15.5px; line-height: 1.55; color: #333; margin: 0; }
+  .receive-card .value-pill { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: 10px; padding: 5px 12px; border-radius: 999px; background: rgba(217,119,87,0.12); color: var(--coral); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
+  .receive-card .value-pill .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; color: var(--coral); opacity: 0.7; }
+  /* Total value reveal */
+  .total-value { margin: 40px auto 0; max-width: 720px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.38); }
+  .total-value::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
+  .total-value .lab { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
+  .total-value .total-num { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); color: #fff; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; position: relative; z-index: 1; }
+  .total-value .total-num em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+  .total-value .strike { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: rgba(244,235,220,0.7); margin-top: 18px; position: relative; z-index: 1; }
+  .total-value .strike s { text-decoration-thickness: 2px; }
+  .total-value .you-pay { display: block; margin-top: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 44px); color: var(--coral-soft); font-weight: 700; line-height: 1.1; position: relative; z-index: 1; }
+  .total-value .you-pay em { color: #fff; font-style: italic; font-weight: 500; }
+  @media (max-width: 640px) { .total-value { padding: 28px 22px; } }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
@@ -364,7 +377,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .scarcity-top .number { font-family: 'Libre Baskerville', serif; font-size: 28px; color: var(--navy); font-weight: 700; line-height: 1; }
   .scarcity-top .number em { color: var(--coral); font-style: italic; font-weight: 500; }
   .scarcity-bar { height: 12px; background: var(--cream-2); border-radius: 999px; overflow: hidden; position: relative; }
-  .scarcity-bar .fill { height: 100%; width: 32.3%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); position: relative; min-width: 16px; }
+  .scarcity-bar .fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); position: relative; min-width: 16px; }
   .scarcity-bar .fill::after { content: ''; position: absolute; right: 0; top: -3px; bottom: -3px; width: 6px; background: var(--coral); border-radius: 999px; box-shadow: 0 0 0 4px rgba(217,119,87,0.25); animation: dot-pulse 2.2s ease-out infinite; }
   .scarcity-foot { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; color: var(--muted); }
   .scarcity-foot strong { color: var(--coral); font-weight: 700; }
@@ -451,7 +464,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 
 <div class="announcement-bar">
   <span class="dot"></span>
-  <strong>FOUNDING MEMBER LAUNCH</strong> · Phase 1 · Limited to 1,000 women · Doors close once full
+  <strong>FOUNDING MEMBERS LAUNCH</strong> · The Weight Loss &amp; Lifestyle Academy · Only 1,000 Places
 </div>
 
 <nav class="nav">
@@ -463,7 +476,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
       <a href="#results">Results</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a href="https://sales.thewlacademy.com/wla-app-1yr/" class="nav-cta">Join For £97<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    <a href="https://sales.thewlacademy.com/founding-member/" class="nav-cta">Join For £97<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
   </div>
 </nav>
 
@@ -476,7 +489,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
-const CHECKOUT_URL = 'https://sales.thewlacademy.com/wla-app-1yr/';
+const CHECKOUT_URL = 'https://sales.thewlacademy.com/founding-member/';
 
 // TODO: Replace PAYPAL_HOSTED_BUTTON_ID with your PayPal hosted button ID
 // (PayPal > Pay & Get Paid > PayPal Buttons > create a "Buy Now" button > copy the hosted_button_id).
@@ -518,32 +531,32 @@ function Hero() {
   return (
     <section className="hero" id="top">
       <div>
-        <div className="founding-tag">Limited Founding Members Launch</div>
-        <h1 className="h1 serif">The WLA<br/><span className="accent italic">12 Week</span><br/>Summer Challenge</h1>
-        <p className="h1-sub">Lose up to <strong>2 stone this summer</strong> while eating food you love, without intense exercise, miserable diets or starting over every Monday.</p>
-        <p className="lede">Join today for <strong>ONLY £97</strong> and get <strong>12 months inside the brand new WLA App + Community included FREE.</strong></p>
+        <div className="founding-tag">✨ Founding Members Launch ✨</div>
+        <h1 className="h1 serif">The Weight Loss<br/>& <span className="accent italic">Lifestyle Academy</span></h1>
+        <p className="h1-sub">Lose The Weight. Live The Lifestyle.</p>
+        <p className="lede">Become one of <strong>only 1,000 founding members</strong> inside the next evolution of WLA. <strong>One year of access for just £97</strong>, about <strong>26p per day</strong>.</p>
         <ul className="bullet-list">
-          <li><span className="check"><Check /></span><span>Reduce cravings and overeating</span></li>
-          <li><span className="check"><Check /></span><span>Feel lighter, more energised and back in control</span></li>
-          <li><span className="check"><Check /></span><span>Build routines that actually stick</span></li>
-          <li><span className="check"><Check /></span><span>Continue the momentum you've already worked so hard to build</span></li>
+          <li><span className="check"><Check /></span><span>Lose weight in a realistic, sustainable way</span></li>
+          <li><span className="check"><Check /></span><span>Build routines that actually LAST</span></li>
+          <li><span className="check"><Check /></span><span>Stop "starting again Monday" for good</span></li>
+          <li><span className="check"><Check /></span><span>Create a lifestyle you can realistically maintain</span></li>
         </ul>
       </div>
       <div>
         <div className="hero-card">
           <div className="pill">Phase 1 · Only 1,000 Places</div>
-          <div className="seats">Founding Member Pricing</div>
+          <div className="seats">Founding Members · 1 Year Access</div>
           <div className="price-row">
             <span className="currency">£</span><span className="price">97</span>
-            <span className="price-suffix">one-time</span>
+            <span className="price-suffix">/ year</span>
           </div>
-          <div className="price-meta italic">That's less than <strong style={{color: 'var(--coral)'}}>£1.90 / week</strong> for 12 months of WLA</div>
+          <div className="price-meta italic">Just <strong style={{color: 'var(--coral)'}}>26p per day</strong> · Price increases after Phase 1</div>
           <ul className="includes">
-            <li><span>The full <em>12 Week WLA Summer Challenge</em></span></li>
-            <li><span><em>12 months FREE</em> inside the brand new WLA app</span></li>
-            <li><span>Access to <em>ALL WLA challenges</em> for 1 full year</span></li>
-            <li><span>Weekly coaching sessions with Anna</span></li>
+            <li><span>The <em>12 Week WLA Summer Challenge</em></span></li>
+            <li><span>Weekly <em>LIVE coaching</em> with Anna</span></li>
             <li><span>Daily accountability + female-only community</span></li>
+            <li><span><em>ALL WLA challenges</em> for 12 months</span></li>
+            <li><span>Founding access to the <em>brand new WLA app</em></span></li>
           </ul>
           <CTAButtons primaryLabel="Yes! I want Founding Member Access" />
         </div>
@@ -564,135 +577,135 @@ function Trust() {
   );
 }
 
-function Story() {
+function WhyWLAExists() {
   return (
     <section className="story section">
       <div className="section-inner">
         <div className="section-head">
-          <span className="eyebrow">For The Woman Tired Of Starting Over</span>
-          <h2 className="serif">You know what healthy eating looks like. <em>You've done this before.</em></h2>
+          <span className="eyebrow">Why The WLA Exists</span>
+          <h2 className="serif">For years, I was deeply <em>unhappy in myself.</em></h2>
         </div>
-        <p style={{ marginBottom: 18 }}>You've probably:</p>
+        <p style={{ marginBottom: 18 }}>I struggled with:</p>
         <ul className="story-chips">
-          <li><span className="chip-dot" /><span>Lost weight before</span></li>
-          <li><span className="chip-dot" /><span>Started strong before</span></li>
-          <li><span className="chip-dot" /><span>Promised yourself <em>"this time will be different"</em></span></li>
-          <li><span className="chip-dot" /><span>Had weeks where you felt amazing</span></li>
-          <li><span className="chip-dot" /><span>Started fitting into clothes better</span></li>
-          <li><span className="chip-dot" /><span>Felt motivated and back in control</span></li>
+          <li><span className="chip-dot" /><span>Emotional eating</span></li>
+          <li><span className="chip-dot" /><span>Low self-esteem</span></li>
+          <li><span className="chip-dot" /><span>Drinking alcohol to feel better</span></li>
+          <li><span className="chip-dot" /><span>Constantly starting new diets</span></li>
+          <li><span className="chip-dot" /><span>Never feeling comfortable in my body</span></li>
         </ul>
-        <p className="lead-in">Then life happened.</p>
-        <p>A holiday. A stressful week. A birthday. A busy month. One takeaway that turned into another. And suddenly… everything went out the window. Again.</p>
-        <p>Before you knew it: the cravings came back. The grazing started again. Your routine disappeared. And you were back to <em>"I'll start again Monday."</em></p>
-        <div className="story-cycle">
-          <p>That cycle is exhausting. Not because you're lazy. Not because you lack willpower.</p>
-          <p>It's because most women are trying to lose weight without the structure, support and systems needed to actually maintain it.</p>
-        </div>
+        <p>I tried everything. But no matter how much weight I lost, I always found myself slipping back into old habits again.</p>
+        <p>That struggle became so frustrating I eventually decided to study nutrition at university because I needed to understand <em>why I couldn't maintain the results long term.</em></p>
+        <p>Over time, I took everything I learned through my degree, qualifications and personal journey and created <strong>The WLA Formula</strong>. Not another quick fix. Not another restrictive diet. A simple, flexible approach that helped me lose over 2 stone, completely change my relationship with food, build routines that actually last, and maintain my results long term.</p>
+        <p>People always ask me: <em>"What did you actually do? How did you maintain it?"</em> The truth is, I still live the WLA way today.</p>
+        <p>Over the last 11 years, one thing became very clear. <strong>The women who achieve the best long-term success inside WLA are usually the women who continue living the WLA lifestyle too.</strong></p>
         <div className="story-callout">
-          <strong>That's exactly why WLA was created.</strong>
-          <p>To give women the structure, accountability and lifestyle systems that turn weight loss into something that finally lasts.</p>
+          <strong>My mission is no longer just helping women lose weight.</strong>
+          <p>It's helping women build a lifestyle that allows them to KEEP the results too.</p>
         </div>
       </div>
     </section>
   );
 }
 
-function Reason() {
-  const pillars = [
-    { tag: 'They had', text: 'Structure' },
-    { tag: 'They had', text: 'Accountability' },
-    { tag: 'They had', text: 'Routines' },
-    { tag: 'They had', text: 'Real Support' },
-    { tag: 'They had', text: 'Flexibility' },
-    { tag: 'They had', text: 'Consistency After Imperfect Days' },
-  ];
-  return (
-    <section className="reason">
-      <div className="reason-inner">
-        <div className="section-head">
-          <span className="eyebrow">The Real Reason</span>
-          <h2 className="serif">After 11 years and 50,000+ women, <em>we noticed something.</em></h2>
-        </div>
-        <p>The women who lost the weight <strong>AND actually kept it off</strong> were NOT the women with the most motivation.</p>
-        <p>They weren't perfect. They didn't avoid holidays. They didn't never eat chocolate again. They didn't spend hours in the gym.</p>
-        <p>They simply built <strong>a lifestyle that supported their goals.</strong></p>
-        <div className="pillar-grid">
-          {pillars.map((p, i) => (
-            <div className="pillar" key={i}><em>{p.tag}</em>{p.text}</div>
-          ))}
-        </div>
-        <p>Instead of relying on motivation, they created <strong>habits they could actually LIVE with.</strong></p>
-        <p>That's the difference. And that's exactly what we help women build inside WLA.</p>
-      </div>
-    </section>
-  );
-}
-
-function Lifestyle() {
-  return (
-    <section className="explainer">
-      <div className="explainer-inner">
-        <div className="section-head">
-          <span className="eyebrow">The Lifestyle Is What Keeps It Off</span>
-          <h2 className="serif">The challenge helps you <em>lose the weight.</em><br/>The lifestyle is what helps you <em>keep it off.</em></h2>
-        </div>
-        <p>One of the biggest mistakes women make after losing weight is thinking: <em>"I'm done now."</em></p>
-        <p>The accountability disappears. The routines slowly fade. Life gets busy again. Old habits creep back in. And before they know it… they're right back where they started.</p>
-        <p>That's exactly why we created this next phase of WLA. Because losing weight is one thing. <strong>Maintaining it is the REAL challenge.</strong></p>
-        <div className="pull">The women who achieve the best long-term results are usually the ones who continue <strong>staying connected, staying accountable, following the WLA principles and living the WLA lifestyle</strong> long after the initial weight loss phase. Not perfectly. Just consistently enough to keep moving forward.</div>
-        <p>That's exactly what the WLA Summer Challenge and the new app are designed to help you do.</p>
-        <p><strong>This isn't about starting another diet.</strong> It's about continuing the habits, structure and support that helped create your results in the first place.</p>
-      </div>
-    </section>
-  );
-}
-
-function NextPhase() {
+function NextChapter() {
   return (
     <section className="explainer" style={{ background: 'var(--cream-2)' }}>
       <div className="explainer-inner">
         <div className="section-head">
-          <span className="eyebrow">Welcome To The Next Phase Of WLA</span>
-          <h2 className="serif">The Weight Loss Academy is becoming <em>The Weight Loss &amp; Lifestyle Academy.</em></h2>
+          <span className="eyebrow">✨ The Weight Loss &amp; Lifestyle Academy ✨</span>
+          <h2 className="serif">This next chapter is about <em>more than losing weight alone.</em></h2>
+          <p>It's about helping women:</p>
         </div>
-        <p>Over the last 11 years, WLA has helped over <strong>50,000 women</strong> lose weight through simple, flexible nutrition and accountability.</p>
-        <p>But one thing became very clear: losing the weight is only part of the journey. <strong>Maintaining it is the REAL challenge.</strong></p>
-        <p>That's why WLA is evolving, because this next chapter is about more than losing weight alone. It's about helping women build routines, habits and support systems that help results <strong>LAST</strong> long after the initial weight loss phase.</p>
-        <p>And that's exactly what the new WLA app was designed to help you do.</p>
+        <ul className="story-chips" style={{ marginTop: 28, maxWidth: 720, marginInline: 'auto' }}>
+          <li><span className="chip-dot" /><span>Maintain momentum</span></li>
+          <li><span className="chip-dot" /><span>Stay consistent</span></li>
+          <li><span className="chip-dot" /><span>Build routines that <em>LAST</em></span></li>
+          <li><span className="chip-dot" /><span>Finally stop starting over</span></li>
+        </ul>
+        <p style={{ marginTop: 32, textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 20, color: 'var(--navy)' }}>
+          That's why we've been building something exciting behind the scenes.
+        </p>
       </div>
     </section>
   );
 }
 
-function Challenge() {
+function EvolvingInside() {
   const items = [
-    { n: '01', t: 'Lose weight with simple, flexible nutrition', d: 'No banned foods. No cutting out carbs. Real food, in real portions, that fits a real midlife week.' },
-    { n: '02', t: 'Reduce cravings and overeating', d: 'A blood sugar-friendly plate that quietens the 4pm sugar pull and the after-dinner picking.' },
-    { n: '03', t: 'Stop all-or-nothing thinking', d: 'Built-in flexibility so one imperfect day doesn\'t derail the next two weeks.' },
-    { n: '04', t: 'Build routines that fit REAL life', d: 'Designed around busy weeks, family meals, holidays, work and social plans.' },
-    { n: '05', t: 'Feel back in control around food', d: 'Calmer, steadier, and finally trusting yourself around the kitchen again.' },
-    { n: '06', t: 'Create results that actually LAST', d: 'Not another reset. The structure, support and accountability to keep going.' },
+    'The Weight Loss Academy is evolving into The Weight Loss & Lifestyle Academy',
+    'This group will move into our brand new coaching space',
+    'Founding members will receive early access to the brand new WLA app',
+    'More support, accountability and lifestyle tools designed to help women maintain results long term',
+    'If you have access to the Shift members area, you will continue this access until we launch our app',
+    'If you join as a founding member, you will access the Shift members area until we launch our new app',
+    'If you are an existing Shift member and want to take advantage of our founding member launch promo, it will be added onto your finished current date. Our price will increase after this Phase 1 launch.',
   ];
   return (
-    <section className="challenge" id="challenge">
-      <div className="section-head">
-        <span className="eyebrow">Introducing The WLA Summer Challenge</span>
-        <h2 className="serif">This is <em>NOT</em> another quick-fix diet.</h2>
-        <p>Inside the 12 Week Summer Challenge, we help women:</p>
+    <section className="receive">
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">✨ Here's What's Evolving Inside WLA ✨</span>
+          <h2 className="serif">The next phase, <em>in plain English.</em></h2>
+        </div>
+        <div className="receive-grid">
+          {items.map((it, i) => (
+            <div className="receive-card" key={i}>
+              <div className="check-ic"><Check /></div>
+              <div>
+                <p style={{ fontSize: 16, color: 'var(--navy)', lineHeight: 1.5 }}>{it}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="challenge-grid">
-        {items.map((it, i) => (
-          <div className="challenge-card" key={i}>
-            <div className="num">{it.n}</div>
-            <h3>{it.t}</h3>
-            <p>{it.d}</p>
-          </div>
-        ))}
+    </section>
+  );
+}
+
+function SpecialOpportunity() {
+  return (
+    <section className="explainer">
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">🌟 A Special Extension Opportunity 🌟</span>
+          <h2 className="serif">For existing WLA clients <em>first.</em></h2>
+        </div>
+        <p>As part of this next evolution, we are opening <strong>only 1,000 founding member places</strong> for women who want to continue inside WLA over the next 12 months.</p>
+        <p>Launching inside this group first, and everyone else next week. <strong>You get first access.</strong></p>
       </div>
-      <div style={{ maxWidth: 760, margin: '40px auto 0', textAlign: 'center' }}>
-        <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)', lineHeight: 1.55, margin: 0 }}>
-          No cutting out your favourite foods. No miserable meal plans. No living on salads. No intense exercise.<br/>
-          Just a simple, structured approach for women who want <strong style={{color: 'var(--coral)', fontStyle: 'normal'}}>results WITHOUT obsession.</strong>
+    </section>
+  );
+}
+
+function ExpectedResults() {
+  const results = [
+    'Lose weight in a realistic, sustainable way',
+    'Reduce bloating and puffiness',
+    'Feel lighter, leaner and more comfortable in your body',
+    'Fit better into clothes again',
+    'Feel more confident in photos, holidays and social occasions',
+    'Reduce cravings, overeating and emotional eating',
+    'Have more energy throughout the day',
+    'Stop constantly thinking about food',
+    'Feel healthier, fitter and more in control',
+    'Build routines that actually LAST',
+    'Stop "starting again Monday"',
+    'Finally create a lifestyle you can realistically maintain',
+  ];
+  return (
+    <section className="receive">
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">✨ What Results Can You Expect? ✨</span>
+          <h2 className="serif">Designed to help you build results <em>you can actually keep.</em></h2>
+        </div>
+        <ul className="story-chips" style={{ marginBottom: 32 }}>
+          {results.map((r, i) => (
+            <li key={i}><span className="chip-dot" /><span>{r}</span></li>
+          ))}
+        </ul>
+        <p style={{ textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 20, color: 'var(--navy)', lineHeight: 1.5, maxWidth: 720, margin: '0 auto' }}>
+          This is <strong style={{color: 'var(--coral)', fontStyle: 'normal'}}>NOT</strong> just about short-term weight loss. It's about helping you build results you can actually <strong style={{color: 'var(--coral)', fontStyle: 'normal'}}>KEEP</strong>.
         </p>
       </div>
     </section>
@@ -705,22 +718,40 @@ const IcInfinity = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentCo
 const IcCoach = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c.4-3.6 3.4-6.5 7-6.5S18.6 17.4 19 21"/><path d="M16.5 4.5c.8.8 1.3 1.9 1.3 3.1"/><path d="M19 3c1.4 1.2 2.3 2.9 2.3 4.8"/></svg>);
 const IcCommunity = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="9" r="2.8"/><circle cx="16" cy="9" r="2.8"/><path d="M3 19c.6-2.6 2.7-4.5 5-4.5s4.4 1.9 5 4.5"/><path d="M11 19c.6-2.6 2.7-4.5 5-4.5s4.4 1.9 5 4.5"/></svg>);
 const IcMedal = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="14" r="6"/><path d="M12 11v6"/><path d="M9.5 13.5l2.5 1.5 2.5-1.5"/><path d="M8 8L6 2h12l-2 6"/></svg>);
+const IcFork = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3v7a3 3 0 0 0 3 3v8"/><path d="M10 3v7"/><path d="M17 3c-1 3.5-1.5 5.5-1.5 7s1.5 1.5 1.5 1.5V21"/></svg>);
+const IcSparkle = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><circle cx="19" cy="5" r="1" fill="currentColor"/><circle cx="5" cy="19" r="1" fill="currentColor"/></svg>);
+const IcChef = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 12a4 4 0 1 1 2-7.5A4 4 0 0 1 16 4.5 4 4 0 1 1 18 12v6H6z"/><path d="M6 18h12"/></svg>);
+const IcDoc = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>);
 
-function Receive() {
+function WhatsIncluded() {
   const items = [
-    { ic: <IcCalendar />,  t: 'The 12 Week WLA Summer Challenge', d: 'Designed specifically for women 45+ who want to lose weight, feel more confident, and finally maintain results long term.' },
-    { ic: <IcPhone />,     t: 'FREE Access To The Brand New WLA App For 12 Months', d: 'Your coaching, accountability, meal planning, recipes, tracking and support, all in ONE place.' },
-    { ic: <IcInfinity />,  t: 'Access To ALL WLA Challenges For 1 Full Year', d: 'Every reset, challenge and accountability event included during your founding year.' },
-    { ic: <IcCoach />,     t: 'Weekly Coaching Sessions With Anna', d: 'Receive support, guidance, accountability and motivation every week to help keep results moving.' },
-    { ic: <IcCommunity />, t: 'Daily Accountability + Female-Only Community Support', d: 'Feel supported every day instead of trying to do this alone.' },
-    { ic: <IcMedal />,     t: 'Founding Member Pricing', d: 'This is the LOWEST price WLA will ever be offered at. Pricing increases after Phase 1 closes.' },
+    { ic: <IcCalendar />,  t: 'The 12 Week WLA Summer Challenge',
+      d: 'Lose up to 2 stone, reduce cravings and feel more confident this summer without miserable diets or intense exercise.', v: 147 },
+    { ic: <IcCoach />,     t: 'Weekly LIVE Coaching Sessions With Anna',
+      d: 'Stay accountable, motivated and consistent with weekly coaching, Q&As and expert guidance from Anna.', v: 1997 },
+    { ic: <IcInfinity />,  t: 'Daily Coaching & Accountability Support',
+      d: 'Feel supported every single day with ongoing accountability, coaching and motivation inside WLA.', v: 997 },
+    { ic: <IcCommunity />, t: 'Female-Only WLA Community',
+      d: 'Surround yourself with women on the same journey who truly understand the struggles and goals.', v: 997 },
+    { ic: <IcMedal />,     t: 'Access To ALL WLA Challenges For 12 Months',
+      d: 'Resets, challenges, accountability sprints and motivation boosts designed to keep momentum going all year long.', v: 497 },
+    { ic: <IcFork />,      t: 'Weekly Fat Loss Meal Guides',
+      d: 'Simple, realistic meal guides designed to make weight loss feel easier, more flexible and sustainable.', v: 397 },
+    { ic: <IcSparkle />,   t: 'The WLA Nutrition Formula Masterclass',
+      d: 'Learn the exact WLA approach to flexible fat loss and long-term consistency.', v: 197 },
+    { ic: <IcChef />,      t: 'Access To The WLA Recipe Collection',
+      d: '100+ simple, family-friendly recipes designed to support fat loss without overcomplicating nutrition.', v: 197 },
+    { ic: <IcDoc />,       t: 'WLA Nutrition & Lifestyle Guides',
+      d: 'Snack guides, food swaps, fat loss boosters and practical tools to support your results.', v: 27 },
+    { ic: <IcPhone />,     t: 'Founding Member Access To The Brand New WLA App',
+      d: 'Early access to the next evolution of WLA — advanced daily tracking, lifestyle tracking, progress dashboards, habit tracking, meal planning, shopping lists, and future feature updates.', v: 297 },
   ];
   return (
     <section className="receive">
       <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">For Only £97 Today, You'll Receive</span>
-          <h2 className="serif">Everything you need to <em>actually keep this going.</em></h2>
+          <span className="eyebrow">🌟 What's Included 🌟</span>
+          <h2 className="serif">Everything you get inside <em>Founding Membership.</em></h2>
         </div>
         <div className="receive-grid">
           {items.map((it, i) => (
@@ -729,82 +760,51 @@ function Receive() {
               <div>
                 <h3>{it.t}</h3>
                 <p>{it.d}</p>
+                <div className="value-pill"><span className="lab">Value</span>£{it.v.toLocaleString()}</div>
               </div>
             </div>
           ))}
         </div>
-        <div className="receive-cta-wrap">
-          <div className="receive-pricing">Founding Members get the <strong>lowest price ever</strong>. Pricing increases after Phase 1.</div>
-          <a href={CHECKOUT_URL} className="receive-cta-btn">Secure My Founding Member Access <Arrow /></a>
+        <div className="total-value">
+          <div className="lab">✨ Total Value ✨</div>
+          <div className="total-num">£5,750<em>+</em></div>
+          <div className="strike">Founding Members Launch · <s>£5,750+</s></div>
+          <div className="you-pay">You pay just <em>£97</em></div>
+        </div>
+        <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
+          <div className="receive-pricing">One year of access. Just <strong>26p per day</strong>.</div>
+          <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want Founding Member Access <Arrow /></a>
         </div>
       </div>
     </section>
   );
 }
 
-function App() {
-  const features = [
-    { t: 'Daily Accountability + Progress Tracking', d: 'Track your meals, habits, routines, progress and consistency so you always know exactly what to focus on each day. No more "I\'ve completely fallen off track."' },
-    { t: 'Weight Loss Dashboard + Goal Tracking', d: 'Stay motivated with weight tracking, visual progress graphs, milestone tracking, monthly check-ins and progress dashboards.' },
-    { t: 'Smart Weekly Meal Planner', d: 'Plan your week in minutes. Add meals directly into breakfast, lunch and dinner so you always know what you\'re eating and what you need to buy.' },
-    { t: 'Automatic Shopping Lists', d: 'Your shopping list is automatically created directly from your meal planner. Less stress. Less overthinking. More staying on track.' },
-    { t: 'Fresh Recipes Every Friday', d: 'New meal guides, fresh recipes, quick meals, no-cook options and realistic ideas for busy lifestyles added to the app every single week.' },
-    { t: 'Extensive WLA Recipe Library', d: '100s of delicious recipes built for weight loss, busy women, family life and women who want results WITHOUT restriction. No bland diet food.' },
-    { t: 'Lifestyle Tracking', d: 'Track sleep, stress, movement, water, alcohol, caffeine, mood and routines, so you can identify what\'s helping (and hurting) your results.' },
-    { t: 'Habit Tracking System', d: 'Build habits that actually LAST beyond motivation. Long-term results are built through routines, structure and consistency.' },
-    { t: 'Weekly Coaching Sessions With Anna', d: 'Coaching, accountability, support, guidance and motivation every single week to help keep results moving forward.' },
-    { t: 'Female-Only WLA Community', d: 'Stay connected with women on the same journey. Share wins, celebrate progress and stop trying to do this alone. Support in your pocket every day.' },
-  ];
-  return (
-    <section className="app" id="app">
-      <div className="section-head">
-        <span className="eyebrow">The Brand New WLA App, Included FREE</span>
-        <h2 className="serif">Here's what Founding Members get <em>immediately.</em></h2>
-        <p>From the moment you join, you'll unlock the very first version of the new WLA experience, designed to help women finally stay consistent long term.</p>
-      </div>
-      <div className="intro">
-        <p>And honestly? This is so much more than "just an app." It's been built to help women stay accountable, simplify weight loss, maintain momentum, and stop falling off track every time life gets busy.</p>
-      </div>
-      <div className="app-grid">
-        {features.map((f, i) => (
-          <div className="app-card" key={i}>
-            <div className="star">✦</div>
-            <h3>{f.t}</h3>
-            <p>{f.d}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ComingSoon() {
+function FoundingMembersAlsoGet() {
   const items = [
-    { t: 'Personalised Protein + Fibre Targets', d: 'Designed to help women reduce cravings, stay fuller for longer, simplify nutrition and make consistency easier than ever before.' },
-    { t: 'The Updated WLA Formula', d: 'The next evolution of the WLA approach, helping women lose weight, maintain results, simplify nutrition, and build a lifestyle that actually LASTS.' },
-    { t: 'Meal Photo Nutrition Analysis', d: 'Simply snap a photo of your meal and receive guidance directly inside the app. Quicker, easier, and more realistic for busy lives.' },
-    { t: 'On-Demand Support Inside The App', d: 'Feeling off track? Struggling with cravings? Need support during a difficult week? Guidance will be there exactly when you need it most.' },
+    { t: 'Future app updates & new features', d: 'Every update we ship through your founding year, included.' },
+    { t: 'Early access before public launch', d: "You're in before doors open to the wider audience." },
+    { t: 'The LOWEST price WLA will ever be offered at', d: 'Phase 1 pricing never returns once these spaces are gone.' },
+    { t: 'Help shape the future of WLA from the very beginning', d: 'Founding members guide what gets built next.' },
   ];
   return (
-    <section className="coming">
-      <div className="coming-inner">
+    <section className="explainer" style={{ background: 'var(--cream-2)' }}>
+      <div className="explainer-inner" style={{ maxWidth: 1100 }}>
         <div className="section-head">
-          <span className="eyebrow">Plus, This Is Only The Beginning</span>
-          <h2 className="serif">Founding Members get <em>everything coming next</em>, too.</h2>
-          <p>Founding Members will also receive access to future app updates and new features as WLA continues expanding before our public Phase 2 launch in September.</p>
+          <span className="eyebrow">🚀 Founding Members Also Get</span>
+          <h2 className="serif">A few <em>quietly significant</em> extras.</h2>
         </div>
-        <div className="coming-grid">
+        <div className="receive-grid">
           {items.map((it, i) => (
-            <div className="coming-card" key={i}>
-              <div className="rocket">Coming In Phase 2</div>
-              <h3>{it.t}</h3>
-              <p>{it.d}</p>
+            <div className="receive-card" key={i}>
+              <div className="check-ic"><Check /></div>
+              <div>
+                <h3>{it.t}</h3>
+                <p>{it.d}</p>
+              </div>
             </div>
           ))}
         </div>
-        <p style={{ maxWidth: 760, margin: '36px auto 0', textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)', lineHeight: 1.55 }}>
-          This is the next evolution of WLA. Not just helping women lose weight, but helping them <strong style={{color: 'var(--coral)', fontStyle: 'normal'}}>continue the lifestyle, maintain momentum, and finally build results that LAST.</strong>
-        </p>
       </div>
     </section>
   );
@@ -894,47 +894,6 @@ function Results() {
   );
 }
 
-function Compare() {
-  const before = [
-    'Start every Monday',
-    'Lose and regain the same pounds',
-    'Feel guilty around food',
-    'Rely on motivation',
-    'All-or-nothing mindset',
-    'Feel overwhelmed',
-    'Feel alone in the process',
-  ];
-  const after = [
-    'Stay on track after imperfect days',
-    'Build results that actually last',
-    'Feel calm and in control',
-    'Have structure and support',
-    'Flexible consistency',
-    'Know exactly what to focus on',
-    'Supported every day',
-  ];
-  return (
-    <section className="compare">
-      <div className="compare-inner">
-        <div className="section-head">
-          <span className="eyebrow">Before WLA vs Living The WLA Lifestyle</span>
-          <h2 className="serif">A completely different relationship with food, <em>and yourself.</em></h2>
-        </div>
-        <div className="compare-grid">
-          <div className="compare-col before">
-            <h3>Before WLA</h3>
-            <ul>{before.map((b, i) => <li key={i}>{b}</li>)}</ul>
-          </div>
-          <div className="compare-col after">
-            <h3>Living The WLA Lifestyle</h3>
-            <ul>{after.map((a, i) => <li key={i}>{a}</li>)}</ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function VideoTestimonials() {
   const videos = [
     { id: '1147300902', hash: '58fbd0c85a', name: 'Vicky', quote: '"I started the WLA a size 20 and am now a 10/12"' },
@@ -970,40 +929,6 @@ function VideoTestimonials() {
   );
 }
 
-function Imagine() {
-  return (
-    <section className="explainer">
-      <div className="explainer-inner">
-        <div className="section-head">
-          <span className="eyebrow">Imagine This Being Your Summer</span>
-          <h2 className="serif">Imagine reaching September <em>proud of yourself</em>, not starting again.</h2>
-        </div>
-        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'grid', gap: 12 }}>
-          {[
-            'Getting dressed without frustration',
-            'Reducing cravings and overeating',
-            'Finally feeling IN CONTROL around food',
-            'Waking up with more energy',
-            'Having routines that actually stick',
-            'Feeling confident in photos again',
-            'Not undoing all your progress over summer',
-            'Reaching September proud of yourself instead of "starting again"',
-          ].map((t, i) => (
-            <li key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start', fontFamily: '"Libre Baskerville", serif', fontSize: 17, color: 'var(--navy)', lineHeight: 1.5 }}>
-              <span style={{ color: 'var(--coral)', fontWeight: 700, flex: 'none' }}>✦</span>{t}
-            </li>
-          ))}
-        </ul>
-        <p>Now imagine doing all of that <strong>with support, with accountability, with structure, and with thousands of women doing it with you.</strong></p>
-        <div className="lifestyle-callout">
-          <span className="lifestyle-mark">That's</span>
-          <span className="lifestyle-text">what the <em>WLA lifestyle</em> is all about.</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Limited() {
   return (
     <section className="limited">
@@ -1017,7 +942,7 @@ function Limited() {
         <div className="scarcity" aria-label="Founding member spaces remaining">
           <div className="scarcity-top">
             <span className="label">Phase 1 Spaces</span>
-            <span className="number"><em>323</em> of 1,000 claimed</span>
+            <span className="number"><em>0</em> of 1,000 claimed</span>
           </div>
           <div className="scarcity-bar"><div className="fill" /></div>
           <div className="scarcity-foot">
@@ -1062,48 +987,14 @@ function FinalCTA() {
   return (
     <section className="final-cta">
       <div className="final-cta-inner">
-        <div className="founding-tag" style={{ marginBottom: 18 }}>Phase 1 · Limited Spaces</div>
-        <h2 className="serif">Yes, I want <em>Founding Member access.</em></h2>
-        <p>Join today for £97 and lock in 12 months inside the brand new WLA app, all WLA challenges for a full year, and the lowest price WLA will ever be offered at.</p>
+        <div className="founding-tag" style={{ marginBottom: 18 }}>Phase 1 · Only 1,000 Places</div>
+        <h2 className="serif">This isn't about <em>starting over again.</em></h2>
+        <p>It's about continuing the momentum you've already worked so hard to build. One year inside the next evolution of WLA, for just £97 — about 26p a day.</p>
         <div className="final-buttons">
-          <CTAButtons primaryLabel="Yes, I Want Founding Member Access" />
+          <CTAButtons primaryLabel="Yes! I Want Founding Member Access" />
         </div>
         <div className="final-foot">
-          <strong>12 month app access included · ALL WLA challenges included · Lowest price ever</strong>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FAQ() {
-  const qs = [
-    { q: 'What exactly is the WLA 12 Week Summer Challenge?', a: 'It\'s a 12-week guided challenge built around simple, flexible nutrition and weekly coaching, designed for women (especially 45+) who want to lose weight this summer without intense exercise, miserable diets, or starting over every Monday. You also get 12 months inside the brand new WLA app and community included free.' },
-    { q: 'When does it start, and how long do I have access?', a: 'The challenge runs for 12 weeks. As a Founding Member, you get access to the new WLA app and all WLA challenges for a full year from the date you join, so you can keep using the meal planner, recipes, habit tracking and community long after the 12 weeks are done.' },
-    { q: 'Is the £97 a one-time payment or a subscription?', a: 'It\'s a one-time payment of £97 for Founding Member access, including the 12 Week Summer Challenge plus 12 months inside the new WLA app and all WLA challenges. Pricing increases after Phase 1 closes.' },
-    { q: 'Is this suitable if I\'m in perimenopause / menopause?', a: 'Yes. WLA has been built around women in midlife for over a decade. The nutrition approach is hormone-friendly, doesn\'t rely on extreme calorie restriction, and focuses on real food, protein, fibre, blood sugar balance and consistency. Speak to your GP if you have specific medical needs.' },
-    { q: 'I\'ve tried everything before. How is this different?', a: 'WLA isn\'t a "diet you do until you can\'t". It\'s a lifestyle system built around structure, accountability and habits that actually fit a real, busy life. The whole point of the new app and community is to help you keep going long after the initial weight loss, which is the part most plans never solve.' },
-    { q: 'Do I need to count calories or cut out food groups?', a: 'No. No banned foods, no calorie counting, no shakes or replacements. You\'ll eat real meals built around protein, fibre, vegetables and the right carbs at the right time.' },
-    { q: 'I\'m busy and have a family to feed. Will this work?', a: 'Yes, that\'s exactly who we built this for. The meal planner, automatic shopping list and family-friendly recipes are designed for busy weeks and real-life households.' },
-    { q: 'What if I\'m not happy with the program?', a: 'You\'re covered by our 7-day money-back guarantee. If you don\'t feel WLA is for you within the first 7 days, email support and we\'ll refund you, no awkwardness.' },
-    { q: 'How quickly do I get access?', a: 'Immediately. The moment you join, you\'ll get login details for the new WLA app and the WLA Founding Members community.' },
-    { q: 'Is there an app for iPhone and Android?', a: 'Yes, the WLA app is available on both iPhone and Android, plus through the web.' },
-    { q: 'What happens once the 1,000 Founding Member spaces are full?', a: 'Doors close on Phase 1. The Founding Member price (£97 for 12 months) disappears, and access reopens at the public Phase 2 launch at a higher price.' },
-  ];
-  return (
-    <section className="faq" id="faq">
-      <div className="faq-inner">
-        <div className="section-head">
-          <span className="eyebrow">Questions, answered</span>
-          <h2 className="serif">Everything you need to know.</h2>
-        </div>
-        <div className="faq-list">
-          {qs.map((it, i) => (
-            <details className="faq-item" key={i}>
-              <summary>{it.q}</summary>
-              <p>{it.a}</p>
-            </details>
-          ))}
+          <strong>1 year access · Weekly LIVE coaching · All WLA challenges · The new WLA app · Lowest price ever</strong>
         </div>
       </div>
     </section>
@@ -1138,8 +1029,8 @@ function StickyCTA() {
   return (
     <div className={'sticky-cta' + (show ? ' show' : '')}>
       <div className="text">
-        <strong>Founding Member · £97</strong>
-        <span className="sec">12 mo app access · All WLA challenges · Lowest price ever</span>
+        <strong>Founding Member · £97 / yr</strong>
+        <span className="sec">26p / day · Weekly LIVE coaching · All WLA challenges · The new WLA app</span>
       </div>
       <a href={CHECKOUT_URL}>Join Now <Arrow /></a>
     </div>
@@ -1151,21 +1042,17 @@ function Page() {
     <>
       <Hero />
       <Trust />
-      <Story />
-      <Reason />
-      <Lifestyle />
-      <NextPhase />
-      <Challenge />
-      <Receive />
-      <App />
-      <ComingSoon />
+      <WhyWLAExists />
+      <NextChapter />
+      <EvolvingInside />
+      <SpecialOpportunity />
+      <ExpectedResults />
+      <WhatsIncluded />
+      <FoundingMembersAlsoGet />
       <Results />
-      <Compare />
       <VideoTestimonials />
-      <Imagine />
       <Limited />
       <FinalCTA />
-      <FAQ />
       <Footer />
       <StickyCTA />
     </>
