@@ -12,7 +12,8 @@ from wla_style import (Guide, PAGE_W, PAGE_H, LEFT, RIGHT, CW, MARGIN,
                        CONTENT_TOP, CONTENT_BOTTOM,
                        NAVY, BLUSH, INK, BEIGE, CREAM, RULE,
                        wrap, tw, fit_size, norm)
-from cookbook_recipes_data import RECIPES, SECTIONS, NAME, TAGLINE
+from cookbook_recipes_data import (RECIPES, SECTIONS, NAME, TAGLINE,
+                                   SECTION_PARENT)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 IMG_DIR = os.path.join(HERE, "cookbook-recipes")
@@ -101,32 +102,46 @@ g.paragraph(
 TOC_LINKS = []
 
 
-def toc_section(name, recipes, start_page):
+def toc_parent(name):
+    """Big parent group label (e.g. DINNERS) above its sub-sections."""
+    g.ensure(34)
+    g.y += 6
+    g.tracked(LEFT, g.y + 12, name.upper(), "asb", 11, NAVY, 2.0)
+    g.y += 18
+    g.page.draw_line((LEFT, g.y), (LEFT + 38, g.y),
+                     color=BLUSH, width=2.0)
+    g.y += 10
+
+
+def toc_section(name, recipes, start_page, indent=False):
     """Render a contents section. start_page is the 1-based page number
-    of that section. Returns the next start_page."""
-    g.ensure(28)
-    g.tracked(LEFT, g.y + 11, name.upper(), "asb", 9.5, BLUSH, 1.6)
-    g.y += 26
+    of that section. Returns the next start_page. If indent=True the
+    section sits visually under a parent group."""
+    label_x = LEFT + (14 if indent else 0)
+    num_x = LEFT + (18 if indent else 4)
+    title_x = LEFT + (46 if indent else 32)
+    g.ensure(26)
+    g.tracked(label_x, g.y + 11, name.upper(), "asb", 9.5, BLUSH, 1.6)
+    g.y += 24
     pg = start_page
     for i, r in enumerate(recipes, 1):
         g.ensure(20)
         y = g.y + 12
         num = f"{i:02d}"
-        g.text(LEFT + 4, y, num, "asb", 10.4, BLUSH)
-        g.text(LEFT + 32, y, r["title"], "as", 10.8, INK)
-        x = LEFT + 32 + tw(r["title"], "as", 10.8) + 10
+        g.text(num_x, y, num, "asb", 10.4, BLUSH)
+        g.text(title_x, y, r["title"], "as", 10.8, INK)
+        x = title_x + tw(r["title"], "as", 10.8) + 10
         pgs = f"{pg:02d}"
         while x < RIGHT - tw(pgs, "as", 10.8) - 10:
             g.page.draw_circle((x, y - 3), 0.6, color=None,
                                fill=(0.6, 0.6, 0.6))
             x += 3.3
         g.text_right(RIGHT - 2, y, pgs, "as", 10.8, INK)
-        # capture link rect across the whole row
         row_rect = fitz.Rect(LEFT, y - 12, RIGHT, y + 6)
         TOC_LINKS.append((g.npages - 1, row_rect, pg - 1))
         g.y += 19
         pg += 1
-    g.y += 12
+    g.y += 10
     return pg
 
 
@@ -136,8 +151,16 @@ for s in SECTIONS:
     section_groups.append((s, group))
 
 start_pg = 4  # first recipe is on page 4 (1-based)
+current_parent = None
 for name, group in section_groups:
-    start_pg = toc_section(name, group, start_pg)
+    parent = SECTION_PARENT.get(name)
+    if parent and parent != current_parent:
+        toc_parent(parent)
+        current_parent = parent
+    elif not parent:
+        current_parent = None
+    start_pg = toc_section(name, group, start_pg,
+                           indent=bool(parent))
 
 
 # =========================================================== recipe pages
@@ -188,11 +211,19 @@ def draw_recipe(idx, r):
     # vertical cursor below photo
     g.y = PHOTO_H + 28
 
-    # kicker: RECIPE 02 · SLOW COOKER
-    kicker = f"RECIPE {rnum:02d}"
-    kx = g.tracked(LEFT, g.y, kicker, "asb", 8.5, NAVY, 1.5)
-    g.text(kx + 10, g.y, "·", "asb", 8.5, BLUSH)
-    g.tracked(kx + 20, g.y, section.upper(), "asb", 8.5, NAVY, 1.5)
+    # kicker: RECIPE NN · [PARENT ·] SECTION
+    parent = SECTION_PARENT.get(section)
+    chips = [f"RECIPE {rnum:02d}"]
+    if parent:
+        chips.append(parent.upper())
+    chips.append(section.upper())
+    cx = LEFT
+    for i, chip in enumerate(chips):
+        if i > 0:
+            g.text(cx + 4, g.y, "·", "asb", 8.5, BLUSH)
+            cx += 14
+        cx = g.tracked(cx, g.y, chip, "asb", 8.5, NAVY, 1.5)
+        cx += 6
     g.y += 16
 
     # title (Libre Baskerville italic for emphasis)

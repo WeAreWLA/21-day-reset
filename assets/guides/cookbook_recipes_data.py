@@ -7,9 +7,9 @@ instructions (list of strings), note (optional), image (filename).
 
 Sections (order in the cookbook):
   1. Breakfast & Lunch
-  2. Slow Cooker
-  3. Bowls
-  4. Dinners
+  2. Regular Dinners      \
+  3. Slow Cooker            > grouped under DINNERS in the contents
+  4. Bowls                /
 """
 
 NAME = "The WLA Weight Loss Cookbook"
@@ -18,7 +18,15 @@ TAGLINE = (
     "nutritionist to make weight loss feel easy, not restrictive."
 )
 
-SECTIONS = ["Breakfast & Lunch", "Slow Cooker", "Bowls", "Dinners"]
+SECTIONS = ["Breakfast & Lunch", "Regular Dinners",
+            "Slow Cooker", "Bowls"]
+
+# Sections that belong under a parent group in the contents page.
+SECTION_PARENT = {
+    "Regular Dinners": "Dinners",
+    "Slow Cooker": "Dinners",
+    "Bowls": "Dinners",
+}
 
 RECIPES = [
     # ============================== BREAKFAST & LUNCH
@@ -533,7 +541,7 @@ RECIPES = [
 
     # ============================== DINNERS
     {
-        "section": "Dinners",
+        "section": "Regular Dinners",
         "title": "Marry Me Meatballs",
         "tagline": "Creamy, herby meatballs in a sun-dried tomato sauce.",
         "serves": 1,
@@ -597,7 +605,7 @@ RECIPES = [
         ),
     },
     {
-        "section": "Dinners",
+        "section": "Regular Dinners",
         "title": "Chicken, Broccoli and Mushroom Pasta",
         "tagline": "Creamy, savoury pasta with tender chicken and greens.",
         "serves": 1,
@@ -644,7 +652,7 @@ RECIPES = [
         "note": None,
     },
     {
-        "section": "Dinners",
+        "section": "Regular Dinners",
         "title": "Deconstructed Fish Pie",
         "tagline": "All the comfort of fish pie, in fresh, lighter form.",
         "serves": 2,
@@ -709,7 +717,7 @@ RECIPES = [
         ),
     },
     {
-        "section": "Dinners",
+        "section": "Regular Dinners",
         "title": "Steak Fajitas",
         "tagline": "Smoky, spiced beef with all the toppings.",
         "serves": 1,
@@ -768,7 +776,7 @@ RECIPES = [
         ),
     },
     {
-        "section": "Dinners",
+        "section": "Regular Dinners",
         "title": "One Tray Harissa Traybake (V)",
         "tagline": "Spiced chickpeas, halloumi, and roasted veg with a coriander yoghurt drizzle.",
         "serves": "1 (easily scaled)",
