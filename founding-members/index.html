@@ -520,8 +520,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .sticky-cta .text { font-size: 14px; line-height: 1.25; flex: 1; min-width: 0; }
   .sticky-cta .text strong { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 16px; display: block; }
   .sticky-cta .text .sec { font-size: 12px; opacity: 0.78; }
-  .sticky-cta-buttons { display: flex; gap: 8px; flex: none; }
-  .sticky-cta-card, .sticky-cta-paypal { padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; transition: background .15s, transform .15s; text-decoration: none; }
+  .sticky-cta-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; flex: none; }
+  .sticky-cta-card, .sticky-cta-paypal { padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: background .15s, transform .15s; text-decoration: none; min-width: 120px; }
   .sticky-cta-card { background: var(--coral); color: #fff; }
   .sticky-cta-card:hover { background: #c2603f; transform: translateY(-1px); }
   .sticky-cta-card svg { width: 16px; height: 16px; }
