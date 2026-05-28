@@ -191,17 +191,17 @@ def add_dot(slide, cx, cy, d, color):
 # ---------- Reusable slide patterns ----------
 
 def slide_eyebrow_headline(slide, eyebrow, title_runs, body_paras=None,
-                            top=Inches(2.2), left=Inches(0.9), width=Inches(11.5)):
-    """Eyebrow text + headline (rich runs) + optional body paragraphs."""
+                            top=Inches(0.85), left=Inches(0.9), width=Inches(11.5)):
+    """Eyebrow text + headline (rich runs) + optional body paragraphs. Top-aligned by default."""
     if eyebrow:
-        add_runs(slide, left, top, width, Inches(0.4), [{
-            'text': eyebrow.upper(), 'font': SANS, 'size': 12, 'color': CORAL,
-            'bold': True, 'letter_spacing': 240
+        add_runs(slide, left, top, width, Inches(0.55), [{
+            'text': eyebrow.upper(), 'font': SANS, 'size': 18, 'color': CORAL,
+            'bold': True, 'letter_spacing': 220
         }])
-    add_paragraphs(slide, left, top + Inches(0.55), width, Inches(2.5),
+    add_paragraphs(slide, left, top + Inches(0.85), width, Inches(2.5),
         [{'runs': title_runs, 'line': 1.12, 'align': PP_ALIGN.LEFT}])
     if body_paras:
-        add_paragraphs(slide, left, top + Inches(2.6), width, Inches(3.5),
+        add_paragraphs(slide, left, top + Inches(2.9), width, Inches(3.5),
             body_paras)
 
 def coral_bullet(slide, left, top, text, size=18, font=SERIF, color=NAVY, italic=False, bold=False):
@@ -216,12 +216,12 @@ def coral_bullet(slide, left, top, text, size=18, font=SERIF, color=NAVY, italic
 
 def add_footer(slide, dark=False):
     color = WHITE if dark else MUTED
-    add_runs(slide, Inches(0.6), Inches(7.05), Inches(8), Inches(0.3),
-        [{'text': 'The Weight Loss Academy', 'font': SERIF, 'size': 10,
+    add_runs(slide, Inches(0.6), Inches(6.95), Inches(8), Inches(0.4),
+        [{'text': 'The Weight Loss Academy', 'font': SERIF, 'size': 13,
           'color': color, 'italic': True}])
-    add_runs(slide, Inches(8.0), Inches(7.05), Inches(4.8), Inches(0.3),
+    add_runs(slide, Inches(7.5), Inches(6.95), Inches(5.3), Inches(0.4),
         [{'text': 'WLA SUMMER CHALLENGE  ·  FOUNDING MEMBERS', 'font': SANS,
-          'size': 9, 'color': color, 'bold': True, 'letter_spacing': 200}],
+          'size': 12, 'color': color, 'bold': True, 'letter_spacing': 200}],
         align=PP_ALIGN.RIGHT)
 
 # ============================================================
@@ -240,11 +240,11 @@ def slide_cover():
     big2.fill.solid(); big2.fill.fore_color.rgb = CREAM_2; big2.line.fill.background()
     big2.shadow.inherit = False
 
-    add_pill(s, Inches(4.6), Inches(1.0), Inches(4.1), Inches(0.4),
+    add_pill(s, Inches(3.4), Inches(0.9), Inches(6.5), Inches(0.55),
              '✦  SOMETHING BIG IS HAPPENING INSIDE WLA  ✦',
-             fill=NAVY, color=CREAM_WARM, size=11, letter_spacing=260)
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=260)
 
-    add_paragraphs(s, Inches(0.7), Inches(2.3), Inches(11.9), Inches(3.5), [
+    add_paragraphs(s, Inches(0.7), Inches(2.1), Inches(11.9), Inches(3.5), [
         {'runs': [
             {'text': 'The Next Phase ', 'font': SERIF, 'size': 64, 'color': NAVY, 'bold': True},
             {'text': 'of', 'font': SERIF, 'size': 64, 'color': NAVY, 'italic': True},
@@ -254,14 +254,14 @@ def slide_cover():
          ], 'align': PP_ALIGN.CENTER, 'line': 1.1, 'space_after': 24},
     ])
 
-    add_runs(s, Inches(1.5), Inches(5.4), Inches(10.3), Inches(0.6),
+    add_runs(s, Inches(0.9), Inches(5.3), Inches(11.5), Inches(0.7),
         [{'text': 'Lose the weight. Live the lifestyle.',
-          'font': SERIF, 'size': 22, 'color': NAVY, 'italic': True}],
+          'font': SERIF, 'size': 30, 'color': NAVY, 'italic': True}],
         align=PP_ALIGN.CENTER)
 
-    add_runs(s, Inches(1.5), Inches(6.05), Inches(10.3), Inches(0.4),
+    add_runs(s, Inches(0.9), Inches(6.1), Inches(11.5), Inches(0.5),
         [{'text': 'A live announcement with Anna Wallace  ·  Founder of WLA',
-          'font': SANS, 'size': 13, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
+          'font': SANS, 'size': 18, 'color': MUTED, 'bold': True, 'letter_spacing': 200}],
         align=PP_ALIGN.CENTER)
 
 # ---------------- 2. OPENING ----------------
@@ -290,7 +290,7 @@ def slide_11_years():
         [{'text': 'WLA has helped over ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
          {'text': '50,000 women', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True},
          {'text': '…', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True}],
-        top=Inches(0.7))
+        top=Inches(0.85))
 
     # two columns of bullets
     bullets = [
@@ -324,7 +324,7 @@ def slide_hardest_part():
             {'runs': [{'text': 'Most women do not struggle to LOSE weight. They struggle to KEEP it off once accountability disappears, routines slowly fade, old habits creep back in and life takes over again.',
                        'font': SANS, 'size': 18, 'color': BODY}], 'line': 1.55},
         ],
-        top=Inches(1.6))
+        top=Inches(0.85))
     add_footer(s)
 
 # ---------------- 5. THE CYCLE (CALLOUT NAVY) ----------------
@@ -332,7 +332,7 @@ def slide_cycle():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, NAVY)
     add_pill(s, Inches(5.2), Inches(1.4), Inches(2.9), Inches(0.4),
-             'THE CYCLE', fill=CORAL, color=WHITE, size=11, letter_spacing=300)
+             'THE CYCLE', fill=CORAL, color=WHITE, size=15, letter_spacing=300)
     add_paragraphs(s, Inches(1.2), Inches(2.4), Inches(10.9), Inches(3.5), [
         {'runs': [
             {'text': '“I’ll start again ', 'font': SERIF, 'size': 64, 'color': WHITE, 'italic': True},
@@ -408,7 +408,7 @@ def slide_evolution():
             {'runs': [{'text': 'But the women who achieve the best long-term results are usually the women who continue the habits and routines long after the challenge ends.',
                        'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True}], 'line': 1.5},
         ],
-        top=Inches(1.6))
+        top=Inches(0.85))
     add_footer(s)
 
 # ---------------- 9. THE SHIFT (CALLOUT) ----------------
@@ -416,7 +416,7 @@ def slide_shift():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, NAVY)
     add_pill(s, Inches(5.7), Inches(1.5), Inches(1.9), Inches(0.4),
-             'THE SHIFT', fill=CORAL, color=WHITE, size=11, letter_spacing=300)
+             'THE SHIFT', fill=CORAL, color=WHITE, size=15, letter_spacing=300)
     add_paragraphs(s, Inches(1.2), Inches(2.5), Inches(10.9), Inches(3.5), [
         {'runs': [
             {'text': 'Not just helping women ', 'font': SERIF, 'size': 46, 'color': WHITE, 'bold': True},
@@ -481,7 +481,7 @@ def slide_not_perfectly():
         [{'text': 'But ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
          {'text': 'consistently enough', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True},
          {'text': ' to:', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True}],
-        top=Inches(0.9))
+        top=Inches(0.85))
     bullets = [
         'maintain my results',
         'feel good in myself',
@@ -499,7 +499,7 @@ def slide_i_still():
     add_bg(s, CREAM)
     slide_eyebrow_headline(s, 'What that looks like for me',
         [{'text': 'I still…', 'font': SERIF, 'size': 56, 'color': NAVY, 'bold': True}],
-        top=Inches(0.9))
+        top=Inches(0.85))
     bullets = [
         'plan my meals',
         'focus on simple nutrition',
@@ -526,7 +526,7 @@ def slide_never_diet():
             {'runs': [{'text': 'It was designed to help women build a lifestyle they can actually LIVE with long term.',
                        'font': SERIF, 'size': 22, 'color': NAVY, 'italic': True}], 'line': 1.5},
         ],
-        top=Inches(2.0))
+        top=Inches(0.85))
     add_footer(s)
 
 # ---------------- 15. NOT TAUGHT - LIVED (CALLOUT) ----------------
@@ -569,7 +569,7 @@ def slide_welcome():
     add_bg(s, CREAM)
     add_pill(s, Inches(4.6), Inches(1.2), Inches(4.1), Inches(0.4),
              'WELCOME TO THE NEXT PHASE OF WLA',
-             fill=CREAM_2, color=CORAL, size=11, letter_spacing=300)
+             fill=CREAM_2, color=CORAL, size=15, letter_spacing=300)
     add_paragraphs(s, Inches(0.5), Inches(2.4), Inches(12.4), Inches(3.5), [
         {'runs': [
             {'text': 'The Weight Loss', 'font': SERIF, 'size': 60, 'color': NAVY, 'bold': True},
@@ -593,7 +593,7 @@ def slide_about():
         [{'text': 'About helping you ', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True},
          {'text': 'keep going', 'font': SERIF, 'size': 40, 'color': CORAL, 'italic': True},
          {'text': '.', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True}],
-        top=Inches(0.9))
+        top=Inches(0.85))
     bullets = [
         'maintain momentum',
         'stay consistent',
@@ -612,7 +612,7 @@ def slide_huge():
     slide_eyebrow_headline(s, "And that’s why we’ve built something huge…",
         [{'text': 'Designed to help you ', 'font': SERIF, 'size': 38, 'color': NAVY, 'bold': True},
          {'text': 'continue the WLA lifestyle.', 'font': SERIF, 'size': 38, 'color': CORAL, 'italic': True}],
-        top=Inches(1.4))
+        top=Inches(0.85))
     bullets = [
         'stay accountable',
         'stay focused',
@@ -629,7 +629,7 @@ def slide_reveal_app():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, NAVY)
     add_pill(s, Inches(4.6), Inches(1.2), Inches(4.1), Inches(0.4),
-             '✨  INTRODUCING  ✨', fill=CORAL, color=WHITE, size=11, letter_spacing=320)
+             '✨  INTRODUCING  ✨', fill=CORAL, color=WHITE, size=15, letter_spacing=320)
     add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.5), [
         {'runs': [
             {'text': 'The Brand New ', 'font': SERIF, 'size': 70, 'color': WHITE, 'bold': True},
@@ -652,7 +652,7 @@ def slide_not_calorie():
         [{'text': 'This is ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
          {'text': 'not', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True},
          {'text': ' another calorie-counting app.', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True}],
-        top=Inches(1.0))
+        top=Inches(0.85))
     add_runs(s, Inches(0.9), Inches(3.5), Inches(11.5), Inches(0.5),
         [{'text': 'It’s been built to help you:', 'font': SERIF, 'size': 22,
           'color': NAVY, 'italic': True}])
@@ -678,7 +678,7 @@ def slide_inside_overview():
     slide_eyebrow_headline(s, 'Inside the app you get access to',
         [{'text': 'Everything ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
          {'text': 'in one place.', 'font': SERIF, 'size': 44, 'color': CORAL, 'italic': True}],
-        top=Inches(0.9))
+        top=Inches(0.85))
     items = [
         'Accountability & progress tracking',
         'Meal planning & shopping lists',
@@ -700,7 +700,7 @@ def slide_phase1_intro():
     add_bg(s, CREAM)
     add_pill(s, Inches(4.6), Inches(1.4), Inches(4.1), Inches(0.4),
              '🚀  AVAILABLE INSIDE PHASE 1 AT LAUNCH',
-             fill=NAVY, color=CREAM_WARM, size=11, letter_spacing=260)
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=260)
     add_paragraphs(s, Inches(0.9), Inches(2.6), Inches(11.5), Inches(3.5), [
         {'runs': [
             {'text': 'Here’s what Founding Members get ', 'font': SERIF, 'size': 42, 'color': NAVY, 'bold': True},
@@ -719,32 +719,32 @@ def feature_slide(num, total, title, lead, bullets, footer_quote=None):
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
     # Top-left feature counter
-    add_runs(s, Inches(0.9), Inches(0.6), Inches(4), Inches(0.35),
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(6), Inches(0.5),
         [{'text': f'WLA APP FEATURE  ·  {num:02d} / {total:02d}',
-          'font': SANS, 'size': 11, 'color': CORAL, 'bold': True, 'letter_spacing': 240}])
+          'font': SANS, 'size': 16, 'color': CORAL, 'bold': True, 'letter_spacing': 220}])
     # Star + title
-    add_runs(s, Inches(0.9), Inches(1.1), Inches(0.6), Inches(0.6),
+    add_runs(s, Inches(0.9), Inches(1.55), Inches(0.6), Inches(0.6),
         [{'text': '✦', 'font': SERIF, 'size': 32, 'color': CORAL}])
-    add_paragraphs(s, Inches(1.55), Inches(1.05), Inches(11.0), Inches(1.3), [
+    add_paragraphs(s, Inches(1.55), Inches(1.5), Inches(11.0), Inches(1.3), [
         {'runs': [
             {'text': title, 'font': SERIF, 'size': 36, 'color': NAVY, 'bold': True},
         ], 'line': 1.15}
     ])
     if lead:
-        add_runs(s, Inches(0.9), Inches(2.5), Inches(11.5), Inches(0.6),
-            [{'text': lead, 'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True}])
+        add_runs(s, Inches(0.9), Inches(2.95), Inches(11.5), Inches(0.6),
+            [{'text': lead, 'font': SERIF, 'size': 22, 'color': NAVY, 'italic': True}])
     # Two-column bullets
-    start_y = Inches(3.45)
+    start_y = Inches(3.95)
     half = (len(bullets) + 1) // 2
     for i, b in enumerate(bullets):
         col = 0 if i < half else 1
         row = i if col == 0 else (i - half)
         x = Inches(0.9) if col == 0 else Inches(7.0)
         y = start_y + Inches(0.5 * row)
-        coral_bullet(s, x, y, b, size=16, color=NAVY)
+        coral_bullet(s, x, y, b, size=18, color=NAVY)
     if footer_quote:
-        add_runs(s, Inches(0.9), Inches(6.3), Inches(11.5), Inches(0.5),
-            [{'text': footer_quote, 'font': SERIF, 'size': 16, 'color': CORAL, 'italic': True}],
+        add_runs(s, Inches(0.9), Inches(6.45), Inches(11.5), Inches(0.4),
+            [{'text': footer_quote, 'font': SERIF, 'size': 17, 'color': CORAL, 'italic': True}],
             align=PP_ALIGN.LEFT)
     add_footer(s)
 
@@ -817,7 +817,7 @@ def slide_plus_beginning():
     add_bg(s, CREAM_2)
     add_pill(s, Inches(4.2), Inches(1.2), Inches(4.9), Inches(0.4),
              '✨  PLUS… THIS IS ONLY THE BEGINNING',
-             fill=NAVY, color=CREAM_WARM, size=11, letter_spacing=280)
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=280)
     add_paragraphs(s, Inches(0.9), Inches(2.5), Inches(11.5), Inches(3.5), [
         {'runs': [
             {'text': 'Founding Members get ', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True},
@@ -839,7 +839,7 @@ def slide_phase2_intro():
     add_bg(s, CREAM)
     add_pill(s, Inches(4.7), Inches(1.4), Inches(3.9), Inches(0.4),
              '🚀  COMING SOON · PHASE 2',
-             fill=CORAL, color=WHITE, size=11, letter_spacing=280)
+             fill=CORAL, color=WHITE, size=15, letter_spacing=280)
     add_paragraphs(s, Inches(0.9), Inches(2.6), Inches(11.5), Inches(3.5), [
         {'runs': [
             {'text': "What’s coming next is ", 'font': SERIF, 'size': 42, 'color': NAVY, 'bold': True},
@@ -853,17 +853,17 @@ def slide_phase2_intro():
 def phase2_slide(num, title, lead, bullets):
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
-    add_runs(s, Inches(0.9), Inches(0.6), Inches(4), Inches(0.35),
+    add_runs(s, Inches(0.9), Inches(0.85), Inches(6), Inches(0.5),
         [{'text': f'COMING IN PHASE 2  ·  {num:02d} / 04',
-          'font': SANS, 'size': 11, 'color': CORAL, 'bold': True, 'letter_spacing': 240}])
-    add_runs(s, Inches(0.9), Inches(1.1), Inches(0.6), Inches(0.6),
+          'font': SANS, 'size': 16, 'color': CORAL, 'bold': True, 'letter_spacing': 220}])
+    add_runs(s, Inches(0.9), Inches(1.55), Inches(0.6), Inches(0.6),
         [{'text': '🚀', 'font': SERIF, 'size': 28, 'color': CORAL}])
-    add_paragraphs(s, Inches(1.55), Inches(1.05), Inches(11.0), Inches(1.3),
+    add_paragraphs(s, Inches(1.55), Inches(1.5), Inches(11.0), Inches(1.3),
         [{'runs': [{'text': title, 'font': SERIF, 'size': 36, 'color': NAVY, 'bold': True}], 'line': 1.15}])
     if lead:
-        add_runs(s, Inches(0.9), Inches(2.5), Inches(11.5), Inches(0.6),
-            [{'text': lead, 'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True}])
-    y = Inches(3.6)
+        add_runs(s, Inches(0.9), Inches(2.95), Inches(11.5), Inches(0.6),
+            [{'text': lead, 'font': SERIF, 'size': 22, 'color': NAVY, 'italic': True}])
+    y = Inches(3.95)
     for i, b in enumerate(bullets):
         coral_bullet(s, Inches(1.2), y + Inches(0.6 * i), b, size=18, color=NAVY)
     add_footer(s)
@@ -888,7 +888,7 @@ def slide_next_evolution():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, NAVY)
     add_pill(s, Inches(5.0), Inches(1.4), Inches(3.3), Inches(0.4),
-             'THE NEXT EVOLUTION', fill=CORAL, color=WHITE, size=11, letter_spacing=280)
+             'THE NEXT EVOLUTION', fill=CORAL, color=WHITE, size=15, letter_spacing=280)
     add_paragraphs(s, Inches(0.9), Inches(2.5), Inches(11.5), Inches(3.5), [
         {'runs': [
             {'text': 'Not just helping women ', 'font': SERIF, 'size': 42, 'color': WHITE, 'bold': True},
@@ -908,7 +908,7 @@ def slide_founding_open():
     add_bg(s, CREAM)
     add_pill(s, Inches(3.9), Inches(1.0), Inches(5.5), Inches(0.45),
              '🚨  FOUNDING MEMBERS ARE NOW OPENING  🚨',
-             fill=CORAL, color=WHITE, size=12, letter_spacing=260)
+             fill=CORAL, color=WHITE, size=16, letter_spacing=260)
     add_paragraphs(s, Inches(0.5), Inches(2.4), Inches(12.4), Inches(3.5), [
         {'runs': [
             {'text': 'Only ', 'font': SERIF, 'size': 60, 'color': NAVY, 'bold': True},
@@ -946,7 +946,7 @@ def slide_only_opportunity():
     slide_eyebrow_headline(s, 'Once Phase 1 closes',
         [{'text': 'Founding Member access ', 'font': SERIF, 'size': 38, 'color': NAVY, 'bold': True},
          {'text': 'disappears.', 'font': SERIF, 'size': 38, 'color': CORAL, 'italic': True}],
-        top=Inches(0.9))
+        top=Inches(0.85))
     bullets = [
         'Founding Member access disappears',
         'Pricing increases',
@@ -995,7 +995,7 @@ def slide_what_receive():
     slide_eyebrow_headline(s, 'So here’s what Founding Members receive',
         [{'text': 'Everything you need to ', 'font': SERIF, 'size': 38, 'color': NAVY, 'bold': True},
          {'text': 'actually keep going.', 'font': SERIF, 'size': 38, 'color': CORAL, 'italic': True}],
-        top=Inches(0.9))
+        top=Inches(0.85))
     items = [
         ('The 12 Week WLA Summer Challenge', 'Designed for women 45+ to lose, feel and finally maintain.'),
         ('FREE 12 month access to the new WLA App', 'Coaching, planning, recipes, tracking — all in one place.'),
@@ -1018,7 +1018,7 @@ def slide_pricing():
     s = prs.slides.add_slide(BLANK)
     add_bg(s, CREAM)
     add_pill(s, Inches(4.5), Inches(0.8), Inches(4.3), Inches(0.4),
-             'FOUNDING MEMBER PRICING', fill=CREAM_2, color=CORAL, size=11, letter_spacing=300)
+             'FOUNDING MEMBER PRICING', fill=CREAM_2, color=CORAL, size=15, letter_spacing=300)
     # The price card
     card = add_round_rect(s, Inches(2.5), Inches(1.6), Inches(8.3), Inches(4.6),
                           PAPER, radius_pct=0.06)
@@ -1076,7 +1076,7 @@ def slide_imagine_summer():
     slide_eyebrow_headline(s, 'Imagine this being your summer',
         [{'text': 'Reaching September still ', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True},
          {'text': 'building momentum.', 'font': SERIF, 'size': 40, 'color': CORAL, 'italic': True}],
-        top=Inches(0.9))
+        top=Inches(0.85))
     bullets = [
         'Feeling lighter',
         'More confident',
@@ -1127,7 +1127,7 @@ def slide_your_chance():
     add_bg(s, CREAM)
     add_pill(s, Inches(3.7), Inches(1.0), Inches(5.9), Inches(0.45),
              '✨  YOUR CHANCE TO BE PART OF THE NEXT CHAPTER  ✨',
-             fill=NAVY, color=CREAM_WARM, size=11, letter_spacing=240)
+             fill=NAVY, color=CREAM_WARM, size=15, letter_spacing=240)
     add_paragraphs(s, Inches(0.5), Inches(2.3), Inches(12.4), Inches(3.5), [
         {'runs': [
             {'text': 'From the ', 'font': SERIF, 'size': 50, 'color': NAVY, 'bold': True},
@@ -1149,7 +1149,7 @@ def slide_close():
     add_bg(s, NAVY)
     add_pill(s, Inches(4.5), Inches(1.2), Inches(4.3), Inches(0.45),
              'FOUNDING MEMBERS · LIMITED 1,000 PLACES',
-             fill=CORAL, color=WHITE, size=11, letter_spacing=260)
+             fill=CORAL, color=WHITE, size=15, letter_spacing=260)
     add_paragraphs(s, Inches(0.5), Inches(2.5), Inches(12.4), Inches(3.5), [
         {'runs': [
             {'text': 'And I cannot ', 'font': SERIF, 'size': 56, 'color': WHITE, 'bold': True},
