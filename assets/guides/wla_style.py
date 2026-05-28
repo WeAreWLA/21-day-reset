@@ -616,7 +616,7 @@ class Guide:
 
     def recipe(self, title, serves, ingredients, instructions,
                note=None, image=None, time=None, subtitle=None,
-               kicker=None, to_serve=None, image_h=290, **_):
+               kicker=None, to_serve=None, image_h=240, **_):
         """WLA Weight Loss Cookbook style recipe page (one per page)."""
         self._new_content_page()
         self.register_target(title)
@@ -710,15 +710,14 @@ class Guide:
 
         body_end = max(yL, yR)
 
-        # WLA TIP — anchor at bottom if it would overflow, else inline
+        # WLA TIP — always sits below the body so it never overlaps,
+        # leaning down toward the footer when the recipe runs long.
         if note:
             tip_lines = wrap(note, "asi", 10.5, CW)
             tip_h = 17 + len(tip_lines) * 14
-            anchor = body_end + 20
             footer_top = PAGE_H - 60
-            if anchor + tip_h > footer_top:
-                anchor = footer_top - tip_h
-            ty = anchor
+            ty = max(body_end + 20, footer_top - tip_h)
+            ty = max(ty, body_end + 20)  # body wins if the page is tight
             self.tracked(LEFT, ty, "WLA TIP", "asb", 8.5, NAVY, 1.4)
             ty += 17
             for ln in tip_lines:
