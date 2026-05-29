@@ -333,6 +333,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .app-bonus-pill { position: relative; z-index: 1; display: inline-block; padding: 8px 18px; background: var(--coral); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 999px; margin-bottom: 18px; box-shadow: 0 10px 24px -10px rgba(217,119,87,0.5); }
   .app-bonus-card h2 { position: relative; z-index: 1; font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 34px); color: #fff; line-height: 1.2; margin: 0; font-weight: 700; }
   .app-bonus-card h2 em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+  .app-bonus-card .app-bonus-sub { position: relative; z-index: 1; font-size: 16px; line-height: 1.5; color: rgba(244,235,220,0.92); margin: 12px 0 0; max-width: 520px; margin-inline: auto; }
 
   .limited-spots-callout { padding: 28px 32px; background: var(--navy); color: #fff; border-radius: 16px; text-align: center; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.4); }
   .limited-spots-pill { display: inline-block; padding: 7px 18px; background: var(--coral); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
@@ -891,7 +892,8 @@ function AppBonus() {
       <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
         <div className="app-bonus-card">
           <div className="app-bonus-pill">★ Bonus</div>
-          <h2 className="serif">Get access to our brand <em>new WLA app</em> once live.</h2>
+          <h2 className="serif"><em>Early access</em> to the WLA app</h2>
+          <p className="app-bonus-sub">Founding members will receive early access to the brand new WLA app.</p>
         </div>
       </div>
     </section>
@@ -1513,7 +1515,7 @@ function Limited() {
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
-          <h2 className="serif">Limited Spots Available For <em>Summer Challenge.</em></h2>
+          <h2 className="serif">Limited Spots Available For<br/><em>Summer Challenge.</em></h2>
           <p className="lead">Once these places are gone, the promo ends and pricing returns to standard.</p>
         </div>
 
@@ -1727,12 +1729,10 @@ function Page() {
       <MeetAnna />
       <WhatsIncluded />
       <AppBonus />
-      <EvolvingInside />
       <FoundingMembersAlsoGet />
       <ImagineSummer />
       <VideoTestimonials />
       <FAQ />
-      <LimitedSpotsEnd />
       <Limited />
       <FinalCTA />
       <Footer />
