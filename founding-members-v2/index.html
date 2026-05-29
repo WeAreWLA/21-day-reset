@@ -257,6 +257,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Video testimonials */
   .videos { padding: 96px 28px; background: var(--cream); border-top: 1px solid rgba(14,39,70,0.06); }
   .videos-grid { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .videos-grid.three-col { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  @media (max-width: 880px) { .videos-grid.three-col { grid-template-columns: 1fr; gap: 28px; } }
   .video-card { display: flex; flex-direction: column; }
   .video-frame { aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; border: 1px solid rgba(14,39,70,0.08); box-shadow: 0 24px 50px -28px rgba(14,39,70,0.30); }
   .video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
@@ -638,7 +640,7 @@ function Hero() {
     <section className="hero" id="top">
       <div>
         <div className="founding-tag">Birthday Special</div>
-        <h1 className="h1 serif">Join Our Signature<br/><span className="accent italic">12-Week Program for £97</span></h1>
+        <h1 className="h1 serif">Join Our Signature<br/><span className="accent italic">12-Week Program</span><br/>for £97</h1>
         <p className="h1-sub">&amp; unlock 1 year of meal guides, recipes, coaching &amp; tools.</p>
         <div className="hero-emphasis">All for the price of 12 weeks!</div>
         <div className="spots-note">Limited spots available</div>
@@ -1045,6 +1047,39 @@ function Results() {
   );
 }
 
+function ClientAchievements12Wk() {
+  const videos = [
+    { id: '1050446403', hash: 'ee3211dfc8', name: 'Anna',    quote: 'Anna lost almost 2 stone & saw her perimenopause symptoms disappear.' },
+    { id: '1050250598', hash: 'a7c1e591cf', name: 'Debbie',  quote: 'Debbie dropped 3 dress sizes, lost 3 stone & stopped emotional eating.' },
+    { id: '1050447140', hash: '4dd955ba68', name: 'Annette', quote: 'Annette is now 10 pounds lighter, but the biggest breakthrough is her mindset around food.' },
+  ];
+  return (
+    <section className="videos" id="client-achievements" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="section-head">
+        <span className="eyebrow">Real Client Results</span>
+        <h2 className="serif">Here's what clients <em>achieved in 12 weeks.</em></h2>
+      </div>
+      <div className="videos-grid three-col">
+        {videos.map((v, i) => (
+          <div className="video-card" key={i}>
+            <div className="video-frame">
+              <iframe
+                src={`https://player.vimeo.com/video/${v.id}?h=${v.hash}&title=0&byline=0&portrait=0`}
+                title={`${v.name} 12-week result`}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+            <p className="video-quote">{v.quote}</p>
+            <div className="video-name">— {v.name} —</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function VideoTestimonials() {
   const videos = [
     { id: '1147300902', hash: '58fbd0c85a', name: 'Vicky', quote: '"I started the WLA a size 20 and am now a 10/12"' },
@@ -1192,6 +1227,7 @@ function Page() {
   return (
     <>
       <Hero />
+      <ClientAchievements12Wk />
       <Trust />
       <Results />
       <WhyWLAExists />
