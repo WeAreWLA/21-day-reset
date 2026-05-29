@@ -326,6 +326,12 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 720px) { .meet-anna-image { float: none; margin: 0 auto 24px; width: 100%; max-width: 420px; } }
 
   /* Limited spots callout (above FinalCTA) */
+  /* App bonus callout (above Behind The Scenes) */
+  .app-bonus-card { padding: 28px 32px; background: var(--paper); border: 1px solid rgba(14,39,70,0.10); border-radius: 16px; text-align: center; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.18); position: relative; }
+  .app-bonus-pill { display: inline-block; padding: 6px 16px; background: var(--coral); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
+  .app-bonus-card h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.8vw, 30px); color: var(--navy); line-height: 1.2; margin: 0; font-weight: 700; }
+  .app-bonus-card h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+
   .limited-spots-callout { padding: 28px 32px; background: var(--navy); color: #fff; border-radius: 16px; text-align: center; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.4); }
   .limited-spots-pill { display: inline-block; padding: 7px 18px; background: var(--coral); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
   .limited-spots-callout h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 32px); color: #fff; line-height: 1.15; margin: 0; font-weight: 700; }
@@ -877,6 +883,19 @@ function NextChapter() {
   );
 }
 
+function AppBonus() {
+  return (
+    <section className="explainer" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
+        <div className="app-bonus-card">
+          <div className="app-bonus-pill">★ Bonus</div>
+          <h2 className="serif">Get access to our brand <em>new WLA app</em> once live.</h2>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function EvolvingInside() {
   const items = [
     { ic: <IcSparkle />,   t: 'WLA is evolving',                              d: 'The Weight Loss Academy is becoming The Weight Loss & Lifestyle Academy.' },
@@ -1102,7 +1121,7 @@ function ImagineSummer() {
       <div className="explainer-inner">
         <div className="section-head">
           <span className="eyebrow">Imagine This Being Your Summer</span>
-          <h2 className="serif">The 12 Week Summer Challenge helps women <em>lose the weight.</em><br/>The Full Year Access helps women <em>keep it off.</em></h2>
+          <h2 className="serif">The 12 Week Summer Challenge helps women <em>lose the weight.</em></h2>
         </div>
         <p>Imagine reaching September feeling lighter, more energised, more confident, and still building momentum, instead of starting over again.</p>
         <p>Not because you were perfect. But because you finally had the structure, the accountability, the support and the lifestyle that helped you keep going.</p>
@@ -1258,7 +1277,7 @@ function TheRealityIs() {
         </ul>
 
         <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>It's not rocket science. It's simple. But it works.</p>
-        <p>So if you're someone who has the tools but doesn't implement them, consider this your invitation to join <strong>The Weight Loss &amp; Lifestyle Academy.</strong></p>
+        <p>So if you're someone who has the tools but doesn't implement them, consider this your invitation to join <strong>The Weight Loss &amp; Lifestyle Academy, 12 Week Summer Challenge.</strong></p>
       </div>
     </section>
   );
@@ -1492,8 +1511,7 @@ function Limited() {
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
-          <div className="founding-tag" style={{ marginBottom: 22 }}>Limited Founding Member Access</div>
-          <h2 className="serif">Only a <em>limited number of women</em> can join this Summer Special.</h2>
+          <h2 className="serif">Limited Spots Available For <em>Summer Challenge.</em></h2>
           <p className="lead">Once these places are gone, the promo ends and pricing returns to standard.</p>
         </div>
 
@@ -1706,6 +1724,7 @@ function Page() {
       <Results />
       <MeetAnna />
       <WhatsIncluded />
+      <AppBonus />
       <EvolvingInside />
       <FoundingMembersAlsoGet />
       <ImagineSummer />
