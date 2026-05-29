@@ -274,8 +274,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Why Now boxes */
   .why-now-boxes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 980px; margin: 0 auto; }
   .why-now-box { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-top: 4px solid var(--coral); border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: 0 14px 28px -22px rgba(14,39,70,0.2); }
-  .why-now-box .why-now-num { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(18px, 1.8vw, 22px); color: var(--coral); line-height: 1.1; margin-bottom: 4px; }
-  .why-now-box .why-now-lab { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .why-now-box .why-now-lab { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+  .why-now-box .why-now-num { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(18px, 1.8vw, 22px); color: var(--coral); line-height: 1.1; }
   @media (max-width: 880px) { .why-now-boxes { grid-template-columns: repeat(2, 1fr); } }
 
   /* Meet Anna section — image floats left, text wraps around */
@@ -1307,11 +1307,11 @@ function WhyJoinNow() {
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 28px' }}>Summer is almost here. What better way to get ready for holidays, and have the tools to get back on track when you come home.</p>
 
         <div className="why-now-boxes">
-          <div className="why-now-box"><div className="why-now-num">2 stone</div><div className="why-now-lab">Lose up to</div></div>
-          <div className="why-now-box"><div className="why-now-num">Inches</div><div className="why-now-lab">Drop</div></div>
-          <div className="why-now-box"><div className="why-now-num">Bloating</div><div className="why-now-lab">Ditch</div></div>
-          <div className="why-now-box"><div className="why-now-num">Lighter</div><div className="why-now-lab">Feel</div></div>
-          <div className="why-now-box"><div className="why-now-num">Confident</div><div className="why-now-lab">Feel</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Lose up to</div><div className="why-now-num">2 stone</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Drop</div><div className="why-now-num">Inches</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Ditch</div><div className="why-now-num">Bloating</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Feel</div><div className="why-now-num">Lighter</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Feel</div><div className="why-now-num">Confident</div></div>
         </div>
 
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
