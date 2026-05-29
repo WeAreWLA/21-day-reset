@@ -41,7 +41,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   window.WLA_NOTIFICATIONS = {
     offer: '12 Week Summer Challenge',
     action: 'joined the',
-    ctaUrl: 'https://sales.thewlacademy.com/founding-member/',
+    ctaUrl: 'https://sales.thewlacademy.com/summer-challenge/',
     ctaLabel: 'Join The Summer Challenge',
     firstDelay: 8000,
     showFor: 8000,
@@ -113,6 +113,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .nav-cta:hover .arrow { transform: translateX(3px); }
   @media (max-width: 880px) { .nav-links { display: none; } }
   @media (max-width: 640px) { .nav { display: none; } }
+  /* Mobile-only line break helper */
+  .mobile-br { display: none; }
+  @media (max-width: 640px) { .mobile-br { display: inline; } }
 
   /* Hero */
   .hero { max-width: 1240px; margin: 0 auto; padding: 20px 28px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
@@ -711,7 +714,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
-const CHECKOUT_URL = 'https://sales.thewlacademy.com/founding-member/';
+const CHECKOUT_URL = 'https://sales.thewlacademy.com/summer-challenge/';
 
 // PayPal checkout (NCP / "No-Code" payment link from the founding-member offer)
 const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2AX2J47CZPLKA';
@@ -892,8 +895,8 @@ function AppBonus() {
       <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
         <div className="app-bonus-card">
           <div className="app-bonus-pill">★ Bonus</div>
-          <h2 className="serif"><em>Early access</em> to the WLA app</h2>
-          <p className="app-bonus-sub">Founding members will receive early access to the brand new WLA app.</p>
+          <h2 className="serif"><em>Bonus access</em> to the new WLA app</h2>
+          <p className="app-bonus-sub">Summer challengers will receive bonus access to our new WLA app once it goes LIVE.</p>
         </div>
       </div>
     </section>
@@ -1094,7 +1097,6 @@ function FoundingMembersAlsoGet() {
     { ic: <IcSparkle />, t: 'Future app updates & new features', d: 'Every update we ship through your founding year, included.' },
     { ic: <IcRocket />,  t: 'Early access before public launch', d: "You're in before doors open to the wider audience." },
     { ic: <IcMedal />,   t: 'The lowest price for The Summer Challenge', d: 'This pricing never returns once these spaces are gone.' },
-    { ic: <IcCompass />, t: 'Help shape the future of WLA from the very beginning', d: 'Founding members guide what gets built next.' },
   ];
   return (
     <section className="explainer" style={{ background: 'var(--cream-2)' }}>
@@ -1293,7 +1295,7 @@ function TwelveWeekSummerChallenge() {
       <div className="explainer-inner">
         <div className="section-head">
           <span className="eyebrow">12 Week Summer Challenge</span>
-          <h2 className="serif">Lose up to <em>2 stone in 12 weeks.</em></h2>
+          <h2 className="serif">Lose up to<br className="mobile-br"/> <em>2 stone in 12 weeks.</em></h2>
         </div>
         <p>Drop inches, feel confident in your clothes, ditch bloating, wake up energised, and sustain your new happy place. Without complicated, tasteless nutrition or over-exercising.</p>
 
@@ -1311,7 +1313,7 @@ function HowItWorks() {
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">Here's How It Works</span>
-          <h2 className="serif">The signature <em>WLA Approach.</em></h2>
+          <h2 className="serif">The signature<br className="mobile-br"/> <em>WLA Approach.</em></h2>
         </div>
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 8px' }}>The Weight Loss &amp; Lifestyle Academy focuses on 3 main core elements in our signature WLA Approach to support clients with every tool that's needed for long-lasting, transformative change.</p>
 
@@ -1374,7 +1376,7 @@ function WhyJoinNow() {
 
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
         <div className="story-callout" style={{ maxWidth: 760, margin: '24px auto 0' }}>
-          <strong>Limited spots left.</strong>
+          <strong>Limited spots available.</strong>
           <p>Once the places are gone, this promo finishes.</p>
         </div>
       </div>
