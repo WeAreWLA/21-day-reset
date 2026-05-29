@@ -229,6 +229,13 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .story-chips li em { color: var(--coral); font-style: italic; font-weight: 500; }
   .story-chips .chip-dot { display: none; }
   @media (max-width: 640px) { .story-chips { grid-template-columns: 1fr; gap: 10px; } .story-chips li { padding: 14px 18px; font-size: 15.5px; } }
+  /* "Does this sound like you?" relate list */
+  .relate-list { list-style: none; padding: 0; margin: 0 auto; max-width: 920px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .relate-list li { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-left: 4px solid var(--coral); border-radius: 12px; font-family: 'Libre Baskerville', serif; font-size: 16px; color: var(--navy); line-height: 1.4; box-shadow: 0 12px 24px -20px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
+  .relate-list li:hover { transform: translateY(-2px); box-shadow: 0 18px 30px -22px rgba(14,39,70,0.22); }
+  .relate-list li.span-2 { grid-column: 1 / -1; }
+  .relate-list .relate-mark { flex: none; width: 28px; height: 28px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+  @media (max-width: 640px) { .relate-list { grid-template-columns: 1fr; gap: 10px; } .relate-list li { padding: 14px 18px; font-size: 15px; } .relate-list li.span-2 { grid-column: auto; } }
   .story-cycle { background: var(--cream-2); border-radius: 14px; border-left: 4px solid var(--coral); padding: 26px 32px; margin: 28px 0; }
   .story-cycle p { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy); font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
   .story-cycle p:last-child { margin-bottom: 0; font-style: normal; font-weight: 700; color: var(--coral); font-size: 19px; }
@@ -1047,6 +1054,88 @@ function Results() {
   );
 }
 
+function DoesThisSoundLikeYou() {
+  const items = [
+    "You start a new diet every Monday but quit on Wednesday",
+    "You feel frustrated and fed up with your lack of results",
+    "You're tired of fad diets that leave you feeling hungry and moody",
+    "You vow to cut out sugar but then end up overeating every evening",
+    "You often go to bed promising tomorrow will be a better day",
+    "You've been gaining and losing the same 2 stone for years",
+    "You have all the weight loss tools in the world but don't implement them",
+  ];
+  return (
+    <section className="receive" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">Sound Familiar?</span>
+          <h2 className="serif">Does this <em>sound like you?</em></h2>
+        </div>
+        <ul className="relate-list">
+          {items.map((it, i) => (
+            <li key={i} className={i === items.length - 1 && items.length % 2 === 1 ? 'span-2' : ''}>
+              <span className="relate-mark">✦</span>
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function TheRealityIs() {
+  return (
+    <section className="story section" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="section-inner">
+        <div className="section-head">
+          <span className="eyebrow">The Reality Is…</span>
+          <h2 className="serif">It's not a knowledge problem. <em>It's an action problem.</em></h2>
+        </div>
+
+        <p>Most people know what to do to lose weight, to a degree. They have bookshelves with the latest cookbooks. They buy various programs. They start, pursue weight loss, but after a couple of weeks the focus is gone.</p>
+        <p>They lose a few pounds but the momentum and consistency is impossible to keep going. It's frustrating, because they have the desire to lose weight, they just can't seem to last long enough to see real results.</p>
+
+        <div className="story-callout">
+          <strong>Here's something we've identified over 10+ years and 50,000+ clients.</strong>
+          <p>People don't need all the tools in the world to reach their goals. They have an action and implementation problem. They know what to do. They just don't do it.</p>
+        </div>
+
+        <p>They start and they stop. It's an application issue, because people just can't be consistent on their own (well, some can, but many can't).</p>
+        <p>The only way to solve a consistency problem is through:</p>
+
+        <ul className="story-chips" style={{ marginTop: 6, marginBottom: 18 }}>
+          <li><span><strong>High accountability</strong> to keep you on track</span></li>
+          <li><span>A <strong>time-bound goal</strong> for focus</span></li>
+          <li><span>A <strong>high-energy community</strong> that motivates and inspires</span></li>
+          <li><span><strong>Personalised support</strong> to make weight loss easier</span></li>
+        </ul>
+
+        <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>It's not rocket science. It's simple. But it works.</p>
+        <p>So if you're someone who has the tools but doesn't implement them, consider this your invitation to join <strong>Shift &amp; Sustain.</strong></p>
+      </div>
+    </section>
+  );
+}
+
+function TwelveWeekSummerChallenge() {
+  return (
+    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">12 Week Summer Challenge</span>
+          <h2 className="serif">Lose up to <em>2 stone in 12 weeks.</em></h2>
+        </div>
+        <p>Drop inches, feel confident in your clothes, ditch bloating, wake up energised, and sustain your new happy place. Without complicated, tasteless nutrition or over-exercising.</p>
+
+        <div className="pull">"Empowering women to achieve sustainable, easy weight loss through a simple approach that focuses on flexible nutrition, behavioural-change strategies that promote long-lasting results, and coaching that empowers you to take control of your lifestyle."</div>
+
+        <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 20, color: 'var(--coral)', textAlign: 'center', marginTop: 24 }}>Say goodbye to traditional diets and hello to freedom.</p>
+      </div>
+    </section>
+  );
+}
+
 function ClientAchievements12Wk() {
   const videos = [
     { id: '1050446403', hash: 'ee3211dfc8', name: 'Anna',    quote: 'Anna lost almost 2 stone & saw her perimenopause symptoms disappear.' },
@@ -1229,6 +1318,9 @@ function Page() {
       <Hero />
       <Trust />
       <ClientAchievements12Wk />
+      <DoesThisSoundLikeYou />
+      <TheRealityIs />
+      <TwelveWeekSummerChallenge />
       <Results />
       <WhyWLAExists />
       <NextChapter />
