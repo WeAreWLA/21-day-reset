@@ -1461,6 +1461,53 @@ function Limited() {
   );
 }
 
+function FAQ() {
+  const qs = [
+    { q: 'When does it start?',
+      a: 'Once you join, you get access to your tools right away.' },
+    { q: 'How long is the program?',
+      a: '12 weeks. But with this special Summer offer you get 1 full year of access in total, for just £97.' },
+    { q: 'Do you have a refund policy?',
+      a: "I'm so confident this can help you reach your goals that we have a rock-solid 7-day try-it-out option. If you implement (yes, you have to do the work) and decide it's not for you, get your fee back, no questions asked." },
+    { q: 'Will I get results?',
+      a: "With high accountability, challenges and incentives for taking action, this is the place to be if you just can't stay consistent on your own. We're going to get to work, but you'll love it, because you'll get incredible results and feel better than you have in a long time." },
+    { q: 'Are the meal guides new?',
+      a: "Yes. Every week we share a new fat-loss meal guide into the Shift area, plus new resources, videos and tools monthly to help you stay focused and motivated." },
+    { q: 'Why would I join this?',
+      a: "If you have years' worth of weight loss tools but still find yourself no closer to your goal, Shift & Sustain is for you. If you start a weight-loss journey but quit after 7 days. If you can't stay consistent. If you tell yourself you'll start next week and then keep putting it off. If you can't hold yourself accountable, let us hold you accountable, with expert coaching, high-accountability strategies, and incentives that keep you focused and motivated." },
+    { q: 'Is it time consuming?',
+      a: "Not at all. Double, triple or quadruple the recipes to save time, energy and money. Use the meal guides as they are with plenty of variety, or simplify them by repeating recipes as much as you like." },
+    { q: 'Concerned about cost?',
+      a: "We've got you covered with our budgeting tips. Planning your meals actually decreases the cost of your groceries, you don't run into the supermarket daily picking up random foods. You'll already have most of the staples in your cupboard, it's just regular food. If any ingredient feels too costly, leave it out or swap it." },
+    { q: "I can't do a lot of exercise…",
+      a: "Not a problem. Your fat-loss results mostly come down to what you're eating. Yes, around 80% nutrition. If you have an existing exercise routine, keep it going alongside the program. If you're not currently exercising, let's just focus on your nutrition for maximum results." },
+    { q: "I'm a fussy eater…",
+      a: "Every single recipe in Shift & Sustain can be adjusted. If you love flavour, keep the recipes pimped up. If you prefer food that's more bland, leave out spices, flavours and herbs. Total flexibility." },
+    { q: 'I need to feed my family…',
+      a: "Use the meal guides with your family, just increase portion sizes and we can support you with that in our coaching group. The recipes are family-friendly. Any recipes you don't like, leave out and swap with others." },
+    { q: "Will I get Anna's hands-on support?",
+      a: "Yes. This is the only coaching program where you get direct, live coaching and support from Anna herself. You'll have the chance to ask questions, get personalised feedback, and stay on track every step of the way. Anna's proven strategies, accountability and encouragement will keep you motivated, focused and moving toward your goals, no more trying to figure it out alone." },
+  ];
+  return (
+    <section className="faq" id="faq">
+      <div className="faq-inner">
+        <div className="section-head">
+          <span className="eyebrow">Got Some Questions?</span>
+          <h2 className="serif">Everything you need to <em>know.</em></h2>
+        </div>
+        <div className="faq-list">
+          {qs.map((it, i) => (
+            <details className="faq-item" key={i}>
+              <summary>{it.q}</summary>
+              <p>{it.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FinalCTA() {
   return (
     <section className="final-cta" style={{ paddingTop: 56 }}>
@@ -1540,6 +1587,7 @@ function Page() {
       <ImagineSummer />
       <VideoTestimonials />
       <Limited />
+      <FAQ />
       <FinalCTA />
       <Footer />
       <StickyCTA />
