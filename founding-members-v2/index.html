@@ -327,10 +327,12 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 
   /* Limited spots callout (above FinalCTA) */
   /* App bonus callout (above Behind The Scenes) */
-  .app-bonus-card { padding: 28px 32px; background: var(--paper); border: 1px solid rgba(14,39,70,0.10); border-radius: 16px; text-align: center; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.18); position: relative; }
-  .app-bonus-pill { display: inline-block; padding: 6px 16px; background: var(--coral); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
-  .app-bonus-card h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.8vw, 30px); color: var(--navy); line-height: 1.2; margin: 0; font-weight: 700; }
-  .app-bonus-card h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .app-bonus-card { padding: 32px 36px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.42); position: relative; overflow: hidden; }
+  .app-bonus-card::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
+  .app-bonus-card::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(229,145,122,0.16), transparent 65%); pointer-events: none; }
+  .app-bonus-pill { position: relative; z-index: 1; display: inline-block; padding: 8px 18px; background: var(--coral); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 999px; margin-bottom: 18px; box-shadow: 0 10px 24px -10px rgba(217,119,87,0.5); }
+  .app-bonus-card h2 { position: relative; z-index: 1; font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 34px); color: #fff; line-height: 1.2; margin: 0; font-weight: 700; }
+  .app-bonus-card h2 em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
 
   .limited-spots-callout { padding: 28px 32px; background: var(--navy); color: #fff; border-radius: 16px; text-align: center; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.4); }
   .limited-spots-pill { display: inline-block; padding: 7px 18px; background: var(--coral); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
@@ -885,7 +887,7 @@ function NextChapter() {
 
 function AppBonus() {
   return (
-    <section className="explainer" style={{ paddingTop: 56, paddingBottom: 56 }}>
+    <section className="explainer" style={{ paddingTop: 24, paddingBottom: 24 }}>
       <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
         <div className="app-bonus-card">
           <div className="app-bonus-pill">★ Bonus</div>
@@ -1196,7 +1198,7 @@ function Results() {
     <section className="results" id="results" style={{ paddingBottom: 48 }}>
       <div className="section-head">
         <span className="eyebrow">Real women · Real results · Results that last</span>
-        <h2 className="serif">See why so many women <em>live by the WLA.</em></h2>
+        <h2 className="serif">See why so many women<br/><em>live by the WLA.</em></h2>
       </div>
       <div className="results-carousel">
         <button className="results-nav prev" onClick={() => scrollBy(-1)} disabled={page === 0} aria-label="Previous results">‹</button>
