@@ -1262,6 +1262,26 @@ function JoinForFullYear() {
   );
 }
 
+function WhyJoinNow() {
+  return (
+    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">Why Now?</span>
+          <h2 className="serif">Why join the <em>Summer Challenge now?</em></h2>
+        </div>
+        <p>Summer is almost here. What better way to get ready for holidays, and have the tools to get back on track when you come home.</p>
+        <p>Lose up to <strong>2 stone</strong>, drop inches, ditch bloating, and feel lighter and confident.</p>
+        <p>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
+        <div className="story-callout">
+          <strong>Limited spots left.</strong>
+          <p>Once the places are gone, this promo finishes.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HereIsWhatYouCanAchieve() {
   const physical = [
     'Lose up to 2 stone in your first 12 weeks',
@@ -1508,6 +1528,7 @@ function Page() {
       <HowItWorks />
       <JoinForFullYear />
       <HereIsWhatYouCanAchieve />
+      <WhyJoinNow />
       <Results />
       <WhyWLAExists />
       <NextChapter />
