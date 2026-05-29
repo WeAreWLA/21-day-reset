@@ -262,6 +262,24 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .achieve-block { margin-bottom: 28px; }
   .achieve-title { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--coral); font-style: italic; font-weight: 700; margin: 0 0 16px; text-align: center; }
 
+  /* Meet Anna section */
+  .meet-anna-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; max-width: 1080px; margin: 0 auto; }
+  .meet-anna-image { margin: 0; }
+  .meet-anna-image img { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.28); display: block; }
+  .meet-anna-text p { font-size: 16.5px; line-height: 1.65; color: #333; margin: 0 0 14px; }
+  .meet-anna-text strong { color: var(--navy); font-weight: 700; }
+  .meet-anna-text em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .meet-anna-signoff { margin-top: 22px; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; }
+  .meet-anna-signoff p { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: var(--navy); margin: 0; line-height: 1.5; }
+  .meet-anna-signature { margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: 22px; font-weight: 700; }
+  @media (max-width: 880px) { .meet-anna-grid { grid-template-columns: 1fr; gap: 24px; } .meet-anna-image { max-width: 480px; margin: 0 auto; } }
+
+  /* Limited spots callout (above FinalCTA) */
+  .limited-spots-callout { padding: 28px 32px; background: var(--navy); color: #fff; border-radius: 16px; text-align: center; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.4); }
+  .limited-spots-pill { display: inline-block; padding: 7px 18px; background: var(--coral); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
+  .limited-spots-callout h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 32px); color: #fff; line-height: 1.15; margin: 0; font-weight: 700; }
+  .limited-spots-callout h2 em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+
   /* Year block (this isn't just 12 weeks) inside What's Included */
   .year-block { margin: 40px auto 0; max-width: 820px; padding: 36px 36px 30px; background: var(--cream-2); border: 1px solid rgba(14,39,70,0.06); border-radius: 18px; box-shadow: 0 20px 40px -24px rgba(14,39,70,0.18); }
   .year-block-head { text-align: center; margin-bottom: 22px; }
@@ -1414,13 +1432,13 @@ function Limited() {
       <div className="limited-inner">
         <div className="limited-head">
           <div className="founding-tag" style={{ marginBottom: 22 }}>Limited Founding Member Access</div>
-          <h2 className="serif">Only a <em>limited number of women</em> will receive Founding Member access.</h2>
-          <p className="lead">This is a limited Phase 1 launch. Once these places are gone, that's it.</p>
+          <h2 className="serif">Only a <em>limited number of women</em> can join this Summer Special.</h2>
+          <p className="lead">Once these places are gone, the promo ends and pricing returns to standard.</p>
         </div>
 
-        <div className="scarcity" aria-label="Founding member spaces remaining">
+        <div className="scarcity" aria-label="Summer Special spaces remaining">
           <div className="scarcity-top">
-            <span className="label">Phase 1 Founding Member Spaces</span>
+            <span className="label">Summer Special Spaces</span>
           </div>
           <div className="scarcity-bar"><div className="fill" /></div>
           <div className="scarcity-foot">
@@ -1431,30 +1449,30 @@ function Limited() {
 
         <div className="limited-cards">
           <div className="limited-card warn">
-            <div className="card-tag">Once Doors Close</div>
+            <div className="card-tag">Once Spots Fill</div>
             <h3>This exact offer disappears</h3>
             <ul>
-              <li>Founding Member access disappears</li>
-              <li>Pricing increases</li>
-              <li>This offer will never be available again</li>
+              <li>£97 Summer Special pricing disappears</li>
+              <li>Pricing returns to standard</li>
+              <li>The 1-year access bonus ends</li>
             </ul>
           </div>
           <div className="limited-card win">
             <div className="card-tag">Founding Members Lock In</div>
-            <h3>The full <em>founding offer</em></h3>
+            <h3>The full <em>Summer Special</em></h3>
             <ul>
-              <li>The lowest price to become a Founding Member</li>
-              <li>The earliest access to the new WLA app</li>
-              <li>FREE 12 month app access</li>
-              <li>All WLA challenges for 1 full year</li>
-              <li>Joining before public launch</li>
+              <li>The 12 Week Summer Challenge</li>
+              <li>1 full year of meal guides, recipes &amp; tools</li>
+              <li>52 weekly LIVE coaching Zooms with Anna</li>
+              <li>Daily coaching &amp; accountability for 365 days</li>
+              <li>Lowest price for joining as a Founding Member</li>
             </ul>
           </div>
         </div>
 
         <div className="limited-closing">
-          <p><strong>The women who maintain their results</strong> are usually the women who stay connected to support, accountability and the WLA lifestyle long term.</p>
-          <p>This next phase is about helping you continue the habits, routines and momentum you've already worked so hard to build. Because this isn't just about losing weight anymore. It's about keeping it off.</p>
+          <p><strong>The women who actually transform</strong> are usually the women who stay connected to coaching, accountability and a community that keeps them going.</p>
+          <p>This isn't about starting another diet. It's about finally having the structure, support and tools to lose the weight in 12 weeks <em>and</em> learn how to keep it off for the year ahead.</p>
         </div>
       </div>
     </section>
@@ -1508,15 +1526,57 @@ function FAQ() {
   );
 }
 
+function MeetAnna() {
+  return (
+    <section className="story section meet-anna-section" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="section-inner">
+        <div className="section-head" style={{ marginBottom: 28 }}>
+          <span className="eyebrow">Meet Anna</span>
+          <h2 className="serif">"I shifted over <em>2 stone &amp; never gained it back.</em>"</h2>
+        </div>
+        <div className="meet-anna-grid">
+          <figure className="meet-anna-image">
+            <img src="/assets/anna-before-after.png" alt="Anna Wallace before and after" loading="lazy" decoding="async" />
+          </figure>
+          <div className="meet-anna-text">
+            <p><strong>Hello and welcome!</strong> I'm Anna Wallace, founder of The Weight Loss Academy, where we're transforming how women lose weight, boost energy and regain confidence, without low-calorie diets or restrictive plans.</p>
+            <p>My personal journey into health coaching started much like many of the women I now work with. I used to be trapped in a relentless dieting cycle, starting new diets every Monday, taking laxatives to lose weight, stepping on the scale every day, and struggling with emotional eating. My weight was constantly fluctuating and I felt like I had no control.</p>
+            <p>I pursued a degree in Food and Nutrition at the University of Ulster in Northern Ireland. Over the years I transformed my relationship with food, lost weight, and have maintained it even post-pregnancy.</p>
+            <p>With qualifications as a <strong>Registered Associate Nutritionist</strong>, <strong>NLP Practitioner</strong> and <strong>Clinical Hypnotherapist</strong>, I've combined my expertise with my personal experience to help over <strong>50,000 women worldwide</strong> break free from restrictive dieting.</p>
+            <p><strong>Shift &amp; Sustain</strong> is designed to empower women to move away from low-calorie diets and embrace a more balanced approach that works <em>with</em> your life, not against it. It's incredibly rewarding to see women regain control, increase their energy, and finally feel confident in their skin.</p>
+            <div className="meet-anna-signoff">
+              <p>Thank you for being part of this journey. I can't wait to see the amazing things you'll achieve.</p>
+              <div className="meet-anna-signature">— Anna</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LimitedSpotsEnd() {
+  return (
+    <section className="explainer" style={{ paddingTop: 32, paddingBottom: 32 }}>
+      <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
+        <div className="limited-spots-callout">
+          <div className="limited-spots-pill">🚨 Limited Spots Available 🚨</div>
+          <h2 className="serif">Once spots are filled, <em>this promo ends.</em></h2>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FinalCTA() {
   return (
     <section className="final-cta" style={{ paddingTop: 56 }}>
       <div className="final-cta-inner">
-        <div className="founding-tag" style={{ marginBottom: 18 }}>Phase 1 · Limited Places</div>
+        <div className="founding-tag" style={{ marginBottom: 18 }}>Summer Special · Limited Spots</div>
         <h2 className="serif">This isn't about <em>starting over again.</em></h2>
-        <p>It's about continuing the momentum you've already worked so hard to build. One year inside the next evolution of WLA, for just £97. About 26p a day.</p>
+        <p>It's about finally finding the structure, support and accountability that makes your results last. <strong>12 weeks of coaching, 1 year of access, for a one-off £97.</strong></p>
         <div className="final-buttons">
-          <CTAButtons primaryLabel="Yes! I Want Founding Member Access" />
+          <CTAButtons primaryLabel="Yes! I Want In" />
         </div>
       </div>
     </section>
@@ -1577,7 +1637,7 @@ function Page() {
       <HereIsWhatYouCanAchieve />
       <WhyJoinNow />
       <Results />
-      <WhyWLAExists />
+      <MeetAnna />
       <NextChapter />
       <EvolvingInside />
       <SpecialOpportunity />
@@ -1586,8 +1646,9 @@ function Page() {
       <FoundingMembersAlsoGet />
       <ImagineSummer />
       <VideoTestimonials />
-      <Limited />
       <FAQ />
+      <LimitedSpotsEnd />
+      <Limited />
       <FinalCTA />
       <Footer />
       <StickyCTA />
