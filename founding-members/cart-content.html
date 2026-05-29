@@ -73,6 +73,26 @@
   .wla-cart .form-note svg { width: 14px; height: 14px; }
   .wla-cart .form-note-wrap { text-align: center; }
 
+  /* Testimonial carousel */
+  .wla-cart .testimonials { margin: 4px 0 24px; }
+  .wla-cart .testimonials .t-head { text-align: center; margin-bottom: 16px; }
+  .wla-cart .testimonials .t-eyebrow { display: inline-block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 8px; }
+  .wla-cart .testimonials h2 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(22px, 3vw, 28px); font-weight: 700; line-height: 1.15; margin: 0; }
+  .wla-cart .testimonials h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .wla-cart .carousel { position: relative; }
+  .wla-cart .carousel-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 12px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .wla-cart .carousel-track::-webkit-scrollbar { display: none; }
+  .wla-cart .tile { flex: 0 0 calc((100% - 24px) / 3); min-width: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden; background: var(--cream-2); border: 1px solid rgba(14,39,70,0.08); }
+  .wla-cart .tile img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--paper); }
+  .wla-cart .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 38px; height: 38px; border-radius: 50%; background: var(--navy); border: none; color: #fff; font-size: 18px; font-weight: 500; line-height: 1; display: grid; place-items: center; cursor: pointer; box-shadow: 0 12px 24px -10px rgba(14,39,70,0.35); transition: transform .15s, background .15s; padding: 0; }
+  .wla-cart .carousel-nav:hover { background: #091a30; transform: translateY(-50%) scale(1.06); }
+  .wla-cart .carousel-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+  .wla-cart .carousel-nav:disabled:hover { transform: translateY(-50%) scale(1); }
+  .wla-cart .carousel-nav.prev { left: -14px; }
+  .wla-cart .carousel-nav.next { right: -14px; }
+  .wla-cart .disclaimer { margin: 6px 0 0; text-align: center; font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em; }
+  @media (max-width: 640px) { .wla-cart .tile { flex: 0 0 calc((100% - 12px) / 2); } .wla-cart .carousel-nav.prev { left: -6px; } .wla-cart .carousel-nav.next { right: -6px; } }
+
   /* Mobile */
   @media (max-width: 640px) {
     .wla-cart { padding: 28px 16px; }
@@ -91,14 +111,14 @@
     <div class="hero">
       <div class="pill">✦ Founding Members · Phase 1 ✦</div>
       <h1 class="serif">You're claiming a <span class="accent">Founding Member</span> spot</h1>
-      <p class="lede">Inside <strong>The Weight Loss &amp; Lifestyle Academy</strong>. One year of access, 26p per day, locked in at the lowest price WLA will ever be offered at.</p>
+      <p class="lede">Inside <strong>The Weight Loss &amp; Lifestyle Academy</strong>. A one-off £97 for one year of access, around 26p a day, locked in at the lowest founding member price.</p>
     </div>
 
     <!-- ORDER SUMMARY -->
     <div class="order-card">
       <div class="order-head">
         <div class="title">Your Founding Membership</div>
-        <div class="meta">1 Year Access</div>
+        <div class="meta">One-off Payment · 1 Year Access</div>
       </div>
 
       <ul class="items">
@@ -118,10 +138,37 @@
         <div class="total-row line"><span>Total Value</span><span><s>£5,750+</s></span></div>
         <div class="total-row you-pay">
           <span>You pay today</span>
-          <span class="price"><span class="currency">£</span>97<span class="term"> / year</span></span>
+          <span class="price"><span class="currency">£</span>97<span class="term"> one-off</span></span>
         </div>
       </div>
     </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+      <div class="t-head">
+        <div class="t-eyebrow">Real women · Real results</div>
+        <h2>See why so many women <em>live by the WLA.</em></h2>
+      </div>
+      <div class="carousel">
+        <button class="carousel-nav prev" type="button" aria-label="Previous">‹</button>
+        <div class="carousel-track" data-wla-track>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/vicky-before-after.png" alt="Vicky before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/jill-before-after.jpg" alt="Jill before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/ruth-before-after.jpg" alt="Ruth before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/barbara-before-after.png" alt="Barbara before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-05-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-06-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-07-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-08-before-after.jpeg" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-09-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-10-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-11-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://sales.thewlacademy.com/assets/member-12-before-after.png" alt="Member before and after" loading="lazy" /></div>
+        </div>
+        <button class="carousel-nav next" type="button" aria-label="Next">›</button>
+      </div>
+      <p class="disclaimer">*Results vary depending on the individual. There is no guarantee of specific results.</p>
+    </section>
 
     <!-- SCARCITY -->
     <div class="scarcity">
@@ -157,3 +204,31 @@
 
   </div>
 </div>
+
+<script>
+(function(){
+  document.querySelectorAll('.wla-cart .carousel').forEach(function(c){
+    var track = c.querySelector('[data-wla-track]');
+    var prev  = c.querySelector('.carousel-nav.prev');
+    var next  = c.querySelector('.carousel-nav.next');
+    if(!track) return;
+    function tileStep(){
+      var t = track.querySelector('.tile');
+      if(!t) return 0;
+      return t.getBoundingClientRect().width + 12;
+    }
+    function sync(){
+      var step = tileStep();
+      var sl = track.scrollLeft;
+      var max = track.scrollWidth - track.clientWidth - 1;
+      if(prev) prev.disabled = sl <= 0;
+      if(next) next.disabled = sl >= max;
+    }
+    if(prev) prev.addEventListener('click', function(){ track.scrollBy({ left: -tileStep(), behavior: 'smooth' }); });
+    if(next) next.addEventListener('click', function(){ track.scrollBy({ left:  tileStep(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', function(){ requestAnimationFrame(sync); }, { passive: true });
+    window.addEventListener('resize', sync);
+    setTimeout(sync, 50);
+  });
+})();
+</script>
