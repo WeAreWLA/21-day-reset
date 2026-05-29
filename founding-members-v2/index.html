@@ -119,6 +119,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-image-wrap { position: relative; }
   .hero-image { aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
   .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-emphasis { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.3; color: var(--coral); font-weight: 700; margin: 4px 0 12px; }
+  .spots-note { display: inline-block; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0 0 18px; padding: 6px 14px; background: rgba(14,39,70,0.06); border-radius: 999px; }
   .hero-cta-row { margin-top: 24px; max-width: 480px; }
   @media (max-width: 980px) { .hero { padding: 16px 18px 40px; gap: 24px; } .hero-image { max-width: 480px; margin: 0 auto; } .hero-cta-row { max-width: 100%; } }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
@@ -629,16 +631,12 @@ function Hero() {
   return (
     <section className="hero" id="top">
       <div>
-        <div className="founding-tag">Founding Members Launch</div>
-        <h1 className="h1 serif">Lose Up To<br/><span className="accent italic">2 Stone This Summer</span></h1>
-        <p className="h1-sub">Then Learn How To Keep It Off.</p>
-        <p className="lede">Become one of a <strong>limited number of Founding Members</strong> inside the next evolution of WLA.</p>
-        <ul className="bullet-list">
-          <li><span className="check"><Check /></span><span>12 Week Summer Challenge</span></li>
-          <li><span className="check"><Check /></span><span>All WLA Challenges &amp; Resets for 12 months</span></li>
-          <li><span className="check"><Check /></span><span>Founding Member access to the new WLA app</span></li>
-          <li><span className="check"><Check /></span><span>Lowest price this round only</span></li>
-        </ul>
+        <div className="founding-tag">Birthday Special</div>
+        <h1 className="h1 serif">Join Our Signature<br/><span className="accent italic">12-Week Program for £97</span></h1>
+        <p className="h1-sub">&amp; unlock 1 year of meal guides, recipes, coaching &amp; tools.</p>
+        <div className="hero-emphasis">All for the price of 12 weeks!</div>
+        <div className="spots-note">Limited spots available</div>
+        <p className="lede">Shift up to <strong>2 stone in 12 weeks</strong>, ditch your sugar cravings, skyrocket energy and sustain your new happy place. Without complicated, tasteless nutrition or over-exercising.</p>
         <div className="hero-cta-row">
           <CTAButtons size="compact" />
         </div>
