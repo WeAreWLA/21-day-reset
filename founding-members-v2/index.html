@@ -234,10 +234,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .relate-list li { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-left: 4px solid var(--coral); border-radius: 12px; font-family: 'Libre Baskerville', serif; font-size: 16px; color: var(--navy); line-height: 1.4; box-shadow: 0 12px 24px -20px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
   .relate-list li:hover { transform: translateY(-2px); box-shadow: 0 18px 30px -22px rgba(14,39,70,0.22); }
   .relate-list li.span-2 { grid-column: 1 / -1; }
-  .relate-list .relate-mark { flex: none; width: 28px; height: 28px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+  .relate-list .relate-mark { display: none; }
   @media (max-width: 640px) { .relate-list { grid-template-columns: 1fr; gap: 10px; } .relate-list li { padding: 14px 18px; font-size: 15px; } .relate-list li.span-2 { grid-column: auto; } }
 
-  /* Venn diagram (How It Works) */
+  /* WLA Approach image (How It Works) */
+  .wla-approach-image { margin: 28px auto 28px; max-width: 380px; }
+  .wla-approach-image img { width: 100%; height: auto; display: block; }
+
+  /* Venn diagram (How It Works) — legacy, no longer used */
   .venn { position: relative; width: min(380px, 92vw); aspect-ratio: 1 / 1; margin: 36px auto 40px; }
   .venn-circle { position: absolute; width: 65%; aspect-ratio: 1 / 1; border-radius: 50%; display: grid; place-items: center; text-align: center; padding: 16px; font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(12px, 1.4vw, 15px); line-height: 1.2; box-sizing: border-box; }
   .venn-circle span { display: block; }
@@ -259,20 +263,35 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 880px) { .approach-grid { grid-template-columns: 1fr; gap: 14px; } }
 
   /* Achievement blocks (Here's What You Can Achieve) */
-  .achieve-block { margin-bottom: 28px; }
-  .achieve-title { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--coral); font-style: italic; font-weight: 700; margin: 0 0 16px; text-align: center; }
+  .achieve-block { margin-bottom: 32px; max-width: 920px; margin-inline: auto; }
+  .achieve-title { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; margin: 0 0 18px; text-align: center; }
+  .achieve-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 36px; }
+  .achieve-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.5; color: var(--navy); }
+  .achieve-check { flex: none; width: 28px; height: 28px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; margin-top: 1px; }
+  .achieve-check svg { width: 14px; height: 14px; stroke: var(--coral); stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 640px) { .achieve-list { grid-template-columns: 1fr; } }
 
-  /* Meet Anna section */
-  .meet-anna-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; max-width: 1080px; margin: 0 auto; }
-  .meet-anna-image { margin: 0; }
+  /* Why Now boxes */
+  .why-now-boxes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 980px; margin: 0 auto; }
+  .why-now-box { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-top: 4px solid var(--coral); border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: 0 14px 28px -22px rgba(14,39,70,0.2); }
+  .why-now-box .why-now-num { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(18px, 1.8vw, 22px); color: var(--coral); line-height: 1.1; margin-bottom: 4px; }
+  .why-now-box .why-now-lab { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  @media (max-width: 880px) { .why-now-boxes { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Meet Anna section — image floats left, text wraps around */
+  .meet-anna-wrap { max-width: 1080px; margin: 0 auto; }
+  .meet-anna-image { position: relative; margin: 0 32px 24px 0; padding: 0; float: left; width: 38%; max-width: 360px; }
   .meet-anna-image img { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.28); display: block; }
+  .meet-anna-credentials { position: absolute; left: 14px; right: 14px; top: 14px; background: var(--paper); border: 1px solid rgba(14,39,70,0.10); border-radius: 12px; padding: 14px 16px; box-shadow: 0 14px 28px -18px rgba(14,39,70,0.30); text-align: center; }
+  .meet-anna-credentials .cred-name { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: var(--coral); font-weight: 700; margin-bottom: 4px; }
+  .meet-anna-credentials .cred-line { font-size: 11.5px; line-height: 1.35; color: var(--navy); font-weight: 600; letter-spacing: 0.01em; }
   .meet-anna-text p { font-size: 16.5px; line-height: 1.65; color: #333; margin: 0 0 14px; }
   .meet-anna-text strong { color: var(--navy); font-weight: 700; }
   .meet-anna-text em { color: var(--coral); font-style: italic; font-weight: 500; }
   .meet-anna-signoff { margin-top: 22px; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; }
   .meet-anna-signoff p { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: var(--navy); margin: 0; line-height: 1.5; }
   .meet-anna-signature { margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: 22px; font-weight: 700; }
-  @media (max-width: 880px) { .meet-anna-grid { grid-template-columns: 1fr; gap: 24px; } .meet-anna-image { max-width: 480px; margin: 0 auto; } }
+  @media (max-width: 720px) { .meet-anna-image { float: none; margin: 0 auto 24px; width: 100%; max-width: 420px; } }
 
   /* Limited spots callout (above FinalCTA) */
   .limited-spots-callout { padding: 28px 32px; background: var(--navy); color: #fff; border-radius: 16px; text-align: center; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.4); }
@@ -281,7 +300,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .limited-spots-callout h2 em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
 
   /* Year block (this isn't just 12 weeks) inside What's Included */
-  .year-block { margin: 40px auto 0; max-width: 820px; padding: 36px 36px 30px; background: var(--cream-2); border: 1px solid rgba(14,39,70,0.06); border-radius: 18px; box-shadow: 0 20px 40px -24px rgba(14,39,70,0.18); }
+  .year-block { margin: 40px auto 0; max-width: 820px; padding: 0; background: transparent; border: none; box-shadow: none; }
   .year-block-head { text-align: center; margin-bottom: 22px; }
   .year-block-head h3 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.6vw, 30px); color: var(--navy); margin: 0 0 8px; font-weight: 700; line-height: 1.2; }
   .year-block-head p { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: var(--coral); margin: 0; line-height: 1.4; }
@@ -666,7 +685,7 @@ const Check = () => (<svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 
 const Lock = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>);
 const Shield = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>);
 
-function CTAButtons({ size = 'large', primaryLabel = 'Yes, I Want Founding Member Access' }) {
+function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The Summer Challenge' }) {
   if (size === 'compact') {
     return (
       <>
@@ -946,7 +965,7 @@ function WhatsIncluded() {
       d: '100+ simple, family-friendly recipes designed to support fat loss without overcomplicating nutrition.', v: 197 },
     { ic: <IcDoc />,       t: 'WLA Nutrition & Lifestyle Guides',
       d: 'Snack guides, food swaps, fat loss boosters and practical tools to support your results.', v: 27 },
-    { ic: <IcPhone />,     t: 'Founding Member Access To The Brand New WLA App',
+    { ic: <IcPhone />,     t: 'Summer Challenge Access To The Brand New WLA App',
       d: 'Early access to the next evolution of WLA. Advanced daily tracking, lifestyle tracking, progress dashboards, habit tracking, meal planning, shopping lists, and future feature updates.', v: 297 },
   ];
   return (
@@ -999,13 +1018,13 @@ function WhatsIncluded() {
         </div>
 
         <div className="total-value">
-          <div className="lab">Founding Members Launch</div>
+          <div className="lab">Summer Challenge Launch</div>
           <div className="you-pay">You pay just <em>£97</em></div>
           <div className="price-sub">One-off payment. One year of access. Just 26p a day.</div>
           <div className="price-note">Lowest price available now. Price increases after the founding members round closes.</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
-          <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want Founding Member Access <Arrow /></a>
+          <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The Summer Challenge <Arrow /></a>
         </div>
       </div>
     </section>
@@ -1016,14 +1035,14 @@ function FoundingMembersAlsoGet() {
   const items = [
     { ic: <IcSparkle />, t: 'Future app updates & new features', d: 'Every update we ship through your founding year, included.' },
     { ic: <IcRocket />,  t: 'Early access before public launch', d: "You're in before doors open to the wider audience." },
-    { ic: <IcMedal />,   t: 'The lowest price to become a Founding Member', d: 'Phase 1 pricing never returns once these spaces are gone.' },
+    { ic: <IcMedal />,   t: 'The lowest price for The Summer Challenge', d: 'This pricing never returns once these spaces are gone.' },
     { ic: <IcCompass />, t: 'Help shape the future of WLA from the very beginning', d: 'Founding members guide what gets built next.' },
   ];
   return (
     <section className="explainer" style={{ background: 'var(--cream-2)' }}>
       <div className="explainer-inner" style={{ maxWidth: 1100 }}>
         <div className="section-head">
-          <span className="eyebrow">Founding Members Also Get</span>
+          <span className="eyebrow">You Will Also Get</span>
           <h2 className="serif">A few <em>quietly significant</em> extras.</h2>
         </div>
         <div className="receive-grid two-col">
@@ -1193,7 +1212,7 @@ function TheRealityIs() {
           <p>People don't need all the tools in the world to reach their goals. They have an action and implementation problem. They know what to do. They just don't do it.</p>
         </div>
 
-        <p>They start and they stop. It's an application issue, because people just can't be consistent on their own (well, some can, but many can't).</p>
+        <p style={{ marginTop: 32 }}>They start and they stop. It's an application issue, because people just can't be consistent on their own (well, some can, but many can't).</p>
         <p>The only way to solve a consistency problem is through:</p>
 
         <ul className="story-chips" style={{ marginTop: 6, marginBottom: 18 }}>
@@ -1204,7 +1223,7 @@ function TheRealityIs() {
         </ul>
 
         <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>It's not rocket science. It's simple. But it works.</p>
-        <p>So if you're someone who has the tools but doesn't implement them, consider this your invitation to join <strong>Shift &amp; Sustain.</strong></p>
+        <p>So if you're someone who has the tools but doesn't implement them, consider this your invitation to join <strong>The Weight Loss &amp; Lifestyle Academy.</strong></p>
       </div>
     </section>
   );
@@ -1236,31 +1255,28 @@ function HowItWorks() {
           <span className="eyebrow">Here's How It Works</span>
           <h2 className="serif">The signature <em>WLA Approach.</em></h2>
         </div>
-        <p style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 8px' }}>WLA focuses on 3 core elements designed to give you every tool needed for long-lasting, transformative change.</p>
+        <p style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 8px' }}>The Weight Loss &amp; Lifestyle Academy focuses on 3 main core elements in our signature WLA Approach to support clients with every tool that's needed for long-lasting, transformative change.</p>
 
-        {/* Brand-matched Venn diagram */}
-        <div className="venn" aria-label="The WLA Approach: Expert Coaching, Behavioural Change Strategies, The WLA Nutrition Formula">
-          <div className="venn-circle navy"><span>Expert<br/>Coaching</span></div>
-          <div className="venn-circle coral"><span>Behavioural<br/>Change<br/>Strategies</span></div>
-          <div className="venn-circle cream"><span>The WLA<br/>Nutrition<br/>Formula</span></div>
-          <div className="venn-happy"><em>Your</em><br/><em>happy</em><br/><em>place</em></div>
-        </div>
+        {/* WLA Approach Venn — upload original image to /assets/wla-approach.png */}
+        <figure className="wla-approach-image">
+          <img src="/assets/wla-approach.png" alt="The WLA Approach: Expert Coaching, Behavioural Change Strategies, The WLA Nutrition Formula" loading="lazy" decoding="async" />
+        </figure>
 
         <div className="approach-grid">
           <div className="approach-card">
             <div className="approach-icon cream-bg">✦</div>
-            <h3>The WLA Nutrition Formula</h3>
-            <p>Promotes easy weight loss with a flexible approach and everyday foods. Nothing's banned, we just balance for best results and enjoyment. Feel lighter within days, stay consistent, and say goodbye to fad diets.</p>
+            <h3>WLA Nutrition Formula</h3>
+            <p>Our WLA Nutrition Formula promotes easy weight loss with a flexible approach to nutrition with everyday foods. No foods are excluded, but we balance for best results and enjoyment. Feel lighter within days, say hello to confidence, lose weight consistently, increase your energy and say goodbye to fad diets.</p>
           </div>
           <div className="approach-card">
             <div className="approach-icon coral-bg">✦</div>
             <h3>Behavioural Change Strategies</h3>
-            <p>The psychology behind weight loss. Lose the weight, but keep it off. Food freedom without the guilt. Strategies that tap into your mindset to create real, sustainable change.</p>
+            <p>Our Behavioural Change Strategies centre around the psychology behind weight loss. Lose weight, but keep it off. Have food freedom and say goodbye to self-sabotaging food guilt. Behavioural change strategies help you create real, sustainable change, tapping into your mindset around weight and food for good.</p>
           </div>
           <div className="approach-card">
             <div className="approach-icon navy-bg">✦</div>
             <h3>Expert Coaching</h3>
-            <p>Consistency and accountability so you finally stop falling off track. Professional, women-only, non-judgemental coaching every step of the way. The secret weapon in your toolbox.</p>
+            <p>Our Expert Health Coaching focuses on consistency and accountability strategies so you finally stop "falling off track". We guide you every step of the way with our professional, women-only and non-judgemental coaching community. Take action and feel empowered with our support. This is the secret weapon in your toolbox.</p>
           </div>
         </div>
       </div>
@@ -1288,10 +1304,18 @@ function WhyJoinNow() {
           <span className="eyebrow">Why Now?</span>
           <h2 className="serif">Why join the <em>Summer Challenge now?</em></h2>
         </div>
-        <p>Summer is almost here. What better way to get ready for holidays, and have the tools to get back on track when you come home.</p>
-        <p>Lose up to <strong>2 stone</strong>, drop inches, ditch bloating, and feel lighter and confident.</p>
-        <p>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
-        <div className="story-callout">
+        <p style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 28px' }}>Summer is almost here. What better way to get ready for holidays, and have the tools to get back on track when you come home.</p>
+
+        <div className="why-now-boxes">
+          <div className="why-now-box"><div className="why-now-num">2 stone</div><div className="why-now-lab">Lose up to</div></div>
+          <div className="why-now-box"><div className="why-now-num">Inches</div><div className="why-now-lab">Drop</div></div>
+          <div className="why-now-box"><div className="why-now-num">Bloating</div><div className="why-now-lab">Ditch</div></div>
+          <div className="why-now-box"><div className="why-now-num">Lighter</div><div className="why-now-lab">Feel</div></div>
+          <div className="why-now-box"><div className="why-now-num">Confident</div><div className="why-now-lab">Feel</div></div>
+        </div>
+
+        <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
+        <div className="story-callout" style={{ maxWidth: 760, margin: '24px auto 0' }}>
           <strong>Limited spots left.</strong>
           <p>Once the places are gone, this promo finishes.</p>
         </div>
@@ -1328,10 +1352,11 @@ function HereIsWhatYouCanAchieve() {
 
         <div className="achieve-block">
           <h3 className="achieve-title">Physical Results</h3>
-          <ul className="relate-list">
+          <ul className="achieve-list">
             {physical.map((it, i) => (
-              <li key={i} className={i === physical.length - 1 && physical.length % 2 === 1 ? 'span-2' : ''}>
-                <span className="relate-mark">✦</span><span>{it}</span>
+              <li key={i}>
+                <span className="achieve-check"><Check /></span>
+                <span>{it}</span>
               </li>
             ))}
           </ul>
@@ -1339,10 +1364,11 @@ function HereIsWhatYouCanAchieve() {
 
         <div className="achieve-block">
           <h3 className="achieve-title">Long-Term Benefits With 1 Year Access</h3>
-          <ul className="relate-list">
+          <ul className="achieve-list">
             {longTerm.map((it, i) => (
-              <li key={i} className={i === longTerm.length - 1 && longTerm.length % 2 === 1 ? 'span-2' : ''}>
-                <span className="relate-mark">✦</span><span>{it}</span>
+              <li key={i}>
+                <span className="achieve-check"><Check /></span>
+                <span>{it}</span>
               </li>
             ))}
           </ul>
@@ -1458,14 +1484,14 @@ function Limited() {
             </ul>
           </div>
           <div className="limited-card win">
-            <div className="card-tag">Founding Members Lock In</div>
+            <div className="card-tag">Summer Challenge Members Lock In</div>
             <h3>The full <em>Summer Special</em></h3>
             <ul>
               <li>The 12 Week Summer Challenge</li>
               <li>1 full year of meal guides, recipes &amp; tools</li>
               <li>52 weekly LIVE coaching Zooms with Anna</li>
               <li>Daily coaching &amp; accountability for 365 days</li>
-              <li>Lowest price for joining as a Founding Member</li>
+              <li>Lowest price for joining The Summer Challenge</li>
             </ul>
           </div>
         </div>
@@ -1492,7 +1518,7 @@ function FAQ() {
     { q: 'Are the meal guides new?',
       a: "Yes. Every week we share a new fat-loss meal guide into the Shift area, plus new resources, videos and tools monthly to help you stay focused and motivated." },
     { q: 'Why would I join this?',
-      a: "If you have years' worth of weight loss tools but still find yourself no closer to your goal, Shift & Sustain is for you. If you start a weight-loss journey but quit after 7 days. If you can't stay consistent. If you tell yourself you'll start next week and then keep putting it off. If you can't hold yourself accountable, let us hold you accountable, with expert coaching, high-accountability strategies, and incentives that keep you focused and motivated." },
+      a: "If you have years' worth of weight loss tools but still find yourself no closer to your goal, The Weight Loss & Lifestyle Academy is for you. If you start a weight-loss journey but quit after 7 days. If you can't stay consistent. If you tell yourself you'll start next week and then keep putting it off. If you can't hold yourself accountable, let us hold you accountable, with expert coaching, high-accountability strategies, and incentives that keep you focused and motivated." },
     { q: 'Is it time consuming?',
       a: "Not at all. Double, triple or quadruple the recipes to save time, energy and money. Use the meal guides as they are with plenty of variety, or simplify them by repeating recipes as much as you like." },
     { q: 'Concerned about cost?',
@@ -1500,7 +1526,7 @@ function FAQ() {
     { q: "I can't do a lot of exercise…",
       a: "Not a problem. Your fat-loss results mostly come down to what you're eating. Yes, around 80% nutrition. If you have an existing exercise routine, keep it going alongside the program. If you're not currently exercising, let's just focus on your nutrition for maximum results." },
     { q: "I'm a fussy eater…",
-      a: "Every single recipe in Shift & Sustain can be adjusted. If you love flavour, keep the recipes pimped up. If you prefer food that's more bland, leave out spices, flavours and herbs. Total flexibility." },
+      a: "Every single recipe in The Weight Loss & Lifestyle Academy can be adjusted. If you love flavour, keep the recipes pimped up. If you prefer food that's more bland, leave out spices, flavours and herbs. Total flexibility." },
     { q: 'I need to feed my family…',
       a: "Use the meal guides with your family, just increase portion sizes and we can support you with that in our coaching group. The recipes are family-friendly. Any recipes you don't like, leave out and swap with others." },
     { q: "Will I get Anna's hands-on support?",
@@ -1534,21 +1560,28 @@ function MeetAnna() {
           <span className="eyebrow">Meet Anna</span>
           <h2 className="serif">"I shifted over <em>2 stone &amp; never gained it back.</em>"</h2>
         </div>
-        <div className="meet-anna-grid">
+        <div className="meet-anna-wrap">
           <figure className="meet-anna-image">
             <img src="/assets/anna-before-after.png" alt="Anna Wallace before and after" loading="lazy" decoding="async" />
+            <figcaption className="meet-anna-credentials">
+              <div className="cred-name">Anna Wallace</div>
+              <div className="cred-line">BSc Food &amp; Nutrition</div>
+              <div className="cred-line">Registered Associate Nutritionist</div>
+              <div className="cred-line">NLP Practitioner · Clinical Hypnotherapist</div>
+            </figcaption>
           </figure>
           <div className="meet-anna-text">
             <p><strong>Hello and welcome!</strong> I'm Anna Wallace, founder of The Weight Loss Academy, where we're transforming how women lose weight, boost energy and regain confidence, without low-calorie diets or restrictive plans.</p>
             <p>My personal journey into health coaching started much like many of the women I now work with. I used to be trapped in a relentless dieting cycle, starting new diets every Monday, taking laxatives to lose weight, stepping on the scale every day, and struggling with emotional eating. My weight was constantly fluctuating and I felt like I had no control.</p>
             <p>I pursued a degree in Food and Nutrition at the University of Ulster in Northern Ireland. Over the years I transformed my relationship with food, lost weight, and have maintained it even post-pregnancy.</p>
             <p>With qualifications as a <strong>Registered Associate Nutritionist</strong>, <strong>NLP Practitioner</strong> and <strong>Clinical Hypnotherapist</strong>, I've combined my expertise with my personal experience to help over <strong>50,000 women worldwide</strong> break free from restrictive dieting.</p>
-            <p><strong>Shift &amp; Sustain</strong> is designed to empower women to move away from low-calorie diets and embrace a more balanced approach that works <em>with</em> your life, not against it. It's incredibly rewarding to see women regain control, increase their energy, and finally feel confident in their skin.</p>
+            <p><strong>The Weight Loss &amp; Lifestyle Academy</strong> is designed to empower women to move away from low-calorie diets and embrace a more balanced approach that works <em>with</em> your life, not against it. It's incredibly rewarding to see women regain control, increase their energy, and finally feel confident in their skin.</p>
             <div className="meet-anna-signoff">
               <p>Thank you for being part of this journey. I can't wait to see the amazing things you'll achieve.</p>
               <div className="meet-anna-signature">— Anna</div>
             </div>
           </div>
+          <div style={{ clear: 'both' }} />
         </div>
       </div>
     </section>
@@ -1611,7 +1644,7 @@ function StickyCTA() {
   return (
     <div className={'sticky-cta' + (show ? ' show' : '')}>
       <div className="text">
-        <strong>Founding Member · £97 one-off</strong>
+        <strong>Summer Challenge · £97 · 1 Year Access</strong>
       </div>
       <div className="sticky-cta-buttons">
         <a href={CHECKOUT_URL} className="sticky-cta-card"><CardIcon /> Debit Card</a>
@@ -1638,10 +1671,7 @@ function Page() {
       <WhyJoinNow />
       <Results />
       <MeetAnna />
-      <NextChapter />
       <EvolvingInside />
-      <SpecialOpportunity />
-      <ExpectedResults />
       <WhatsIncluded />
       <FoundingMembersAlsoGet />
       <ImagineSummer />
