@@ -406,9 +406,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .results .section-head h2 { color: var(--navy); }
   .results .section-head h2 em { color: var(--coral); }
   .results-carousel { position: relative; max-width: 1240px; margin: 0 auto; }
-  .results-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .results-track { display: grid; grid-template-rows: repeat(2, 1fr); grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 4); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .results-track::-webkit-scrollbar { display: none; }
-  .results-tile { flex: 0 0 calc((100% - 48px) / 4); min-width: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); box-sizing: border-box; }
+  .results-tile { min-width: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); box-sizing: border-box; }
   .results-tile img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--paper); }
   .results-nav { position: absolute; top: 46%; transform: translateY(-50%); z-index: 5; width: 48px; height: 48px; border-radius: 50%; background: var(--navy); border: none; color: var(--paper); font-family: "Alegreya Sans", sans-serif; font-size: 22px; font-weight: 500; line-height: 1; display: grid; place-items: center; cursor: pointer; box-shadow: 0 18px 32px -14px rgba(14,39,70,0.45); transition: transform .15s, background .15s; padding: 0; }
   .results-nav:hover { background: var(--navy-deep); transform: translateY(-50%) scale(1.06); }
@@ -419,8 +419,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .results-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(14,39,70,0.18); border: none; padding: 0; cursor: pointer; transition: background .15s, transform .15s; }
   .results-dot.active { background: var(--coral); transform: scale(1.3); }
   .results-disclaimer { max-width: 1240px; margin: 20px auto 0; text-align: center; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
-  @media (max-width: 980px) { .results-tile { flex: 0 0 calc((100% - 32px) / 3); } .results-nav.prev { left: -10px; } .results-nav.next { right: -10px; } }
-  @media (max-width: 640px) { .results-tile { flex: 0 0 calc((100% - 16px) / 2); } .results { padding: 64px 22px; } .results-nav { width: 40px; height: 40px; font-size: 20px; } .results-nav.prev { left: -6px; } .results-nav.next { right: -6px; } }
+  @media (max-width: 980px) { .results-track { grid-auto-columns: calc((100% - 32px) / 3); } .results-nav.prev { left: -10px; } .results-nav.next { right: -10px; } }
+  @media (max-width: 640px) { .results-track { grid-auto-columns: calc((100% - 16px) / 2); } .results { padding: 64px 22px; } .results-nav { width: 40px; height: 40px; font-size: 20px; } .results-nav.prev { left: -6px; } .results-nav.next { right: -6px; } }
 
   /* Before vs After WLA Lifestyle table */
   .compare { padding: 96px 28px; background: var(--paper); border-top: 1px solid rgba(14,39,70,0.06); }
@@ -972,11 +972,12 @@ function Results() {
   const recompute = useCallback(() => {
     const track = trackRef.current; if (!track) return;
     const tile = track.querySelector('.results-tile'); if (!tile) return;
-    const tileWidth = tile.offsetWidth + 16;
-    const visible = Math.max(1, Math.round(track.clientWidth / tileWidth));
-    const count = Math.max(1, tiles.length - visible + 1);
+    const colWidth = tile.offsetWidth + 16;
+    const visibleCols = Math.max(1, Math.round(track.clientWidth / colWidth));
+    const totalCols = Math.ceil(tiles.length / 2);
+    const count = Math.max(1, totalCols - visibleCols + 1);
     setPageCount(count);
-    setPage(Math.min(Math.round(track.scrollLeft / tileWidth), count - 1));
+    setPage(Math.min(Math.round(track.scrollLeft / colWidth), count - 1));
   }, [tiles.length]);
 
   useEffect(() => {
@@ -1166,7 +1167,6 @@ function StickyCTA() {
     <div className={'sticky-cta' + (show ? ' show' : '')}>
       <div className="text">
         <strong>Founding Member · £97 one-off</strong>
-        <span className="sec">26p / day · Weekly LIVE coaching · All WLA challenges · The new WLA app</span>
       </div>
       <div className="sticky-cta-buttons">
         <a href={CHECKOUT_URL} className="sticky-cta-card"><CardIcon /> Debit Card</a>
