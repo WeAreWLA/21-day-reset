@@ -236,6 +236,31 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .relate-list li.span-2 { grid-column: 1 / -1; }
   .relate-list .relate-mark { flex: none; width: 28px; height: 28px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; font-size: 13px; font-weight: 700; }
   @media (max-width: 640px) { .relate-list { grid-template-columns: 1fr; gap: 10px; } .relate-list li { padding: 14px 18px; font-size: 15px; } .relate-list li.span-2 { grid-column: auto; } }
+
+  /* Venn diagram (How It Works) */
+  .venn { position: relative; width: min(380px, 92vw); aspect-ratio: 1 / 1; margin: 36px auto 40px; }
+  .venn-circle { position: absolute; width: 65%; aspect-ratio: 1 / 1; border-radius: 50%; display: grid; place-items: center; text-align: center; padding: 16px; font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(12px, 1.4vw, 15px); line-height: 1.2; box-sizing: border-box; }
+  .venn-circle span { display: block; }
+  .venn-circle.navy { top: 0; left: 50%; transform: translateX(-50%); background: var(--navy); color: #fff; z-index: 3; align-items: start; padding-top: 32px; }
+  .venn-circle.coral { bottom: 0; left: 0; background: var(--coral); color: #fff; z-index: 2; align-items: end; padding-bottom: 32px; padding-left: 16px; }
+  .venn-circle.cream { bottom: 0; right: 0; background: var(--cream-2); color: var(--navy); z-index: 1; align-items: end; padding-bottom: 32px; padding-right: 16px; }
+  .venn-happy { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(15px, 1.8vw, 20px); color: #fff; text-align: center; line-height: 1.05; z-index: 4; pointer-events: none; }
+  .venn-happy em { font-style: italic; font-weight: 700; display: block; }
+
+  /* Approach grid (How It Works) */
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+  .approach-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 24px 22px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 14px 28px -22px rgba(14,39,70,0.18); }
+  .approach-icon { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-size: 18px; font-weight: 700; font-family: 'Libre Baskerville', serif; }
+  .approach-icon.cream-bg { background: var(--cream-2); color: var(--navy); }
+  .approach-icon.coral-bg { background: var(--coral); color: #fff; }
+  .approach-icon.navy-bg { background: var(--navy); color: #fff; }
+  .approach-card h3 { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--navy); margin: 0; font-weight: 700; line-height: 1.25; }
+  .approach-card p { font-size: 15px; line-height: 1.55; color: #333; margin: 0; }
+  @media (max-width: 880px) { .approach-grid { grid-template-columns: 1fr; gap: 14px; } }
+
+  /* Achievement blocks (Here's What You Can Achieve) */
+  .achieve-block { margin-bottom: 28px; }
+  .achieve-title { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--coral); font-style: italic; font-weight: 700; margin: 0 0 16px; text-align: center; }
   .story-cycle { background: var(--cream-2); border-radius: 14px; border-left: 4px solid var(--coral); padding: 26px 32px; margin: 28px 0; }
   .story-cycle p { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy); font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
   .story-cycle p:last-child { margin-bottom: 0; font-style: normal; font-weight: 700; color: var(--coral); font-size: 19px; }
@@ -1136,6 +1161,116 @@ function TwelveWeekSummerChallenge() {
   );
 }
 
+function HowItWorks() {
+  return (
+    <section className="story section" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="section-inner">
+        <div className="section-head">
+          <span className="eyebrow">Here's How It Works</span>
+          <h2 className="serif">The signature <em>WLA Approach.</em></h2>
+        </div>
+        <p style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 8px' }}>WLA focuses on 3 core elements designed to give you every tool needed for long-lasting, transformative change.</p>
+
+        {/* Brand-matched Venn diagram */}
+        <div className="venn" aria-label="The WLA Approach: Expert Coaching, Behavioural Change Strategies, The WLA Nutrition Formula">
+          <div className="venn-circle navy"><span>Expert<br/>Coaching</span></div>
+          <div className="venn-circle coral"><span>Behavioural<br/>Change<br/>Strategies</span></div>
+          <div className="venn-circle cream"><span>The WLA<br/>Nutrition<br/>Formula</span></div>
+          <div className="venn-happy"><em>Your</em><br/><em>happy</em><br/><em>place</em></div>
+        </div>
+
+        <div className="approach-grid">
+          <div className="approach-card">
+            <div className="approach-icon cream-bg">✦</div>
+            <h3>The WLA Nutrition Formula</h3>
+            <p>Promotes easy weight loss with a flexible approach and everyday foods. Nothing's banned, we just balance for best results and enjoyment. Feel lighter within days, stay consistent, and say goodbye to fad diets.</p>
+          </div>
+          <div className="approach-card">
+            <div className="approach-icon coral-bg">✦</div>
+            <h3>Behavioural Change Strategies</h3>
+            <p>The psychology behind weight loss. Lose the weight, but keep it off. Food freedom without the guilt. Strategies that tap into your mindset to create real, sustainable change.</p>
+          </div>
+          <div className="approach-card">
+            <div className="approach-icon navy-bg">✦</div>
+            <h3>Expert Coaching</h3>
+            <p>Consistency and accountability so you finally stop falling off track. Professional, women-only, non-judgemental coaching every step of the way. The secret weapon in your toolbox.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function JoinForFullYear() {
+  return (
+    <section className="explainer" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
+        <p style={{ fontFamily: '"Libre Baskerville", serif', fontSize: 'clamp(20px, 2.4vw, 28px)', fontStyle: 'italic', color: 'var(--navy)', lineHeight: 1.4, margin: 0 }}>
+          Join the <strong style={{ fontStyle: 'normal' }}>Summer Challenge today for 12 weeks</strong> and get <em style={{ color: 'var(--coral)' }}>full-year access</em>. Everything you need to transform your body and maintain your results long-term.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function HereIsWhatYouCanAchieve() {
+  const physical = [
+    'Lose up to 2 stone in your first 12 weeks',
+    'Drop inches off your waist, hips and thighs',
+    'Reduce bloating and heaviness, feel lighter and energised',
+    'Improve body composition and tone',
+    'Wake up feeling refreshed, confident and motivated',
+    'See clothes fit better. No more hiding in oversized tops',
+  ];
+  const longTerm = [
+    'Maintain and sustain your weight loss from the first 12 weeks',
+    'Continue steady fat loss or inch loss at your own pace',
+    'Build lifelong healthy habits around food, movement and lifestyle',
+    'Access weekly new meal guides, coaching tips and tools anytime',
+    'Avoid the dreaded start-stop cycles and rebound weight gain',
+    'Refine your nutrition and lifestyle as your body changes',
+    'Gain lasting confidence, control and freedom over your health',
+  ];
+  return (
+    <section className="receive" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">Here's What You Can Achieve</span>
+          <h2 className="serif">The results, <em>short term and long.</em></h2>
+        </div>
+
+        <div className="achieve-block">
+          <h3 className="achieve-title">Physical Results</h3>
+          <ul className="relate-list">
+            {physical.map((it, i) => (
+              <li key={i} className={i === physical.length - 1 && physical.length % 2 === 1 ? 'span-2' : ''}>
+                <span className="relate-mark">✦</span><span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="achieve-block">
+          <h3 className="achieve-title">Long-Term Benefits With 1 Year Access</h3>
+          <ul className="relate-list">
+            {longTerm.map((it, i) => (
+              <li key={i} className={i === longTerm.length - 1 && longTerm.length % 2 === 1 ? 'span-2' : ''}>
+                <span className="relate-mark">✦</span><span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p style={{ maxWidth: 760, margin: '32px auto 0', textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 18, lineHeight: 1.55, color: 'var(--navy)' }}>
+          For less than <strong style={{ color: 'var(--coral)', fontStyle: 'normal' }}>£2 a week</strong> you get a full year of expert coaching, weekly meal guides and a complete system to lose fat and feel amazing, without having to think about what to eat or whether you're doing it right.
+          <br/><br/>
+          <strong style={{ color: 'var(--navy)', fontStyle: 'normal' }}>This isn't just a program. It's a done-for-you fat loss system that keeps giving for a full year.</strong>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function ClientAchievements12Wk() {
   const videos = [
     { id: '1050446403', hash: 'ee3211dfc8', name: 'Anna',    quote: 'Anna lost almost 2 stone & saw her perimenopause symptoms disappear.' },
@@ -1321,6 +1456,9 @@ function Page() {
       <DoesThisSoundLikeYou />
       <TheRealityIs />
       <TwelveWeekSummerChallenge />
+      <HowItWorks />
+      <JoinForFullYear />
+      <HereIsWhatYouCanAchieve />
       <Results />
       <WhyWLAExists />
       <NextChapter />
