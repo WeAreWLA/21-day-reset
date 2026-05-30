@@ -81,7 +81,7 @@ ml('account', '1287540');
   button { font: inherit; cursor: pointer; }
   img { max-width: 100%; display: block; }
 
-  .urgency-banner { position: relative; overflow: hidden; background: linear-gradient(90deg, #a8421e 0%, var(--coral) 45%, #c45a3a 55%, #a8421e 100%); color: #fff; text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: inset 0 -1px 0 rgba(0,0,0,0.18); }
+  .urgency-banner { position: relative; overflow: hidden; background: var(--coral); color: #fff; text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
   .urgency-banner::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .urgency-banner > * { position: relative; z-index: 1; }
@@ -416,14 +416,36 @@ const IcChef = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none
 const IcWhatsApp = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.14 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22c4.78-.8 8.43-4.94 8.43-9.94Z"/></svg>);
 const IcCheckBox = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><polyline points="8 12.5 11 15.5 16 9.5"/></svg>);
 
+const isLaunchDay = () => {
+  try {
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' })
+      .formatToParts(new Date()).reduce((a, p) => (a[p.type] = p.value, a), {});
+    return parts.year === '2026' && parts.month === '06' && parts.day === '01';
+  } catch (_) {
+    const d = new Date();
+    return d.getFullYear() === 2026 && d.getMonth() === 5 && d.getDate() === 1;
+  }
+};
+
 function UrgencyBanner() {
+  const launchDay = isLaunchDay();
   return (
     <div className="urgency-banner" role="alert">
       <span className="urg-flag"><span className="urg-pulse" aria-hidden="true"></span>&nbsp;Final Call</span>
       <svg className="urg-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><polyline points="12 7 12 12 15.5 14" /></svg>
-      <span><strong>Last Day To Register</strong></span>
-      <span className="sep" aria-hidden="true">·</span>
-      <span>Fewer Than <strong>50 Spots</strong> Left</span>
+      {launchDay ? (
+        <>
+          <span><strong>Starts Today</strong></span>
+          <span className="sep" aria-hidden="true">·</span>
+          <span>Still Time To Join</span>
+        </>
+      ) : (
+        <>
+          <span><strong>Last Day To Register</strong></span>
+          <span className="sep" aria-hidden="true">·</span>
+          <span>Less Than <strong>50 Spots</strong> Left</span>
+        </>
+      )}
     </div>
   );
 }
@@ -534,7 +556,7 @@ function Hero() {
               Free this round
             </div>
             <div className="form-trust-line">
-              Limited spaces available · Starts <strong>Monday 1st June</strong>
+              Limited spaces available · {isLaunchDay() ? <strong>Starts today</strong> : <>Starts <strong>Monday 1st June</strong></>}
             </div>
           </div>
           <form onSubmit={onSubmit} noValidate>
