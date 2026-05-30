@@ -81,7 +81,7 @@ ml('account', '1287540');
   button { font: inherit; cursor: pointer; }
   img { max-width: 100%; display: block; }
 
-  .urgency-banner { position: relative; overflow: hidden; background: var(--coral); color: #fff; text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
+  .urgency-banner { position: relative; overflow: hidden; background: #F79F83; color: #fff; text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
   .urgency-banner::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .urgency-banner > * { position: relative; z-index: 1; }
@@ -173,7 +173,7 @@ ml('account', '1287540');
   .form-foot .item { display: inline-flex; align-items: center; gap: 6px; }
   .form-foot svg { width: 13px; height: 13px; }
   @media (max-width: 980px) {
-    .hero { grid-template-columns: 1fr; padding: 16px 16px 60px; gap: 24px; }
+    .hero { grid-template-columns: 1fr; padding: 40px 16px 60px; gap: 24px; }
     .testimonial-bubble { display: none; }
     .hero-text { display: contents; }
     .hero-headline { order: 1; }
