@@ -81,14 +81,14 @@ ml('account', '1287540');
   button { font: inherit; cursor: pointer; }
   img { max-width: 100%; display: block; }
 
-  .urgency-banner { position: relative; overflow: hidden; background: #F79F83; color: #fff; text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
+  .urgency-banner { position: relative; overflow: hidden; background: #F79F83; color: #003060; text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
   .urgency-banner::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .urgency-banner > * { position: relative; z-index: 1; }
   .urgency-banner .urg-flag { display: inline-flex; align-items: center; background: rgba(0,0,0,0.22); color: #fff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; padding: 5px 11px; border-radius: 999px; flex: none; }
   .urgency-banner .urg-pulse { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,0.85); animation: urgPulse 1.6s infinite; flex: none; }
   @keyframes urgPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.85);} 70% { box-shadow: 0 0 0 8px rgba(255,255,255,0);} 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0);} }
-  .urgency-banner .urg-icon { width: 18px; height: 18px; stroke: #fff; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .urgency-banner .urg-icon { width: 18px; height: 18px; stroke: #003060; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   .urgency-banner strong { font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
   .urgency-banner .sep { opacity: 0.55; padding: 0 2px; }
   @media (max-width: 640px) { .urgency-banner { font-size: 13px; letter-spacing: 0.03em; padding: 10px 12px; gap: 10px; flex-wrap: wrap; } .urgency-banner .urg-flag { font-size: 10px; padding: 4px 9px; letter-spacing: 0.14em; } .urgency-banner .urg-icon { width: 16px; height: 16px; } }
