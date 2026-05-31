@@ -114,19 +114,24 @@ ml('account', '1287540');
   .hero { max-width: 1240px; margin: 0 auto; padding: 32px 28px 44px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: stretch; }
   .hero-image-wrap { position: relative; border-radius: 20px; overflow: hidden; background: var(--cream-2); min-height: 520px; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25); }
   .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .form-card.v2 { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 32px 32px 28px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); }
-  .form-card.v2 .v2-title { font-family: 'Libre Baskerville', serif; color: var(--navy); font-weight: 700; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin: 0 0 18px; letter-spacing: -0.01em; }
-  .form-card.v2 .v2-offer { color: var(--coral); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.35; margin: 0 0 18px; padding: 14px 14px; border-radius: 12px; background: rgba(247,159,131,0.10); }
+  .form-card.v2 { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 22px 26px 22px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); }
+  .form-card.v2 .v2-title { font-family: 'Libre Baskerville', serif; color: var(--navy); font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .form-card.v2 .v2-offer { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.3; margin: 0 0 14px; }
   .form-card.v2 .v2-offer .v2-offer-line { display: block; }
-  .form-card.v2 .v2-offer .v2-offer-line + .v2-offer-line { margin-top: 4px; }
-  .form-card.v2 .v2-offer strong { color: var(--coral); font-weight: 800; }
-  .form-card.v2 .v2-body { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.5; color: #333; margin: 0 0 8px; }
-  .form-card.v2 .v2-body strong { color: var(--navy); font-weight: 700; }
-  .form-card.v2 .v2-sub { font-size: 15px; line-height: 1.45; color: #333; margin: 0 0 20px; }
+  .form-card.v2 .v2-offer .v2-offer-line + .v2-offer-line { margin-top: 2px; }
+  .form-card.v2 .v2-offer .v2-coral { color: #F79F83; }
+  .form-card.v2 .v2-offer .v2-navy { color: #003060; }
+  .form-card.v2 .v2-offer em { font-style: italic; }
+  .form-card.v2 .v2-body { font-family: "Alegreya Sans", sans-serif; font-size: clamp(15px, 1.35vw, 17px); line-height: 1.45; color: #333; margin: 0 0 10px; }
+  .form-card.v2 .v2-body strong { font-weight: 700; color: #333; }
+  .form-card.v2 .v2-body .v2-underline { font-style: italic; text-decoration: underline; text-underline-offset: 3px; }
+  .form-card.v2 .v2-kickoff { font-family: "Alegreya Sans", sans-serif; font-size: 15px; line-height: 1.4; color: var(--navy); font-weight: 600; margin: 0 0 16px; }
   .form-card.v2 form { margin: 0; }
-  .form-card.v2 .field { margin-bottom: 12px; text-align: left; }
-  .form-card.v2 .submit-btn { width: 100%; }
-  .form-card.v2 .v2-foot { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14px; color: var(--muted); margin: 14px 0 0; }
+  .form-card.v2 .field { margin-bottom: 10px; text-align: left; }
+  .form-card.v2 .field label { font-size: 12px; margin-bottom: 4px; }
+  .form-card.v2 .field input { padding: 11px 14px; }
+  .form-card.v2 .submit-btn { width: 100%; padding: 14px 16px; font-size: 16px; }
+  .form-card.v2 .v2-foot { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; line-height: 1.4; color: var(--muted); margin: 12px 0 0; }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
   .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(36px, 4.4vw, 58px); line-height: 1.12; letter-spacing: 0; font-weight: 700; margin: 0 0 8px; }
@@ -546,14 +551,14 @@ function Hero() {
         <div className="form-card v2">
           <h1 className="v2-title">FREE - 5 Day Fat Loss Reset</h1>
           <div className="v2-offer">
-            <span className="v2-offer-line">{isLaunchDay() ? 'Kick off – Today!' : 'Kick off – Monday 1st June'}</span>
-            <span className="v2-offer-line">Limited Free Spaces Available</span>
-            <span className="v2-offer-line">Normally £47! <strong>Join for FREE!</strong></span>
+            <span className="v2-offer-line v2-coral">Limited <em>Free Spaces</em> Left</span>
+            <span className="v2-offer-line v2-coral">Normally £47!</span>
+            <span className="v2-offer-line v2-navy">Join For FREE!</span>
           </div>
           <p className="v2-body">
-            Lose Up To <strong>5 Pounds</strong>, Gain <strong>Energy</strong>, <strong>Confidence</strong> and Say Goodbye To Sugar Cravings in 5 Days
+            Lose Up To <strong>5 Pounds</strong>, <strong>Gain Energy</strong>, <strong>Confidence</strong> and <span className="v2-underline">Say Goodbye To Sugar Cravings</span> in 5 Days
           </p>
-          <p className="v2-sub">Secure your place below while you can!</p>
+          <p className="v2-kickoff">{isLaunchDay() ? 'Kicks off today!' : 'Kicks off Monday 1st June'}</p>
           <form onSubmit={onSubmit} noValidate>
             <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
             <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
@@ -571,7 +576,7 @@ function Hero() {
               {loading ? 'Reserving…' : <>Reserve A FREE Place Now! <Arrow /></>}
             </button>
           </form>
-          <p className="v2-foot">Once registered, check your emails for next steps!</p>
+          <p className="v2-foot">Once registered, check your emails for next steps and access to free tools and coaching!</p>
         </div>
       </div>
     </section>
