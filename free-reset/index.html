@@ -110,7 +110,32 @@ ml('account', '1287540');
     .mobile-only-br { display: inline; }
   }
 
-  .hero { max-width: 1240px; margin: 0 auto; padding: 32px 28px 44px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: start; }
+  .hero { max-width: 1180px; margin: 0 auto; padding: 16px 28px 40px; display: grid; grid-template-columns: 0.85fr 1fr; gap: 40px; align-items: stretch; }
+  .hero-image-wrap { position: relative; border-radius: 20px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25); }
+  .hero-image-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .form-card.v2 { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 26px 28px 24px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); display: flex; flex-direction: column; }
+  .form-card.v2 .v2-title { font-family: 'Libre Baskerville', serif; color: var(--navy); font-weight: 700; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.2; margin: 0 0 18px; letter-spacing: -0.01em; }
+  .form-card.v2 .v2-title .v2-title-free, .form-card.v2 .v2-title .v2-title-sep { display: inline; }
+  @media (max-width: 980px) {
+    .form-card.v2 .v2-title .v2-title-free { display: block; }
+    .form-card.v2 .v2-title .v2-title-sep { display: none; }
+  }
+  .form-card.v2 .v2-offer { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: clamp(19px, 1.8vw, 22px); line-height: 1.35; margin: 0 0 20px; }
+  .form-card.v2 .v2-offer .v2-offer-line { display: block; }
+  .form-card.v2 .v2-offer .v2-offer-line + .v2-offer-line { margin-top: 4px; }
+  .form-card.v2 .v2-offer .v2-coral { color: #F79F83; }
+  .form-card.v2 .v2-offer .v2-navy { color: #003060; }
+  .form-card.v2 .v2-offer em { font-style: italic; }
+  .form-card.v2 .v2-body { font-family: "Alegreya Sans", sans-serif; font-size: clamp(16px, 1.45vw, 18px); line-height: 1.5; color: #333; margin: 0 0 12px; }
+  .form-card.v2 .v2-body strong { font-weight: 700; color: #333; }
+  .form-card.v2 .v2-body .v2-underline { font-style: italic; text-decoration: underline; text-underline-offset: 3px; }
+  .form-card.v2 .v2-kickoff { font-family: "Alegreya Sans", sans-serif; font-size: 16px; line-height: 1.4; color: var(--navy); font-weight: 600; margin: 0 0 22px; }
+  .form-card.v2 form { margin: 0; }
+  .form-card.v2 .field { margin-bottom: 12px; text-align: left; }
+  .form-card.v2 .field label { position: absolute; left: -9999px; }
+  .form-card.v2 .field input { padding: 13px 15px; font-size: 16px; }
+  .form-card.v2 .submit-btn { width: 100%; padding: 15px 18px; font-size: 17px; margin-top: 4px; }
+  .form-card.v2 .v2-foot { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; line-height: 1.45; color: var(--muted); margin: 16px 0 0; }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
   .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(36px, 4.4vw, 58px); line-height: 1.12; letter-spacing: 0; font-weight: 700; margin: 0 0 8px; }
@@ -128,7 +153,7 @@ ml('account', '1287540');
   .check svg { width: 13px; height: 13px; stroke: var(--cream); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
   .form-wrap { position: relative; }
-  @media (min-width: 981px) { .form-wrap { margin-top: 56px; } }
+  @media (min-width: 981px) { .form-wrap { margin-top: 0; } }
   .testimonial-bubble { position: absolute; top: -18px; right: -28px; left: auto; background: var(--cream-2); border: 1px solid rgba(14,39,70,0.06); padding: 14px 18px; border-radius: 10px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: var(--navy); max-width: 240px; line-height: 1.4; box-shadow: 0 12px 30px -18px rgba(14,39,70,.25); z-index: 3; transform: rotate(2deg); }
   .testimonial-bubble .who { display: block; font-style: normal; font-family: "Alegreya Sans", sans-serif; font-size: 11px; color: var(--coral); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 6px; font-weight: 600; }
   .form-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; padding: 36px 36px 32px; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); position: relative; z-index: 2; }
@@ -173,12 +198,11 @@ ml('account', '1287540');
   .form-foot .item { display: inline-flex; align-items: center; gap: 6px; }
   .form-foot svg { width: 13px; height: 13px; }
   @media (max-width: 980px) {
-    .hero { grid-template-columns: 1fr; padding: 40px 16px 60px; gap: 24px; }
+    .hero { grid-template-columns: 1fr; padding: 12px 16px 40px; gap: 20px; }
+    .hero-image-wrap { order: 2; min-height: 320px; max-height: 440px; }
+    .form-wrap { order: 1; margin-top: 0; }
+    .form-card.v2 { padding: 22px 20px 20px; }
     .testimonial-bubble { display: none; }
-    .hero-text { display: contents; }
-    .hero-headline { order: 1; }
-    .form-wrap { order: 2; }
-    .hero-supporting { order: 3; }
     .hero-headline { text-align: center; }
     .hero-headline .eyebrow { margin-bottom: 28px; font-size: 15px; }
     .hero-headline .eyebrow::before { display: none; }
@@ -245,9 +269,9 @@ ml('account', '1287540');
   .results .section-head .eyebrow { color: var(--coral-soft); }
   .results .section-head .eyebrow::after { background: var(--coral-soft); }
   .results-carousel { position: relative; max-width: 1240px; margin: 0 auto; }
-  .results-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .results-track { display: grid; grid-template-rows: 1fr 1fr; grid-auto-flow: column; grid-auto-columns: calc((100% - 48px) / 4); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .results-track::-webkit-scrollbar { display: none; }
-  .results-tile { flex: 0 0 calc((100% - 48px) / 4); min-width: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); box-sizing: border-box; }
+  .results-tile { min-width: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); box-sizing: border-box; }
   .results-tile img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .results-nav { position: absolute; top: 46%; transform: translateY(-50%); z-index: 5; width: 48px; height: 48px; border-radius: 50%; background: var(--paper); border: none; color: var(--navy); font-family: "Alegreya Sans", sans-serif; font-size: 22px; font-weight: 500; line-height: 1; display: grid; place-items: center; cursor: pointer; box-shadow: 0 18px 32px -14px rgba(0,0,0,0.5); transition: transform .15s, background .15s; padding: 0; }
   .results-nav:hover { background: var(--cream-2); transform: translateY(-50%) scale(1.06); }
@@ -259,8 +283,8 @@ ml('account', '1287540');
   .results-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; padding: 0; cursor: pointer; transition: background .15s, transform .15s; }
   .results-dot.active { background: var(--coral-soft); transform: scale(1.3); }
   .results-disclaimer { max-width: 1240px; margin: 20px auto 0; text-align: center; font-size: 12px; color: rgba(244,235,220,0.6); letter-spacing: 0.04em; }
-  @media (max-width: 980px) { .results-tile { flex: 0 0 calc((100% - 32px) / 3); } .results-nav.prev { left: -10px; } .results-nav.next { right: -10px; } }
-  @media (max-width: 640px) { .results-tile { flex: 0 0 calc((100% - 16px) / 2); } .results { padding: 64px 22px; } .results-nav { width: 40px; height: 40px; font-size: 20px; } .results-nav.prev { left: -6px; } .results-nav.next { right: -6px; } }
+  @media (max-width: 980px) { .results-track { grid-auto-columns: calc((100% - 32px) / 3); } .results-nav.prev { left: -10px; } .results-nav.next { right: -10px; } }
+  @media (max-width: 640px) { .results-track { grid-auto-columns: calc((100% - 16px) / 2); } .results { padding: 64px 22px; } .results-nav { width: 40px; height: 40px; font-size: 20px; } .results-nav.prev { left: -6px; } .results-nav.next { right: -6px; } }
 
   .outcomes { padding: 56px 28px 96px; background: var(--cream-2); border-top: 1px solid rgba(14,39,70,0.06); }
   .outcomes-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -440,11 +464,7 @@ function UrgencyBanner() {
           <span>Still Time To Join</span>
         </>
       ) : (
-        <>
-          <span><strong>Last Day To Register</strong></span>
-          <span className="sep" aria-hidden="true">·</span>
-          <span>Less Than <strong>50 Spots</strong> Left</span>
-        </>
+        <span><strong>Last Day To Register</strong></span>
       )}
     </div>
   );
@@ -519,46 +539,22 @@ function Hero() {
 
   return (
     <section className="hero" id="optin">
-      <div className="hero-text">
-        <div className="hero-headline">
-          <h1 className="h1 serif">The 5 Day<br />Fat Loss Reset<span className="accent italic">for women 45+</span></h1>
-          <ul className="form-bullets">
-            <li>Lose Up To <em>5 Pounds</em></li>
-            <li>Gain <em>Energy &amp; Confidence</em></li>
-            <li>Say Goodbye To <em>Sugar Cravings</em> in 5 Days</li>
-          </ul>
-        </div>
-        <div className="hero-supporting">
-          <div className="offer-callout">
-            <span className="offer-lead">Live 1st–5th June</span>
-            <span className="offer-price">Normally <s>£47</s></span>
-            <span className="offer-date">Limited Free Spaces Available</span>
-          </div>
-          <ul className="bullet-list">
-            <li><span className="check"><Check /></span><span><strong>Daily live coaching</strong> from a Registered Nutritionist.</span></li>
-            <li><span className="check"><Check /></span><span>Private <strong>Facebook group</strong> + daily check-ins to keep you going.</span></li>
-            <li><span className="check"><Check /></span><span>Bonus <strong>The WLA Weight Loss Cookbook</strong> — yours to keep.</span></li>
-          </ul>
-        </div>
+      <div className="hero-image-wrap">
+        <img src="/assets/anna-sofa.jpg" alt="Anna Wallace, founder of The Weight Loss Academy" loading="eager" />
       </div>
 
       <div className="form-wrap">
-        <div className="form-card">
-          <div className="form-trust-above">
-            <div className="form-trust-pill">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <polyline points="20 12 20 22 4 22 4 12" />
-                <rect x="2" y="7" width="20" height="5" />
-                <line x1="12" y1="22" x2="12" y2="7" />
-                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-              </svg>
-              Free this round
-            </div>
-            <div className="form-trust-line">
-              Limited spaces available · {isLaunchDay() ? <strong>Starts today</strong> : <>Starts <strong>Monday 1st June</strong></>}
-            </div>
+        <div className="form-card v2">
+          <h1 className="v2-title"><span className="v2-title-free">FREE</span><span className="v2-title-sep"> - </span>5 Day Fat Loss Reset</h1>
+          <div className="v2-offer">
+            <span className="v2-offer-line v2-coral">Less Than 50 <em>Free Spaces</em> Left</span>
+            <span className="v2-offer-line v2-coral">Normally £47!</span>
+            <span className="v2-offer-line v2-navy">Join For FREE!</span>
           </div>
+          <p className="v2-body">
+            Lose Up To <strong>5 Pounds</strong>, <strong>Gain Energy</strong>, <strong>Confidence</strong> and <span className="v2-underline">Say Goodbye To Sugar Cravings</span> in 5 Days
+          </p>
+          <p className="v2-kickoff">{isLaunchDay() ? 'Kicks off today!' : 'Kicks off Monday 1st June'}</p>
           <form onSubmit={onSubmit} noValidate>
             <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
             <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
@@ -575,25 +571,8 @@ function Hero() {
             <button className="submit-btn" type="submit" disabled={loading}>
               {loading ? 'Reserving…' : <>Reserve A FREE Place Now! <Arrow /></>}
             </button>
-            <div className="form-foot">
-              <span className="item"><Lock /> Secure</span>
-              <span className="item"><Mail /> No spam, ever</span>
-            </div>
           </form>
-          <div className="form-trust-below">
-            <div className="form-trust-top">
-              <div className="form-trust-avatars" aria-hidden="true">
-                <img className="a" src="/assets/avatar-1.jpg" alt="" loading="lazy" decoding="async" />
-                <img className="a" src="/assets/avatar-2.jpg" alt="" loading="lazy" decoding="async" />
-                <img className="a" src="/assets/avatar-3.jpg" alt="" loading="lazy" decoding="async" />
-                <img className="a" src="/assets/avatar-4.jpg" alt="" loading="lazy" decoding="async" />
-              </div>
-              <div className="form-trust-text">
-                <strong>50,000+ women</strong>
-                have joined The Weight Loss Academy
-              </div>
-            </div>
-          </div>
+          <p className="v2-foot">Once registered, check your emails for next steps and access to free tools and coaching!</p>
         </div>
       </div>
     </section>
@@ -690,7 +669,8 @@ function Results() {
     if (!tile) return;
     const tileWidth = tile.offsetWidth + 16;
     const visible = Math.max(1, Math.round(track.clientWidth / tileWidth));
-    const count = Math.max(1, tiles.length - visible + 1);
+    const columns = Math.ceil(tiles.length / 2);
+    const count = Math.max(1, columns - visible + 1);
     setPageCount(count);
     setPage(Math.min(Math.round(track.scrollLeft / tileWidth), count - 1));
   }, [tiles.length]);
@@ -1028,7 +1008,7 @@ function Footer() {
 }
 
 function App() {
-  return (<><UrgencyBanner /><Nav /><Hero /><Trust /><Problem /><Outcomes /><Results /><Inside /><Why /><Testimonials /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /></>);
+  return (<><UrgencyBanner /><Nav /><Hero /><Trust /><Results /><Problem /><Outcomes /><Testimonials /><Inside /><Why /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /></>);
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
