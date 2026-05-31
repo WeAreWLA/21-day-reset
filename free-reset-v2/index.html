@@ -111,7 +111,22 @@ ml('account', '1287540');
     .mobile-only-br { display: inline; }
   }
 
-  .hero { max-width: 1240px; margin: 0 auto; padding: 32px 28px 44px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: start; }
+  .hero { max-width: 1240px; margin: 0 auto; padding: 32px 28px 44px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: stretch; }
+  .hero-image-wrap { position: relative; border-radius: 20px; overflow: hidden; background: var(--cream-2); min-height: 520px; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25); }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .form-card.v2 { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 32px 32px 28px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); }
+  .form-card.v2 .v2-title { font-family: 'Libre Baskerville', serif; color: var(--navy); font-weight: 700; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; margin: 0 0 18px; letter-spacing: -0.01em; }
+  .form-card.v2 .v2-offer { color: var(--coral); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.35; margin: 0 0 18px; padding: 14px 14px; border-radius: 12px; background: rgba(247,159,131,0.10); }
+  .form-card.v2 .v2-offer .v2-offer-line { display: block; }
+  .form-card.v2 .v2-offer .v2-offer-line + .v2-offer-line { margin-top: 4px; }
+  .form-card.v2 .v2-offer strong { color: var(--coral); font-weight: 800; }
+  .form-card.v2 .v2-body { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.5; color: #333; margin: 0 0 8px; }
+  .form-card.v2 .v2-body strong { color: var(--navy); font-weight: 700; }
+  .form-card.v2 .v2-sub { font-size: 15px; line-height: 1.45; color: #333; margin: 0 0 20px; }
+  .form-card.v2 form { margin: 0; }
+  .form-card.v2 .field { margin-bottom: 12px; text-align: left; }
+  .form-card.v2 .submit-btn { width: 100%; }
+  .form-card.v2 .v2-foot { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14px; color: var(--muted); margin: 14px 0 0; }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
   .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(36px, 4.4vw, 58px); line-height: 1.12; letter-spacing: 0; font-weight: 700; margin: 0 0 8px; }
@@ -174,7 +189,10 @@ ml('account', '1287540');
   .form-foot .item { display: inline-flex; align-items: center; gap: 6px; }
   .form-foot svg { width: 13px; height: 13px; }
   @media (max-width: 980px) {
-    .hero { grid-template-columns: 1fr; padding: 40px 16px 60px; gap: 24px; }
+    .hero { grid-template-columns: 1fr; padding: 32px 16px 60px; gap: 28px; }
+    .hero-image-wrap { order: 2; min-height: 360px; max-height: 480px; }
+    .form-wrap { order: 1; margin-top: 0; }
+    .form-card.v2 { padding: 24px 20px 22px; }
     .testimonial-bubble { display: none; }
     .hero-text { display: contents; }
     .hero-headline { order: 1; }
@@ -520,46 +538,22 @@ function Hero() {
 
   return (
     <section className="hero" id="optin">
-      <div className="hero-text">
-        <div className="hero-headline">
-          <h1 className="h1 serif">The 5 Day<br />Fat Loss Reset<span className="accent italic">for women 45+</span></h1>
-          <ul className="form-bullets">
-            <li>Lose Up To <em>5 Pounds</em></li>
-            <li>Gain <em>Energy &amp; Confidence</em></li>
-            <li>Say Goodbye To <em>Sugar Cravings</em> in 5 Days</li>
-          </ul>
-        </div>
-        <div className="hero-supporting">
-          <div className="offer-callout">
-            <span className="offer-lead">Live 1st–5th June</span>
-            <span className="offer-price">Normally <s>£47</s></span>
-            <span className="offer-date">Limited Free Spaces Available</span>
-          </div>
-          <ul className="bullet-list">
-            <li><span className="check"><Check /></span><span><strong>Daily live coaching</strong> from a Registered Nutritionist.</span></li>
-            <li><span className="check"><Check /></span><span>Private <strong>Facebook group</strong> + daily check-ins to keep you going.</span></li>
-            <li><span className="check"><Check /></span><span>Bonus <strong>The WLA Weight Loss Cookbook</strong> — yours to keep.</span></li>
-          </ul>
-        </div>
+      <div className="hero-image-wrap">
+        <img src="/assets/anna-hero.jpg" alt="Anna Wallace, founder of The Weight Loss Academy" loading="eager" />
       </div>
 
       <div className="form-wrap">
-        <div className="form-card">
-          <div className="form-trust-above">
-            <div className="form-trust-pill">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <polyline points="20 12 20 22 4 22 4 12" />
-                <rect x="2" y="7" width="20" height="5" />
-                <line x1="12" y1="22" x2="12" y2="7" />
-                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-              </svg>
-              Free this round
-            </div>
-            <div className="form-trust-line">
-              Limited spaces available · {isLaunchDay() ? <strong>Starts today</strong> : <>Starts <strong>Monday 1st June</strong></>}
-            </div>
+        <div className="form-card v2">
+          <h1 className="v2-title">FREE - 5 Day Fat Loss Reset</h1>
+          <div className="v2-offer">
+            <span className="v2-offer-line">{isLaunchDay() ? 'Kick off – Today!' : 'Kick off – Monday 1st June'}</span>
+            <span className="v2-offer-line">Limited Free Spaces Available</span>
+            <span className="v2-offer-line">Normally £47! <strong>Join for FREE!</strong></span>
           </div>
+          <p className="v2-body">
+            Lose Up To <strong>5 Pounds</strong>, Gain <strong>Energy</strong>, <strong>Confidence</strong> and Say Goodbye To Sugar Cravings in 5 Days
+          </p>
+          <p className="v2-sub">Secure your place below while you can!</p>
           <form onSubmit={onSubmit} noValidate>
             <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
             <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
@@ -576,25 +570,8 @@ function Hero() {
             <button className="submit-btn" type="submit" disabled={loading}>
               {loading ? 'Reserving…' : <>Reserve A FREE Place Now! <Arrow /></>}
             </button>
-            <div className="form-foot">
-              <span className="item"><Lock /> Secure</span>
-              <span className="item"><Mail /> No spam, ever</span>
-            </div>
           </form>
-          <div className="form-trust-below">
-            <div className="form-trust-top">
-              <div className="form-trust-avatars" aria-hidden="true">
-                <img className="a" src="/assets/avatar-1.jpg" alt="" loading="lazy" decoding="async" />
-                <img className="a" src="/assets/avatar-2.jpg" alt="" loading="lazy" decoding="async" />
-                <img className="a" src="/assets/avatar-3.jpg" alt="" loading="lazy" decoding="async" />
-                <img className="a" src="/assets/avatar-4.jpg" alt="" loading="lazy" decoding="async" />
-              </div>
-              <div className="form-trust-text">
-                <strong>50,000+ women</strong>
-                have joined The Weight Loss Academy
-              </div>
-            </div>
-          </div>
+          <p className="v2-foot">Once registered, check your emails for next steps!</p>
         </div>
       </div>
     </section>
