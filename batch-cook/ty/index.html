@@ -51,7 +51,7 @@ ml('account', '1287540');
     offer: 'Free 5 Day Reset',
     action: 'registered for the',
     ctaUrl: '#optin',
-    ctaLabel: 'Register For Free',
+    ctaLabel: 'Reserve A FREE Place Now!',
     firstDelay: 6000,
     showFor: 8000,
     gapMin: 20000,
@@ -471,7 +471,7 @@ function Nav() {
           <a href="#schedule">Schedule</a>
           <a href="#faq">FAQ</a>
         </div>
-        <a href="#optin" className="nav-cta">Register For Free <Arrow /></a>
+        <a href="#optin" className="nav-cta">Reserve A FREE Place Now! <Arrow /></a>
       </div>
     </nav>
   );
@@ -584,7 +584,7 @@ function Hero() {
               <input type="email" className={errs.email ? 'err' : ''} placeholder="you@example.com" value={vals.email} onChange={onChange('email')} />
             </div>
             <button className="submit-btn" type="submit" disabled={loading}>
-              {loading ? 'Registering…' : <>Register For Free <Arrow /></>}
+              {loading ? 'Reserving…' : <>Reserve A FREE Place Now! <Arrow /></>}
             </button>
             <div className="form-foot">
               <span className="item"><Lock /> Secure</span>
@@ -1019,7 +1019,7 @@ function BottomCTA() {
         <span className="doors-pill">Doors close Sun 31st May · Limited spaces</span>
         <h2 className="serif">Come and reset with us, <em>1st–5th June.</em></h2>
         <p>Free this round. Real coaching. A proper structure to break the sugar cycle and feel like yourself again in 5 days.</p>
-        <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Register For Free <Arrow /></a>
+        <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Reserve A FREE Place Now! <Arrow /></a>
       </div>
     </section>
   );
