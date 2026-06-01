@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Free Batch Cook Recipe Book — Weight Loss Academy</title>
+<title>Free WLA Weight Loss Cookbook — Weight Loss Academy</title>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -286,8 +286,8 @@ function Hero() {
     fetch('https://assets.mailerlite.com/jsonp/1287540/forms/186799246408681265/subscribe', {
       method: 'POST', body: fd, mode: 'no-cors',
     }).finally(() => {
-      if (window.fbq) window.fbq('track', 'Lead', { content_name: 'Batch Cook Recipe Book', content_category: 'optin' });
-      if (window.gtag) window.gtag('event', 'generate_lead', { freebie: 'batch_cook_recipe_book' });
+      if (window.fbq) window.fbq('track', 'Lead', { content_name: 'WLA Weight Loss Cookbook', content_category: 'optin' });
+      if (window.gtag) window.gtag('event', 'generate_lead', { freebie: 'wla_weight_loss_cookbook' });
       // Forward UTM params to the thank-you page so analytics on /ty/ can attribute conversions
       const qs = new URLSearchParams();
       if (utm.utm_source)   qs.set('utm_source',   utm.utm_source);
@@ -295,7 +295,7 @@ function Hero() {
       if (utm.utm_campaign) qs.set('utm_campaign', utm.utm_campaign);
       if (utm.utm_content)  qs.set('utm_content',  utm.utm_content);
       const tail = qs.toString();
-      window.location.href = '/batch-cook/ty/' + (tail ? '?' + tail : '');
+      window.location.href = '/cookbook/ty/' + (tail ? '?' + tail : '');
     });
   };
 
@@ -307,7 +307,7 @@ function Hero() {
           <h1 className="h1 serif">Cook once<br />eat all week<span className="accent italic">stress-free family meals</span></h1>
         </div>
         <div className="hero-supporting">
-          <p className="lede">A <strong>free batch-cook recipe book</strong> built by a Registered Associate Nutritionist for women 45+ who want to eat well without spending every evening at the stove. Used by <strong>50,000+ WLA members</strong>.</p>
+          <p className="lede">A <strong>free WLA Weight Loss Cookbook</strong> built by a Registered Associate Nutritionist for women 45+ who want to eat well without spending every evening at the stove. Used by <strong>50,000+ WLA members</strong>.</p>
           <ul className="bullet-list">
             <li><span className="check"><Check /></span><span><strong>Cook once, eat all week.</strong> Less prep, more reclaimed evenings.</span></li>
             <li><span className="check"><Check /></span><span>Family-friendly recipes that freeze beautifully and reheat in minutes.</span></li>
@@ -321,8 +321,8 @@ function Hero() {
         <div className="testimonial-bubble">"My freezer is full and I haven't cooked twice in a week."<span className="who">— Sarah, 52</span></div>
         <div className="form-card">
           <span className="form-tag"><span className="pulse" />100% Free · Instant Download</span>
-          <h2 className="form-title serif">Get your <em>Batch Cook Recipe Book</em></h2>
-          <p className="form-sub">Tell us where to send it — your recipe book arrives in seconds.</p>
+          <h2 className="form-title serif">Get your <em>WLA Weight Loss Cookbook</em></h2>
+          <p className="form-sub">Tell us where to send it — your cookbook arrives in seconds.</p>
           <form onSubmit={onSubmit} noValidate>
             <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
             <input type="hidden" name="fields[utm_medium]"   value={utm.utm_medium}   readOnly />
@@ -337,7 +337,7 @@ function Hero() {
               <input type="email" className={errs.email ? 'err' : ''} placeholder="you@example.com" value={vals.email} onChange={onChange('email')} />
             </div>
             <button className="submit-btn" type="submit" disabled={loading}>
-              {loading ? 'Sending…' : <>Send Me The Recipe Book <Arrow /></>}
+              {loading ? 'Sending…' : <>Send Me The Cookbook <Arrow /></>}
             </button>
             <div className="form-foot">
               <span className="item"><Lock /> Secure</span>
@@ -446,8 +446,8 @@ function BottomCTA() {
       <div className="bottom-cta-inner">
         <span className="eyebrow" style={{justifyContent: 'center'}}>Ready when you are</span>
         <h2 className="serif">A <em>full freezer</em> is closer than you think.</h2>
-        <p>Grab the Batch Cook Recipe Book free, plan one Sunday session, and reclaim your evenings this week.</p>
-        <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Send Me The Recipe Book <Arrow /></a>
+        <p>Grab the WLA Weight Loss Cookbook free, plan one Sunday session, and reclaim your evenings this week.</p>
+        <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Send Me The Cookbook <Arrow /></a>
       </div>
     </section>
   );
