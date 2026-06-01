@@ -227,20 +227,13 @@ const Mail = () => (
     <rect x="3" y="5" width="18" height="14" rx="2" /><polyline points="3 7 12 13 21 7" />
   </svg>
 );
-const IcPlate = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 7v10M7 12h10"/></svg>);
-const IcList = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>);
-const IcLeaf = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19c4-4 8-6 14-14"/></svg>);
 
 function Nav() {
   return (
     <nav className="nav">
       <div className="nav-inner">
         <a className="brand" href="#">Weight Loss Academy<span className="brand-by">by Anna Wallace</span></a>
-        <div className="nav-links">
-          <a href="#inside">What's Inside</a>
-          <a href="#results">Results</a>
-        </div>
-        <a href="#optin" className="nav-cta">Get the guide <Arrow /></a>
+        <a href="#optin" className="nav-cta">Get the cookbook <Arrow /></a>
       </div>
     </nav>
   );
@@ -350,109 +343,6 @@ function Hero() {
   );
 }
 
-function Trust() {
-  return (
-    <div className="trust">
-      <div className="trust-inner">
-        <div className="trust-item"><div className="num">50,000+</div><div className="lab">women supported<br/>worldwide</div></div>
-        <div className="trust-item"><div className="num">11</div><div className="lab">years coaching<br/>sustainable fat loss</div></div>
-        <div className="trust-item"><div className="num">4.9</div><div className="lab"><span className="stars">★★★★★</span><br/>rated by past clients</div></div>
-      </div>
-    </div>
-  );
-}
-
-function Inside() {
-  const items = [
-    { ic: <IcPlate />, t: 'Batch-Cook Recipes', d: 'A collection of nutritionist-built batch recipes designed to cook once and eat all week. Family-friendly, balanced, and freezer-tested.' },
-    { ic: <IcList />, t: 'Freezer & Reheat Guide', d: 'Exactly which containers to use, how long each recipe keeps, and the safe reheat method per dish so nothing loses texture or flavour.' },
-    { ic: <IcLeaf />, t: 'The 2-Hour Sunday Plan', d: 'A simple cook-once routine that turns one short Sunday session into a week of grab-and-eat meals, without living in your kitchen.' },
-  ];
-  return (
-    <section className="inside" id="inside">
-      <div className="section-head">
-        <span className="eyebrow">What's inside</span>
-        <h2 className="serif">A complete<br className="mobile-only-br" /> <em>batch-cook system</em><br />not just another<br className="mobile-only-br" /> recipe PDF.</h2>
-        <p>The same batch-cook approach Anna uses at home and recommends to WLA members. Print it, cook once on Sunday, eat well all week.</p>
-      </div>
-      <div className="inside-grid">
-        {items.map((it, i) => (
-          <div className="feat" key={i}>
-            <div className="ic">{it.ic}</div>
-            <h3>{it.t}</h3>
-            <p>{it.d}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Founder() {
-  return (
-    <section className="founder" id="founder">
-      <div className="founder-inner">
-        <div className="portrait">
-          <img src="/assets/anna-portrait.jpg" alt="Anna Wallace" />
-          <div className="signature-tag"><span className="name">Anna Wallace</span>BSc Food &amp; Nutrition<br />Registered Associate Nutritionist</div>
-        </div>
-        <div>
-          <span className="eyebrow">A note from our founder</span>
-          <h2 className="serif">I was the <em>"fat one"</em> in my family, until I found a different way.</h2>
-          <div className="body">
-            <p>I once started every day full of determination, then resorted to the Special K diet, skipping meals, or going hours without food. Evenings would end with a takeaway, eating too much, or a glass of wine I didn't really want, just to cope.</p>
-            <p>After hitting rock bottom, I enrolled at university to study Food &amp; Nutrition. That decision changed everything. I lost the weight and kept it off, even after pregnancy. Then I founded The Weight Loss Academy and have spent the last 11 years supporting <strong>over 50,000 clients worldwide</strong>.</p>
-            <p>Our approach burns body fat simply and flexibly, restores confidence, and eliminates sugar cravings. If you're reading this and feel like you've tried everything, your journey matters and the right approach can change everything. This guide is where it starts.</p>
-          </div>
-          <div className="signature">— Anna</div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  const items = [
-    { i: 'S', n: 'Sarah M.', loss: 'Lost 6 lbs in 7 days', q: 'Down 6 lbs and the sugar cravings just… stopped. I haven\'t reached for biscuits in over a week. The recipes are genuinely things my husband eats too.' },
-    { i: 'R', n: 'Ruth P.', loss: 'Lost 12 lbs · Age 54', q: 'My menopause symptoms improved alongside the weight loss. I finally feel in control of food again instead of food controlling me.' },
-    { i: 'J', n: 'Jenny T.', loss: 'Lost 5 lbs · Age 47', q: 'I\'ve done every diet going. This is the first one that didn\'t feel like a punishment. The shopping list alone saved me hours.' },
-  ];
-  return (
-    <section className="testimonials" id="results">
-      <div className="section-head">
-        <span className="eyebrow">Real women, real results</span>
-        <h2 className="serif">Why this works when <em>diets don't.</em></h2>
-        <p>A small selection of the thousands of women who've taken back control with our approach.</p>
-      </div>
-      <div className="t-grid">
-        {items.map((it, i) => (
-          <div className="t-card" key={i}>
-            <div className="t-stars">★★★★★</div>
-            <p className="t-quote">"{it.q}"</p>
-            <div className="t-meta">
-              <div className="t-avatar">{it.i}</div>
-              <div><div className="t-name">{it.n}</div><div className="t-loss">{it.loss}</div></div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function BottomCTA() {
-  return (
-    <section className="bottom-cta">
-      <div className="bottom-cta-inner">
-        <span className="eyebrow" style={{justifyContent: 'center'}}>Ready when you are</span>
-        <h2 className="serif">A <em>full freezer</em> is closer than you think.</h2>
-        <p>Grab the WLA Weight Loss Cookbook free, plan one Sunday session, and reclaim your evenings this week.</p>
-        <a href="#optin" className="submit-btn" style={{textDecoration: 'none'}}>Send Me The Free Cookbook <Arrow /></a>
-      </div>
-    </section>
-  );
-}
-
 function Footer() {
   return (
     <footer className="foot">
@@ -467,7 +357,7 @@ function Footer() {
 }
 
 function App() {
-  return (<><Nav /><Hero /><Trust /><Inside /><Founder /><Testimonials /><BottomCTA /><Footer /></>);
+  return (<><Nav /><Hero /><Footer /></>);
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
