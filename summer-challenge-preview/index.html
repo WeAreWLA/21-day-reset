@@ -117,7 +117,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Countdown banner at top of page */
   .countdown-banner { position: sticky; top: 0; z-index: 50; background: var(--navy); color: #fff; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .countdown-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
-  .countdown-label { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(13px, 1.5vw, 16px); color: var(--coral-soft); }
+  .countdown-label { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400; font-size: clamp(13px, 1.5vw, 16px); color: var(--coral-soft); }
   .countdown-row { display: flex; gap: 8px; }
   .cd-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); padding: 4px 10px; border-radius: 8px; text-align: center; min-width: 44px; }
   .cd-num { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: #fff; line-height: 1.05; }
@@ -564,7 +564,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .results .section-head h2 { color: var(--navy); }
   .results .section-head h2 em { color: var(--coral); }
   .results-carousel { position: relative; max-width: 1240px; margin: 0 auto; }
-  .results-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 4px 0 20px; }
+  .results-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 4px 0 20px; }
   .results-track::-webkit-scrollbar { display: none; }
   .results-tile { min-width: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); box-sizing: border-box; }
   .results-tile img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--paper); }
@@ -824,31 +824,13 @@ function NextEvolutionOfWLA() {
 }
 
 function Bonuses() {
-  const items = [
-    { ic: <IcDoc />,     t: 'Free Sprint Journal', sub: 'First 50 sign-ups only', d: 'Your physical companion to track your 12-week journey, daily check-ins, and weekly wins.' },
-    { ic: <IcCoach />,   t: 'LIVE Goal Setting & Strategy Session with Anna', sub: 'First 100 sign-ups only', d: 'Join Anna live and walk away with a clear, personalised plan for getting maximum results from your 12 weeks.' },
-    { ic: <IcSparkle />, t: 'The Motivation Guide', sub: 'For every sign-up', d: 'What to do when you feel like giving up. The exact reset Anna uses with clients when motivation dips.' },
-    { ic: <IcChef />,    t: 'Summer Social Survival Guide', sub: 'For every sign-up', d: 'BBQs, holidays, eating out, weddings. Stay on track without missing a moment.' },
-  ];
   return (
     <section className="receive" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">Early Bird Bonuses</span>
           <h2 className="serif">Join early, <em>unlock extras.</em></h2>
-          <p>Limited bonuses for the very first sign-ups, while spaces last.</p>
-        </div>
-        <div className="receive-grid two-col">
-          {items.map((it, i) => (
-            <div className="receive-card" key={i}>
-              <div className="check-ic">{it.ic}</div>
-              <div>
-                <h3>{it.t}</h3>
-                <div className="bonus-sub">{it.sub}</div>
-                <p>{it.d}</p>
-              </div>
-            </div>
-          ))}
+          <p>A small selection of bonuses for the very first sign-ups, revealed shortly. Get in early to make sure you don't miss out.</p>
         </div>
       </div>
     </section>
@@ -1455,7 +1437,7 @@ function WhyJoinNow() {
         </div>
 
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
-        <div className="story-callout" style={{ maxWidth: 760, margin: '24px auto 0' }}>
+        <div className="story-callout" style={{ maxWidth: 980, margin: '24px auto 0' }}>
           <strong>Limited spots available.</strong>
           <p>Once the places are gone, this promo finishes.</p>
         </div>
@@ -1813,7 +1795,6 @@ function Page() {
       <MeetAnna />
       <WhatsIncluded />
       <Bonuses />
-      <AppBonus />
       <FoundingMembersAlsoGet />
       <VideoTestimonials />
       <ImagineSummer />
