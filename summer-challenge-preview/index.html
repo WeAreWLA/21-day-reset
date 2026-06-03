@@ -113,6 +113,22 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .nav-cta:hover .arrow { transform: translateX(3px); }
   @media (max-width: 880px) { .nav-links { display: none; } }
   @media (max-width: 640px) { .nav { display: none; } }
+
+  /* Countdown banner at top of page */
+  .countdown-banner { position: sticky; top: 0; z-index: 50; background: var(--navy); color: #fff; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .countdown-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+  .countdown-label { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; font-size: clamp(13px, 1.5vw, 16px); color: var(--coral-soft); }
+  .countdown-row { display: flex; gap: 8px; }
+  .cd-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); padding: 4px 10px; border-radius: 8px; text-align: center; min-width: 44px; }
+  .cd-num { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: #fff; line-height: 1.05; }
+  .cd-lab { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,235,220,0.7); font-weight: 700; margin-top: 1px; }
+  .countdown-cta { background: var(--coral); color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; text-decoration: none; transition: background .15s, transform .15s; }
+  .countdown-cta:hover { background: #c2603f; transform: translateY(-1px); }
+  @media (max-width: 640px) { .countdown-banner { padding: 8px 10px; } .countdown-inner { gap: 10px; } .countdown-label { font-size: 12px; } .cd-item { padding: 3px 7px; min-width: 38px; } .cd-num { font-size: 15px; } .countdown-cta { padding: 6px 14px; font-size: 12px; } }
+
+  /* Bonus sub-label */
+  .bonus-sub { display: inline-block; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); font-weight: 700; padding: 3px 10px; background: rgba(217,119,87,0.14); border-radius: 999px; margin: 4px 0 8px; }
+
   /* Mobile-only line break helper */
   .mobile-br { display: none; }
   @media (max-width: 640px) { .mobile-br { display: inline; } }
@@ -596,7 +612,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .scarcity-top .number { font-family: 'Libre Baskerville', serif; font-size: 28px; color: var(--navy); font-weight: 700; line-height: 1; }
   .scarcity-top .number em { color: var(--coral); font-style: italic; font-weight: 500; }
   .scarcity-bar { height: 12px; background: var(--cream-2); border-radius: 999px; overflow: hidden; position: relative; }
-  .scarcity-bar .fill { height: 100%; width: 45%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); position: relative; min-width: 16px; }
+  .scarcity-bar .fill { height: 100%; width: 85%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); position: relative; min-width: 16px; }
   .scarcity-bar .fill::after { content: ''; position: absolute; right: 0; top: -3px; bottom: -3px; width: 6px; background: var(--coral); border-radius: 999px; box-shadow: 0 0 0 4px rgba(217,119,87,0.25); animation: dot-pulse 2.2s ease-out infinite; }
   .scarcity-foot { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; color: var(--muted); }
   .scarcity-foot strong { color: var(--coral); font-weight: 700; }
@@ -766,6 +782,91 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The Summer Cha
 
 const CardIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><line x1="2" y1="10.5" x2="22" y2="10.5"/><line x1="6" y1="16" x2="10" y2="16"/></svg>);
 
+function CountdownBanner() {
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, done: false });
+  useEffect(() => {
+    const target = new Date('2026-06-08T00:00:00').getTime();
+    const tick = () => {
+      const diff = target - Date.now();
+      if (diff <= 0) { setTime({ days: 0, hours: 0, minutes: 0, seconds: 0, done: true }); return; }
+      setTime({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+        done: false,
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  if (time.done) return null;
+  const pad = (n) => String(n).padStart(2, '0');
+  return (
+    <div className="countdown-banner">
+      <div className="countdown-inner">
+        <span className="countdown-label">⚡ Summer Challenge starts in</span>
+        <div className="countdown-row">
+          <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
+          <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
+          <div className="cd-item"><span className="cd-num">{pad(time.minutes)}</span><span className="cd-lab">mins</span></div>
+          <div className="cd-item"><span className="cd-num">{pad(time.seconds)}</span><span className="cd-lab">secs</span></div>
+        </div>
+        <a href={CHECKOUT_URL} className="countdown-cta">Join Now</a>
+      </div>
+    </div>
+  );
+}
+
+function NextEvolutionOfWLA() {
+  return (
+    <section className="explainer" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="explainer-inner" style={{ maxWidth: 820, textAlign: 'center' }}>
+        <div className="section-head">
+          <span className="eyebrow">A New Chapter</span>
+          <h2 className="serif">The next evolution of <em>WLA is here.</em></h2>
+        </div>
+        <p>We're upgrading the entire WLA experience with improved coaching, accountability, tracking and support tools designed to help women achieve even better long-term results.</p>
+        <p>To celebrate the launch, we're opening a special coaching round and looking for <strong>founding testers</strong> to join us.</p>
+        <p>This is your <strong>one-off opportunity</strong> to get early access to everything we're building, before prices increase later this year.</p>
+      </div>
+    </section>
+  );
+}
+
+function Bonuses() {
+  const items = [
+    { ic: <IcDoc />,     t: 'Free Sprint Journal', sub: 'First 50 sign-ups only', d: 'Your physical companion to track your 12-week journey, daily check-ins, and weekly wins.' },
+    { ic: <IcCoach />,   t: 'LIVE Goal Setting & Strategy Session with Anna', sub: 'First 100 sign-ups only', d: 'Join Anna live and walk away with a clear, personalised plan for getting maximum results from your 12 weeks.' },
+    { ic: <IcSparkle />, t: 'The Motivation Guide', sub: 'For every sign-up', d: 'What to do when you feel like giving up. The exact reset Anna uses with clients when motivation dips.' },
+    { ic: <IcChef />,    t: 'Summer Social Survival Guide', sub: 'For every sign-up', d: 'BBQs, holidays, eating out, weddings. Stay on track without missing a moment.' },
+  ];
+  return (
+    <section className="receive" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">Early Bird Bonuses</span>
+          <h2 className="serif">Join early, <em>unlock extras.</em></h2>
+          <p>Limited bonuses for the very first sign-ups, while spaces last.</p>
+        </div>
+        <div className="receive-grid two-col">
+          {items.map((it, i) => (
+            <div className="receive-card" key={i}>
+              <div className="check-ic">{it.ic}</div>
+              <div>
+                <h3>{it.t}</h3>
+                <div className="bonus-sub">{it.sub}</div>
+                <p>{it.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Hero() {
   return (
     <section className="hero" id="top">
@@ -774,8 +875,8 @@ function Hero() {
         <h1 className="h1 serif">The WLA 12 Week<br/><span className="accent italic">Summer Challenge</span></h1>
         <ul className="hero-promises">
           <li><span className="hp-mark">✦</span><span><strong>Lose up to 2 stone</strong> this summer</span></li>
-          <li><span className="hp-mark">✦</span><span><strong>Reduce cravings</strong> in the first 2 weeks</span></li>
-          <li><span className="hp-mark">✦</span><span><strong>Feel confident</strong> in your holiday clothes again</span></li>
+          <li><span className="hp-mark">✦</span><span><strong>Feel confident</strong> in your clothes again</span></li>
+          <li><span className="hp-mark">✦</span><span><strong>Take back control</strong> around food without miserable diets</span></li>
         </ul>
         <p className="hero-without">Without cutting out your favourite foods or spending hours exercising.</p>
 
@@ -794,7 +895,7 @@ function Hero() {
       </div>
       <div className="hero-image-wrap">
         <div className="hero-image">
-          <img src="/assets/anna-hero.jpg" alt="Anna Wallace · Founder of The Weight Loss & Lifestyle Academy" fetchpriority="high" decoding="async" />
+          <img src="/assets/anna-before-after.png" alt="Anna Wallace · Before and After" fetchpriority="high" decoding="async" />
         </div>
       </div>
     </section>
@@ -1717,9 +1818,13 @@ function StickyCTA() {
 function Page() {
   return (
     <>
+      <CountdownBanner />
       <Hero />
       <Trust />
       <ClientAchievements12Wk />
+      <Results />
+      <VideoTestimonials />
+      <NextEvolutionOfWLA />
       <DoesThisSoundLikeYou />
       <TheRealityIs />
       <TwelveWeekSummerChallenge />
@@ -1727,13 +1832,12 @@ function Page() {
       <JoinForFullYear />
       <HereIsWhatYouCanAchieve />
       <WhyJoinNow />
-      <Results />
       <MeetAnna />
       <WhatsIncluded />
+      <Bonuses />
       <AppBonus />
       <FoundingMembersAlsoGet />
       <ImagineSummer />
-      <VideoTestimonials />
       <FAQ />
       <Limited />
       <FinalCTA />
