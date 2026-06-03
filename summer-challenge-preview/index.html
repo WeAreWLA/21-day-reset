@@ -790,8 +790,16 @@ function CountdownBanner() {
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, []);
-  if (time.done) return null;
   const pad = (n) => String(n).padStart(2, '0');
+  if (time.done) {
+    return (
+      <div className="countdown-banner">
+        <div className="countdown-inner">
+          <span className="countdown-label">⚡ Summer Challenge starts today — you can still join.</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
@@ -1438,7 +1446,7 @@ function WhyJoinNow() {
 
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
         <div className="story-callout" style={{ maxWidth: 980, margin: '24px auto 0' }}>
-          <strong>Limited spots available.</strong>
+          <strong>500 places available.</strong>
           <p>Once the places are gone, this promo finishes.</p>
         </div>
       </div>
