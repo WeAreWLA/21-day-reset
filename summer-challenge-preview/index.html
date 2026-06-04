@@ -127,7 +127,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 640px) { .countdown-banner { padding: 8px 10px; } .countdown-inner { gap: 10px; } .countdown-label { font-size: 12px; } .cd-item { padding: 3px 7px; min-width: 38px; } .cd-num { font-size: 15px; } .countdown-cta { padding: 6px 14px; font-size: 12px; } }
 
   /* Next Evolution of WLA section */
-  .next-evolution-sub { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(18px, 2.1vw, 24px); color: var(--coral); margin-top: 12px; font-weight: 500; }
+  .next-evolution-sub { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(18px, 2.1vw, 24px); margin-top: 12px; font-weight: 500; }
+  .next-evolution-sub .ne-navy { color: #003060; }
+  .next-evolution-sub .ne-coral { color: var(--coral); }
   .next-evolution p { font-size: clamp(17px, 1.8vw, 19px); line-height: 1.65; color: #333; max-width: 720px; margin: 0 auto 16px; }
   .next-evolution p strong { color: var(--navy); font-weight: 700; }
 
@@ -168,9 +170,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-offer-line-1, .hero-offer-line-2 { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: clamp(19px, 2.1vw, 24px); line-height: 1.3; }
   .hero-offer-line-1 em, .hero-offer-line-2 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .hero-offer-line-2 { margin-bottom: 6px; }
-  .hero-offer-line-3 { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15.5px; color: var(--muted); margin-top: 6px; }
-  .hero-offer-line-3 s { text-decoration-thickness: 1.5px; }
-  .hero-offer-line-3 strong { color: var(--coral); font-style: italic; font-weight: 700; font-size: 1.15em; }
+  .hero-offer-line-3 { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: clamp(19px, 2.1vw, 24px); line-height: 1.3; margin-top: 6px; }
+  .hero-offer-line-3 s { color: var(--muted); font-weight: 500; text-decoration-thickness: 1.5px; }
+  .hero-offer-line-3 strong { color: var(--coral); font-style: italic; font-weight: 700; }
 
   .hero-offer { margin: 4px 0 12px; padding: 18px 22px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-left: 4px solid var(--coral); border-radius: 12px; max-width: 540px; box-shadow: 0 12px 24px -20px rgba(14,39,70,0.18); }
   .hero-offer-line { font-family: 'Libre Baskerville', serif; font-size: clamp(20px, 2.1vw, 24px); line-height: 1.3; color: var(--navy); font-weight: 700; margin-bottom: 6px; }
@@ -320,13 +322,23 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   }
 
   /* Achievement blocks (Here's What You Can Achieve) */
+  /* Achievement columns (refreshed design) */
+  .achieve-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1080px; margin: 0 auto; }
+  .achieve-col { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; padding: 28px 28px 22px; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
+  .achieve-col-head { text-align: center; padding-bottom: 18px; border-bottom: 1px solid rgba(14,39,70,0.08); margin-bottom: 18px; }
+  .achieve-col-tag { display: inline-block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); font-weight: 700; padding: 5px 14px; background: rgba(217,119,87,0.14); border-radius: 999px; margin-bottom: 10px; }
+  .achieve-col-head h3 { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; margin: 0; line-height: 1.2; }
+  .achieve-card-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .achieve-card-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.45; color: var(--navy); }
+  .achieve-check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; margin-top: 1px; }
+  .achieve-check svg { width: 13px; height: 13px; stroke: var(--coral); stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .achieve-closer { max-width: 760px; margin: 32px auto 0; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; line-height: 1.55; color: var(--navy); }
+  .achieve-closer strong { color: var(--coral); font-style: normal; font-weight: 700; }
+  .achieve-closer .closer-strong { font-style: normal; font-weight: 700; color: var(--navy); }
+  @media (max-width: 880px) { .achieve-columns { grid-template-columns: 1fr; } }
+  /* legacy fallbacks (kept for backwards compat) */
   .achieve-block { margin-bottom: 32px; max-width: 920px; margin-inline: auto; }
   .achieve-title { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; margin: 0 0 18px; text-align: center; }
-  .achieve-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 36px; }
-  .achieve-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.5; color: var(--navy); }
-  .achieve-check { flex: none; width: 28px; height: 28px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; margin-top: 1px; }
-  .achieve-check svg { width: 14px; height: 14px; stroke: var(--coral); stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  @media (max-width: 640px) { .achieve-list { grid-template-columns: 1fr; } }
 
   /* Why Now boxes */
   .why-now-boxes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 980px; margin: 0 auto; }
@@ -368,6 +380,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Year block (this isn't just 12 weeks) inside What's Included */
   .year-block { margin: 40px auto 0; max-width: 820px; padding: 0; background: transparent; border: none; box-shadow: none; }
   .year-block-head { text-align: center; margin-bottom: 22px; }
+  .year-block-eyebrow { display: inline-block; padding: 7px 16px; border-radius: 999px; background: rgba(217,119,87,0.14); color: var(--coral); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
   .year-block-head h3 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.6vw, 30px); color: var(--navy); margin: 0 0 8px; font-weight: 700; line-height: 1.2; }
   .year-block-head p { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: var(--coral); margin: 0; line-height: 1.4; }
   .year-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
@@ -386,6 +399,16 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .story-cycle { background: var(--cream-2); border-radius: 14px; border-left: 4px solid var(--coral); padding: 26px 32px; margin: 28px 0; }
   .story-cycle p { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy); font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
   .story-cycle p:last-child { margin-bottom: 0; font-style: normal; font-weight: 700; color: var(--coral); font-size: 19px; }
+  .places-meter { max-width: 720px; margin: 28px auto 0; padding: 20px 24px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; box-shadow: 0 18px 36px -28px rgba(14,39,70,0.22); }
+  .places-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .places-label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .places-count { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--navy); font-weight: 700; }
+  .places-count em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .places-bar { height: 12px; background: var(--cream-2); border-radius: 999px; overflow: hidden; position: relative; }
+  .places-fill { height: 100%; width: 20%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); position: relative; min-width: 16px; }
+  .places-fill::after { content: ''; position: absolute; right: 0; top: -3px; bottom: -3px; width: 6px; background: var(--coral); border-radius: 999px; box-shadow: 0 0 0 4px rgba(217,119,87,0.25); animation: dot-pulse 2.2s ease-out infinite; }
+  @media (max-width: 640px) { .places-meter { padding: 16px 18px; } .places-count { font-size: 18px; } }
+
   .story-callout { margin-top: 28px; padding: 24px 28px; background: var(--navy); color: #f4ebdc; border-radius: 14px; text-align: center; }
   .story-callout strong { color: var(--coral-soft); display: block; font-family: 'Libre Baskerville', serif; font-size: 19px; margin-bottom: 6px; }
   .explainer .story-callout p,
@@ -828,7 +851,7 @@ function NextEvolutionOfWLA() {
         <div className="section-head">
           <span className="eyebrow">A New Chapter</span>
           <h2 className="serif">The next evolution of<br/><em>WLA is here.</em></h2>
-          <div className="next-evolution-sub">The Weight Loss &amp; Lifestyle Academy</div>
+          <div className="next-evolution-sub"><span className="ne-navy">The Weight Loss &amp;</span> <span className="ne-coral">Lifestyle Academy</span></div>
         </div>
         <p>We're upgrading the entire WLA experience with improved coaching, accountability, tracking and support tools designed to help women achieve even better long-term results.</p>
         <p>To celebrate the launch, we're opening a special coaching round and looking for <strong>founding testers</strong> to join us.</p>
@@ -1086,6 +1109,7 @@ const IcMedal = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 const IcFork = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3v7a3 3 0 0 0 3 3v8"/><path d="M10 3v7"/><path d="M17 3c-1 3.5-1.5 5.5-1.5 7s1.5 1.5 1.5 1.5V21"/></svg>);
 const IcSparkle = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><circle cx="19" cy="5" r="1" fill="currentColor"/><circle cx="5" cy="19" r="1" fill="currentColor"/></svg>);
 const IcChef = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 12a4 4 0 1 1 2-7.5A4 4 0 0 1 16 4.5 4 4 0 1 1 18 12v6H6z"/><path d="M6 18h12"/></svg>);
+const IcMove = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="13" cy="4" r="2"/><path d="M5.5 13.5l3-3 2.5 1 3 4 3.5 1.5"/><path d="M5 21l3-5 4-1 2 4-2 3"/></svg>);
 const IcDoc = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>);
 const IcRocket = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c3 0 6 3 6 7 0 3-1.5 5-3 6l-3 1-3-1c-1.5-1-3-3-3-6 0-4 3-7 6-7z"/><circle cx="12" cy="9" r="1.6" fill="currentColor"/><path d="M9 16l-2.5 1 1 2.5"/><path d="M15 16l2.5 1-1 2.5"/><path d="M10 20l2 2 2-2"/></svg>);
 const IcCompass = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15 9 10.5 10.5 9 15 13.5 13.5 15 9" fill="currentColor" stroke="none"/></svg>);
@@ -1108,6 +1132,8 @@ function WhatsIncluded() {
       d: 'Learn the exact WLA approach to flexible fat loss and long-term consistency.', v: 197 },
     { ic: <IcChef />,      t: 'Access To The WLA Recipe Collection',
       d: '100+ simple, family-friendly recipes designed to support fat loss without overcomplicating nutrition.', v: 197 },
+    { ic: <IcMove />,      t: 'WLA Movement Classes With Linda',
+      d: 'Live and on-demand fitness classes run by our personal trainer Linda. Strength, mobility and feel-good workouts you can do from home, designed to complement your fat loss without long hours in the gym.', v: 297 },
     { ic: <IcDoc />,       t: 'WLA Nutrition & Lifestyle Guides',
       d: 'Snack guides, food swaps, fat loss boosters and practical tools to support your results.', v: 27 },
     { ic: <IcPhone />,     t: 'Access To The Brand New WLA App',
@@ -1135,6 +1161,7 @@ function WhatsIncluded() {
 
         <div className="year-block">
           <div className="year-block-head">
+            <span className="year-block-eyebrow">Plus Access These One-off Bonuses This Round Only</span>
             <h3>This isn't just 12 weeks.</h3>
             <p>It's a year of guidance, confidence and results that last, which includes:</p>
           </div>
@@ -1450,7 +1477,15 @@ function WhyJoinNow() {
           <div className="why-now-box"><div className="why-now-lab">Feel</div><div className="why-now-num">Confident</div></div>
         </div>
 
-        <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>On top of the 12 week program, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
+        <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>On top of the <strong>Summer Challenge</strong>, you also get <strong>1 full year of access</strong> to weekly new meal guides, recipes and live coaching.</p>
+
+        <div className="places-meter" aria-label="Founding member places remaining">
+          <div className="places-top">
+            <span className="places-label">Founding member places taken</span>
+            <span className="places-count"><em>100</em> of 500</span>
+          </div>
+          <div className="places-bar"><div className="places-fill" /></div>
+        </div>
         <div className="story-callout" style={{ maxWidth: 980, margin: '24px auto 0' }}>
           <strong>500 places available.</strong>
           <p>Once the places are gone, this promo finishes.</p>
@@ -1476,7 +1511,6 @@ function HereIsWhatYouCanAchieve() {
     'Access weekly new meal guides, coaching tips and tools anytime',
     'Avoid the dreaded start-stop cycles and rebound weight gain',
     'Refine your nutrition and lifestyle as your body changes',
-    'Gain lasting confidence, control and freedom over your health',
   ];
   return (
     <section className="receive" style={{ paddingTop: 64, paddingBottom: 64 }}>
@@ -1486,34 +1520,29 @@ function HereIsWhatYouCanAchieve() {
           <h2 className="serif">The results,<br/><em>short term and long.</em></h2>
         </div>
 
-        <div className="achieve-block">
-          <h3 className="achieve-title">Physical Results</h3>
-          <ul className="achieve-list">
-            {physical.map((it, i) => (
-              <li key={i}>
-                <span className="achieve-check"><Check /></span>
-                <span>{it}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="achieve-columns">
+          <div className="achieve-col">
+            <div className="achieve-col-head"><span className="achieve-col-tag">In 12 Weeks</span><h3>Physical Results</h3></div>
+            <ul className="achieve-card-list">
+              {physical.map((it, i) => (
+                <li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div className="achieve-col">
+            <div className="achieve-col-head"><span className="achieve-col-tag">For The Full Year</span><h3>Long-Term Benefits</h3></div>
+            <ul className="achieve-card-list">
+              {longTerm.map((it, i) => (
+                <li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="achieve-block">
-          <h3 className="achieve-title">Long-Term Benefits With 1 Year Access</h3>
-          <ul className="achieve-list">
-            {longTerm.map((it, i) => (
-              <li key={i}>
-                <span className="achieve-check"><Check /></span>
-                <span>{it}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <p style={{ maxWidth: 760, margin: '32px auto 0', textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 18, lineHeight: 1.55, color: 'var(--navy)' }}>
-          For less than <strong style={{ color: 'var(--coral)', fontStyle: 'normal' }}>£2 a week</strong> you get a full year of expert coaching, weekly meal guides and a complete system to lose fat and feel amazing, without having to think about what to eat or whether you're doing it right.
+        <p className="achieve-closer">
+          That's less than <strong>26p a day</strong> for a full year of expert coaching, weekly meal guides and a complete system to lose fat and feel amazing.
           <br/><br/>
-          <strong style={{ color: 'var(--navy)', fontStyle: 'normal' }}>This isn't just a program. It's a done-for-you fat loss system that keeps giving for a full year.</strong>
+          <span className="closer-strong">This isn't just a program. It's a done-for-you fat loss system that keeps giving for a full year.</span>
         </p>
       </div>
     </section>
@@ -1804,11 +1833,10 @@ function Page() {
       <HowItWorks />
       <JoinForFullYear />
       <HereIsWhatYouCanAchieve />
+      <WhatsIncluded />
       <ClientAchievements12Wk />
       <WhyJoinNow />
       <MeetAnna />
-      <WhatsIncluded />
-      <Bonuses />
       <FoundingMembersAlsoGet />
       <VideoTestimonials />
       <ImagineSummer />
