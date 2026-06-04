@@ -117,7 +117,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Countdown banner at top of page */
   .countdown-banner { position: sticky; top: 0; z-index: 50; background: var(--navy); color: #fff; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .countdown-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
-  .countdown-label { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400; font-size: clamp(13px, 1.5vw, 16px); color: var(--coral-soft); }
+  .countdown-label { font-family: "Alegreya Sans", sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: clamp(12px, 1.3vw, 14px); color: #fff; }
   .countdown-row { display: flex; gap: 8px; }
   .cd-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); padding: 4px 10px; border-radius: 8px; text-align: center; min-width: 44px; }
   .cd-num { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: #fff; line-height: 1.05; }
@@ -134,7 +134,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 640px) { .mobile-br { display: inline; } }
 
   /* Hero */
-  .hero { max-width: 1240px; margin: 0 auto; padding: 20px 28px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+  .hero { max-width: 1240px; margin: 0 auto; padding: 48px 28px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
   .hero-image-wrap { position: relative; }
   .hero-image { aspect-ratio: 1/1; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
   .hero-image img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--cream-2); }
@@ -173,7 +173,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-cta-row { margin-top: 18px; max-width: 480px; }
   .hero-fine-print { margin-top: 14px; max-width: 540px; font-size: 12.5px; line-height: 1.5; color: var(--muted); }
   .hero-fine-print strong { color: var(--navy); font-weight: 700; }
-  @media (max-width: 980px) { .hero { padding: 16px 18px 40px; gap: 24px; } .hero-image { max-width: 480px; margin: 0 auto; } .hero-cta-row { max-width: 100%; } }
+  @media (max-width: 980px) { .hero { padding: 36px 18px 40px; gap: 24px; } .hero-image { max-width: 480px; margin: 0 auto; } .hero-cta-row { max-width: 100%; } }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
   .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .founding-tag { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border-radius: 999px; background: rgba(217,119,87,0.12); color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; }
@@ -795,7 +795,7 @@ function CountdownBanner() {
     return (
       <div className="countdown-banner">
         <div className="countdown-inner">
-          <span className="countdown-label">⚡ Summer Challenge starts today — you can still join.</span>
+          <span className="countdown-label">One-Time Launch Pricing — Final Hours</span>
         </div>
       </div>
     );
@@ -803,7 +803,7 @@ function CountdownBanner() {
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">⚡ Summer Challenge starts in</span>
+        <span className="countdown-label">One-Time Launch Pricing Ends In</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
