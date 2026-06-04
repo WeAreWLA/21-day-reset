@@ -329,7 +329,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .achieve-col-tag { display: inline-block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); font-weight: 700; padding: 5px 14px; background: rgba(217,119,87,0.14); border-radius: 999px; margin-bottom: 10px; }
   .achieve-col-head h3 { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; margin: 0; line-height: 1.2; }
   .achieve-card-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-  .achieve-card-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15.5px; line-height: 1.45; color: var(--navy); }
+  .achieve-card-list li { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.4; color: var(--navy); white-space: nowrap; }
+  .achieve-card-list li > span:last-child { overflow: hidden; text-overflow: ellipsis; }
+  @media (max-width: 1024px) { .achieve-card-list li { white-space: normal; align-items: flex-start; } }
   .achieve-check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; margin-top: 1px; }
   .achieve-check svg { width: 13px; height: 13px; stroke: var(--coral); stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .achieve-closer { max-width: 760px; margin: 32px auto 0; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; line-height: 1.55; color: var(--navy); }
@@ -552,7 +554,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .total-value .you-pay em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
   .total-value .price-sub { display: block; margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--coral-soft); position: relative; z-index: 1; }
   .total-value .price-note { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13.5px; letter-spacing: 0.04em; color: rgba(244,235,220,0.85); font-family: "Alegreya Sans", sans-serif; position: relative; z-index: 1; }
-  @media (max-width: 640px) { .total-value { padding: 28px 22px; } .total-value .price-note { font-size: 12.5px; } .total-value .price-sub { font-size: 16px; } }
+  .total-value .offer-line-1 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.6vw, 30px); color: #fff; font-weight: 700; line-height: 1.2; position: relative; z-index: 1; }
+  .total-value .offer-line-1 em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+  .total-value .offer-line-2 { margin-top: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3.2vw, 36px); color: #fff; font-weight: 700; line-height: 1.2; position: relative; z-index: 1; }
+  .total-value .offer-line-2 em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: 1.15em; }
+  .total-value .offer-line-3 { margin-top: 6px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: rgba(244,235,220,0.7); position: relative; z-index: 1; }
+  .total-value .offer-line-3 s { text-decoration-thickness: 2px; }
+  .total-value .offer-line-4 { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.14); font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 16px; color: var(--coral-soft); line-height: 1.4; position: relative; z-index: 1; }
+  @media (max-width: 640px) { .total-value { padding: 28px 22px; } .total-value .price-note { font-size: 12.5px; } .total-value .price-sub { font-size: 16px; } .total-value .offer-line-4 { font-size: 14.5px; } }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
@@ -1190,9 +1199,10 @@ function WhatsIncluded() {
         </div>
 
         <div className="total-value">
-          <div className="lab">Summer Challenge Launch</div>
-          <div className="you-pay">1 Year Access for only <em>£97</em></div>
-          <div className="price-sub">One-off payment. Just 26p a day.</div>
+          <div className="offer-line-1">The WLA 12 Week Summer Challenge <em>+</em></div>
+          <div className="offer-line-2">1 Year Access of Coaching, Tools &amp; Accountability for only <em>£97</em></div>
+          <div className="offer-line-3"><s>normally £397</s></div>
+          <div className="offer-line-4">Don't miss this special launch promo. Price increasing next round!</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The Summer Challenge <Arrow /></a>
@@ -1497,20 +1507,20 @@ function WhyJoinNow() {
 
 function HereIsWhatYouCanAchieve() {
   const physical = [
-    'Lose up to 2 stone in your first 12 weeks',
-    'Drop inches off your waist, hips and thighs',
-    'Reduce bloating and heaviness, feel lighter and energised',
+    'Lose up to 2 stone in 12 weeks',
+    'Drop inches from waist, hips, thighs',
+    'Reduce bloating, feel lighter',
     'Improve body composition and tone',
-    'Wake up feeling refreshed, confident and motivated',
-    'See clothes fit better. No more hiding in oversized tops',
+    'Wake up confident and energised',
+    'Clothes that fit and feel great',
   ];
   const longTerm = [
-    'Maintain and sustain your weight loss from the first 12 weeks',
-    'Continue steady fat loss or inch loss at your own pace',
-    'Build lifelong healthy habits around food, movement and lifestyle',
-    'Access weekly new meal guides, coaching tips and tools anytime',
-    'Avoid the dreaded start-stop cycles and rebound weight gain',
-    'Refine your nutrition and lifestyle as your body changes',
+    'Maintain your 12-week weight loss',
+    'Continue steady fat loss at your pace',
+    'Build healthy habits for life',
+    'Weekly meal guides and coaching all year',
+    'Avoid start-stop and rebound weight gain',
+    'Refine nutrition as your body changes',
   ];
   return (
     <section className="receive" style={{ paddingTop: 64, paddingBottom: 64 }}>
