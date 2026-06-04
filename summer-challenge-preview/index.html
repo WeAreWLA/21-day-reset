@@ -554,19 +554,23 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .total-value .you-pay em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
   .total-value .price-sub { display: block; margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--coral-soft); position: relative; z-index: 1; }
   .total-value .price-note { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13.5px; letter-spacing: 0.04em; color: rgba(244,235,220,0.85); font-family: "Alegreya Sans", sans-serif; position: relative; z-index: 1; }
-  .total-value .offer-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 18px; position: relative; z-index: 1; }
-  .total-value .offer-stack { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 10px; position: relative; z-index: 1; }
-  .total-value .offer-stack li { display: grid; grid-template-columns: 22px 1fr; align-items: baseline; gap: 12px; font-family: 'Libre Baskerville', serif; font-size: clamp(17px, 1.9vw, 20px); line-height: 1.35; color: rgba(255,255,255,0.92); text-align: left; max-width: 520px; margin: 0 auto; }
-  .total-value .offer-stack li strong { color: #fff; font-weight: 700; }
-  .total-value .offer-tick { color: var(--coral-soft); font-size: 15px; text-align: center; }
-  .total-value .offer-price { display: flex; align-items: baseline; justify-content: center; gap: 14px; flex-wrap: wrap; padding: 18px 20px; background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; position: relative; z-index: 1; }
-  .total-value .offer-was { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 16px; color: rgba(244,235,220,0.7); }
-  .total-value .offer-was s { text-decoration-thickness: 2px; }
-  .total-value .offer-now { font-family: 'Libre Baskerville', serif; font-size: 22px; color: #fff; font-weight: 700; line-height: 1; display: inline-flex; align-items: baseline; gap: 8px; }
-  .total-value .offer-now em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: clamp(40px, 5vw, 56px); line-height: 1; }
-  .total-value .offer-note { margin-top: 16px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: rgba(244,235,220,0.85); line-height: 1.45; position: relative; z-index: 1; }
-  .total-value .offer-note strong { color: var(--coral-soft); font-style: normal; font-weight: 700; }
-  @media (max-width: 640px) { .total-value { padding: 28px 22px; } .total-value .price-note { font-size: 12.5px; } .total-value .price-sub { font-size: 16px; } .total-value .offer-note { font-size: 14px; } }
+  .offer-block { margin: 40px auto 0; max-width: 720px; text-align: center; }
+  .offer-block .offer-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 18px; }
+  .offer-block .offer-stack { list-style: none; padding: 0; margin: 0 auto 24px; display: grid; gap: 10px; max-width: 520px; }
+  .offer-block .offer-stack li { display: grid; grid-template-columns: 22px 1fr; align-items: baseline; gap: 12px; font-family: 'Libre Baskerville', serif; font-size: clamp(17px, 1.9vw, 20px); line-height: 1.35; color: var(--navy); text-align: left; }
+  .offer-block .offer-stack li strong { color: var(--navy); font-weight: 700; }
+  .offer-block .offer-tick { color: var(--coral); font-size: 15px; text-align: center; }
+  .offer-price { margin: 0 auto; max-width: 480px; padding: 26px 28px; background: var(--navy); color: #fff; border-radius: 16px; box-shadow: 0 24px 48px -28px rgba(14,39,70,0.34); position: relative; overflow: hidden; display: grid; gap: 4px; justify-items: center; }
+  .offer-price::before { content: ''; position: absolute; top: -80px; right: -80px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
+  .offer-price > * { position: relative; z-index: 1; }
+  .offer-was { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: rgba(244,235,220,0.75); }
+  .offer-was s { text-decoration-thickness: 2px; }
+  .offer-now-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: rgba(244,235,220,0.85); margin-top: 6px; }
+  .offer-now { font-family: 'Libre Baskerville', serif; line-height: 1; margin-top: 2px; }
+  .offer-now em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: clamp(56px, 7vw, 84px); line-height: 1; }
+  .offer-block .offer-note { margin: 18px auto 0; max-width: 560px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15.5px; color: var(--muted); line-height: 1.5; }
+  .offer-block .offer-note strong { color: var(--coral); font-style: normal; font-weight: 700; }
+  @media (max-width: 640px) { .offer-price { padding: 22px 20px; } .offer-block .offer-note { font-size: 14.5px; } }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
@@ -1203,7 +1207,7 @@ function WhatsIncluded() {
           </div>
         </div>
 
-        <div className="total-value">
+        <div className="offer-block">
           <div className="offer-eyebrow">Your Summer Challenge Offer</div>
           <ul className="offer-stack">
             <li><span className="offer-tick">✦</span><span>The WLA <strong>12 Week Summer Challenge</strong></span></li>
@@ -1211,7 +1215,8 @@ function WhatsIncluded() {
           </ul>
           <div className="offer-price">
             <span className="offer-was">normally <s>£397</s></span>
-            <span className="offer-now">today only <em>£97</em></span>
+            <span className="offer-now-lab">today only</span>
+            <span className="offer-now"><em>£97</em></span>
           </div>
           <div className="offer-note">Don't miss this special launch promo. <strong>Price increasing next round.</strong></div>
         </div>
