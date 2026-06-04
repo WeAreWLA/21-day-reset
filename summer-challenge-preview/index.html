@@ -115,15 +115,17 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 640px) { .nav { display: none; } }
 
   /* Countdown banner at top of page */
-  .countdown-banner { position: sticky; top: 0; z-index: 50; background: var(--navy); color: #fff; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .countdown-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
-  .countdown-label { font-family: "Alegreya Sans", sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: clamp(12px, 1.3vw, 14px); color: #fff; }
+  .countdown-banner { position: sticky; top: 0; z-index: 50; overflow: hidden; background: #F79F83; color: #003060; padding: 10px 16px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
+  .countdown-banner::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
+  @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
+  .countdown-inner { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+  .countdown-label { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: clamp(12px, 1.3vw, 14px); color: #003060; }
   .countdown-row { display: flex; gap: 8px; }
-  .cd-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); padding: 4px 10px; border-radius: 8px; text-align: center; min-width: 44px; }
-  .cd-num { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: #fff; line-height: 1.05; }
-  .cd-lab { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,235,220,0.7); font-weight: 700; margin-top: 1px; }
-  .countdown-cta { background: var(--coral); color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; text-decoration: none; transition: background .15s, transform .15s; }
-  .countdown-cta:hover { background: #c2603f; transform: translateY(-1px); }
+  .cd-item { background: rgba(0,48,96,0.10); border: 1px solid rgba(0,48,96,0.18); padding: 4px 10px; border-radius: 8px; text-align: center; min-width: 44px; }
+  .cd-num { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: #003060; line-height: 1.05; }
+  .cd-lab { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,48,96,0.7); font-weight: 700; margin-top: 1px; }
+  .countdown-cta { background: #003060; color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; text-decoration: none; transition: background .15s, transform .15s; }
+  .countdown-cta:hover { background: var(--navy-deep); transform: translateY(-1px); }
   @media (max-width: 640px) { .countdown-banner { padding: 8px 10px; } .countdown-inner { gap: 10px; } .countdown-label { font-size: 12px; } .cd-item { padding: 3px 7px; min-width: 38px; } .cd-num { font-size: 15px; } .countdown-cta { padding: 6px 14px; font-size: 12px; } }
 
   /* Next Evolution of WLA section */
@@ -535,7 +537,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-grid.two-col { grid-template-columns: repeat(2, 1fr); }
   .receive-grid.two-col .receive-card.span-2 { grid-column: 1 / -1; }
   @media (max-width: 880px) { .receive-grid.two-col { grid-template-columns: 1fr; } }
-  .receive-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 24px 28px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: flex-start; box-shadow: 0 12px 24px -18px rgba(14,39,70,0.15); }
+  .receive-card { position: relative; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 26px 28px 22px; display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: flex-start; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); transition: transform .2s, box-shadow .2s; }
+  .receive-card::before { content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 3px; background: var(--coral); border-radius: 0 0 4px 4px; }
+  .receive-card:hover { transform: translateY(-3px); box-shadow: 0 24px 44px -24px rgba(14,39,70,0.22); }
   .receive-card .check-ic { width: 48px; height: 48px; border-radius: 12px; background: var(--cream-2); color: var(--coral); display: grid; place-items: center; flex: none; }
   .receive-card .check-ic svg { width: 22px; height: 22px; }
   .receive-card h3 { font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--navy); margin: 0 0 6px; font-weight: 700; line-height: 1.25; }
