@@ -139,6 +139,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Mobile-only line break helper */
   .mobile-br { display: none; }
   @media (max-width: 640px) { .mobile-br { display: inline; } }
+  @media (max-width: 640px) { .mobile-tight-top { padding-top: 28px !important; } }
 
   /* Hero */
   .hero { max-width: 1240px; margin: 0 auto; padding: 48px 28px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
@@ -1370,7 +1371,7 @@ function DoesThisSoundLikeYou() {
     "You have all the weight loss tools in the world but don't implement them",
   ];
   return (
-    <section className="receive" style={{ paddingTop: 64, paddingBottom: 64 }}>
+    <section className="receive mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">Sound Familiar?</span>
@@ -1391,7 +1392,7 @@ function DoesThisSoundLikeYou() {
 
 function TheRealityIs() {
   return (
-    <section className="story section" style={{ paddingTop: 64, paddingBottom: 64 }}>
+    <section className="story section mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">The Reality Is…</span>
@@ -1544,7 +1545,7 @@ function HereIsWhatYouCanAchieve() {
     'Refine nutrition as your body changes',
   ];
   return (
-    <section className="receive" style={{ paddingTop: 64, paddingBottom: 64 }}>
+    <section className="receive mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">Here's What You Can Achieve</span>
