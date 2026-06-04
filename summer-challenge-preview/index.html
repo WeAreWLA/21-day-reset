@@ -554,18 +554,19 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .total-value .you-pay em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
   .total-value .price-sub { display: block; margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--coral-soft); position: relative; z-index: 1; }
   .total-value .price-note { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13.5px; letter-spacing: 0.04em; color: rgba(244,235,220,0.85); font-family: "Alegreya Sans", sans-serif; position: relative; z-index: 1; }
-  .offer-block { margin: 40px auto 0; max-width: 720px; text-align: center; }
-  .offer-block .offer-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 18px; }
-  .offer-block .offer-stack { list-style: none; padding: 0; margin: 0 auto 24px; display: grid; gap: 10px; max-width: 520px; }
-  .offer-block .offer-stack li { display: grid; grid-template-columns: 22px 1fr; align-items: baseline; gap: 12px; font-family: 'Libre Baskerville', serif; font-size: clamp(17px, 1.9vw, 20px); line-height: 1.35; color: var(--navy); text-align: left; }
+  .offer-block { margin: 48px auto 0; max-width: 720px; text-align: center; }
+  .offer-block .offer-title { font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 40px); color: var(--navy); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 20px; }
+  .offer-block .offer-title em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .offer-block .offer-stack { list-style: none; padding: 0; margin: 0 auto 26px; display: grid; gap: 8px; max-width: 560px; }
+  .offer-block .offer-stack li { font-family: 'Libre Baskerville', serif; font-size: clamp(17px, 1.9vw, 20px); line-height: 1.35; color: var(--navy); text-align: center; }
   .offer-block .offer-stack li strong { color: var(--navy); font-weight: 700; }
-  .offer-block .offer-tick { color: var(--coral); font-size: 15px; text-align: center; }
+  .offer-block .offer-plus { color: var(--coral); font-style: italic; font-weight: 500; margin-left: 4px; }
   .offer-price { margin: 0 auto; max-width: 480px; padding: 26px 28px; background: var(--navy); color: #fff; border-radius: 16px; box-shadow: 0 24px 48px -28px rgba(14,39,70,0.34); position: relative; overflow: hidden; display: grid; gap: 4px; justify-items: center; }
   .offer-price::before { content: ''; position: absolute; top: -80px; right: -80px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
   .offer-price > * { position: relative; z-index: 1; }
-  .offer-was { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: rgba(244,235,220,0.75); }
-  .offer-was s { text-decoration-thickness: 2px; }
-  .offer-now-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: rgba(244,235,220,0.85); margin-top: 6px; }
+  .offer-was { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: #fff; }
+  .offer-was s { text-decoration-thickness: 2px; color: #fff; }
+  .offer-now-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: #fff; margin-top: 6px; }
   .offer-now { font-family: 'Libre Baskerville', serif; line-height: 1; margin-top: 2px; }
   .offer-now em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: clamp(56px, 7vw, 84px); line-height: 1; }
   .offer-block .offer-note { margin: 18px auto 0; max-width: 560px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15.5px; color: var(--muted); line-height: 1.5; }
@@ -1208,10 +1209,10 @@ function WhatsIncluded() {
         </div>
 
         <div className="offer-block">
-          <div className="offer-eyebrow">Your Summer Challenge Offer</div>
+          <h3 className="offer-title serif">Your <em>Summer Challenge</em> Offer</h3>
           <ul className="offer-stack">
-            <li><span className="offer-tick">✦</span><span>The WLA <strong>12 Week Summer Challenge</strong></span></li>
-            <li><span className="offer-tick">✦</span><span>1 Full Year of <strong>Coaching, Tools &amp; Accountability</strong></span></li>
+            <li>The WLA <strong>12 Week Summer Challenge</strong> <span className="offer-plus">+</span></li>
+            <li>1 Full Year of <strong>Coaching, Tools &amp; Accountability</strong></li>
           </ul>
           <div className="offer-price">
             <span className="offer-was">normally <s>£397</s></span>
