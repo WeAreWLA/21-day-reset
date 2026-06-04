@@ -404,6 +404,19 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .story-cycle { background: var(--cream-2); border-radius: 14px; border-left: 4px solid var(--coral); padding: 26px 32px; margin: 28px 0; }
   .story-cycle p { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy); font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
   .story-cycle p:last-child { margin-bottom: 0; font-style: normal; font-weight: 700; color: var(--coral); font-size: 19px; }
+  /* 12 Week Timeline */
+  .timeline-section { background: var(--cream); }
+  .timeline-inner { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+  .timeline-title { font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 4vw, 46px); color: var(--navy); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; text-align: center; margin: 0 0 36px; }
+  .timeline-title em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .timeline-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .timeline-col { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 16px; overflow: hidden; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); display: flex; flex-direction: column; }
+  .timeline-col-head { background: var(--coral-soft); color: #fff; font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: 15px; text-align: center; padding: 16px 18px; }
+  .timeline-list { list-style: none; margin: 0; padding: 24px 24px 28px; display: grid; gap: 14px; flex: 1; }
+  .timeline-list li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.4; color: var(--navy); }
+  .timeline-tick { color: var(--coral-soft); font-size: 16px; line-height: 1.3; font-weight: 700; }
+  @media (max-width: 880px) { .timeline-cols { grid-template-columns: 1fr; gap: 16px; } .timeline-title { margin-bottom: 24px; } }
+
   .places-meter { max-width: 720px; margin: 28px auto 0; padding: 20px 24px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; box-shadow: 0 18px 36px -28px rgba(14,39,70,0.22); }
   .places-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
   .places-label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
@@ -1138,6 +1151,51 @@ const IcDoc = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 const IcRocket = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c3 0 6 3 6 7 0 3-1.5 5-3 6l-3 1-3-1c-1.5-1-3-3-3-6 0-4 3-7 6-7z"/><circle cx="12" cy="9" r="1.6" fill="currentColor"/><path d="M9 16l-2.5 1 1 2.5"/><path d="M15 16l2.5 1-1 2.5"/><path d="M10 20l2 2 2-2"/></svg>);
 const IcCompass = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15 9 10.5 10.5 9 15 13.5 13.5 15 9" fill="currentColor" stroke="none"/></svg>);
 
+function TwelveWeekTimeline() {
+  const cols = [
+    { tag: 'First 4 Weeks', items: [
+      'Feel lighter and less bloated',
+      'Lose your first pounds',
+      'Cravings and snacking start reducing',
+      'More energy and motivation',
+      'Finally feel back in control',
+    ]},
+    { tag: 'Month 2', items: [
+      'Noticeable weight loss',
+      'Clothes fitting looser',
+      'More confidence socially',
+      'Better routines and consistency',
+      'People starting to notice',
+    ]},
+    { tag: 'Month 3', items: [
+      'Up to 2 stone down',
+      'Feel confident in your summer clothes',
+      'Wake up energised instead of exhausted',
+      'A lifestyle that finally feels sustainable',
+      'Proud of the woman staring back in the mirror',
+    ]},
+  ];
+  return (
+    <section className="timeline-section" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="timeline-inner">
+        <h2 className="timeline-title serif">The WLA <em>12 Week</em> Summer Challenge</h2>
+        <div className="timeline-cols">
+          {cols.map((c, i) => (
+            <div className="timeline-col" key={i}>
+              <div className="timeline-col-head">{c.tag}</div>
+              <ul className="timeline-list">
+                {c.items.map((it, j) => (
+                  <li key={j}><span className="timeline-tick">✔</span><span>{it}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function WhatsIncluded() {
   const items = [
     { ic: <IcCalendar />,  t: 'The 12 Week WLA Summer Challenge',
@@ -1869,6 +1927,7 @@ function Page() {
       <HowItWorks />
       <JoinForFullYear />
       <HereIsWhatYouCanAchieve />
+      <TwelveWeekTimeline />
       <WhatsIncluded />
       <ClientAchievements12Wk />
       <WhyJoinNow />
