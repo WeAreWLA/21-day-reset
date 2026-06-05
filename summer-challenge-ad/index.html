@@ -214,19 +214,56 @@
   }
   @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.8); } 70% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } }
 
+  /* PROMISES */
+  .promises {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: grid;
+    gap: 14px;
+    text-align: left;
+  }
+  .promises li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 36px;
+    line-height: 1.25;
+    color: var(--navy-deep);
+    font-weight: 500;
+  }
+  .promises li em { color: var(--coral); font-style: italic; font-weight: 700; }
+  .promises .tick {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+  }
+
   /* BOTTOM BAR */
   .bottom-bar {
     background: var(--navy-deep);
     color: #fff;
     text-align: center;
-    padding: 28px 20px;
-    font-family: "Alegreya Sans", sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    font-size: 30px;
+    padding: 32px 20px;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 44px;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
   }
-  .bottom-bar .light { font-weight: 400; }
+  .bottom-bar em {
+    color: var(--coral-salmon);
+    font-style: italic;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -258,9 +295,14 @@
 
     <div class="limited"><span class="pulse"></span>Limited Places Left</div>
 
+    <ul class="promises">
+      <li><span class="tick">✓</span>Lose up to <em>2 stone</em> this summer</li>
+      <li><span class="tick">✓</span>Feel confident in your clothes again</li>
+    </ul>
+
   </div>
 
-  <div class="bottom-bar"><span class="light">Weight</span> Loss <span class="light">Academy</span></div>
+  <div class="bottom-bar">Starts <em>Monday 8th June</em></div>
 
 </div>
 
