@@ -19,9 +19,9 @@
   body { display: grid; place-items: center; min-height: 100vh; padding: 24px; }
   .serif { font-family: 'Libre Baskerville', serif; }
 
-  /* 1080x1350 canvas */
+  /* 1080x1080 canvas (1:1 — safe across all FB + IG placements) */
   .ad {
-    width: 1080px; height: 1350px;
+    width: 1080px; height: 1080px;
     background: #F4EEE2;
     position: relative; overflow: hidden;
     box-shadow: 0 30px 80px rgba(0,0,0,0.5);
@@ -30,7 +30,7 @@
   }
   @media (max-width: 1140px) {
     body { padding: 12px; }
-    .ad { transform: scale(calc((100vw - 24px) / 1080)); transform-origin: top center; margin-bottom: calc((100vw - 24px) * (-1350 / 1080) + 24px); }
+    .ad { transform: scale(calc((100vw - 24px) / 1080)); transform-origin: top center; margin-bottom: calc((100vw - 24px) * (-1080 / 1080) + 24px); }
   }
 
   /* TOP URGENCY BANNER */
@@ -39,7 +39,7 @@
     background: var(--coral-salmon);
     color: var(--navy-deep);
     text-align: center;
-    padding: 40px 40px 38px;
+    padding: 26px 40px 28px;
     overflow: hidden;
     box-shadow: inset 0 -2px 0 rgba(14,39,70,0.10);
   }
@@ -60,9 +60,9 @@
     font-weight: 800;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 18px;
     color: rgba(0,48,96,0.85);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     position: relative; z-index: 1;
   }
   .urgency-banner h1 {
@@ -70,7 +70,7 @@
     font-style: italic;
     font-weight: 700;
     color: var(--navy-deep);
-    font-size: 78px;
+    font-size: 62px;
     line-height: 1.05;
     letter-spacing: -0.005em;
     margin: 0;
@@ -80,8 +80,8 @@
     font-style: normal;
     background: var(--navy-deep);
     color: #fff;
-    padding: 0 22px;
-    border-radius: 16px;
+    padding: 0 20px;
+    border-radius: 14px;
     margin-left: 6px;
     display: inline-block;
     line-height: 1.1;
@@ -91,7 +91,7 @@
   .body {
     flex: 1;
     text-align: center;
-    padding: 64px 70px 56px;
+    padding: 40px 60px 36px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,12 +114,12 @@
     font-family: 'Libre Baskerville', serif;
     font-weight: 700;
     color: var(--navy-deep);
-    font-size: 92px;
+    font-size: 70px;
     line-height: 1.02;
     letter-spacing: -0.015em;
-    margin: 0 0 36px;
+    margin: 0 0 20px;
   }
-  .title .small { display: block; font-size: 56px; font-weight: 400; font-style: italic; color: var(--navy-deep); margin-bottom: 4px; letter-spacing: 0.02em; }
+  .title .small { display: block; font-size: 42px; font-weight: 400; font-style: italic; color: var(--navy-deep); margin-bottom: 2px; letter-spacing: 0.02em; }
   .title em {
     color: var(--coral);
     font-style: italic;
@@ -130,12 +130,12 @@
   .free-card {
     background: var(--navy-deep);
     color: #fff;
-    border-radius: 22px;
-    padding: 30px 40px 32px;
+    border-radius: 20px;
+    padding: 22px 32px 24px;
     box-shadow: 0 24px 48px -24px rgba(14,39,70,0.5);
     position: relative;
     overflow: hidden;
-    margin: 0 0 52px;
+    margin: 0 0 30px;
     display: inline-block;
   }
   .free-card::before {
@@ -152,13 +152,13 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--coral-salmon);
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 15px;
+    margin-bottom: 6px;
     position: relative; z-index: 1;
   }
   .free-card .free-headline {
     font-family: 'Libre Baskerville', serif;
-    font-size: 56px;
+    font-size: 42px;
     line-height: 1.05;
     font-weight: 700;
     position: relative; z-index: 1;
@@ -180,35 +180,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
-    margin: 0 0 48px;
+    gap: 18px;
+    margin: 0 0 30px;
     color: var(--coral);
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
-    font-size: 42px;
+    font-size: 32px;
     font-weight: 400;
   }
-  .sun-row svg { width: 48px; height: 48px; stroke: var(--coral); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .sun-row svg { width: 36px; height: 36px; stroke: var(--coral); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .sun-row .line { width: 60px; height: 1px; background: rgba(217,119,87,0.35); }
 
   /* LIMITED PILL */
   .limited {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     background: var(--coral);
     color: #fff;
-    padding: 22px 38px;
+    padding: 16px 30px;
     border-radius: 999px;
     font-family: "Alegreya Sans", sans-serif;
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    font-size: 28px;
+    font-size: 22px;
     box-shadow: 0 18px 36px -16px rgba(217,119,87,0.55);
   }
   .limited .pulse {
-    width: 14px; height: 14px;
+    width: 12px; height: 12px;
     border-radius: 50%;
     background: #fff;
     animation: pulse 1.6s infinite;
@@ -219,18 +219,18 @@
   .promises {
     list-style: none;
     padding: 0;
-    margin: 48px 0 0;
+    margin: 24px 0 0;
     display: grid;
-    gap: 18px;
+    gap: 12px;
     text-align: left;
   }
   .promises li {
     display: grid;
-    grid-template-columns: 44px 1fr;
+    grid-template-columns: 36px 1fr;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     font-family: 'Libre Baskerville', serif;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 1.25;
     color: var(--navy-deep);
     font-weight: 500;
@@ -238,7 +238,7 @@
   }
   .promises li em { color: var(--coral); font-style: italic; font-weight: 700; }
   .promises .tick {
-    width: 44px; height: 44px;
+    width: 36px; height: 36px;
     border-radius: 50%;
     background: var(--coral);
     color: #fff;
@@ -246,7 +246,7 @@
     place-items: center;
     font-family: "Alegreya Sans", sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 18px;
   }
 
   /* BOTTOM BAR */
@@ -254,10 +254,10 @@
     background: var(--navy-deep);
     color: #fff;
     text-align: center;
-    padding: 32px 20px;
+    padding: 22px 20px;
     font-family: 'Libre Baskerville', serif;
     font-weight: 700;
-    font-size: 44px;
+    font-size: 32px;
     letter-spacing: 0.01em;
     line-height: 1.15;
   }
