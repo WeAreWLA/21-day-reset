@@ -431,6 +431,18 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .story-cycle { background: var(--cream-2); border-radius: 14px; border-left: 4px solid var(--coral); padding: 26px 32px; margin: 28px 0; }
   .story-cycle p { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy); font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
   .story-cycle p:last-child { margin-bottom: 0; font-style: normal; font-weight: 700; color: var(--coral); font-size: 19px; }
+  /* Woman Who Keeps It Off */
+  .keeps-it-off { background: var(--cream-2); }
+  .keeps-it-off-inner { max-width: 880px; margin: 0 auto; padding: 0 28px; text-align: center; }
+  .keeps-title { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3.2vw, 36px); color: var(--navy); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin: 0; }
+  .keeps-title em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .keeps-title-2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3.2vw, 36px); color: var(--navy); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin: 8px 0 32px; }
+  .keeps-title-2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .keeps-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; max-width: 760px; margin: 0 auto; text-align: left; }
+  .keeps-list li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.45; color: var(--navy); padding: 14px 18px; background: var(--paper); border: 1px solid rgba(14,39,70,0.06); border-radius: 12px; box-shadow: 0 12px 24px -20px rgba(14,39,70,0.18); }
+  .keeps-tick { color: var(--coral); font-weight: 700; font-size: 16px; line-height: 1.3; }
+  @media (max-width: 720px) { .keeps-list { grid-template-columns: 1fr; } }
+
   /* 12 Week Timeline */
   .timeline-section { background: var(--cream); }
   .timeline-inner { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
@@ -1178,6 +1190,30 @@ const IcMove = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 const IcDoc = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><polyline points="14 3 14 8 19 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>);
 const IcRocket = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2c3 0 6 3 6 7 0 3-1.5 5-3 6l-3 1-3-1c-1.5-1-3-3-3-6 0-4 3-7 6-7z"/><circle cx="12" cy="9" r="1.6" fill="currentColor"/><path d="M9 16l-2.5 1 1 2.5"/><path d="M15 16l2.5 1-1 2.5"/><path d="M10 20l2 2 2-2"/></svg>);
 const IcCompass = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15 9 10.5 10.5 9 15 13.5 13.5 15 9" fill="currentColor" stroke="none"/></svg>);
+
+function WomanWhoKeepsItOff() {
+  const items = [
+    '12 months of accountability, support & momentum',
+    'A full year to rebuild habits, routines and confidence',
+    'Ongoing coaching to help you navigate real life',
+    'Monthly focus points so you never lose direction',
+    'Support through setbacks instead of starting over again',
+    'A lifestyle designed for long-term success, not temporary results',
+  ];
+  return (
+    <section className="keeps-it-off" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="keeps-it-off-inner">
+        <h2 className="keeps-title serif">The Challenge helps you <em>lose the weight…</em></h2>
+        <h2 className="keeps-title-2 serif">The full year helps you become <em>the woman who keeps it off.</em></h2>
+        <ul className="keeps-list">
+          {items.map((it, i) => (
+            <li key={i}><span className="keeps-tick">✔</span><span>{it}</span></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
 
 function TwelveWeekTimeline() {
   const cols = [
@@ -1979,6 +2015,7 @@ function Page() {
       <JoinForFullYear />
       <HereIsWhatYouCanAchieve />
       <TwelveWeekTimeline />
+      <WomanWhoKeepsItOff />
       <WhatsIncluded />
       <GuaranteeSection />
       <ClientAchievements12Wk />
