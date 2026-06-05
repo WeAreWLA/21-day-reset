@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WLA Summer Challenge · Last Chance Ad (1080×1350)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0e2746; --navy-deep: #003060; --navy-darker: #091a30;
+    --coral: #d97757; --coral-soft: #e5917a; --coral-salmon: #F79F83;
+    --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8;
+    --ink: #1a2438; --muted: #5a6478; --ok: #2e7d5b;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #2a2a2a; font-family: "Alegreya Sans", sans-serif; }
+  body { display: grid; place-items: center; min-height: 100vh; padding: 24px; }
+  .serif { font-family: 'Libre Baskerville', serif; }
+
+  /* The 1080x1350 ad canvas */
+  .ad {
+    width: 1080px;
+    height: 1350px;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    transform-origin: top center;
+    color: var(--navy);
+  }
+  @media (max-width: 1140px) {
+    body { padding: 12px; }
+    .ad { transform: scale(calc((100vw - 24px) / 1080)); transform-origin: top center; margin-bottom: -1350px; }
+    .ad::after { content: ''; display: block; }
+  }
+
+  /* TOP URGENCY BANNER */
+  .urgency {
+    position: relative;
+    background: var(--coral-salmon);
+    color: var(--navy-deep);
+    text-align: center;
+    padding: 28px 40px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 30px;
+    overflow: hidden;
+  }
+  .urgency .pulse-dot {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--navy-deep);
+    margin-right: 14px;
+    vertical-align: middle;
+    animation: pulse 1.6s infinite;
+  }
+  .urgency .sub {
+    display: block;
+    margin-top: 6px;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-size: 20px;
+    color: rgba(0,48,96,0.8);
+  }
+  .urgency::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -40%;
+    width: 40%; height: 100%;
+    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+    transform: skewX(-18deg);
+    animation: sheen 3.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes sheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,48,96,0.6); } 70% { box-shadow: 0 0 0 12px rgba(0,48,96,0); } }
+
+  /* CONTENT WRAP */
+  .body-wrap { padding: 44px 56px 0; }
+
+  /* HEADLINE */
+  .headline {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .headline .eyebrow {
+    display: inline-block;
+    background: rgba(217,119,87,0.14);
+    color: var(--coral);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  .headline h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 76px;
+    line-height: 1.05;
+    color: var(--navy);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .headline h1 em {
+    color: var(--coral);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .headline .sub {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--navy);
+    margin-top: 16px;
+  }
+  .headline .sub strong { color: var(--coral); font-style: normal; font-weight: 700; }
+
+  /* PULL-OUT FEATURE CARDS */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 30px 0 24px;
+  }
+  .feat {
+    background: var(--paper);
+    border: 2px solid rgba(14,39,70,0.10);
+    border-radius: 18px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 14px 28px -18px rgba(14,39,70,0.18);
+    position: relative;
+    overflow: hidden;
+  }
+  .feat::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 24px; right: 24px;
+    height: 4px;
+    background: var(--coral);
+    border-radius: 0 0 4px 4px;
+  }
+  .feat .ic {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: var(--cream-2);
+    color: var(--coral);
+    display: grid; place-items: center;
+    flex: none;
+  }
+  .feat .ic svg { width: 28px; height: 28px; stroke: var(--coral); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .feat .copy { line-height: 1.25; }
+  .feat .copy .top {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 22px;
+  }
+  .feat .copy .sub {
+    font-size: 16px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* OFFER STRIP */
+  .offer {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 22px;
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 48px -24px rgba(14,39,70,0.4);
+    margin-bottom: 26px;
+  }
+  .offer::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(229,145,122,0.30), transparent 65%);
+    pointer-events: none;
+  }
+  .offer .lab {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral-soft);
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .offer .desc {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .offer .desc em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+  .offer .price {
+    font-family: 'Libre Baskerville', serif;
+    text-align: right;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .offer .price .was {
+    display: block;
+    font-style: italic;
+    font-size: 20px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+  }
+  .offer .price .was s { text-decoration-thickness: 2px; }
+  .offer .price .now {
+    color: var(--coral-soft);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 96px;
+    letter-spacing: -0.02em;
+  }
+  .offer .price .now .cur { font-size: 56px; vertical-align: top; margin-right: 4px; }
+
+  /* SCARCITY BAR */
+  .scarcity {
+    background: var(--paper);
+    border: 1px solid rgba(14,39,70,0.08);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 22px;
+  }
+  .scarcity .top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .scarcity .top .lab {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 800;
+  }
+  .scarcity .top .cnt {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .scarcity .top .cnt em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .scarcity .bar {
+    height: 14px;
+    background: var(--cream-2);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .scarcity .fill {
+    height: 100%;
+    width: 28.8%;
+    background: linear-gradient(90deg, var(--coral), var(--coral-soft));
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+    position: relative;
+  }
+  .scarcity .fill::after {
+    content: '';
+    position: absolute;
+    right: 0; top: -4px; bottom: -4px;
+    width: 8px;
+    background: var(--coral);
+    border-radius: 999px;
+    box-shadow: 0 0 0 5px rgba(217,119,87,0.25);
+  }
+
+  /* CTA BAR */
+  .cta {
+    background: var(--coral);
+    color: #fff;
+    text-align: center;
+    padding: 28px 32px;
+    border-radius: 18px;
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 18px 36px -16px rgba(217,119,87,0.55);
+  }
+  .cta .arrow { display: inline-block; margin-left: 12px; }
+
+  /* BOTTOM CREDIT */
+  .credit {
+    position: absolute;
+    bottom: 24px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 15px;
+    letter-spacing: 0.06em;
+  }
+  .credit strong { color: var(--navy); font-style: normal; font-weight: 700; letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+
+<div class="ad">
+
+  <div class="urgency">
+    <span class="pulse-dot"></span>Last Chance · Places Almost Gone
+    <span class="sub">Doors close once 500 places are taken</span>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="headline">
+      <span class="eyebrow">✦ The WLA Summer Challenge ✦</span>
+      <h1 class="serif">Lose up to<br/><em>2 stone</em> this summer</h1>
+      <div class="sub">12 weeks of coaching + <strong>a full year</strong> inside WLA</div>
+    </div>
+
+    <div class="features">
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16"/><path d="M9 3v4"/><path d="M15 3v4"/></svg></div>
+        <div class="copy"><div class="top">12-Week Plan</div><div class="sub">Weekly LIVE coaching with Anna</div></div>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 6h14l-1 13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M9 6V4a3 3 0 0 1 6 0v2"/><path d="M12 11v6"/><path d="M9 14h6"/></svg></div>
+        <div class="copy"><div class="top">Weekly Meal Guides</div><div class="sub">+ 500&plus; fat-loss recipes</div></div>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6.5 1-4.7 4.5 1.2 6.5L12 17l-6 3.5 1.2-6.5L2.5 9 9 8z" fill="currentColor" stroke="none"/></svg></div>
+        <div class="copy"><div class="top">Movement Classes</div><div class="sub">Fitness with PT Linda</div></div>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
+        <div class="copy"><div class="top">Brand New WLA App</div><div class="sub">Early access included</div></div>
+      </div>
+    </div>
+
+    <div class="offer">
+      <div>
+        <div class="lab">One-time payment · Full year of access</div>
+        <div class="desc">Lock in <em>26p a day</em> for everything inside WLA</div>
+      </div>
+      <div class="price">
+        <span class="was">normally <s>£397</s></span>
+        <span class="now"><span class="cur">£</span>97</span>
+      </div>
+    </div>
+
+    <div class="scarcity">
+      <div class="top">
+        <span class="lab">Places Taken</span>
+        <span class="cnt"><em>144</em> of 500</span>
+      </div>
+      <div class="bar"><div class="fill"></div></div>
+    </div>
+
+    <div class="cta">Join Before Places Close <span class="arrow">→</span></div>
+
+  </div>
+
+  <div class="credit">
+    The Weight Loss &amp; Lifestyle Academy &nbsp;·&nbsp; <strong>by Anna Wallace</strong>
+  </div>
+
+</div>
+
+</body>
+</html>
