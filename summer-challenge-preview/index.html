@@ -183,6 +183,32 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-offer-sub { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
   .hero-cta-row { margin-top: 18px; max-width: 480px; }
   .hero-fine-print { margin-top: 16px; max-width: 540px; font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+  /* Payment option cards */
+  .pay-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 540px; margin: 18px 0 0; }
+  .pay-option { background: var(--paper); border: 1px solid rgba(14,39,70,0.10); border-radius: 12px; padding: 14px 16px; box-shadow: 0 12px 24px -18px rgba(14,39,70,0.18); }
+  .pay-option-lab { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 800; margin-bottom: 6px; }
+  .pay-option-val { font-family: 'Libre Baskerville', serif; font-size: 14.5px; line-height: 1.4; color: var(--navy); font-weight: 500; }
+  .pay-option-val strong { color: var(--navy); font-weight: 700; }
+  @media (max-width: 640px) { .pay-options { grid-template-columns: 1fr; gap: 10px; } }
+
+  /* Trust badge inside CTA blocks - upgraded risk-free pill */
+  .risk-pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: rgba(46,125,91,0.10); color: var(--ok); font-family: "Alegreya Sans", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; margin-top: 12px; }
+  .risk-pill svg { width: 14px; height: 14px; flex: none; }
+
+  /* Guarantee section */
+  .guarantee-section { background: var(--cream-2); padding: 56px 28px; }
+  .guarantee-card { max-width: 760px; margin: 0 auto; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; padding: 40px 44px; box-shadow: 0 24px 48px -28px rgba(14,39,70,0.22); display: grid; grid-template-columns: 96px 1fr; gap: 28px; align-items: center; }
+  .guarantee-badge { width: 96px; height: 96px; border-radius: 50%; background: rgba(46,125,91,0.12); color: var(--ok); display: grid; place-items: center; flex: none; }
+  .guarantee-badge svg { width: 48px; height: 48px; stroke: var(--ok); stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .guarantee-card .g-eyebrow { display: inline-block; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ok); font-weight: 800; margin-bottom: 10px; padding: 5px 12px; background: rgba(46,125,91,0.10); border-radius: 999px; }
+  .guarantee-card h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.8vw, 32px); color: var(--navy); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 14px; }
+  .guarantee-card h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .guarantee-card p { margin: 0 0 8px; font-size: 16px; line-height: 1.55; color: #333; }
+  .guarantee-card p:last-child { margin-bottom: 0; }
+  .guarantee-card p strong { color: var(--navy); font-weight: 700; }
+  .guarantee-card .g-close { margin-top: 14px; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: 17px; }
+  @media (max-width: 720px) { .guarantee-card { grid-template-columns: 1fr; padding: 28px 24px; gap: 18px; text-align: center; } .guarantee-badge { margin: 0 auto; width: 80px; height: 80px; } .guarantee-badge svg { width: 40px; height: 40px; } .guarantee-section { padding: 36px 18px; } }
   .hero-fine-print strong { color: var(--navy); font-weight: 700; }
   @media (max-width: 980px) { .hero { padding: 36px 18px 40px; gap: 24px; } .hero-image { max-width: 480px; margin: 0 auto; } .hero-cta-row { max-width: 100%; } }
   .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--coral); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
@@ -238,7 +264,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .paypal-btn .pp-logo .pp-pay { color: #003087; }
   .paypal-btn .pp-logo .pp-pal { color: #009cde; }
 
-  .micro-foot { margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 12px; color: var(--muted); }
+  .micro-foot { margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
   .micro-foot .item { display: inline-flex; align-items: center; gap: 6px; }
   .micro-foot svg { width: 13px; height: 13px; }
 
@@ -814,8 +840,8 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The Summer Cha
         </div>
         <div className="micro-foot compact">
           <span className="item"><Lock /> Secure checkout</span>
-          <span className="item"><Shield /> 7-day money-back guarantee</span>
         </div>
+        <span className="risk-pill"><Shield /> 7-Day Risk-Free Guarantee</span>
       </>
     );
   }
@@ -830,7 +856,7 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The Summer Cha
       </a>
       <div className="micro-foot">
         <span className="item"><Lock /> Secure checkout</span>
-        <span className="item"><Shield /> 7-day money-back guarantee</span>
+        <span className="risk-pill"><Shield /> 7-Day Risk-Free Guarantee</span>
       </div>
     </>
   );
@@ -932,8 +958,9 @@ function Hero() {
         <div className="hero-cta-row">
           <CTAButtons size="compact" />
         </div>
-        <div className="hero-fine-print">
-          One-time payment of £97. Or split into 3–4 easy payments with <strong>Klarna</strong> or <strong>Clearpay</strong> at checkout. <br/>7 day refund window. Access the tools right after payment.
+        <div className="pay-options">
+          <div className="pay-option"><div className="pay-option-lab">Pay Once</div><div className="pay-option-val">One-time <strong>£97</strong></div></div>
+          <div className="pay-option"><div className="pay-option-lab">Or Split It</div><div className="pay-option-val">3–4 easy payments with <strong>Klarna</strong> or <strong>Clearpay</strong> at checkout</div></div>
         </div>
       </div>
       <div className="hero-image-wrap">
@@ -1644,6 +1671,29 @@ function HereIsWhatYouCanAchieve() {
   );
 }
 
+function GuaranteeSection() {
+  return (
+    <section className="guarantee-section">
+      <div className="guarantee-card">
+        <div className="guarantee-badge">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4l16 6v12c0 10-7 16-16 18-9-2-16-8-16-18V10z"/>
+            <polyline points="16 24 22 30 33 18"/>
+          </svg>
+        </div>
+        <div>
+          <span className="g-eyebrow">7-Day Risk-Free Guarantee</span>
+          <h2 className="serif">Try the <em>Summer Challenge</em> risk-free.</h2>
+          <p>You have <strong>7 days</strong> to experience the challenge and decide if it's right for you.</p>
+          <p>If you genuinely feel it's not for you, simply email us for a <strong>full refund</strong>.</p>
+          <p>No awkward conversations. No questions asked.</p>
+          <p className="g-close">You have absolutely nothing to lose by trying.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ClientAchievements12Wk() {
   const videos = [
     { id: '1050446403', hash: 'ee3211dfc8', name: 'Anna',    quote: 'Anna lost almost 2 stone & saw her perimenopause symptoms disappear.' },
@@ -1930,6 +1980,7 @@ function Page() {
       <HereIsWhatYouCanAchieve />
       <TwelveWeekTimeline />
       <WhatsIncluded />
+      <GuaranteeSection />
       <ClientAchievements12Wk />
       <WhyJoinNow />
       <MeetAnna />
