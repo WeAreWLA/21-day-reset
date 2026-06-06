@@ -734,7 +734,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .scarcity-top .number { font-family: 'Libre Baskerville', serif; font-size: 28px; color: var(--navy); font-weight: 700; line-height: 1; }
   .scarcity-top .number em { color: var(--coral); font-style: italic; font-weight: 500; }
   .scarcity-bar { height: 12px; background: var(--cream-2); border-radius: 999px; overflow: hidden; position: relative; }
-  .scarcity-bar .fill { height: 100%; width: 20%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); position: relative; min-width: 16px; }
+  .scarcity-bar .fill { height: 100%; width: 90.6%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); position: relative; min-width: 16px; }
   .scarcity-bar .fill::after { content: ''; position: absolute; right: 0; top: -3px; bottom: -3px; width: 6px; background: var(--coral); border-radius: 999px; box-shadow: 0 0 0 4px rgba(217,119,87,0.25); animation: dot-pulse 2.2s ease-out infinite; }
   .scarcity-foot { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; color: var(--muted); }
   .scarcity-foot strong { color: var(--coral); font-weight: 700; }
@@ -917,7 +917,7 @@ function CountdownBanner() {
     return (
       <div className="countdown-banner">
         <div className="countdown-inner">
-          <span className="countdown-label">One-Time Launch Pricing — Final Hours</span>
+          <span className="countdown-label">Less Than 50 Spaces Left</span>
         </div>
       </div>
     );
@@ -925,7 +925,7 @@ function CountdownBanner() {
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">One-Time Launch Pricing Ends In</span>
+        <span className="countdown-label">Less Than 50 Spaces Left</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
@@ -1662,7 +1662,7 @@ function WhyJoinNow() {
           <div className="places-bar"><div className="places-fill" /></div>
         </div>
         <div className="story-callout" style={{ maxWidth: 980, margin: '24px auto 0' }}>
-          <strong>Only 50 spaces left.</strong>
+          <strong>Less than 50 spaces left.</strong>
           <p>Once the places are gone, this promo finishes.</p>
         </div>
       </div>
@@ -1820,13 +1820,13 @@ function Limited() {
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
-          <h2 className="serif">Only 50 Spaces Left For<br/><em>Summer Challenge.</em></h2>
+          <h2 className="serif">Less Than 50 Spaces Left For<br/><em>Summer Challenge.</em></h2>
           <p className="lead">Once these places are gone, the promo ends and pricing returns to standard.</p>
         </div>
 
         <div className="scarcity" aria-label="Summer Special spaces remaining">
           <div className="scarcity-top">
-            <span className="label">Summer Special Spaces</span>
+            <span className="label">Less than 50 spaces left</span>
           </div>
           <div className="scarcity-bar"><div className="fill" /></div>
           <div className="scarcity-foot">
@@ -1954,7 +1954,7 @@ function LimitedSpotsEnd() {
     <section className="explainer" style={{ paddingTop: 32, paddingBottom: 32 }}>
       <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
         <div className="limited-spots-callout">
-          <div className="limited-spots-pill">🚨 Only 50 Spaces Left 🚨</div>
+          <div className="limited-spots-pill">🚨 Less Than 50 Spaces Left 🚨</div>
           <h2 className="serif">Once spots are filled, <em>this promo ends.</em></h2>
         </div>
       </div>
