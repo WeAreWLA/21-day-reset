@@ -17,7 +17,7 @@
   .ad > * { position: relative; z-index: 1; }
 
   .body { flex: 1; display: flex; flex-direction: column; padding: 90px 70px 40px; text-align: center; }
-  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 44px; color: var(--coral); margin-bottom: 38px; }
+  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 60px; color: var(--coral); margin-bottom: 38px; white-space: nowrap; }
   .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 220px; line-height: 0.95; letter-spacing: -0.025em; margin: 0 0 38px; }
   .hero em { color: var(--coral); font-style: italic; font-weight: 500; }
   .sub-strong { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--coral); font-size: 80px; line-height: 1.2; margin: 0 0 10px; }
@@ -28,8 +28,7 @@
   .arrow { color: var(--coral); }
   .arrow svg { width: 240px; height: 280px; display: block; }
 
-  .sticker-zone { background: rgba(0,48,96,0.04); border: 3px dashed rgba(0,48,96,0.22); border-radius: 28px; height: 200px; display: flex; align-items: center; justify-content: center; margin-top: 18px; }
-  .sticker-zone .note { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 30px; color: var(--navy-deep); opacity: 0.45; }
+  .sticker-zone { align-self: stretch; background: var(--navy-deep); border-radius: 999px; height: 140px; margin: 18px 40px 0; box-shadow: 0 18px 36px -18px rgba(14,39,70,0.4); flex: none; }
 
   .brand-bar { background: var(--navy-deep); color: #fff; text-align: center; padding: 38px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 38px; letter-spacing: 0.02em; line-height: 1.2; }
   .brand-bar em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
@@ -50,9 +49,7 @@
           <path d="M70 0 L130 0 L130 120 L185 120 L100 230 L15 120 L70 120 Z" fill="#d97757"/>
         </svg>
       </div>
-      <div class="sticker-zone">
-        <span class="note">place the IG link sticker here</span>
-      </div>
+      <div class="sticker-zone"></div>
     </div>
   </div>
   <div class="brand-bar">The Weight Loss <em>&amp;</em> Lifestyle Academy</div>
