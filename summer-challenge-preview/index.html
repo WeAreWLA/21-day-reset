@@ -286,7 +286,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .micro-foot svg { width: 13px; height: 13px; }
 
   @media (max-width: 980px) {
-    .hero { grid-template-columns: 1fr; gap: 32px; padding: 28px 18px 48px; }
+    .hero { grid-template-columns: 1fr; gap: 32px; padding: 64px 18px 48px; }
     .hero-card { padding: 30px 22px 24px; margin-top: 8px; }
   }
 
@@ -894,18 +894,27 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The Summer Cha
 const CardIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><line x1="2" y1="10.5" x2="22" y2="10.5"/><line x1="6" y1="16" x2="10" y2="16"/></svg>);
 
 function CountdownBanner() {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, done: false });
+  // Phase 1: now < midnight Mon 8 June -> count down to midnight, label "Less Than 50 Spaces Left"
+  // Phase 2: midnight Mon 8 June <= now < noon Mon 8 June -> count down to noon, label "New Payment Plan Added · Last Chance To Join"
+  // Phase 3: now >= noon Mon 8 June -> static "Summer Challenge starts today, you can still join"
+  const midnight = new Date('2026-06-08T00:00:00').getTime();
+  const noon     = new Date('2026-06-08T12:00:00').getTime();
+  const computePhase = (now) => (now < midnight ? 1 : now < noon ? 2 : 3);
+
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, phase: computePhase(Date.now()) });
   useEffect(() => {
-    const target = new Date('2026-06-08T00:00:00').getTime();
     const tick = () => {
-      const diff = target - Date.now();
-      if (diff <= 0) { setTime({ days: 0, hours: 0, minutes: 0, seconds: 0, done: true }); return; }
+      const now = Date.now();
+      const phase = computePhase(now);
+      if (phase === 3) { setTime({ days: 0, hours: 0, minutes: 0, seconds: 0, phase }); return; }
+      const target = phase === 1 ? midnight : noon;
+      const diff = Math.max(0, target - now);
       setTime({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
         minutes: Math.floor((diff % 3600000) / 60000),
         seconds: Math.floor((diff % 60000) / 1000),
-        done: false,
+        phase,
       });
     };
     tick();
@@ -913,19 +922,22 @@ function CountdownBanner() {
     return () => clearInterval(id);
   }, []);
   const pad = (n) => String(n).padStart(2, '0');
-  if (time.done) {
+  if (time.phase === 3) {
     return (
       <div className="countdown-banner">
         <div className="countdown-inner">
-          <span className="countdown-label">Less Than 50 Spaces Left</span>
+          <span className="countdown-label">Summer Challenge starts today, you can still join</span>
         </div>
       </div>
     );
   }
+  const label = time.phase === 2
+    ? 'New Payment Plan Added · Last Chance To Join'
+    : 'Less Than 50 Spaces Left';
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">Less Than 50 Spaces Left</span>
+        <span className="countdown-label">{label}</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
