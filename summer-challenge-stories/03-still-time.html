@@ -14,18 +14,21 @@
   .ad { width: 1080px; height: 1920px; background: var(--navy-deep); position: relative; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); display: flex; flex-direction: column; color: #fff; }
   @media (max-width: 1140px) { body { padding: 12px; } .ad { transform: scale(calc((100vw - 24px) / 1080)); transform-origin: top center; margin-bottom: calc((100vw - 24px) * (-1920 / 1080) + 24px); } }
   .ad::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(247,159,131,0.35), transparent 65%); pointer-events: none; }
-  .ad::after { content: ''; position: absolute; bottom: -200px; left: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(217,119,87,0.25), transparent 65%); pointer-events: none; }
+  .ad::after { content: ''; position: absolute; bottom: -100px; left: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(217,119,87,0.25), transparent 65%); pointer-events: none; }
   .ad > * { position: relative; z-index: 1; }
 
-  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 90px 70px; text-align: center; gap: 70px; }
-  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; font-size: 32px; color: var(--coral-salmon); }
-  .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: #fff; font-size: 156px; line-height: 0.98; letter-spacing: -0.02em; margin: 0; }
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 90px 70px; text-align: center; gap: 56px; }
+  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; font-size: 44px; color: var(--coral-salmon); }
+  .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: #fff; font-size: 168px; line-height: 0.98; letter-spacing: -0.02em; margin: 0; }
   .hero em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
-  .pill-row { display: flex; flex-direction: column; gap: 22px; }
-  .checkpill { display: inline-flex; align-items: center; gap: 22px; padding: 26px 44px; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.18); border-radius: 999px; font-family: 'Libre Baskerville', serif; font-size: 44px; color: #fff; font-weight: 500; line-height: 1.2; }
+  .pill-row { display: flex; flex-direction: column; gap: 26px; width: 100%; align-items: center; }
+  .checkpill { display: inline-flex; align-items: center; gap: 26px; padding: 32px 50px; background: rgba(255,255,255,0.10); border: 2px solid rgba(255,255,255,0.22); border-radius: 999px; font-family: 'Libre Baskerville', serif; font-size: 58px; color: #fff; font-weight: 500; line-height: 1.15; }
   .checkpill em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
-  .checkpill .tick { width: 50px; height: 50px; border-radius: 50%; background: var(--coral); color: #fff; display: grid; place-items: center; flex: none; font-family: "Alegreya Sans", sans-serif; font-weight: 800; font-size: 28px; }
-  .footer-block { background: var(--coral); color: #fff; text-align: center; padding: 40px 30px; font-family: "Alegreya Sans", sans-serif; font-weight: 800; font-size: 36px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .checkpill .tick { width: 64px; height: 64px; border-radius: 50%; background: var(--coral); color: #fff; display: grid; place-items: center; flex: none; font-family: "Alegreya Sans", sans-serif; font-weight: 800; font-size: 36px; }
+  .lock-line { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--coral-salmon); font-size: 68px; line-height: 1.15; margin: 0; }
+
+  .brand-bar { background: var(--coral); color: #fff; text-align: center; padding: 38px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 38px; letter-spacing: 0.02em; line-height: 1.2; }
+  .brand-bar em { color: #fff; font-style: italic; font-weight: 500; opacity: 0.9; }
 </style>
 </head>
 <body>
@@ -35,11 +38,12 @@
     <h1 class="hero">There's <em>still</em><br/>a chance to <em>join.</em></h1>
     <div class="pill-row">
       <div class="checkpill"><span class="tick">✓</span><span>Last few <em>spots</em></span></div>
-      <div class="checkpill"><span class="tick">✓</span><span>Doors close at <em>midnight</em></span></div>
+      <div class="checkpill"><span class="tick">✓</span><span>Doors close <em>at midnight</em></span></div>
       <div class="checkpill"><span class="tick">✓</span><span><em>£97</em> launch pricing</span></div>
     </div>
+    <p class="lock-line">Lock in your spot now</p>
   </div>
-  <div class="footer-block">Lock In Your Spot Now</div>
+  <div class="brand-bar">The Weight Loss <em>&amp;</em> Lifestyle Academy</div>
 </div>
 </body>
 </html>
