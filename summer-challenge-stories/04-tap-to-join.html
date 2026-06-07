@@ -20,18 +20,16 @@
   .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 44px; color: var(--coral); margin-bottom: 38px; }
   .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 220px; line-height: 0.95; letter-spacing: -0.025em; margin: 0 0 38px; }
   .hero em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .sub-strong { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--coral); font-size: 64px; line-height: 1.2; margin: 0 0 8px; }
-  .sub { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy-deep); font-size: 56px; line-height: 1.25; margin: 0; }
+  .sub-strong { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--coral); font-size: 80px; line-height: 1.2; margin: 0 0 10px; }
+  .sub { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--navy-deep); font-size: 72px; line-height: 1.25; margin: 0; font-weight: 700; }
 
   .arrow-row { display: flex; flex-direction: column; align-items: center; gap: 22px; margin-top: auto; padding-top: 60px; }
   .tap-label { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 44px; color: var(--navy-deep); }
-  .arrow { color: var(--coral); animation: bounce 1.8s ease-in-out infinite; }
-  .arrow svg { width: 220px; height: 280px; stroke: var(--coral); fill: none; stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; }
-  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(20px); } }
+  .arrow { color: var(--coral); }
+  .arrow svg { width: 240px; height: 280px; display: block; }
 
-  .sticker-zone { background: rgba(0,48,96,0.06); border: 3px dashed rgba(0,48,96,0.22); border-radius: 28px; padding: 38px 30px; display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 26px; }
-  .sticker-zone .note { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 32px; color: var(--navy-deep); opacity: 0.55; }
-  .sticker-zone .ig-pill { padding: 22px 44px; background: var(--navy-deep); color: #fff; border-radius: 999px; font-family: "Alegreya Sans", sans-serif; font-weight: 800; font-size: 42px; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 14px; }
+  .sticker-zone { background: rgba(0,48,96,0.04); border: 3px dashed rgba(0,48,96,0.22); border-radius: 28px; height: 200px; display: flex; align-items: center; justify-content: center; margin-top: 18px; }
+  .sticker-zone .note { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 30px; color: var(--navy-deep); opacity: 0.45; }
 
   .brand-bar { background: var(--navy-deep); color: #fff; text-align: center; padding: 38px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 38px; letter-spacing: 0.02em; line-height: 1.2; }
   .brand-bar em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
@@ -47,9 +45,12 @@
 
     <div class="arrow-row">
       <div class="tap-label">Tap the link below</div>
-      <div class="arrow"><svg viewBox="0 0 24 32" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="26"/><polyline points="4 18 12 28 20 18"/></svg></div>
+      <div class="arrow">
+        <svg viewBox="0 0 200 240" aria-hidden="true">
+          <path d="M70 0 L130 0 L130 120 L185 120 L100 230 L15 120 L70 120 Z" fill="#d97757"/>
+        </svg>
+      </div>
       <div class="sticker-zone">
-        <span class="ig-pill">🔗 Join Summer Challenge</span>
         <span class="note">place the IG link sticker here</span>
       </div>
     </div>
