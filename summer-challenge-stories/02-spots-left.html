@@ -16,39 +16,31 @@
   .ad::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(140,110,70,0.045) 1px, transparent 1px); background-size: 7px 7px; pointer-events: none; z-index: 0; }
   .ad > * { position: relative; z-index: 1; }
 
-  .urgency { background: var(--coral-salmon); color: var(--navy-deep); padding: 36px 60px 36px; text-align: center; position: relative; overflow: hidden; box-shadow: inset 0 -2px 0 rgba(14,39,70,0.10); }
-  .urgency::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%); transform: skewX(-18deg); }
-  .urgency .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 26px; color: rgba(0,48,96,0.85); display: block; margin-bottom: 8px; }
-  .urgency .lead { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--navy-deep); font-size: 56px; line-height: 1.05; }
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 70px; text-align: center; gap: 60px; }
+  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 50px; color: var(--coral); }
+  .lt { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 110px; line-height: 1.0; letter-spacing: -0.02em; margin: 0; }
+  .big-num { font-family: 'Libre Baskerville', serif; color: var(--coral); font-style: italic; font-weight: 500; font-size: 400px; line-height: 0.85; margin: 0; letter-spacing: -0.04em; }
+  .spots { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 110px; line-height: 1.0; margin: 0; }
+  .close { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--navy-deep); font-size: 70px; line-height: 1.15; margin: 0; }
+  .close em { color: var(--coral); font-style: italic; font-weight: 700; }
+  .gone { font-family: 'Libre Baskerville', serif; font-size: 60px; line-height: 1.2; color: var(--navy-deep); font-weight: 500; margin: 0; font-style: italic; }
+  .gone em { color: var(--coral); font-style: italic; font-weight: 700; }
 
-  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; text-align: center; gap: 64px; }
-  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 32px; color: var(--coral); }
-  .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 96px; line-height: 1.0; letter-spacing: -0.02em; margin: 0; }
-  .hero em { color: var(--coral); font-style: italic; font-weight: 500; font-size: 320px; display: block; line-height: 0.9; }
-  .meter { width: 100%; max-width: 760px; }
-  .meter-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
-  .meter-top .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; font-size: 24px; color: var(--navy-deep); }
-  .meter-top .cnt { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 44px; color: var(--navy-deep); }
-  .meter-top .cnt em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .bar { height: 28px; background: var(--cream-2); border-radius: 999px; overflow: hidden; position: relative; }
-  .fill { height: 100%; width: 90.6%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; position: relative; }
-  .fill::after { content: ''; position: absolute; right: 0; top: -6px; bottom: -6px; width: 12px; background: var(--coral); border-radius: 999px; box-shadow: 0 0 0 8px rgba(217,119,87,0.25); }
-  .footer-block { background: var(--navy-deep); color: #fff; text-align: center; padding: 40px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 44px; line-height: 1.2; }
-  .footer-block em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
+  .brand-bar { background: var(--navy-deep); color: #fff; text-align: center; padding: 38px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 38px; letter-spacing: 0.02em; line-height: 1.2; }
+  .brand-bar em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="ad">
-  <div class="urgency"><span class="lab">🚨 Filling Fast 🚨</span><div class="lead">Doors close at midnight</div></div>
   <div class="body">
-    <div class="eyebrow">There are now</div>
-    <h1 class="hero">Less than<em>50</em>spots left</h1>
-    <div class="meter">
-      <div class="meter-top"><span class="lab">Places Taken</span><span class="cnt"><em>453</em> / 500</span></div>
-      <div class="bar"><div class="fill"></div></div>
-    </div>
+    <div class="eyebrow">🚨 Filling Fast 🚨</div>
+    <p class="lt">Less than</p>
+    <p class="big-num">50</p>
+    <p class="spots">spots left</p>
+    <p class="close">Doors close <em>at midnight</em></p>
+    <p class="gone">Once they're gone, <em>they're gone.</em></p>
   </div>
-  <div class="footer-block">Once they're gone, <em>they're gone.</em></div>
+  <div class="brand-bar">The Weight Loss <em>&amp;</em> Lifestyle Academy</div>
 </div>
 </body>
 </html>

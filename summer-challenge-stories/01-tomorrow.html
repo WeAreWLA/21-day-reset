@@ -16,31 +16,29 @@
   .ad::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(140,110,70,0.045) 1px, transparent 1px); background-size: 7px 7px; pointer-events: none; z-index: 0; }
   .ad > * { position: relative; z-index: 1; }
 
-  .urgency { background: var(--coral-salmon); color: var(--navy-deep); padding: 36px 60px 36px; text-align: center; position: relative; overflow: hidden; box-shadow: inset 0 -2px 0 rgba(14,39,70,0.10); }
-  .urgency::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%); transform: skewX(-18deg); animation: sheen 3.6s ease-in-out infinite; pointer-events: none; }
-  @keyframes sheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
-  .urgency .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 26px; color: rgba(0,48,96,0.85); display: block; margin-bottom: 8px; }
-  .urgency .lead { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--navy-deep); font-size: 60px; line-height: 1.05; }
-
-  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; text-align: center; gap: 60px; }
-  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; font-size: 30px; color: var(--coral); }
-  .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 260px; line-height: 0.92; letter-spacing: -0.03em; margin: 0; font-style: italic; font-weight: 500; }
-  .hero .strong { color: var(--coral); }
-  .sub { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1.1; color: var(--navy-deep); font-weight: 700; margin: 0; }
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 70px; text-align: center; gap: 56px; }
+  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; font-size: 44px; color: var(--coral); }
+  .open { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--navy-deep); font-size: 76px; line-height: 1.1; margin: 0; }
+  .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--coral); font-size: 280px; line-height: 0.95; letter-spacing: -0.03em; margin: 0; font-style: italic; font-weight: 500; }
+  .sub { font-family: 'Libre Baskerville', serif; font-size: 78px; line-height: 1.1; color: var(--navy-deep); font-weight: 700; margin: 0; }
   .sub em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .footer-block { background: var(--navy-deep); color: #fff; text-align: center; padding: 40px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 48px; line-height: 1.15; }
-  .footer-block em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
+  .qline { font-family: 'Libre Baskerville', serif; font-size: 60px; line-height: 1.2; color: var(--navy-deep); font-weight: 500; margin: 0; }
+  .qline em { color: var(--coral); font-style: italic; font-weight: 700; }
+
+  .brand-bar { background: var(--navy-deep); color: #fff; text-align: center; padding: 38px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 38px; letter-spacing: 0.02em; line-height: 1.2; }
+  .brand-bar em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="ad">
-  <div class="urgency"><span class="lab">⚡ The Wait Is Over ⚡</span><div class="lead">Doors open Monday 8th June</div></div>
   <div class="body">
-    <div class="eyebrow">It Starts</div>
-    <h1 class="hero"><span class="strong">Tomorrow.</span></h1>
+    <div class="eyebrow">✦ The Wait Is Over ✦</div>
+    <p class="open">Doors open Monday 8th June</p>
+    <h1 class="hero">Tomorrow.</h1>
     <p class="sub">The <em>WLA 12 Week</em><br/>Summer Challenge</p>
+    <p class="qline">Have you saved your <em>spot?</em></p>
   </div>
-  <div class="footer-block">Have you saved your <em>spot?</em></div>
+  <div class="brand-bar">The Weight Loss <em>&amp;</em> Lifestyle Academy</div>
 </div>
 </body>
 </html>
