@@ -899,7 +899,12 @@ function CountdownBanner() {
   // Phase 3: now >= noon Mon 8 June -> static "Summer Challenge starts today, you can still join"
   const midnight = new Date('2026-06-08T00:00:00').getTime();
   const noon     = new Date('2026-06-08T12:00:00').getTime();
-  const computePhase = (now) => (now < midnight ? 1 : now < noon ? 2 : 3);
+  // Preview-only override: ?phase=1|2|3 forces a phase so you can preview a state before it goes live.
+  const previewPhase = (typeof window !== 'undefined' ? Number(new URLSearchParams(window.location.search).get('phase')) : 0);
+  const computePhase = (now) => {
+    if (previewPhase === 1 || previewPhase === 2 || previewPhase === 3) return previewPhase;
+    return now < midnight ? 1 : now < noon ? 2 : 3;
+  };
 
   const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, phase: computePhase(Date.now()) });
   useEffect(() => {
