@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>WLA · Story 1 — Starts Tomorrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0e2746; --navy-deep: #003060; --coral: #d97757; --coral-soft: #e5917a; --coral-salmon: #F79F83; --cream: #F4EEE2; --cream-2: #E9DFD3; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #2a2a2a; font-family: "Alegreya Sans", sans-serif; }
+  body { display: grid; place-items: center; min-height: 100vh; padding: 24px; }
+  .ad { width: 1080px; height: 1920px; background: #F4EEE2; position: relative; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); display: flex; flex-direction: column; color: var(--navy-deep); }
+  @media (max-width: 1140px) { body { padding: 12px; } .ad { transform: scale(calc((100vw - 24px) / 1080)); transform-origin: top center; margin-bottom: calc((100vw - 24px) * (-1920 / 1080) + 24px); } }
+  .ad::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(140,110,70,0.045) 1px, transparent 1px); background-size: 7px 7px; pointer-events: none; z-index: 0; }
+  .ad > * { position: relative; z-index: 1; }
+
+  .urgency { background: var(--coral-salmon); color: var(--navy-deep); padding: 36px 60px 36px; text-align: center; position: relative; overflow: hidden; box-shadow: inset 0 -2px 0 rgba(14,39,70,0.10); }
+  .urgency::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%); transform: skewX(-18deg); animation: sheen 3.6s ease-in-out infinite; pointer-events: none; }
+  @keyframes sheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
+  .urgency .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 26px; color: rgba(0,48,96,0.85); display: block; margin-bottom: 8px; }
+  .urgency .lead { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--navy-deep); font-size: 60px; line-height: 1.05; }
+
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; text-align: center; gap: 60px; }
+  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; font-size: 30px; color: var(--coral); }
+  .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 260px; line-height: 0.92; letter-spacing: -0.03em; margin: 0; font-style: italic; font-weight: 500; }
+  .hero .strong { color: var(--coral); }
+  .sub { font-family: 'Libre Baskerville', serif; font-size: 64px; line-height: 1.1; color: var(--navy-deep); font-weight: 700; margin: 0; }
+  .sub em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .footer-block { background: var(--navy-deep); color: #fff; text-align: center; padding: 40px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 48px; line-height: 1.15; }
+  .footer-block em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="urgency"><span class="lab">⚡ The Wait Is Over ⚡</span><div class="lead">Doors open Monday 8th June</div></div>
+  <div class="body">
+    <div class="eyebrow">It Starts</div>
+    <h1 class="hero"><span class="strong">Tomorrow.</span></h1>
+    <p class="sub">The <em>WLA 12 Week</em><br/>Summer Challenge</p>
+  </div>
+  <div class="footer-block">Have you saved your <em>spot?</em></div>
+</div>
+</body>
+</html>

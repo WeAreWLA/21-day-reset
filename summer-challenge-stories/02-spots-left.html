@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>WLA · Story 2 — Less Than 50 Spots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0e2746; --navy-deep: #003060; --coral: #d97757; --coral-soft: #e5917a; --coral-salmon: #F79F83; --cream: #F4EEE2; --cream-2: #E9DFD3; --paper: #FDFBF8; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #2a2a2a; font-family: "Alegreya Sans", sans-serif; }
+  body { display: grid; place-items: center; min-height: 100vh; padding: 24px; }
+  .ad { width: 1080px; height: 1920px; background: #F4EEE2; position: relative; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); display: flex; flex-direction: column; color: var(--navy-deep); }
+  @media (max-width: 1140px) { body { padding: 12px; } .ad { transform: scale(calc((100vw - 24px) / 1080)); transform-origin: top center; margin-bottom: calc((100vw - 24px) * (-1920 / 1080) + 24px); } }
+  .ad::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(140,110,70,0.045) 1px, transparent 1px); background-size: 7px 7px; pointer-events: none; z-index: 0; }
+  .ad > * { position: relative; z-index: 1; }
+
+  .urgency { background: var(--coral-salmon); color: var(--navy-deep); padding: 36px 60px 36px; text-align: center; position: relative; overflow: hidden; box-shadow: inset 0 -2px 0 rgba(14,39,70,0.10); }
+  .urgency::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%); transform: skewX(-18deg); }
+  .urgency .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 26px; color: rgba(0,48,96,0.85); display: block; margin-bottom: 8px; }
+  .urgency .lead { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; color: var(--navy-deep); font-size: 56px; line-height: 1.05; }
+
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; text-align: center; gap: 64px; }
+  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 32px; color: var(--coral); }
+  .hero { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 96px; line-height: 1.0; letter-spacing: -0.02em; margin: 0; }
+  .hero em { color: var(--coral); font-style: italic; font-weight: 500; font-size: 320px; display: block; line-height: 0.9; }
+  .meter { width: 100%; max-width: 760px; }
+  .meter-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
+  .meter-top .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; font-size: 24px; color: var(--navy-deep); }
+  .meter-top .cnt { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 44px; color: var(--navy-deep); }
+  .meter-top .cnt em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .bar { height: 28px; background: var(--cream-2); border-radius: 999px; overflow: hidden; position: relative; }
+  .fill { height: 100%; width: 90.6%; background: linear-gradient(90deg, var(--coral), var(--coral-soft)); border-radius: 999px; position: relative; }
+  .fill::after { content: ''; position: absolute; right: 0; top: -6px; bottom: -6px; width: 12px; background: var(--coral); border-radius: 999px; box-shadow: 0 0 0 8px rgba(217,119,87,0.25); }
+  .footer-block { background: var(--navy-deep); color: #fff; text-align: center; padding: 40px 30px; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 44px; line-height: 1.2; }
+  .footer-block em { color: var(--coral-salmon); font-style: italic; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="urgency"><span class="lab">🚨 Filling Fast 🚨</span><div class="lead">Doors close at midnight</div></div>
+  <div class="body">
+    <div class="eyebrow">There are now</div>
+    <h1 class="hero">Less than<em>50</em>spots left</h1>
+    <div class="meter">
+      <div class="meter-top"><span class="lab">Places Taken</span><span class="cnt"><em>453</em> / 500</span></div>
+      <div class="bar"><div class="fill"></div></div>
+    </div>
+  </div>
+  <div class="footer-block">Once they're gone, <em>they're gone.</em></div>
+</div>
+</body>
+</html>
