@@ -17,7 +17,7 @@
   .ad > * { position: relative; z-index: 1; }
 
   .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 70px; text-align: center; gap: 60px; }
-  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; font-size: 72px; color: var(--coral); }
+  .eyebrow { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; font-size: 60px; color: var(--coral); white-space: nowrap; display: inline-flex; align-items: center; gap: 18px; }
   .lt { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 110px; line-height: 1.0; letter-spacing: -0.02em; margin: 0; }
   .big-num { font-family: 'Libre Baskerville', serif; color: var(--coral); font-style: italic; font-weight: 500; font-size: 360px; line-height: 0.85; margin: 0; letter-spacing: -0.04em; }
   .spots { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy-deep); font-size: 110px; line-height: 1.0; margin: 0; }
@@ -33,12 +33,12 @@
 <body>
 <div class="ad">
   <div class="body">
-    <div class="eyebrow">🚨 Filling Fast 🚨</div>
+    <div class="eyebrow"><span>🚨</span><span>Filling Fast</span><span>🚨</span></div>
     <p class="lt">Less than</p>
     <p class="big-num">50</p>
     <p class="spots">spots left</p>
     <p class="close">Doors close <em>at midnight</em></p>
-    <p class="gone">Once they're gone, <em>they're gone.</em></p>
+    <p class="gone">Once they're gone,<br/><em>they're gone.</em></p>
   </div>
   <div class="brand-bar">The Weight Loss <em>&amp;</em> Lifestyle Academy</div>
 </div>
