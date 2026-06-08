@@ -859,14 +859,9 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The Summer Cha
   if (size === 'compact') {
     return (
       <>
-        <div className="cta-pair">
-          <a href={CHECKOUT_URL} className="cta-btn compact">
-            <CardIcon /> Debit Card
-          </a>
-          <a href={PAYPAL_URL} className="paypal-btn compact" target="_blank" rel="noopener">
-            <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
-          </a>
-        </div>
+        <a href={CHECKOUT_URL} className="cta-btn compact">
+          <CardIcon /> Debit Card
+        </a>
         <div className="micro-foot compact">
           <span className="item"><Lock /> Secure checkout</span>
           <span className="risk-pill"><Shield /> 7-Day Risk-Free Guarantee</span>
@@ -878,10 +873,6 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The Summer Cha
     <>
       <a href={CHECKOUT_URL} className="cta-btn">
         {primaryLabel} <Arrow />
-      </a>
-      <div className="or-divider"><span>or</span></div>
-      <a href={PAYPAL_URL} className="paypal-btn" target="_blank" rel="noopener">
-        Pay With <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
       </a>
       <div className="micro-foot">
         <span className="item"><Lock /> Secure checkout</span>
@@ -1942,13 +1933,10 @@ function StickyCTA() {
   return (
     <div className={'sticky-cta' + (show ? ' show' : '')}>
       <div className="text">
-        <strong>Summer Challenge · £37 · 1 Year Access</strong>
+        <strong>Summer Challenge · £37 · 12 Weeks</strong>
       </div>
       <div className="sticky-cta-buttons">
-        <a href={CHECKOUT_URL} className="sticky-cta-card"><CardIcon /> Debit Card</a>
-        <a href={PAYPAL_URL} className="sticky-cta-paypal" target="_blank" rel="noopener">
-          <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
-        </a>
+        <a href={CHECKOUT_URL} className="sticky-cta-card"><CardIcon /> Join For £37</a>
       </div>
     </div>
   );
