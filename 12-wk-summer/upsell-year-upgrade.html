@@ -18,11 +18,11 @@
   .wla-upsell em { font-style: italic; font-weight: 500; color: var(--coral); }
 
   /* Top urgency banner */
-  .wla-upsell .urgency { position: relative; overflow: hidden; background: var(--coral-salmon); color: #003060; text-align: center; font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 18px; border-radius: 14px; margin-bottom: 28px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); font-size: clamp(13px, 1.6vw, 16px); }
+  .wla-upsell .urgency { position: relative; overflow: hidden; background: var(--coral-salmon); color: #003060; text-align: center; font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 22px 24px; border-radius: 16px; margin-bottom: 32px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); font-size: clamp(18px, 2.4vw, 24px); }
   .wla-upsell .urgency::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .wla-upsell .urgency > * { position: relative; z-index: 1; }
-  .wla-upsell .urgency .note { display: block; margin-top: 4px; font-weight: 700; text-transform: none; letter-spacing: 0.02em; font-size: 13px; color: rgba(0,48,96,0.85); font-family: 'Libre Baskerville', serif; font-style: italic; }
+  .wla-upsell .urgency .note { display: block; margin-top: 8px; font-weight: 700; text-transform: none; letter-spacing: 0.02em; font-size: clamp(15px, 1.7vw, 18px); color: rgba(0,48,96,0.85); font-family: 'Libre Baskerville', serif; font-style: italic; }
 
   /* Hero */
   .wla-upsell .hero { text-align: center; margin-bottom: 40px; }
@@ -55,7 +55,7 @@
 
   /* Section heads */
   .wla-upsell .sec-head { text-align: center; margin: 0 0 24px; }
-  .wla-upsell .sec-head .eyebrow { display: inline-block; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 12px; }
+  .wla-upsell .sec-head .eyebrow { display: inline-block; font-size: clamp(16px, 1.8vw, 19px); letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 800; margin-bottom: 14px; }
   .wla-upsell .sec-head h2 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(26px, 3.2vw, 36px); line-height: 1.15; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
   .wla-upsell .sec-head h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
 
@@ -73,11 +73,25 @@
   /* Section spacing */
   .wla-upsell .section { margin-top: 40px; }
 
+  /* Promise block (closer) */
+  .wla-upsell .promise { margin-top: 36px; background: var(--navy); color: #fff; border-radius: 18px; padding: 38px 40px; position: relative; overflow: hidden; box-shadow: 0 24px 48px -24px rgba(14,39,70,0.5); text-align: center; }
+  .wla-upsell .promise::before { content: ''; position: absolute; top: -80px; right: -80px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(247,159,131,0.30), transparent 65%); pointer-events: none; }
+  .wla-upsell .promise .price-line { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; margin: 0 0 26px; color: #fff; position: relative; z-index: 1; }
+  .wla-upsell .promise .price-line em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
+  .wla-upsell .promise .price-line .one-off { display: block; margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; font-weight: 400; color: rgba(247,159,131,0.9); letter-spacing: 0.06em; }
+  .wla-upsell .promise .row { display: grid; gap: 14px; max-width: 540px; margin: 0 auto; position: relative; z-index: 1; }
+  .wla-upsell .promise .ditch { display: grid; grid-template-columns: 32px 1fr; align-items: center; gap: 16px; padding: 14px 20px; background: rgba(255,255,255,0.06); border-radius: 14px; text-align: left; font-family: 'Libre Baskerville', serif; font-size: 17px; line-height: 1.35; color: rgba(255,255,255,0.92); }
+  .wla-upsell .promise .ditch .ic { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.12); color: var(--coral-soft); display: grid; place-items: center; font-family: "Alegreya Sans", sans-serif; font-weight: 800; font-size: 18px; flex: none; }
+  .wla-upsell .promise .ditch strong { color: #fff; font-weight: 700; }
+  .wla-upsell .promise .gain { margin-top: 22px; padding: 22px 24px; background: var(--coral); color: #fff; border-radius: 14px; font-family: 'Libre Baskerville', serif; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.3; font-weight: 700; position: relative; z-index: 1; }
+  .wla-upsell .promise .gain em { color: #fff; font-style: italic; font-weight: 500; }
+
   /* Mobile */
   @media (max-width: 640px) {
     .wla-upsell { padding: 40px 16px; }
     .wla-upsell .lead { padding: 24px 22px; }
     .wla-upsell .inside-card { padding: 24px 22px; }
+    .wla-upsell .promise { padding: 28px 24px; }
   }
 </style>
 
@@ -92,7 +106,6 @@
 
     <!-- HERO -->
     <div class="hero">
-      <div class="pill">✦ One-Time Upgrade Offer ✦</div>
       <h1 class="serif">Upgrade to a <span class="accent">full year</span> of access for just <span class="accent">£60 more</span></h1>
       <p class="sub">A full 12 months inside WLA, not just 12 weeks. One decision, made now.</p>
     </div>
@@ -139,16 +152,19 @@
           <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Movement classes with Linda all year</span></li>
           <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Daily coaching &amp; accountability for <strong>365 days</strong></span></li>
           <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Access to <strong>all future challenges &amp; resets</strong> through the year</span></li>
-          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Full access to the <strong>NEW WLA app</strong> the entire way through</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Full access to the <strong>NEW WLA app once ready</strong></span></li>
         </ul>
       </div>
     </div>
 
-    <!-- REASSURANCE -->
-    <div class="lead" style="margin-top: 28px;">
-      <p>Just <strong>£60 more</strong>, one-off.</p>
-      <p>No rebill. No "starting again" in 12 weeks.</p>
-      <p>Just <strong>12 months of continued momentum, support and results</strong>.</p>
+    <!-- PROMISE / REASSURANCE -->
+    <div class="promise">
+      <div class="price-line">Just <em>£60 more</em><span class="one-off">— one-off, no rebill —</span></div>
+      <div class="row">
+        <div class="ditch"><span class="ic">✕</span><span>No <strong>rebill</strong></span></div>
+        <div class="ditch"><span class="ic">✕</span><span>No <strong>"starting again"</strong> in 12 weeks</span></div>
+      </div>
+      <div class="gain">Just <em>12 months</em> of continued momentum, support &amp; results.</div>
     </div>
 
   </div>
