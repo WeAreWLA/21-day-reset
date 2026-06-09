@@ -842,10 +842,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 const { useState, useEffect, useRef, useCallback } = React;
 
 const CHECKOUT_URL = 'https://sales.thewlacademy.com/12-wk-summer/';
+// PayPal checkout (NCP / "No-Code" payment link for the £37 12-wk-summer offer)
 const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/HVZ38ZNYG6MS4';
-
-// PayPal checkout (NCP / "No-Code" payment link from the founding-member offer)
-const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2AX2J47CZPLKA';
 
 const Arrow = ({ className = 'arrow' }) => (
   <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
