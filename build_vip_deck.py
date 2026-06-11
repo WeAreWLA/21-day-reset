@@ -175,7 +175,7 @@ def add_footer(slide, dark=False):
 
 def eyebrow(slide, text, x=Inches(0.9), y=Inches(0.82), color=CORAL):
     add_runs(slide, x, y, Inches(11.5), Inches(0.5),
-        [{'text': text.upper(), 'font': SANS, 'size': 16, 'color': color,
+        [{'text': text.upper(), 'font': SANS, 'size': 18, 'color': color,
           'bold': True, 'letter_spacing': 240}])
 
 def heading(slide, runs, x=Inches(0.9), y=Inches(1.45), w=Inches(11.5), line=1.12):
@@ -213,34 +213,41 @@ def s_cover():
 
 def s_opening():
     s = add_slide(); add_bg(s, CREAM)
-    eyebrow(s, 'Back by popular demand'); coral_rule(s)
+    eyebrow(s, 'A few VIP spots have opened'); coral_rule(s)
     heading(s, [
-        {'text': 'VIP is ', 'font': SERIF, 'size': 46, 'color': NAVY, 'bold': True},
-        {'text': 'back', 'font': SERIF, 'size': 46, 'color': CORAL, 'bold': True, 'italic': True},
-        {'text': ' — and this round, I want to coach you.', 'font': SERIF, 'size': 46, 'color': NAVY, 'bold': True},
-    ])
-    add_paragraphs(s, Inches(0.9), Inches(3.55), Inches(11.0), Inches(3.0), [
-        {'runs': [{'text': 'This round I’m looking for ', 'font': SANS, 'size': 20, 'color': BODY},
-                  {'text': '30 women', 'font': SANS, 'size': 20, 'color': NAVY, 'bold': True},
-                  {'text': ' to coach 1-2-1 — and to create as many success stories as possible.',
-                   'font': SANS, 'size': 20, 'color': BODY}], 'line': 1.5, 'space_after': 12},
-        {'runs': [{'text': 'A brand new round. Risk-free. Built entirely around you.',
+        {'text': 'I only coach a handful of women ', 'font': SERIF, 'size': 36, 'color': NAVY, 'bold': True},
+        {'text': '1-2-1', 'font': SERIF, 'size': 36, 'color': CORAL, 'bold': True, 'italic': True},
+        {'text': ' at a time — and a few spots have ', 'font': SERIF, 'size': 36, 'color': NAVY, 'bold': True},
+        {'text': 'just opened', 'font': SERIF, 'size': 36, 'color': CORAL, 'bold': True, 'italic': True},
+        {'text': '.', 'font': SERIF, 'size': 36, 'color': NAVY, 'bold': True},
+    ], y=Inches(1.55))
+    add_paragraphs(s, Inches(0.9), Inches(3.7), Inches(11.0), Inches(3.0), [
+        {'runs': [{'text': 'If you’ve been thinking about going all-in with personal coaching, ',
+                   'font': SANS, 'size': 21, 'color': BODY},
+                  {'text': 'this is your moment to grab one.',
+                   'font': SANS, 'size': 21, 'color': NAVY, 'bold': True}], 'line': 1.5, 'space_after': 12},
+        {'runs': [{'text': 'My full attention, daily support, and a plan built entirely around you.',
                    'font': SERIF, 'size': 22, 'color': NAVY, 'italic': True}], 'line': 1.4},
     ])
     add_footer(s)
 
 def s_why_back():
     s = add_slide(); add_bg(s, NAVY)
-    add_pill(s, Inches(4.57), Inches(1.5), Inches(4.2), Inches(0.5),
-             'THE QUESTION I HEAR MOST', fill=CORAL, color=WHITE, size=13, letter_spacing=160)
-    add_paragraphs(s, Inches(1.2), Inches(2.6), Inches(10.9), Inches(3.2), [
-        {'runs': [{'text': '“When is VIP ', 'font': SERIF, 'size': 58, 'color': WHITE, 'italic': True},
-                  {'text': 'coming back', 'font': SERIF, 'size': 58, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
-                  {'text': '?”', 'font': SERIF, 'size': 58, 'color': WHITE, 'italic': True}],
-         'align': PP_ALIGN.CENTER, 'line': 1.12, 'space_after': 22},
-        {'runs': [{'text': 'It’s been closed for over a year. So we’re opening one brand new round of 1-2-1 VIP coaching.',
-                   'font': SANS, 'size': 20, 'color': CREAM_WARM}], 'align': PP_ALIGN.CENTER, 'line': 1.4},
+    add_pill(s, Inches(4.82), Inches(1.45), Inches(3.7), Inches(0.5),
+             'WHY VIP WORKS', fill=CORAL, color=WHITE, size=18, letter_spacing=200)
+    add_paragraphs(s, Inches(1.2), Inches(2.55), Inches(10.9), Inches(3.0), [
+        {'runs': [{'text': 'The difference isn’t the ', 'font': SERIF, 'size': 46, 'color': WHITE, 'italic': True},
+                  {'text': 'plan', 'font': SERIF, 'size': 46, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+                  {'text': '.', 'font': SERIF, 'size': 46, 'color': WHITE, 'italic': True}],
+         'align': PP_ALIGN.CENTER, 'line': 1.15, 'space_after': 14},
+        {'runs': [{'text': 'It’s having ', 'font': SERIF, 'size': 46, 'color': WHITE, 'italic': True},
+                  {'text': 'me in your corner', 'font': SERIF, 'size': 46, 'color': CORAL_SOFT, 'italic': True, 'bold': True},
+                  {'text': ' — every single day.', 'font': SERIF, 'size': 46, 'color': WHITE, 'italic': True}],
+         'align': PP_ALIGN.CENTER, 'line': 1.15},
     ])
+    add_runs(s, Inches(1.2), Inches(5.55), Inches(10.9), Inches(0.7),
+        [{'text': 'Personalised strategy. Daily support. Real accountability.',
+          'font': SANS, 'size': 20, 'color': CREAM_WARM}], align=PP_ALIGN.CENTER)
     add_footer(s, dark=True)
 
 def s_what_vip():
@@ -277,8 +284,8 @@ def s_difference():
 
 def s_steps_intro():
     s = add_slide(); add_bg(s, NAVY)
-    add_pill(s, Inches(5.15), Inches(1.4), Inches(3.0), Inches(0.5),
-             'THE VIP METHOD', fill=CORAL, color=WHITE, size=13, letter_spacing=260)
+    add_pill(s, Inches(4.92), Inches(1.4), Inches(3.5), Inches(0.5),
+             'THE VIP METHOD', fill=CORAL, color=WHITE, size=18, letter_spacing=200)
     add_paragraphs(s, Inches(1.0), Inches(2.4), Inches(11.3), Inches(2.0), [
         {'runs': [{'text': 'Three things that make VIP ', 'font': SERIF, 'size': 46, 'color': WHITE, 'bold': True},
                   {'text': 'different', 'font': SERIF, 'size': 46, 'color': CORAL_SOFT, 'bold': True, 'italic': True},
@@ -464,8 +471,8 @@ def s_investment():
 
 def s_pricing():
     s = add_slide(); add_bg(s, CREAM)
-    add_runs(s, Inches(0.9), Inches(0.7), Inches(11.5), Inches(0.5),
-        [{'text': 'CHOOSE YOUR VIP JOURNEY', 'font': SANS, 'size': 15, 'color': CORAL,
+    add_runs(s, Inches(0.9), Inches(0.62), Inches(11.5), Inches(0.5),
+        [{'text': 'CHOOSE YOUR VIP JOURNEY', 'font': SANS, 'size': 18, 'color': CORAL,
           'bold': True, 'letter_spacing': 240}], align=PP_ALIGN.CENTER)
     add_runs(s, Inches(0.9), Inches(1.25), Inches(11.5), Inches(0.8),
         [{'text': 'Personal 1-2-1 coaching, built around you.', 'font': SERIF, 'size': 30,
@@ -499,9 +506,10 @@ def s_pricing():
     add_runs(s, x1 + Inches(0.5), y + Inches(2.95), cw - Inches(1.0), Inches(0.5),
         [{'text': 'Most of my biggest transformations', 'font': SERIF, 'size': 17, 'color': WHITE, 'italic': True}], align=PP_ALIGN.CENTER)
 
-    add_runs(s, Inches(0.9), Inches(6.35), Inches(11.5), Inches(0.5),
+    add_runs(s, Inches(0.6), Inches(6.18), Inches(12.13), Inches(1.1),
         [{'text': 'Pay with PayPal, Klarna or Clearpay  ·  Limited to 30 women  ·  Doors open [START DATE]',
-          'font': SANS, 'size': 14, 'color': MUTED, 'bold': True, 'letter_spacing': 100}], align=PP_ALIGN.CENTER)
+          'font': SANS, 'size': 24, 'color': NAVY, 'bold': True, 'letter_spacing': 20}],
+        align=PP_ALIGN.CENTER, line=1.25)
 
 def s_who_for():
     s = add_slide(); add_bg(s, CREAM)
@@ -538,8 +546,8 @@ def s_who_not():
 
 def s_two_options():
     s = add_slide(); add_bg(s, NAVY)
-    add_pill(s, Inches(5.4), Inches(1.3), Inches(2.5), Inches(0.5),
-             'TWO OPTIONS', fill=CORAL, color=WHITE, size=13, letter_spacing=260)
+    add_pill(s, Inches(5.17), Inches(1.3), Inches(3.0), Inches(0.5),
+             'TWO OPTIONS', fill=CORAL, color=WHITE, size=18, letter_spacing=200)
     add_paragraphs(s, Inches(1.1), Inches(2.4), Inches(11.1), Inches(4.0), [
         {'runs': [{'text': 'You can keep doing this ', 'font': SERIF, 'size': 38, 'color': WHITE, 'bold': True},
                   {'text': 'alone', 'font': SERIF, 'size': 38, 'color': CORAL_SOFT, 'bold': True, 'italic': True},
@@ -553,8 +561,8 @@ def s_two_options():
 
 def s_cta():
     s = add_slide(); add_bg(s, NAVY)
-    add_pill(s, Inches(5.55), Inches(0.95), Inches(2.2), Inches(0.5),
-             'READY?', fill=CORAL, color=WHITE, size=13, letter_spacing=300)
+    add_pill(s, Inches(5.52), Inches(0.95), Inches(2.3), Inches(0.5),
+             'READY?', fill=CORAL, color=WHITE, size=18, letter_spacing=250)
     add_paragraphs(s, Inches(1.0), Inches(1.85), Inches(11.3), Inches(2.0), [
         {'runs': [{'text': 'Reply and say ', 'font': SERIF, 'size': 44, 'color': WHITE, 'bold': True},
                   {'text': '“I’m ready for VIP.”', 'font': SERIF, 'size': 44, 'color': CORAL_SOFT, 'bold': True, 'italic': True}],
