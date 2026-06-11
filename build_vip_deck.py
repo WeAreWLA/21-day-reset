@@ -147,8 +147,8 @@ def check_bullet(slide, left, top, label, body, width=Inches(5.2)):
     rr = pr.add_run(); rr.text='✓'; rr.font.name=SANS; rr.font.size=Pt(11)
     rr.font.bold=True; rr.font.color.rgb=WHITE
     add_paragraphs(slide, left + Inches(0.44), top - Inches(0.02), width, Inches(1.1), [
-        {'runs':[{'text':label,'font':SERIF,'size':16,'color':NAVY,'bold':True}], 'line':1.15,'space_after':2},
-        {'runs':[{'text':body,'font':SANS,'size':13,'color':MUTED}], 'line':1.22},
+        {'runs':[{'text':label,'font':SERIF,'size':18,'color':NAVY,'bold':True}], 'line':1.15,'space_after':2},
+        {'runs':[{'text':body,'font':SANS,'size':15,'color':MUTED}], 'line':1.22},
     ])
 
 def add_picture_cover(slide, path, left, top, width, height):
@@ -165,6 +165,7 @@ def add_picture_cover(slide, path, left, top, width, height):
     return pic
 
 def add_footer(slide, dark=False):
+    return  # footer text removed per request
     color = CREAM_WARM if dark else MUTED
     add_runs(slide, Inches(0.7), Inches(6.98), Inches(8), Inches(0.4),
         [{'text': 'The Weight Loss Academy', 'font': SERIF, 'size': 12.5, 'color': color, 'italic': True}])
@@ -205,7 +206,7 @@ def s_cover():
     ])
     add_runs(s, Inches(0.9), Inches(4.75), Inches(7.0), Inches(0.9),
         [{'text': 'Lose up to 3 stone — without extreme diets or exhausting workouts.',
-          'font': SERIF, 'size': 19, 'color': MUTED, 'italic': True}], line=1.35)
+          'font': SERIF, 'size': 20, 'color': MUTED, 'italic': True}], line=1.35)
     add_runs(s, Inches(0.9), Inches(6.35), Inches(7.0), Inches(0.5),
         [{'text': 'WITH ANNA WALLACE  ·  FOUNDER OF WLA  ·  REGISTERED ASSOCIATE NUTRITIONIST',
           'font': SANS, 'size': 11.5, 'color': NAVY, 'bold': True, 'letter_spacing': 150}])
@@ -266,9 +267,9 @@ def s_difference():
                 {'text': '.', 'font': SERIF, 'size': 40, 'color': NAVY, 'bold': True}])
     add_paragraphs(s, Inches(0.9), Inches(3.35), Inches(11.2), Inches(3.2), [
         {'runs': [{'text': 'I’ll guide you through the exact simple nutrition formula I used to lose over 2 stone and keep it off.',
-                   'font': SANS, 'size': 19, 'color': BODY}], 'line': 1.5, 'space_after': 12},
+                   'font': SANS, 'size': 21, 'color': BODY}], 'line': 1.5, 'space_after': 12},
         {'runs': [{'text': 'As a degree-qualified Registered Associate Nutritionist with 11+ years’ experience and 50,000+ clients supported — ',
-                   'font': SANS, 'size': 19, 'color': BODY},
+                   'font': SANS, 'size': 21, 'color': BODY},
                   {'text': 'nothing comes close to personal 1-2-1 coaching.',
                    'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True}], 'line': 1.5},
     ])
@@ -292,7 +293,7 @@ def s_steps_intro():
         add_runs(s, x, Inches(4.25), cw, Inches(0.9),
             [{'text': n, 'font': SERIF, 'size': 44, 'color': CORAL_SOFT, 'bold': True}], align=PP_ALIGN.CENTER)
         add_runs(s, x + Inches(0.2), Inches(5.25), cw - Inches(0.4), Inches(0.8),
-            [{'text': t, 'font': SERIF, 'size': 18, 'color': WHITE, 'italic': True}], align=PP_ALIGN.CENTER, line=1.15)
+            [{'text': t, 'font': SERIF, 'size': 20, 'color': WHITE, 'italic': True}], align=PP_ALIGN.CENTER, line=1.15)
     add_footer(s, dark=True)
 
 def s_step(num, title, lead, paras):
@@ -306,7 +307,7 @@ def s_step(num, title, lead, paras):
     add_runs(s, Inches(0.9), Inches(3.3), Inches(9.6), Inches(0.7),
         [{'text': lead, 'font': SERIF, 'size': 21, 'color': CORAL, 'italic': True}], line=1.3)
     add_paragraphs(s, Inches(0.9), Inches(4.25), Inches(11.2), Inches(2.4),
-        [{'runs': [{'text': p, 'font': SANS, 'size': 18, 'color': BODY}], 'line': 1.5, 'space_after': 8} for p in paras])
+        [{'runs': [{'text': p, 'font': SANS, 'size': 20, 'color': BODY}], 'line': 1.5, 'space_after': 8} for p in paras])
     add_footer(s)
 
 def s_stanford():
@@ -320,7 +321,7 @@ def s_stanford():
          'line': 1.14}])
     add_paragraphs(s, Inches(0.9), Inches(4.4), Inches(11.4), Inches(2.2), [
         {'runs': [{'text': 'A Stanford University study found people with access to a human coach lost significantly more weight than those using digital tools alone — even when the information was identical.',
-                   'font': SANS, 'size': 19, 'color': CREAM_WARM}], 'line': 1.5, 'space_after': 12},
+                   'font': SANS, 'size': 21, 'color': CREAM_WARM}], 'line': 1.5, 'space_after': 12},
         {'runs': [{'text': 'It’s not the plan. It’s the support, accountability and feedback.',
                    'font': SERIF, 'size': 21, 'color': WHITE, 'italic': True}], 'line': 1.4},
     ])
@@ -333,7 +334,7 @@ def s_stay_stuck():
                 {'text': 'Following through is the hard part.', 'font': SERIF, 'size': 38, 'color': CORAL, 'bold': True, 'italic': True}])
     add_paragraphs(s, Inches(0.9), Inches(3.5), Inches(11.2), Inches(3.0), [
         {'runs': [{'text': 'Most women are stuck in the cycle of starting… stopping… and never quite following through. A good week, then life gets busy, motivation drops, and it’s back to square one.',
-                   'font': SANS, 'size': 19, 'color': BODY}], 'line': 1.5, 'space_after': 12},
+                   'font': SANS, 'size': 21, 'color': BODY}], 'line': 1.5, 'space_after': 12},
         {'runs': [{'text': 'Not because they don’t care — because they’re trying to do it alone. That’s exactly why VIP works.',
                    'font': SERIF, 'size': 20, 'color': NAVY, 'italic': True}], 'line': 1.45},
     ])
@@ -355,7 +356,7 @@ def s_imagine():
     for i, it in enumerate(items):
         col = i % 2; row = i // 2
         x = Inches(0.95) if col == 0 else Inches(6.85)
-        coral_bullet(s, x, y + Inches(0.82 * row), it, size=16.5, font=SANS, color=BODY, width=Inches(5.7))
+        coral_bullet(s, x, y + Inches(0.82 * row), it, size=19, font=SANS, color=BODY, width=Inches(5.7))
     add_footer(s)
 
 def s_struggling():
@@ -379,9 +380,9 @@ def s_struggling():
         x = x0 + (cw + gx) * col; y = y0 + (ch + gy) * row
         add_round_rect(s, x, y, cw, ch, WHITE, radius_pct=0.07, line_color=CREAM_2, line_w=1.0)
         add_runs(s, x + Inches(0.28), y + Inches(0.22), cw - Inches(0.5), Inches(0.4),
-            [{'text': lab.upper(), 'font': SANS, 'size': 13, 'color': CORAL, 'bold': True, 'letter_spacing': 150}])
+            [{'text': lab.upper(), 'font': SANS, 'size': 14, 'color': CORAL, 'bold': True, 'letter_spacing': 150}])
         add_paragraphs(s, x + Inches(0.28), y + Inches(0.66), cw - Inches(0.56), ch - Inches(0.8),
-            [{'runs': [{'text': body, 'font': SANS, 'size': 13.5, 'color': BODY}], 'line': 1.3}])
+            [{'runs': [{'text': body, 'font': SANS, 'size': 15, 'color': BODY}], 'line': 1.3}])
     add_footer(s)
 
 def s_jill():
@@ -401,7 +402,7 @@ def s_jill():
     ])
     add_paragraphs(s, tx, Inches(4.5), Inches(6.5), Inches(2.0), [
         {'runs': [{'text': '“VIP has changed my life. I did WLA resets and group for 2 years and didn’t achieve half of what I have in VIP. It’s just so different.”',
-                   'font': SERIF, 'size': 18, 'color': MUTED, 'italic': True}], 'line': 1.45}])
+                   'font': SERIF, 'size': 20, 'color': MUTED, 'italic': True}], 'line': 1.45}])
     add_footer(s)
 
 def s_results_montage():
@@ -420,7 +421,7 @@ def s_results_montage():
         add_picture_cover(s, os.path.join(ASSETS, im), x, y, iw, iw)
     add_runs(s, Inches(0.9), Inches(6.1), Inches(11.5), Inches(0.5),
         [{'text': 'From 1 to 4 stone down — in 1-2-1 VIP coaching with Anna.',
-          'font': SERIF, 'size': 17, 'color': CREAM_WARM, 'italic': True}], align=PP_ALIGN.CENTER)
+          'font': SERIF, 'size': 19, 'color': CREAM_WARM, 'italic': True}], align=PP_ALIGN.CENTER)
     add_footer(s, dark=True)
 
 def s_included():
@@ -453,9 +454,9 @@ def s_investment():
                 {'text': '.', 'font': SERIF, 'size': 36, 'color': NAVY, 'bold': True}])
     add_paragraphs(s, Inches(0.9), Inches(3.4), Inches(11.2), Inches(3.0), [
         {'runs': [{'text': 'Most degree-qualified Registered Associate Nutritionists charge £300–£700 for consultations and ongoing monthly support.',
-                   'font': SANS, 'size': 19, 'color': BODY}], 'line': 1.5, 'space_after': 10},
+                   'font': SANS, 'size': 21, 'color': BODY}], 'line': 1.5, 'space_after': 10},
         {'runs': [{'text': 'True 1-2-1 coaching — daily support, weekly reviews, a personalised strategy — typically runs £2,000–£5,000+ (take a look around Harley Street).',
-                   'font': SANS, 'size': 19, 'color': BODY}], 'line': 1.5, 'space_after': 10},
+                   'font': SANS, 'size': 21, 'color': BODY}], 'line': 1.5, 'space_after': 10},
         {'runs': [{'text': 'For this round, I’ve made it far more accessible.',
                    'font': SERIF, 'size': 21, 'color': NAVY, 'italic': True}], 'line': 1.4},
     ])
@@ -480,9 +481,9 @@ def s_pricing():
     add_runs(s, x0, y + Inches(0.9), cw, Inches(1.2),
         [{'text': '£597', 'font': SERIF, 'size': 64, 'color': CORAL, 'bold': True}], align=PP_ALIGN.CENTER)
     add_runs(s, x0 + Inches(0.5), y + Inches(2.15), cw - Inches(1.0), Inches(0.7),
-        [{'text': '3 months of personalised 1-2-1 coaching', 'font': SANS, 'size': 15, 'color': BODY}], align=PP_ALIGN.CENTER, line=1.3)
+        [{'text': '3 months of personalised 1-2-1 coaching', 'font': SANS, 'size': 17, 'color': BODY}], align=PP_ALIGN.CENTER, line=1.3)
     add_runs(s, x0 + Inches(0.5), y + Inches(2.95), cw - Inches(1.0), Inches(0.5),
-        [{'text': 'Monthly plans from £199', 'font': SERIF, 'size': 16, 'color': NAVY, 'italic': True}], align=PP_ALIGN.CENTER)
+        [{'text': 'Monthly plans from £199', 'font': SERIF, 'size': 17, 'color': NAVY, 'italic': True}], align=PP_ALIGN.CENTER)
 
     # 6 months card (highlighted)
     x1 = x0 + cw + gap
@@ -494,13 +495,13 @@ def s_pricing():
     add_runs(s, x1, y + Inches(0.9), cw, Inches(1.2),
         [{'text': '£1197', 'font': SERIF, 'size': 64, 'color': CORAL_SOFT, 'bold': True}], align=PP_ALIGN.CENTER)
     add_runs(s, x1 + Inches(0.5), y + Inches(2.15), cw - Inches(1.0), Inches(0.7),
-        [{'text': 'The time to lose it AND keep it off for good', 'font': SANS, 'size': 15, 'color': CREAM_WARM}], align=PP_ALIGN.CENTER, line=1.3)
+        [{'text': 'The time to lose it AND keep it off for good', 'font': SANS, 'size': 17, 'color': CREAM_WARM}], align=PP_ALIGN.CENTER, line=1.3)
     add_runs(s, x1 + Inches(0.5), y + Inches(2.95), cw - Inches(1.0), Inches(0.5),
-        [{'text': 'Most of my biggest transformations', 'font': SERIF, 'size': 16, 'color': WHITE, 'italic': True}], align=PP_ALIGN.CENTER)
+        [{'text': 'Most of my biggest transformations', 'font': SERIF, 'size': 17, 'color': WHITE, 'italic': True}], align=PP_ALIGN.CENTER)
 
     add_runs(s, Inches(0.9), Inches(6.35), Inches(11.5), Inches(0.5),
         [{'text': 'Pay with PayPal, Klarna or Clearpay  ·  Limited to 30 women  ·  Doors open [START DATE]',
-          'font': SANS, 'size': 13, 'color': MUTED, 'bold': True, 'letter_spacing': 100}], align=PP_ALIGN.CENTER)
+          'font': SANS, 'size': 14, 'color': MUTED, 'bold': True, 'letter_spacing': 100}], align=PP_ALIGN.CENTER)
 
 def s_who_for():
     s = add_slide(); add_bg(s, CREAM)
@@ -515,7 +516,7 @@ def s_who_for():
              'You want to lose up to 3 stone — sustainably, for good']
     y = Inches(2.7)
     for i, it in enumerate(items):
-        coral_bullet(s, Inches(0.95), y + Inches(0.66 * i), it, size=17, font=SANS, color=BODY, width=Inches(11.3))
+        coral_bullet(s, Inches(0.95), y + Inches(0.66 * i), it, size=19, font=SANS, color=BODY, width=Inches(11.3))
     add_footer(s)
 
 def s_who_not():
@@ -532,7 +533,7 @@ def s_who_not():
              'You’re not ready to commit right now']
     y = Inches(2.7)
     for i, it in enumerate(items):
-        coral_bullet(s, Inches(0.95), y + Inches(0.66 * i), it, size=17, font=SANS, color=MUTED, width=Inches(11.3), dot=CREAM_2)
+        coral_bullet(s, Inches(0.95), y + Inches(0.66 * i), it, size=19, font=SANS, color=MUTED, width=Inches(11.3), dot=CREAM_2)
     add_footer(s)
 
 def s_two_options():
@@ -560,15 +561,15 @@ def s_cta():
          'align': PP_ALIGN.CENTER, 'line': 1.12}])
     add_paragraphs(s, Inches(1.4), Inches(3.7), Inches(10.5), Inches(1.6), [
         {'runs': [{'text': 'I’ll let you know if there are spaces left. Spaces are limited to 30 women — and previous VIP rounds have always filled.',
-                   'font': SANS, 'size': 18, 'color': CREAM_WARM}], 'align': PP_ALIGN.CENTER, 'line': 1.45}])
+                   'font': SANS, 'size': 20, 'color': CREAM_WARM}], 'align': PP_ALIGN.CENTER, 'line': 1.45}])
     add_runs(s, Inches(1.0), Inches(5.25), Inches(11.3), Inches(0.6),
-        [{'text': 'Email me: ', 'font': SANS, 'size': 19, 'color': WHITE, 'bold': True},
-         {'text': 'annasnutrition@gmail.com', 'font': SANS, 'size': 19, 'color': CORAL_SOFT, 'bold': True}],
+        [{'text': 'Email me: ', 'font': SANS, 'size': 20, 'color': WHITE, 'bold': True},
+         {'text': 'annasnutrition@gmail.com', 'font': SANS, 'size': 20, 'color': CORAL_SOFT, 'bold': True}],
         align=PP_ALIGN.CENTER)
     add_runs(s, Inches(1.0), Inches(6.25), Inches(11.3), Inches(0.6),
-        [{'text': 'Anna Wallace', 'font': SERIF, 'size': 18, 'color': WHITE, 'italic': True},
+        [{'text': 'Anna Wallace', 'font': SERIF, 'size': 19, 'color': WHITE, 'italic': True},
          {'text': '  ·  Founder of The Weight Loss Academy, Registered Associate Nutritionist',
-          'font': SANS, 'size': 14, 'color': CREAM_WARM}], align=PP_ALIGN.CENTER)
+          'font': SANS, 'size': 15, 'color': CREAM_WARM}], align=PP_ALIGN.CENTER)
 
 # ---------- Build sequence ----------
 s_cover()
