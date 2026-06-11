@@ -182,7 +182,7 @@ def heading(slide, runs, x=Inches(0.9), y=Inches(1.45), w=Inches(11.5), line=1.1
     add_paragraphs(slide, x, y, w, Inches(2.0), [{'runs': runs, 'line': line, 'align': PP_ALIGN.LEFT}])
 
 def coral_rule(slide, x=Inches(0.9), y=Inches(1.32), w=Inches(1.6)):
-    add_rect(slide, x, y, w, Inches(0.055), CORAL)
+    return  # rule between label and heading removed per request
 
 # ============================================================
 # SLIDES
@@ -320,7 +320,6 @@ def s_step(num, title, lead, paras):
 def s_stanford():
     s = add_slide(); add_bg(s, NAVY)
     eyebrow(s, 'The research', color=CORAL_SOFT);
-    add_rect(s, Inches(0.9), Inches(1.32), Inches(1.6), Inches(0.055), CORAL)
     add_paragraphs(s, Inches(0.9), Inches(1.55), Inches(11.4), Inches(2.6), [
         {'runs': [{'text': 'Human 1-2-1 coaching ', 'font': SERIF, 'size': 42, 'color': WHITE, 'bold': True},
                   {'text': 'outperforms', 'font': SERIF, 'size': 42, 'color': CORAL_SOFT, 'bold': True, 'italic': True},
@@ -392,30 +391,42 @@ def s_struggling():
             [{'runs': [{'text': body, 'font': SANS, 'size': 15, 'color': BODY}], 'line': 1.3}])
     add_footer(s)
 
-def s_jill():
+def s_testimonial(img, name, result, sub):
     s = add_slide(); add_bg(s, CREAM)
-    # photo left
-    pw = Inches(5.4)
-    add_picture_cover(s, os.path.join(ASSETS, 'jill-before-after.jpg'), 0, 0, pw, SH)
-    add_rect(s, pw, 0, Inches(0.06), SH, CORAL)
-    # text right
-    tx = Inches(6.0)
-    add_pill(s, tx, Inches(1.2), Inches(2.7), Inches(0.5), 'VIP SUCCESS STORY',
-             fill=NAVY, color=CREAM_WARM, size=12, letter_spacing=200)
-    add_paragraphs(s, tx, Inches(2.1), Inches(6.6), Inches(2.6), [
-        {'runs': [{'text': 'Jill lost ', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True},
-                  {'text': '4 stone', 'font': SERIF, 'size': 44, 'color': CORAL, 'bold': True, 'italic': True}], 'line': 1.1},
-        {'runs': [{'text': 'in 6 months in VIP.', 'font': SERIF, 'size': 44, 'color': NAVY, 'bold': True}], 'line': 1.1},
-    ])
-    add_paragraphs(s, tx, Inches(4.5), Inches(6.5), Inches(2.0), [
-        {'runs': [{'text': '“VIP has changed my life. I did WLA resets and group for 2 years and didn’t achieve half of what I have in VIP. It’s just so different.”',
-                   'font': SERIF, 'size': 20, 'color': MUTED, 'italic': True}], 'line': 1.45}])
-    add_footer(s)
+    sz = Inches(5.1); ix = Inches(0.75); iy = (SH - sz) / 2
+    add_rect(s, ix - Inches(0.07), iy - Inches(0.07), sz + Inches(0.14), sz + Inches(0.14), CORAL)
+    add_picture_cover(s, os.path.join(ASSETS, img), ix, iy, sz, sz)
+    tx = Inches(6.55); tw = Inches(6.1)
+    add_pill(s, tx, Inches(2.2), Inches(3.7), Inches(0.55), 'VIP SUCCESS STORY',
+             fill=NAVY, color=CREAM_WARM, size=14, letter_spacing=160)
+    add_paragraphs(s, tx, Inches(3.05), tw, Inches(2.2), [
+        {'runs': [{'text': name + ' ', 'font': SERIF, 'size': 38, 'color': NAVY, 'bold': True},
+                  {'text': result, 'font': SERIF, 'size': 38, 'color': CORAL, 'bold': True, 'italic': True}],
+         'line': 1.12}])
+    add_runs(s, tx, Inches(5.15), tw, Inches(0.7),
+        [{'text': sub, 'font': SERIF, 'size': 18, 'color': MUTED, 'italic': True}], line=1.35)
+
+def s_screenshot(img, head_lead, head_accent, sub):
+    s = add_slide(); add_bg(s, CREAM)
+    eyebrow(s, 'In their words')
+    add_paragraphs(s, Inches(0.9), Inches(1.55), Inches(5.2), Inches(2.6), [
+        {'runs': [{'text': head_lead + ' ', 'font': SERIF, 'size': 34, 'color': NAVY, 'bold': True},
+                  {'text': head_accent, 'font': SERIF, 'size': 34, 'color': CORAL, 'bold': True, 'italic': True}],
+         'line': 1.14}])
+    add_paragraphs(s, Inches(0.9), Inches(4.35), Inches(4.95), Inches(2.4), [
+        {'runs': [{'text': sub, 'font': SANS, 'size': 19, 'color': BODY}], 'line': 1.5}])
+    iw_n, ih_n = Image.open(os.path.join(ASSETS, img)).size
+    ar = iw_n / ih_n
+    cardw = Inches(6.0); pad = Inches(0.28)
+    imgw = cardw - pad * 2; imgh = Emu(int(imgw / ar))
+    cardh = Emu(int(imgh) + int(pad) * 2)
+    cardx = Inches(6.6); cy = Emu(int((SH - cardh) / 2))
+    add_round_rect(s, cardx, cy, cardw, cardh, WHITE, radius_pct=0.04, line_color=CREAM_2, line_w=1.0)
+    add_picture_cover(s, os.path.join(ASSETS, img), cardx + pad, cy + pad, imgw, imgh)
 
 def s_results_montage():
     s = add_slide(); add_bg(s, NAVY)
     eyebrow(s, 'Real women, real results', color=CORAL_SOFT)
-    add_rect(s, Inches(0.9), Inches(1.32), Inches(1.6), Inches(0.055), CORAL)
     add_paragraphs(s, Inches(0.9), Inches(1.5), Inches(11.4), Inches(1.2), [
         {'runs': [{'text': 'The transformations speak for ', 'font': SERIF, 'size': 36, 'color': WHITE, 'bold': True},
                   {'text': 'themselves', 'font': SERIF, 'size': 36, 'color': CORAL_SOFT, 'bold': True, 'italic': True},
@@ -599,7 +610,16 @@ s_stanford()
 s_stay_stuck()
 s_imagine()
 s_struggling()
-s_jill()
+s_testimonial('jill-before-after.jpg', 'Jill lost', '4 stone', 'In 6 months of 1-2-1 VIP coaching.')
+s_testimonial('carly-before-after.jpg', 'Carly lost', 'one stone', 'In her very first month of VIP.')
+s_testimonial('moira-before-after.jpg', 'Moira:', 'size 14 to a 10', 'A stunning drop in just 5 months.')
+s_testimonial('denise-before-after.jpg', 'Denise lost', 'a stone', 'And reached her happy place in VIP.')
+s_testimonial('sally-before-after.jpg', 'Sally lost', 'a stone', 'In just 2 months of VIP coaching.')
+s_testimonial('sam-before-after.jpg', 'Sam', 'completely transformed', 'A total transformation inside VIP.')
+s_screenshot('vip-testimonial-1.jpg', 'VIP is just', 'different.',
+             "She'd done resets and group coaching for two years. In her first 3 months of VIP, she dropped from a size 16 to a 14.")
+s_screenshot('vip-testimonial-2.jpg', 'Trying on dresses', 'with confidence.',
+             "It's the knowledge VIP has taught her, not just the number on the scales, that she values most.")
 s_results_montage()
 s_included()
 s_investment()
