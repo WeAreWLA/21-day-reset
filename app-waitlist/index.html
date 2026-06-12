@@ -202,13 +202,18 @@ function Hero() {
     if (utm.utm_content)  fd.append('fields[utm_content]',  utm.utm_content);
     fd.append('ml-submit', '1');
     fd.append('anticsrf', 'true');
-    fetch('REPLACE_WITH_MAILERLITE_FORM_ENDPOINT', {
+    fetch('https://assets.mailerlite.com/jsonp/1287540/forms/190062981624629244/subscribe', {
       method: 'POST', body: fd, mode: 'no-cors',
     }).finally(() => {
       if (window.fbq) window.fbq('track', 'Lead', { content_name: 'WLA App Waitlist', content_category: 'optin' });
       if (window.gtag) window.gtag('event', 'generate_lead', { freebie: 'wla_app_waitlist' });
-      setLoading(false);
-      setDone(true);
+      const qs = new URLSearchParams();
+      if (utm.utm_source)   qs.set('utm_source',   utm.utm_source);
+      if (utm.utm_medium)   qs.set('utm_medium',   utm.utm_medium);
+      if (utm.utm_campaign) qs.set('utm_campaign', utm.utm_campaign);
+      if (utm.utm_content)  qs.set('utm_content',  utm.utm_content);
+      const tail = qs.toString();
+      window.location.href = '/app-waitlist/ty/' + (tail ? '?' + tail : '');
     });
   };
 
