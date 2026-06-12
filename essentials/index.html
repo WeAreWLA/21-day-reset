@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anna's Essentials · Shop · The Weight Loss Academy</title>
+<meta name="description" content="Anna's health & wellness essentials and e-books — the products and guides Anna Wallace personally uses and trusts, with exclusive discount codes for the WLA community." />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XSBKM60YTB');</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root { --bg:#F9F7F4; --cream-deep:#E9DFD3; --paper:#FDFBF8; --ink:#003060; --ink-muted:#5B6B82; --body-ink:#333333; --terracotta:#F79F83; --blush-deep:#E87F63; --peach:#F5D9CE; --hairline:#D9CFC3; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--body-ink); font-family:"Alegreya Sans",sans-serif; font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  ::selection { background:var(--peach); }
+  .italic { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--blush-deep); }
+  .wrap { max-width:1160px; margin:0 auto; padding:0 32px; }
+  .eyebrow { text-transform:uppercase; letter-spacing:.18em; font-size:12.5px; font-weight:600; color:var(--blush-deep); }
+  h1,h2,h3 { font-family:"Libre Baskerville",serif; color:var(--ink); font-weight:700; letter-spacing:-0.01em; margin:0; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:"Alegreya Sans",sans-serif; font-weight:600; font-size:15.5px; padding:13px 24px; border-radius:999px; text-decoration:none; transition:transform .15s ease; cursor:pointer; border:none; }
+  .btn-primary { background:var(--ink); color:var(--paper); box-shadow:0 14px 30px -16px rgba(0,48,96,.7); }
+  .btn-blush { background:var(--blush-deep); color:#fff; box-shadow:0 14px 30px -16px rgba(232,127,99,.8); }
+  .btn:hover { transform:translateY(-2px); }
+  .btn-small { padding:11px 20px; font-size:14.5px; }
+
+  nav { max-width:1240px; margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand { font-family:"Libre Baskerville",serif; font-weight:700; font-size:20px; color:var(--ink); white-space:nowrap; }
+  .brand .by { font-style:italic; font-size:12.5px; font-weight:400; color:var(--blush-deep); margin-left:8px; }
+  .nav-links { display:flex; gap:24px; align-items:center; font-size:14.5px; }
+  .nav-links a { color:var(--ink-muted); text-decoration:none; font-weight:500; }
+  .nav-links a:hover { color:var(--ink); }
+
+  /* Hero */
+  .hero { padding:56px 0 36px; }
+  .hero h1 { font-size:clamp(40px,5.2vw,64px); line-height:1.06; max-width:11ch; }
+  .hero p { font-size:19px; max-width:60ch; margin:28px 0 0; }
+
+  section { padding:56px 0; }
+  .sec-head { display:flex; align-items:baseline; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:36px; border-bottom:1px solid var(--hairline); padding-bottom:18px; }
+  .sec-head h2 { font-size:clamp(26px,3vw,38px); }
+  .sec-head .note { font-size:14px; color:var(--ink-muted); }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .card { background:var(--paper); border:1px solid var(--hairline); border-radius:18px; padding:30px 28px; display:flex; flex-direction:column; text-align:center; }
+  .card .media { width:160px; height:160px; border-radius:50%; overflow:hidden; margin:0 auto 22px; background:var(--cream-deep); display:flex; align-items:center; justify-content:center; }
+  .card .media img { width:100%; height:100%; object-fit:cover; }
+  .card h3 { font-size:23px; margin:0 0 12px; }
+  .card p { font-size:15.5px; margin:0 0 16px; flex:1; }
+  .card .code { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--ink); font-size:14.5px; background:var(--peach); border-radius:10px; padding:10px 14px; margin:0 0 18px; }
+  .card .code strong { font-style:normal; letter-spacing:.04em; }
+  .card .btn { align-self:center; }
+
+  /* E-book cards */
+  .ebooks .card { text-align:left; }
+  .ebooks .card .media { width:100%; height:200px; border-radius:12px; margin-bottom:20px; }
+  .ebooks .card .media img { object-fit:cover; }
+  .ebooks .price { font-family:"Libre Baskerville",serif; font-weight:700; font-size:24px; color:var(--ink); margin:0 0 16px; }
+
+  .placeholder { border:1.5px dashed var(--hairline); background:transparent; align-items:center; justify-content:center; color:var(--ink-muted); min-height:280px; }
+  .placeholder .ph-inner { text-align:center; font-size:15px; }
+
+  .final { background:var(--ink); color:var(--paper); text-align:center; margin-top:20px; }
+  .final h2 { color:var(--paper); font-size:clamp(26px,3vw,38px); }
+  .final p { margin:18px auto 26px; max-width:52ch; }
+
+  footer { background:var(--ink); color:var(--paper); padding:48px 0 36px; }
+  footer .wrap { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; align-items:center; }
+  footer .brand { color:var(--paper); } footer .by { color:var(--peach); }
+  footer .f-links { display:flex; gap:22px; flex-wrap:wrap; font-size:14px; }
+  footer a { color:var(--peach); text-decoration:none; } footer a:hover { text-decoration:underline; }
+
+  @media (max-width:960px) { .nav-links { display:none; } .grid { grid-template-columns:1fr 1fr; } }
+  @media (max-width:620px) { body{font-size:17px;} .grid { grid-template-columns:1fr; } .wrap{padding:0 22px;} }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+    <div class="nav-links">
+      <a href="/about">About</a>
+      <a href="/start-here">Start Here</a>
+      <a href="/success-stories">Success Stories</a>
+      <a href="/podcast">Podcast</a>
+      <a href="/essentials" style="color:var(--ink);">Shop</a>
+      <a class="btn btn-primary btn-small" href="/start-here">Start today</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">The shop</span>
+      <h1 style="margin-top:14px;">Anna's <span class="italic">health &amp; wellness</span> essentials.</h1>
+      <p>Every product you'll find here is something I personally use and trust. I only recommend brands I've had a genuinely positive experience with, and I always prioritise high-quality ingredients, minimal processing and, where possible, local producers. This page exists to make your journey simpler — with trusted tools you can rely on.</p>
+    </div>
+  </header>
+
+  <!-- E-books -->
+  <section class="ebooks">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>E-books &amp; guides</h2>
+        <span class="note">Instant download · keep forever</span>
+      </div>
+      <div class="grid">
+
+        <!-- EBOOK TEMPLATE — duplicate per e-book. Replace cover image, title, blurb, price, and checkout link. -->
+        <div class="card">
+          <div class="media"><img src="/assets/anna-portrait.jpg" alt="E-book cover" loading="lazy" /></div>
+          <h3>E-book title</h3>
+          <p>A short description of what's inside this guide and who it's for.</p>
+          <div class="price">£—</div>
+          <a class="btn btn-blush" href="#">Buy &amp; download</a>
+        </div>
+
+        <div class="card placeholder"><div class="ph-inner">+ Add e-book<br /><span style="font-size:13px;">cover · title · price · link</span></div></div>
+        <div class="card placeholder"><div class="ph-inner">+ Add e-book<br /><span style="font-size:13px;">cover · title · price · link</span></div></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Health &amp; wellness</h2>
+        <span class="note">Anna's personal picks · exclusive WLA codes</span>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <div class="media"><img src="/assets/anna-portrait.jpg" alt="Symprove" loading="lazy" /></div>
+          <h3>Symprove</h3>
+          <p>A unique water-based live bacteria food supplement that's been part of my morning routine for over 2 years.</p>
+          <div class="code">Save 50% off your first 3 months — code <strong>WELLBEING50</strong></div>
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Shop Symprove</a>
+        </div>
+
+        <div class="card">
+          <div class="media"><img src="/assets/anna-portrait.jpg" alt="Wild" loading="lazy" /></div>
+          <h3>Wild</h3>
+          <p>Natural deodorant, body wash and lip balms — no parabens, incredible protection and plastic-free refills.</p>
+          <div class="code">33% off at checkout — code <strong>ANNAWALLACE</strong></div>
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Shop Wild</a>
+        </div>
+
+        <div class="card placeholder"><div class="ph-inner">+ Add product<br /><span style="font-size:13px;">image · name · blurb · code · link</span></div></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Final -->
+  <section class="final">
+    <div class="wrap">
+      <h2>Looking for where to begin?</h2>
+      <p>The essentials support the journey — but the journey itself starts with the right program for you.</p>
+      <a class="btn btn-blush" href="/start-here">Find your starting point</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+      <div class="f-links">
+        <a href="/">Home</a>
+        <a href="/21-day-reset">21 Day Reset</a>
+        <a href="/summer-challenge">12 Week Program</a>
+        <a href="/vip">VIP</a>
+        <a href="/success-stories">Success Stories</a>
+        <a href="mailto:support@theweightloss-academy.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

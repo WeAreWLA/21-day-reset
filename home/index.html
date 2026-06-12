@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Weight Loss Academy · by Anna Wallace</title>
-<meta name="description" content="Weight loss that finally works with your life — not against it. Real food, no restriction, and a method built for women navigating their 40s, 50s and menopause. From the Weight Loss Academy, led by Anna Wallace." />
+<title>The Weight Loss Academy · Simple, Science-Backed Weight Loss for Women</title>
+<meta name="description" content="Simple, flexible, science-backed weight loss for women. Find your confidence, energy and freedom with food for life. Led by Anna Wallace, BSc, Registered Associate Nutritionist — trusted by 50,000 women worldwide." />
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -14,11 +14,9 @@
   gtag('js', new Date());
   gtag('config', 'G-XSBKM60YTB');
 </script>
-
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
-
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -32,9 +30,7 @@ fbq('init', '410999599864541');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1" /></noscript>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,229 +38,179 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
 
 <style>
   :root {
-    /* WLA brand palette — shared with all funnel pages */
-    --bg: #F9F7F4;          /* Cream White */
-    --cream-deep: #E9DFD3;  /* Warm Beige */
-    --paper: #FDFBF8;       /* Near-white paper */
-    --ink: #003060;         /* Deep Navy */
-    --ink-muted: #5B6B82;   /* Navy-grey supporting text */
-    --body-ink: #333333;    /* Grey Black paragraphs */
-    --terracotta: #F79F83;  /* Soft Blush accent */
-    --blush-deep: #E87F63;  /* Stronger blush for CTAs */
-    --peach: #F5D9CE;       /* Lighter blush tint */
-    --hairline: #D9CFC3;    /* Beige hairline */
+    --bg: #F9F7F4; --cream-deep: #E9DFD3; --paper: #FDFBF8;
+    --ink: #003060; --ink-muted: #5B6B82; --body-ink: #333333;
+    --terracotta: #F79F83; --blush-deep: #E87F63; --peach: #F5D9CE; --hairline: #D9CFC3;
   }
-
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    margin: 0; padding: 0;
-    background: var(--bg);
-    color: var(--body-ink);
-    font-family: "Alegreya Sans", sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { margin:0; padding:0; background:var(--bg); color:var(--body-ink); font-family:"Alegreya Sans",sans-serif; font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; }
   a { color: inherit; }
   ::selection { background: var(--peach); }
+  .serif { font-family:"Libre Baskerville",serif; }
+  .italic { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--blush-deep); }
+  .wrap { max-width:1160px; margin:0 auto; padding:0 32px; }
+  .eyebrow { font-family:"Alegreya Sans",sans-serif; text-transform:uppercase; letter-spacing:.18em; font-size:12.5px; font-weight:600; color:var(--blush-deep); }
+  h1,h2,h3 { font-family:"Libre Baskerville",serif; color:var(--ink); font-weight:700; letter-spacing:-0.01em; margin:0; }
 
-  .serif { font-family: "Libre Baskerville", serif; }
-  .italic { font-family: "Libre Baskerville", serif; font-style: italic; color: var(--blush-deep); }
-  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
-  .eyebrow {
-    font-family: "Alegreya Sans", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--blush-deep);
-  }
-  h1, h2, h3 { font-family: "Libre Baskerville", serif; color: var(--ink); font-weight: 700; letter-spacing: -0.01em; margin: 0; }
-
-  /* ---------- Announcement bar ---------- */
+  /* Announcement bar */
   @keyframes banner-shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
   @keyframes dot-pulse { 0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(245,217,206,.7)} 50%{transform:scale(1.25);box-shadow:0 0 0 8px rgba(245,217,206,0)} }
-  .announcement-bar {
-    background: linear-gradient(90deg,#003060 0%,#0A3B6E 25%,#E87F63 50%,#0A3B6E 75%,#003060 100%);
-    background-size: 260% 100%;
-    animation: banner-shimmer 14s ease-in-out infinite;
-    color: var(--paper);
-    text-align: center;
-    padding: 11px 24px;
-    font-family: "Libre Baskerville", serif;
-    font-size: 13.5px;
-    letter-spacing: 0.03em;
-    display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
-  }
+  .announcement-bar { background:linear-gradient(90deg,#003060 0%,#0A3B6E 25%,#E87F63 50%,#0A3B6E 75%,#003060 100%); background-size:260% 100%; animation:banner-shimmer 14s ease-in-out infinite; color:var(--paper); text-align:center; padding:11px 24px; font-family:"Libre Baskerville",serif; font-size:13.5px; letter-spacing:.03em; display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
   .announcement-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--peach); animation:dot-pulse 1.8s ease-out infinite; }
 
-  /* ---------- Nav ---------- */
-  nav {
-    max-width: 1240px; margin: 0 auto;
-    padding: 22px 32px;
-    display: flex; align-items: center; justify-content: space-between;
+  /* Nav */
+  nav { max-width:1240px; margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand { font-family:"Libre Baskerville",serif; font-weight:700; font-size:20px; color:var(--ink); white-space:nowrap; }
+  .brand .by { font-style:italic; font-size:12.5px; font-weight:400; color:var(--blush-deep); margin-left:8px; }
+  .nav-links { display:flex; gap:24px; align-items:center; font-size:14.5px; }
+  .nav-links a { color:var(--ink-muted); text-decoration:none; font-weight:500; }
+  .nav-links a:hover { color:var(--ink); }
+
+  /* Buttons */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:"Alegreya Sans",sans-serif; font-weight:600; font-size:16px; padding:15px 28px; border-radius:999px; text-decoration:none; transition:transform .15s ease,box-shadow .15s ease; cursor:pointer; border:none; }
+  .btn-primary { background:var(--ink); color:var(--paper); box-shadow:0 14px 30px -16px rgba(0,48,96,.7); }
+  .btn-primary:hover { transform:translateY(-2px); }
+  .btn-blush { background:var(--blush-deep); color:#fff; box-shadow:0 14px 30px -16px rgba(232,127,99,.8); }
+  .btn-blush:hover { transform:translateY(-2px); }
+  .btn-ghost { background:transparent; color:var(--ink); border:1.5px solid var(--hairline); padding:14px 26px; }
+  .btn-ghost:hover { border-color:var(--ink); }
+  .btn-small { padding:11px 20px; font-size:14.5px; }
+
+  /* Hero */
+  .hero { padding:34px 0 80px; }
+  .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; }
+  .hero h1 { font-size:clamp(40px,5vw,64px); line-height:1.08; }
+  .hero .lede { font-size:clamp(18px,1.7vw,21px); color:var(--body-ink); margin:24px 0 0; max-width:30em; }
+  .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-top:28px; }
+  .hero-media { position:relative; }
+  .hero-media img { width:100%; border-radius:18px; display:block; box-shadow:0 40px 80px -40px rgba(0,48,96,.4); }
+  .chip { position:absolute; background:var(--paper); border:1px solid var(--hairline); border-radius:14px; padding:14px 18px; box-shadow:0 20px 44px -24px rgba(0,48,96,.35); font-size:14px; max-width:230px; line-height:1.4; }
+  .chip.tl { top:22px; left:-22px; } .chip.br { bottom:26px; right:-22px; }
+  .chip .who { display:block; margin-top:6px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--blush-deep); font-weight:600; }
+  .chip-quote { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--ink); }
+  .stats { display:flex; gap:48px; margin-top:40px; flex-wrap:wrap; }
+  .stat .num { font-family:"Libre Baskerville",serif; font-weight:700; font-size:34px; color:var(--ink); line-height:1; }
+  .stat .lab { font-size:13.5px; color:var(--ink-muted); margin-top:6px; }
+
+  /* Sections */
+  section { padding:92px 0; }
+  .section-head { text-align:center; max-width:780px; margin:0 auto 54px; }
+  .section-head h2 { font-size:clamp(30px,3.4vw,46px); line-height:1.15; margin-top:14px; }
+  .section-head p { font-size:18.5px; color:var(--body-ink); margin-top:18px; }
+
+  /* Trusted band */
+  .trusted { padding:64px 0 0; text-align:center; }
+  .trusted h2 { font-size:clamp(24px,2.6vw,34px); }
+  .trusted-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:36px; }
+  .trusted-grid img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:14px; display:block; }
+
+  /* Mission band */
+  .mission { background:var(--cream-deep); }
+  .mission .wrap { max-width:880px; text-align:center; }
+  .mission p { font-family:"Libre Baskerville",serif; font-size:clamp(22px,2.6vw,32px); line-height:1.5; color:var(--ink); }
+
+  /* Paths */
+  .paths-section { background:var(--paper); }
+  .paths { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; }
+  .path { display:flex; flex-direction:column; background:var(--bg); border:1px solid var(--hairline); border-radius:18px; padding:38px 30px; position:relative; }
+  .path.feature { border-color:var(--blush-deep); box-shadow:0 30px 60px -36px rgba(232,127,99,.5); }
+  .path .flag { position:absolute; top:-13px; left:30px; background:var(--blush-deep); color:#fff; font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:6px 14px; border-radius:999px; }
+  .path .step { font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--blush-deep); font-weight:600; }
+  .path h3 { font-size:25px; margin:10px 0 4px; }
+  .path .for { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--ink-muted); font-size:15.5px; margin-bottom:20px; line-height:1.4; }
+  .path ul { list-style:none; padding:0; margin:0 0 26px; display:flex; flex-direction:column; gap:11px; }
+  .path li { display:flex; gap:10px; font-size:15.5px; line-height:1.45; }
+  .path li::before { content:"✓"; color:var(--blush-deep); font-weight:700; flex-shrink:0; }
+  .path .outcome { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--ink); font-size:15px; margin:0 0 22px; padding-top:16px; border-top:1px solid var(--hairline); }
+  .path .btn { margin-top:auto; width:100%; }
+
+  /* About */
+  .about-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:center; }
+  .about-media { position:relative; }
+  .about-media img { width:100%; border-radius:18px; display:block; box-shadow:0 40px 80px -44px rgba(0,48,96,.4); }
+  .about-sticker { position:absolute; bottom:-18px; left:-18px; background:var(--paper); border:1px solid var(--hairline); border-radius:14px; padding:14px 18px; font-size:13.5px; line-height:1.45; box-shadow:0 20px 44px -24px rgba(0,48,96,.3); }
+  .about-sticker strong { color:var(--ink); font-family:"Libre Baskerville",serif; }
+  .about h2 { font-size:clamp(28px,3.2vw,42px); line-height:1.18; }
+  .about p { font-size:17px; margin:16px 0 0; }
+
+  /* Approach */
+  .approach { background:var(--cream-deep); }
+  .approach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .pillar { background:var(--paper); border:1px solid var(--hairline); border-radius:16px; padding:34px 30px; }
+  .pillar .ico { font-size:26px; } .pillar h3 { font-size:21px; margin:16px 0 10px; } .pillar p { font-size:16px; margin:0; }
+  .pillar .happy { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--blush-deep); }
+
+  /* Results */
+  .results { background:var(--ink); color:var(--paper); }
+  .results .section-head h2 { color:var(--paper); } .results .eyebrow { color:var(--peach); }
+  .testimonials { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .tcard { background:var(--bg); color:var(--body-ink); border-radius:14px; padding:30px; display:flex; flex-direction:column; gap:16px; }
+  .tcard .qmark { font-family:"Libre Baskerville",serif; font-size:40px; line-height:.6; color:var(--terracotta); }
+  .tcard .quote { font-family:"Libre Baskerville",serif; font-style:italic; font-size:16.5px; line-height:1.5; flex:1; }
+  .tcard .who { display:flex; align-items:center; gap:12px; padding-top:14px; border-top:1px solid var(--hairline); }
+  .tcard .avatar { width:38px; height:38px; border-radius:50%; background:var(--terracotta); color:var(--bg); display:flex; align-items:center; justify-content:center; font-family:"Libre Baskerville",serif; font-weight:700; flex-shrink:0; }
+  .tcard .name { font-family:"Libre Baskerville",serif; font-weight:700; font-size:16px; } .tcard .res { font-size:12.5px; color:var(--blush-deep); }
+
+  /* Feature bands (shop + podcast) */
+  .band { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+  .band.alt { background:var(--cream-deep); }
+  .band img { width:100%; border-radius:18px; display:block; box-shadow:0 30px 60px -40px rgba(0,48,96,.4); }
+  .band h2 { font-size:clamp(28px,3.2vw,40px); line-height:1.18; }
+  .band p { font-size:17.5px; margin:18px 0 26px; }
+
+  /* Contact */
+  .contact { background:var(--paper); }
+  .contact-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:start; }
+  .contact h2 { font-size:clamp(28px,3.2vw,42px); }
+  .contact .detail { margin-top:18px; font-size:16px; color:var(--body-ink); }
+  .contact .detail a { color:var(--blush-deep); font-weight:600; text-decoration:none; }
+  .form { background:var(--bg); border:1px solid var(--hairline); border-radius:18px; padding:32px; }
+  .form .row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form label { display:block; font-size:13px; font-weight:600; color:var(--ink); margin:0 0 6px; letter-spacing:.02em; }
+  .form input, .form textarea { width:100%; border:1px solid var(--hairline); border-radius:10px; padding:12px 14px; font-family:"Alegreya Sans",sans-serif; font-size:16px; background:var(--paper); margin-bottom:16px; }
+  .form input:focus, .form textarea:focus { outline:none; border-color:var(--blush-deep); }
+  .form textarea { min-height:120px; resize:vertical; }
+
+  /* Final CTA */
+  .final { background:linear-gradient(160deg,var(--peach) 0%,var(--bg) 100%); text-align:center; }
+  .final .wrap { max-width:720px; } .final h2 { font-size:clamp(30px,3.6vw,46px); line-height:1.15; } .final p { font-size:19px; margin:20px auto 30px; }
+
+  /* Footer */
+  footer { background:var(--ink); color:var(--paper); padding:56px 0 40px; }
+  footer .wrap { display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; align-items:flex-start; }
+  footer .brand { color:var(--paper); } footer .by { color:var(--peach); }
+  footer .f-links { display:flex; gap:24px; flex-wrap:wrap; font-size:14.5px; }
+  footer a { color:var(--peach); text-decoration:none; } footer a:hover { text-decoration:underline; }
+  footer .copy { width:100%; border-top:1px solid rgba(255,255,255,.12); margin-top:36px; padding-top:24px; font-size:13px; color:rgba(255,255,255,.6); }
+
+  @media (max-width:960px) {
+    .nav-links { display:none; }
+    .hero-grid, .about-grid, .band, .contact-grid { grid-template-columns:1fr; gap:40px; }
+    .hero-media, .band img { order:-1; }
+    .chip.tl { left:10px; } .chip.br { right:10px; }
+    .paths, .approach-grid, .testimonials, .trusted-grid { grid-template-columns:1fr; }
+    .trusted-grid { grid-template-columns:repeat(2,1fr); }
+    .about-media { max-width:420px; margin:0 auto; }
   }
-  .brand { font-family: "Libre Baskerville", serif; font-weight: 700; font-size: 21px; color: var(--ink); }
-  .brand .by { font-style: italic; font-size: 13px; font-weight: 400; color: var(--blush-deep); margin-left: 8px; }
-  .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14.5px; }
-  .nav-links a { color: var(--ink-muted); text-decoration: none; font-weight: 500; }
-  .nav-links a:hover { color: var(--ink); }
-
-  /* ---------- Buttons ---------- */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: "Alegreya Sans", sans-serif; font-weight: 600; font-size: 16px;
-    padding: 15px 28px; border-radius: 999px; text-decoration: none;
-    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-    cursor: pointer; border: none;
-  }
-  .btn-primary { background: var(--ink); color: var(--paper); box-shadow: 0 14px 30px -16px rgba(0,48,96,.7); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -16px rgba(0,48,96,.8); }
-  .btn-blush { background: var(--blush-deep); color: #fff; box-shadow: 0 14px 30px -16px rgba(232,127,99,.8); }
-  .btn-blush:hover { transform: translateY(-2px); }
-  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--hairline); padding: 14px 26px; }
-  .btn-ghost:hover { border-color: var(--ink); }
-  .btn-small { padding: 11px 20px; font-size: 14.5px; }
-
-  /* ---------- Hero ---------- */
-  .hero { padding: 30px 0 90px; }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
-  .hero h1 { font-size: clamp(38px, 4.6vw, 60px); line-height: 1.1; }
-  .hero .lede { font-size: clamp(18px, 1.7vw, 21px); color: var(--body-ink); margin: 24px 0 8px; max-width: 30em; }
-  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
-  .hero-media { position: relative; }
-  .hero-media img { width: 100%; border-radius: 18px; display: block; box-shadow: 0 40px 80px -40px rgba(0,48,96,.4); }
-  .chip {
-    position: absolute; background: var(--paper); border: 1px solid var(--hairline);
-    border-radius: 14px; padding: 14px 18px; box-shadow: 0 20px 44px -24px rgba(0,48,96,.35);
-    font-size: 14px; max-width: 240px; line-height: 1.4;
-  }
-  .chip.tl { top: 22px; left: -22px; }
-  .chip.br { bottom: 26px; right: -22px; }
-  .chip .who { display: block; margin-top: 6px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blush-deep); font-weight: 600; }
-  .chip-quote { font-family: "Libre Baskerville", serif; font-style: italic; color: var(--ink); }
-
-  /* ---------- Stats ---------- */
-  .stats { display: flex; gap: 48px; margin-top: 40px; flex-wrap: wrap; }
-  .stat .num { font-family: "Libre Baskerville", serif; font-weight: 700; font-size: 34px; color: var(--ink); line-height: 1; }
-  .stat .lab { font-size: 13.5px; color: var(--ink-muted); margin-top: 6px; }
-
-  /* ---------- Generic section ---------- */
-  section { padding: 96px 0; }
-  .section-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
-  .section-head h2 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.15; margin-top: 16px; }
-  .section-head p { font-size: 18.5px; color: var(--body-ink); margin-top: 18px; }
-
-  /* ---------- Mission band ---------- */
-  .mission { background: var(--cream-deep); }
-  .mission .wrap { max-width: 860px; text-align: center; }
-  .mission p { font-family: "Libre Baskerville", serif; font-size: clamp(22px, 2.6vw, 32px); line-height: 1.5; color: var(--ink); }
-
-  /* ---------- Approach (principles) ---------- */
-  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .principle { background: var(--paper); border: 1px solid var(--hairline); border-radius: 16px; padding: 34px 30px; }
-  .principle .ico { font-size: 26px; }
-  .principle h3 { font-size: 21px; margin: 16px 0 10px; }
-  .principle p { font-size: 16px; color: var(--body-ink); margin: 0; }
-
-  /* ---------- Paths (the 3 offers) ---------- */
-  .paths-section { background: var(--paper); }
-  .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
-  .path {
-    display: flex; flex-direction: column;
-    background: var(--bg); border: 1px solid var(--hairline); border-radius: 18px;
-    padding: 36px 30px; position: relative;
-  }
-  .path.feature { border-color: var(--blush-deep); box-shadow: 0 30px 60px -36px rgba(232,127,99,.5); }
-  .path .flag { position: absolute; top: -13px; left: 30px; background: var(--blush-deep); color:#fff; font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; }
-  .path .step { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blush-deep); font-weight: 600; }
-  .path h3 { font-size: 25px; margin: 10px 0 4px; }
-  .path .for { font-family: "Libre Baskerville", serif; font-style: italic; color: var(--ink-muted); font-size: 15.5px; margin-bottom: 18px; }
-  .path .price { font-family: "Libre Baskerville", serif; font-weight: 700; font-size: 30px; color: var(--ink); }
-  .path .price .was { font-size: 18px; color: var(--ink-muted); text-decoration: line-through; font-weight: 400; margin-left: 8px; }
-  .path .price .note { display: block; font-family: "Alegreya Sans", sans-serif; font-style: normal; font-size: 13px; color: var(--ink-muted); font-weight: 400; margin-top: 4px; }
-  .path ul { list-style: none; padding: 0; margin: 20px 0 26px; display: flex; flex-direction: column; gap: 11px; }
-  .path li { display: flex; gap: 10px; font-size: 15.5px; line-height: 1.45; }
-  .path li::before { content: "✓"; color: var(--blush-deep); font-weight: 700; flex-shrink: 0; }
-  .path .btn { margin-top: auto; width: 100%; }
-
-  /* ---------- Results ---------- */
-  .results { background: var(--ink); color: var(--paper); }
-  .results .section-head h2, .results .eyebrow { color: var(--paper); }
-  .results .eyebrow { color: var(--peach); }
-  .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  .tcard { background: var(--bg); color: var(--body-ink); border-radius: 14px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
-  .tcard .qmark { font-family: "Libre Baskerville", serif; font-size: 40px; line-height: 0.6; color: var(--terracotta); }
-  .tcard .quote { font-family: "Libre Baskerville", serif; font-style: italic; font-size: 16.5px; line-height: 1.5; flex: 1; }
-  .tcard .who { display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--hairline); }
-  .tcard .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--terracotta); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: "Libre Baskerville", serif; font-weight: 700; flex-shrink: 0; }
-  .tcard .name { font-family: "Libre Baskerville", serif; font-weight: 700; font-size: 16px; }
-  .tcard .res { font-size: 12.5px; color: var(--blush-deep); }
-  .ba-cap { font-family: "Libre Baskerville", serif; font-style: italic; font-size: 26px; text-align: center; margin: 70px 0 30px; }
-  .ba-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .ba-grid img { width: 100%; border-radius: 12px; display: block; aspect-ratio: 4/3; object-fit: cover; }
-
-  /* ---------- About ---------- */
-  .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; }
-  .about-media { position: relative; }
-  .about-media img { width: 100%; border-radius: 18px; display: block; box-shadow: 0 40px 80px -44px rgba(0,48,96,.4); }
-  .about-sticker { position: absolute; bottom: -18px; left: -18px; background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 14px 18px; font-size: 13.5px; line-height: 1.45; box-shadow: 0 20px 44px -24px rgba(0,48,96,.3); }
-  .about-sticker strong { color: var(--ink); font-family: "Libre Baskerville", serif; }
-  .about h2 { font-size: clamp(28px, 3.2vw, 42px); line-height: 1.18; }
-  .about p { font-size: 17.5px; margin: 18px 0 0; }
-
-  /* ---------- Final CTA ---------- */
-  .final { background: linear-gradient(160deg, var(--peach) 0%, var(--bg) 100%); text-align: center; }
-  .final .wrap { max-width: 720px; }
-  .final h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.15; }
-  .final p { font-size: 19px; margin: 20px auto 30px; }
-
-  /* ---------- Footer ---------- */
-  footer { background: var(--ink); color: var(--paper); padding: 56px 0 40px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
-  footer .brand { color: var(--paper); }
-  footer .by { color: var(--peach); }
-  footer .f-links { display: flex; gap: 26px; flex-wrap: wrap; font-size: 14.5px; }
-  footer a { color: var(--peach); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-  footer .copy { width: 100%; border-top: 1px solid rgba(255,255,255,.12); margin-top: 36px; padding-top: 24px; font-size: 13px; color: rgba(255,255,255,.6); }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 960px) {
-    .nav-links { display: none; }
-    .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-media { order: -1; }
-    .chip.tl { left: 10px; } .chip.br { right: 10px; }
-    .principles, .paths, .testimonials { grid-template-columns: 1fr; }
-    .ba-grid { grid-template-columns: repeat(2, 1fr); }
-    .about-media { max-width: 420px; margin: 0 auto; }
-  }
-  @media (max-width: 560px) {
-    body { font-size: 17px; }
-    section { padding: 64px 0; }
-    .wrap { padding: 0 22px; }
-    .stats { gap: 28px; }
-    .ba-grid { grid-template-columns: repeat(2, 1fr); }
-  }
+  @media (max-width:560px) { body{font-size:17px;} section{padding:60px 0;} .wrap{padding:0 22px;} .stats{gap:28px;} .form .row{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
 
-  <!-- Announcement bar -->
   <div class="announcement-bar">
-    <span style="display:inline-flex;align-items:center;gap:10px;"><span class="announcement-dot"></span> Real food. Real life. Real results — for women 45+</span>
+    <span style="display:inline-flex;align-items:center;gap:10px;"><span class="announcement-dot"></span> Trusted by 50,000 women worldwide · Real food, real life, real results</span>
   </div>
 
-  <!-- Nav -->
   <nav>
-    <div class="brand">Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+    <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
     <div class="nav-links">
-      <a href="#approach">The approach</a>
-      <a href="#start">Where to begin</a>
-      <a href="#results">Results</a>
-      <a href="#about">About Anna</a>
-      <a class="btn btn-primary btn-small" href="#start">Find your starting point</a>
+      <a href="/about">About</a>
+      <a href="/start-here">Start Here</a>
+      <a href="/success-stories">Success Stories</a>
+      <a href="/podcast">Podcast</a>
+      <a href="/essentials">Shop</a>
+      <a class="btn btn-primary btn-small" href="#start">Start today</a>
     </div>
   </nav>
 
@@ -273,67 +219,46 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow">The Weight Loss &amp; Lifestyle Academy</span>
-          <h1 style="margin-top:18px;">Weight loss that finally works <span class="italic">with your life</span> — not against it.</h1>
-          <p class="lede">Real food. No 1,200-calorie plans. No starting over every Monday. Just a simple, supported method built for women navigating their 40s, 50s and menopause — from someone who's been there.</p>
+          <span class="eyebrow">The Weight Loss Academy</span>
+          <h1 style="margin-top:18px;">Simple, flexible, <span class="italic">science-backed</span> weight loss for women.</h1>
+          <p class="lede">Find your confidence, energy and freedom with food for life. No restriction, no punishing workouts, no starting over every Monday — just a method that works for the woman you are now.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#start">Find your starting point</a>
-            <a class="btn btn-ghost" href="#about">Read Anna's story</a>
+            <a class="btn btn-ghost" href="#about">Meet Anna</a>
           </div>
           <div class="stats">
             <div class="stat"><div class="num">50,000+</div><div class="lab">women supported</div></div>
-            <div class="stat"><div class="num">10 yrs</div><div class="lab">helping women 45+</div></div>
+            <div class="stat"><div class="num">10 yrs</div><div class="lab">coaching women 45+</div></div>
             <div class="stat"><div class="num">4.9★</div><div class="lab">average rating</div></div>
           </div>
         </div>
         <div class="hero-media">
-          <img src="/assets/anna-hero.jpg" alt="Anna Wallace, founder of the Weight Loss Academy" />
-          <div class="chip tl">
-            <span class="chip-quote">Led by Anna Wallace</span>
-            <span class="who">BSc Food &amp; Nutrition · Reg. Nutritionist</span>
-          </div>
-          <div class="chip br">
-            <span class="chip-quote">"My menopause symptoms improved."</span>
-            <span class="who">Ruth, 54</span>
-          </div>
+          <img src="/assets/anna-hero.jpg" alt="Anna Wallace, founder of The Weight Loss Academy" />
+          <div class="chip tl"><span class="chip-quote">Led by Anna Wallace</span><span class="who">BSc · Reg. Associate Nutritionist</span></div>
+          <div class="chip br"><span class="chip-quote">"My menopause symptoms improved."</span><span class="who">Ruth, 54</span></div>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- Trusted -->
+  <section class="trusted">
+    <div class="wrap">
+      <h2 class="serif">Trusted by <span class="italic">50,000 women</span> worldwide</h2>
+      <div class="trusted-grid">
+        <img src="/assets/vicky-before-after.png" alt="Member transformation" loading="lazy" />
+        <img src="/assets/laura-before-after.png" alt="Member transformation" loading="lazy" />
+        <img src="/assets/barbara-before-after.png" alt="Member transformation" loading="lazy" />
+        <img src="/assets/member-10-before-after.png" alt="Member transformation" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   <!-- Mission band -->
   <section class="mission">
     <div class="wrap">
       <span class="eyebrow">You don't need another diet</span>
-      <p>You used to know how your body worked. And then, somewhere around 48, it changed. <span class="italic">This isn't about willpower.</span> It's about finally having an approach that fits the woman you are now.</p>
-    </div>
-  </section>
-
-  <!-- Approach -->
-  <section id="approach">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">The approach</span>
-        <h2>A different way of doing this — and the reason it lasts.</h2>
-        <p>Everything we do is built on the same simple belief: you can lose weight while eating real food, living your real life, and feeling like yourself again.</p>
-      </div>
-      <div class="principles">
-        <div class="principle">
-          <div class="ico">🍽️</div>
-          <h3>Real food, no restriction</h3>
-          <p>No cutting everything out. No miserable plans you can't keep. Just a structure that works around real meals and real life.</p>
-        </div>
-        <div class="principle">
-          <div class="ico">🌿</div>
-          <h3>Built for your body now</h3>
-          <p>Designed for the way metabolism, hormones and appetite shift through peri-menopause and beyond — not generic dieting advice.</p>
-        </div>
-        <div class="principle">
-          <div class="ico">🤝</div>
-          <h3>Supported every step</h3>
-          <p>Live coaching with Anna, a community of women just like you, and answers when you need them. You're never doing this alone.</p>
-        </div>
-      </div>
+      <p>You used to know how your body worked. And then, somewhere around 48, it changed. <span class="italic">This isn't about willpower.</span> It's about finally having an approach that fits your life.</p>
     </div>
   </section>
 
@@ -342,69 +267,103 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Where to begin</span>
-        <h2>Find the starting point that fits you.</h2>
-        <p>Wherever you are right now, there's a way in. Start small, go deeper, or get Anna in your corner one-to-one.</p>
+        <h2>Find your WLA journey.</h2>
+        <p>Wherever you are right now, there's a way in. Start small, go deeper for lasting change, or get Anna in your corner one-to-one.</p>
       </div>
       <div class="paths">
 
-        <!-- 21 Day Reset -->
         <div class="path">
           <span class="step">Start here</span>
-          <h3>The 21 Day Reset</h3>
-          <div class="for">For the woman ready to break the Monday-restart cycle.</div>
-          <div class="price">£17 <span class="was">£97</span><span class="note">early-bird · everything included</span></div>
+          <h3>The 21 Day Fat Loss Reset</h3>
+          <div class="for">Perfect if this is your first program, or you need a fresh start.</div>
           <ul>
-            <li>Simple meal guide &amp; food swaps</li>
-            <li>Daily coaching &amp; live Zoom with Anna</li>
-            <li>Workbook to make it stick</li>
-            <li>A clear, doable 21-day structure</li>
+            <li>Done-for-you weekly meal plans for 21 days</li>
+            <li>Craving-reduction strategies</li>
+            <li>Daily support &amp; accountability</li>
+            <li>Weekly support Zoom sessions</li>
+            <li>A gentle but powerful kickstart</li>
           </ul>
+          <p class="outcome">Most women lose 5–14 lbs in 21 days.</p>
           <a class="btn btn-primary" href="/21-day-reset">Explore the Reset</a>
         </div>
 
-        <!-- 12 Week Program -->
         <div class="path feature">
           <span class="flag">Most popular</span>
           <span class="step">Go deeper</span>
           <h3>The 12 Week Program</h3>
-          <div class="for">For real, lasting change — not a quick fix.</div>
-          <div class="price">£37<span class="note">12 weeks of guided coaching</span></div>
+          <div class="for">For long-term results &amp; support — break the yo-yo cycle for good.</div>
           <ul>
-            <li>A full 12-week transformation plan</li>
-            <li>Weekly live coaching with Anna</li>
-            <li>Recipes, swaps &amp; weekly structure</li>
-            <li>A community of women on the journey with you</li>
+            <li>Weekly meal guides for your goals &amp; lifestyle</li>
+            <li>The complete WLA Nutrition Formula</li>
+            <li>Weekly group coaching Zoom check-ins</li>
+            <li>Deep behavioural-change coaching</li>
+            <li>Members hub: 1,000+ recipes &amp; 20+ guides</li>
           </ul>
-          <a class="btn btn-blush" href="/summer-challenge">Explore the Program</a>
+          <p class="outcome">Lose up to 2 stone (or more), sustainably.</p>
+          <a class="btn btn-blush" href="/summer-challenge">Explore the 12 Week Program</a>
         </div>
 
-        <!-- VIP -->
         <div class="path">
           <span class="step">Go all in</span>
           <h3>VIP Strategy Intensive</h3>
-          <div class="for">For the woman who wants Anna in her corner, one-to-one.</div>
-          <div class="price">£197<span class="note">personal strategy session</span></div>
+          <div class="for">For the woman who wants a strategy built around her, one-to-one.</div>
           <ul>
-            <li>A dedicated session built around you</li>
+            <li>A 1:1 WLA Nutrition &amp; Strategy session</li>
             <li>A personalised plan for your body &amp; life</li>
-            <li>Priority support to keep you on track</li>
-            <li>The fastest path to feeling in control</li>
+            <li>Lifestyle, routine &amp; consistency audit</li>
+            <li>Strategy for weekends, holidays &amp; busy days</li>
+            <li>Clear action steps &amp; priority support</li>
           </ul>
-          <a class="btn btn-primary" href="mailto:support@theweightloss-academy.com?subject=VIP%20Strategy%20Intensive%20enquiry">Enquire about VIP</a>
+          <p class="outcome">The fastest path to feeling in control.</p>
+          <a class="btn btn-primary" href="/vip">Discover VIP</a>
         </div>
 
       </div>
-      <p style="text-align:center;margin-top:34px;font-size:16px;color:var(--ink-muted);">Not sure which is right for you? <a href="mailto:support@theweightloss-academy.com?subject=Where%20should%20I%20start%3F" style="color:var(--blush-deep);font-weight:600;">Send us a message</a> — we'll help you choose.</p>
+      <p style="text-align:center;margin-top:34px;font-size:16px;color:var(--ink-muted);">Not sure which is right for you? <a href="/start-here" style="color:var(--blush-deep);font-weight:600;">Take the 60-second Start Here guide</a> — we'll help you choose.</p>
+    </div>
+  </section>
+
+  <!-- About Anna -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-media">
+          <img src="/assets/anna-portrait.jpg" alt="Anna Wallace" loading="lazy" />
+          <div class="about-sticker"><strong>BSc Food &amp; Nutrition</strong><br />Reg. Associate Nutritionist · ANutr</div>
+        </div>
+        <div>
+          <span class="eyebrow">Meet your nutritionist &amp; behavioural change coach</span>
+          <h2 style="margin-top:16px;">Hi, I'm Anna — and I've been the woman <span class="italic">starting over every Monday.</span></h2>
+          <p>I used to be the biggest yo-yo dieter, jumping from one plan to the next, losing weight only to gain it back. I tried it all — laxatives, the cabbage soup diet, even that dreaded Special K challenge. I felt completely stuck.</p>
+          <p>That's what led me to study Food and Nutrition at university — a personal quest to finally understand how to fuel my body properly. What I discovered changed everything. I lost the weight, and I've never gained it back.</p>
+          <p>Today I'm a degree-qualified Registered Associate Nutritionist and have coached women for over 10 years, helping more than 50,000 break free from yo-yo dieting and feel amazing in their skin.</p>
+          <p class="italic">Life is for living, not being a slave to miserable diets. Change is possible.</p>
+          <div style="margin-top:26px;"><a class="btn btn-ghost" href="/about">Read Anna's full story</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The WLA Approach -->
+  <section class="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The WLA approach</span>
+        <h2>Everything we do supports lasting change.</h2>
+        <p>Three things, working together, to help you reach your <span class="happy">happy place</span> — that space where you feel confident, healthy and energised again.</p>
+      </div>
+      <div class="approach-grid">
+        <div class="pillar"><div class="ico">🥗</div><h3>The WLA Nutrition Formula</h3><p>Easy weight loss with a flexible approach to nutrition and everyday food. No foods excluded — just real results and genuine enjoyment.</p></div>
+        <div class="pillar"><div class="ico">🧠</div><h3>Behavioural change</h3><p>Psychology-backed strategies to break old patterns, handle emotional eating, and build habits that finally stick for good.</p></div>
+        <div class="pillar"><div class="ico">🤝</div><h3>Expert coaching</h3><p>Live coaching and a community of women just like you, so you stay consistent, supported and never alone on the journey.</p></div>
+      </div>
     </div>
   </section>
 
   <!-- Results -->
   <section id="results" class="results">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Real women · real results</span>
-        <h2>50,000 women. <span class="italic" style="color:var(--peach);">One method.</span></h2>
-      </div>
+      <div class="section-head"><span class="eyebrow">Real women · real results</span><h2>Here's what our <span class="italic" style="color:var(--peach);">members say.</span></h2></div>
       <div class="testimonials">
         <div class="tcard"><div class="qmark">“</div><div class="quote">I started a size 20 and am now a 10/12. Not counted a calorie in over a year.</div><div class="who"><div class="avatar">V</div><div><div class="name">Vicky, 56</div><div class="res">Size 20 → 10/12</div></div></div></div>
         <div class="tcard"><div class="qmark">“</div><div class="quote">Since starting I've lost 2 stone. Within 2 weeks my skin cleared up and I felt so different.</div><div class="who"><div class="avatar">L</div><div><div class="name">Laura, 52</div><div class="res">2 stone · skin cleared</div></div></div></div>
@@ -413,36 +372,56 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
         <div class="tcard"><div class="qmark">“</div><div class="quote">I've become more confident in myself and finally I'm at my happy place. It's been an incredible journey.</div><div class="who"><div class="avatar">B</div><div><div class="name">Barbara, 58</div><div class="res">Confident again</div></div></div></div>
         <div class="tcard"><div class="qmark">“</div><div class="quote">My menopause symptoms improved and I finally feel like me again — without giving up the food I love.</div><div class="who"><div class="avatar">R</div><div><div class="name">Ruth, 54</div><div class="res">Feels like herself again</div></div></div></div>
       </div>
-      <div class="ba-cap">Real results from women just like you</div>
-      <div class="ba-grid">
-        <img src="/assets/vicky-before-after.png" alt="Member before and after" loading="lazy" />
-        <img src="/assets/jill-before-after.jpg" alt="Member before and after" loading="lazy" />
-        <img src="/assets/ruth-before-after.jpg" alt="Member before and after" loading="lazy" />
-        <img src="/assets/laura-before-after.png" alt="Member before and after" loading="lazy" />
-        <img src="/assets/barbara-before-after.png" alt="Member before and after" loading="lazy" />
-        <img src="/assets/member-07-before-after.png" alt="Member before and after" loading="lazy" />
-        <img src="/assets/member-10-before-after.png" alt="Member before and after" loading="lazy" />
-        <img src="/assets/member-12-before-after.png" alt="Member before and after" loading="lazy" />
+      <div style="text-align:center;margin-top:44px;"><a class="btn btn-blush" href="/success-stories">See more success stories</a></div>
+    </div>
+  </section>
+
+  <!-- Shop band -->
+  <section>
+    <div class="wrap band">
+      <img src="/assets/anna-portrait.jpg" alt="Anna's health &amp; wellness essentials" loading="lazy" />
+      <div>
+        <span class="eyebrow">Anna's essentials</span>
+        <h2>The health &amp; wellness products I personally use and trust.</h2>
+        <p>Every product on my shelf here is something I genuinely use — chosen for high-quality ingredients, minimal processing and, where possible, local producers. Plus exclusive discount codes for the WLA community.</p>
+        <a class="btn btn-primary" href="/essentials">Browse the shop</a>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="about">
-    <div class="wrap">
-      <div class="about-grid">
-        <div class="about-media">
-          <img src="/assets/anna-portrait.jpg" alt="Anna Wallace" loading="lazy" />
-          <div class="about-sticker"><strong>BSc Food &amp; Nutrition</strong><br />Reg. Associate Nutritionist</div>
-        </div>
-        <div>
-          <span class="eyebrow">About Anna</span>
-          <h2 style="margin-top:16px;">I'm Anna — and I've been the woman <span class="italic">starting over every Monday.</span></h2>
-          <p>I used to try a new diet every week. By evening I'd be bingeing, and by Monday I'd be starting again. Exhausting. Shame-filled. Getting nowhere.</p>
-          <p>So I went back to university. Four years. A degree in Food &amp; Nutrition. I became a Registered Associate Nutritionist and have spent over 10 years helping women get real, lasting results.</p>
-          <p style="font-family:'Libre Baskerville',serif;font-style:italic;color:var(--blush-deep);">50,000 clients later, this is the simplest approach that actually gets results.</p>
-        </div>
+  <!-- Podcast band -->
+  <section>
+    <div class="wrap band alt" style="padding:80px 56px; border-radius:24px;">
+      <div>
+        <span class="eyebrow">We Are Wellbeing podcast</span>
+        <h2>Free, simple steps to lasting weight loss — in your ears.</h2>
+        <p>The We Are Wellbeing podcast shares a simple, sustainable approach to health, nutrition and mindset. Honest, practical tips you can apply straight away to build lasting habits and feel confident in your body.</p>
+        <a class="btn btn-blush" href="/podcast">Listen to the podcast</a>
       </div>
+      <img src="/assets/anna-hero.jpg" alt="We Are Wellbeing podcast with Anna Wallace" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h2 style="margin-top:14px;">We'd love to hear from you.</h2>
+        <p style="margin-top:18px;">Questions about where to start, or want to chat before you join? Send us a message and the team will get right back to you.</p>
+        <div class="detail"><strong>Email</strong><br /><a href="mailto:support@theweightloss-academy.com">support@theweightloss-academy.com</a></div>
+        <div class="detail"><strong>Find us</strong><br />92 Castle Street, Belfast, BT1 1HE, Northern Ireland, UK</div>
+      </div>
+      <form class="form" onsubmit="event.preventDefault(); this.querySelector('.form-msg').style.display='block';">
+        <div class="row">
+          <div><label>First name</label><input type="text" name="first" required /></div>
+          <div><label>Last name</label><input type="text" name="last" /></div>
+        </div>
+        <label>Email</label><input type="email" name="email" required />
+        <label>Message</label><textarea name="message"></textarea>
+        <button class="btn btn-primary" type="submit" style="width:100%;">Send message</button>
+        <p class="form-msg" style="display:none;margin:16px 0 0;color:var(--blush-deep);font-weight:600;">Thank you — we'll be in touch soon.</p>
+      </form>
     </div>
   </section>
 
@@ -450,28 +429,31 @@ src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
   <section class="final">
     <div class="wrap">
       <span class="eyebrow">Your next step</span>
-      <h2 style="margin-top:14px;">You don't need to start over again.</h2>
-      <p>You just need the right place to start. Choose the path that fits where you are today — and let's do this together.</p>
+      <h2 style="margin-top:14px;">Join 50,000+ women feeling lighter, healthier &amp; <span class="italic">more confident.</span></h2>
+      <p>You don't need to start over again. You just need the right place to begin — and we'll be with you every step.</p>
       <a class="btn btn-blush" href="#start">Find your starting point</a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="wrap">
       <div>
-        <div class="brand">Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+        <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
         <p style="font-size:14px;color:rgba(255,255,255,.65);max-width:30em;margin:14px 0 0;">Real food, real life, real results — for women navigating their 40s, 50s and menopause.</p>
       </div>
       <div class="f-links">
+        <a href="/about">About</a>
+        <a href="/start-here">Start Here</a>
         <a href="/21-day-reset">21 Day Reset</a>
         <a href="/summer-challenge">12 Week Program</a>
-        <a href="mailto:support@theweightloss-academy.com?subject=VIP%20Strategy%20Intensive%20enquiry">VIP Intensive</a>
+        <a href="/vip">VIP</a>
+        <a href="/success-stories">Success Stories</a>
+        <a href="/podcast">Podcast</a>
+        <a href="/essentials">Shop</a>
         <a href="https://www.wearewla.com/privacy-policy" target="_blank" rel="noopener">Privacy</a>
-        <a href="https://www.wearewla.com/terms-of-service" target="_blank" rel="noopener">Terms</a>
         <a href="mailto:support@theweightloss-academy.com">Contact</a>
       </div>
-      <div class="copy">© <span id="yr"></span> The Weight Loss &amp; Lifestyle Academy. All rights reserved.</div>
+      <div class="copy">© <span id="yr"></span> The Weight Loss &amp; Lifestyle Academy · 92 Castle Street, Belfast, BT1 1HE, UK. All rights reserved.</div>
     </div>
   </footer>
 
