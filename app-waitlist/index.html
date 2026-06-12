@@ -92,7 +92,9 @@ ml('account', '1287540');
 
   .hero { max-width: 1180px; margin: 0 auto; padding: 24px 28px 56px; display: grid; grid-template-columns: 0.85fr 1fr; gap: 40px; align-items: stretch; }
   .hero-image-wrap { position: relative; border-radius: 20px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25); min-height: 460px; }
-  .hero-image-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero-image-wrap.collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; padding: 8px; }
+  .hero-image-wrap.collage .cell { position: relative; overflow: hidden; border-radius: 12px; background: var(--paper); box-shadow: 0 8px 18px -10px rgba(14,39,70,0.18); }
+  .hero-image-wrap.collage .cell img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 
   .form-card { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 30px 30px 26px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); display: flex; flex-direction: column; }
   .form-card .pill { display: inline-flex; align-self: center; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(46,125,91,0.10); color: var(--ok); font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
@@ -219,8 +221,11 @@ function Hero() {
 
   return (
     <section className="hero" id="optin">
-      <div className="hero-image-wrap">
-        <img src="/assets/anna-sofa.jpg" alt="Anna Wallace, founder of The Weight Loss Academy" loading="eager" />
+      <div className="hero-image-wrap collage">
+        <div className="cell"><img src="/assets/screenshot-1.jpg" alt="WLA App preview" loading="eager" /></div>
+        <div className="cell"><img src="/assets/screenshot-2.jpg" alt="WLA App preview" loading="eager" /></div>
+        <div className="cell"><img src="/assets/screenshot-3.jpg" alt="WLA App preview" loading="eager" /></div>
+        <div className="cell"><img src="/assets/screenshot-2-store.png" alt="WLA App preview" loading="eager" /></div>
       </div>
 
       <div className="form-wrap">
