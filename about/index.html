@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About · The Weight Loss Academy</title>
+<meta name="description" content="Our mission: simple, sustainable weight loss for real women. Meet Anna Wallace and the team behind The Weight Loss Academy." />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XSBKM60YTB');</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F9F7F4; --cream-deep:#E9DFD3; --paper:#FDFBF8; --ink:#003060; --ink-muted:#5B6B82; --body-ink:#333333; --terracotta:#F79F83; --blush-deep:#E87F63; --peach:#F5D9CE; --hairline:#D9CFC3; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--body-ink); font-family:"Alegreya Sans",sans-serif; font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; } ::selection { background:var(--peach); }
+  .italic { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--blush-deep); }
+  .wrap { max-width:1160px; margin:0 auto; padding:0 32px; }
+  .eyebrow { text-transform:uppercase; letter-spacing:.18em; font-size:12.5px; font-weight:600; color:var(--blush-deep); }
+  h1,h2,h3 { font-family:"Libre Baskerville",serif; color:var(--ink); font-weight:700; letter-spacing:-0.01em; margin:0; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:"Alegreya Sans",sans-serif; font-weight:600; font-size:16px; padding:15px 28px; border-radius:999px; text-decoration:none; transition:transform .15s ease; cursor:pointer; border:none; }
+  .btn-primary { background:var(--ink); color:var(--paper); box-shadow:0 14px 30px -16px rgba(0,48,96,.7); }
+  .btn-blush { background:var(--blush-deep); color:#fff; box-shadow:0 14px 30px -16px rgba(232,127,99,.8); }
+  .btn-ghost { background:transparent; color:var(--ink); border:1.5px solid var(--hairline); }
+  .btn:hover { transform:translateY(-2px); }
+  .btn-small { padding:11px 20px; font-size:14.5px; }
+  nav { max-width:1240px; margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand { font-family:"Libre Baskerville",serif; font-weight:700; font-size:20px; color:var(--ink); white-space:nowrap; }
+  .brand .by { font-style:italic; font-size:12.5px; font-weight:400; color:var(--blush-deep); margin-left:8px; }
+  .nav-links { display:flex; gap:24px; align-items:center; font-size:14.5px; }
+  .nav-links a { color:var(--ink-muted); text-decoration:none; font-weight:500; } .nav-links a:hover { color:var(--ink); }
+  section { padding:88px 0; }
+  .section-head { text-align:center; max-width:780px; margin:0 auto 50px; }
+  .section-head h2 { font-size:clamp(28px,3.4vw,44px); line-height:1.15; margin-top:14px; }
+  .section-head p { font-size:18px; margin-top:16px; }
+
+  /* Hero */
+  .hero { padding:40px 0 76px; }
+  .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center; }
+  .hero h1 { font-size:clamp(38px,4.8vw,58px); line-height:1.1; }
+  .hero .lede { font-size:20px; margin:24px 0 30px; max-width:32ch; }
+  .hero-media img { width:100%; border-radius:18px; display:block; box-shadow:0 40px 80px -44px rgba(0,48,96,.4); }
+
+  .statement { background:var(--cream-deep); text-align:center; }
+  .statement .wrap { max-width:900px; }
+  .statement h2 { font-size:clamp(26px,3vw,40px); line-height:1.3; }
+  .statement h2 em { font-style:italic; color:var(--blush-deep); }
+
+  /* Meet Anna */
+  .about-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:center; }
+  .about-media { position:relative; }
+  .about-media img { width:100%; border-radius:18px; display:block; box-shadow:0 40px 80px -44px rgba(0,48,96,.4); }
+  .about-sticker { position:absolute; bottom:-18px; left:-18px; background:var(--paper); border:1px solid var(--hairline); border-radius:14px; padding:14px 18px; font-size:13.5px; line-height:1.45; box-shadow:0 20px 44px -24px rgba(0,48,96,.3); }
+  .about-sticker strong { color:var(--ink); font-family:"Libre Baskerville",serif; }
+  .about h2 { font-size:clamp(26px,3vw,40px); line-height:1.18; }
+  .about p { font-size:17px; margin:16px 0 0; }
+
+  /* Cards */
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .card { background:var(--paper); border:1px solid var(--hairline); border-radius:16px; padding:34px 30px; text-align:center; }
+  .card .ico { font-size:26px; } .card h3 { font-size:22px; margin:14px 0 12px; } .card p { font-size:15.5px; margin:0; }
+
+  /* Team */
+  .team { background:var(--cream-deep); }
+  .team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:760px; margin:0 auto; }
+  .member { background:var(--paper); border:1px solid var(--hairline); border-radius:16px; padding:34px; display:flex; align-items:center; gap:22px; }
+  .member .avatar { width:72px; height:72px; border-radius:50%; background:var(--terracotta); color:var(--bg); display:flex; align-items:center; justify-content:center; font-family:"Libre Baskerville",serif; font-weight:700; font-size:26px; flex-shrink:0; }
+  .member h3 { font-size:21px; } .member .role { font-size:14px; color:var(--blush-deep); margin-top:4px; }
+
+  .final { background:linear-gradient(160deg,var(--peach) 0%,var(--bg) 100%); text-align:center; }
+  .final .wrap { max-width:720px; } .final h2 { font-size:clamp(28px,3.4vw,44px); line-height:1.15; } .final p { font-size:19px; margin:18px auto 28px; }
+
+  footer { background:var(--ink); color:var(--paper); padding:56px 0 40px; }
+  footer .wrap { display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; align-items:flex-start; }
+  footer .brand { color:var(--paper); } footer .by { color:var(--peach); }
+  footer .f-links { display:flex; gap:24px; flex-wrap:wrap; font-size:14.5px; }
+  footer a { color:var(--peach); text-decoration:none; } footer a:hover { text-decoration:underline; }
+  footer .copy { width:100%; border-top:1px solid rgba(255,255,255,.12); margin-top:36px; padding-top:24px; font-size:13px; color:rgba(255,255,255,.6); }
+
+  @media (max-width:960px) { .nav-links { display:none; } .hero-grid, .about-grid { grid-template-columns:1fr; gap:40px; } .hero-media, .about-media { max-width:440px; margin:0 auto; } .cards, .team-grid { grid-template-columns:1fr; } }
+  @media (max-width:560px) { body{font-size:17px;} section{padding:60px 0;} .wrap{padding:0 22px;} }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about" style="color:var(--ink);">About</a>
+      <a href="/start-here">Start Here</a>
+      <a href="/success-stories">Success Stories</a>
+      <a href="/podcast">Podcast</a>
+      <a href="/essentials">Essentials</a>
+      <a class="btn btn-primary btn-small" href="/start-here">Start today</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Our mission</span>
+          <h1 style="margin-top:16px;">Simple, sustainable weight loss for <span class="italic">real women.</span></h1>
+          <p class="lede">Discover our ethos and meet the team behind The Weight Loss Academy.</p>
+          <a class="btn btn-primary" href="/start-here">Start today</a>
+        </div>
+        <div class="hero-media"><img src="/assets/anna-portrait.jpg" alt="The team behind The Weight Loss Academy" /></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="statement">
+    <div class="wrap">
+      <h2>Empowering women to <em>reset</em> their eating habits, <em>shift</em> weight &amp; <em>sustain</em> their results.</h2>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-media">
+          <img src="/assets/anna-hero.jpg" alt="Anna Wallace" loading="lazy" />
+          <div class="about-sticker"><strong>BSc Food &amp; Nutrition</strong><br />Reg. Associate Nutritionist · ANutr</div>
+        </div>
+        <div>
+          <span class="eyebrow">Meet Anna Wallace</span>
+          <h2 style="margin-top:14px;">Founder of The Weight Loss Academy &amp; <span class="italic">Registered Associate Nutritionist.</span></h2>
+          <p>I created the WLA to help women break free from yo-yo dieting and lose weight in a simple, sustainable way, so they can feel confident and in control around food again.</p>
+          <p>After years of struggling with emotional eating, "starting again on Monday" and chasing quick fixes, I made a promise to never diet again, and to learn how to nourish my body instead. That decision led me to study Food &amp; Nutrition at university and become a qualified Nutritionist.</p>
+          <p>I developed our flexible, science-backed approach that has now helped over 50,000 women shift weight easily and sustainably. At the WLA, we don't do restriction, guilt, or low-calorie diets. We focus on simple nutrition, behaviour-change strategies and compassionate support that works with your life, not against it.</p>
+          <p class="italic">I'm passionate about showing women that their bodies aren't the problem. The diets are.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Get to know us</span><h2>The people, the mission, the ethos.</h2></div>
+      <div class="cards">
+        <div class="card"><div class="ico">📖</div><h3>Our story</h3><p>Founded by Anna Wallace, degree-qualified Registered Associate Nutritionist and former yo-yo dieter. The WLA helps women lose weight sustainably, reduce cravings and break free from self-sabotage, blending science, behaviour change and compassion so women feel balanced, confident and in control.</p></div>
+        <div class="card"><div class="ico">🎯</div><h3>Our mission</h3><p>To offer a simple, flexible alternative to restrictive diets. Through the WLA Nutrition Formula we focus on balance, sustainable habits and the freedom to enjoy all foods, in a supportive, judgement-free environment.</p></div>
+        <div class="card"><div class="ico">💛</div><h3>Our ethos</h3><p>We believe in nourishment over deprivation. Our approach pairs wholesome, family-friendly nutrition with behavioural-change tools to reduce emotional eating, build consistency and help women feel energised and confident in their bodies.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">The team</span><h2>Meet the team behind WLA.</h2></div>
+      <div class="team-grid">
+        <div class="member"><div class="avatar">A</div><div><h3>Dr. Audrey Rankin</h3><div class="role">Lead Nutrition Consultant</div></div></div>
+        <div class="member"><div class="avatar">R</div><div><h3>Ruchel Garcia</h3><div class="role">Client Care &amp; Support Specialist</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <span class="eyebrow">Ready when you are</span>
+      <h2 style="margin-top:14px;">Ready to feel confident, energised, and <span class="italic">more like yourself again?</span></h2>
+      <p>Join us and take the first step toward feeling lighter, healthier and more in control.</p>
+      <a class="btn btn-blush" href="/start-here">Start today</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+        <p style="font-size:14px;color:rgba(255,255,255,.65);max-width:30em;margin:14px 0 0;">Real food, real life, real results for women navigating their 40s, 50s and menopause.</p>
+      </div>
+      <div class="f-links">
+        <a href="/">Home</a><a href="/start-here">Start Here</a><a href="/21-day-reset">21 Day Reset</a><a href="/summer-challenge">12 Week Program</a><a href="/vip">VIP</a><a href="/success-stories">Success Stories</a><a href="/podcast">Podcast</a><a href="/essentials">Essentials</a><a href="mailto:support@theweightloss-academy.com">Contact</a>
+      </div>
+      <div class="copy">© <span id="yr"></span> The Weight Loss &amp; Lifestyle Academy · 92 Castle Street, Belfast, BT1 1HE, UK.</div>
+    </div>
+  </footer>
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

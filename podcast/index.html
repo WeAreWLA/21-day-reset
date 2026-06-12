@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>We Are Wellbeing Podcast · The Weight Loss Academy</title>
+<meta name="description" content="The free We Are Wellbeing podcast with Anna Wallace, simple, sustainable steps for health, nutrition and mindset. Listen on Apple and Spotify." />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XSBKM60YTB');</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F9F7F4; --cream-deep:#E9DFD3; --paper:#FDFBF8; --ink:#003060; --ink-muted:#5B6B82; --body-ink:#333333; --terracotta:#F79F83; --blush-deep:#E87F63; --peach:#F5D9CE; --hairline:#D9CFC3; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--body-ink); font-family:"Alegreya Sans",sans-serif; font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; } ::selection { background:var(--peach); }
+  .italic { font-family:"Libre Baskerville",serif; font-style:italic; color:var(--blush-deep); }
+  .wrap { max-width:1160px; margin:0 auto; padding:0 32px; }
+  .eyebrow { text-transform:uppercase; letter-spacing:.18em; font-size:12.5px; font-weight:600; color:var(--blush-deep); }
+  h1,h2,h3 { font-family:"Libre Baskerville",serif; color:var(--ink); font-weight:700; letter-spacing:-0.01em; margin:0; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:"Alegreya Sans",sans-serif; font-weight:600; font-size:16px; padding:15px 28px; border-radius:999px; text-decoration:none; transition:transform .15s ease; cursor:pointer; border:none; }
+  .btn-primary { background:var(--ink); color:var(--paper); box-shadow:0 14px 30px -16px rgba(0,48,96,.7); }
+  .btn-blush { background:var(--blush-deep); color:#fff; box-shadow:0 14px 30px -16px rgba(232,127,99,.8); }
+  .btn:hover { transform:translateY(-2px); }
+  .btn-small { padding:11px 20px; font-size:14.5px; }
+  nav { max-width:1240px; margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand { font-family:"Libre Baskerville",serif; font-weight:700; font-size:20px; color:var(--ink); white-space:nowrap; }
+  .brand .by { font-style:italic; font-size:12.5px; font-weight:400; color:var(--blush-deep); margin-left:8px; }
+  .nav-links { display:flex; gap:24px; align-items:center; font-size:14.5px; }
+  .nav-links a { color:var(--ink-muted); text-decoration:none; font-weight:500; } .nav-links a:hover { color:var(--ink); }
+
+  .hero { padding:40px 0 64px; }
+  .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
+  .hero h1 { font-size:clamp(38px,4.8vw,58px); line-height:1.08; }
+  .hero p { font-size:19px; margin:22px 0 28px; max-width:40ch; }
+  .hero-media img { width:100%; border-radius:18px; display:block; box-shadow:0 40px 80px -44px rgba(0,48,96,.4); }
+  .listen { display:flex; gap:14px; flex-wrap:wrap; }
+  .listen .btn-apple { background:var(--blush-deep); color:#fff; }
+  .listen .btn-spotify { background:var(--ink); color:#fff; }
+
+  section { padding:72px 0; }
+  .section-head { text-align:center; max-width:760px; margin:0 auto 48px; }
+  .section-head h2 { font-size:clamp(28px,3.4vw,42px); }
+  .section-head p { font-size:18px; margin-top:16px; }
+
+  .ep-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .ep { display:flex; gap:18px; align-items:flex-start; background:var(--paper); border:1px solid var(--hairline); border-radius:14px; padding:24px; text-decoration:none; transition:transform .15s ease, box-shadow .15s ease; }
+  .ep:hover { transform:translateY(-3px); box-shadow:0 20px 40px -28px rgba(0,48,96,.4); }
+  .ep .num { font-family:"Libre Baskerville",serif; font-style:italic; font-size:15px; color:var(--blush-deep); flex-shrink:0; width:34px; }
+  .ep .t { font-family:"Libre Baskerville",serif; font-weight:700; font-size:16.5px; color:var(--ink); line-height:1.3; }
+  .ep .play { font-size:12px; color:var(--ink-muted); margin-top:8px; display:flex; align-items:center; gap:6px; }
+
+  .final { background:var(--ink); color:var(--paper); text-align:center; }
+  .final h2 { color:var(--paper); font-size:clamp(28px,3.4vw,42px); }
+  .final h2 em { font-style:italic; color:var(--peach); }
+  .final p { margin:18px auto 28px; max-width:52ch; }
+
+  footer { background:var(--ink); color:var(--paper); padding:48px 0 36px; border-top:1px solid rgba(255,255,255,.12); }
+  footer .wrap { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; align-items:center; }
+  footer .brand { color:var(--paper); } footer .by { color:var(--peach); }
+  footer .f-links { display:flex; gap:22px; flex-wrap:wrap; font-size:14px; }
+  footer a { color:var(--peach); text-decoration:none; } footer a:hover { text-decoration:underline; }
+
+  @media (max-width:960px) { .nav-links { display:none; } .hero-grid { grid-template-columns:1fr; gap:36px; } .hero-media { max-width:420px; margin:0 auto; } .ep-grid { grid-template-columns:1fr; } }
+  @media (max-width:560px) { body{font-size:17px;} section{padding:56px 0;} .wrap{padding:0 22px;} }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/start-here">Start Here</a>
+      <a href="/success-stories">Success Stories</a>
+      <a href="/podcast" style="color:var(--ink);">Podcast</a>
+      <a href="/essentials">Essentials</a>
+      <a class="btn btn-primary btn-small" href="/start-here">Start today</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Free to listen</span>
+          <h1 style="margin-top:16px;">The <span class="italic">We Are Wellbeing</span> podcast.</h1>
+          <p>Simple, sustainable steps for health, nutrition and mindset, with honest, practical tips you can use straight away to build lasting habits and feel confident in your body.</p>
+          <div class="listen">
+            <a class="btn btn-apple" href="#">Subscribe on Apple</a>
+            <a class="btn btn-spotify" href="#">Subscribe on Spotify</a>
+          </div>
+        </div>
+        <div class="hero-media"><img src="/assets/anna-hero.jpg" alt="Anna Wallace, host of the We Are Wellbeing podcast" /></div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Episodes</span><h2>Tune in to the latest.</h2><p>A growing library of simple, supportive conversations to help you lose weight, build lasting habits and feel confident, without the diet noise.</p></div>
+      <div class="ep-grid">
+        <a class="ep" href="#"><span class="num">22</span><div><div class="t">Busy But Healthy: The Key Nutrition Habits for Busy Women</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">21</span><div><div class="t">Think, Act and Eat Like the Future You</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">20</span><div><div class="t">Simple Steps for Managing a Fat Loss Plateau</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">19</span><div><div class="t">One Major Mistake Sabotaging Your Weight Loss (and How to Overcome It)</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">18</span><div><div class="t">Fear vs Freedom: How to Stop Playing It Safe and Start Living</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">17</span><div><div class="t">The WLA Nutrition Formula: Simple Daily Foundations for Fat Loss &amp; Energy</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">16</span><div><div class="t">The Simple 3-Step Formula for Reaching Your Weight Loss Goals</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">15</span><div><div class="t">Breaking the Cycle: Insights on Binge Eating and How to Overcome It</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">14</span><div><div class="t">5 Easy Steps to Simplify Nutrition</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">13</span><div><div class="t">How to Beat the Holiday Bloat</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">12</span><div><div class="t">The Real Reason Why I Quit Drinking Alcohol</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">11</span><div><div class="t">4 Simple Techniques for Getting Back on Track with Food</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">10</span><div><div class="t">Understanding Menopause</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">09</span><div><div class="t">4 Key Strategies for Eliminating Sugar Cravings</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">08</span><div><div class="t">Understand Your Body's Wisdom with Simple Mindful Eating</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">07</span><div><div class="t">Effective Motivation Strategies for Weight Management</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">05</span><div><div class="t">5 Easy Ways to Improve Your Energy</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">03</span><div><div class="t">My Top 5 Nutrition Non-Negotiables</div><div class="play">▶ Listen</div></div></a>
+        <a class="ep" href="#"><span class="num">01</span><div><div class="t">5 Strategies for Improving Your Relationship with Food</div><div class="play">▶ Listen</div></div></a>
+      </div>
+      <p style="text-align:center;margin-top:36px;font-size:15px;color:var(--ink-muted);">New episodes added regularly. Subscribe so you never miss one.</p>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--peach);">Ready to go further?</span>
+      <h2 style="margin-top:14px;">Love the podcast? <em>Take the next step.</em></h2>
+      <p>When you're ready to turn these ideas into real, lasting results, there's a WLA path waiting for you.</p>
+      <a class="btn btn-blush" href="/start-here">Find your starting point</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="brand">The Weight Loss Academy<span class="by">by Anna Wallace</span></div>
+      <div class="f-links">
+        <a href="/">Home</a><a href="/about">About</a><a href="/start-here">Start Here</a><a href="/21-day-reset">21 Day Reset</a><a href="/summer-challenge">12 Week Program</a><a href="/vip">VIP</a><a href="/success-stories">Success Stories</a><a href="/essentials">Essentials</a><a href="mailto:support@theweightloss-academy.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
