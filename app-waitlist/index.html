@@ -91,9 +91,21 @@ ml('account', '1287540');
   @media (max-width: 640px) { .urgency-banner { font-size: 13px; padding: 10px 12px; gap: 10px; flex-wrap: wrap; } .urgency-banner .urg-flag { font-size: 10px; padding: 4px 9px; } }
 
   .hero { max-width: 1180px; margin: 0 auto; padding: 24px 28px 56px; display: grid; grid-template-columns: 0.85fr 1fr; gap: 40px; align-items: stretch; }
-  .hero-image-wrap { position: relative; border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, var(--cream-2) 0%, var(--cream) 100%); box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25); min-height: 460px; }
-  .hero-image-wrap::before { content: ''; position: absolute; top: -120px; right: -120px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(217,119,87,0.18), transparent 65%); pointer-events: none; }
-  .hero-image-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; padding: 24px; }
+  .hero-image-wrap { position: relative; border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, var(--cream-2) 0%, var(--cream) 100%); box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25); min-height: 520px; }
+  .hero-image-wrap::before { content: ''; position: absolute; top: -120px; right: -120px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(217,119,87,0.18), transparent 65%); pointer-events: none; z-index: 1; }
+  .hero-image-wrap .anna { position: absolute; left: 0; bottom: 0; height: 100%; width: 62%; background-image: url('/assets/anna-sofa.jpg'); background-size: cover; background-position: center top; }
+  .hero-image-wrap .anna::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 55%, rgba(244,238,226,0.95) 100%); }
+  .hero-image-wrap .phone { position: absolute; background: #0e2746; border-radius: 28px; padding: 9px; box-shadow: 0 24px 48px -12px rgba(14,39,70,0.45), 0 0 0 1px rgba(255,255,255,0.06) inset; z-index: 2; }
+  .hero-image-wrap .phone::before { content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 70px; height: 6px; background: #000; border-radius: 999px; z-index: 1; }
+  .hero-image-wrap .phone img { display: block; border-radius: 20px; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .hero-image-wrap .phone.front { right: 6%; bottom: 5%; width: 46%; aspect-ratio: 9 / 18; transform: rotate(4deg); }
+  .hero-image-wrap .phone.back { right: 28%; top: 6%; width: 36%; aspect-ratio: 9 / 18; transform: rotate(-6deg); opacity: 0.92; }
+  @media (max-width: 980px) {
+    .hero-image-wrap { min-height: 380px; }
+    .hero-image-wrap .anna { width: 60%; }
+    .hero-image-wrap .phone.front { width: 44%; right: 5%; bottom: 6%; }
+    .hero-image-wrap .phone.back { width: 32%; right: 32%; top: 8%; }
+  }
 
   .form-card { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 30px 30px 26px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); display: flex; flex-direction: column; }
   .form-card .pill { display: inline-flex; align-self: center; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(46,125,91,0.10); color: var(--ok); font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 14px; }
@@ -221,21 +233,23 @@ function Hero() {
   return (
     <section className="hero" id="optin">
       <div className="hero-image-wrap">
-        <img src="/assets/screenshot-2.jpg" alt="WLA App · recipes view" loading="eager" />
+        <div className="anna" role="img" aria-label="Anna Wallace, founder of The Weight Loss Academy"></div>
+        <div className="phone back"><img src="/assets/screenshot-1.jpg" alt="" /></div>
+        <div className="phone front"><img src="/assets/screenshot-2.jpg" alt="WLA App · recipes view" /></div>
       </div>
 
       <div className="form-wrap">
         <div className="form-card">
           {!done ? (
             <>
-              <span className="pill"><span className="pulse"></span>App Waitlist Open</span>
-              <h1 className="title">Get on the <em>WLA App</em><br/>Waitlist</h1>
+              <span className="pill"><span className="pulse"></span>Only 100 places available</span>
+              <h1 className="title">100 Women Wanted To Test New <em>Nutrition &amp; Weight Loss</em> App</h1>
               <div className="offer">
-                <span className="navy">We're rebranding &amp; looking for</span><br/>
-                <span className="coral"><em>100 women</em></span>
+                <span className="navy" style={{ fontSize: '17px', fontWeight: 600, fontFamily: '"Alegreya Sans", sans-serif', display: 'block', marginBottom: 10 }}>designed by a degree qualified Nutritionist</span>
+                <span className="navy" style={{ fontSize: '18px', lineHeight: 1.45, fontFamily: '"Alegreya Sans", sans-serif', fontWeight: 500, display: 'block' }}>We are rebranding and launching a new nutrition and weight loss app and we need testers.</span>
               </div>
               <p className="body">
-                Lose Up To <strong>5 Pounds</strong>, <strong>Gain Energy</strong>, <strong>Confidence</strong> and <span className="underline">Say Goodbye To Sugar Cravings</span>.
+                <strong>Requirement</strong> — have a weight loss goal of around <strong>2 stone</strong>.
               </p>
               <form onSubmit={onSubmit} noValidate>
                 <input type="hidden" name="fields[utm_source]"   value={utm.utm_source}   readOnly />
@@ -254,7 +268,7 @@ function Hero() {
                   {loading ? 'Adding you…' : <>Add Me To The Waitlist <Arrow /></>}
                 </button>
               </form>
-              <p className="form-foot">100 spaces only. Once they're gone, the waitlist closes.</p>
+              <p className="form-foot">Once registered, check emails for confirmation.</p>
             </>
           ) : (
             <div className="success">
