@@ -94,24 +94,24 @@ ml('account', '1287540');
   .hero-image-wrap { position: relative; overflow: visible; min-height: 520px; }
   .hero-image-wrap .bg { position: absolute; inset: 0; border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, var(--cream-2) 0%, var(--cream) 100%); box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25); }
   .hero-image-wrap .bg::before { content: ''; position: absolute; top: -120px; right: -120px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(217,119,87,0.18), transparent 65%); pointer-events: none; }
-  .hero-image-wrap .anna { position: absolute; left: 0; bottom: 0; height: 100%; width: 62%; background-image: url('/assets/anna-sofa.jpg'); background-size: cover; background-position: center top; }
-  .hero-image-wrap .anna::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 55%, rgba(244,238,226,0.95) 100%); }
+  .hero-image-wrap .anna { position: absolute; left: 0; bottom: 0; height: 100%; width: 62%; background-image: url('/assets/anna-before-after.png'); background-size: contain; background-repeat: no-repeat; background-position: left bottom; }
+  .hero-image-wrap .anna::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 70%, rgba(244,238,226,0.85) 100%); }
   .hero-image-wrap .phone { position: absolute; background: #0e2746; border-radius: 28px; padding: 9px; box-shadow: 0 24px 48px -12px rgba(14,39,70,0.45), 0 0 0 1px rgba(255,255,255,0.06) inset; z-index: 2; will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; }
   .hero-image-wrap .phone::before { content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 70px; height: 6px; background: #000; border-radius: 999px; z-index: 1; }
   .hero-image-wrap .phone img { display: block; border-radius: 20px; width: 100%; height: 100%; object-fit: cover; object-position: center top; transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; image-rendering: auto; }
-  .hero-image-wrap .phone.front { right: -10%; bottom: 4%; width: 50%; aspect-ratio: 9 / 18; transform: rotate(6deg); }
-  .hero-image-wrap .phone.back { right: 12%; top: 4%; width: 38%; aspect-ratio: 9 / 18; transform: rotate(-7deg); opacity: 0.94; }
+  .hero-image-wrap .phone.front { right: -8%; bottom: 6%; width: 44%; aspect-ratio: 9 / 18; transform: rotate(6deg); }
+  .hero-image-wrap .phone.back { right: 14%; top: 6%; width: 33%; aspect-ratio: 9 / 18; transform: rotate(-7deg); opacity: 0.94; }
   @media (max-width: 980px) {
     .hero-image-wrap { min-height: 460px; }
     .hero-image-wrap .anna { width: 56%; }
-    .hero-image-wrap .phone.front { width: 51%; right: -8%; bottom: -40px; }
-    .hero-image-wrap .phone.back { width: 45%; right: 24%; top: calc(22% + 30px); }
+    .hero-image-wrap .phone.front { width: 46%; right: -6%; bottom: -30px; }
+    .hero-image-wrap .phone.back { width: 40%; right: 26%; top: calc(22% + 30px); }
   }
   @media (max-width: 640px) {
     .hero-image-wrap { min-height: 420px; }
     .hero-image-wrap .anna { width: 52%; }
-    .hero-image-wrap .phone.front { width: 55%; right: -10%; bottom: -40px; }
-    .hero-image-wrap .phone.back { width: 47%; right: 26%; top: calc(24% + 30px); }
+    .hero-image-wrap .phone.front { width: 50%; right: -8%; bottom: -30px; }
+    .hero-image-wrap .phone.back { width: 42%; right: 28%; top: calc(24% + 30px); }
   }
 
   .form-card { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 30px 30px 26px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); display: flex; flex-direction: column; }
@@ -241,7 +241,7 @@ function Hero() {
     <section className="hero" id="optin">
       <div className="hero-image-wrap">
         <div className="bg">
-          <div className="anna" role="img" aria-label="Anna Wallace, founder of The Weight Loss Academy"></div>
+          <div className="anna" role="img" aria-label="Anna Wallace before and after"></div>
         </div>
         <div className="phone back"><img src="/assets/app-screenshots/iphone/1242x2688/home.jpg" alt="WLA App · home" /></div>
         <div className="phone front"><img src="/assets/app-screenshots/iphone/1242x2688/nutrition-recipes.jpg" alt="WLA App · recipes" /></div>
@@ -251,7 +251,7 @@ function Hero() {
         <div className="form-card">
           {!done ? (
             <>
-              <h1 className="title">100 Women Wanted To Test New <em>Nutrition &amp; Weight Loss</em> App</h1>
+              <h1 className="title">100 Women Wanted To Test New<br/><em>Nutrition &amp; Weight Loss</em><br/>App</h1>
               <div className="offer">
                 <span className="navy" style={{ fontSize: '17px', fontWeight: 600, fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', display: 'block', marginBottom: 10 }}>designed by a degree qualified Nutritionist</span>
                 <span className="navy" style={{ fontSize: '18px', lineHeight: 1.45, fontFamily: '"Alegreya Sans", sans-serif', fontWeight: 500, display: 'block' }}>We are rebranding and launching a new nutrition and weight loss app and we need testers.</span>
@@ -273,7 +273,7 @@ function Hero() {
                   <input type="email" className={errs.email ? 'err' : ''} placeholder="you@example.com" value={vals.email} onChange={onChange('email')} />
                 </div>
                 <button className="submit-btn" type="submit" disabled={loading}>
-                  {loading ? 'Adding you…' : <>Add Me To The Waitlist <Arrow /></>}
+                  {loading ? 'Sending…' : <>Apply To Become A Tester <Arrow /></>}
                 </button>
               </form>
               <p className="form-foot">Once registered, check emails for confirmation.</p>
