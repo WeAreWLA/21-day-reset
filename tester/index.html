@@ -8,7 +8,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://join.wearewla.com/app-waitlist" />
+<meta property="og:url" content="https://join.wearewla.com/tester" />
 <meta property="og:title" content="WLA App Waitlist · We're looking for 100 women" />
 <meta property="og:description" content="We're rebranding and looking for 100 women who want to lose up to 5 pounds, gain energy, confidence and say goodbye to sugar cravings." />
 <meta property="og:image" content="https://join.wearewla.com/assets/anna-sofa.jpg" />
@@ -100,14 +100,14 @@ ml('account', '1287540');
   .hero-image-wrap .phone.front { left: 50%; bottom: -6%; width: 39%; aspect-ratio: 9 / 18; transform: translateX(-50%) rotate(-4deg); }
   .hero-image-wrap .phone.back { display: none; aspect-ratio: 9 / 18; opacity: 0.94; }
   @media (max-width: 980px) {
-    .hero-image-wrap { min-height: 460px; }
-    .hero-image-wrap .phone.front { width: 42%; left: 62%; right: auto; bottom: -90px; transform: translateX(-50%) rotate(6deg); }
-    .hero-image-wrap .phone.back { display: block; width: 38%; left: 38%; right: auto; bottom: -80px; transform: translateX(-50%) rotate(-7deg); }
+    .hero-image-wrap { min-height: 460px; margin-bottom: 240px; }
+    .hero-image-wrap .phone.front { width: 42%; left: 62%; right: auto; bottom: -190px; transform: translateX(-50%) rotate(6deg); }
+    .hero-image-wrap .phone.back { display: block; width: 38%; left: 38%; right: auto; bottom: -180px; transform: translateX(-50%) rotate(-7deg); }
   }
   @media (max-width: 640px) {
-    .hero-image-wrap { min-height: 420px; }
-    .hero-image-wrap .phone.front { width: 44%; left: 64%; right: auto; bottom: -90px; transform: translateX(-50%) rotate(6deg); }
-    .hero-image-wrap .phone.back { display: block; width: 40%; left: 36%; right: auto; bottom: -80px; transform: translateX(-50%) rotate(-7deg); }
+    .hero-image-wrap { min-height: 420px; margin-bottom: 240px; }
+    .hero-image-wrap .phone.front { width: 44%; left: 64%; right: auto; bottom: -190px; transform: translateX(-50%) rotate(6deg); }
+    .hero-image-wrap .phone.back { display: block; width: 40%; left: 36%; right: auto; bottom: -180px; transform: translateX(-50%) rotate(-7deg); }
   }
 
   .form-card { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 30px 30px 26px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); display: flex; flex-direction: column; }
@@ -229,7 +229,7 @@ function Hero() {
       if (utm.utm_campaign) qs.set('utm_campaign', utm.utm_campaign);
       if (utm.utm_content)  qs.set('utm_content',  utm.utm_content);
       const tail = qs.toString();
-      window.location.href = '/app-waitlist/ty/' + (tail ? '?' + tail : '');
+      window.location.href = '/tester/ty/' + (tail ? '?' + tail : '');
     });
   };
 
