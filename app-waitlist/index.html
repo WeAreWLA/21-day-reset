@@ -97,17 +97,14 @@ ml('account', '1287540');
   .hero-image-wrap .phone { position: absolute; background: #0e2746; border-radius: 28px; padding: 9px; box-shadow: 0 24px 48px -12px rgba(14,39,70,0.45), 0 0 0 1px rgba(255,255,255,0.06) inset; z-index: 2; will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; }
   .hero-image-wrap .phone::before { content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 70px; height: 6px; background: #000; border-radius: 999px; z-index: 1; }
   .hero-image-wrap .phone img { display: block; border-radius: 20px; width: 100%; height: 100%; object-fit: cover; object-position: center top; transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; image-rendering: auto; }
-  .hero-image-wrap .phone.front { right: -6%; bottom: -8%; width: 24%; aspect-ratio: 9 / 18; transform: rotate(8deg); }
-  .hero-image-wrap .phone.back { right: 20%; bottom: 0; width: 20%; aspect-ratio: 9 / 18; transform: rotate(-8deg); opacity: 0.94; }
+  .hero-image-wrap .phone.front { left: 50%; bottom: -6%; width: 26%; aspect-ratio: 9 / 18; transform: translateX(-50%) rotate(-4deg); }
   @media (max-width: 980px) {
     .hero-image-wrap { min-height: 460px; }
-    .hero-image-wrap .phone.front { width: 30%; right: -6%; bottom: -30px; }
-    .hero-image-wrap .phone.back { width: 26%; right: 26%; bottom: -10px; }
+    .hero-image-wrap .phone.front { width: 32%; bottom: -30px; }
   }
   @media (max-width: 640px) {
     .hero-image-wrap { min-height: 420px; }
-    .hero-image-wrap .phone.front { width: 34%; right: -8%; bottom: -28px; }
-    .hero-image-wrap .phone.back { width: 28%; right: 30%; bottom: -8px; }
+    .hero-image-wrap .phone.front { width: 36%; bottom: -28px; }
   }
 
   .form-card { border: 3px solid var(--navy); border-radius: 22px; background: var(--paper); padding: 30px 30px 26px; text-align: center; box-shadow: 0 30px 60px -30px rgba(14,39,70,0.25), 0 8px 20px -10px rgba(14,39,70,0.10); display: flex; flex-direction: column; }
@@ -239,7 +236,6 @@ function Hero() {
         <div className="bg">
           <div className="anna" role="img" aria-label="Anna Wallace before and after"></div>
         </div>
-        <div className="phone back"><img src="/assets/app-screenshots/iphone/1242x2688/home.jpg" alt="WLA App · home" /></div>
         <div className="phone front"><img src="/assets/app-screenshots/iphone/1242x2688/nutrition-recipes.jpg" alt="WLA App · recipes" /></div>
       </div>
 
