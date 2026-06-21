@@ -1351,7 +1351,7 @@ function WhatsIncluded() {
             <span className="offer-now-lab">today only</span>
             <span className="offer-now"><em>£17</em></span>
           </div>
-          <div className="offer-note">Limited to the first <strong>100 spots</strong>. Once they're gone, pricing returns to <strong>£97</strong>.</div>
+          <div className="offer-note">Launch price <strong>£17</strong> for this round. Pricing returns to <strong>£97</strong> after the July Sprint.</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The July Sprint <Arrow /></a>
@@ -1653,8 +1653,8 @@ function WhyJoinNow() {
         </ul>
 
         <div className="story-callout" style={{ maxWidth: 980, margin: '32px auto 0' }}>
-          <strong>Only 100 spots available at £17.</strong>
-          <p>Once they're gone, pricing returns to <strong style={{ color: '#fff' }}>£97</strong>.</p>
+          <strong>Launch price: just £17.</strong>
+          <p>Standard pricing returns to <strong style={{ color: '#fff' }}>£97</strong> after the July Sprint round closes.</p>
         </div>
       </div>
     </section>
@@ -1955,9 +1955,9 @@ function FinalCTA() {
   return (
     <section className="final-cta" style={{ paddingTop: 56 }}>
       <div className="final-cta-inner">
-        <div className="founding-tag" style={{ marginBottom: 18 }}>July Sprint · Only 100 Spots At £17</div>
+        <div className="founding-tag" style={{ marginBottom: 18 }}>July Sprint · Kick-off Monday 6th July</div>
         <h2 className="serif">Grab your spot for<br/><em>just £17.</em></h2>
-        <p>Limited to the first 100 spots only. Secure your place today at the launch price of <strong>£17</strong> and save £80 instantly. <strong>28 days of focused coaching, accountability and results.</strong></p>
+        <p>Secure your place today at the launch price of <strong>£17</strong> and save <strong>£80</strong> off the standard £97. <strong>28 days of focused coaching, accountability and results.</strong></p>
         <div className="final-buttons">
           <CTAButtons primaryLabel="Yes! I Want In" />
         </div>
@@ -1994,7 +1994,7 @@ function StickyCTA() {
   return (
     <div className={'sticky-cta' + (show ? ' show' : '')}>
       <div className="text">
-        <strong>28 Day Sprint · £17 · 100 Spots Only</strong>
+        <strong>28 Day Sprint · £17 · Kick-off Mon 6th July</strong>
       </div>
       <div className="sticky-cta-buttons">
         <a href={CHECKOUT_URL} className="sticky-cta-card"><CardIcon /> Debit Card</a>
@@ -2022,7 +2022,6 @@ function Page() {
       <Results />
       <FAQ />
       <MeetAnna />
-      <Limited />
       <FinalCTA />
       <Footer />
       <StickyCTA />
