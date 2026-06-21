@@ -894,7 +894,7 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The July Sprin
 const CardIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><line x1="2" y1="10.5" x2="22" y2="10.5"/><line x1="6" y1="16" x2="10" y2="16"/></svg>);
 
 function CountdownBanner() {
-  // Phase 1: now < kick-off Mon 6 July 2026 -> count down to kick-off, label "Only 100 Codes Available"
+  // Phase 1: now < kick-off Mon 6 July 2026 -> count down to kick-off, label "Only 100 Spots Available"
   // Phase 2: now >= kick-off -> static "Sprint kicks off today, you can still join"
   const kickoff = new Date('2026-07-06T00:00:00').getTime();
   const computePhase = (now) => (now < kickoff ? 1 : 2);
@@ -928,7 +928,7 @@ function CountdownBanner() {
       </div>
     );
   }
-  const label = 'Only 100 Codes Available · Use JUL At Checkout';
+  const label = 'Only 100 Spots Available · Sprint Kicks Off Mon 6th July';
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
@@ -987,7 +987,6 @@ function Hero() {
         </ul>
 
         <div className="hero-offer-card">
-          <div className="hero-offer-line-1">Join The <em>28 Day Sprint</em></div>
           <div className="hero-offer-line-2">Kick-off: <em>Monday 6th July</em></div>
           <div className="hero-offer-line-3">(normally <s>£97</s>, today only <strong>£17</strong>)</div>
         </div>
@@ -1352,7 +1351,7 @@ function WhatsIncluded() {
             <span className="offer-now-lab">today only</span>
             <span className="offer-now"><em>£17</em></span>
           </div>
-          <div className="offer-note">Use discount code <strong>JUL</strong> at checkout and save <strong>£80</strong> instantly. Only <strong>100 codes</strong> available — once they're gone, they're gone.</div>
+          <div className="offer-note">Limited to the first <strong>100 spots</strong>. Once they're gone, pricing returns to <strong>£97</strong>.</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The July Sprint <Arrow /></a>
@@ -1654,8 +1653,8 @@ function WhyJoinNow() {
         </ul>
 
         <div className="story-callout" style={{ maxWidth: 980, margin: '32px auto 0' }}>
-          <strong>Only 100 discount codes available.</strong>
-          <p>Use code <strong style={{ color: '#fff' }}>JUL</strong> at checkout for £80 off. Once the 100 codes are gone, they're gone.</p>
+          <strong>Only 100 spots available at £17.</strong>
+          <p>Once they're gone, pricing returns to <strong style={{ color: '#fff' }}>£97</strong>.</p>
         </div>
       </div>
     </section>
@@ -1812,13 +1811,13 @@ function Limited() {
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
-          <h2 className="serif">Only 100 Codes Available For<br/><em>The July Sprint.</em></h2>
-          <p className="lead">Use code <strong>JUL</strong> at checkout for £80 off. Once the 100 codes are gone, pricing returns to standard.</p>
+          <h2 className="serif">Only 100 Spots Available For<br/><em>The July Sprint.</em></h2>
+          <p className="lead">Once the first 100 spots at £17 are taken, pricing returns to the standard £97.</p>
         </div>
 
-        <div className="scarcity" aria-label="July Sprint discount codes remaining">
+        <div className="scarcity" aria-label="July Sprint spots remaining">
           <div className="scarcity-top">
-            <span className="label">JUL codes filling fast</span>
+            <span className="label">£17 spots filling fast</span>
           </div>
           <div className="scarcity-bar"><div className="fill" /></div>
           <div className="scarcity-foot">
@@ -1829,12 +1828,12 @@ function Limited() {
 
         <div className="limited-cards">
           <div className="limited-card warn">
-            <div className="card-tag">Once Codes Run Out</div>
+            <div className="card-tag">Once 100 Spots Are Gone</div>
             <h3>This exact offer disappears</h3>
             <ul>
               <li>£17 launch pricing disappears</li>
               <li>Pricing returns to £97</li>
-              <li>JUL code stops working</li>
+              <li>No more discounted spots for this round</li>
             </ul>
           </div>
           <div className="limited-card win">
@@ -1842,7 +1841,7 @@ function Limited() {
             <h3>The full <em>July Sprint Special</em></h3>
             <ul>
               <li>The 28 Day Fat Loss Sprint</li>
-              <li>JUL discount code locked in (£80 off)</li>
+              <li>Launch price £17 locked in (£80 saved)</li>
               <li>Weekly LIVE coaching Zooms with Anna</li>
               <li>Daily coaching &amp; accountability all summer</li>
               <li>Lowest price for joining the Sprint</li>
@@ -1956,9 +1955,9 @@ function FinalCTA() {
   return (
     <section className="final-cta" style={{ paddingTop: 56 }}>
       <div className="final-cta-inner">
-        <div className="founding-tag" style={{ marginBottom: 18 }}>July Sprint · Only 100 Codes</div>
+        <div className="founding-tag" style={{ marginBottom: 18 }}>July Sprint · Only 100 Spots At £17</div>
         <h2 className="serif">Grab your spot for<br/><em>just £17.</em></h2>
-        <p>Limited to the first 100 clients only. Secure your place today, use code <strong>JUL</strong> at checkout and save £80 instantly. <strong>28 days of focused coaching, accountability and results.</strong></p>
+        <p>Limited to the first 100 spots only. Secure your place today at the launch price of <strong>£17</strong> and save £80 instantly. <strong>28 days of focused coaching, accountability and results.</strong></p>
         <div className="final-buttons">
           <CTAButtons primaryLabel="Yes! I Want In" />
         </div>
@@ -1995,7 +1994,7 @@ function StickyCTA() {
   return (
     <div className={'sticky-cta' + (show ? ' show' : '')}>
       <div className="text">
-        <strong>28 Day Sprint · £17 · Use code JUL</strong>
+        <strong>28 Day Sprint · £17 · 100 Spots Only</strong>
       </div>
       <div className="sticky-cta-buttons">
         <a href={CHECKOUT_URL} className="sticky-cta-card"><CardIcon /> Debit Card</a>
