@@ -135,6 +135,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .countdown-inner { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
   .countdown-label { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: clamp(12px, 1.3vw, 14px); color: #003060; }
+  .countdown-label strong { font-weight: 900; text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 2px; }
   .countdown-row { display: flex; gap: 8px; }
   .cd-item { background: rgba(0,48,96,0.10); border: 1px solid rgba(0,48,96,0.18); padding: 4px 10px; border-radius: 8px; text-align: center; min-width: 44px; }
   .cd-num { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: #003060; line-height: 1.05; }
@@ -916,11 +917,10 @@ function CountdownBanner() {
       </div>
     );
   }
-  const label = '100 codes available · Use code SUMMER for £80 discount';
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">{label}</span>
+        <span className="countdown-label">100 codes available · Use code <strong>SUMMER</strong> for £80 discount</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
