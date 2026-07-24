@@ -79,6 +79,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     --muted: #5a6478; --rule: #d9cdb6; --ok: #2e7d5b;
   }
   *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   html, body { margin: 0; padding: 0; }
   body { font-family: "Alegreya Sans", sans-serif; color: #333333; background: var(--cream); -webkit-font-smoothing: antialiased; }
   .serif { font-family: 'Libre Baskerville', serif; font-optical-sizing: auto; }
@@ -154,6 +155,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .micro-foot .item svg { width: 14px; height: 14px; flex: none; stroke: var(--navy); }
   .micro-foot .item.free { background: rgba(46,125,91,0.10); color: var(--ok); }
   .micro-foot .item.free svg { stroke: var(--ok); }
+
+  /* ThriveCart inline sign-up embed */
+  .tc-embed-wrap { position: relative; min-height: 300px; margin-top: 4px; text-align: left; }
+  .tc-embed-wrap .thrivecart-embeddable { position: relative; z-index: 1; }
+  .tc-loading { position: absolute; top: 0; left: 0; right: 0; padding: 56px 12px; text-align: center; color: var(--muted); font-size: 14px; z-index: 0; }
+  .tc-fallback { margin: 14px 0 0; font-size: 13px; color: var(--muted); text-align: center; }
+  .tc-fallback a { color: var(--coral); font-weight: 700; }
+  .tc-fallback a:hover { text-decoration: underline; }
 
   .form-wrap { position: relative; }
   @media (min-width: 981px) { .form-wrap { margin-top: 0; } }
@@ -405,10 +414,16 @@ const IcWhatsApp = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="
 const IcCheckBox = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><polyline points="8 12.5 11 15.5 16 9.5"/></svg>);
 const IcPhone = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><line x1="11" y1="18.5" x2="13" y2="18.5"/><path d="M9.5 6.2c.6.5 1.5.8 2.5.8s1.9-.3 2.5-.8"/></svg>);
 
+// Smooth-scroll the page up to the inline sign-up form in the hero.
+const scrollToSignup = (e) => {
+  const el = document.getElementById('signup');
+  if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+};
+
 function PrimaryCTA({ label = 'Get Instant Free Access', className = 'cta-btn', showFoot = true }) {
   return (
     <>
-      <a href={checkoutHref} className={className} onClick={trackLead}>
+      <a href="#signup" className={className} onClick={scrollToSignup}>
         {label} <Arrow />
       </a>
       {showFoot && (
@@ -419,6 +434,31 @@ function PrimaryCTA({ label = 'Get Instant Free Access', className = 'cta-btn', 
         </div>
       )}
     </>
+  );
+}
+
+// ThriveCart inline embeddable sign-up form. Rendered once, in the hero card.
+function ThriveCartEmbed() {
+  useEffect(() => {
+    const id = 'tc-wlacademy-493-WOMKI2';
+    if (document.getElementById(id)) return;
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://tinder.thrivecart.com/embed/v1/thrivecart.js';
+    s.id = id;
+    document.body.appendChild(s);
+  }, []);
+  return (
+    <div className="tc-embed-wrap">
+      <div className="tc-loading">Loading your free sign-up…</div>
+      <div
+        data-thrivecart-account="wlacademy"
+        data-thrivecart-product="493"
+        className="thrivecart-embeddable"
+        data-thrivecart-embeddable="tc-wlacademy-493-WOMKI2"
+      ></div>
+      <p className="tc-fallback">Form not loading? <a href={checkoutHref} onClick={trackLead}>Open your free sign-up here →</a></p>
+    </div>
   );
 }
 
@@ -444,7 +484,7 @@ function Nav() {
           <a href="#schedule">Schedule</a>
           <a href="#faq">FAQ</a>
         </div>
-        <a href={checkoutHref} className="nav-cta" onClick={trackLead}>Get Free Access <Arrow /></a>
+        <a href="#signup" className="nav-cta" onClick={scrollToSignup}>Get Free Access <Arrow /></a>
       </div>
     </nav>
   );
@@ -458,7 +498,7 @@ function Hero() {
       </div>
 
       <div className="form-wrap">
-        <div className="form-card v2">
+        <div className="form-card v2" id="signup">
           <h1 className="v2-title"><span className="v2-title-free">FREE</span><span className="v2-title-sep"> - </span>7 Day Fat Loss Reset</h1>
           <div className="v2-offer">
             <span className="v2-offer-line v2-coral">Normally £47 &mdash; <em>Yours Free</em></span>
@@ -467,9 +507,9 @@ function Hero() {
           <p className="v2-body">
             Lose Up To <strong>7 Pounds</strong>, <strong>Gain Energy</strong>, <strong>Confidence</strong> and <span className="v2-underline">Say Goodbye To Sugar Cravings</span> in 7 Days
           </p>
-          <p className="v2-kickoff">Start today &mdash; access lands the moment you sign up</p>
-          <PrimaryCTA />
-          <p className="v2-foot">Add your name and email on the next page and your access is instant &mdash; then everything opens up inside the WLA app.</p>
+          <p className="v2-kickoff">Enter your details below &mdash; your free access is instant</p>
+          <ThriveCartEmbed />
+          <p className="v2-foot">100% free · instant access · no card needed. Everything opens up inside the WLA app the moment you sign up.</p>
         </div>
       </div>
     </section>
@@ -924,7 +964,7 @@ function StickyCTA() {
         <strong>Free 7 Day Reset · Instant Access</strong>
         <span className="sec">100% free · start today, no card needed</span>
       </div>
-      <a href={checkoutHref} className="sticky-cta-card" onClick={trackLead}><Bolt /> Get Free Access</a>
+      <a href="#signup" className="sticky-cta-card" onClick={scrollToSignup}><Bolt /> Get Free Access</a>
     </div>
   );
 }
