@@ -440,7 +440,7 @@ function PrimaryCTA({ label = 'Get Instant Free Access', className = 'cta-btn', 
 // ThriveCart inline embeddable sign-up form. Rendered once, in the hero card.
 function ThriveCartEmbed() {
   useEffect(() => {
-    const id = 'tc-wlacademy-493-WOMKI2';
+    const id = 'tc-wlacademy-493-TF1Y3I';
     if (document.getElementById(id)) return;
     const s = document.createElement('script');
     s.async = true;
@@ -453,9 +453,10 @@ function ThriveCartEmbed() {
       <div className="tc-loading">Loading your free sign-up…</div>
       <div
         data-thrivecart-account="wlacademy"
+        data-thrivecart-tpl="v2"
         data-thrivecart-product="493"
         className="thrivecart-embeddable"
-        data-thrivecart-embeddable="tc-wlacademy-493-WOMKI2"
+        data-thrivecart-embeddable="tc-wlacademy-493-TF1Y3I"
       ></div>
       <p className="tc-fallback">Form not loading? <a href={checkoutHref} onClick={trackLead}>Open your free sign-up here →</a></p>
     </div>
