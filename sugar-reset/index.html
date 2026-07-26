@@ -835,6 +835,23 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 880px) {
     .section, .story, .reason, .explainer, .challenge, .receive, .app, .coming, .compare, .limited, .final-cta, .faq { padding: 64px 22px; }
   }
+
+  /* Testimonial wall (Section 9) */
+  .tst-wall { max-width: 1160px; margin: 0 auto; column-count: 3; column-gap: 22px; }
+  .tst-card { break-inside: avoid; -webkit-column-break-inside: avoid; margin: 0 0 22px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 16px; padding: 24px 26px 22px; box-shadow: 0 18px 36px -26px rgba(14,39,70,0.22); position: relative; }
+  .tst-card::before { content: '\201C'; position: absolute; top: 6px; right: 20px; font-family: 'Libre Baskerville', serif; font-size: 60px; line-height: 1; color: var(--coral); opacity: 0.16; pointer-events: none; }
+  .tst-head { display: flex; align-items: center; gap: 13px; margin-bottom: 14px; }
+  .tst-avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--coral); color: #fff; display: grid; place-items: center; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 16px; letter-spacing: 0.02em; }
+  .tst-meta { min-width: 0; }
+  .tst-name { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: 16px; line-height: 1.2; }
+  .tst-date { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: 0.02em; margin-top: 2px; }
+  .tst-body p { font-size: 15px; line-height: 1.6; color: #333; margin: 0 0 10px; }
+  .tst-body p:last-child { margin-bottom: 0; }
+  .tst-body .tick { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; }
+  .tst-body .tick::before { content: '\2713'; color: var(--ok); font-weight: 800; font-size: 13px; line-height: 1.5; }
+  .tst-body em, .tst-body .hl { color: var(--coral); font-style: normal; font-weight: 700; }
+  @media (max-width: 980px) { .tst-wall { column-count: 2; } }
+  @media (max-width: 640px) { .tst-wall { column-count: 1; } }
 </style>
 </head>
 <body>
@@ -1212,40 +1229,120 @@ function WhoThisIsFor() {
 }
 
 /* ── SECTION 9 · Testimonials ───────────────────────────── */
+// Real posts from previous sugar resets. Each `body` line beginning with "✓ "
+// renders as a green tick; every other line renders as a paragraph.
+const TESTIMONIALS = [
+  { name: 'Charlene George', date: 'October 1, 2021', body: [
+    "Feeling slightly terrified to have a cheat meal/drinks this weekend. To be honest I don't feel like I want to. Sugar cravings have gone completely. Anyone else feeling the same?",
+  ]},
+  { name: 'Jemma Ellis', date: 'August 12, 2020', body: [
+    "NSV — clothes feeling looser, and sugar cravings have gone. Even when I give myself permission to eat rubbish I actually don't want to, so I don't 😲",
+  ]},
+  { name: 'Lesleyann Hurford', date: 'June 27, 2021', body: [
+    "21 day reset done & 1st 4 week block of the plan done. Results are in…",
+    "✓ 1 stone 11lbs GONE (I'm now in the realms of a new stone zone not seen in nearly 20 years)",
+    "✓ 40cm in total GONE",
+    "✓ 2 dresses DOWN, from an 18 to a 14",
+    "✓ binge eating habits are GONE",
+    "✓ I have learnt to listen to my own body and check in with hunger",
+    "✓ sugar cravings GONE",
+    "✓ now drink plain filtered water by choice over sugary or sweetened drinks",
+    "✓ movement goals SMASHED — now averaging 8k steps a day, up from 1200",
+    "I am worthy. I AM LOVED. I deserve to be healthy and happy. And I flipping LOVE WLA!! ❤️",
+  ]},
+  { name: 'Sue Pugh', date: 'April 3', body: [
+    "Thrilled to bits to report that I have lost 10.6lbs during the past 3 weeks 😎",
+    "I've absolutely loved the reset, the recipes are delicious, the group support and coaching is just fantastic, my sugar cravings are non existent now and I feel so \"light\" and healthy.",
+    "I'm really excited to begin week one over in the Academy, so glad I happened to see Anna's little advert on fb Xx ❤️",
+  ]},
+  { name: 'Pat Hales', date: 'October 15, 2021', body: [
+    "What the reset has done for me so far: taken away my sugar cravings — I was a bit of a chocoholic, not touched any or wanted to in 3 wks. BIG achievement for me.",
+    "Also taken away my hot sweats I'd been having for the past 10 yrs, so the fan has been banished to the drawer. Sleeping so much better, always had a lot of energy but even more now.",
+    "Plus I've lost 5 lb and several inches, so win win 🏆",
+  ]},
+  { name: 'Sharon O’Hara', date: 'October 16, 2021', body: [
+    "To say I'm over the moon is an understatement… can't believe that after only 3 weeks on the Reset — never being hungry, honestly not missing bread (and I'm a bread lover), no sugar cravings, and enjoying every meal — I have lost 11 INCHES all over and 8lbs. I am in shock!!! 😍",
+    "Have joined The Academy and I'm looking forward to the next few weeks. I've done ALL the diets. Counted soooo many calories. I'm done with all that now. It has definitely changed my mindset ❤️",
+  ]},
+  { name: 'Susan Gerrard', date: 'October 12, 2021', body: [
+    "I wasn't going to weigh til the end of the 3 weeks, but I weighed 2 weeks in:",
+    "✓ Weight loss: -5lb",
+    "✓ Fat %: -1.8%",
+    "✓ Waist: -1.5\"",
+    "✓ Hips: -2.5\"",
+    "✓ Sugar cravings: gone",
+    "✓ Jeans: no longer killing me, have a bit of wiggle room",
+    "Hubby is also still on board and has lost 8lb! Needless to say, I've just signed up to the academy 😊",
+  ]},
+  { name: 'Emma Braithwaite', date: 'October 17, 2021', body: [
+    "Results are in! Feeling much better — no sugar cravings, no diet drinks, clothes are fitting better, eating more fruit.",
+    "I have lost 8lbs and 7\" all over! One very happy customer, looking forward to the next 12 weeks in the academy. Thank you for showing me the way to live a healthier lifestyle!",
+  ]},
+  { name: 'Carol Fiddy', date: 'October 4, 2021', body: [
+    "Week one completed and before even stepping on the scales, big things I have noticed so far!",
+    "✓ No bloating, whatsoever",
+    "✓ No sugar cravings",
+    "✓ Skin so much better, now drinking water",
+    "✓ Bra straps no longer cutting in",
+    "✓ My belly no longer sits over my knicker line",
+    "And finally, I have lost 4lbs. So thrilled, loving the reset, loving the meals and loving the support. Ready for week 2!",
+  ]},
+  { name: 'Michelle Mailes Salmon', date: 'March 13', body: [
+    "Morning all, I started this last Monday as we fly out on our holiday of a lifetime. I have not once felt hungry, loved all the recipes, stuck to the plan & had no sugar cravings.",
+    "I have tried every diet and healthy eating plan out there & pleased to say this is the best by far. I've only gone & lost 5.7lbs 🙌 Smoothies are amazing. Good luck all, we can do this! x",
+  ]},
+  { name: 'Claire Rattray', date: 'October 16, 2021', body: [
+    "Just wanted to say thanks to Anna & coaches. The reset has been exactly that and I feel the better for it already. 4lbs lost, jeans feel looser and joint pain eased in the first few days. Sleeping better too and sugar cravings reduced. 🙌",
+    "The thing that resonated with me was the need to show up for myself and to stop making excuses. I feel confident a more healthy relationship with food is possible in the long term.",
+  ]},
+  { name: 'Lynda Fletcher', date: 'October 14, 2021', body: [
+    "I've just joined the academy & although I'm only on week 2 I've already seen such success. I'm sleeping so much better, my skin is healthier & I'm actually not feeling the cold like I was before.",
+    "The sugar cravings have almost gone & the emotional eating isn't happening as much. If that's not enough to celebrate, I've actually lost 7lb but I'm aware of so many other gains beside this number on the scales. Such a lovely supportive group!",
+  ]},
+  { name: 'Paula Ward', date: 'June 28, 2021', body: [
+    "I joined the reset in May because I'd been invited to 2 weddings and had 'outgrown' the outfits I'd bought for my daughter's wedding 2 short years ago. With less than a fortnight to go, I am over the moon that I can now fit into both dresses — woohoo!",
+    "What's more, my eating has become so much healthier, my sugar cravings are gone and I feel so much more in control of my eating than ever before. I just love the freedom and flexibility of WLA. Thank you, Anna Wallace and the WLA crew.",
+  ]},
+  { name: 'Karen McLean', date: 'August 7, 2021', body: [
+    "Just about to finish the reset. I do feel a lot less bloated and my sugar cravings have definitely reduced, especially for eating biscuits/sweets/cakes at work.",
+    "I'm absolutely loving the meals, which is a reason why I decided to join the academy. Looking forward to seeing where my journey goes. AND I've finally found some frozen avocado 😀",
+  ]},
+  { name: 'Jayne Daniels', date: 'October 22, 2021', body: [
+    "I did the reset & lost 5lbs. I just cannot believe how my mindset is changing & I am starting each day with a positive attitude. I have many social plans coming up & I am not panicking about food choices.",
+    "My sugar cravings have gone & I am turning down chocolate & my friends can't understand it 🤣 Thanks to Anna, all the coaches & all the members — I really believe we can all do this together 🥰",
+  ]},
+];
+
 function Testimonials() {
-  /* Screenshot testimonials go in the grid below — prioritise any that mention
-     evening cravings, the after-dinner treat, or "I've stopped thinking about food all day".
-     Drop image files into /assets and swap the src of each .results-tile below. */
-  const tiles = [
-    { name: 'Vicky, 56',   img: '/assets/vicky-before-after.png' },
-    { name: 'Jill, 52',    img: '/assets/jill-before-after.jpg' },
-    { name: 'Ruth, 54',    img: '/assets/ruth-before-after.jpg' },
-    { name: 'Barbara, 58', img: '/assets/barbara-before-after.png' },
-    { name: 'Laura',       img: '/assets/laura-before-after.png' },
-    { name: 'Member 6',    img: '/assets/member-06-before-after.png' },
-    { name: 'Member 7',    img: '/assets/member-07-before-after.png' },
-    { name: 'Member 8',    img: '/assets/member-08-before-after.jpeg' },
-    { name: 'Member 9',    img: '/assets/member-09-before-after.png' },
-    { name: 'Member 10',   img: '/assets/member-10-before-after.png' },
-    { name: 'Member 11',   img: '/assets/member-11-before-after.png' },
-    { name: 'Member 12',   img: '/assets/member-12-before-after.png' },
-  ];
+  const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   return (
-    <section className="results" id="results" style={{ paddingTop: 64, paddingBottom: 48 }}>
+    <section className="results" id="results" style={{ paddingTop: 64, paddingBottom: 56 }}>
       <div className="section-head">
-        <span className="eyebrow">Real women · Real results</span>
+        <span className="eyebrow">Real women · Real posts</span>
         <h2 className="serif">Women just like you,<br/><em>who stopped fighting the cupboard.</em></h2>
+        <p>Real posts from women who've been through a previous Sugar Reset.</p>
       </div>
-      <div className="results-carousel">
-        <div className="results-track">
-          {tiles.map((t, i) => (
-            <div className="results-tile" key={i}>
-              <img src={t.img} alt={`Before and after of ${t.name}`} loading="lazy" decoding="async" />
+      <div className="tst-wall">
+        {TESTIMONIALS.map((t, i) => (
+          <div className="tst-card" key={i}>
+            <div className="tst-head">
+              <div className="tst-avatar">{initials(t.name)}</div>
+              <div className="tst-meta">
+                <div className="tst-name">{t.name}</div>
+                <div className="tst-date">{t.date}</div>
+              </div>
             </div>
-          ))}
-        </div>
+            <div className="tst-body">
+              {t.body.map((line, j) => (
+                line.startsWith('✓ ')
+                  ? <p className="tick" key={j}>{line.slice(2)}</p>
+                  : <p key={j}>{line}</p>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-      <p className="results-disclaimer">*Results vary depending on the individual. There is no guarantee of specific results.</p>
+      <p className="results-disclaimer" style={{ marginTop: 8 }}>*Results vary depending on the individual. There is no guarantee of specific results.</p>
       <div className="receive-cta-wrap" style={{ marginTop: 32 }}>
         <a href={CHECKOUT_URL} className="receive-cta-btn">Join The 21 Day Sugar Reset — £17 <Arrow /></a>
       </div>
