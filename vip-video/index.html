@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<base href="/vip-video/" />
+<title>Your VIP Invitation · Weight Loss Academy</title>
+<meta name="description" content="Watch the short video to see exactly how the VIP WLA Strategy Intensive works — personalised 1:1 support with Anna Wallace. Limited places." />
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XSBKM60YTB');
+</script>
+
+<!-- Vercel Web Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '410999599864541');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=410999599864541&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ================ TOKENS ================ */
+:root{
+  --navy: #003060;
+  --navy-ink: #00213f;
+  --cream: #F9F7F4;
+  --blush: #F79F83;
+  --blush-deep: #e8815f;
+  --peach: #FBE4DB;
+  --beige: #E9DFD3;
+  --ink: #333333;
+  --muted: #6b6b6b;
+  --line: rgba(0,48,96,.12);
+
+  --serif: "Libre Baskerville", Georgia, serif;
+  --sans: "Alegreya Sans", system-ui, sans-serif;
+
+  --container: 1120px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,h2,h3,h4{
+  font-family: var(--serif);
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 .4em;
+  text-wrap: balance;
+}
+p{margin:0 0 1em; text-wrap: pretty}
+a{color: var(--navy); text-decoration: none}
+img{max-width:100%; display:block}
+
+.container{max-width: var(--container); margin: 0 auto; padding: 0 28px}
+
+/* ================ ANNOUNCEMENT BAR ================ */
+.announce{
+  background: var(--peach);
+  color: var(--navy);
+  text-align: center;
+  padding: 16px 24px;
+  font-family: var(--serif);
+  font-size: clamp(15px, 2.2vw, 20px);
+  line-height: 1.4;
+}
+.announce em{font-style: italic; color: var(--blush-deep)}
+
+/* ================ NAV ================ */
+.nav{
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.nav .logo{height: 24px; width:auto; opacity:.92}
+
+/* ================ VIDEO BLOCK ================ */
+.video-section{padding: 20px 0 70px; background: var(--cream)}
+
+.watch-head{
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 34px;
+}
+.watch-head h1{
+  font-size: clamp(26px, 4.4vw, 46px);
+  line-height: 1.18;
+  margin: 0;
+  display: inline-block;
+  border-bottom: 2px solid var(--beige);
+  padding-bottom: 14px;
+}
+.watch-head h1 em{font-style: italic; color: var(--blush-deep); font-weight: 400}
+
+.video-wrap{max-width: 880px; margin: 0 auto; position: relative}
+.video-stage{position: relative}
+.video-frame{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #111;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7) inset,
+    0 30px 60px -20px rgba(0,48,96,.35),
+    0 10px 30px -10px rgba(0,48,96,.22);
+}
+.video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.video-stamp{
+  position: absolute;
+  top: -18px; right: -18px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: var(--blush);
+  color: #fff;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(8deg);
+  box-shadow: 0 14px 28px -10px rgba(232,129,95,.55);
+  padding: 10px;
+  z-index: 2;
+}
+
+.video-note{
+  max-width: 780px;
+  margin: 34px auto 0;
+  text-align: center;
+}
+.video-note p{
+  font-family: var(--serif);
+  font-size: clamp(19px, 2.6vw, 26px);
+  line-height: 1.4;
+  color: var(--navy);
+  margin: 0;
+}
+.video-note p em{font-style: italic; color: var(--blush-deep); font-weight: 400}
+
+.cta-row{margin-top: 32px; text-align: center}
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  color: #fff !important;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 16px 30px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 14px 30px -14px rgba(0,48,96,.6);
+}
+.btn:hover{background: var(--navy-ink); transform: translateY(-2px)}
+.btn .arrow{display:inline-block; transition: transform .2s ease}
+.btn:hover .arrow{transform: translateX(3px)}
+
+/* ================ SECTION SHARED ================ */
+section{padding: 90px 0}
+.section-head{text-align:center; max-width: 760px; margin: 0 auto 52px}
+.section-head h2{font-size: clamp(30px, 3.8vw, 46px); line-height: 1.15}
+.section-head h2 em{font-style: italic; color: var(--blush-deep); font-weight:400}
+.section-head p{color: var(--muted); font-size: 17px}
+.divider-mark{
+  display:flex; align-items:center; justify-content:center;
+  gap: 14px; color: var(--blush-deep);
+  margin: 0 auto 18px; font-size: 12px;
+  letter-spacing: .3em; text-transform: uppercase;
+}
+.divider-mark::before, .divider-mark::after{
+  content:""; width: 40px; height: 1px; background: currentColor; opacity:.5;
+}
+
+/* ================ TESTIMONIALS ================ */
+.testimonials-section{background: var(--peach)}
+.testimonials-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px 30px;
+}
+.t-card{
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.t-card:hover{transform: translateY(-4px); box-shadow: 0 24px 48px -28px rgba(0,48,96,.35)}
+.t-video{aspect-ratio: 16 / 9; background: #111; position: relative}
+.t-video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.t-body{padding: 24px 22px 26px; text-align: center}
+.t-quote{
+  font-family: var(--serif);
+  font-size: 16.5px;
+  line-height: 1.45;
+  color: var(--navy);
+  margin: 0 0 14px;
+  text-wrap: pretty;
+}
+.t-quote::before{content:"\201C"; color: var(--blush-deep)}
+.t-quote::after{content:"\201D"; color: var(--blush-deep)}
+.t-name{
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--blush-deep);
+  font-weight: 500;
+}
+
+/* ================ GALLERY ================ */
+.gallery-section{background: var(--cream)}
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.g-card{
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: var(--beige);
+  border: 1px solid var(--line);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.g-card:hover{transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgba(0,48,96,.35)}
+.g-card img{width: 100%; height: 100%; object-fit: cover; display: block}
+
+/* ================ CLOSING CTA ================ */
+.closing{
+  background: var(--navy);
+  color: #e8ecf3;
+  text-align: center;
+  padding: 90px 0;
+}
+.closing h2{color: #fff; font-size: clamp(28px, 3.4vw, 42px); margin-bottom: 16px}
+.closing h2 em{color: var(--blush); font-style: italic; font-weight: 400}
+.closing p{color: #c9d4e2; font-size: 18px; max-width: 560px; margin: 0 auto 30px}
+.closing .btn{background: var(--blush); color: var(--navy) !important}
+.closing .btn:hover{background: #fff; color: var(--navy) !important}
+
+/* ================ FOOTER ================ */
+footer.site-foot{
+  background: var(--navy-ink);
+  color: #8ea5bf;
+  padding: 34px 0 38px;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: .04em;
+}
+footer.site-foot img{height: 16px; opacity:.7; margin: 0 auto 12px; filter: brightness(2)}
+footer.site-foot a{color: #b7c6da; text-decoration: underline; text-underline-offset: 3px}
+footer.site-foot .f-legal{margin-top: 8px; font-size: 13px}
+
+/* ================ RESPONSIVE ================ */
+@media (max-width: 900px){
+  .testimonials-grid{grid-template-columns: 1fr; max-width: 420px; margin: 0 auto}
+  .gallery-grid{grid-template-columns: repeat(2, 1fr)}
+  section{padding: 64px 0}
+  .video-stamp{width: 82px; height: 82px; font-size: 12px; top: -12px; right: -12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== ANNOUNCEMENT ========== -->
+<div class="announce">✨ I've opened just <em>10 VIP places</em> for my 1:1 WLA Strategy Intensive ✨</div>
+
+<!-- ========== NAV ========== -->
+<header class="nav">
+  <img src="assets/wla-logo.png" alt="Weight Loss Academy" class="logo" />
+</header>
+
+<!-- ========== VIDEO ========== -->
+<section class="video-section">
+  <div class="container">
+    <div class="watch-head">
+      <h1><em>Watch</em> This Short Video Now For All The Details 🔥</h1>
+    </div>
+
+    <div class="video-wrap">
+      <div class="video-stage">
+        <div class="video-stamp">Watch til<br>the end ✨</div>
+        <div class="video-frame">
+          <iframe
+            src="https://player.vimeo.com/video/1212628921?h=0e1c6cc2f3&badge=0&autopause=0&player_id=0&app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            title="The VIP WLA Strategy Intensive"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-note">
+      <p>Watch this video to the end. Then head back to our chat and let me know if you're <em>IN</em>, out, or have any questions 😊</p>
+    </div>
+
+    <div class="cta-row">
+      <a href="#" class="btn" id="main-cta">Message me to join <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials-section" id="results">
+  <div class="container">
+    <div class="divider-mark">Results</div>
+    <div class="section-head">
+      <h2>What others have <em>achieved</em>.</h2>
+      <p>Real women. Real results.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <!-- 1 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147300902?h=58fbd0c85a&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Vicky"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I started the WLA a size 20 and am now a 10/12</p>
+          <div class="t-name">— Vicky —</div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147300457?h=4d750b2063&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Lisa"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I have lost weight and I am now the slimmest I have been since I got married 16 years ago</p>
+          <div class="t-name">— Lisa —</div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147299534?h=312ee062c6&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Charlie"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I lost over 25kg without ever feeling like I was on a diet</p>
+          <div class="t-name">— Charlie —</div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147299877?h=06a3985c51&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Tara"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I have lost 2 stone, dropped 1-2 dress sizes, but most importantly, I understand and enjoy food in a way that is positive and healthy</p>
+          <div class="t-name">— Tara —</div>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147299763?h=a1064cfe85&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Lucy"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">2½ stone down, not counted a calorie in over a year and bought a crop top for the first time in my life</p>
+          <div class="t-name">— Lucy —</div>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="t-card">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/1147300003?h=f928fa459f&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Anna"></iframe>
+        </div>
+        <div class="t-body">
+          <p class="t-quote">I lost almost 2 stone and saw my perimenopause symptoms disappear.</p>
+          <div class="t-name">— Anna —</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY (before/after) ========== -->
+<section class="gallery-section" id="gallery-section">
+  <div class="container">
+    <div class="divider-mark">Transformations</div>
+    <div class="section-head">
+      <h2>See why so many women <em>live by the WLA</em>.</h2>
+      <p>A snapshot of what happens when the right plan meets real life.</p>
+    </div>
+
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- populated via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLOSING CTA ========== -->
+<section class="closing">
+  <div class="container">
+    <h2>Ready to make this <em>your</em> transformation?</h2>
+    <p>Places on the VIP Strategy Intensive are limited to 10 women. Watch the video, then message me to grab your spot.</p>
+    <a href="#" class="btn" id="closing-cta">Message me to join <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <img src="assets/wla-logo.png" alt="Weight Loss Academy" />
+  <div>Copyright © 2025 Anna Coaching DMCC · All rights reserved.</div>
+  <div class="f-legal"><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a></div>
+</footer>
+
+<script>
+/* ============ Populate gallery with real transformation images ============ */
+(function(){
+  const grid = document.getElementById('gallery-grid');
+  const items = [
+    'assets/transform-01.png',
+    'assets/transform-02.png',
+    'assets/transform-03.png',
+    'assets/transform-04.png',
+    'assets/transform-05.png',
+    'assets/transform-06.jpg',
+    'assets/transform-07.png',
+    'assets/transform-08.png',
+    'assets/transform-09.png',
+    'assets/transform-10.png',
+    'assets/transform-11.jpeg',
+    'assets/transform-12.png',
+  ];
+  grid.innerHTML = items.map((src, i)=>`
+    <div class="g-card">
+      <img src="${src}" alt="Client transformation ${i+1}" loading="lazy" />
+    </div>
+  `).join('');
+})();
+
+/* ============ CTAs open Instagram DM ============ */
+const IG_URL = "https://www.instagram.com/iamannawallace/";
+document.querySelectorAll('#main-cta, #closing-cta').forEach(a=>{
+  a.setAttribute('href', IG_URL);
+  a.setAttribute('target', '_blank');
+  a.setAttribute('rel', 'noopener');
+});
+</script>
+</body>
+</html>
