@@ -415,7 +415,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .meet-anna-text p { font-size: 16.5px; line-height: 1.65; color: #333; margin: 0 0 14px; }
   .meet-anna-text strong { color: var(--navy); font-weight: 700; }
   .meet-anna-text em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .meet-anna-signoff { margin-top: 22px; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; }
+  .meet-anna-signoff { clear: both; margin-top: 22px; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; }
   .meet-anna-signoff p { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: var(--navy); margin: 0; line-height: 1.5; }
   .meet-anna-signature { margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: 22px; font-weight: 700; }
   @media (max-width: 720px) { .meet-anna-image { float: none; margin: 0 auto 24px; width: 100%; max-width: 420px; } }
@@ -852,6 +852,15 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .tst-body em, .tst-body .hl { color: var(--coral); font-style: normal; font-weight: 700; }
   @media (max-width: 980px) { .tst-wall { column-count: 2; } }
   @media (max-width: 640px) { .tst-wall { column-count: 1; } }
+
+  /* What's Included grid (Section 10) — clean hairline tiles */
+  .included-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; max-width: 1160px; margin: 0 auto; }
+  .included-tile { background: var(--paper); padding: 30px 26px; min-height: 208px; display: flex; flex-direction: column; gap: 12px; }
+  .included-tile .it-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); font-weight: 800; }
+  .included-tile h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--navy); margin: 0; font-weight: 700; line-height: 1.22; }
+  .included-tile p { font-size: 14px; line-height: 1.55; color: var(--muted); margin: auto 0 0; }
+  @media (max-width: 900px) { .included-grid { grid-template-columns: repeat(2, 1fr); } .included-tile { min-height: 180px; } }
+  @media (max-width: 520px) { .included-grid { grid-template-columns: 1fr; } .included-tile { min-height: 0; } }
 </style>
 </head>
 <body>
@@ -1358,61 +1367,34 @@ const IcVideo = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 const IcSpark = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><circle cx="19" cy="5" r="1" fill="currentColor"/><circle cx="5" cy="19" r="1" fill="currentColor"/></svg>);
 
 function WhatYouGet() {
-  const groups = [
-    { head: 'The Core Programme', items: [
-      { ic: <IcDoc />,  t: 'The 21 Day Sugar Reset Guide', d: 'Your step-by-step process from day one to day twenty-one.', v: 37 },
-      { ic: <IcMail />, t: '21 Days Of Daily Coaching Emails', d: 'One from me every single morning, in order, to keep you moving.', v: 57 },
-      { ic: <IcFork />, t: '2 Example Weekly Meal Guides', d: 'So you don’t have to think, just follow along and eat well.', v: 27 },
-    ]},
-    { head: 'The Food', items: [
-      { ic: <IcFork />, t: '10 Breakfast Recipes', d: 'Meals built to hold you until lunch, no mid-morning crash.', v: 27 },
-      { ic: <IcFork />, t: '10 Lunch Recipes', d: 'Satisfying lunches that keep blood sugar steady through the afternoon.', v: 27 },
-      { ic: <IcFork />, t: '10 Dinner Recipes', d: 'Evening meals that leave you full, not reaching for the cupboard.', v: 27 },
-      { ic: <IcFork />, t: '5 Snack Recipes', d: 'Genuinely satisfying snacks for the moments you need one.', v: 17 },
-      { ic: <IcDoc />,  t: 'The Swap List', d: 'Simple, smarter swaps that quietly take the edge off cravings.', v: 17 },
-      { ic: <IcDoc />,  t: 'The Snack Guide', d: 'What to reach for, and why it works, when the pull hits.', v: 17 },
-    ]},
-    { head: 'The Coaching Videos', items: [
-      { ic: <IcVideo />, t: 'Why You Crave Sugar', d: 'What your body is actually asking for when the cravings hit.', v: 47 },
-      { ic: <IcVideo />, t: 'How To Increase Your Willpower', d: 'Willpower as a skill you build, not a thing you’re born with.', v: 47 },
-      { ic: <IcVideo />, t: 'How To Resist Temptation In The Moment', d: 'Exactly what to do when it’s right in front of you.', v: 47 },
-      { ic: <IcVideo />, t: 'Handling The Sugar Environment', d: 'At home, at work and on holiday, without white-knuckling it.', v: 47 },
-    ]},
-    { head: 'The In-The-Moment Tools', items: [
-      { ic: <IcSpark />, t: 'The 5 Minute Sugar Craving Technique', d: 'A fast, repeatable way to ride out a craving.', v: 27 },
-      { ic: <IcSpark />, t: 'Body Scan For Sugar Cravings Meditation', d: 'Settle the body so the urge loses its grip.', v: 27 },
-      { ic: <IcDoc />,   t: 'Handling The After-Dinner Sweet Treat', d: 'The exact moment most women lose it, handled.', v: 27 },
-      { ic: <IcDoc />,   t: 'Handling Sugar Withdrawals Guide', d: 'What to expect in the first few days, and how to move through it.', v: 17 },
-      { ic: <IcSpark />, t: 'Mindful Techniques For Eliminating Sugar Cravings', d: 'Simple mindfulness tools that make cravings quieter.', v: 37 },
-      { ic: <IcDoc />,   t: 'The Dieting And Sugar Cravings Guide', d: 'Why diets make cravings worse, and what to do instead.', v: 37 },
-    ]},
+  const items = [
+    { tag: 'Core',      t: 'The 21 Day Sugar Reset Guide', d: 'Your step-by-step guide through the reset, built to keep you full, satisfied and free of the daily sugar pull within days.' },
+    { tag: 'Core',      t: 'Daily Coaching & Check-ins', d: "Guidance from Anna every day of the reset, so you stay on track without ever feeling like you're doing it alone." },
+    { tag: 'Live',      t: 'The Live Kick-Off Call', d: 'Live on Zoom with Anna on Monday 3rd August. Ask your questions before day one, and the replay is sent to everyone.' },
+    { tag: 'Core',      t: 'Sugar Reset Workbook', d: 'Spot your own triggers, set clear goals and track your progress, so you actually follow through and see results.' },
+    { tag: 'Reference', t: 'Snack & Food Swap Guides', d: 'Zero-prep options, smart swaps and snack ideas that satisfy without setting off a craving.' },
+    { tag: 'Reference', t: 'Drinks & Hydration Guide', d: 'What to drink, what to swap and how alcohol fits, in a way that actually supports the reset.' },
+    { tag: 'Bonus',     t: 'Easy Freezer Dinner Pack', d: "No-cook meals you can have ready without effort, for the busy days you don't want to think about food." },
+    { tag: 'Reference', t: 'No-Prep Food List', d: 'Grab-and-go foods that keep you on track even on your busiest or lowest-energy days.' },
   ];
   return (
     <section className="receive" style={{ paddingTop: 56 }}>
       <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">What You Get</span>
-          <h2 className="serif">Everything you get <em>immediate access to for £17.</em></h2>
+          <span className="eyebrow">What's Inside</span>
+          <h2 className="serif">Everything you need,<br/><em>nothing you don't.</em></h2>
         </div>
-        {groups.map((g, gi) => (
-          <div key={gi} style={{ marginBottom: 8 }}>
-            <div className="year-block-eyebrow" style={{ display: 'block', width: 'fit-content', margin: gi === 0 ? '0 auto 18px' : '32px auto 18px' }}>{g.head}</div>
-            <div className="receive-grid two-col">
-              {g.items.map((it, i) => (
-                <div className="receive-card" key={i}>
-                  <div className="check-ic">{it.ic}</div>
-                  <div>
-                    <h3>{it.t}</h3>
-                    <p>{it.d}</p>
-                    <div className="value-pill"><span className="lab">Value</span>£{it.v}</div>
-                  </div>
-                </div>
-              ))}
+        <div className="included-grid">
+          {items.map((it, i) => (
+            <div className="included-tile" key={i}>
+              <span className="it-tag">{it.tag}</span>
+              <h3>{it.t}</h3>
+              <p>{it.d}</p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
-        <div className="offer-block">
+        <div className="offer-block" style={{ marginTop: 44 }}>
           <h3 className="offer-title serif">That's <em>£613</em> of value.</h3>
           <ul className="offer-stack">
             <li>Everything above, the complete <strong>21 Day Sugar Reset</strong></li>
