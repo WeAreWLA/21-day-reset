@@ -853,10 +853,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 980px) { .tst-wall { column-count: 2; } }
   @media (max-width: 640px) { .tst-wall { column-count: 1; } }
 
-  /* Hero "Without" treatment */
-  .hero-without-block { margin: 22px 0 28px; max-width: 560px; }
-  .hero-without-block .hw-word { display: inline-block; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1; margin-bottom: 12px; }
-  .hero-without-block .hw-detox { font-family: 'Libre Baskerville', serif; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.35; color: var(--navy); font-weight: 700; margin: 0; }
+  /* Hero headline with hierarchy */
+  .hero-headline { margin: 0 0 20px; }
+  .hero-headline .hh-main { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: clamp(42px, 5.4vw, 66px); line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 18px; }
+  .hero-headline .hh-main em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .hero-headline .hh-sub { display: block; font-family: 'Libre Baskerville', serif; font-weight: 400; color: var(--navy); font-size: clamp(16px, 1.75vw, 20px); line-height: 1.45; max-width: 540px; }
+  .hero-headline .hh-sub strong { font-weight: 700; }
+  .hero-without-line { font-family: 'Libre Baskerville', serif; font-size: clamp(16px, 1.7vw, 18.5px); line-height: 1.4; color: var(--navy); font-weight: 700; margin: 0 0 24px; max-width: 540px; }
+  .hero-without-line em { color: var(--coral); font-style: italic; font-weight: 700; }
   .hero-note { color: var(--coral); font-style: italic; font-weight: 500; }
 
   /* Hero promise band (below the hero) */
@@ -979,11 +983,11 @@ function Hero() {
   return (
     <section className="hero" id="top">
       <div>
-        <h1 className="h1 serif" style={{ fontSize: 'clamp(27px, 3vw, 40px)' }}>Finally ditch your sugar habit, resist your cravings, feel lighter, be empowered by your food choices and finally feel full of energy with <span className="accent italic">the sugar reset</span></h1>
-        <div className="hero-without-block">
-          <span className="hw-word">Without</span>
-          <p className="hw-detox">Doing an extreme detox that leaves you feeling hungry, tired and moody</p>
-        </div>
+        <h1 className="hero-headline serif">
+          <span className="hh-main">Finally ditch your <em>sugar habit</em></span>
+          <span className="hh-sub">Resist your cravings, feel lighter, be empowered by your food choices and finally feel full of energy with <strong>the Sugar Reset</strong>.</span>
+        </h1>
+        <p className="hero-without-line"><em>Without</em> doing an extreme detox that leaves you feeling hungry, tired and moody.</p>
 
         <div className="hero-offer-card">
           <div className="hero-offer-line-2">Kick-off: <em>Monday 3rd August 2026</em></div>
