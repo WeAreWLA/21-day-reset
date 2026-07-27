@@ -853,6 +853,12 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 980px) { .tst-wall { column-count: 2; } }
   @media (max-width: 640px) { .tst-wall { column-count: 1; } }
 
+  /* Hero "Without" treatment */
+  .hero-without-block { margin: 6px 0 20px; max-width: 560px; }
+  .hero-without-block .hw-word { display: inline-block; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .hero-without-block .hw-detox { font-family: 'Libre Baskerville', serif; font-size: clamp(17px, 1.9vw, 21px); line-height: 1.35; color: var(--navy); font-weight: 700; margin: 0; }
+  .hero-note { color: var(--coral); font-style: italic; font-weight: 500; }
+
   /* What's Included grid (Section 10) — clean hairline tiles */
   .included-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; max-width: 1000px; margin: 0 auto; }
   .included-tile { background: var(--paper); padding: 32px 30px; min-height: 190px; display: flex; flex-direction: column; gap: 12px; }
@@ -968,9 +974,13 @@ function Hero() {
     <section className="hero" id="top">
       <div>
         <div className="eyebrow">Starts Monday 3rd August · Doors close Sunday night</div>
-        <h1 className="h1 serif">Finally Ditch The Daily <span className="accent italic">Sugar Habit</span> In 21 Days</h1>
-        <p className="lede" style={{ fontSize: 18 }}>Stop the 3pm raid, the after-dinner spiral and the "I'll start again tomorrow" cycle, <strong>without cutting sugar out completely</strong>, without detoxing, and without spending three weeks hungry and miserable.</p>
-        <p className="hero-without">For women in their 40s, 50s and 60s who eat well all day and then can't explain what happens at 8pm.</p>
+        <h1 className="h1 serif" style={{ fontSize: 'clamp(27px, 3vw, 40px)' }}>Finally ditch your sugar habit, resist your cravings, feel lighter, be empowered by your food choices and finally feel full of energy with <span className="accent italic">the sugar reset</span></h1>
+        <div className="hero-without-block">
+          <span className="hw-word">Without</span>
+          <p className="hw-detox">Doing an extreme detox that leaves you feeling hungry, tired and moody</p>
+        </div>
+        <p className="lede">If you want to feel liberated, stop sabotaging your fat loss goals and be in control again with food <span className="hero-note">(goodbye sugar hangover)</span></p>
+        <p className="lede">This simple step-by-step process will end your sugar binges so you can finally get your life back, reach your goals and feel your best. <span className="hero-note">(even if you have tried every diet under the sun with no success and feel like a failure)</span></p>
 
         <div className="hero-offer-card">
           <div className="hero-offer-line-2">Kick-off: <em>Monday 3rd August 2026</em></div>
