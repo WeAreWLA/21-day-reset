@@ -1196,15 +1196,14 @@ function HowItWorks() {
 /* ── SECTION 7 · What life looks like on the other side ─── */
 function OtherSide() {
   const items = [
-    'Your cravings calm right down, often within the first 72 hours',
-    'You get to 4pm and the cupboard simply isn’t calling you',
-    'You feel lighter and less bloated',
-    'The afternoon energy dip flattens out and your energy holds steady',
-    'You sleep better, because you’re not going to bed on a sugar spike',
-    'Less mindless snacking, and you stop thinking about food all day',
-    'You can have one and leave the rest (which will feel strange at first)',
-    'Your clothes start feeling different, the extra few hundred calories a day were never the meals',
-    'And the big one: you stop believing you’re a woman with no willpower, because you’ll have proof that you’re not',
+    'Break free from sugar cravings in your first 7 days',
+    'Lose up to a stone in just 21 days (results vary)',
+    'Feel lighter, healthier and more energised',
+    'Stop constantly thinking about food and sugar',
+    'Feel comfortable and confident in your clothes again',
+    'Enjoy your favourite foods without guilt or feeling out of control',
+    'Finally feel back in control of your eating, not controlled by cravings',
+    'Leave with a simple strategy you can use for life',
   ];
   return (
     <section className="receive" style={{ paddingTop: 56, paddingBottom: 64 }}>
@@ -1212,14 +1211,12 @@ function OtherSide() {
         <div className="section-head">
           <span className="eyebrow">Three Weeks From Now</span>
           <h2 className="serif">What life looks like on <em>the other side.</em></h2>
-          <p>Most women feel it fast. Here’s what to expect as the reset takes hold:</p>
         </div>
         <ul className="story-chips">
           {items.map((it, i) => (
             <li key={i} className={i === items.length - 1 && items.length % 2 === 1 ? 'span-2' : ''}><span className="chip-dot" /><span>{it}</span></li>
           ))}
         </ul>
-        <p className="expect-note" style={{ maxWidth: 620, marginInline: 'auto' }}>(Results vary, but momentum is almost guaranteed.)</p>
       </div>
     </section>
   );
@@ -1398,25 +1395,29 @@ const IcSpark = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 
 function WhatYouGet() {
   const items = [
-    { t: 'The 21 Day Sugar Reset Nutrition Meal Guide', d: 'Your step-by-step guide through the reset, with a fresh meal guide released each week to keep you full, satisfied and free of the daily sugar pull.' },
-    { t: 'Daily Coaching & Check-ins', d: "Guidance from Anna every day of the reset, so you stay on track without ever feeling like you're doing it alone." },
-    { t: 'The Live Kick-Off Call', d: 'Live on Zoom with Anna on Monday 3rd August. Ask your questions before day one, and the replay is sent to everyone.' },
-    { t: 'Snack & Food Swap Guides', d: 'Zero-prep options, smart swaps and snack ideas that satisfy without setting off a craving.' },
-    { t: 'Drinks & Hydration Guide', d: 'What to drink, what to swap and how alcohol fits, in a way that actually supports the reset.' },
-    { t: 'Easy Freezer Pack & No-Prep Food List', d: "No-cook meals and grab-and-go foods for the busy, low-energy days you don't want to think about food." },
+    { ic: '🍽️', t: '21-Day Nutrition Meal Guide', d: 'Know exactly what to eat to reduce sugar cravings and make weight loss feel easier.' },
+    { ic: '🎥', t: 'Weekly Live Coaching', d: 'Learn the nutrition and behavioural change strategies to overcome sugar cravings and build habits that support lasting weight loss.' },
+    { ic: '🧰', t: 'The Sugar Cravings Toolkit', d: 'Practical tools to help you overcome cravings before they lead to overeating.' },
+    { ic: '📄', t: 'Cheat Sheets & Quick Guides', d: 'Simple nutrition guides to help you make better choices and stay on track with your weight loss.' },
+    { ic: '✅', t: 'Sugar Cravings Snack Guide', d: 'The best snacks to reduce cravings, stay fuller for longer and avoid overeating.' },
+    { ic: '🍓', t: 'High-Protein Recipe Collection', d: 'Enjoy satisfying meals that keep you fuller for longer and naturally reduce sugar cravings.' },
+    { ic: '👥', t: 'Community & Accountability', d: 'Stay motivated with coaching, support and accountability throughout your 21-day journey.' },
   ];
   return (
     <section className="receive" style={{ paddingTop: 56 }}>
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">What's Inside</span>
-          <h2 className="serif">Everything you need,<br/><em>nothing you don't.</em></h2>
+          <h2 className="serif">Everything You Need to <em>Beat Sugar Cravings</em></h2>
         </div>
-        <div className="included-grid">
+        <div className="receive-grid two-col">
           {items.map((it, i) => (
-            <div className="included-tile" key={i}>
-              <h3>{it.t}</h3>
-              <p>{it.d}</p>
+            <div className={'receive-card' + (i === items.length - 1 ? ' span-2' : '')} key={i}>
+              <div className="check-ic" style={{ fontSize: 24 }}>{it.ic}</div>
+              <div>
+                <h3>{it.t}</h3>
+                <p>{it.d}</p>
+              </div>
             </div>
           ))}
         </div>
