@@ -999,7 +999,7 @@ function CountdownBanner({ label }) {
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">{label || <>Only <strong>150</strong> Places Available</>}</span>
+        <span className="countdown-label">{label || <>Only <strong>150</strong> places available · Registration closes in</>}</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
@@ -1023,8 +1023,8 @@ function Hero() {
         <p className="hero-without-line">No calorie counting. No detoxes. No giving up your favourite foods.</p>
 
         <div className="hero-offer-card">
-          <div className="hero-offer-line-2">Kick-off: <em>Monday 3rd August 2026</em></div>
-          <div className="hero-offer-line-3">Join the only live round for only <strong>£17</strong></div>
+          <div className="hero-offer-line-2">Launch Price: <em>£17</em></div>
+          <div className="hero-offer-line-3">One live round only. Starts Monday 3rd August.</div>
         </div>
         <div className="hero-cta-row">
           <CTAButtons size="compact" />
