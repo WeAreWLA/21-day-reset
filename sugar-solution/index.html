@@ -142,7 +142,12 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .cd-lab { display: block; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(0,48,96,0.7); font-weight: 700; margin-top: 1px; }
   .countdown-cta { background: #003060; color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; text-decoration: none; transition: background .15s, transform .15s; }
   .countdown-cta:hover { background: var(--navy-deep); transform: translateY(-1px); }
-  @media (max-width: 640px) { .countdown-banner { padding: 8px 10px; } .countdown-inner { gap: 10px; } .countdown-label { font-size: 12px; } .cd-item { padding: 3px 7px; min-width: 38px; } .cd-num { font-size: 15px; } .countdown-cta { padding: 6px 14px; font-size: 12px; } }
+  .countdown-paypal { background: var(--paypal); color: #003087; padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; transition: background .15s, transform .15s; }
+  .countdown-paypal:hover { background: var(--paypal-hover); transform: translateY(-1px); }
+  .countdown-paypal .pp-logo { font-style: italic; font-weight: 800; letter-spacing: -0.02em; }
+  .countdown-paypal .pp-pay { color: #003087; }
+  .countdown-paypal .pp-pal { color: #009cde; }
+  @media (max-width: 640px) { .countdown-banner { padding: 8px 10px; } .countdown-inner { gap: 10px; } .countdown-label { font-size: 12px; } .cd-item { padding: 3px 7px; min-width: 38px; } .cd-num { font-size: 15px; } .countdown-cta { padding: 6px 14px; font-size: 12px; } .countdown-paypal { padding: 6px 12px; font-size: 12px; } }
 
   /* Next Evolution of WLA section */
   .next-evolution-sub { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(18px, 2.1vw, 24px); margin-top: 12px; font-weight: 500; }
@@ -322,6 +327,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .section-head .eyebrow::after { content: ''; width: 28px; height: 2px; background: var(--coral); display: inline-block; }
   .section-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 4.2vw, 50px); color: var(--navy); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 18px; font-weight: 700; }
   .section-head h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .section-head h2.h2-long { font-size: clamp(28px, 4.2vw, 50px); }
   .section-head p { font-size: 17px; line-height: 1.6; color: #333333; margin: 0; }
 
   /* Tired of starting over */
@@ -900,6 +906,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 const { useState, useEffect, useRef, useCallback } = React;
 
 const CHECKOUT_URL = 'https://sales.thewlacademy.com/sugar-solution/';
+const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/5G7DTFD8VWZBN';
 
 const Arrow = ({ className = 'arrow' }) => (
   <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -918,7 +925,7 @@ function CTAButtons({ size = 'large', primaryLabel = 'Join The Sugar Cravings So
         <a href={CHECKOUT_URL} className="cta-btn compact">
           <CardIcon /> {primaryLabel}
         </a>
-        <a href={CHECKOUT_URL} className="paypal-btn compact" aria-label="Pay with PayPal">
+        <a href={PAYPAL_URL} className="paypal-btn compact" aria-label="Pay with PayPal">
           <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
         </a>
         <div className="micro-foot compact">
@@ -933,7 +940,7 @@ function CTAButtons({ size = 'large', primaryLabel = 'Join The Sugar Cravings So
       <a href={CHECKOUT_URL} className="cta-btn">
         {primaryLabel} <Arrow />
       </a>
-      <a href={CHECKOUT_URL} className="paypal-btn" aria-label="Pay with PayPal">
+      <a href={PAYPAL_URL} className="paypal-btn" aria-label="Pay with PayPal">
         <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
       </a>
       <div className="micro-foot">
@@ -986,6 +993,7 @@ function CountdownBanner({ label }) {
         <div className="countdown-inner">
           <span className="countdown-label">⏳ Last chance · <strong>You can still join today</strong> — doors close at midnight tonight</span>
           <a href={CHECKOUT_URL} className="countdown-cta">Join for £17</a>
+          <a href={PAYPAL_URL} className="countdown-paypal" aria-label="Pay with PayPal"><span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span></a>
         </div>
       </div>
     );
@@ -1001,6 +1009,7 @@ function CountdownBanner({ label }) {
           <div className="cd-item"><span className="cd-num">{pad(time.seconds)}</span><span className="cd-lab">secs</span></div>
         </div>
         <a href={CHECKOUT_URL} className="countdown-cta">Join for £17</a>
+        <a href={PAYPAL_URL} className="countdown-paypal" aria-label="Pay with PayPal"><span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span></a>
       </div>
     </div>
   );
@@ -1635,7 +1644,7 @@ function RunningTheShow() {
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">Sound Familiar?</span>
-          <h2 className="serif">If sugar cravings <br className="mobile-br"/>feel like they’re <br className="mobile-br"/><em>running the show</em></h2>
+          <h2 className="serif h2-long">If sugar cravings feel like <br className="mobile-br"/><em>they’re running the show.</em></h2>
         </div>
         <p>You wake up determined to “be good” today. Breakfast goes well. Lunch is fine.</p>
         <p>Then mid-afternoon hits. Suddenly you’re thinking about chocolate, biscuits, or something sweet, even though you’re not really hungry.</p>
@@ -1657,7 +1666,7 @@ function WhatMostWomenTry() {
       <div className="explainer-inner">
         <div className="section-head">
           <span className="eyebrow">The Cycle</span>
-          <h2 className="serif">What most women <em>try instead.</em></h2>
+          <h2 className="serif">What most women <br className="mobile-br"/><em>try instead.</em></h2>
           <p>Most women in this cycle try to fix it by:</p>
         </div>
         <ul className="story-chips" style={{ maxWidth: 760, marginInline: 'auto' }}>
@@ -1884,7 +1893,7 @@ function MemberStories() {
     <section className="videos" id="member-stories" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="section-head">
         <span className="eyebrow">Member Stories</span>
-        <h2 className="serif">Hear what some of <br className="mobile-br"/><em>our current members</em> <br className="mobile-br"/>have to say.</h2>
+        <h2 className="serif h2-long">Hear what some of our <br className="mobile-br"/><em>current members have to say.</em></h2>
         <p>Real WLA members. Real long-term results.</p>
       </div>
       <div className="videos-grid">
