@@ -1095,7 +1095,7 @@ function MyStory() {
     <section className="story section" style={{ paddingBottom: 52 }}>
       <div className="section-inner">
         <div className="section-head">
-          <span className="eyebrow">My Story</span>
+          <span className="eyebrow">Meet Anna</span>
           <h2 className="serif">I'm Anna Wallace, and I've been <em>completely out of control in my own kitchen.</em></h2>
         </div>
         <div className="meet-anna-wrap">
@@ -1459,6 +1459,23 @@ function WhatYouGet() {
             </div>
           ))}
         </div>
+
+        <div className="offer-block">
+          <h3 className="offer-title serif">Your <em>21 Day Sugar Reset</em></h3>
+          <ul className="offer-stack">
+            <li>Everything above, inside the coaching group</li>
+            <li>Kick-off <strong>Monday 3rd August</strong></li>
+          </ul>
+          <div className="offer-price">
+            <span className="offer-was">normally <s>£77</s></span>
+            <span className="offer-now-lab">today only</span>
+            <span className="offer-now"><em>£17</em></span>
+          </div>
+          <div className="offer-note">That's less than one big supermarket trip where half the trolley ends up eaten in the car.</div>
+        </div>
+        <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
+          <a href={CHECKOUT_URL} className="receive-cta-btn">Join The 21 Day Sugar Reset for £17 <Arrow /></a>
+        </div>
       </div>
     </section>
   );
@@ -1592,6 +1609,169 @@ function StickyCTA() {
   );
 }
 
+function DoesThisSoundLikeYou() {
+  const items = [
+    'You eat well all day, then can’t explain what happens at 8pm',
+    'You start every day with good intentions but the cupboard wins by 4pm',
+    'One square becomes the bar, one biscuit becomes the packet',
+    'Fruit, herbal tea, the healthy version — none of it touches the craving',
+    'You’ve cut sugar out before, lasted a few days, and come back worse',
+    'You go to bed bloated, guilty and promising tomorrow will be different',
+    'You feel like you have no willpower, like other women have something you don’t',
+  ];
+  return (
+    <section className="receive mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">Sound Familiar?</span>
+          <h2 className="serif">Does this <em>sound like you?</em></h2>
+        </div>
+        <ul className="relate-list">
+          {items.map((it, i) => (
+            <li key={i} className={i === items.length - 1 && items.length % 2 === 1 ? 'span-2' : ''}>
+              <span className="relate-mark">✦</span>
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function TheRealityIs() {
+  return (
+    <section className="story section mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="section-inner">
+        <div className="section-head">
+          <span className="eyebrow">The Reality Is…</span>
+          <h2 className="serif">It’s not a knowledge problem. <em>It’s the 9am to 4pm gap.</em></h2>
+        </div>
+        <p>You are not a woman who doesn’t know what to eat. You know. You could probably write the plan yourself, you’ve done enough of them. The problem is the gap between what you know at 9am and what happens at 4pm.</p>
+        <p>You start every day with good intentions. Breakfast is sensible, lunch is fine. And then something arrives — tiredness, the afternoon slump, a stressful call, or just the pull of the cupboard. Fruit doesn’t touch it. And once you start, stopping feels almost impossible.</p>
+        <div className="story-callout">
+          <strong>Here’s the honest bit. This one doesn’t resolve itself.</strong>
+          <p>Left alone, sugar cravings don’t ease off as you get older, they get louder. Sleep gets more broken, energy gets flatter, and the amount it takes to get the same hit slowly creeps up.</p>
+        </div>
+        <p style={{ marginTop: 32 }}>Here’s what we’ve learned working with tens of thousands of women: the 8pm biscuits were never really about hunger. They’re a habit loop with a trigger, and once you can see the trigger, you can interrupt it.</p>
+        <p>So we do two things at once. We fix the physical side, so your body stops demanding sugar. And we fix the behavioural side, so the habit itself breaks.</p>
+        <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>It’s not willpower. It’s the right approach.</p>
+      </div>
+    </section>
+  );
+}
+
+function IntroducingSugarReset() {
+  const items = [
+    'Break free from sugar cravings in your first 7 days',
+    'Lose up to a stone in just 21 days (results vary)',
+    'Feel lighter, healthier and more energised',
+    'Stop constantly thinking about food and sugar',
+    'Feel comfortable and confident in your clothes again',
+    'Enjoy your favourite foods without guilt or feeling out of control',
+    'Back in control of your eating, not controlled by cravings',
+    'Leave with a simple strategy you can use for life',
+  ];
+  return (
+    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">Introducing</span>
+          <h2 className="serif">The 21 Day<br className="mobile-br"/> <em>Sugar Reset.</em></h2>
+        </div>
+        <p>Three weeks to break the daily sugar habit, understand exactly why it keeps happening, and get your evenings back. This is not a detox — no fasting, no juicing, nothing banned. You’ll be eating three proper meals a day while your cravings quietly fade.</p>
+        <div className="pull">"Break free from cravings in your first 7 days. Lose up to a stone in 21."</div>
+        <ul className="story-chips" style={{ marginTop: 24 }}>
+          {items.map((it, i) => (
+            <li key={i}><span className="chip-dot" /><span>{it}</span></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function ClientResultsVideos() {
+  const videos = [
+    { id: '1050446403', hash: 'ee3211dfc8', name: 'Anna',    quote: 'Anna lost almost 2 stone & saw her perimenopause symptoms disappear.' },
+    { id: '1050250598', hash: 'a7c1e591cf', name: 'Debbie',  quote: 'Debbie dropped 3 dress sizes, lost 3 stone & stopped emotional eating.' },
+    { id: '1050447140', hash: '4dd955ba68', name: 'Annette', quote: 'Annette is now 10 pounds lighter, but the biggest breakthrough is her mindset around food.' },
+  ];
+  return (
+    <section className="videos" id="client-achievements" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="section-head">
+        <span className="eyebrow">Real Client Results</span>
+        <h2 className="serif">Here’s what our clients<br/><em>are saying.</em></h2>
+      </div>
+      <div className="videos-grid three-col">
+        {videos.map((v, i) => (
+          <div className="video-card" key={i}>
+            <div className="video-frame">
+              <iframe src={`https://player.vimeo.com/video/${v.id}?h=${v.hash}&title=0&byline=0&portrait=0`} title={`${v.name} result`} allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowFullScreen loading="lazy" />
+            </div>
+            <p className="video-quote">{v.quote}</p>
+            <div className="video-name">— {v.name} —</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MemberStories() {
+  const videos = [
+    { id: '1147300902', hash: '58fbd0c85a', name: 'Vicky', quote: '"I started the WLA a size 20 and am now a 10/12"' },
+    { id: '1147300577', hash: '65f81455af', name: 'Ruth',  quote: '"I lost 12 pounds, sugar cravings vanished and my menopause symptoms significantly improved."' },
+    { id: '1147300457', hash: '4d750b2063', name: 'Lisa',  quote: '"My biggest NSV is getting into size 10 and buying small gym leggings."' },
+    { id: '1147299763', hash: 'a1064cfe85', name: 'Lucy',  quote: '"2½ stone down, not counted a calorie in over a year and bought a crop top for the first time in my life."' },
+  ];
+  return (
+    <section className="videos" id="member-stories" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="section-head">
+        <span className="eyebrow">Member Stories</span>
+        <h2 className="serif">Hear what some of our <em>current members have to say.</em></h2>
+        <p>Real WLA members. Real long-term results.</p>
+      </div>
+      <div className="videos-grid">
+        {videos.map((v, i) => (
+          <div className="video-card" key={i}>
+            <div className="video-frame">
+              <iframe src={`https://player.vimeo.com/video/${v.id}?h=${v.hash}&title=0&byline=0&portrait=0`} title={`${v.name} testimonial`} allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowFullScreen loading="lazy" />
+            </div>
+            <p className="video-quote">{v.quote}</p>
+            <div className="video-name">— {v.name} —</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function WhyNow() {
+  return (
+    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">Why Now?</span>
+          <h2 className="serif">Why join the<br/><em>21 Day Sugar Reset?</em></h2>
+        </div>
+        <p style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 28px' }}>Every day you leave it, the cravings get a little louder and the habit gets a little deeper. Three focused weeks now, with coaching and a plan, changes that for good.</p>
+        <div className="why-now-boxes">
+          <div className="why-now-box"><div className="why-now-lab">Calmer cravings</div><div className="why-now-num">72 hrs</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Lose up to</div><div className="why-now-num">1 stone</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Feel</div><div className="why-now-num">Lighter</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Boost</div><div className="why-now-num">Energy</div></div>
+          <div className="why-now-box"><div className="why-now-lab">Back</div><div className="why-now-num">In Control</div></div>
+        </div>
+        <div className="story-callout" style={{ maxWidth: 980, margin: '32px auto 0' }}>
+          <strong>Just £17 for this round.</strong>
+          <p>Doors close Sunday 2nd August at 11.59pm and we start together on the Monday. Normal price is £77.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Page() {
   return (
     <>
@@ -1599,19 +1779,17 @@ function Page() {
       <Hero />
       <Trust />
       <ResultsImages />
-      <TheProblem />
-      <TheCost />
-      <OtherSide />
-      <Testimonials />
-      <HeroPromise />
-      <MyStory />
-      <Introducing />
+      <DoesThisSoundLikeYou />
+      <TheRealityIs />
+      <IntroducingSugarReset />
       <HowItWorks />
+      <ClientResultsVideos />
       <WhatYouGet />
-      <WhoThisIsFor />
-      <ThePrice />
+      <MemberStories />
+      <WhyNow />
       <FAQ />
-      <FinalCTA />
+      <MyStory />
+      <ThePrice />
       <Footer />
       <StickyCTA />
     </>
