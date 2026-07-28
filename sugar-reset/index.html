@@ -1350,12 +1350,38 @@ const TESTIMONIALS = [
   ]},
 ];
 
+function ResultsImages() {
+  const imgs = [
+    'vicky-before-after.png', 'jill-before-after.jpg', 'ruth-before-after.jpg', 'barbara-before-after.png',
+    'laura-before-after.png', 'member-05-before-after.png', 'member-06-before-after.png', 'member-07-before-after.png',
+    'member-08-before-after.jpeg', 'member-09-before-after.png', 'member-10-before-after.png', 'member-11-before-after.png',
+  ];
+  return (
+    <section className="results" id="results" style={{ paddingTop: 56, paddingBottom: 48 }}>
+      <div className="section-head">
+        <span className="eyebrow">Real Women · Real Results</span>
+        <h2 className="serif">50,000 women, <em>one reset.</em></h2>
+      </div>
+      <div className="results-carousel">
+        <div className="results-track">
+          {imgs.map((src, i) => (
+            <div className="results-tile" key={i}>
+              <img src={`/assets/${src}`} alt="WLA member before and after" loading="lazy" decoding="async" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <p className="results-disclaimer">*Results vary depending on the individual. There is no guarantee of specific results.</p>
+    </section>
+  );
+}
+
 function Testimonials() {
   const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   return (
-    <section className="results" id="results" style={{ paddingTop: 64, paddingBottom: 56 }}>
+    <section className="results" style={{ paddingTop: 64, paddingBottom: 56 }}>
       <div className="section-head">
-        <span className="eyebrow">Real women · Real results</span>
+        <span className="eyebrow">In Their Own Words</span>
         <h2 className="serif">Women just like you,<br/><em>who stopped fighting the cupboard.</em></h2>
         <p>Real results from women who've been through a previous Sugar Reset.</p>
       </div>
@@ -1560,16 +1586,17 @@ function Page() {
       <CountdownBanner />
       <Hero />
       <Trust />
-      <HeroPromise />
+      <ResultsImages />
       <TheProblem />
       <TheCost />
+      <HeroPromise />
+      <OtherSide />
+      <Testimonials />
       <MyStory />
       <Introducing />
       <HowItWorks />
-      <OtherSide />
-      <WhoThisIsFor />
-      <Testimonials />
       <WhatYouGet />
+      <WhoThisIsFor />
       <ThePrice />
       <FAQ />
       <FinalCTA />
