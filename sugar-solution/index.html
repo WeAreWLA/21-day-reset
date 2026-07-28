@@ -1225,14 +1225,14 @@ function HowItWorks() {
 /* ── SECTION 7 · What life looks like on the other side ─── */
 function OtherSide() {
   const items = [
-    'Break free from sugar cravings in your first 7 days',
-    'Lose up to 14lbs in just 21 days (results vary)',
-    'Feel lighter, healthier and more energised',
-    'Stop constantly thinking about food and sugar',
-    'Feel comfortable and confident in your clothes again',
-    'Enjoy your favourite foods without guilt or feeling out of control',
-    'Finally feel back in control of your eating, not controlled by cravings',
-    'Leave with a simple strategy you can use for life',
+    <><strong>Break free from sugar cravings</strong> in your first 7 days</>,
+    <>Lose up to <strong>14lbs in just 21 days</strong> (results vary)</>,
+    <>Feel <strong>lighter, healthier and more energised</strong></>,
+    <>Stop <strong>constantly thinking about food and sugar</strong></>,
+    <>Feel <strong>comfortable and confident</strong> in your clothes again</>,
+    <>Enjoy your favourite foods <strong>without guilt</strong> or feeling out of control</>,
+    <>Finally feel <strong>back in control</strong> of your eating, not controlled by cravings</>,
+    <>Leave with a <strong>simple strategy you can use for life</strong></>,
   ];
   return (
     <section className="receive" style={{ paddingTop: 56, paddingBottom: 64 }}>
@@ -1451,7 +1451,7 @@ const IcSpark = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 function WhatYouGet() {
   const items = [
     { ic: '🍽️', t: 'The 21-Day Sugar Cravings Solution Meal Guide', d: 'A simple, done-for-you guide showing you exactly how to eat for the next 21 days to calm cravings and kick-start fat loss, without dieting or cutting out foods.' },
-    { ic: '🥗', t: 'Sugar-Craving-Reducing Breakfasts, Lunches & Dinners', d: 'Balanced meal ideas designed to:', bullets: ['Stabilise blood sugar', 'Reduce hunger', 'Stop cravings before they start'], note: 'No tracking. No perfection required.' },
+    { ic: '🥗', t: 'Sugar-Craving-Reducing Breakfasts, Lunches & Dinners', d: 'Balanced meal ideas designed to:', bullets: ['Stabilise blood sugar', 'Reduce hunger', 'Stop cravings before they start'] },
     { ic: '🍎', t: 'Sugar-Craving-Reducing Snack Options', d: "Smart snack swaps that actually satisfy, so you're not fighting cravings all day or raiding the cupboards at night." },
     { ic: '⏱️', t: 'No-Prep & Busy-Day Meal Options', d: 'For real life. Simple supermarket, takeaway and grab-and-go options that still support you when you’re short on time.' },
     { ic: '🧠', t: 'The Sugar Cravings Solution Framework', d: "Understand why sugar cravings happen and how to stop them, so you're not relying on willpower ever again." },
@@ -1552,10 +1552,12 @@ function FAQ() {
       a: 'Yes, there’s one main guide, and every recipe can be adjusted or swapped with our recipe library and easy to use swap list.' },
     { q: 'What if I fall behind?',
       a: 'You keep the whole lot, so you can catch up or restart at any time. Everything stays in the group and your guides are yours to work through whenever suits.' },
+    { q: 'What if I feel like I’ll fail at this?',
+      a: 'You don’t need to be perfect to succeed. The programme is designed to help you make simple, realistic changes one step at a time, with live coaching and support along the way. If you have an off day, you haven’t failed, you simply pick up again at your next meal.' },
     { q: 'I’m in perimenopause or menopause. Will this still work?',
       a: 'This is who I built it for. Cravings genuinely do get stronger through this stage, and it isn’t your imagination or your fault. Week one is largely about the blood sugar side of that.' },
     { q: 'Is there a group, and do I get live coaching?',
-      a: 'Yes. This round runs inside our coaching group, so you get daily coaching and check-ins from me, live coaching through the three weeks, and the live kick-off call on the 3rd.' },
+      a: 'Yes. This round runs inside our coaching group, so you get daily coaching and check-ins and live coaching through the three weeks.' },
   ];
   return (
     <section className="faq" id="faq" style={{ paddingBottom: 44 }}>
