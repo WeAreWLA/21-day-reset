@@ -973,7 +973,7 @@ function CountdownBanner({ label }) {
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">{label || <>Starts Monday <strong>3rd August</strong> · Doors close Sunday night</>}</span>
+        <span className="countdown-label">{label || <>Only <strong>150 places</strong> · Registration closes Sunday, or sooner if full</>}</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
@@ -1430,10 +1430,10 @@ function WhatYouGet() {
     { ic: '🍎', t: 'Sugar-Craving-Reducing Snack Options', d: "Smart snack swaps that actually satisfy, so you're not fighting cravings all day or raiding the cupboards at night." },
     { ic: '⏱️', t: 'No-Prep & Busy-Day Meal Options', d: 'For real life. Simple supermarket, takeaway and grab-and-go options that still support the reset when you’re short on time.' },
     { ic: '🧠', t: 'The Sugar Cravings Reset Framework', d: "Understand why sugar cravings happen and how to stop them, so you're not relying on willpower ever again." },
-    { ic: '🧰', t: 'The Sugar Cravings Toolkit', d: 'Practical tools to help you overcome cravings before they lead to overeating.' },
+    { ic: '📋', t: 'Simple Daily Action Steps', d: 'Clear, doable daily actions that take the guesswork out and keep you consistent, even if motivation is low.' },
     { ic: '🎥', t: 'Weekly Live Coaching', d: 'The nutrition and behavioural change strategies to overcome sugar cravings and build habits that support lasting weight loss.' },
+    { ic: '🧰', t: 'The Sugar Cravings Toolkit', d: 'Practical tools to help you overcome cravings before they lead to overeating.' },
     { ic: '📄', t: 'Cheat Sheets & Quick Guides', d: 'Simple nutrition guides to help you make better choices and stay on track with your weight loss.' },
-    { ic: '👥', t: 'Community & Accountability', d: 'Stay motivated with coaching, support and accountability throughout your 21-day journey.' },
   ];
   return (
     <section className="receive" style={{ paddingTop: 56 }}>
@@ -1609,59 +1609,87 @@ function StickyCTA() {
   );
 }
 
-function DoesThisSoundLikeYou() {
-  const items = [
-    'You eat well all day, then can’t explain what happens at 8pm',
-    'You start every day with good intentions but the cupboard wins by 4pm',
-    'One square becomes the bar, one biscuit becomes the packet',
-    'Fruit, herbal tea, the healthy version — none of it touches the craving',
-    'You’ve cut sugar out before, lasted a few days, and come back worse',
-    'You go to bed bloated, guilty and promising tomorrow will be different',
-    'You feel like you have no willpower, like other women have something you don’t',
-  ];
-  return (
-    <section className="receive mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
-      <div className="receive-inner">
-        <div className="section-head">
-          <span className="eyebrow">Sound Familiar?</span>
-          <h2 className="serif">Does this <em>sound like you?</em></h2>
-        </div>
-        <ul className="relate-list">
-          {items.map((it, i) => (
-            <li key={i} className={i === items.length - 1 && items.length % 2 === 1 ? 'span-2' : ''}>
-              <span className="relate-mark">✦</span>
-              <span>{it}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-function TheRealityIs() {
+function RunningTheShow() {
   return (
     <section className="story section mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="section-inner">
         <div className="section-head">
-          <span className="eyebrow">The Reality Is…</span>
-          <h2 className="serif">It’s not a knowledge problem. <em>It’s the 9am to 4pm gap.</em></h2>
+          <span className="eyebrow">Sound Familiar?</span>
+          <h2 className="serif">If sugar cravings feel like <em>they’re running the show…</em></h2>
         </div>
-        <p>You are not a woman who doesn’t know what to eat. You know. You could probably write the plan yourself, you’ve done enough of them. The problem is the gap between what you know at 9am and what happens at 4pm.</p>
-        <p>You start every day with good intentions. Breakfast is sensible, lunch is fine. And then something arrives — tiredness, the afternoon slump, a stressful call, or just the pull of the cupboard. Fruit doesn’t touch it. And once you start, stopping feels almost impossible.</p>
+        <p>You wake up determined to “be good” today. Breakfast goes well. Lunch is fine.</p>
+        <p>Then mid-afternoon hits. Suddenly you’re thinking about chocolate, biscuits, or something sweet, even though you’re not really hungry.</p>
+        <p>By the evening, it feels almost impossible to stop yourself. You promise yourself: <em>“I’ll start properly tomorrow.”</em> But tomorrow turns into next week.</p>
+        <p>And next week turns into another diet, another plan, another attempt that never quite sticks.</p>
         <div className="story-callout">
-          <strong>Here’s the honest bit. This one doesn’t resolve itself.</strong>
-          <p>Left alone, sugar cravings don’t ease off as you get older, they get louder. Sleep gets more broken, energy gets flatter, and the amount it takes to get the same hit slowly creeps up.</p>
+          <strong>Not because you don’t care. Not because you lack discipline.</strong>
+          <p>But because sugar cravings quietly undo your progress before you ever get momentum.</p>
         </div>
-        <p style={{ marginTop: 32 }}>Here’s what we’ve learned working with tens of thousands of women: the 8pm biscuits were never really about hunger. They’re a habit loop with a trigger, and once you can see the trigger, you can interrupt it.</p>
-        <p>So we do two things at once. We fix the physical side, so your body stops demanding sugar. And we fix the behavioural side, so the habit itself breaks.</p>
-        <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>It’s not willpower. It’s the right approach.</p>
       </div>
     </section>
   );
 }
 
-function IntroducingSugarReset() {
+function WhatMostWomenTry() {
+  const items = ['Cutting sugar completely', 'Being “strict” for a few days', 'Relying on willpower', 'Starting over every Monday'];
+  return (
+    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 56, paddingBottom: 56 }}>
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">The Cycle</span>
+          <h2 className="serif">What most women <em>try instead.</em></h2>
+          <p>Most women in this cycle try to fix it by:</p>
+        </div>
+        <ul className="story-chips" style={{ maxWidth: 760, marginInline: 'auto' }}>
+          {items.map((it, i) => (<li key={i}><span className="chip-dot" /><span>{it}</span></li>))}
+        </ul>
+        <p style={{ textAlign: 'center', marginTop: 28, fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>And for a short while, it works. Until the cravings come back… stronger.</p>
+      </div>
+    </section>
+  );
+}
+
+function WhyThisKeepsHappening() {
+  const items = ['Cravings hit at the same times every day', 'You feel “out of control” around food', 'Weight loss feels hard even when you’re trying'];
+  return (
+    <section className="story section" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <div className="section-inner">
+        <div className="section-head">
+          <span className="eyebrow">The Real Reason</span>
+          <h2 className="serif">Why this <em>keeps happening.</em></h2>
+        </div>
+        <p>Sugar cravings aren’t a motivation problem. They’re usually a <strong>blood sugar problem</strong>.</p>
+        <p>When meals aren’t structured properly, your energy crashes and your body looks for the quickest fix it knows: sugar. That’s why:</p>
+        <ul className="story-list">
+          {items.map((it, i) => (<li key={i}>{it}</li>))}
+        </ul>
+        <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>And it’s why willpower alone never works long term.</p>
+      </div>
+    </section>
+  );
+}
+
+function WhyNotYourFault() {
+  const items = ['Blood sugar crashes', 'Under-eating earlier in the day', 'Unbalanced meals', 'Stress and restriction cycles'];
+  return (
+    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 56, paddingBottom: 56 }}>
+      <div className="explainer-inner">
+        <div className="section-head">
+          <span className="eyebrow">It’s Not Your Fault</span>
+          <h2 className="serif">Why sugar cravings <em>aren’t your fault.</em></h2>
+          <p>Most women think they have a willpower problem. They don’t. Sugar cravings are usually caused by:</p>
+        </div>
+        <ul className="story-chips" style={{ maxWidth: 760, marginInline: 'auto' }}>
+          {items.map((it, i) => (<li key={i}><span className="chip-dot" /><span>{it}</span></li>))}
+        </ul>
+        <p style={{ textAlign: 'center', marginTop: 28, fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 20, color: 'var(--navy)' }}>When you fix the structure, cravings naturally calm down.</p>
+        <p style={{ textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontWeight: 700, fontSize: 18, color: 'var(--coral)' }}>This is where the Sugar Cravings Solution comes in.</p>
+      </div>
+    </section>
+  );
+}
+
+function IntroducingSolution() {
   const items = [
     'Break free from sugar cravings in your first 7 days',
     'Lose up to a stone in just 21 days (results vary)',
@@ -1669,23 +1697,130 @@ function IntroducingSugarReset() {
     'Stop constantly thinking about food and sugar',
     'Feel comfortable and confident in your clothes again',
     'Enjoy your favourite foods without guilt or feeling out of control',
-    'Back in control of your eating, not controlled by cravings',
+    'Finally feel back in control of your eating, not controlled by cravings',
     'Leave with a simple strategy you can use for life',
   ];
   return (
-    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
+    <section className="explainer" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="explainer-inner">
         <div className="section-head">
           <span className="eyebrow">Introducing</span>
-          <h2 className="serif">The 21 Day<br className="mobile-br"/> <em>Sugar Reset.</em></h2>
+          <h2 className="serif">The 21 Day<br className="mobile-br"/> <em>Sugar Cravings Solution.</em></h2>
+          <p>A simple, no-fluff 21-day program designed to help you:</p>
         </div>
-        <p>Three weeks to break the daily sugar habit, understand exactly why it keeps happening, and get your evenings back. This is not a detox — no fasting, no juicing, nothing banned. You’ll be eating three proper meals a day while your cravings quietly fade.</p>
-        <div className="pull">"Break free from cravings in your first 7 days. Lose up to a stone in 21."</div>
-        <ul className="story-chips" style={{ marginTop: 24 }}>
-          {items.map((it, i) => (
-            <li key={i}><span className="chip-dot" /><span>{it}</span></li>
-          ))}
+        <ul className="story-chips" style={{ marginTop: 8 }}>
+          {items.map((it, i) => (<li key={i}><span className="chip-dot" /><span>{it}</span></li>))}
         </ul>
+        <div className="story-callout" style={{ maxWidth: 820, margin: '32px auto 0' }}>
+          <strong>No detoxes. No cutting out foods. No extreme rules.</strong>
+          <p>Instead of cutting foods or pushing harder, you’ll learn how to eat in a way that stabilises blood sugar, so cravings naturally switch off. Just a clear, simple structure that finally makes fat loss feel easier.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhatMakesDifferent() {
+  const isNot = ['A detox', 'A juice cleanse', 'A restrictive diet', 'A “just stop eating sugar” plan'];
+  const isThis = ['A strategic food framework', 'Simple, nourishing meal structure that stabilises blood sugar', 'Real food you can stick to', 'Designed for busy women living real lives'];
+  return (
+    <section className="receive" style={{ paddingTop: 56, paddingBottom: 64 }}>
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">The Difference</span>
+          <h2 className="serif">What makes this <em>program different.</em></h2>
+        </div>
+        <div className="achieve-columns">
+          <div className="achieve-col">
+            <div className="achieve-col-head"><h3>This is not</h3></div>
+            <ul className="achieve-card-list">
+              {isNot.map((it, i) => (<li key={i}><span className="achieve-check" style={{ background: 'rgba(90,100,120,0.14)', color: 'var(--muted)' }}>✕</span><span>{it}</span></li>))}
+            </ul>
+          </div>
+          <div className="achieve-col">
+            <div className="achieve-col-head"><h3>This is</h3></div>
+            <ul className="achieve-card-list">
+              {isThis.map((it, i) => (<li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhoForPerfect() {
+  const forYou = ['Sugar cravings feel out of control', 'You know what to do but struggle to stick to it', 'Your sugar cravings are sabotaging your weight-loss success', 'You want fast relief without extreme dieting', 'You want something simple that actually works'];
+  const notFor = ['You’re looking for a detox or cleanse', 'You want extreme restriction', 'You’re expecting a “magic fix” without action'];
+  return (
+    <section className="receive mobile-tight-top" style={{ paddingTop: 56, paddingBottom: 64 }}>
+      <div className="receive-inner">
+        <div className="section-head">
+          <span className="eyebrow">Is It For You?</span>
+          <h2 className="serif">Who this is <em>perfect for.</em></h2>
+        </div>
+        <div className="achieve-columns">
+          <div className="achieve-col">
+            <div className="achieve-col-head"><h3>This is for you if</h3></div>
+            <ul className="achieve-card-list">
+              {forYou.map((it, i) => (<li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>))}
+            </ul>
+          </div>
+          <div className="achieve-col">
+            <div className="achieve-col-head"><h3>This isn’t for you if</h3></div>
+            <ul className="achieve-card-list">
+              {notFor.map((it, i) => (<li key={i}><span className="achieve-check" style={{ background: 'rgba(90,100,120,0.14)', color: 'var(--muted)' }}>✕</span><span>{it}</span></li>))}
+            </ul>
+          </div>
+        </div>
+        <p className="achieve-closer">This works when you follow the simple structure.</p>
+      </div>
+    </section>
+  );
+}
+
+function ReadyToFeelInControl() {
+  const items = ['A clear plan', 'Immediate relief from cravings', 'A proven nutrition framework', 'And the confidence to keep going'];
+  return (
+    <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="limited-inner" style={{ maxWidth: 820 }}>
+        <div className="limited-head">
+          <h2 className="serif">Ready to feel <em>back in control?</em></h2>
+          <p className="lead">For just <strong>£17</strong>, you’ll get:</p>
+        </div>
+        <ul className="story-chips" style={{ maxWidth: 680, margin: '0 auto 24px' }}>
+          {items.map((it, i) => (<li key={i}><span className="chip-dot" /><span>{it}</span></li>))}
+        </ul>
+        <p style={{ textAlign: 'center', fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', color: 'var(--muted)', fontSize: 16 }}>No contracts. No pressure. No risk — 7-day money-back guarantee.</p>
+        <div className="final-buttons" style={{ marginTop: 20, textAlign: 'center' }}>
+          <CTAButtons primaryLabel="Join The 21 Day Sugar Reset" />
+        </div>
+        <div className="story-callout" style={{ maxWidth: 720, margin: '28px auto 0' }}>
+          <strong>⚠️ This is the only live round currently planned.</strong>
+          <p>Only 150 places are available. Registration closes Sunday, or sooner if all places are filled.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MoneyBackGuarantee() {
+  return (
+    <section className="guarantee-section">
+      <div className="guarantee-card">
+        <div className="guarantee-badge">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4l16 6v12c0 10-7 16-16 18-9-2-16-8-16-18V10z"/>
+            <polyline points="16 24 22 30 33 18"/>
+          </svg>
+        </div>
+        <div>
+          <span className="g-eyebrow">7-Day Money-Back Guarantee</span>
+          <h2 className="serif">Try it <em>risk-free.</em></h2>
+          <p>Try The 21 Day Sugar Cravings Solution risk-free.</p>
+          <p>If you don’t feel it’s right for you within <strong>7 days</strong>, simply email us and we’ll refund you, no questions asked.</p>
+          <p className="g-close">You have absolutely nothing to lose by trying.</p>
+        </div>
       </div>
     </section>
   );
@@ -1779,17 +1914,23 @@ function Page() {
       <Hero />
       <Trust />
       <ResultsImages />
-      <DoesThisSoundLikeYou />
-      <TheRealityIs />
-      <IntroducingSugarReset />
-      <HowItWorks />
+      <RunningTheShow />
+      <WhatMostWomenTry />
+      <WhyThisKeepsHappening />
+      <WhyNotYourFault />
       <ClientResultsVideos />
+      <IntroducingSolution />
       <WhatYouGet />
+      <HowItWorks />
+      <WhatMakesDifferent />
+      <WhoForPerfect />
       <MemberStories />
-      <WhyNow />
+      <ReadyToFeelInControl />
+      <MoneyBackGuarantee />
+      <OtherSide />
       <FAQ />
       <MyStory />
-      <ThePrice />
+      <FinalCTA />
       <Footer />
       <StickyCTA />
     </>
