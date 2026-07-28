@@ -845,7 +845,6 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .tst-avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--coral); color: #fff; display: grid; place-items: center; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 16px; letter-spacing: 0.02em; }
   .tst-meta { min-width: 0; }
   .tst-name { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: 16px; line-height: 1.2; }
-  .tst-date { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: 0.02em; margin-top: 2px; }
   .tst-body p { font-size: 15px; line-height: 1.6; color: #333; margin: 0 0 10px; }
   .tst-body p:last-child { margin-bottom: 0; }
   .tst-body .tick { display: grid; grid-template-columns: 18px 1fr; gap: 9px; align-items: start; }
@@ -1149,7 +1148,7 @@ function Introducing() {
 /* ── SECTION 6 · How the 21 days work ───────────────────── */
 function HowItWorks() {
   const cols = [
-    { tag: 'Week One · Steady', items: [
+    { tag: 'Week One · Eliminate', items: [
       'We take the physical edge off first',
       'Build your meals so they actually satisfy you',
       'Sort out the specific afternoon crash',
@@ -1248,7 +1247,7 @@ function WhoThisIsFor() {
         </div>
         <div className="achieve-columns">
           <div className="achieve-col">
-            <div className="achieve-col-head"><span className="achieve-col-tag">This Is For You If</span><h3>You'll Feel Seen Here</h3></div>
+            <div className="achieve-col-head"><h3>This Is For You If</h3></div>
             <ul className="achieve-card-list">
               {forYou.map((it, i) => (
                 <li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>
@@ -1256,7 +1255,7 @@ function WhoThisIsFor() {
             </ul>
           </div>
           <div className="achieve-col">
-            <div className="achieve-col-head"><span className="achieve-col-tag">This Isn't The Right Fit If</span><h3>Better To Be Honest</h3></div>
+            <div className="achieve-col-head"><h3>This Isn't The Right Fit If</h3></div>
             <ul className="achieve-card-list">
               {notFor.map((it, i) => (
                 <li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>
@@ -1359,9 +1358,9 @@ function Testimonials() {
   return (
     <section className="results" id="results" style={{ paddingTop: 64, paddingBottom: 56 }}>
       <div className="section-head">
-        <span className="eyebrow">Real women · Real posts</span>
+        <span className="eyebrow">Real women · Real results</span>
         <h2 className="serif">Women just like you,<br/><em>who stopped fighting the cupboard.</em></h2>
-        <p>Real posts from women who've been through a previous Sugar Reset.</p>
+        <p>Real results from women who've been through a previous Sugar Reset.</p>
       </div>
       <div className="tst-wall">
         {TESTIMONIALS.map((t, i) => (
@@ -1370,7 +1369,6 @@ function Testimonials() {
               <div className="tst-avatar">{initials(t.name)}</div>
               <div className="tst-meta">
                 <div className="tst-name">{t.name}</div>
-                <div className="tst-date">{t.date}</div>
               </div>
             </div>
             <div className="tst-body">
@@ -1422,47 +1420,19 @@ function WhatYouGet() {
             </div>
           ))}
         </div>
-
-        <div className="offer-block" style={{ marginTop: 44 }}>
-          <h3 className="offer-title serif">The complete <em>21 Day Sugar Reset.</em></h3>
-          <ul className="offer-stack">
-            <li>Everything above, inside the coaching group</li>
-            <li>Yours today for just <strong>£17</strong></li>
-          </ul>
-        </div>
-        <div className="receive-cta-wrap" style={{ marginTop: 32 }}>
-          <a href={CHECKOUT_URL} className="receive-cta-btn">Join The 21 Day Sugar Reset for £17 <Arrow /></a>
-        </div>
       </div>
     </section>
   );
 }
 
 /* ── SECTION 11 · Fast-action bonus ─────────────────────── */
-function FastActionBonus() {
-  return (
-    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 56, paddingBottom: 56 }}>
-      <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
-        {/* FAST-ACTION BONUS: join before midnight Friday 31st July.
-            REMOVE this whole .app-bonus-card block on Saturday morning (1st Aug),
-            or swap its contents for a single line: "This bonus has now closed." */}
-        <div className="app-bonus-card">
-          <div className="app-bonus-pill">⚡ Fast-Action Bonus</div>
-          <h2 className="serif">Join before <em>midnight Friday 31st July</em></h2>
-          <p className="app-bonus-sub">Get The After-Dinner Toolkit, my go-to way to handle the single hardest sugar moment of the day, so the evening spiral stops before it starts. This one comes off the page on Saturday morning.</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ── SECTION 12 · The price ─────────────────────────────── */
 function ThePrice() {
   return (
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
-          <h2 className="serif">Today, it's just <em>£17.</em></h2>
+          <h2 className="serif">Join today, it's just <em>£17.</em></h2>
           <p className="lead">Normally <strong>£77</strong>. Today, just <strong>£17</strong>. That's less than one big supermarket trip where half the trolley ends up eaten in the car.</p>
         </div>
 
@@ -1475,7 +1445,7 @@ function ThePrice() {
         </div>
 
         <div className="final-buttons" style={{ marginTop: 8, textAlign: 'center' }}>
-          <CTAButtons primaryLabel="Join The 21 Day Sugar Reset for £17" />
+          <CTAButtons primaryLabel="Join The 21 Day Sugar Reset" />
         </div>
 
         <div className="limited-closing">
@@ -1599,7 +1569,6 @@ function Page() {
       <WhoThisIsFor />
       <Testimonials />
       <WhatYouGet />
-      <FastActionBonus />
       <ThePrice />
       <FAQ />
       <FinalCTA />
