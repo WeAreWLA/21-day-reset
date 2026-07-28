@@ -671,6 +671,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
   .receive-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; padding: 18px 32px; border-radius: 999px; font-weight: 700; font-size: 16px; transition: background .15s, transform .15s; }
   .receive-cta-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
+  .receive-cta-paypal { display: inline-flex; align-items: center; gap: 10px; background: var(--paypal); color: #003087; padding: 18px 32px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; transition: background .15s, transform .15s; }
+  .receive-cta-paypal:hover { background: var(--paypal-hover); transform: translateY(-1px); }
+  .receive-cta-paypal .pp-logo { font-style: italic; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+  .receive-cta-paypal .pp-pay { color: #003087; }
+  .receive-cta-paypal .pp-pal { color: #009cde; }
   @media (max-width: 640px) { .receive-card { gap: 14px; padding: 20px 18px; grid-template-columns: 44px 1fr; } .receive-card .check-ic { width: 40px; height: 40px; } }
 
   /* App features section */
@@ -1492,14 +1497,15 @@ function WhatYouGet() {
             <li>Kick-off <strong>Monday 3rd August</strong></li>
           </ul>
           <div className="offer-price">
-            <span className="offer-was">normally <s>£77</s></span>
+            <span className="offer-was">Special launch price</span>
             <span className="offer-now-lab">today only</span>
             <span className="offer-now"><em>£17</em></span>
           </div>
           <div className="offer-note">That's less than one big supermarket trip where half the trolley ends up eaten in the car.</div>
         </div>
-        <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
-          <a href={CHECKOUT_URL} className="receive-cta-btn">Join for £17 <Arrow /></a>
+        <div className="receive-cta-wrap" style={{ marginTop: 40, display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a href={CHECKOUT_URL} className="receive-cta-btn">Join 21 Day Sugar Cravings Solution <Arrow /></a>
+          <a href={PAYPAL_URL} className="receive-cta-paypal" aria-label="Pay with PayPal"><span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span></a>
         </div>
       </div>
     </section>
@@ -1861,7 +1867,7 @@ function ClientResultsVideos() {
     <section className="videos" id="client-achievements" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="section-head">
         <span className="eyebrow">Real Client Results</span>
-        <h2 className="serif">Here’s what our <br className="mobile-br"/><em>clients are saying.</em></h2>
+        <h2 className="serif">Here’s what our <br/><em>clients are saying.</em></h2>
       </div>
       <div className="videos-grid three-col">
         {videos.map((v, i) => (
