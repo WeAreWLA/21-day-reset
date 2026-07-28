@@ -861,9 +861,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-headline { margin: 0 0 20px; }
   .hero-headline .hh-main { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: clamp(42px, 5.4vw, 66px); line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 18px; }
   .hero-headline .hh-main em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .hero-headline .hh-sub { display: block; font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 400; color: var(--navy); font-size: clamp(16px, 1.75vw, 20px); line-height: 1.45; max-width: 540px; }
+  .hero-headline .hh-sub { display: block; font-family: 'Libre Baskerville', serif; font-style: normal; font-weight: 700; color: var(--navy); font-size: clamp(16px, 1.75vw, 20px); line-height: 1.45; max-width: 540px; }
   .hero-headline .hh-sub strong { font-weight: 700; }
-  .hero-without-line { font-family: 'Libre Baskerville', serif; font-size: clamp(16px, 1.7vw, 18.5px); line-height: 1.4; color: var(--navy); font-weight: 700; margin: 0 0 24px; max-width: 540px; }
+  .hero-without-line { font-family: 'Libre Baskerville', serif; font-size: clamp(16px, 1.7vw, 18.5px); line-height: 1.4; color: var(--navy); font-weight: 400; font-style: italic; margin: 0 0 24px; max-width: 540px; }
   .hero-without-line em { color: var(--coral); font-style: italic; font-weight: 700; }
   .hero-note { color: var(--coral); font-style: italic; font-weight: 500; }
 
@@ -918,9 +918,12 @@ function CTAButtons({ size = 'large', primaryLabel = 'Join The Sugar Cravings So
         <a href={CHECKOUT_URL} className="cta-btn compact">
           <CardIcon /> {primaryLabel}
         </a>
+        <a href={CHECKOUT_URL} className="paypal-btn compact" aria-label="Pay with PayPal">
+          <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
+        </a>
         <div className="micro-foot compact">
           <span className="item"><Lock /> Secure checkout</span>
-          <span className="risk-pill"><Shield /> No detox · No banned foods</span>
+          <span className="risk-pill"><Shield /> 7-day money-back guarantee</span>
         </div>
       </>
     );
@@ -929,6 +932,9 @@ function CTAButtons({ size = 'large', primaryLabel = 'Join The Sugar Cravings So
     <>
       <a href={CHECKOUT_URL} className="cta-btn">
         {primaryLabel} <Arrow />
+      </a>
+      <a href={CHECKOUT_URL} className="paypal-btn" aria-label="Pay with PayPal">
+        <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
       </a>
       <div className="micro-foot">
         <span className="item"><Lock /> Secure checkout</span>
@@ -987,7 +993,7 @@ function CountdownBanner({ label }) {
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">{label || <>Only <strong>150 places</strong> · Registration closes Sunday, or sooner if full</>}</span>
+        <span className="countdown-label">{label || <>Only <strong>150 places</strong></>}</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
@@ -1007,13 +1013,13 @@ function Hero() {
       <div>
         <h1 className="hero-headline serif">
           <span className="hh-main">The 21 Day <em>Sugar Cravings Solution</em></span>
-          <span className="hh-sub">Break free from sugar cravings in just 7 days. Lose up to 14lbs in 21 days.</span>
+          <span className="hh-sub">Break free from sugar cravings in just 7 days.<br/>Lose up to 14lbs in 21 days.</span>
         </h1>
         <p className="hero-without-line">No calorie counting. No detoxes. No giving up your favourite foods.</p>
 
         <div className="hero-offer-card">
           <div className="hero-offer-line-2">Kick-off: <em>Monday 3rd August 2026</em></div>
-          <div className="hero-offer-line-3">21 days of daily coaching, recipes, guides &amp; videos for <strong>£17</strong> instead of <s>£77</s></div>
+          <div className="hero-offer-line-3">Join the only live round for only <strong>£17</strong></div>
         </div>
         <div className="hero-cta-row">
           <CTAButtons size="compact" />
@@ -1932,9 +1938,9 @@ function Page() {
       <WhatMostWomenTry />
       <WhyThisKeepsHappening />
       <WhyNotYourFault />
-      <ClientResultsVideos />
       <IntroducingSolution />
       <WhatYouGet />
+      <ClientResultsVideos />
       <HowItWorks />
       <WhatMakesDifferent />
       <WhoForPerfect />
