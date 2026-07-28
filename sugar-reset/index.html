@@ -870,15 +870,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-promise-lead { font-family: 'Libre Baskerville', serif; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.5; color: var(--navy); font-weight: 700; margin: 0 0 14px; }
   .hero-promise-body { font-size: clamp(16px, 1.7vw, 18px); line-height: 1.6; color: #333; margin: 0; }
 
-  /* What you can expect */
-  .expect-card { max-width: 620px; margin: 0 auto; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; padding: 34px 40px; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
-  .expect-card .expect-intro { text-align: center; font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--navy); font-weight: 700; margin: 0 0 20px; }
-  .expect-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; max-width: 420px; margin-inline: auto; }
-  .expect-list li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: center; font-size: 16.5px; color: var(--navy); line-height: 1.4; }
-  .expect-list li .ec { width: 26px; height: 26px; border-radius: 50%; background: rgba(217,119,87,0.18); display: grid; place-items: center; }
-  .expect-list li .ec svg { width: 13px; height: 13px; stroke: var(--coral); stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .expect-note { text-align: center; margin: 24px 0 0; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--muted); font-size: 15.5px; }
-  @media (max-width: 640px) { .expect-card { padding: 26px 22px; } }
+  /* Results-vary note */
+  .expect-note { text-align: center; margin: 28px 0 0; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--muted); font-size: 15.5px; }
 
   /* What's Included grid (Section 10) — clean hairline tiles */
   .included-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; max-width: 1000px; margin: 0 auto; }
@@ -1201,43 +1194,16 @@ function HowItWorks() {
   );
 }
 
-function WhatYouCanExpect() {
-  const items = [
-    'Calmer cravings within 72 hours',
-    'More stable energy',
-    'Less mindless snacking',
-    'A lighter, less bloated feeling',
-    'Steady weight loss across the three weeks',
-  ];
-  return (
-    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 56, paddingBottom: 56 }}>
-      <div className="explainer-inner" style={{ maxWidth: 760 }}>
-        <div className="section-head" style={{ marginBottom: 28 }}>
-          <span className="eyebrow">What You Can Expect</span>
-          <h2 className="serif">The changes <em>start fast.</em></h2>
-        </div>
-        <div className="expect-card">
-          <p className="expect-intro">Most women experience:</p>
-          <ul className="expect-list">
-            {items.map((it, i) => (
-              <li key={i}><span className="ec"><Check /></span><span>{it}</span></li>
-            ))}
-          </ul>
-          <p className="expect-note">(Results vary, but momentum is almost guaranteed.)</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ── SECTION 7 · What life looks like on the other side ─── */
 function OtherSide() {
   const items = [
+    'Your cravings calm right down, often within the first 72 hours',
     'You get to 4pm and the cupboard simply isn’t calling you',
+    'You feel lighter and less bloated',
+    'The afternoon energy dip flattens out and your energy holds steady',
     'You sleep better, because you’re not going to bed on a sugar spike',
-    'The afternoon energy dip flattens out',
+    'Less mindless snacking, and you stop thinking about food all day',
     'You can have one and leave the rest (which will feel strange at first)',
-    'You stop hiding it, stop apologising for it and stop thinking about food all day',
     'Your clothes start feeling different, the extra few hundred calories a day were never the meals',
     'And the big one: you stop believing you’re a woman with no willpower, because you’ll have proof that you’re not',
   ];
@@ -1247,12 +1213,14 @@ function OtherSide() {
         <div className="section-head">
           <span className="eyebrow">Three Weeks From Now</span>
           <h2 className="serif">What life looks like on <em>the other side.</em></h2>
+          <p>Most women feel it fast. Here’s what to expect as the reset takes hold:</p>
         </div>
         <ul className="story-chips">
           {items.map((it, i) => (
             <li key={i} className={i === items.length - 1 && items.length % 2 === 1 ? 'span-2' : ''}><span className="chip-dot" /><span>{it}</span></li>
           ))}
         </ul>
+        <p className="expect-note" style={{ maxWidth: 620, marginInline: 'auto' }}>(Results vary, but momentum is almost guaranteed.)</p>
       </div>
     </section>
   );
@@ -1627,7 +1595,6 @@ function Page() {
       <MyStory />
       <Introducing />
       <HowItWorks />
-      <WhatYouCanExpect />
       <OtherSide />
       <WhoThisIsFor />
       <Testimonials />
