@@ -477,8 +477,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .timeline-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .timeline-col { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 16px; overflow: hidden; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); display: flex; flex-direction: column; }
   .timeline-col-head { background: var(--coral-soft); color: #fff; font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: 15px; text-align: center; padding: 16px 18px; }
-  .timeline-list { list-style: none; margin: 0; padding: 24px 24px 28px; display: grid; gap: 14px; flex: 1; }
-  .timeline-list li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.4; color: var(--navy); }
+  .timeline-list { list-style: none; margin: 0; padding: 24px 24px 28px; display: grid; gap: 14px; flex: 1; align-content: start; }
+  .timeline-list li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.4; color: var(--navy); min-height: 2.8em; }
+  @media (max-width: 880px) { .timeline-list li { min-height: 0; } }
   .timeline-tick { color: var(--coral-soft); font-size: 16px; line-height: 1.3; font-weight: 700; }
   @media (max-width: 880px) { .timeline-cols { grid-template-columns: 1fr; gap: 16px; } .timeline-title { margin-bottom: 24px; } }
 
@@ -869,6 +870,16 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-promise-lead { font-family: 'Libre Baskerville', serif; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.5; color: var(--navy); font-weight: 700; margin: 0 0 14px; }
   .hero-promise-body { font-size: clamp(16px, 1.7vw, 18px); line-height: 1.6; color: #333; margin: 0; }
 
+  /* What you can expect */
+  .expect-card { max-width: 620px; margin: 0 auto; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; padding: 34px 40px; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
+  .expect-card .expect-intro { text-align: center; font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--navy); font-weight: 700; margin: 0 0 20px; }
+  .expect-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; max-width: 420px; margin-inline: auto; }
+  .expect-list li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: center; font-size: 16.5px; color: var(--navy); line-height: 1.4; }
+  .expect-list li .ec { width: 26px; height: 26px; border-radius: 50%; background: rgba(217,119,87,0.18); display: grid; place-items: center; }
+  .expect-list li .ec svg { width: 13px; height: 13px; stroke: var(--coral); stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .expect-note { text-align: center; margin: 24px 0 0; font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--muted); font-size: 15.5px; }
+  @media (max-width: 640px) { .expect-card { padding: 26px 22px; } }
+
   /* What's Included grid (Section 10) — clean hairline tiles */
   .included-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; max-width: 1000px; margin: 0 auto; }
   .included-tile { background: var(--paper); padding: 32px 30px; min-height: 190px; display: flex; flex-direction: column; gap: 12px; }
@@ -1161,7 +1172,6 @@ function HowItWorks() {
     ]},
     { tag: 'Week Three · Sustain', items: [
       'The part every other plan skips',
-      'We bring sugar back in, on your terms',
       'A biscuit is just a biscuit, not a three-day write-off',
       'Keep it going without me, in real life',
       'At parties, on holiday and on the bad days',
@@ -1186,6 +1196,35 @@ function HowItWorks() {
         <p style={{ textAlign: 'center', marginTop: 32, fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>
           We start on Monday 3rd August.
         </p>
+      </div>
+    </section>
+  );
+}
+
+function WhatYouCanExpect() {
+  const items = [
+    'Calmer cravings within 72 hours',
+    'More stable energy',
+    'Less mindless snacking',
+    'A lighter, less bloated feeling',
+    'Steady weight loss across the three weeks',
+  ];
+  return (
+    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 56, paddingBottom: 56 }}>
+      <div className="explainer-inner" style={{ maxWidth: 760 }}>
+        <div className="section-head" style={{ marginBottom: 28 }}>
+          <span className="eyebrow">What You Can Expect</span>
+          <h2 className="serif">The changes <em>start fast.</em></h2>
+        </div>
+        <div className="expect-card">
+          <p className="expect-intro">Most women experience:</p>
+          <ul className="expect-list">
+            {items.map((it, i) => (
+              <li key={i}><span className="ec"><Check /></span><span>{it}</span></li>
+            ))}
+          </ul>
+          <p className="expect-note">(Results vary, but momentum is almost guaranteed.)</p>
+        </div>
       </div>
     </section>
   );
@@ -1266,13 +1305,13 @@ function WhoThisIsFor() {
 // Real posts from previous sugar resets. Each `body` line beginning with "✓ "
 // renders as a green tick; every other line renders as a paragraph.
 const TESTIMONIALS = [
-  { name: 'Charlene George', date: 'October 1, 2021', body: [
+  { name: 'Charlene George', date: 'October 1', body: [
     "Feeling slightly terrified to have a cheat meal/drinks this weekend. To be honest I don't feel like I want to. Sugar cravings have gone completely. Anyone else feeling the same?",
   ]},
-  { name: 'Jemma Ellis', date: 'August 12, 2020', body: [
+  { name: 'Jemma Ellis', date: 'August 12', body: [
     "NSV, clothes feeling looser, and sugar cravings have gone. Even when I give myself permission to eat rubbish I actually don't want to, so I don't 😲",
   ]},
-  { name: 'Lesleyann Hurford', date: 'June 27, 2021', body: [
+  { name: 'Lesleyann Hurford', date: 'June 27', body: [
     "21 day reset done & 1st 4 week block of the plan done. Results are in…",
     "✓ 1 stone 11lbs GONE (I'm now in the realms of a new stone zone not seen in nearly 20 years)",
     "✓ 40cm in total GONE",
@@ -1289,16 +1328,16 @@ const TESTIMONIALS = [
     "I've absolutely loved the reset, the recipes are delicious, the group support and coaching is just fantastic, my sugar cravings are non existent now and I feel so \"light\" and healthy.",
     "I'm really excited to begin week one over in the Academy, so glad I happened to see Anna's little advert on fb Xx ❤️",
   ]},
-  { name: 'Pat Hales', date: 'October 15, 2021', body: [
+  { name: 'Pat Hales', date: 'October 15', body: [
     "What the reset has done for me so far: taken away my sugar cravings, I was a bit of a chocoholic, not touched any or wanted to in 3 wks. BIG achievement for me.",
     "Also taken away my hot sweats I'd been having for the past 10 yrs, so the fan has been banished to the drawer. Sleeping so much better, always had a lot of energy but even more now.",
     "Plus I've lost 5 lb and several inches, so win win 🏆",
   ]},
-  { name: 'Sharon O’Hara', date: 'October 16, 2021', body: [
+  { name: 'Sharon O’Hara', date: 'October 16', body: [
     "To say I'm over the moon is an understatement… can't believe that after only 3 weeks on the Reset, never being hungry, honestly not missing bread (and I'm a bread lover), no sugar cravings, and enjoying every meal, I have lost 11 INCHES all over and 8lbs. I am in shock!!! 😍",
     "Have joined The Academy and I'm looking forward to the next few weeks. I've done ALL the diets. Counted soooo many calories. I'm done with all that now. It has definitely changed my mindset ❤️",
   ]},
-  { name: 'Susan Gerrard', date: 'October 12, 2021', body: [
+  { name: 'Susan Gerrard', date: 'October 12', body: [
     "I wasn't going to weigh til the end of the 3 weeks, but I weighed 2 weeks in:",
     "✓ Weight loss: -5lb",
     "✓ Fat %: -1.8%",
@@ -1308,11 +1347,11 @@ const TESTIMONIALS = [
     "✓ Jeans: no longer killing me, have a bit of wiggle room",
     "Hubby is also still on board and has lost 8lb! Needless to say, I've just signed up to the academy 😊",
   ]},
-  { name: 'Emma Braithwaite', date: 'October 17, 2021', body: [
+  { name: 'Emma Braithwaite', date: 'October 17', body: [
     "Results are in! Feeling much better, no sugar cravings, no diet drinks, clothes are fitting better, eating more fruit.",
     "I have lost 8lbs and 7\" all over! One very happy customer, looking forward to the next 12 weeks in the academy. Thank you for showing me the way to live a healthier lifestyle!",
   ]},
-  { name: 'Carol Fiddy', date: 'October 4, 2021', body: [
+  { name: 'Carol Fiddy', date: 'October 4', body: [
     "Week one completed and before even stepping on the scales, big things I have noticed so far!",
     "✓ No bloating, whatsoever",
     "✓ No sugar cravings",
@@ -1325,23 +1364,23 @@ const TESTIMONIALS = [
     "Morning all, I started this last Monday as we fly out on our holiday of a lifetime. I have not once felt hungry, loved all the recipes, stuck to the plan & had no sugar cravings.",
     "I have tried every diet and healthy eating plan out there & pleased to say this is the best by far. I've only gone & lost 5.7lbs 🙌 Smoothies are amazing. Good luck all, we can do this! x",
   ]},
-  { name: 'Claire Rattray', date: 'October 16, 2021', body: [
+  { name: 'Claire Rattray', date: 'October 16', body: [
     "Just wanted to say thanks to Anna & coaches. The reset has been exactly that and I feel the better for it already. 4lbs lost, jeans feel looser and joint pain eased in the first few days. Sleeping better too and sugar cravings reduced. 🙌",
     "The thing that resonated with me was the need to show up for myself and to stop making excuses. I feel confident a more healthy relationship with food is possible in the long term.",
   ]},
-  { name: 'Lynda Fletcher', date: 'October 14, 2021', body: [
+  { name: 'Lynda Fletcher', date: 'October 14', body: [
     "I've just joined the academy & although I'm only on week 2 I've already seen such success. I'm sleeping so much better, my skin is healthier & I'm actually not feeling the cold like I was before.",
     "The sugar cravings have almost gone & the emotional eating isn't happening as much. If that's not enough to celebrate, I've actually lost 7lb but I'm aware of so many other gains beside this number on the scales. Such a lovely supportive group!",
   ]},
-  { name: 'Paula Ward', date: 'June 28, 2021', body: [
+  { name: 'Paula Ward', date: 'June 28', body: [
     "I joined the reset in May because I'd been invited to 2 weddings and had 'outgrown' the outfits I'd bought for my daughter's wedding 2 short years ago. With less than a fortnight to go, I am over the moon that I can now fit into both dresses, woohoo!",
     "What's more, my eating has become so much healthier, my sugar cravings are gone and I feel so much more in control of my eating than ever before. I just love the freedom and flexibility of WLA. Thank you, Anna Wallace and the WLA crew.",
   ]},
-  { name: 'Karen McLean', date: 'August 7, 2021', body: [
+  { name: 'Karen McLean', date: 'August 7', body: [
     "Just about to finish the reset. I do feel a lot less bloated and my sugar cravings have definitely reduced, especially for eating biscuits/sweets/cakes at work.",
     "I'm absolutely loving the meals, which is a reason why I decided to join the academy. Looking forward to seeing where my journey goes. AND I've finally found some frozen avocado 😀",
   ]},
-  { name: 'Jayne Daniels', date: 'October 22, 2021', body: [
+  { name: 'Jayne Daniels', date: 'October 22', body: [
     "I did the reset & lost 5lbs. I just cannot believe how my mindset is changing & I am starting each day with a positive attitude. I have many social plans coming up & I am not panicking about food choices.",
     "My sugar cravings have gone & I am turning down chocolate & my friends can't understand it 🤣 Thanks to Anna, all the coaches & all the members, I really believe we can all do this together 🥰",
   ]},
@@ -1393,7 +1432,7 @@ const IcSpark = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 
 function WhatYouGet() {
   const items = [
-    { t: 'The 21 Day Sugar Reset Guide', d: 'Your step-by-step guide through the reset, with a fresh meal guide released each week to keep you full, satisfied and free of the daily sugar pull.' },
+    { t: 'The 21 Day Sugar Reset Nutrition Meal Guide', d: 'Your step-by-step guide through the reset, with a fresh meal guide released each week to keep you full, satisfied and free of the daily sugar pull.' },
     { t: 'Daily Coaching & Check-ins', d: "Guidance from Anna every day of the reset, so you stay on track without ever feeling like you're doing it alone." },
     { t: 'The Live Kick-Off Call', d: 'Live on Zoom with Anna on Monday 3rd August. Ask your questions before day one, and the replay is sent to everyone.' },
     { t: 'Snack & Food Swap Guides', d: 'Zero-prep options, smart swaps and snack ideas that satisfy without setting off a craving.' },
@@ -1588,6 +1627,7 @@ function Page() {
       <MyStory />
       <Introducing />
       <HowItWorks />
+      <WhatYouCanExpect />
       <OtherSide />
       <WhoThisIsFor />
       <Testimonials />
