@@ -624,6 +624,10 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-card h3 { font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--navy); margin: 0 0 6px; font-weight: 700; line-height: 1.25; }
   .receive-card h3 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .receive-card p { font-size: 15.5px; line-height: 1.55; color: #333; margin: 0; }
+  .receive-card .card-bullets { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 5px; }
+  .receive-card .card-bullets li { display: grid; grid-template-columns: 16px 1fr; gap: 8px; font-size: 14.5px; line-height: 1.4; color: #333; }
+  .receive-card .card-bullets li::before { content: '✔'; color: var(--coral); font-weight: 700; font-size: 12px; line-height: 1.5; }
+  .receive-card .card-note { display: block; margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13.5px; color: var(--muted); }
   .receive-card .value-pill { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: 10px; padding: 5px 12px; border-radius: 999px; background: rgba(14,48,96,0.10); color: #003060; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
   .receive-card .value-pill .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; color: #003060; opacity: 0.7; }
   /* Total value reveal */
@@ -988,10 +992,10 @@ function Hero() {
     <section className="hero" id="top">
       <div>
         <h1 className="hero-headline serif">
-          <span className="hh-main">Finally ditch your <em>sugar habit</em></span>
-          <span className="hh-sub">Resist your cravings, feel lighter, be empowered by your food choices and finally feel full of energy with <strong>the Sugar Reset</strong>.</span>
+          <span className="hh-main">The 21 Day <em>Sugar Cravings Solution</em></span>
+          <span className="hh-sub">Break free from sugar cravings in just 7 days. Lose up to a stone in 21 days.</span>
         </h1>
-        <p className="hero-without-line"><em>Without</em> doing an extreme detox that leaves you feeling hungry, tired and moody.</p>
+        <p className="hero-without-line">No calorie counting. No detoxes. No giving up your favourite foods.</p>
 
         <div className="hero-offer-card">
           <div className="hero-offer-line-2">Kick-off: <em>Monday 3rd August 2026</em></div>
@@ -1421,12 +1425,14 @@ const IcSpark = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 
 function WhatYouGet() {
   const items = [
-    { ic: '🍽️', t: '21-Day Nutrition Meal Guide', d: 'Know exactly what to eat to reduce sugar cravings and make weight loss feel easier.' },
-    { ic: '🎥', t: 'Weekly Live Coaching', d: 'Learn the nutrition and behavioural change strategies to overcome sugar cravings and build habits that support lasting weight loss.' },
+    { ic: '🍽️', t: 'The 21-Day Sugar Cravings Reset Meal Guide', d: 'A simple, done-for-you guide showing you exactly how to eat for the next 21 days to calm cravings and kick-start fat loss, without dieting or cutting out foods.' },
+    { ic: '🥗', t: 'Sugar-Craving-Reducing Breakfasts, Lunches & Dinners', d: 'Balanced meal ideas designed to:', bullets: ['Stabilise blood sugar', 'Reduce hunger', 'Stop cravings before they start'], note: 'No tracking. No perfection required.' },
+    { ic: '🍎', t: 'Sugar-Craving-Reducing Snack Options', d: "Smart snack swaps that actually satisfy, so you're not fighting cravings all day or raiding the cupboards at night." },
+    { ic: '⏱️', t: 'No-Prep & Busy-Day Meal Options', d: 'For real life. Simple supermarket, takeaway and grab-and-go options that still support the reset when you’re short on time.' },
+    { ic: '🧠', t: 'The Sugar Cravings Reset Framework', d: "Understand why sugar cravings happen and how to stop them, so you're not relying on willpower ever again." },
     { ic: '🧰', t: 'The Sugar Cravings Toolkit', d: 'Practical tools to help you overcome cravings before they lead to overeating.' },
+    { ic: '🎥', t: 'Weekly Live Coaching', d: 'The nutrition and behavioural change strategies to overcome sugar cravings and build habits that support lasting weight loss.' },
     { ic: '📄', t: 'Cheat Sheets & Quick Guides', d: 'Simple nutrition guides to help you make better choices and stay on track with your weight loss.' },
-    { ic: '✅', t: 'Sugar Cravings Snack Guide', d: 'The best snacks to reduce cravings, stay fuller for longer and avoid overeating.' },
-    { ic: '🍓', t: 'High-Protein Recipe Collection', d: 'Enjoy satisfying meals that keep you fuller for longer and naturally reduce sugar cravings.' },
     { ic: '👥', t: 'Community & Accountability', d: 'Stay motivated with coaching, support and accountability throughout your 21-day journey.' },
   ];
   return (
@@ -1443,6 +1449,12 @@ function WhatYouGet() {
               <div>
                 <h3>{it.t}</h3>
                 <p>{it.d}</p>
+                {it.bullets && (
+                  <ul className="card-bullets">
+                    {it.bullets.map((bl, j) => (<li key={j}>{bl}</li>))}
+                  </ul>
+                )}
+                {it.note && <span className="card-note">{it.note}</span>}
               </div>
             </div>
           ))}
@@ -1589,9 +1601,9 @@ function Page() {
       <ResultsImages />
       <TheProblem />
       <TheCost />
-      <HeroPromise />
       <OtherSide />
       <Testimonials />
+      <HeroPromise />
       <MyStory />
       <Introducing />
       <HowItWorks />
