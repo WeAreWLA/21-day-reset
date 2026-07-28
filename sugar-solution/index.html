@@ -940,20 +940,24 @@ function CTAButtons({ size = 'large', primaryLabel = 'Join The Sugar Cravings So
 
 // Doors close Sunday 2nd August 2026, 11.59pm
 const DOORS_CLOSE = new Date('2026-08-02T23:59:00').getTime();
+// Countdown ends Sunday night, but late joiners can still get in through
+// the kick-off Monday. Doors hard-close at midnight ending Monday 3rd Aug.
+const FINAL_CLOSE = new Date('2026-08-04T00:00:00').getTime();
 
 function CountdownBanner({ label }) {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, closed: false });
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, phase: 'counting' });
   useEffect(() => {
     const tick = () => {
       const now = Date.now();
       const diff = DOORS_CLOSE - now;
-      if (diff <= 0) { setTime({ days: 0, hours: 0, minutes: 0, seconds: 0, closed: true }); return; }
+      if (now >= FINAL_CLOSE) { setTime({ days: 0, hours: 0, minutes: 0, seconds: 0, phase: 'closed' }); return; }
+      if (diff <= 0) { setTime({ days: 0, hours: 0, minutes: 0, seconds: 0, phase: 'lastcall' }); return; }
       setTime({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
         minutes: Math.floor((diff % 3600000) / 60000),
         seconds: Math.floor((diff % 60000) / 1000),
-        closed: false,
+        phase: 'counting',
       });
     };
     tick();
@@ -961,11 +965,21 @@ function CountdownBanner({ label }) {
     return () => clearInterval(id);
   }, []);
   const pad = (n) => String(n).padStart(2, '0');
-  if (time.closed) {
+  if (time.phase === 'closed') {
     return (
       <div className="countdown-banner">
         <div className="countdown-inner">
           <span className="countdown-label">Doors are now closed for this round of the 21 Day Sugar Cravings Solution.</span>
+        </div>
+      </div>
+    );
+  }
+  if (time.phase === 'lastcall') {
+    return (
+      <div className="countdown-banner">
+        <div className="countdown-inner">
+          <span className="countdown-label">⏳ Last chance · <strong>You can still join today</strong> — doors close at midnight tonight</span>
+          <a href={CHECKOUT_URL} className="countdown-cta">Join for £17</a>
         </div>
       </div>
     );
@@ -1214,7 +1228,7 @@ function OtherSide() {
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">Three Weeks From Now</span>
-          <h2 className="serif">What life looks like on<br/><em>the other side.</em></h2>
+          <h2 className="serif"><em>What life looks like on <br className="mobile-br"/>the other side.</em></h2>
         </div>
         <ul className="story-chips">
           {items.map((it, i) => (
@@ -1364,7 +1378,7 @@ function ResultsImages() {
     <section className="results" id="results" style={{ paddingTop: 56, paddingBottom: 48 }}>
       <div className="section-head">
         <span className="eyebrow">Real Women · Real Results</span>
-        <h2 className="serif">50,000 women, <em>one solution.</em></h2>
+        <h2 className="serif">50,000 women, <br className="mobile-br"/><em>one solution.</em></h2>
       </div>
       <div className="results-carousel">
         <div className="results-track">
@@ -1561,7 +1575,7 @@ function FinalCTA() {
     <section className="final-cta" style={{ paddingTop: 44, paddingBottom: 64 }}>
       <div className="final-cta-inner">
         <div className="founding-tag" style={{ marginBottom: 18 }}>Doors close Sunday 2nd August, 11.59pm</div>
-        <h2 className="serif">Give me <em>three weeks.</em></h2>
+        <h2 className="serif">Give me <br className="mobile-br"/><em>three weeks.</em></h2>
         <p>If you're done with the daily sugar hangover. If you're done wandering into the kitchen when you're not remotely hungry. If you're done pushing the wrapper down under the rest of the rubbish so nobody sees it.</p>
         <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>You'll finish on the 23rd of August feeling lighter, sleeping better, and in charge of it for the first time in years.</p>
         <div className="final-buttons">
@@ -1615,7 +1629,7 @@ function RunningTheShow() {
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">Sound Familiar?</span>
-          <h2 className="serif">If sugar cravings feel like <em>they’re running the show…</em></h2>
+          <h2 className="serif">If sugar cravings feel like <br className="mobile-br"/><em>they’re running the show</em></h2>
         </div>
         <p>You wake up determined to “be good” today. Breakfast goes well. Lunch is fine.</p>
         <p>Then mid-afternoon hits. Suddenly you’re thinking about chocolate, biscuits, or something sweet, even though you’re not really hungry.</p>
@@ -1656,7 +1670,7 @@ function WhyThisKeepsHappening() {
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">The Real Reason</span>
-          <h2 className="serif">Why this <em>keeps happening.</em></h2>
+          <h2 className="serif">Why this <br className="mobile-br"/><em>keeps happening.</em></h2>
         </div>
         <p>Sugar cravings aren’t a motivation problem. They’re usually a <strong>blood sugar problem</strong>.</p>
         <p>When meals aren’t structured properly, your energy crashes and your body looks for the quickest fix it knows: <strong>sugar</strong>. That’s why:</p>
@@ -1728,7 +1742,7 @@ function WhatMakesDifferent() {
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">The Difference</span>
-          <h2 className="serif">What makes this <em>program different.</em></h2>
+          <h2 className="serif">What makes this <br/><em>program different.</em></h2>
         </div>
         <div className="achieve-columns">
           <div className="achieve-col">
@@ -1757,7 +1771,7 @@ function WhoForPerfect() {
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">Is It For You?</span>
-          <h2 className="serif">Who this is <em>perfect for.</em></h2>
+          <h2 className="serif">Who this is <br className="mobile-br"/><em>perfect for.</em></h2>
         </div>
         <div className="achieve-columns">
           <div className="achieve-col">
@@ -1785,7 +1799,7 @@ function ReadyToFeelInControl() {
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner" style={{ maxWidth: 820 }}>
         <div className="limited-head">
-          <h2 className="serif">Ready to feel <em>back in control?</em></h2>
+          <h2 className="serif">Ready to feel <br className="mobile-br"/><em>back in control?</em></h2>
           <p className="lead">For just <strong>£17</strong>, you’ll get:</p>
         </div>
         <ul className="story-chips" style={{ maxWidth: 680, margin: '0 auto 24px' }}>
@@ -1836,7 +1850,7 @@ function ClientResultsVideos() {
     <section className="videos" id="client-achievements" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="section-head">
         <span className="eyebrow">Real Client Results</span>
-        <h2 className="serif">Here’s what our clients<br/><em>are saying.</em></h2>
+        <h2 className="serif"><em>Here’s what our <br className="mobile-br"/>clients are saying.</em></h2>
       </div>
       <div className="videos-grid three-col">
         {videos.map((v, i) => (
@@ -1864,7 +1878,7 @@ function MemberStories() {
     <section className="videos" id="member-stories" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="section-head">
         <span className="eyebrow">Member Stories</span>
-        <h2 className="serif">Hear what some of our <em>current members have to say.</em></h2>
+        <h2 className="serif">Hear what some of <br className="mobile-br"/><em>our current members</em> <br className="mobile-br"/>have to say.</h2>
         <p>Real WLA members. Real long-term results.</p>
       </div>
       <div className="videos-grid">
