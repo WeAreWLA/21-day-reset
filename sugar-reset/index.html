@@ -872,8 +872,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* What's Included grid (Section 10) — clean hairline tiles */
   .included-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; max-width: 1000px; margin: 0 auto; }
   .included-tile { background: var(--paper); padding: 32px 30px; min-height: 190px; display: flex; flex-direction: column; gap: 12px; }
-  .included-tile h3 { font-family: 'Libre Baskerville', serif; font-size: 21px; color: var(--navy); margin: 0; font-weight: 700; line-height: 1.22; }
-  .included-tile p { font-size: 14.5px; line-height: 1.55; color: var(--muted); margin: auto 0 0; }
+  .included-tile h3 { font-family: 'Libre Baskerville', serif; font-size: 21px; color: var(--navy); margin: 0; font-weight: 700; line-height: 1.22; min-height: 2.5em; }
+  @media (max-width: 520px) { .included-tile h3 { min-height: 0; } }
+  .included-tile p { font-size: 14.5px; line-height: 1.55; color: var(--muted); margin: 0; }
   @media (max-width: 860px) { .included-grid { grid-template-columns: repeat(2, 1fr); } .included-tile { min-height: 170px; } }
   @media (max-width: 520px) { .included-grid { grid-template-columns: 1fr; } .included-tile { min-height: 0; } }
 </style>
