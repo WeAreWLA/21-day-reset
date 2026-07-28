@@ -1032,7 +1032,7 @@ function Trust() {
 /* ── SECTION 2 · The problem ────────────────────────────── */
 function TheProblem() {
   return (
-    <section className="story section">
+    <section className="story section" style={{ paddingTop: 52 }}>
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">Sound Familiar?</span>
@@ -1084,7 +1084,7 @@ function TheCost() {
 /* ── SECTION 4 · My story ───────────────────────────────── */
 function MyStory() {
   return (
-    <section className="story section">
+    <section className="story section" style={{ paddingBottom: 52 }}>
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">My Story</span>
@@ -1121,7 +1121,7 @@ function MyStory() {
 /* ── SECTION 5 · Introducing ────────────────────────────── */
 function Introducing() {
   return (
-    <section className="explainer" style={{ paddingTop: 64, paddingBottom: 64 }}>
+    <section className="explainer" style={{ paddingTop: 44, paddingBottom: 64 }}>
       <div className="explainer-inner">
         <div className="section-head">
           <span className="eyebrow">Introducing</span>
@@ -1183,7 +1183,7 @@ function HowItWorks() {
           ))}
         </div>
         <p style={{ textAlign: 'center', marginTop: 32, fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 19, color: 'var(--navy)' }}>
-          You start on Monday 3rd August. You finish on Sunday 23rd August.
+          We start on Monday 3rd August.
         </p>
       </div>
     </section>
@@ -1256,9 +1256,6 @@ function WhoThisIsFor() {
             </ul>
           </div>
         </div>
-        <p className="achieve-closer">
-          If your relationship with food feels genuinely distressing, or you're eating in a way that frightens you, please speak to your GP first. A 21-day programme is not a substitute for proper support, and I'd rather say that plainly than take your £17.
-        </p>
       </div>
     </section>
   );
@@ -1395,7 +1392,7 @@ const IcSpark = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor
 
 function WhatYouGet() {
   const items = [
-    { t: 'The 21 Day Sugar Reset Guide', d: 'Your step-by-step guide through the reset, built to keep you full, satisfied and free of the daily sugar pull within days.' },
+    { t: 'The 21 Day Sugar Reset Guide', d: 'Your step-by-step guide through the reset, with a fresh meal guide released each week to keep you full, satisfied and free of the daily sugar pull.' },
     { t: 'Daily Coaching & Check-ins', d: "Guidance from Anna every day of the reset, so you stay on track without ever feeling like you're doing it alone." },
     { t: 'The Live Kick-Off Call', d: 'Live on Zoom with Anna on Monday 3rd August. Ask your questions before day one, and the replay is sent to everyone.' },
     { t: 'Snack & Food Swap Guides', d: 'Zero-prep options, smart swaps and snack ideas that satisfy without setting off a craving.' },
@@ -1485,7 +1482,7 @@ function ThePrice() {
 function FAQ() {
   const qs = [
     { q: 'When does it start and finish?',
-      a: 'Monday 3rd August to Sunday 23rd August. As soon as you join you’ll get your welcome email with the full guide and all the recipes, so you can read ahead and get your shopping done before we begin.' },
+      a: 'Monday 3rd August to Sunday 23rd August. As soon as you join you’ll get your welcome email with everything you need to get started, so you can read ahead and get your shopping done before we begin.' },
     { q: 'Do I have to give up sugar completely?',
       a: 'No, and I’d rather you didn’t. Cutting it out entirely is what makes it come back with force. Week one is about adding, week two is about understanding, and week three is about bringing it back on your terms.' },
     { q: 'Is this a detox?',
@@ -1493,18 +1490,16 @@ function FAQ() {
     { q: 'I’m away for a week in August. Can I still do it?',
       a: 'Yes. Everything in this is designed to work while you’re eating out and away from your own kitchen, and we’ll cover exactly how to handle it in the group, from barbecues and picnics to hotel breakfasts.' },
     { q: 'Is it suitable for vegetarians?',
-      a: 'There’s one main guide, and every recipe comes with a vegetarian adaptation.' },
+      a: 'Yes, there’s one main guide, and every recipe can be adjusted or swapped with our recipe library and easy to use swap list.' },
     { q: 'What if I fall behind?',
-      a: 'You keep the whole lot, so you can catch up or restart at any time. The daily emails arrive in order but they’re yours to read whenever suits.' },
+      a: 'You keep the whole lot, so you can catch up or restart at any time. Everything stays in the group and your guides are yours to work through whenever suits.' },
     { q: 'I’m in perimenopause or menopause. Will this still work?',
       a: 'This is who I built it for. Cravings genuinely do get stronger through this stage, and it isn’t your imagination or your fault. Week one is largely about the blood sugar side of that.' },
     { q: 'Is there a group, and do I get live coaching?',
-      a: 'Yes. This round runs inside our coaching group, so you get daily coaching and check-ins from me, live coaching through the three weeks, and the live kick-off call on the 3rd. You also get a daily email so nothing gets missed if you can’t always be in the group.' },
-    { q: 'How is it delivered?',
-      a: 'You’ll get access to the coaching group where we run the reset together, plus a daily email from me for 21 days. Your guide and recipes land straight away so you can read ahead and get your shopping done before we begin.' },
+      a: 'Yes. This round runs inside our coaching group, so you get daily coaching and check-ins from me, live coaching through the three weeks, and the live kick-off call on the 3rd.' },
   ];
   return (
-    <section className="faq" id="faq">
+    <section className="faq" id="faq" style={{ paddingBottom: 44 }}>
       <div className="faq-inner">
         <div className="section-head">
           <span className="eyebrow">Got Some Questions?</span>
@@ -1529,7 +1524,7 @@ function FAQ() {
 /* ── SECTION 14 · Final call ────────────────────────────── */
 function FinalCTA() {
   return (
-    <section className="final-cta" style={{ paddingTop: 56 }}>
+    <section className="final-cta" style={{ paddingTop: 44, paddingBottom: 64 }}>
       <div className="final-cta-inner">
         <div className="founding-tag" style={{ marginBottom: 18 }}>Doors close Sunday 2nd August, 11.59pm</div>
         <h2 className="serif">Give me <em>three weeks.</em></h2>
