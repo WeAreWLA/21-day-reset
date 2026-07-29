@@ -1004,7 +1004,7 @@ function CountdownBanner({ label }) {
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
-        <span className="countdown-label">{label || <>Only <strong>150</strong> places available · Registration closes in</>}</span>
+        <span className="countdown-label">{label || <>Only <strong>150</strong> spots available · half are gone!</>}</span>
         <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
