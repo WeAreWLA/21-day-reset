@@ -1,0 +1,138 @@
+<!--
+  ThriveCart upsell content snippet — Upgrade the 21 Day Sugar Cravings Solution to 1 Year of WLA Access (£80).
+  Paste this entire block into your ThriveCart upsell page's HTML content area.
+  ThriveCart's own Add / Decline buttons should appear below this content.
+  Self-contained: fonts loaded inline, all CSS scoped under .wla-upsell so it
+  won't clash with ThriveCart's stylesheet.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  .wla-upsell { --navy: #0e2746; --coral: #d97757; --coral-soft: #e5917a; --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8; --muted: #5a6478; --ok: #2e7d5b; }
+  .wla-upsell, .wla-upsell * { box-sizing: border-box; }
+  .wla-upsell { font-family: "Alegreya Sans", sans-serif; color: #333; background: var(--cream); padding: 56px 24px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  .wla-upsell .inner { max-width: 920px; margin: 0 auto; }
+  .wla-upsell .serif { font-family: 'Libre Baskerville', serif; }
+  .wla-upsell em { font-style: italic; font-weight: 500; color: var(--coral); }
+
+  /* Top urgency banner */
+  .wla-upsell .urgency { position: relative; overflow: hidden; background: #F79F83; color: #003060; text-align: center; font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 18px; border-radius: 14px; margin-bottom: 28px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); font-size: clamp(13px, 1.6vw, 16px); }
+  .wla-upsell .urgency::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
+  @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
+  .wla-upsell .urgency > * { position: relative; z-index: 1; }
+  .wla-upsell .urgency .note { display: block; margin-top: 4px; font-weight: 700; text-transform: none; letter-spacing: 0.02em; font-size: 13px; color: rgba(0,48,96,0.85); font-family: 'Libre Baskerville', serif; font-style: italic; }
+
+  /* Hero */
+  .wla-upsell .hero { text-align: center; margin-bottom: 40px; }
+  .wla-upsell .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: rgba(217,119,87,0.14); color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 22px; }
+  .wla-upsell h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(34px, 4.4vw, 52px); line-height: 1.1; font-weight: 700; margin: 0 0 14px; letter-spacing: -0.01em; text-align: center; }
+  .wla-upsell h1 .accent { color: var(--coral); font-style: italic; font-weight: 500; }
+  .wla-upsell .sub { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin: 0 0 8px; text-align: center; }
+  .wla-upsell .limited { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-top: 6px; }
+
+  /* Lead body */
+  .wla-upsell .lead { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 16px; padding: 32px 36px; margin-bottom: 36px; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
+  .wla-upsell .lead p { font-size: 17px; line-height: 1.6; color: #333; margin: 0 0 14px; }
+  .wla-upsell .lead p:last-child { margin-bottom: 0; }
+  .wla-upsell .lead strong { color: var(--navy); font-weight: 700; }
+  .wla-upsell .lead .pivot { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); font-size: 18px; margin-top: 18px; margin-bottom: 8px; }
+
+  /* Section heads */
+  .wla-upsell .sec-head { text-align: center; margin: 0 0 24px; }
+  .wla-upsell .sec-head .eyebrow { display: inline-block; font-size: clamp(15px, 2vw, 19px); letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 12px; }
+  .wla-upsell .sec-head h2 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(26px, 3.2vw, 36px); line-height: 1.15; font-weight: 700; margin: 0; letter-spacing: -0.01em; text-align: center; }
+  .wla-upsell .sec-head h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+
+  /* Check list */
+  .wla-upsell .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .wla-upsell .checks li { display: flex; gap: 14px; align-items: flex-start; font-size: 16.5px; color: var(--navy); line-height: 1.45; padding: 14px 18px; background: var(--paper); border: 1px solid rgba(14,39,70,0.06); border-radius: 12px; }
+  .wla-upsell .check-ic { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--coral); display: grid; place-items: center; margin-top: 1px; }
+  .wla-upsell .check-ic svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Featured "inside" card */
+  .wla-upsell .inside-card { background: var(--cream-2); border: 1px solid var(--coral); border-radius: 16px; padding: 32px 36px; margin: 16px 0 0; position: relative; overflow: hidden; }
+  .wla-upsell .inside-card::before { content: ''; position: absolute; top: -80px; right: -80px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(217,119,87,0.20), transparent 65%); pointer-events: none; }
+  .wla-upsell .inside-card .checks li { background: var(--paper); position: relative; z-index: 1; }
+
+  /* Section spacing */
+  .wla-upsell .section { margin-top: 40px; }
+
+  /* Closing price block */
+  .wla-upsell .price-block { margin-top: 44px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.38); }
+  .wla-upsell .price-block::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
+  .wla-upsell .price-block .label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 12px; position: relative; z-index: 1; }
+  .wla-upsell .price-block .name { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; margin: 0 0 14px; color: #fff; position: relative; z-index: 1; }
+  .wla-upsell .price-block .price { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); font-weight: 700; line-height: 1; color: #fff; position: relative; z-index: 1; }
+  .wla-upsell .price-block .price .currency { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: 0.55em; vertical-align: top; margin-right: 4px; }
+  .wla-upsell .price-block .price .suffix { font-size: 0.28em; color: rgba(244,235,220,0.85); font-style: italic; font-weight: 500; letter-spacing: 0.02em; margin-left: 6px; }
+  .wla-upsell .price-block .total-line { display: block; margin-top: 16px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: rgba(244,235,220,0.92); position: relative; z-index: 1; line-height: 1.45; }
+  .wla-upsell .price-block .total-line strong { color: var(--coral-soft); font-style: normal; font-weight: 700; }
+  .wla-upsell .price-block .scarcity { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 8px 18px; background: var(--coral); color: #fff; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; position: relative; z-index: 1; }
+
+  /* Decline note */
+  .wla-upsell .decline { text-align: center; margin-top: 18px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: var(--muted); }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .wla-upsell { padding: 40px 16px; }
+    .wla-upsell .lead { padding: 24px 22px; }
+    .wla-upsell .inside-card { padding: 24px 22px; }
+    .wla-upsell .price-block { padding: 28px 22px; }
+  }
+</style>
+
+<div class="wla-upsell">
+  <div class="inner">
+
+    <!-- URGENCY BANNER -->
+    <div class="urgency">
+      ✨ Wait! Upgrade to a full year of WLA access for only £80 ✨
+      <span class="note">One-time offer · This page will not appear again</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1 class="serif">Upgrade your <span class="accent">21 Day Sugar Cravings Solution</span> to<br/><span class="accent">a full year inside the WLA</span></h1>
+      <p class="sub">A full 12 months of coaching, meal guides &amp; support. One decision, made now.</p>
+    </div>
+
+    <!-- LEAD -->
+    <div class="lead">
+      <p>You've already <strong>secured your place in the 21 Day Sugar Cravings Solution</strong>…</p>
+      <p>But before you go, you have a <strong>one-time opportunity</strong> to upgrade to a <strong>full year inside The Weight Loss &amp; Lifestyle Academy</strong> for a one-time <strong>£80</strong>.</p>
+      <p class="pivot">Why does this matter?</p>
+      <p>Because breaking free from sugar cravings is the start, not the finish.</p>
+      <p>21 days is enough to get the cravings under control and see the scales move, but the women who get the <strong>BEST results</strong> are the ones who stay supported long enough that it becomes their <em>lifestyle</em>, not another "phase".</p>
+    </div>
+
+    <!-- WHAT YOU GET -->
+    <div class="section">
+      <div class="sec-head">
+        <span class="eyebrow">🌟 Upgrade To A Full Year &amp; Get</span>
+        <h2 class="serif">A full year inside the <em>WLA, locked in.</em></h2>
+      </div>
+      <div class="inside-card">
+        <ul class="checks">
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>A <strong>FULL 12 months</strong> inside the WLA, instead of just 21 days</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Weekly <strong>LIVE coaching Zooms with Anna</strong>, all year</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Stay in the <strong>accountability group with daily coaching</strong>, all year</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>New <strong>meal guides &amp; fresh recipes every week</strong>, all year</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Access to <strong>all future challenges &amp; resets</strong> for 12 months</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Your <strong>£80 upgrade rate locked in</strong> today only</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRICE BLOCK -->
+    <div class="price-block">
+      <div class="label">Your One-Time Upgrade</div>
+      <div class="name serif">Upgrade to 1 Year of WLA Access</div>
+      <div class="price"><span class="currency">£</span>80<span class="suffix">one-off</span></div>
+      <span class="total-line">A full <strong>12 months</strong> inside the WLA for a one-time <strong>£80</strong>. Coaching, meal guides, recipes and support for the next year.</span>
+      <span class="scarcity">⏳ One-time offer · Won't appear again</span>
+    </div>
+
+  </div>
+</div>
