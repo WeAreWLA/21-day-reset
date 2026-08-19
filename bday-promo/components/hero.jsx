@@ -63,10 +63,7 @@ const AnnouncementBar = () => {
     }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
         <span className="announcement-dot" />
-        Just <strong style={{ color: 'var(--peach)', fontSize: '1.05em' }}>£7</strong>
-        {' '}<span style={{ opacity: 0.65, textDecoration: 'line-through' }}>£97</span>
       </span>
-      <span style={{ opacity: 0.5 }}>·</span>
       {isOpen ? (
         <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
           <span style={{ fontSize: 13 }}>Price increases in</span>

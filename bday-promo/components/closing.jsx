@@ -36,7 +36,7 @@ const CountdownSection = () => {
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <SerifH size={46} className="countdown-heading" style={{ marginBottom: 26, lineHeight: 1.2 }}>
-          The <Italic>£7 price</Italic> disappears in
+          The <Italic>£7 promo</Italic> disappears in
         </SerifH>
         <div className="countdown-grid" style={{
           display: 'grid',
@@ -280,57 +280,51 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
 
         <GuaranteeNote style={{ maxWidth: 460, margin: '12px auto 0' }} />
 
-        <div style={{
-          marginTop: 24,
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 24,
-          fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 12,
-          color: 'var(--ink-muted)',
-          letterSpacing: '0.04em',
-          flexWrap: 'wrap',
+        <div className="pricing-trust-row" style={{
+          marginTop: 26,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 10,
+          maxWidth: 460,
+          margin: '26px auto 0',
+          borderTop: '1px solid var(--hairline)',
+          paddingTop: 18,
         }}>
-          <span>🔒 Secure checkout · card or PayPal</span>
-          <span>·</span>
-          <span>7-day guarantee</span>
-          <span>·</span>
-          <span>Free pre-week: Mon 31 Aug</span>
+          {[
+            { icon: '🔒', k: 'Secure checkout', v: 'Card or PayPal' },
+            { icon: '↩️', k: '7-day guarantee', v: 'Full refund' },
+            { icon: '📅', k: 'Free pre-week', v: 'Mon 31 Aug' },
+          ].map((t, i) => (
+            <div key={i} style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 15, lineHeight: 1.2, marginBottom: 5 }}>{t.icon}</div>
+              <div style={{
+                fontFamily: '"Alegreya Sans", sans-serif',
+                fontSize: 12.5, fontWeight: 600,
+                color: 'var(--ink)', lineHeight: 1.3,
+              }}>{t.k}</div>
+              <div style={{
+                fontFamily: '"Alegreya Sans", sans-serif',
+                fontSize: 11.5, color: 'var(--ink-muted)',
+                lineHeight: 1.3, marginTop: 1,
+              }}>{t.v}</div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Guarantee callout */}
       <div style={{
         marginTop: 48,
-        display: 'grid',
-        gridTemplateColumns: '80px 1fr',
-        gap: 24,
-        alignItems: 'center',
         background: 'var(--paper)',
         border: '1px dashed var(--blush-deep)',
         borderRadius: 16,
         padding: '28px 36px',
         textAlign: 'left',
       }}>
-        <div style={{
-          width: 80,
-          height: 80,
-          borderRadius: '50%',
-          background: 'var(--peach)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontFamily: '"Libre Baskerville", serif',
-          fontWeight: 700,
-              fontSize: 28,
-          color: 'var(--blush-deep)',
-        }}>7</div>
-        <div>
-          <SerifH size={22} style={{ marginBottom: 6 }}>Our 7-day money-back guarantee</SerifH>
-          <Body size={15} muted>
-            Join, open the materials, show up to the first live call. If within 7 days you don't feel this is for you, just email us. Full refund, no questions, no hoops.
-          </Body>
-        </div>
+        <SerifH size={22} className="callout-title" style={{ marginBottom: 8 }}>Our 7-day money-back guarantee</SerifH>
+        <Body size={15} muted>
+          Join, open the materials, show up to the first live call. If within 7 days you don't feel this is for you, just email us. Full refund, no questions, no hoops.
+        </Body>
       </div>
     </div>
   </section>

@@ -85,8 +85,7 @@ const WhatChangesIn21DaysSection = () => {
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <Eyebrow>In just 21 days</Eyebrow>
-          <SerifH size={56} style={{ marginTop: 20 }}>
+          <SerifH size={56}>
             Here’s what can change<br className="mobile-break" /> <Italic>in just 21 days…</Italic>
           </SerifH>
         </div>
