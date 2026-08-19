@@ -35,14 +35,9 @@ const CountdownSection = () => {
       textAlign: 'center',
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
-        <div style={{
-          fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 13, fontWeight: 600,
-          letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: 'var(--blush-deep)', marginBottom: 22,
-        }}>
-          🎂 £7 price disappears in
-        </div>
+        <SerifH size={46} className="countdown-heading" style={{ marginBottom: 26, lineHeight: 1.2 }}>
+          The <Italic>£7 price</Italic> disappears in
+        </SerifH>
         <div className="countdown-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
@@ -82,15 +77,36 @@ const CountdownSection = () => {
             </div>
           ))}
         </div>
-        <div style={{
-          fontFamily: '"Libre Baskerville", serif',
-          fontStyle: 'italic',
-          fontSize: 17,
-          color: 'var(--ink)',
-          maxWidth: 540, margin: '0 auto',
-          lineHeight: 1.5,
+        <div className="countdown-facts" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 12,
+          maxWidth: 720,
+          margin: '0 auto',
         }}>
-          Only 100 spots, and the £7 price is live for 96 hours. When the timer hits zero it goes back to £97. Pre-week starts Monday 31st August.
+          {[
+            { k: '96 hours', v: 'then the price increases' },
+            { k: '100 spots', v: 'and no more after that' },
+            { k: 'Mon 31 Aug', v: 'pre-week starts' },
+          ].map((f, i) => (
+            <div key={i} style={{
+              background: 'rgba(253, 251, 248, 0.65)',
+              border: '1px solid var(--blush-deep)',
+              borderRadius: 12,
+              padding: '14px 10px',
+            }}>
+              <div style={{
+                fontFamily: '"Libre Baskerville", serif',
+                fontWeight: 700, fontSize: 19,
+                color: 'var(--ink)', lineHeight: 1.2,
+              }}>{f.k}</div>
+              <div style={{
+                fontFamily: '"Alegreya Sans", sans-serif',
+                fontSize: 13, color: 'var(--ink)',
+                opacity: 0.75, marginTop: 4, lineHeight: 1.35,
+              }}>{f.v}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -114,7 +130,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             {isOpen
-              ? 'It’s my birthday, so the whole 21 Day Reset is £7 instead of £97 — for 96 hours only, and only 100 spots are available. Pre-week starts Monday 31st August.'
+              ? 'It’s my birthday, so the whole 21 Day Reset is £7 — for 96 hours only, and only 100 spots are available. The price increases when the timer runs out. Pre-week starts Monday 31st August.'
               : 'Join today for £7 and start the 21 Day Reset with us.'}
           </Body>
         </>
@@ -174,8 +190,8 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             'Full 21-day flexible nutrition and weight meal guide + recipes',
             'Daily coaching + weekly live Zoom with Anna',
             'Multiple supporting guides & workbook',
-            'Instant access to the WLA Members’ Area (100s of recipes, meal guides & shopping lists)',
-            isOpen ? 'Birthday bonus: FREE 3-Week Fat Loss Accelerator Meal Plan' : null,
+            'Bonus 1: instant access to the WLA Members’ Area (100s of recipes, meal guides & shopping lists)',
+            'Bonus 2: three weekly live weight-loss masterclasses',
             '7-day money-back guarantee',
           ].filter(Boolean).map((f, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
@@ -208,40 +224,9 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         </div>
       </div>
 
-      {/* Birthday bonus callout */}
-      {isOpen && <div style={{
-        marginTop: 48,
-        display: 'grid',
-        gridTemplateColumns: '80px 1fr',
-        gap: 24,
-        alignItems: 'center',
-        background: 'var(--paper)',
-        border: '1px dashed var(--blush-deep)',
-        borderRadius: 16,
-        padding: '28px 36px',
-        textAlign: 'left',
-      }}>
-        <div style={{
-          width: 80,
-          height: 80,
-          borderRadius: '50%',
-          background: 'var(--peach)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: 36,
-        }}>🎁</div>
-        <div>
-          <SerifH size={22} style={{ marginBottom: 6 }}>Birthday bonus</SerifH>
-          <Body size={15}>
-            Get the <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic> free. First 100 women only · instant access on signup.
-          </Body>
-        </div>
-      </div>}
-
       {/* Guarantee callout */}
       <div style={{
-        marginTop: isOpen ? 24 : 48,
+        marginTop: 48,
         display: 'grid',
         gridTemplateColumns: '80px 1fr',
         gap: 24,
@@ -304,7 +289,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Why is it only £7?",
-    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset — nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for 96 hours only and there are just 100 spots, then the price goes back to £97.",
+    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset — nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for 96 hours only and there are just 100 spots — the price increases when the timer runs out.",
   },
   {
     q: "When does it start?",
@@ -416,7 +401,7 @@ const FinalCTA = () => (
         <br />You need something you can stick to.
       </SerifH>
       <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
-        21 days. £7 instead of £97 — for 96 hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. Pre-week starts Monday 31st August.
+        21 days. £7 — for 96 hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
       </Body>
       <PrimaryCTA location="final">Join the 21 Day Reset — £7</PrimaryCTA>
       <div style={{
@@ -425,7 +410,7 @@ const FinalCTA = () => (
         fontSize: 13,
         color: 'var(--ink-muted)',
       }}>
-        7-day money-back guarantee · Starts Monday 31st August
+        7-day money-back guarantee · Pre-week starts Monday 31st August
       </div>
     </div>
   </section>
@@ -512,90 +497,4 @@ const Footer = () => (
   </footer>
 );
 
-// Birthday Bonus — limited-spots peach banner for the Accelerator Meal Plan
-const BirthdayBonusSection = () => (
-  <section className="birthdaybonus-section" style={{
-    padding: '40px 32px 48px',
-    background: 'var(--bg)',
-  }}>
-    <div style={{
-      maxWidth: 820,
-      margin: '0 auto',
-      background: `linear-gradient(135deg, var(--peach) 0%, #F8C4B0 100%)`,
-      border: '2px dashed var(--blush-deep)',
-      borderRadius: 22,
-      padding: '48px 48px 52px',
-      position: 'relative',
-      textAlign: 'center',
-      boxShadow: '0 30px 60px -30px rgba(232, 127, 99, 0.35)',
-    }}>
-      <div style={{
-        position: 'absolute',
-        top: -18, left: '50%', transform: 'translateX(-50%)',
-        background: 'var(--blush-deep)', color: 'var(--paper)',
-        padding: '8px 22px', borderRadius: 999,
-        fontFamily: '"Alegreya Sans", sans-serif',
-        fontSize: 12, fontWeight: 600,
-        letterSpacing: '0.16em', textTransform: 'uppercase',
-        whiteSpace: 'nowrap',
-      }}>
-        🎁 Birthday bonus (first 100 only)
-      </div>
-
-      <SerifH size={40} style={{ marginTop: 16, marginBottom: 18, color: 'var(--ink)', lineHeight: 1.2 }}>
-        The first 100 women who join get my<br />
-        <Italic>3-week fat loss accelerator meal plan</Italic><br />as a birthday gift — free.
-      </SerifH>
-
-      <Body size={17} style={{ maxWidth: 560, margin: '0 auto 32px' }}>
-        This is your head-start plan, so you can begin before Monday 31st August even arrives.
-      </Body>
-
-      <div style={{
-        maxWidth: 460, margin: '0 auto 32px',
-        display: 'flex', flexDirection: 'column', gap: 14,
-        textAlign: 'left',
-      }}>
-        {[
-          'Know exactly what to eat from your next meal',
-          'Start making progress straight away',
-          'Build momentum before Day 1',
-        ].map((item, i) => (
-          <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-            <Tick />
-            <Body size={16} style={{ flex: 1, minWidth: 0 }}>{item}</Body>
-          </div>
-        ))}
-      </div>
-
-      <div style={{
-        fontFamily: '"Libre Baskerville", serif',
-        fontSize: 21,
-        color: 'var(--ink)',
-        marginBottom: 24,
-        lineHeight: 1.4,
-      }}>
-        So when the Reset begins…<br /><em style={{ fontStyle: 'italic', fontWeight: 700, color: 'var(--blush-deep)' }}>You’re already ahead.</em>
-      </div>
-
-      <div style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: 10,
-        background: 'var(--ink)',
-        color: 'var(--paper)',
-        padding: '10px 20px',
-        borderRadius: 999,
-        fontFamily: '"Alegreya Sans", sans-serif',
-        fontSize: 13,
-        fontWeight: 600,
-        letterSpacing: '0.08em',
-        textTransform: 'uppercase',
-      }}>
-        ⚠️ Only available for the first 100 women
-      </div>
-    </div>
-  </section>
-);
-
-Object.assign(window, { PricingSection, FAQSection, FinalCTA, StickyCTA, Footer, BirthdayBonusSection, CountdownSection });
+Object.assign(window, { PricingSection, FAQSection, FinalCTA, StickyCTA, Footer, CountdownSection });
