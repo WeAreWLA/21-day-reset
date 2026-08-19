@@ -1,8 +1,54 @@
 // Hero + announcement bar — Birthday Promo (/bday-promo)
 
+// Ticks once a second so the bar always shows live time remaining.
+function useOfferRemaining() {
+  const compute = () => {
+    const diff = Math.max(0, window.OFFER_END - Date.now());
+    return {
+      expired: diff <= 0,
+      d: Math.floor(diff / 86400000),
+      h: Math.floor((diff % 86400000) / 3600000),
+      m: Math.floor((diff % 3600000) / 60000),
+      s: Math.floor((diff % 60000) / 1000),
+    };
+  };
+  const [t, setT] = React.useState(compute);
+  React.useEffect(() => {
+    const id = setInterval(() => setT(compute()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return t;
+}
+
+const BarDigit = ({ n, label }) => (
+  <span style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1 }}>
+    <span style={{
+      background: 'rgba(253, 251, 248, 0.16)',
+      border: '1px solid rgba(245, 217, 206, 0.45)',
+      borderRadius: 6,
+      padding: '3px 6px',
+      minWidth: 26,
+      textAlign: 'center',
+      fontFamily: '"Alegreya Sans", sans-serif',
+      fontWeight: 700,
+      fontSize: 15,
+      fontVariantNumeric: 'tabular-nums',
+      color: 'var(--paper)',
+    }}>{String(n).padStart(2, '0')}</span>
+    <span style={{
+      fontSize: 8,
+      letterSpacing: '0.12em',
+      textTransform: 'uppercase',
+      color: 'var(--peach)',
+      marginTop: 3,
+    }}>{label}</span>
+  </span>
+);
+
 const AnnouncementBar = () => {
   const phase = (typeof window !== 'undefined' && window.getCampaignPhase) ? window.getCampaignPhase() : 'open';
   const isOpen = phase === 'open';
+  const t = useOfferRemaining();
   return (
     <div className="announcement-bar" style={{
       color: 'var(--paper)',
@@ -12,12 +58,12 @@ const AnnouncementBar = () => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: 18,
+      gap: 16,
       flexWrap: 'wrap',
     }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
         <span className="announcement-dot" />
-        🎂 Anna's birthday offer
+        🎂 Anna&rsquo;s Birthday Promo
       </span>
       <span style={{ opacity: 0.5 }}>·</span>
       <span>
@@ -25,11 +71,19 @@ const AnnouncementBar = () => {
         {' '}<span style={{ opacity: 0.65, textDecoration: 'line-through' }}>£97</span>
       </span>
       <span style={{ opacity: 0.5 }}>·</span>
-      <span>
-        {isOpen
-          ? <><strong style={{ color: 'var(--peach)' }}>{window.OFFER_HOURS} hours only</strong> · 100 spots</>
-          : <>Doors are closing — last chance</>}
-      </span>
+      {isOpen ? (
+        <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 13 }}>Price rises in</span>
+          <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 4 }}>
+            <BarDigit n={t.d} label="days" />
+            <BarDigit n={t.h} label="hrs" />
+            <BarDigit n={t.m} label="min" />
+            <BarDigit n={t.s} label="sec" />
+          </span>
+        </span>
+      ) : (
+        <span>The £7 price has ended</span>
+      )}
     </div>
   );
 };
