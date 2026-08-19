@@ -1,0 +1,304 @@
+<!--
+  ThriveCart cart content snippet: Anna's Birthday Promo — The 21 Day Fat Loss Reset (£7).
+  Paste this block into your ThriveCart cart page's HTML content area.
+  ThriveCart's own checkout form (name, email, card / PayPal) renders separately.
+  This is the marketing content that wraps around it.
+
+  All CSS is scoped under .wla-cart so it won't clash with ThriveCart's stylesheet.
+
+  ⚠️ The countdown reads WLA_OFFER_END at the bottom of this file. It must match
+  OFFER_END in /bday-promo/components/sections.jsx — currently Sun 23 Aug 2026
+  23:59 BST. Change both together or the cart and the sales page will disagree.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  .wla-cart { --navy: #003060; --navy-deep: #00203f; --coral: #E87F63; --coral-soft: #F79F83; --peach: #F5D9CE; --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8; --muted: #5B6B82; --ok: #2e7d5b; }
+  .wla-cart, .wla-cart * { box-sizing: border-box; }
+  .wla-cart { font-family: "Alegreya Sans", sans-serif; color: #333; background: var(--cream); padding: 40px 24px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  .wla-cart .inner { max-width: 760px; margin: 0 auto; }
+  .wla-cart .serif { font-family: 'Libre Baskerville', serif; }
+  .wla-cart em { font-style: italic; font-weight: 500; color: var(--coral); }
+
+  /* Countdown reminder banner */
+  @keyframes wlaCartSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
+  .wla-cart .reminder { position: relative; overflow: hidden; background: var(--coral-soft); color: var(--navy); text-align: center; padding: 15px 18px; border-radius: 14px; margin-bottom: 28px; box-shadow: inset 0 -1px 0 rgba(0,48,96,0.12); }
+  .wla-cart .reminder::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: wlaCartSheen 4.8s ease-in-out infinite; pointer-events: none; }
+  .wla-cart .reminder > * { position: relative; z-index: 1; }
+  .wla-cart .reminder .lab { font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; font-size: clamp(12px, 1.5vw, 14px); }
+  .wla-cart .reminder .clock { display: inline-flex; gap: 6px; margin-top: 8px; }
+  .wla-cart .reminder .unit { background: var(--navy); color: #fff; border-radius: 8px; padding: 5px 8px; min-width: 44px; }
+  .wla-cart .reminder .unit .n { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; line-height: 1; font-variant-numeric: tabular-nums; display: block; }
+  .wla-cart .reminder .unit .u { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; display: block; margin-top: 3px; }
+  .wla-cart .reminder .note { display: block; margin-top: 7px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; color: rgba(0,48,96,0.85); }
+
+  /* Hero */
+  .wla-cart .hero { text-align: center; margin-bottom: 32px; }
+  .wla-cart .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: rgba(232,127,99,0.14); color: var(--coral); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 999px; margin-bottom: 20px; }
+  .wla-cart h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(30px, 4vw, 44px); line-height: 1.1; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; text-align: center; }
+  .wla-cart h1 .accent { color: var(--coral); font-style: italic; font-weight: 500; }
+  .wla-cart .lede { font-size: 16.5px; line-height: 1.55; color: #333; margin: 0 auto; max-width: 560px; }
+
+  /* Results list */
+  .wla-cart .results { display: grid; gap: 8px; max-width: 460px; margin: 20px auto 0; text-align: left; }
+  .wla-cart .results div { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; font-size: 16px; color: var(--navy); line-height: 1.4; }
+  .wla-cart .results .tick { width: 18px; height: 18px; border-radius: 50%; background: rgba(232,127,99,0.18); color: var(--coral); display: grid; place-items: center; margin-top: 2px; }
+  .wla-cart .results .tick svg { width: 10px; height: 10px; stroke: var(--coral); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Order summary card */
+  .wla-cart .order-card { background: var(--paper); border: 1px solid rgba(0,48,96,0.10); border-radius: 18px; padding: 32px 36px; box-shadow: 0 24px 50px -28px rgba(0,48,96,0.22); margin-bottom: 28px; }
+  .wla-cart .order-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid rgba(0,48,96,0.08); margin-bottom: 18px; }
+  .wla-cart .order-head .title { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .wla-cart .order-head .meta { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+
+  /* Item list */
+  .wla-cart .items { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .wla-cart .items li { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: start; font-size: 14.5px; color: var(--navy); line-height: 1.4; padding: 4px 0; }
+  .wla-cart .items li .check { width: 18px; height: 18px; border-radius: 50%; background: rgba(46,125,91,0.14); color: var(--ok); display: grid; place-items: center; margin-top: 2px; }
+  .wla-cart .items li .check svg { width: 10px; height: 10px; stroke: var(--ok); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .wla-cart .items li .name { line-height: 1.4; }
+  .wla-cart .items li .value { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: 13.5px; padding: 3px 10px; border-radius: 999px; background: rgba(0,48,96,0.08); white-space: nowrap; }
+  .wla-cart .items li.bonus .value { background: rgba(232,127,99,0.16); color: var(--coral); }
+  .wla-cart .items li.group { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 14px 0 0; margin-top: 6px; border-top: 1px dashed rgba(0,48,96,0.14); }
+
+  /* Total summary */
+  .wla-cart .totals { margin-top: 22px; padding-top: 22px; border-top: 1px solid rgba(0,48,96,0.08); }
+  .wla-cart .total-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .wla-cart .total-row.line { color: var(--muted); font-size: 14px; padding-bottom: 6px; }
+  .wla-cart .total-row.line s { color: var(--muted); }
+  .wla-cart .total-row.you-pay { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; padding-top: 10px; }
+  .wla-cart .total-row.you-pay .price { font-size: 38px; color: var(--navy); line-height: 1; letter-spacing: -0.01em; }
+  .wla-cart .total-row.you-pay .price .currency { font-size: 22px; vertical-align: top; color: var(--coral); font-style: italic; font-weight: 500; margin-right: 2px; }
+  .wla-cart .total-row.you-pay .price .term { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .wla-cart .anchor { text-align: right; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14px; color: var(--coral); margin-top: 6px; }
+
+  /* Scarcity strip */
+  .wla-cart .scarcity { display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: center; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; margin-bottom: 24px; }
+  .wla-cart .scarcity svg { width: 24px; height: 24px; color: var(--coral); }
+  .wla-cart .scarcity .copy { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: 15px; line-height: 1.4; }
+  .wla-cart .scarcity .copy strong { color: var(--coral); }
+
+  /* Guarantee */
+  .wla-cart .guarantee { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: center; padding: 22px 24px; background: var(--paper); border: 1px solid rgba(0,48,96,0.08); border-radius: 14px; margin-bottom: 24px; box-shadow: 0 12px 24px -18px rgba(0,48,96,0.15); }
+  .wla-cart .guarantee .badge { width: 48px; height: 48px; border-radius: 12px; background: rgba(46,125,91,0.12); color: var(--ok); display: grid; place-items: center; }
+  .wla-cart .guarantee .badge svg { width: 24px; height: 24px; }
+  .wla-cart .guarantee h3 { margin: 0 0 4px; font-family: 'Libre Baskerville', serif; font-size: 16px; color: var(--navy); font-weight: 700; }
+  .wla-cart .guarantee p { margin: 0; font-size: 14px; color: #333; line-height: 1.5; }
+
+  /* Trust strip */
+  .wla-cart .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 22px 0; border-top: 1px solid rgba(0,48,96,0.08); border-bottom: 1px solid rgba(0,48,96,0.08); margin-bottom: 24px; }
+  .wla-cart .trust-item { text-align: center; }
+  .wla-cart .trust-item .num { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+  .wla-cart .trust-item .lab { font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+
+  /* Below-form note */
+  .wla-cart .form-note { margin-top: 22px; text-align: center; font-size: 13px; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+  .wla-cart .form-note svg { width: 14px; height: 14px; }
+  .wla-cart .form-note-wrap { text-align: center; }
+
+  /* Testimonial carousel */
+  .wla-cart .testimonials { margin: 4px 0 24px; }
+  .wla-cart .testimonials .t-head { text-align: center; margin-bottom: 16px; }
+  .wla-cart .testimonials .t-eyebrow { display: inline-block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 8px; }
+  .wla-cart .testimonials h2 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(22px, 3vw, 28px); font-weight: 700; line-height: 1.15; margin: 0; }
+  .wla-cart .testimonials h2 em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .wla-cart .carousel { position: relative; }
+  .wla-cart .carousel-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 12px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .wla-cart .carousel-track::-webkit-scrollbar { display: none; }
+  .wla-cart .tile { flex: 0 0 calc((100% - 24px) / 3); min-width: 0; scroll-snap-align: start; aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden; background: var(--cream-2); border: 1px solid rgba(0,48,96,0.08); }
+  .wla-cart .tile img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--paper); }
+  .wla-cart .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 38px; height: 38px; border-radius: 50%; background: var(--navy); border: none; color: #fff; font-size: 18px; font-weight: 500; line-height: 1; display: grid; place-items: center; cursor: pointer; box-shadow: 0 12px 24px -10px rgba(0,48,96,0.35); transition: transform .15s, background .15s; padding: 0; }
+  .wla-cart .carousel-nav:hover { background: var(--navy-deep); transform: translateY(-50%) scale(1.06); }
+  .wla-cart .carousel-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+  .wla-cart .carousel-nav:disabled:hover { transform: translateY(-50%) scale(1); }
+  .wla-cart .carousel-nav.prev { left: -14px; }
+  .wla-cart .carousel-nav.next { right: -14px; }
+  .wla-cart .disclaimer { margin: 6px 0 0; text-align: center; font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em; }
+  @media (max-width: 640px) { .wla-cart .tile { flex: 0 0 calc((100% - 12px) / 2); } .wla-cart .carousel-nav.prev { left: -6px; } .wla-cart .carousel-nav.next { right: -6px; } }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .wla-cart { padding: 28px 16px; }
+    .wla-cart .order-card { padding: 22px 20px; }
+    .wla-cart .order-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .wla-cart .items li { grid-template-columns: 20px 1fr; }
+    .wla-cart .items li .value { grid-column: 2; justify-self: start; margin-top: 2px; }
+    .wla-cart .trust { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .wla-cart .trust-item .num { font-size: 20px; }
+    .wla-cart .anchor { text-align: center; }
+  }
+</style>
+
+<div class="wla-cart">
+  <div class="inner">
+
+    <!-- COUNTDOWN REMINDER -->
+    <div class="reminder">
+      <span class="lab">The £7 promo disappears in</span>
+      <span class="clock" data-wla-clock>
+        <span class="unit"><span class="n" data-d>00</span><span class="u">days</span></span>
+        <span class="unit"><span class="n" data-h>00</span><span class="u">hrs</span></span>
+        <span class="unit"><span class="n" data-m>00</span><span class="u">min</span></span>
+        <span class="unit"><span class="n" data-s>00</span><span class="u">sec</span></span>
+      </span>
+      <span class="note">Only 100 places, and the price increases when the timer runs out.</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="pill">🎂 Anna's Birthday Promo · £7 🎂</div>
+      <h1 class="serif">Join the <span class="accent">21 Day Fat Loss Reset</span> for just £7.</h1>
+      <p class="lede">The full reset, normally £97. Nothing stripped out, nothing held back.</p>
+
+      <div class="results">
+        <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Lose up to <strong>1 stone</strong></span></div>
+        <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Curb your <strong>cravings</strong></span></div>
+        <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Increase your <strong>energy &amp; confidence</strong></span></div>
+      </div>
+
+      <p class="lede" style="margin-top: 18px;"><strong>Free pre-week starts Monday 31st August</strong>, so it's 4 weeks of support in total.</p>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="order-card">
+      <div class="order-head">
+        <div class="title">The 21 Day Fat Loss Reset</div>
+        <div class="meta">Pre-week: Mon 31 Aug</div>
+      </div>
+
+      <ul class="items">
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">21-Day Flexible Meal Guide (breakfasts, lunches &amp; dinners)</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Daily Coaching &amp; Check-ins inside the Reset group</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Weekly Live Zoom Coaching with Anna</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Reset Workbook</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Snack &amp; Food Swap Guides</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Drinks &amp; Hydration Guide</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Easy Freezer Dinner Pack</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">No-Prep Food List</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">A free pre-week before Day 1</span><span class="value">Included</span></li>
+
+        <li class="group">Birthday bonuses</li>
+
+        <li class="bonus"><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name"><strong>Bonus 1:</strong> Instant access to the WLA Members' Area, with 100s of recipes, extra weekly meal guides, done-for-you shopping lists and weight-loss tools</span><span class="value">Free</span></li>
+        <li class="bonus"><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name"><strong>Bonus 2:</strong> Three weekly live Weight-Loss Masterclasses</span><span class="value">Free</span></li>
+      </ul>
+
+      <div class="totals">
+        <div class="total-row line"><span>Normally</span><span><s>£97</s></span></div>
+        <div class="total-row you-pay">
+          <span>You pay today</span>
+          <span class="price"><span class="currency">£</span>7<span class="term"> one-off</span></span>
+        </div>
+        <div class="anchor">That's less than two coffees.</div>
+      </div>
+    </div>
+
+    <!-- SCARCITY -->
+    <div class="scarcity">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+      <div class="copy">Only <strong>100 places</strong> on this round, and the <strong>£7 price ends when the timer runs out</strong>. After that it goes back up.</div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /><polyline points="9 12 11 14 15 9.5" /></svg>
+      </div>
+      <div>
+        <h3>Our 7-day money-back guarantee</h3>
+        <p>Join, open the materials, show up to the first live call. If within 7 days you don't feel this is for you, just email us. Full refund, no questions, no hoops.</p>
+      </div>
+    </div>
+
+    <!-- TRUST -->
+    <div class="trust">
+      <div class="trust-item"><div class="num">50,000+</div><div class="lab">Women supported</div></div>
+      <div class="trust-item"><div class="num">10 yrs</div><div class="lab">Clinical practice</div></div>
+      <div class="trust-item"><div class="num">4.9 ★</div><div class="lab">Member rating</div></div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+      <div class="t-head">
+        <div class="t-eyebrow">Real women · Real results</div>
+        <h2 style="text-align: center;">Real results from<br /><em>women just like you.</em></h2>
+      </div>
+      <div class="carousel">
+        <button class="carousel-nav prev" type="button" aria-label="Previous">‹</button>
+        <div class="carousel-track" data-wla-track>
+          <div class="tile"><img src="https://join.wearewla.com/assets/vicky-before-after.png" alt="Vicky before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/jill-before-after.jpg" alt="Laura before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/ruth-before-after.jpg" alt="Ruth before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/barbara-before-after.png" alt="Barbara before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-05-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-06-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-07-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-08-before-after.jpeg" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-09-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-10-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-11-before-after.png" alt="Member before and after" loading="lazy" /></div>
+          <div class="tile"><img src="https://join.wearewla.com/assets/member-12-before-after.png" alt="Member before and after" loading="lazy" /></div>
+        </div>
+        <button class="carousel-nav next" type="button" aria-label="Next">›</button>
+      </div>
+      <p class="disclaimer">*Results vary depending on the individual. There is no guarantee of specific results.</p>
+    </section>
+
+    <!-- BELOW-FORM NOTE (shows under whatever ThriveCart renders next) -->
+    <div class="form-note-wrap">
+      <span class="form-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Secure checkout · Encrypted payment processing
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  /* Countdown. Must match OFFER_END in /bday-promo/components/sections.jsx. */
+  var WLA_OFFER_END = new Date('2026-08-23T23:59:00+01:00').getTime();
+
+  document.querySelectorAll('.wla-cart [data-wla-clock]').forEach(function(clock){
+    var d = clock.querySelector('[data-d]'), h = clock.querySelector('[data-h]'),
+        m = clock.querySelector('[data-m]'), s = clock.querySelector('[data-s]');
+    function pad(n){ return String(n).padStart(2, '0'); }
+    function tick(){
+      var diff = Math.max(0, WLA_OFFER_END - Date.now());
+      d.textContent = pad(Math.floor(diff / 86400000));
+      h.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      m.textContent = pad(Math.floor((diff % 3600000) / 60000));
+      s.textContent = pad(Math.floor((diff % 60000) / 1000));
+    }
+    tick();
+    setInterval(tick, 1000);
+  });
+
+  document.querySelectorAll('.wla-cart .carousel').forEach(function(c){
+    var track = c.querySelector('[data-wla-track]');
+    var prev  = c.querySelector('.carousel-nav.prev');
+    var next  = c.querySelector('.carousel-nav.next');
+    if(!track) return;
+    function tileStep(){
+      var t = track.querySelector('.tile');
+      if(!t) return 0;
+      return t.getBoundingClientRect().width + 12;
+    }
+    function sync(){
+      var step = tileStep();
+      var sl = track.scrollLeft;
+      var max = track.scrollWidth - track.clientWidth - 1;
+      if(prev) prev.disabled = sl <= 0;
+      if(next) next.disabled = sl >= max;
+    }
+    if(prev) prev.addEventListener('click', function(){ track.scrollBy({ left: -tileStep(), behavior: 'smooth' }); });
+    if(next) next.addEventListener('click', function(){ track.scrollBy({ left:  tileStep(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', function(){ requestAnimationFrame(sync); }, { passive: true });
+    window.addEventListener('resize', sync);
+    setTimeout(sync, 50);
+  });
+})();
+</script>

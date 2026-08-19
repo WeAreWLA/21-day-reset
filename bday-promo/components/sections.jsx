@@ -80,11 +80,9 @@ function trackCtaClick(location, label) {
 // CAMPAIGN CONFIG — edit these five values, nothing else.
 // ---------------------------------------------------------------------------
 
-// ⚠️ TODO: swap in the new Thrivecart link for the birthday promo.
-//    This is currently pointing at the old May Reset cart as a placeholder so
-//    the page is previewable. Every CTA on /bday-promo and /bday-promo/ty
-//    reads from this one constant.
-const CHECKOUT_BASE_URL = 'https://sales.thewlacademy.com/may-reset/';
+// Card checkout. Every primary CTA on /bday-promo reads from this one
+// constant, and UTM parameters on the incoming URL are forwarded to it.
+const CHECKOUT_BASE_URL = 'https://sales.thewlacademy.com/bday-promo/';
 
 // PayPal alternative payment link. Shown as a second button under every card
 // CTA. Unlike the Thrivecart link this one is final.
