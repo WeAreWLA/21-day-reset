@@ -87,7 +87,7 @@ const CountdownSection = () => {
           {[
             { k: `${window.OFFER_HOURS} hours`, v: 'then the price increases' },
             { k: '100 spots', v: 'and no more after that' },
-            { k: 'Mon 31 Aug', v: 'pre-week starts' },
+            { k: 'Mon 31 Aug', v: 'free pre-week starts' },
           ].map((f, i) => (
             <div key={i} style={{
               background: 'rgba(253, 251, 248, 0.65)',
@@ -199,7 +199,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             {isOpen
-              ? `It’s my birthday, so the whole 21 Day Reset is £7 for ${window.OFFER_HOURS} hours only, and only 100 spots are available. The price increases when the timer runs out. Pre-week starts Monday 31st August.`
+              ? `It’s my birthday, so the whole 21 Day Reset is £7 for ${window.OFFER_HOURS} hours only, and only 100 spots are available. The free pre-week starts Monday 31st August, giving you 4 weeks of support in total. The price increases when the timer runs out.`
               : 'Join today for £7 and start the 21 Day Reset with us.'}
           </Body>
         </>
@@ -260,6 +260,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             'Full 21-day flexible nutrition and weight meal guide + recipes',
             'Daily coaching + weekly live Zoom with Anna',
             'Multiple supporting guides & workbook',
+            'A free pre-week before Day 1, so 4 weeks of support in total',
             'Bonus 1: instant access to the WLA Members’ Area (100s of recipes, meal guides & shopping lists)',
             'Bonus 2: three weekly live weight-loss masterclasses',
             '7-day money-back guarantee',
@@ -294,7 +295,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           <span>·</span>
           <span>7-day guarantee</span>
           <span>·</span>
-          <span>Pre-week: Mon 31 Aug</span>
+          <span>Free pre-week: Mon 31 Aug</span>
         </div>
       </div>
 
@@ -367,7 +368,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "When does it start?",
-    a: "Pre-week starts Monday 31st August. You'll get your materials, plus instant access to the WLA Members' Area, as soon as you join, so you can read through and get set up before Day 1.",
+    a: "Pre-week starts Monday 31st August, and it's included free. That's a whole extra week before the 21 days begin, so you can get set up, ask questions and build a bit of momentum rather than scrambling on Day 1. It works out at 4 weeks of support in total. You'll get your materials, plus instant access to the WLA Members' Area, as soon as you join.",
   },
   {
     q: "Will my grocery bill go up?",
@@ -487,7 +488,7 @@ const FinalCTA = () => (
         fontSize: 13,
         color: 'var(--ink-muted)',
       }}>
-        Pre-week starts Monday 31st August
+        Free pre-week starts Monday 31st August
       </div>
     </div>
   </section>
