@@ -107,10 +107,13 @@ const IncludedSection = () => (
             minHeight: 220,
             display: 'flex',
             flexDirection: 'column',
-            gap: 10,
+            gap: 14,
           }}>
-            <IncludedIcon name={item.icon} />
-            <SerifH size={22} style={{ lineHeight: 1.2 }}>{item.title}</SerifH>
+            {/* Icon sits beside the title, body aligns under the title. */}
+            <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+              <span style={{ flexShrink: 0, marginTop: 2 }}><IncludedIcon name={item.icon} /></span>
+              <SerifH size={21} style={{ lineHeight: 1.25 }}>{item.title}</SerifH>
+            </div>
             <Body size={14} muted style={{ marginTop: 'auto' }}>{item.body}</Body>
           </div>
         ))}
