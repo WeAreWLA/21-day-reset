@@ -82,8 +82,146 @@ const IncludedSection = () => (
         ))}
       </div>
 
+      {/* Birthday bonus — WLA Members' Area */}
+      <MembersAreaBlock />
+
     </div>
   </section>
+);
+
+// ---------------------------------------------------------------------------
+// WLA Members' Area — birthday bonus block inside "What's included".
+// Recipe photos live in /assets. If a file is missing the tile degrades to a
+// soft peach card with the dish name rather than a broken-image icon.
+// ---------------------------------------------------------------------------
+const MEMBERS_RECIPES = [
+  { img: '/assets/members-recipe-01.jpg', name: 'Tuna & pea salad bowl' },
+  { img: '/assets/members-recipe-02.jpg', name: 'Steak fajita wrap' },
+  { img: '/assets/members-recipe-03.jpg', name: 'Creamy prawn & courgette pasta' },
+  { img: '/assets/members-recipe-04.jpg', name: 'Greek chicken traybake' },
+  { img: '/assets/members-recipe-05.jpg', name: 'Strawberry overnight oats' },
+];
+
+const MEMBERS_PERKS = [
+  'Hundreds of healthy, family-friendly weight loss recipes',
+  '100’s of extra weekly meal guides',
+  'Done-for-you shopping lists',
+  'Nutrition and weight-loss tools',
+  'Easy ideas for breakfasts, lunches, dinners and snacks',
+];
+
+const RecipeTile = ({ item }) => {
+  const [failed, setFailed] = React.useState(false);
+  return (
+    <div style={{
+      aspectRatio: '1/1',
+      borderRadius: 12,
+      overflow: 'hidden',
+      background: 'var(--peach)',
+      border: '1px solid var(--hairline)',
+      position: 'relative',
+    }}>
+      {!failed && (
+        <img
+          src={item.img}
+          alt={item.name}
+          loading="lazy"
+          decoding="async"
+          onError={() => setFailed(true)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        />
+      )}
+      {failed && (
+        <div style={{
+          position: 'absolute', inset: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: 14, textAlign: 'center',
+          fontFamily: '"Libre Baskerville", serif',
+          fontStyle: 'italic',
+          fontSize: 14,
+          color: 'var(--ink)',
+          lineHeight: 1.4,
+        }}>
+          {item.name}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const MembersAreaBlock = () => (
+  <div className="members-area-block" style={{
+    marginTop: 28,
+    background: `linear-gradient(135deg, var(--peach) 0%, #F8C4B0 100%)`,
+    border: '2px dashed var(--blush-deep)',
+    borderRadius: 22,
+    padding: '44px 44px 40px',
+    position: 'relative',
+    boxShadow: '0 30px 60px -30px rgba(232, 127, 99, 0.35)',
+  }}>
+    <div style={{
+      position: 'absolute',
+      top: -16, left: '50%', transform: 'translateX(-50%)',
+      background: 'var(--blush-deep)', color: 'var(--paper)',
+      padding: '8px 22px', borderRadius: 999,
+      fontFamily: '"Alegreya Sans", sans-serif',
+      fontSize: 12, fontWeight: 600,
+      letterSpacing: '0.16em', textTransform: 'uppercase',
+      whiteSpace: 'nowrap',
+    }}>
+      🎂 Plus — birthday bonus
+    </div>
+
+    <div style={{ textAlign: 'center', marginTop: 14, marginBottom: 28 }}>
+      <SerifH size={38} style={{ lineHeight: 1.2, marginBottom: 14 }}>
+        Instant access to the<br /><Italic>WLA Members’ Area</Italic>
+      </SerifH>
+      <Body size={17} style={{ maxWidth: 640, margin: '0 auto' }}>
+        As a special birthday bonus, you’ll also receive immediate access to the WLA Members’ Area
+        throughout the Reset.
+      </Body>
+    </div>
+
+    {/* Recipe showcase */}
+    <div className="members-recipe-grid" style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(5, 1fr)',
+      gap: 12,
+      marginBottom: 30,
+    }}>
+      {MEMBERS_RECIPES.map((item, i) => <RecipeTile key={i} item={item} />)}
+    </div>
+
+    <div className="members-perks" style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '12px 32px',
+      maxWidth: 760,
+      margin: '0 auto 26px',
+      textAlign: 'left',
+    }}>
+      {MEMBERS_PERKS.map((perk, i) => (
+        <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+          <span style={{ color: 'var(--blush-deep)', fontSize: 16, lineHeight: 1.5, flexShrink: 0 }}>✦</span>
+          <Body size={16} style={{ flex: 1, minWidth: 0 }}>{perk}</Body>
+        </div>
+      ))}
+    </div>
+
+    <div style={{
+      fontFamily: '"Libre Baskerville", serif',
+      fontStyle: 'italic',
+      fontSize: 17,
+      color: 'var(--ink)',
+      textAlign: 'center',
+      maxWidth: 700,
+      margin: '0 auto',
+      lineHeight: 1.5,
+    }}>
+      So whenever you need fresh inspiration, a quick dinner or help getting back on track,
+      you’ll have everything available in one place.
+    </div>
+  </div>
 );
 
 // Testimonials
@@ -127,7 +265,7 @@ const TESTIMONIALS = [
 ];
 
 const TestimonialsSection = () => (
-  <section id="results" style={{
+  <section id="testimonials" style={{
     padding: '120px 32px',
     background: 'var(--ink)',
     color: 'var(--paper)',
@@ -144,7 +282,6 @@ const TestimonialsSection = () => (
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: 24,
-        marginBottom: 56,
       }}>
         {TESTIMONIALS.map((t, i) => (
           <div key={i} style={{
@@ -208,70 +345,66 @@ const TestimonialsSection = () => (
         ))}
       </div>
 
-      {/* Before/after grid */}
-      <div style={{ marginTop: 80 }}>
-        <div style={{
-          fontFamily: '"Libre Baskerville", serif',
-          fontStyle: 'italic',
-          fontSize: 28,
-          color: '#ffffff',
-          textAlign: 'center',
-          marginBottom: 32,
-          letterSpacing: '0.02em',
-          lineHeight: 1.3,
-        }}>
-          Real results from women just like you
-        </div>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 16,
-        }}>
-          {[
-            { name: 'VICKY, 56', img: '/assets/vicky-before-after.png' },
-            { name: 'LAURA, 52', img: '/assets/jill-before-after.jpg' },
-            { name: 'RUTH, 54', img: '/assets/ruth-before-after.jpg' },
-            { name: 'BARBARA, 58', img: '/assets/barbara-before-after.png' },
-            { name: 'MEMBER, 5', img: '/assets/member-05-before-after.png' },
-            { name: 'MEMBER, 6', img: '/assets/member-06-before-after.png' },
-            { name: 'MEMBER, 7', img: '/assets/member-07-before-after.png', fit: 'cover', pos: 'center 25%' },
-            { name: 'MEMBER, 8', img: '/assets/member-08-before-after.jpeg' },
-            { name: 'MEMBER, 9', img: '/assets/member-09-before-after.png', fit: 'cover', pos: 'center 25%' },
-            { name: 'MEMBER, 10', img: '/assets/member-10-before-after.png', fit: 'cover' },
-            { name: 'MEMBER, 11', img: '/assets/member-11-before-after.png', fit: 'cover', pos: 'center 25%' },
-            { name: 'MEMBER, 12', img: '/assets/member-12-before-after.png' },
-          ].map((item, i) => (
-            <div key={i}>
-              {item.img ? (
-                <div style={{
-                  aspectRatio: '1/1',
-                  borderRadius: 4,
-                  overflow: 'hidden',
-                  background: '#F9F7F4',
-                }}>
-                  <img src={item.img} alt={`Before and after of ${item.name}`} loading="lazy" decoding="async" style={{
-                    width: '100%', height: '100%', objectFit: item.fit || 'contain', objectPosition: item.pos || 'center center', display: 'block',
-                  }} />
-                </div>
-              ) : (
-                <Placeholder
-                  label={`Before / after\nof ${item.name}\n(side-by-side)`}
-                  ratio="3/4"
-                  style={{ whiteSpace: 'pre-line', opacity: 0.85 }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+    </div>
+  </section>
+);
 
+// Before/after photo wall — sits directly under the hero so results land first.
+const RESULTS_PHOTOS = [
+  { name: 'VICKY, 56', img: '/assets/vicky-before-after.png' },
+  { name: 'LAURA, 52', img: '/assets/jill-before-after.jpg' },
+  { name: 'RUTH, 54', img: '/assets/ruth-before-after.jpg' },
+  { name: 'BARBARA, 58', img: '/assets/barbara-before-after.png' },
+  { name: 'MEMBER, 5', img: '/assets/member-05-before-after.png' },
+  { name: 'MEMBER, 6', img: '/assets/member-06-before-after.png' },
+  { name: 'MEMBER, 7', img: '/assets/member-07-before-after.png', fit: 'cover', pos: 'center 25%' },
+  { name: 'MEMBER, 8', img: '/assets/member-08-before-after.jpeg' },
+  { name: 'MEMBER, 9', img: '/assets/member-09-before-after.png', fit: 'cover', pos: 'center 25%' },
+  { name: 'MEMBER, 10', img: '/assets/member-10-before-after.png', fit: 'cover' },
+  { name: 'MEMBER, 11', img: '/assets/member-11-before-after.png', fit: 'cover', pos: 'center 25%' },
+  { name: 'MEMBER, 12', img: '/assets/member-12-before-after.png' },
+];
+
+const ResultsGridSection = () => (
+  <section id="results" className="results-grid-section" style={{
+    padding: '72px 32px 80px',
+    background: 'var(--ink)',
+    color: 'var(--paper)',
+  }}>
+    <div style={{ maxWidth: 1160, margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: 40 }}>
+        <SerifH size={44} style={{ color: 'var(--paper)', lineHeight: 1.2 }}>
+          Real results from women <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--peach)' }}>just like you</em>
+        </SerifH>
+      </div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: 16,
+      }}>
+        {RESULTS_PHOTOS.map((item, i) => (
+          <div key={i}>
+            <div style={{
+              aspectRatio: '1/1',
+              borderRadius: 4,
+              overflow: 'hidden',
+              background: '#F9F7F4',
+            }}>
+              <img src={item.img} alt={`Before and after of ${item.name}`} loading="lazy" decoding="async" style={{
+                width: '100%', height: '100%', objectFit: item.fit || 'contain', objectPosition: item.pos || 'center center', display: 'block',
+              }} />
+            </div>
+          </div>
+        ))}
+      </div>
       <div style={{
         textAlign: 'center',
-        marginTop: 40,
+        marginTop: 32,
         fontFamily: '"Alegreya Sans", sans-serif',
         fontSize: 12,
         color: '#ffffff',
         letterSpacing: '0.04em',
+        opacity: 0.8,
       }}>
         *Results vary depending on the individual. There is no guarantee of specific results.
       </div>
@@ -456,4 +589,4 @@ const VideoTestimonialsSection = () => (
   </section>
 );
 
-Object.assign(window, { IncludedSection, TestimonialsSection, AboutSection, VideoTestimonialsSection });
+Object.assign(window, { IncludedSection, MembersAreaBlock, TestimonialsSection, ResultsGridSection, AboutSection, VideoTestimonialsSection });

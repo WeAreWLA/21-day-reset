@@ -91,9 +91,16 @@ const PRICE          = '£7';   // birthday offer price
 const PRICE_WAS      = '£97';  // regular price, shown struck through
 const PRICE_SAVING   = '£90';  // PRICE_WAS − PRICE
 
-// Timeline — the Reset starts Monday 31st August 2026 (BST).
-// The birthday offer closes the moment the Reset begins.
+// Timeline
+//   OFFER_END      — the £7 price is live for 96 hours only, then it increases.
+//                    ⚠️ Set this to exactly 96 hours after you open the cart.
+//                    Currently: Sun 23 Aug 2026 23:59 BST.
+//   CAMPAIGN_START — pre-week starts Monday 31st August 2026.
+const OFFER_END      = new Date('2026-08-23T23:59:00+01:00').getTime();
 const CAMPAIGN_START = new Date('2026-08-31T00:00:00+01:00').getTime();
+
+// Scarcity
+const SPOTS_AVAILABLE = 100;
 
 // Build the Thrivecart checkout URL, forwarding any UTM parameters
 // from the current page's query string so attribution carries through.
@@ -109,12 +116,12 @@ function getCheckoutUrl() {
   return tail ? CHECKOUT_BASE_URL + '?' + tail : CHECKOUT_BASE_URL;
 }
 
-// Campaign timeline:
-//   open    → now < Mon 31 Aug 2026 00:00 BST  (birthday offer live, countdown showing)
-//   started → now ≥ Mon 31 Aug 2026 00:00 BST  (Reset has begun; countdown hidden,
-//             birthday-specific scarcity copy retired)
+// Campaign phase:
+//   open    → now < OFFER_END  (£7 birthday price live, 96-hour countdown showing)
+//   started → now ≥ OFFER_END  (price has increased; countdown, "save £90" pill,
+//             struck-through £97 and the birthday bonus all drop away)
 function getCampaignPhase() {
-  return Date.now() < CAMPAIGN_START ? 'open' : 'started';
+  return Date.now() < OFFER_END ? 'open' : 'started';
 }
 
 const PrimaryCTA = ({ children, small = false, onClick, style = {}, location = 'primary' }) => (
@@ -238,5 +245,5 @@ const Divider = ({ style = {} }) => (
 Object.assign(window, {
   Eyebrow, SerifH, Italic, Body, PrimaryCTA, Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
-  CHECKOUT_BASE_URL, CAMPAIGN_START, PRICE, PRICE_WAS, PRICE_SAVING,
+  CHECKOUT_BASE_URL, OFFER_END, CAMPAIGN_START, SPOTS_AVAILABLE, PRICE, PRICE_WAS, PRICE_SAVING,
 });

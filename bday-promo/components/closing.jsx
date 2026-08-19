@@ -1,11 +1,10 @@
 // Pricing, FAQ, Final CTA, Sticky bar, Footer — Birthday Promo (/bday-promo)
 
-// Live countdown — counts down to the Reset start on Monday 31st August,
-// which is also the moment the birthday offer closes. Hidden once we're past
-// it. Phase is recomputed every second so it transitions across midnight
-// without a page refresh.
+// Live countdown — counts down the 96-hour £7 window. Hidden once the price
+// has gone up. Phase is recomputed every second so it transitions without a
+// page refresh.
 function computeCountdownTick() {
-  const diff = Math.max(0, window.CAMPAIGN_START - Date.now());
+  const diff = Math.max(0, window.OFFER_END - Date.now());
   return {
     days:    Math.floor(diff / 86400000),
     hours:   Math.floor((diff % 86400000) / 3600000),
@@ -42,7 +41,7 @@ const CountdownSection = () => {
           letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'var(--blush-deep)', marginBottom: 22,
         }}>
-          🎂 Birthday offer closes in
+          🎂 £7 price disappears in
         </div>
         <div className="countdown-grid" style={{
           display: 'grid',
@@ -91,7 +90,7 @@ const CountdownSection = () => {
           maxWidth: 540, margin: '0 auto',
           lineHeight: 1.5,
         }}>
-          We start together on Monday 31st August. When the timer hits zero the £7 birthday price goes back to £97.
+          Only 100 spots, and the £7 price is live for 96 hours. When the timer hits zero it goes back to £97. Pre-week starts Monday 31st August.
         </div>
       </div>
     </section>
@@ -115,7 +114,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             {isOpen
-              ? 'It\u2019s my birthday, so the whole 21 Day Reset is £7 instead of £97 \u2014 and the first 100 women also get my 3-Week Fat Loss Accelerator Meal Plan free. We start together on Monday 31st August.'
+              ? 'It’s my birthday, so the whole 21 Day Reset is £7 instead of £97 — for 96 hours only, and only 100 spots are available. Pre-week starts Monday 31st August.'
               : 'Join today for £7 and start the 21 Day Reset with us.'}
           </Body>
         </>
@@ -175,6 +174,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             'Full 21-day flexible nutrition and weight meal guide + recipes',
             'Daily coaching + weekly live Zoom with Anna',
             'Multiple supporting guides & workbook',
+            'Instant access to the WLA Members’ Area (100s of recipes, meal guides & shopping lists)',
             isOpen ? 'Birthday bonus: FREE 3-Week Fat Loss Accelerator Meal Plan' : null,
             '7-day money-back guarantee',
           ].filter(Boolean).map((f, i) => (
@@ -204,7 +204,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           <span>·</span>
           <span>7-day guarantee</span>
           <span>·</span>
-          <span>Starts: Mon 31 Aug</span>
+          <span>Pre-week: Mon 31 Aug</span>
         </div>
       </div>
 
@@ -304,11 +304,11 @@ const FAQ_ITEMS = [
   },
   {
     q: "Why is it only £7?",
-    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset \u2014 nothing stripped out, nothing held back. The price goes back to £97 when we start on Monday 31st August.",
+    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset — nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for 96 hours only and there are just 100 spots, then the price goes back to £97.",
   },
   {
     q: "When does it start?",
-    a: "We all start together on Monday 31st August. You'll get your materials as soon as you join, so you can read through and get set up before Day 1.",
+    a: "Pre-week starts Monday 31st August. You'll get your materials — and instant access to the WLA Members' Area — as soon as you join, so you can read through and get set up before Day 1.",
   },
   {
     q: "Will my grocery bill go up?",
@@ -416,7 +416,7 @@ const FinalCTA = () => (
         <br />You need something you can stick to.
       </SerifH>
       <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
-        21 days. £7 instead of £97. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. We start together on Monday 31st August.
+        21 days. £7 instead of £97 — for 96 hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. Pre-week starts Monday 31st August.
       </Body>
       <PrimaryCTA location="final">Join the 21 Day Reset — £7</PrimaryCTA>
       <div style={{
@@ -461,7 +461,7 @@ const StickyCTA = ({ visible }) => (
       textOverflow: 'ellipsis',
     }}>
       <span style={{ color: 'var(--peach)' }}>●</span> 🎂 Birthday offer · <strong>£7</strong>
-      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>was £97</span>
+      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>96 hrs only</span>
     </div>
     <a href={typeof window !== 'undefined' && window.getCheckoutUrl ? window.getCheckoutUrl() : '#'} target="_blank" rel="noopener" className="sticky-cta-button"
       onClick={(e) => {

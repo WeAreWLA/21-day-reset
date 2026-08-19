@@ -27,7 +27,7 @@ const AnnouncementBar = () => {
       <span style={{ opacity: 0.5 }}>·</span>
       <span>
         {isOpen
-          ? <>Starts <strong style={{ color: 'var(--peach)' }}>Monday 31st August</strong></>
+          ? <><strong style={{ color: 'var(--peach)' }}>96 hours only</strong> · 100 spots</>
           : <>Doors are closing — last chance</>}
       </span>
     </div>

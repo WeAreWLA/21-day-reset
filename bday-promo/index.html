@@ -108,6 +108,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .whathappens-section { padding-top: 32px !important; padding-bottom: 24px !important; }
     .included-section { padding-top: 32px !important; padding-bottom: 20px !important; }
     .birthdaybonus-section { padding-top: 24px !important; }
+    .results-grid-section { padding: 40px 14px 44px !important; }
+    .members-area-block { padding: 34px 20px 30px !important; }
     .transform-section { padding-bottom: 24px !important; }
     .pricing-bridge { padding-top: 32px !important; }
     .video-testimonials-section { padding-bottom: 24px !important; }
@@ -185,6 +187,32 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
       grid-template-columns: repeat(2, 1fr) !important;
     }
   }
+  /* Results wall and recipe showcase keep multiple columns on small screens —
+     the blanket 1-col collapse above would make them absurdly tall. These
+     selectors are deliberately more specific than that blanket rule. */
+  @media (max-width: 960px) {
+    section.results-grid-section div[style*="grid-template-columns"] {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 10px !important;
+    }
+    section .members-area-block .members-recipe-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 10px !important;
+    }
+    section .members-area-block .members-perks {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+    .hero-key-facts { max-width: 100% !important; }
+  }
+  @media (max-width: 640px) {
+    section.results-grid-section div[style*="grid-template-columns"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    section .members-area-block .members-recipe-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
   @media (max-width: 640px) {
     /* Collapse 4-col grids etc already handled. Further shrinks. */
     section { padding-top: 72px !important; padding-bottom: 72px !important; }
@@ -234,21 +262,28 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 const HEADLINES = {
   "birthday": {
-    eyebrow: "🎂 My birthday offer · for women 45+",
-    title: <>It's my birthday —<br />so the whole <Italic>21{'\u00a0'}Day{'\u00a0'}Reset</Italic><br />is yours for <Italic>£7</Italic></>,
-    sub: "Every year I celebrate my birthday by opening the doors to my 21 Day Reset at a price that means no woman has to put herself last. Same evidence-based, nutritionist-designed reset. Same coaching. £7 instead of £97. We start together on Monday 31st August."
+    eyebrow: "🎂 Anna's birthday offer · for women 45+",
+    title: <>The <Italic>21 Day</Italic><br /><Italic>Fat Loss Reset</Italic></>,
+    sub: "Lose up to 1 stone, curb your cravings, increase your energy & confidence."
   },
   "gift-to-you": {
-    eyebrow: "🎂 Birthday offer · ends Sunday 30th August",
+    eyebrow: "🎂 Birthday offer · for women 45+",
     title: <>My birthday.<br /><Italic>Your gift.</Italic><br />21{'\u00a0'}days for <Italic>£7</Italic>.</>,
-    sub: "An evidence-based, nutritionist-designed weight loss reset for women 45+ who want to feel back in control and see results again. No 1,200-calorie plans. No cutting out carbs. No intense exercise. Starts Monday 31st August."
+    sub: "Lose up to 1 stone, curb your cravings, increase your energy & confidence."
   },
   "nothing-works": {
     eyebrow: "🎂 Birthday offer · designed for women 45+",
     title: <>The 21 Day Fat Loss Reset<br /><Italic>lose weight</Italic><br /><Italic>curb cravings</Italic><br /><Italic>boost energy</Italic></>,
-    sub: "My birthday gift to you: the full reset for £7 instead of £97. Evidence-based and nutritionist-designed for women 45+ who want to feel back in control. No 1,200-calorie plans. No cutting out carbs. No intense exercise. Starts Monday 31st August."
+    sub: "Lose up to 1 stone, curb your cravings, increase your energy & confidence."
   }
 };
+
+// The three key facts under the hero headline.
+const HERO_KEY_FACTS = [
+  { icon: '🎂', label: <>Discounted to <strong>£7</strong> for <strong>96 hours only</strong></>, note: 'Price increases when the timer hits zero' },
+  { icon: '📅', label: <>Pre-week starts <strong>Monday 31st August</strong></>, note: 'Everything lands before Day 1' },
+  { icon: '🎟️', label: <><strong>100 spots</strong> available</>, note: 'Once they’re gone, they’re gone' },
+];
 
 function App() {
   const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
@@ -312,6 +347,7 @@ function App() {
       <Nav />
       {/* Tweakable hero wrapper */}
       <TweakableHero headline={headline} phase={phase} />
+      <ResultsGridSection />
       <CountdownSection />
       <WhatChangesIn21DaysSection />
       <ProblemSection />
@@ -384,9 +420,30 @@ function TweakableHero({ headline, phase = 'open' }) {
         <SerifH as="h1" size={76} style={{ marginTop: 22, marginBottom: 24 }}>
           {headline.title}
         </SerifH>
-        <Body size={19} style={{ maxWidth: 560, marginBottom: 36 }}>
+        <Body size={21} style={{ maxWidth: 560, marginBottom: 30, color: 'var(--ink)' }}>
           {headline.sub}
         </Body>
+
+        {/* Key facts — price window, start date, spots */}
+        <div className="hero-key-facts" style={{
+          display: 'flex', flexDirection: 'column', gap: 10,
+          maxWidth: 520, marginBottom: 34,
+          background: 'var(--paper)',
+          border: '1px solid var(--hairline)',
+          borderLeft: '4px solid var(--blush-deep)',
+          borderRadius: 14,
+          padding: '20px 24px',
+        }}>
+          {HERO_KEY_FACTS.map((f, i) => (
+            <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+              <span style={{ fontSize: 17, lineHeight: 1.4, flexShrink: 0 }}>{f.icon}</span>
+              <div style={{ minWidth: 0 }}>
+                <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 17, color: 'var(--ink)', lineHeight: 1.35 }}>{f.label}</div>
+                <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 13, color: 'var(--ink-muted)', marginTop: 1 }}>{f.note}</div>
+              </div>
+            </div>
+          ))}
+        </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap', marginBottom: 44 }}>
           <PrimaryCTA location="hero">Grab your birthday place — £7</PrimaryCTA>
@@ -394,7 +451,7 @@ function TweakableHero({ headline, phase = 'open' }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <Tick /> 7-day money-back guarantee
             </div>
-            <div style={{ marginTop: 4, opacity: 0.75 }}>{phase === 'open' ? 'Regular price £97 · Starts Mon 31 Aug' : 'The Reset has started — join now'}</div>
+            <div style={{ marginTop: 4, opacity: 0.75 }}>{phase === 'open' ? 'Regular price £97 · Pre-week Mon 31 Aug' : 'Join now — pre-week Mon 31 Aug'}</div>
           </div>
         </div>
 

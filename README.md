@@ -224,12 +224,44 @@ All five values live in one block at the top of `bday-promo/components/sections.
 | `PRICE` | `£7` | Offer price |
 | `PRICE_WAS` | `£97` | Struck-through regular price |
 | `PRICE_SAVING` | `£90` | "save £90" pill |
-| `CAMPAIGN_START` | Mon 31 Aug 2026 00:00 BST | Countdown target + phase switch |
+| `OFFER_END` | Sun 23 Aug 2026 23:59 BST | Countdown target + phase switch (96-hour window) |
+| `CAMPAIGN_START` | Mon 31 Aug 2026 | Pre-week start date shown in copy |
+| `SPOTS_AVAILABLE` | `100` | Scarcity copy |
 
-`getCampaignPhase()` returns `open` before the start date and `started` after it. The page
-re-checks every minute, so at midnight on 31 August it switches itself over without a
+⚠️ `OFFER_END` must be set to **exactly 96 hours after you open the cart**. It is currently
+a placeholder (Sun 23 Aug 23:59 BST).
+
+`getCampaignPhase()` returns `open` before `OFFER_END` and `started` after it. The page
+re-checks every minute, so when the window closes it switches itself over without a
 redeploy: the countdown, the birthday-bonus banner, the "save £90" pill and the
-struck-through £97 all drop away, and the copy moves to present tense.
+struck-through £97 all drop away.
+
+### ⚠️ Recipe photos — still to add
+
+The WLA Members' Area block showcases five recipe photos. Drop these files into `/assets/`:
+
+| Filename | Photo |
+|---|---|
+| `members-recipe-01.jpg` | Tuna & pea salad bowl with avocado |
+| `members-recipe-02.jpg` | Steak fajita wrap, halved on a plate |
+| `members-recipe-03.jpg` | Creamy prawn & courgette pasta |
+| `members-recipe-04.jpg` | Greek chicken & potato traybake with feta |
+| `members-recipe-05.jpg` | Strawberry overnight oats in jars |
+
+They're square-cropped (`object-fit: cover`), so any aspect ratio works. Until the files
+exist each tile degrades to a soft peach card with the dish name — no broken-image icons.
+The list lives in `MEMBERS_RECIPES` in `bday-promo/components/content.jsx`.
+
+### Page order
+
+1. Hero — title, promise line, key-facts panel (£7 / 96 hours, pre-week Mon 31 Aug, 100 spots)
+2. **Real results from women just like you** — 12 before/after photos on navy (`ResultsGridSection`)
+3. Countdown — 96-hour timer
+4. What changes in 21 days → Problem → Honest truth → Why this works → Method → What happens
+5. What's included — 8 cards **+ the WLA Members' Area birthday bonus block**
+6. Birthday bonus (Accelerator Meal Plan) → Pricing
+7. Written testimonials → About Anna → Transform → Pricing (bridge)
+8. Video testimonials → FAQ → Final CTA → Footer
 
 ### What differs from `/21-day-reset`
 
