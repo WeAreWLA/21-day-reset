@@ -224,12 +224,15 @@ All five values live in one block at the top of `bday-promo/components/sections.
 | `PRICE` | `£7` | Offer price |
 | `PRICE_WAS` | `£97` | Struck-through regular price |
 | `PRICE_SAVING` | `£90` | "save £90" pill |
-| `OFFER_END` | Sun 23 Aug 2026 23:59 BST | Countdown target + phase switch (96-hour window) |
+| `OFFER_START` | Thu 20 Aug 2026 08:00 BST | Cart opens |
+| `OFFER_END` | Sun 23 Aug 2026 23:59 BST | Cart closes — countdown target + phase switch |
+| `OFFER_HOURS` | *derived* | `OFFER_END − OFFER_START`, rounded to whole hours (88) |
 | `CAMPAIGN_START` | Mon 31 Aug 2026 | Pre-week start date shown in copy |
 | `SPOTS_AVAILABLE` | `100` | Scarcity copy |
 
-⚠️ `OFFER_END` must be set to **exactly 96 hours after you open the cart**. It is currently
-a placeholder (Sun 23 Aug 23:59 BST).
+**Never hard-code an hour count in copy.** Every "for N hours only" line reads
+`window.OFFER_HOURS`, so changing `OFFER_START` or `OFFER_END` updates the announcement
+bar, hero key facts, countdown tiles, pricing intro, sticky bar and final CTA together.
 
 `getCampaignPhase()` returns `open` before `OFFER_END` and `started` after it. The page
 re-checks every minute, so when the window closes it switches itself over without a
@@ -242,11 +245,15 @@ The WLA Members' Area block showcases five recipe photos. Drop these files into 
 
 | Filename | Photo |
 |---|---|
-| `members-recipe-01.png` | Steak fajita wrap |
-| `members-recipe-02.png` | Strawberry overnight oats |
-| `members-recipe-03.png` | Creamy chicken & broccoli pasta |
-| `members-recipe-04.jpeg` | Raspberry baked oat muffins |
-| `members-recipe-05.jpeg` | Cheeseburger gnocchi |
+| `members-recipe-01.jpg` | Steak fajita wrap |
+| `members-recipe-02.jpg` | Strawberry overnight oats |
+| `members-recipe-03.jpg` | Creamy chicken & broccoli pasta |
+| `members-recipe-04.jpg` | Raspberry baked oat muffins |
+| `members-recipe-05.jpg` | Cheeseburger gnocchi |
+
+All five are capped at 900px on the long edge and saved as progressive JPEG (~130 KB
+each). Keep replacements to the same treatment — the tiles render at roughly 215px, so
+anything larger is wasted bytes on a paid-traffic page.
 
 They're square-cropped (`object-fit: cover`), so any aspect ratio works. If a file is
 missing the tile degrades to a soft peach card with the dish name rather than a
@@ -256,9 +263,9 @@ if the photos are swapped.
 
 ### Page order
 
-1. Hero — title, promise line, key-facts panel (£7 / 96 hours, pre-week Mon 31 Aug, 100 spots)
+1. Hero — title, promise line, key-facts panel (£7 / OFFER_HOURS, pre-week Mon 31 Aug, 100 spots)
 2. **Real results from women just like you** — 12 before/after photos on navy (`ResultsGridSection`)
-3. Countdown — 96-hour timer
+3. Countdown — live timer to `OFFER_END`
 4. What changes in 21 days → Problem → Honest truth → Why this works → Method → What happens
 5. What's included — 8 cards **+ two birthday bonus cards**
 6. Bonus 1 (WLA Members' Area) and Bonus 2 (three weekly masterclasses) sit inside What's included → Pricing

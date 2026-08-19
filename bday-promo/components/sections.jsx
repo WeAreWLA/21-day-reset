@@ -92,12 +92,18 @@ const PRICE_WAS      = '£97';  // regular price, shown struck through
 const PRICE_SAVING   = '£90';  // PRICE_WAS − PRICE
 
 // Timeline
-//   OFFER_END      — the £7 price is live for 96 hours only, then it increases.
-//                    ⚠️ Set this to exactly 96 hours after you open the cart.
-//                    Currently: Sun 23 Aug 2026 23:59 BST.
+//   OFFER_START    — cart opens Thursday morning.
+//   OFFER_END      — cart closes Sunday night; the £7 price increases.
 //   CAMPAIGN_START — pre-week starts Monday 31st August 2026.
+//
+// OFFER_HOURS is derived from the two, so every "for N hours only" line on the
+// page states the true length of the window. Change OFFER_START and the whole
+// page follows — never hard-code an hour count anywhere else.
+const OFFER_START    = new Date('2026-08-20T08:00:00+01:00').getTime();
 const OFFER_END      = new Date('2026-08-23T23:59:00+01:00').getTime();
 const CAMPAIGN_START = new Date('2026-08-31T00:00:00+01:00').getTime();
+
+const OFFER_HOURS = Math.round((OFFER_END - OFFER_START) / 3600000);
 
 // Scarcity
 const SPOTS_AVAILABLE = 100;
@@ -117,7 +123,7 @@ function getCheckoutUrl() {
 }
 
 // Campaign phase:
-//   open    → now < OFFER_END  (£7 birthday price live, 96-hour countdown showing)
+//   open    → now < OFFER_END  (£7 birthday price live, countdown showing)
 //   started → now ≥ OFFER_END  (price has increased; countdown, "save £90" pill,
 //             struck-through £97 and the birthday bonus all drop away)
 function getCampaignPhase() {
@@ -245,5 +251,6 @@ const Divider = ({ style = {} }) => (
 Object.assign(window, {
   Eyebrow, SerifH, Italic, Body, PrimaryCTA, Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
-  CHECKOUT_BASE_URL, OFFER_END, CAMPAIGN_START, SPOTS_AVAILABLE, PRICE, PRICE_WAS, PRICE_SAVING,
+  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, CAMPAIGN_START, SPOTS_AVAILABLE,
+  PRICE, PRICE_WAS, PRICE_SAVING,
 });

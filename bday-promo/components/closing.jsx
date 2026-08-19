@@ -1,6 +1,6 @@
 // Pricing, FAQ, Final CTA, Sticky bar, Footer — Birthday Promo (/bday-promo)
 
-// Live countdown — counts down the 96-hour £7 window. Hidden once the price
+// Live countdown — counts down the £7 window. Hidden once the price
 // has gone up. Phase is recomputed every second so it transitions without a
 // page refresh.
 function computeCountdownTick() {
@@ -85,7 +85,7 @@ const CountdownSection = () => {
           margin: '0 auto',
         }}>
           {[
-            { k: '96 hours', v: 'then the price increases' },
+            { k: `${window.OFFER_HOURS} hours`, v: 'then the price increases' },
             { k: '100 spots', v: 'and no more after that' },
             { k: 'Mon 31 Aug', v: 'pre-week starts' },
           ].map((f, i) => (
@@ -130,7 +130,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             {isOpen
-              ? 'It’s my birthday, so the whole 21 Day Reset is £7 — for 96 hours only, and only 100 spots are available. The price increases when the timer runs out. Pre-week starts Monday 31st August.'
+              ? `It’s my birthday, so the whole 21 Day Reset is £7 — for ${window.OFFER_HOURS} hours only, and only 100 spots are available. The price increases when the timer runs out. Pre-week starts Monday 31st August.`
               : 'Join today for £7 and start the 21 Day Reset with us.'}
           </Body>
         </>
@@ -289,7 +289,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Why is it only £7?",
-    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset — nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for 96 hours only and there are just 100 spots — the price increases when the timer runs out.",
+    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset — nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for a few days only and there are just 100 spots — the price increases when the timer runs out.",
   },
   {
     q: "When does it start?",
@@ -401,7 +401,7 @@ const FinalCTA = () => (
         <br />You need something you can stick to.
       </SerifH>
       <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
-        21 days. £7 — for 96 hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
+        21 days. £7 — for {window.OFFER_HOURS} hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
       </Body>
       <PrimaryCTA location="final">Join the 21 Day Reset — £7</PrimaryCTA>
       <div style={{
@@ -446,7 +446,7 @@ const StickyCTA = ({ visible }) => (
       textOverflow: 'ellipsis',
     }}>
       <span style={{ color: 'var(--peach)' }}>●</span> 🎂 Birthday offer · <strong>£7</strong>
-      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>96 hrs only</span>
+      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>{window.OFFER_HOURS} hrs only</span>
     </div>
     <a href={typeof window !== 'undefined' && window.getCheckoutUrl ? window.getCheckoutUrl() : '#'} target="_blank" rel="noopener" className="sticky-cta-button"
       onClick={(e) => {
