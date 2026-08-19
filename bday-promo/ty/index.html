@@ -73,6 +73,13 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .start-card .date { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 700; color: var(--navy); line-height: 1.25; }
   .start-card .note { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: var(--navy); margin-top: 8px; }
 
+  .bonus-card { background: var(--peach); border-radius: 16px; padding: 24px 28px; margin: 0 auto 36px; max-width: 520px; }
+  .bonus-card .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 14px; text-align: center; }
+  .bonus-card .bonus-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .bonus-card .bonus-list li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; font-size: 15px; line-height: 1.5; color: #333; }
+  .bonus-card .bonus-list .tag { font-family: 'Libre Baskerville', serif; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--coral); border-radius: 999px; padding: 4px 10px; white-space: nowrap; margin-top: 2px; }
+  .bonus-card .bonus-list strong { color: var(--navy); }
+
   .email-card { background: var(--paper); border: 1px solid rgba(0,48,96,0.08); border-radius: 14px; padding: 22px 26px; margin: 0 auto 40px; max-width: 520px; box-shadow: 0 18px 36px -22px rgba(0,48,96,0.2); }
   .email-card .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
   .email-card .subject { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--navy); font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
@@ -102,7 +109,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 640px) {
     .ty-wrap { padding: 40px 20px 64px; }
     .steps { padding: 26px 22px; }
-    .email-card, .start-card { padding: 18px 20px; }
+    .email-card, .start-card, .bonus-card { padding: 18px 20px; }
+    .bonus-card .bonus-list li { grid-template-columns: 1fr; gap: 6px; }
+    .bonus-card .bonus-list .tag { justify-self: start; }
   }
 </style>
 </head>
@@ -113,19 +122,27 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     <svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg>
   </div>
   <div class="founding-tag-wrap"><div class="founding-tag">🎂 You're In · Birthday Promo Secured 🎂</div></div>
-  <h1 class="ty-title serif">Welcome to the<br /><em>21 Day Reset</em></h1>
-  <p class="ty-sub">Thank you for spending my birthday with me. You're in, and your place is secured at <strong>£7</strong>.</p>
+  <h1 class="ty-title serif">Welcome to the<br /><em>21 Day Fat Loss Reset</em></h1>
+  <p class="ty-sub">Thank you for celebrating my birthday with me. You're in, and your place is secured at <strong>£7</strong>.</p>
   <p class="ty-sub">Your welcome email is on its way. Check your inbox now (also spam, Promotions and Updates) and add <strong>support@theweightloss-academy.com</strong> to your contacts so nothing goes missing.</p>
 
   <div class="start-card">
-    <div class="label">We all start together</div>
+    <div class="label">Your free pre-week starts</div>
     <div class="date">Monday 31st August</div>
-    <div class="note">Everything you need lands before then. Nothing to do today but the two steps below.</div>
+    <div class="note">That's 4 weeks of support in total. Everything lands before then, so there's nothing to do today but the two steps below.</div>
+  </div>
+
+  <div class="bonus-card">
+    <div class="label">Both birthday bonuses are yours</div>
+    <ul class="bonus-list">
+      <li><span class="tag">Bonus 1</span><span><strong>Instant access to the WLA Members' Area</strong>, with 100s of recipes, extra weekly meal guides, done-for-you shopping lists and weight-loss tools. Your welcome email has the login.</span></li>
+      <li><span class="tag">Bonus 2</span><span><strong>Three weekly live Weight-Loss Masterclasses</strong>, one each week. Dates land in the Facebook group.</span></li>
+    </ul>
   </div>
 
   <div class="email-card">
     <div class="label">The email will say</div>
-    <div class="subject">Welcome to the 21 Day Reset</div>
+    <div class="subject">Welcome to the 21 Day Fat Loss Reset</div>
     <div class="from">from <strong>Anna Wallace</strong></div>
   </div>
 
