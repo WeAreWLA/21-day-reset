@@ -27,12 +27,10 @@
   .wla-cart .reminder { position: relative; overflow: hidden; background: var(--coral-soft); color: var(--navy); text-align: center; padding: 15px 18px; border-radius: 14px; margin-bottom: 28px; box-shadow: inset 0 -1px 0 rgba(0,48,96,0.12); }
   .wla-cart .reminder::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: wlaCartSheen 4.8s ease-in-out infinite; pointer-events: none; }
   .wla-cart .reminder > * { position: relative; z-index: 1; }
-  .wla-cart .reminder .lab { font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; font-size: clamp(12px, 1.5vw, 14px); }
-  .wla-cart .reminder .clock { display: inline-flex; gap: 6px; margin-top: 8px; }
-  .wla-cart .reminder .unit { background: var(--navy); color: #fff; border-radius: 8px; padding: 5px 8px; min-width: 44px; }
-  .wla-cart .reminder .unit .n { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; line-height: 1; font-variant-numeric: tabular-nums; display: block; }
-  .wla-cart .reminder .unit .u { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; display: block; margin-top: 3px; }
-  .wla-cart .reminder .note { display: block; margin-top: 7px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; color: rgba(0,48,96,0.85); }
+  .wla-cart .reminder .clock { display: inline-flex; gap: 8px; }
+  .wla-cart .reminder .unit { background: var(--navy); color: #fff; border-radius: 10px; padding: 8px 12px; min-width: 58px; }
+  .wla-cart .reminder .unit .n { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 24px; line-height: 1; font-variant-numeric: tabular-nums; display: block; }
+  .wla-cart .reminder .unit .u { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; display: block; margin-top: 5px; }
 
   /* Hero */
   .wla-cart .hero { text-align: center; margin-bottom: 32px; }
@@ -136,14 +134,12 @@
 
     <!-- COUNTDOWN REMINDER -->
     <div class="reminder">
-      <span class="lab">The £7 promo disappears in</span>
       <span class="clock" data-wla-clock>
         <span class="unit"><span class="n" data-d>00</span><span class="u">days</span></span>
         <span class="unit"><span class="n" data-h>00</span><span class="u">hrs</span></span>
         <span class="unit"><span class="n" data-m>00</span><span class="u">min</span></span>
         <span class="unit"><span class="n" data-s>00</span><span class="u">sec</span></span>
       </span>
-      <span class="note">Only 100 places, and the price increases when the timer runs out.</span>
     </div>
 
     <!-- HERO -->
