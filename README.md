@@ -236,21 +236,23 @@ re-checks every minute, so when the window closes it switches itself over withou
 redeploy: the countdown, the birthday-bonus banner, the "save £90" pill and the
 struck-through £97 all drop away.
 
-### ⚠️ Recipe photos — still to add
+### Recipe photos
 
 The WLA Members' Area block showcases five recipe photos. Drop these files into `/assets/`:
 
 | Filename | Photo |
 |---|---|
-| `members-recipe-01.jpg` | Tuna & pea salad bowl with avocado |
-| `members-recipe-02.jpg` | Steak fajita wrap, halved on a plate |
-| `members-recipe-03.jpg` | Creamy prawn & courgette pasta |
-| `members-recipe-04.jpg` | Greek chicken & potato traybake with feta |
-| `members-recipe-05.jpg` | Strawberry overnight oats in jars |
+| `members-recipe-01.png` | Steak fajita wrap |
+| `members-recipe-02.png` | Strawberry overnight oats |
+| `members-recipe-03.png` | Creamy chicken & broccoli pasta |
+| `members-recipe-04.jpeg` | Raspberry baked oat muffins |
+| `members-recipe-05.jpeg` | Cheeseburger gnocchi |
 
-They're square-cropped (`object-fit: cover`), so any aspect ratio works. Until the files
-exist each tile degrades to a soft peach card with the dish name — no broken-image icons.
-The list lives in `MEMBERS_RECIPES` in `bday-promo/components/content.jsx`.
+They're square-cropped (`object-fit: cover`), so any aspect ratio works. If a file is
+missing the tile degrades to a soft peach card with the dish name rather than a
+broken-image icon. The list lives in `MEMBERS_RECIPES` in
+`bday-promo/components/content.jsx` — filenames and captions must both be updated there
+if the photos are swapped.
 
 ### Page order
 
