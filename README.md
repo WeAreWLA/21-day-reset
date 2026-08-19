@@ -278,6 +278,13 @@ if the photos are swapped.
 7. Written testimonials → About Anna → Transform → Pricing (bridge)
 8. Video testimonials → FAQ → Final CTA → Footer
 
+Plus, outside the flow: the sticky price bar and an **exit-intent modal** (desktop only,
+once per browser session, 8-second arming delay, carries the live timer).
+
+On phones the hero children are explicitly re-ordered with flexbox `order` so the CTA
+sits above the fold — badge, headline, results, **CTA**, then the detail panel. Every
+child needs an explicit order there or an ordered one jumps the whole column.
+
 ### What differs from `/21-day-reset`
 
 - Birthday framing throughout — announcement bar, hero, pricing eyebrow, final CTA.

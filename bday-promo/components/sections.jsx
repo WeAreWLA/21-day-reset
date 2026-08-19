@@ -17,10 +17,10 @@ const Eyebrow = ({ children, color = 'var(--blush-deep)' }) => (
   </div>
 );
 
-const SerifH = ({ children, size = 64, style = {}, as = 'h2' }) => {
+const SerifH = ({ children, size = 64, style = {}, as = 'h2', className }) => {
   const Tag = as;
   return (
-    <Tag style={{
+    <Tag className={className} style={{
       fontFamily: '"Libre Baskerville", serif',
       fontWeight: 700,
       fontSize: size,
@@ -181,6 +181,39 @@ const PrimaryCTA = ({ children, small = false, onClick, style = {}, location = '
   </a>
 );
 
+// Reassurance line that sits directly under every CTA on the page.
+const GuaranteeNote = ({ align = 'center', style = {} }) => (
+  <div style={{
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: align === 'center' ? 'center' : 'flex-start',
+    gap: 8,
+    marginTop: 12,
+    fontFamily: '"Alegreya Sans", sans-serif',
+    fontSize: 13.5,
+    color: 'var(--ink-muted)',
+    lineHeight: 1.45,
+    textAlign: align === 'center' ? 'center' : 'left',
+    ...style,
+  }}>
+    <span style={{ flexShrink: 0, marginTop: 1 }}><Tick color="var(--blush-deep)" /></span>
+    <span><strong style={{ color: 'var(--ink)' }}>7-day money-back guarantee</strong> — join, look around, and if it&rsquo;s not for you we refund in full.</span>
+  </div>
+);
+
+// Price anchor — makes £7 feel trivial rather than suspicious.
+const PriceAnchor = ({ style = {} }) => (
+  <div style={{
+    fontFamily: '"Libre Baskerville", serif',
+    fontStyle: 'italic',
+    fontSize: 16,
+    color: 'var(--blush-deep)',
+    ...style,
+  }}>
+    That&rsquo;s less than two coffees.
+  </div>
+);
+
 const Placeholder = ({ label, ratio = '4/5', style = {} }) => (
   <div style={{
     aspectRatio: ratio,
@@ -256,7 +289,8 @@ const Divider = ({ style = {} }) => (
 );
 
 Object.assign(window, {
-  Eyebrow, SerifH, Italic, Body, PrimaryCTA, Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider,
+  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor, Placeholder, SoftCard,
+  QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
   CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, CAMPAIGN_START,
   SPOTS_AVAILABLE, SPOTS_TAKEN, SPOTS_LEFT,
