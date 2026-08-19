@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Birthday Offer · The 21 Day Reset for £7 · Weight Loss Academy</title>
-<meta name="description" content="Anna's birthday offer: the full 21 Day Reset for £7 instead of £97. A nutritionist-designed weight loss reset for women 45+. Starts Monday 31st August." />
+<meta name="description" content="Anna's Birthday Promo: the full 21 Day Fat Loss Reset for £7. Lose up to 1 stone, curb your cravings, increase your energy and confidence. Pre-week starts Monday 31st August." />
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -107,9 +107,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     section#method { padding-top: 40px !important; padding-bottom: 32px !important; }
     .whathappens-section { padding-top: 32px !important; padding-bottom: 24px !important; }
     .included-section { padding-top: 32px !important; padding-bottom: 20px !important; }
-    .birthdaybonus-section { padding-top: 24px !important; }
     .results-grid-section { padding: 40px 14px 44px !important; }
-    .members-area-block { padding: 34px 20px 30px !important; }
+    .bonus-card { padding: 40px 18px 30px !important; }
+    section.countdown-section .countdown-heading { font-size: 30px !important; }
+    section.countdown-section .countdown-facts { padding: 0 !important; }
+    .programme-results > div > div { font-size: 20px !important; }
     .transform-section { padding-bottom: 24px !important; }
     .pricing-bridge { padding-top: 32px !important; }
     .video-testimonials-section { padding-bottom: 24px !important; }
@@ -199,9 +201,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
       grid-template-columns: repeat(3, 1fr) !important;
       gap: 10px !important;
     }
-    section .members-area-block .members-perks {
+    section .members-area-block .members-perks,
+    section .masterclasses-block .masterclass-grid {
       grid-template-columns: 1fr !important;
       gap: 12px !important;
+    }
+    section.countdown-section .countdown-facts {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 8px !important;
     }
     .hero-key-facts { max-width: 100% !important; }
   }
@@ -262,25 +269,29 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 const HEADLINES = {
   "birthday": {
-    eyebrow: "🎂 Anna's birthday offer · for women 45+",
+    eyebrow: "Anna's Birthday Promo",
     title: <>The <Italic>21 Day</Italic><br /><Italic>Fat Loss Reset</Italic></>,
-    sub: "Lose up to 1 stone, curb your cravings, increase your energy & confidence."
   },
   "gift-to-you": {
-    eyebrow: "🎂 Birthday offer · for women 45+",
+    eyebrow: "Anna's Birthday Promo",
     title: <>My birthday.<br /><Italic>Your gift.</Italic><br />21{'\u00a0'}days for <Italic>£7</Italic>.</>,
-    sub: "Lose up to 1 stone, curb your cravings, increase your energy & confidence."
   },
   "nothing-works": {
-    eyebrow: "🎂 Birthday offer · designed for women 45+",
+    eyebrow: "Anna's Birthday Promo",
     title: <>The 21 Day Fat Loss Reset<br /><Italic>lose weight</Italic><br /><Italic>curb cravings</Italic><br /><Italic>boost energy</Italic></>,
-    sub: "Lose up to 1 stone, curb your cravings, increase your energy & confidence."
   }
 };
 
+// What the programme delivers — the headline promise, broken out so it lands.
+const PROGRAMME_RESULTS = [
+  <>Lose up to <strong>1 stone</strong></>,
+  <>Curb your <strong>cravings</strong></>,
+  <>Increase your <strong>energy &amp; confidence</strong></>,
+];
+
 // The three key facts under the hero headline.
 const HERO_KEY_FACTS = [
-  { icon: '🎂', label: <>Discounted to <strong>£7</strong> for <strong>96 hours only</strong></>, note: 'Price increases when the timer hits zero' },
+  { icon: '🎂', label: <>Discounted to <strong>£7</strong> for <strong>96 hours only</strong></>, note: 'The price increases when the timer runs out' },
   { icon: '📅', label: <>Pre-week starts <strong>Monday 31st August</strong></>, note: 'Everything lands before Day 1' },
   { icon: '🎟️', label: <><strong>100 spots</strong> available</>, note: 'Once they’re gone, they’re gone' },
 ];
@@ -344,7 +355,6 @@ function App() {
   return (
     <>
       <AnnouncementBar />
-      <Nav />
       {/* Tweakable hero wrapper */}
       <TweakableHero headline={headline} phase={phase} />
       <ResultsGridSection />
@@ -356,7 +366,6 @@ function App() {
       <MethodSection />
       <WhatHappensSection />
       <IncludedSection />
-      {phase === 'open' && <BirthdayBonusSection />}
       <PricingSection sectionId="join-early" phase={phase} />
       <TestimonialsSection />
       <AboutSection />
@@ -416,13 +425,43 @@ function TweakableHero({ headline, phase = 'open' }) {
       alignItems: 'center'
     }}>
       <div>
-        <Eyebrow>{headline.eyebrow}</Eyebrow>
-        <SerifH as="h1" size={76} style={{ marginTop: 22, marginBottom: 24 }}>
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          background: 'var(--peach)',
+          border: '1px solid var(--blush-deep)',
+          borderRadius: 999,
+          padding: '10px 22px',
+          marginBottom: 20,
+        }}>
+          <span style={{ fontSize: 24, lineHeight: 1 }}>🎂</span>
+          <span style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontWeight: 700,
+            fontSize: 22,
+            letterSpacing: '0.01em',
+            color: 'var(--ink)',
+            lineHeight: 1.2,
+          }}>{headline.eyebrow}</span>
+        </div>
+        <SerifH as="h1" size={76} style={{ marginTop: 0, marginBottom: 24 }}>
           {headline.title}
         </SerifH>
-        <Body size={21} style={{ maxWidth: 560, marginBottom: 30, color: 'var(--ink)' }}>
-          {headline.sub}
-        </Body>
+        <div className="programme-results" style={{
+          display: 'flex', flexDirection: 'column', gap: 12,
+          maxWidth: 560, marginBottom: 32,
+        }}>
+          {PROGRAMME_RESULTS.map((r, i) => (
+            <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+              <span style={{ flexShrink: 0, marginTop: 6 }}><Tick color="var(--blush-deep)" /></span>
+              <div style={{
+                fontFamily: '"Alegreya Sans", sans-serif',
+                fontSize: 24,
+                lineHeight: 1.3,
+                color: 'var(--ink)',
+              }}>{r}</div>
+            </div>
+          ))}
+        </div>
 
         {/* Key facts — price window, start date, spots */}
         <div className="hero-key-facts" style={{
@@ -451,7 +490,7 @@ function TweakableHero({ headline, phase = 'open' }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <Tick /> 7-day money-back guarantee
             </div>
-            <div style={{ marginTop: 4, opacity: 0.75 }}>{phase === 'open' ? 'Regular price £97 · Pre-week Mon 31 Aug' : 'Join now — pre-week Mon 31 Aug'}</div>
+            <div style={{ marginTop: 4, opacity: 0.75 }}>{phase === 'open' ? 'Regular price £97 · Pre-week Mon 31 Aug' : 'Price has increased · Pre-week Mon 31 Aug'}</div>
           </div>
         </div>
 
@@ -501,42 +540,6 @@ function TweakableHero({ headline, phase = 'open' }) {
       </div>
     </section>
 
-    {phase === 'open' &&
-    <section className="early-bird-banner-section" style={{ maxWidth: 1240, margin: '0 auto', padding: '0 32px 40px' }}>
-      <div style={{
-        padding: '22px 28px',
-        background: 'var(--peach)',
-        borderRadius: 14,
-        display: 'flex',
-        alignItems: 'center',
-        gap: 20,
-        flexWrap: 'wrap',
-      }}>
-        <div style={{ fontSize: 26 }} className="early-bird-icon">🎁</div>
-        <div style={{ flex: 1, minWidth: 260 }}>
-          <div style={{
-            fontFamily: '"Libre Baskerville", serif',
-            fontWeight: 700,
-            fontSize: 20,
-            color: 'var(--ink)',
-          }}>
-            <span className="early-bird-icon-inline" style={{ marginRight: 8 }}>🎁</span>Birthday bonus:<span className="early-bird-plan"> <Italic>3-Week Fat Loss Accelerator Meal Plan</Italic></span>
-          </div>
-          <Body size={14} style={{ marginTop: 2 }}>First 100 women only · instant access on signup</Body>
-        </div>
-        <div style={{
-          fontFamily: '"Alegreya Sans", sans-serif',
-          fontSize: 12,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: 'var(--blush-deep)',
-          fontWeight: 600,
-        }}>
-          Included free
-        </div>
-      </div>
-    </section>
-    }
     </>);
 
 }

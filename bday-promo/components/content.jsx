@@ -82,8 +82,9 @@ const IncludedSection = () => (
         ))}
       </div>
 
-      {/* Birthday bonus — WLA Members' Area */}
+      {/* Birthday bonuses */}
       <MembersAreaBlock />
+      <MasterclassesBlock />
 
     </div>
   </section>
@@ -108,6 +109,21 @@ const MEMBERS_PERKS = [
   'Done-for-you shopping lists',
   'Nutrition and weight-loss tools',
   'Easy ideas for breakfasts, lunches, dinners and snacks',
+];
+
+const MASTERCLASSES = [
+  {
+    title: 'Your 21-Day Weight-Loss Roadmap',
+    body: 'Set your goal and create your personal plan.',
+  },
+  {
+    title: 'Eat for Better Weight-Loss Results',
+    body: 'Build satisfying meals that support fat loss.',
+  },
+  {
+    title: 'Five Habits of Consistent Weight Loss',
+    body: 'Discover the secret strategies that Anna’s 1-2-1 clients use to lose up to 2 stone.',
+  },
 ];
 
 const RecipeTile = ({ item }) => {
@@ -149,13 +165,13 @@ const RecipeTile = ({ item }) => {
   );
 };
 
-const MembersAreaBlock = () => (
-  <div className="members-area-block" style={{
-    marginTop: 28,
+// Shared shell so both bonuses read as a matched pair.
+const BonusCard = ({ number, label, title, lead, children }) => (
+  <div className="bonus-card" style={{
     background: `linear-gradient(135deg, var(--peach) 0%, #F8C4B0 100%)`,
     border: '2px dashed var(--blush-deep)',
     borderRadius: 22,
-    padding: '44px 44px 40px',
+    padding: '46px 44px 40px',
     position: 'relative',
     boxShadow: '0 30px 60px -30px rgba(232, 127, 99, 0.35)',
   }}>
@@ -169,62 +185,118 @@ const MembersAreaBlock = () => (
       letterSpacing: '0.16em', textTransform: 'uppercase',
       whiteSpace: 'nowrap',
     }}>
-      🎂 Plus — birthday bonus
+      🎂 Bonus {number} — {label}
     </div>
 
-    <div style={{ textAlign: 'center', marginTop: 14, marginBottom: 28 }}>
-      <SerifH size={38} style={{ lineHeight: 1.2, marginBottom: 14 }}>
-        Instant access to the<br /><Italic>WLA Members’ Area</Italic>
+    <div style={{ textAlign: 'center', marginTop: 10, marginBottom: 28 }}>
+      <SerifH size={38} style={{ lineHeight: 1.2, marginBottom: lead ? 14 : 0 }}>
+        {title}
       </SerifH>
-      <Body size={17} style={{ maxWidth: 640, margin: '0 auto' }}>
-        As a special birthday bonus, you’ll also receive immediate access to the WLA Members’ Area
-        throughout the Reset.
-      </Body>
+      {lead && (
+        <Body size={17} style={{ maxWidth: 640, margin: '0 auto' }}>{lead}</Body>
+      )}
     </div>
 
-    {/* Recipe showcase */}
-    <div className="members-recipe-grid" style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(5, 1fr)',
-      gap: 12,
-      marginBottom: 30,
-    }}>
-      {MEMBERS_RECIPES.map((item, i) => <RecipeTile key={i} item={item} />)}
-    </div>
-
-    <div className="members-perks" style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '12px 32px',
-      maxWidth: 760,
-      margin: '0 auto 26px',
-      textAlign: 'left',
-    }}>
-      {MEMBERS_PERKS.map((perk, i) => (
-        <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-          <span style={{ color: 'var(--blush-deep)', fontSize: 16, lineHeight: 1.5, flexShrink: 0 }}>✦</span>
-          <Body size={16} style={{ flex: 1, minWidth: 0 }}>{perk}</Body>
-        </div>
-      ))}
-    </div>
-
-    <div style={{
-      fontFamily: '"Libre Baskerville", serif',
-      fontStyle: 'italic',
-      fontSize: 17,
-      color: 'var(--ink)',
-      textAlign: 'center',
-      maxWidth: 700,
-      margin: '0 auto',
-      lineHeight: 1.5,
-    }}>
-      So whenever you need fresh inspiration, a quick dinner or help getting back on track,
-      you’ll have everything available in one place.
-    </div>
+    {children}
   </div>
 );
 
-// Testimonials
+// Bonus 1 — WLA Members' Area
+const MembersAreaBlock = () => (
+  <div className="members-area-block" style={{ marginTop: 34 }}>
+    <BonusCard
+      number={1}
+      label="Members’ Area"
+      title={<>Instant access to the<br /><Italic>WLA Members’ Area</Italic></>}
+      lead="Immediate access throughout the Reset — everything in one place, from the moment you join."
+    >
+      <div className="members-recipe-grid" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, 1fr)',
+        gap: 12,
+        marginBottom: 28,
+      }}>
+        {MEMBERS_RECIPES.map((item, i) => <RecipeTile key={i} item={item} />)}
+      </div>
+
+      <div className="members-perks" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: 10,
+        maxWidth: 820,
+        margin: '0 auto 24px',
+      }}>
+        {MEMBERS_PERKS.map((perk, i) => (
+          <div key={i} style={{
+            display: 'flex', gap: 12, alignItems: 'flex-start',
+            background: 'rgba(253, 251, 248, 0.7)',
+            border: '1px solid rgba(232, 127, 99, 0.35)',
+            borderRadius: 10,
+            padding: '12px 16px',
+          }}>
+            <span style={{ color: 'var(--blush-deep)', fontSize: 15, lineHeight: 1.55, flexShrink: 0 }}>✦</span>
+            <Body size={15} style={{ flex: 1, minWidth: 0 }}>{perk}</Body>
+          </div>
+        ))}
+      </div>
+
+      <div style={{
+        fontFamily: '"Libre Baskerville", serif',
+        fontStyle: 'italic',
+        fontSize: 17,
+        color: 'var(--ink)',
+        textAlign: 'center',
+        maxWidth: 700,
+        margin: '0 auto',
+        lineHeight: 1.5,
+      }}>
+        So whenever you need fresh inspiration, a quick dinner or help getting back on track,
+        you’ll have everything available in one place.
+      </div>
+    </BonusCard>
+  </div>
+);
+
+// Bonus 2 — Three weekly live masterclasses
+const MasterclassesBlock = () => (
+  <div className="masterclasses-block" style={{ marginTop: 40 }}>
+    <BonusCard
+      number={2}
+      label="Masterclasses"
+      title={<>Three Weekly<br /><Italic>Weight-Loss Masterclasses</Italic></>}
+    >
+      <div className="masterclass-grid" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 14,
+      }}>
+        {MASTERCLASSES.map((m, i) => (
+          <div key={i} style={{
+            background: 'rgba(253, 251, 248, 0.8)',
+            border: '1px solid rgba(232, 127, 99, 0.4)',
+            borderRadius: 14,
+            padding: '24px 22px 22px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 10,
+          }}>
+            <div style={{
+              fontFamily: '"Libre Baskerville", serif',
+              fontStyle: 'italic',
+              fontSize: 14,
+              color: 'var(--blush-deep)',
+              letterSpacing: '0.04em',
+            }}>Week {i + 1}</div>
+            <SerifH size={20} style={{ lineHeight: 1.25 }}>{m.title}</SerifH>
+            <Body size={15} style={{ marginTop: 'auto' }}>{m.body}</Body>
+          </div>
+        ))}
+      </div>
+    </BonusCard>
+  </div>
+);
+
+// Testimonials// Testimonials
 const TESTIMONIALS = [
   {
     quote: "I lost 12 pounds, sugar cravings vanished and my menopause symptoms significantly improved.",
@@ -589,4 +661,4 @@ const VideoTestimonialsSection = () => (
   </section>
 );
 
-Object.assign(window, { IncludedSection, MembersAreaBlock, TestimonialsSection, ResultsGridSection, AboutSection, VideoTestimonialsSection });
+Object.assign(window, { IncludedSection, MembersAreaBlock, MasterclassesBlock, TestimonialsSection, ResultsGridSection, AboutSection, VideoTestimonialsSection });

@@ -260,8 +260,8 @@ if the photos are swapped.
 2. **Real results from women just like you** — 12 before/after photos on navy (`ResultsGridSection`)
 3. Countdown — 96-hour timer
 4. What changes in 21 days → Problem → Honest truth → Why this works → Method → What happens
-5. What's included — 8 cards **+ the WLA Members' Area birthday bonus block**
-6. Birthday bonus (Accelerator Meal Plan) → Pricing
+5. What's included — 8 cards **+ two birthday bonus cards**
+6. Bonus 1 (WLA Members' Area) and Bonus 2 (three weekly masterclasses) sit inside What's included → Pricing
 7. Written testimonials → About Anna → Transform → Pricing (bridge)
 8. Video testimonials → FAQ → Final CTA → Footer
 
