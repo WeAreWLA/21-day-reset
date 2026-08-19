@@ -1,43 +1,76 @@
 // Included, testimonials, about, pricing, FAQ
 
+// Line icons for the "What's inside" grid. Single stroke weight, brand navy,
+// so they read as one set rather than clip-art.
+const IncludedIcon = ({ name }) => {
+  const paths = {
+    // fork + knife
+    plate: <><path d="M6 3v7a2.5 2.5 0 0 0 5 0V3M8.5 3v6M8.5 12.5V21" /><path d="M17.5 21V3c-1.8 1-2.8 3-2.8 5.5s1 3.5 2.8 3.5" /></>,
+    chat: <><path d="M20 14.5a2 2 0 0 1-2 2H8l-4 3.5v-14a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" /><path d="M8.5 9.5h7M8.5 12.5h4.5" /></>,
+    video: <><rect x="2.5" y="6" width="12.5" height="12" rx="2" /><path d="M15 11l6-3.5v9L15 13z" /></>,
+    // spiral notebook
+    book: <><rect x="5.5" y="3.5" width="14" height="17" rx="2" /><path d="M9.5 3.5v17" /><path d="M12.5 8.5h4M12.5 12h4M12.5 15.5h2.5" /></>,
+    swap: <><path d="M4 8.5h13l-3.5-3.5" /><path d="M20 15.5H7l3.5 3.5" /></>,
+    // water droplet
+    drink: <><path d="M12 3.2c3.4 4 5.5 6.6 5.5 9.3a5.5 5.5 0 0 1-11 0c0-2.7 2.1-5.3 5.5-9.3z" /><path d="M9.5 13.5a2.5 2.5 0 0 0 2.5 2.5" /></>,
+    snow: <><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" /><path d="M12 6.6l-2 -2M12 6.6l2 -2M12 17.4l-2 2M12 17.4l2 2" /></>,
+    list: <><path d="M9 6.5h11M9 12h11M9 17.5h11" /><path d="M3.8 6.3l1.2 1.2 2-2.4M3.8 11.8l1.2 1.2 2-2.4M3.8 17.3l1.2 1.2 2-2.4" /></>,
+  };
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+      stroke="var(--blush-deep)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+      aria-hidden="true" style={{ flexShrink: 0 }}>
+      {paths[name]}
+    </svg>
+  );
+};
+
 const INCLUDED = [
   {
     title: '21-Day Flexible Meal Guide',
+    icon: 'plate',
     body: 'Weight loss breakfasts, lunches and dinners flexible meal guides. Family-friendly. Designed to keep you full, satisfied, on track and lighter within days.',
     tag: 'Core',
   },
   {
     title: 'Daily Coaching & Check-ins',
+    icon: 'chat',
     body: 'Guidance inside the reset group each day so you stay on track, without feeling like you\'re doing it alone. Stay consistent and motivated every step of the way.',
     tag: 'Core',
   },
   {
     title: 'Weekly Live Zoom Coaching',
+    icon: 'video',
     body: 'Live sessions with Anna every week. Ask questions, hear what\'s working for women like you.',
     tag: 'Live',
   },
   {
     title: 'Reset Workbook',
+    icon: 'book',
     body: 'Set clear goals, stay focused, and track your progress each week, so you actually follow through and see results.',
     tag: 'Core',
   },
   {
     title: 'Snack & Food Swap Guides',
+    icon: 'swap',
     body: 'Zero-prep options, smart swaps, and snack ideas that satisfy without derailing progress.',
     tag: 'Reference',
   },
   {
     title: 'Drinks & Hydration Guide',
+    icon: 'drink',
     body: 'What to drink, what to swap, how alcohol fits, and how to stay hydrated in a way that actually supports fat loss.',
     tag: 'Reference',
   },
   {
     title: 'Easy Freezer Dinner Pack',
+    icon: 'snow',
     body: 'No-cook meals you can have ready without effort, perfect for busy days when you don\'t want to think about what to eat.',
     tag: 'Bonus',
   },
   {
     title: 'No-Prep Food List',
+    icon: 'list',
     body: 'Grab-and-go foods that keep you on track even on your busiest or lowest-energy days.',
     tag: 'Reference',
   },
@@ -74,8 +107,9 @@ const IncludedSection = () => (
             minHeight: 220,
             display: 'flex',
             flexDirection: 'column',
-            gap: 12,
+            gap: 10,
           }}>
+            <IncludedIcon name={item.icon} />
             <SerifH size={22} style={{ lineHeight: 1.2 }}>{item.title}</SerifH>
             <Body size={14} muted style={{ marginTop: 'auto' }}>{item.body}</Body>
           </div>
@@ -185,7 +219,7 @@ const BonusCard = ({ number, label, title, lead, children }) => (
       letterSpacing: '0.16em', textTransform: 'uppercase',
       whiteSpace: 'nowrap',
     }}>
-      🎂 Bonus {number} — {label}
+      🎂 Bonus {number} · {label}
     </div>
 
     <div style={{ textAlign: 'center', marginTop: 10, marginBottom: 28 }}>
@@ -208,7 +242,7 @@ const MembersAreaBlock = () => (
       number={1}
       label="Members’ Area"
       title={<>Instant access to the<br /><Italic>WLA Members’ Area</Italic></>}
-      lead="Immediate access throughout the Reset — everything in one place, from the moment you join."
+      lead="Immediate access throughout the Reset. Everything in one place, from the moment you join."
     >
       <div className="members-recipe-grid" style={{
         display: 'grid',
@@ -657,7 +691,7 @@ const VideoTestimonialsSection = () => (
               color: 'var(--blush-deep)',
               fontWeight: 600,
             }}>
-              — {v.name} —
+              {v.name}
             </div>
           </div>
         ))}

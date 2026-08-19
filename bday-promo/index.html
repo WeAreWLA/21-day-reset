@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Birthday Offer · The 21 Day Reset for £7 · Weight Loss Academy</title>
+<title>Birthday Promo · The 21 Day Fat Loss Reset for £7 · Weight Loss Academy</title>
 <meta name="description" content="Anna's Birthday Promo: the full 21 Day Fat Loss Reset for £7. Lose up to 1 stone, curb your cravings, increase your energy and confidence. Pre-week starts Monday 31st August." />
 
 <!-- Google Analytics 4 -->
@@ -37,7 +37,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 <!-- WLA social-proof notifications -->
-<script>window.WLA_NOTIFICATIONS = { offer: '21 Day Reset birthday offer' };</script>
+<script>window.WLA_NOTIFICATIONS = { offer: '21 Day Reset birthday promo' };</script>
 <script defer src="/assets/notifications.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -304,7 +304,7 @@ const PROGRAMME_RESULTS = [
 
 // The three key facts under the hero headline.
 const HERO_KEY_FACTS = [
-  { icon: '🎂', label: <>Discounted to <strong>£7</strong> for <strong>{window.OFFER_HOURS} hours only</strong></>, note: 'The price increases when the timer runs out' },
+  { icon: '🎂', label: <>Discounted to <strong>£7</strong> <span style={{ color: 'var(--ink-muted)' }}>(normally £97)</span> for <strong>{window.OFFER_HOURS} hours only</strong></>, note: 'The price increases when the timer runs out' },
   { icon: '📅', label: <>Pre-week starts <strong>Monday 31st August</strong></>, note: 'Everything lands before Day 1' },
   { icon: '🎟️', label: <><strong>100 spots</strong> available</>, note: 'Once they’re gone, they’re gone' },
 ];
@@ -412,7 +412,7 @@ function App() {
           <select value={tweaks.headlineVariant}
         onChange={(e) => updateTweak('headlineVariant', e.target.value)}
         style={{ marginBottom: 14 }}>
-            <option value="birthday">"It's my birthday — the whole Reset for £7"</option>
+            <option value="birthday">"It's my birthday, the whole Reset for £7"</option>
             <option value="gift-to-you">"My birthday. Your gift."</option>
             <option value="nothing-works">"Lose weight, curb cravings, boost energy"</option>
           </select>
@@ -502,14 +502,11 @@ function TweakableHero({ headline, phase = 'open' }) {
 
         <div className="hero-cta-block" style={{ marginBottom: 44 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
-            <PrimaryCTA location="hero">Grab your birthday place — £7</PrimaryCTA>
+            <PrimaryCTA location="hero">Join now for only £7</PrimaryCTA>
             <PriceAnchor />
           </div>
           <PayPalCTA location="hero" style={{ maxWidth: 320, marginTop: 12 }} />
           <GuaranteeNote align="left" style={{ maxWidth: 480 }} />
-          <div style={{ marginTop: 6, fontFamily: '"Alegreya Sans", sans-serif', fontSize: 13, color: 'var(--ink-muted)', opacity: 0.8 }}>
-            {phase === 'open' ? 'Regular price £97 · Pre-week Mon 31 Aug' : 'Price has increased · Pre-week Mon 31 Aug'}
-          </div>
         </div>
 
         <div className="hero-stats" style={{
@@ -553,7 +550,7 @@ function TweakableHero({ headline, phase = 'open' }) {
           <div style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 14, color: 'var(--ink)', lineHeight: 1.4 }}>
             "My menopause symptoms improved and I lost 12 lbs."
           </div>
-          <div style={{ fontSize: 11, color: 'var(--ink-muted)', marginTop: 6, letterSpacing: '0.06em' }}>— RUTH, 54</div>
+          <div style={{ fontSize: 11, color: 'var(--ink-muted)', marginTop: 6, letterSpacing: '0.06em' }}>RUTH, 54</div>
         </div>
       </div>
     </section>

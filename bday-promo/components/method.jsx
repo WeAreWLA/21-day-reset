@@ -60,7 +60,7 @@ const ProblemSection = () => {
             You’re not imagining it, perimenopause and menopause do change how your body responds to food, stress and fat storage.
           </Body>
           <Body size={19} style={{ marginTop: 18 }}>
-            The approaches that used to work — eating less, skipping meals, or doing lots of cardio — start to feel harder to sustain and often leave you more hungry, more tired, and stuck in a cycle of starting and stopping.
+            The approaches that used to work, like eating less, skipping meals, or doing lots of cardio, start to feel harder to sustain and often leave you more hungry, more tired, and stuck in a cycle of starting and stopping.
           </Body>
         </div>
       </div>
