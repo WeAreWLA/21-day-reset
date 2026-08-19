@@ -220,7 +220,8 @@ All five values live in one block at the top of `bday-promo/components/sections.
 
 | Constant | Value | Used for |
 |---|---|---|
-| `CHECKOUT_BASE_URL` | *placeholder* | Every CTA destination |
+| `CHECKOUT_BASE_URL` | *placeholder* | Card checkout — every primary CTA |
+| `PAYPAL_URL` | live | PayPal alternative — the yellow button under each CTA |
 | `PRICE` | `£7` | Offer price |
 | `PRICE_WAS` | `£97` | Struck-through regular price |
 | `PRICE_SAVING` | `£90` | "save £90" pill |

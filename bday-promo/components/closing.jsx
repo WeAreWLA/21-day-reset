@@ -275,6 +275,8 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           Join the Reset — £7
         </PrimaryCTA>
 
+        <PayPalCTA location="pricing" style={{ maxWidth: 460, margin: '10px auto 0' }} />
+
         <GuaranteeNote style={{ maxWidth: 460, margin: '12px auto 0' }} />
 
         <div style={{
@@ -288,7 +290,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           letterSpacing: '0.04em',
           flexWrap: 'wrap',
         }}>
-          <span>🔒 Secure checkout</span>
+          <span>🔒 Secure checkout · card or PayPal</span>
           <span>·</span>
           <span>7-day guarantee</span>
           <span>·</span>
@@ -476,6 +478,7 @@ const FinalCTA = () => (
         21 days. £7 — for {window.OFFER_HOURS} hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
       </Body>
       <PrimaryCTA location="final">Join the 21 Day Reset — £7</PrimaryCTA>
+      <PayPalCTA location="final" style={{ maxWidth: 340, margin: '12px auto 0' }} />
       <PriceAnchor style={{ marginTop: 16 }} />
       <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
       <div style={{
@@ -665,6 +668,7 @@ const ExitIntentModal = () => {
         <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
           Join the Reset — £7
         </PrimaryCTA>
+        <PayPalCTA location="exit-intent" style={{ marginTop: 10 }} />
         <GuaranteeNote style={{ marginTop: 12 }} />
       </div>
     </div>
