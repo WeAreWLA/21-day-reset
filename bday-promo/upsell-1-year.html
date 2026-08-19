@@ -73,6 +73,16 @@
   .wla-upsell .inside-card .checks li { background: var(--paper); position: relative; z-index: 1; }
   .wla-upsell .after-note { margin: 18px auto 0; max-width: 660px; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: var(--navy); line-height: 1.5; }
 
+  /* App screenshot gallery */
+  .wla-upsell .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .wla-upsell .shot { text-align: center; }
+  .wla-upsell .shot .frame { border-radius: 22px; overflow: hidden; background: var(--paper); border: 1px solid rgba(0,48,96,0.12); box-shadow: 0 22px 44px -26px rgba(0,48,96,0.35); aspect-ratio: 9 / 16; position: relative; }
+  .wla-upsell .shot .frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .wla-upsell .shot .frame .fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; color: var(--muted); line-height: 1.4; background: var(--cream-2); }
+  .wla-upsell .shot .cap { margin-top: 10px; font-size: 13.5px; font-weight: 600; color: var(--navy); line-height: 1.35; }
+  .wla-upsell .shots-note { margin: 18px auto 0; text-align: center; font-size: 13px; color: var(--muted); font-style: italic; font-family: 'Libre Baskerville', serif; }
+  @media (max-width: 760px) { .wla-upsell .shots { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+
   /* Closing price block */
   .wla-upsell .price-block { margin-top: 46px; padding: 38px 40px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(0,48,96,0.38); }
   .wla-upsell .price-block::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(247,159,131,0.28), transparent 65%); pointer-events: none; }
@@ -163,6 +173,48 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- APP SCREENSHOTS -->
+    <div class="section">
+      <div class="sec-head">
+        <h2 class="serif">A first look <em>inside the app</em></h2>
+      </div>
+      <div class="shots">
+        <div class="shot">
+          <div class="frame">
+            <img src="https://join.wearewla.com/assets/app-01-daily-tracker.png" alt="The WLA App daily tracker" loading="lazy"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <div class="fallback" style="display:none">Daily Tracker</div>
+          </div>
+          <div class="cap">Log food, mood, water, sleep and movement in seconds</div>
+        </div>
+        <div class="shot">
+          <div class="frame">
+            <img src="https://join.wearewla.com/assets/app-02-log-meal.png" alt="Logging a meal in the WLA App" loading="lazy"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <div class="fallback" style="display:none">Log your meal</div>
+          </div>
+          <div class="cap">Log a meal in your own words, or straight from a recipe</div>
+        </div>
+        <div class="shot">
+          <div class="frame">
+            <img src="https://join.wearewla.com/assets/app-03-meal-plan.png" alt="The WLA App weekly meal plan" loading="lazy"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <div class="fallback" style="display:none">Weekly meal plan</div>
+          </div>
+          <div class="cap">Anna picks your week, and you swap anything you like</div>
+        </div>
+        <div class="shot">
+          <div class="frame">
+            <img src="https://join.wearewla.com/assets/app-04-recipes.png" alt="Browsing recipes in the WLA App" loading="lazy"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <div class="fallback" style="display:none">Recipe library</div>
+          </div>
+          <div class="cap">Hundreds of recipes, filtered to suit you</div>
+        </div>
+      </div>
+      <p class="shots-note">A preview of the app ahead of the September launch.</p>
     </div>
 
     <!-- PLUS -->
