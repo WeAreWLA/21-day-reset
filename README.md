@@ -206,13 +206,20 @@ bday-promo/
     └── index.html              # Thank-you page (static HTML, no React)
 ```
 
-### ⚠️ Thrivecart link — still to swap in
+### Checkout
 
-`CHECKOUT_BASE_URL` at the top of `bday-promo/components/sections.jsx` is currently
-pointing at the **old May Reset cart** as a placeholder. Replace that one line with the
-new birthday-promo Thrivecart URL and every CTA on the page updates — hero, nav,
-pricing cards (×2), final CTA, sticky bar and the social-proof toast. UTM parameters
-on the incoming URL are forwarded to the cart automatically.
+Card checkout is `https://sales.thewlacademy.com/bday-promo/`, held in
+`CHECKOUT_BASE_URL` at the top of `bday-promo/components/sections.jsx`. Every primary
+CTA reads from it — hero, both pricing cards, final CTA, sticky bar, exit-intent modal
+and the social-proof toast. UTM parameters on the incoming URL are forwarded through.
+
+PayPal is `PAYPAL_URL` in the same block and appears as a second button under each CTA.
+
+`bday-promo/cart-content.html` is the marketing block for the ThriveCart cart page
+itself: paste it into ThriveCart's HTML content area. All CSS is scoped under
+`.wla-cart`. **Its countdown has its own copy of the deadline** (`WLA_OFFER_END` in the
+inline script) because it runs outside this codebase — change it whenever `OFFER_END`
+changes, or the cart and the sales page will show different times.
 
 ### Campaign config
 
@@ -220,7 +227,7 @@ All five values live in one block at the top of `bday-promo/components/sections.
 
 | Constant | Value | Used for |
 |---|---|---|
-| `CHECKOUT_BASE_URL` | *placeholder* | Card checkout — every primary CTA |
+| `CHECKOUT_BASE_URL` | live | Card checkout — every primary CTA |
 | `PAYPAL_URL` | live | PayPal alternative — the yellow button under each CTA |
 | `PRICE` | `£7` | Offer price |
 | `PRICE_WAS` | `£97` | Struck-through regular price |
