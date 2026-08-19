@@ -86,6 +86,10 @@ function trackCtaClick(location, label) {
 //    reads from this one constant.
 const CHECKOUT_BASE_URL = 'https://sales.thewlacademy.com/may-reset/';
 
+// PayPal alternative payment link. Shown as a second button under every card
+// CTA. Unlike the Thrivecart link this one is final.
+const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2XLQ9AUVKQHJL';
+
 // Pricing
 const PRICE          = '£7';   // birthday offer price
 const PRICE_WAS      = '£97';  // regular price, shown struck through
@@ -201,6 +205,43 @@ const GuaranteeNote = ({ align = 'center', style = {} }) => (
   </div>
 );
 
+// PayPal button — sits under the main CTA wherever one appears.
+const PayPalCTA = ({ location = 'primary', style = {} }) => (
+  <a
+    href={PAYPAL_URL}
+    target="_blank"
+    rel="noopener"
+    aria-label="Pay with PayPal"
+    onClick={() => trackCtaClick(location + '-paypal', 'PayPal')}
+    style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 8,
+      width: '100%',
+      background: '#FFC439',
+      color: '#003087',
+      fontFamily: '"Alegreya Sans", sans-serif',
+      fontSize: 15,
+      fontWeight: 600,
+      padding: '14px 26px',
+      borderRadius: 999,
+      textDecoration: 'none',
+      border: '1px solid #E5AC28',
+      transition: 'background .15s, transform .15s',
+      cursor: 'pointer',
+      ...style,
+    }}
+    onMouseEnter={(e) => { e.currentTarget.style.background = '#F0B62A'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+    onMouseLeave={(e) => { e.currentTarget.style.background = '#FFC439'; e.currentTarget.style.transform = 'translateY(0)'; }}
+  >
+    <span>or pay with</span>
+    <span style={{ fontStyle: 'italic', fontWeight: 800, fontSize: 17, letterSpacing: '-0.02em' }}>
+      <span style={{ color: '#003087' }}>Pay</span><span style={{ color: '#009CDE' }}>Pal</span>
+    </span>
+  </a>
+);
+
 // Price anchor — makes £7 feel trivial rather than suspicious.
 const PriceAnchor = ({ style = {} }) => (
   <div style={{
@@ -289,7 +330,8 @@ const Divider = ({ style = {} }) => (
 );
 
 Object.assign(window, {
-  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor, Placeholder, SoftCard,
+  Eyebrow, SerifH, Italic, Body, PrimaryCTA, PayPalCTA, PAYPAL_URL, GuaranteeNote, PriceAnchor,
+  Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
   CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, CAMPAIGN_START,
