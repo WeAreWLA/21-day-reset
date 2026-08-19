@@ -112,7 +112,7 @@ const IncludedSection = () => (
             {/* Icon sits beside the title, body aligns under the title. */}
             <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
               <span style={{ flexShrink: 0, marginTop: 2 }}><IncludedIcon name={item.icon} /></span>
-              <SerifH size={21} style={{ lineHeight: 1.25 }}>{item.title}</SerifH>
+              <SerifH size={21} className="card-title" style={{ lineHeight: 1.25 }}>{item.title}</SerifH>
             </div>
             <Body size={14} muted style={{ marginTop: 'auto' }}>{item.body}</Body>
           </div>
@@ -163,10 +163,13 @@ const MASTERCLASSES = [
   },
 ];
 
-const RecipeTile = ({ item }) => {
+const RecipeTile = ({ item, index, total }) => {
   const [failed, setFailed] = React.useState(false);
+  // A trailing tile left alone on its own row centres instead of hanging left.
+  // Handled per breakpoint in CSS; this just tags which one it is.
+  const isLast = index === total - 1;
   return (
-    <div style={{
+    <div className={isLast ? 'recipe-tile recipe-tile-last' : 'recipe-tile'} style={{
       aspectRatio: '1/1',
       borderRadius: 12,
       overflow: 'hidden',
@@ -253,7 +256,9 @@ const MembersAreaBlock = () => (
         gap: 12,
         marginBottom: 28,
       }}>
-        {MEMBERS_RECIPES.map((item, i) => <RecipeTile key={i} item={item} />)}
+        {MEMBERS_RECIPES.map((item, i) => (
+          <RecipeTile key={i} item={item} index={i} total={MEMBERS_RECIPES.length} />
+        ))}
       </div>
 
       <div className="members-perks" style={{
@@ -329,7 +334,7 @@ const MasterclassesBlock = () => (
               color: 'var(--blush-deep)',
               letterSpacing: '0.04em',
             }}>Week {i + 1}</div>
-            <SerifH size={20} style={{ lineHeight: 1.25 }}>{m.title}</SerifH>
+            <SerifH size={21} className="card-title" style={{ lineHeight: 1.25 }}>{m.title}</SerifH>
             <Body size={15} style={{ marginTop: 'auto' }}>{m.body}</Body>
           </div>
         ))}
