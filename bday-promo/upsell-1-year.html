@@ -76,8 +76,8 @@
   /* App screenshot gallery */
   .wla-upsell .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .wla-upsell .shot { text-align: center; }
-  .wla-upsell .shot .frame { border-radius: 22px; overflow: hidden; background: var(--paper); border: 1px solid rgba(0,48,96,0.12); box-shadow: 0 22px 44px -26px rgba(0,48,96,0.35); aspect-ratio: 9 / 16; position: relative; }
-  .wla-upsell .shot .frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .wla-upsell .shot .frame { border-radius: 18px; overflow: hidden; background: var(--cream); border: 1px solid rgba(0,48,96,0.12); box-shadow: 0 22px 44px -26px rgba(0,48,96,0.30); aspect-ratio: 4 / 5; position: relative; padding: 10px; }
+  .wla-upsell .shot .frame img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
   .wla-upsell .shot .frame .fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; color: var(--muted); line-height: 1.4; background: var(--cream-2); }
   .wla-upsell .shot .cap { margin-top: 10px; font-size: 13.5px; font-weight: 600; color: var(--navy); line-height: 1.35; }
   .wla-upsell .shots-note { margin: 18px auto 0; text-align: center; font-size: 13px; color: var(--muted); font-style: italic; font-family: 'Libre Baskerville', serif; }
@@ -183,7 +183,7 @@
       <div class="shots">
         <div class="shot">
           <div class="frame">
-            <img src="https://join.wearewla.com/assets/app-01-daily-tracker.png" alt="The WLA App daily tracker" loading="lazy"
+            <img src="https://join.wearewla.com/assets/app-01-daily-tracker.jpg" alt="The WLA App daily tracker" loading="lazy"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
             <div class="fallback" style="display:none">Daily Tracker</div>
           </div>
@@ -191,7 +191,7 @@
         </div>
         <div class="shot">
           <div class="frame">
-            <img src="https://join.wearewla.com/assets/app-02-log-meal.png" alt="Logging a meal in the WLA App" loading="lazy"
+            <img src="https://join.wearewla.com/assets/app-02-log-meal.jpg" alt="Logging a meal in the WLA App" loading="lazy"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
             <div class="fallback" style="display:none">Log your meal</div>
           </div>
@@ -199,7 +199,7 @@
         </div>
         <div class="shot">
           <div class="frame">
-            <img src="https://join.wearewla.com/assets/app-03-meal-plan.png" alt="The WLA App weekly meal plan" loading="lazy"
+            <img src="https://join.wearewla.com/assets/app-03-meal-plan.jpg" alt="The WLA App weekly meal plan" loading="lazy"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
             <div class="fallback" style="display:none">Weekly meal plan</div>
           </div>
@@ -207,7 +207,7 @@
         </div>
         <div class="shot">
           <div class="frame">
-            <img src="https://join.wearewla.com/assets/app-04-recipes.png" alt="Browsing recipes in the WLA App" loading="lazy"
+            <img src="https://join.wearewla.com/assets/app-04-recipes.jpg" alt="Browsing recipes in the WLA App" loading="lazy"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
             <div class="fallback" style="display:none">Recipe library</div>
           </div>
