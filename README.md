@@ -225,15 +225,18 @@ URL so they resolve on ThriveCart's domain:
 
 | Filename | Screen |
 |---|---|
-| `app-01-daily-tracker.png` | Daily Tracker, the food/mood/water/sleep/movement cards |
-| `app-02-log-meal.png` | The Breakfast "Log your meal" sheet |
-| `app-03-meal-plan.png` | Nutrition → Plan, "Anna's picked your week" |
-| `app-04-recipes.png` | Nutrition → Recipes with the Filters sheet open |
+| `app-01-daily-tracker.jpg` | Daily Tracker, the food/mood/water/sleep/movement cards |
+| `app-02-log-meal.jpg` | The Breakfast "Log your meal" sheet |
+| `app-03-meal-plan.jpg` | Nutrition → Plan, "Anna's picked your week" |
+| `app-04-recipes.jpg` | Nutrition → Recipes with the Filters sheet open |
 
-They're cropped to a 9:16 frame anchored to the top, so full-height phone screenshots
-work as-is. Until a file exists its tile falls back to a named card rather than a broken
-image. Note these are *not* the same as the older shots in `assets/app-screenshots/`,
-which show a previous version of the app.
+The four crops range from 0.50 to 0.87 in aspect, so the frames are a fixed 4:5 with
+`object-fit: contain` on a cream ground — a phone-shaped frame with `cover` would cut the
+bottom off most of them. Each is capped at 1000px and saved as progressive JPEG. If a
+file is missing its tile falls back to a named card rather than a broken image.
+
+Note these are *not* the same as the older shots in `assets/app-screenshots/`, which show
+a previous version of the app.
 
 `bday-promo/cart-content.html` is the marketing block for the ThriveCart cart page
 itself: paste it into ThriveCart's HTML content area. All CSS is scoped under
