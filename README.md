@@ -220,6 +220,21 @@ Founding Member, one year for £97 against a planned £297 public price, 50 plac
 contains **no buttons** — ThriveCart's own Add / Decline render below it. Suggested
 button labels are in the file header.
 
+The upsell's app gallery expects four screenshots in `/assets/`, referenced by absolute
+URL so they resolve on ThriveCart's domain:
+
+| Filename | Screen |
+|---|---|
+| `app-01-daily-tracker.png` | Daily Tracker, the food/mood/water/sleep/movement cards |
+| `app-02-log-meal.png` | The Breakfast "Log your meal" sheet |
+| `app-03-meal-plan.png` | Nutrition → Plan, "Anna's picked your week" |
+| `app-04-recipes.png` | Nutrition → Recipes with the Filters sheet open |
+
+They're cropped to a 9:16 frame anchored to the top, so full-height phone screenshots
+work as-is. Until a file exists its tile falls back to a named card rather than a broken
+image. Note these are *not* the same as the older shots in `assets/app-screenshots/`,
+which show a previous version of the app.
+
 `bday-promo/cart-content.html` is the marketing block for the ThriveCart cart page
 itself: paste it into ThriveCart's HTML content area. All CSS is scoped under
 `.wla-cart`. **Its countdown has its own copy of the deadline** (`WLA_OFFER_END` in the
