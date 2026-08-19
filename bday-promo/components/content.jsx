@@ -96,11 +96,11 @@ const IncludedSection = () => (
 // soft peach card with the dish name rather than a broken-image icon.
 // ---------------------------------------------------------------------------
 const MEMBERS_RECIPES = [
-  { img: '/assets/members-recipe-01.png',  name: 'Steak fajita wrap' },
-  { img: '/assets/members-recipe-02.png',  name: 'Strawberry overnight oats' },
-  { img: '/assets/members-recipe-03.png',  name: 'Creamy chicken & broccoli pasta' },
-  { img: '/assets/members-recipe-04.jpeg', name: 'Raspberry baked oat muffins' },
-  { img: '/assets/members-recipe-05.jpeg', name: 'Cheeseburger gnocchi' },
+  { img: '/assets/members-recipe-01.jpg', name: 'Steak fajita wrap' },
+  { img: '/assets/members-recipe-02.jpg', name: 'Strawberry overnight oats' },
+  { img: '/assets/members-recipe-03.jpg', name: 'Creamy chicken & broccoli pasta' },
+  { img: '/assets/members-recipe-04.jpg', name: 'Raspberry baked oat muffins' },
+  { img: '/assets/members-recipe-05.jpg', name: 'Cheeseburger gnocchi' },
 ];
 
 const MEMBERS_PERKS = [
