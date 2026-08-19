@@ -215,6 +215,11 @@ and the social-proof toast. UTM parameters on the incoming URL are forwarded thr
 
 PayPal is `PAYPAL_URL` in the same block and appears as a second button under each CTA.
 
+`bday-promo/upsell-1-year.html` is the ThriveCart upsell shown after purchase: WLA App
+Founding Member, one year for £97 against a planned £297 public price, 50 places. It
+contains **no buttons** — ThriveCart's own Add / Decline render below it. Suggested
+button labels are in the file header.
+
 `bday-promo/cart-content.html` is the marketing block for the ThriveCart cart page
 itself: paste it into ThriveCart's HTML content area. All CSS is scoped under
 `.wla-cart`. **Its countdown has its own copy of the deadline** (`WLA_OFFER_END` in the
