@@ -113,6 +113,75 @@ const CountdownSection = () => {
   );
 };
 
+// Spots-remaining bar. Numbers come from SPOTS_TAKEN in sections.jsx and must
+// be kept truthful — see the note there.
+const SpotsRemainingSection = () => {
+  const total = window.SPOTS_AVAILABLE;
+  const taken = window.SPOTS_TAKEN;
+  const left  = window.SPOTS_LEFT;
+  const pct   = Math.round((taken / total) * 100);
+  return (
+    <section className="spots-section" style={{
+      padding: '52px 32px 12px',
+      background: 'var(--bg)',
+    }}>
+      <div style={{
+        maxWidth: 760,
+        margin: '0 auto',
+        background: 'var(--paper)',
+        border: '1px solid var(--hairline)',
+        borderLeft: '4px solid var(--blush-deep)',
+        borderRadius: 16,
+        padding: '26px 30px',
+        boxShadow: '0 24px 48px -32px rgba(80, 40, 20, 0.28)',
+      }}>
+        <div className="spots-head" style={{
+          display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+          gap: 16, flexWrap: 'wrap', marginBottom: 14,
+        }}>
+          <div style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontWeight: 700,
+            fontSize: 22,
+            color: 'var(--ink)',
+            lineHeight: 1.3,
+          }}>
+            <Italic>{left}</Italic> of {total} places left
+          </div>
+          <div style={{
+            fontFamily: '"Alegreya Sans", sans-serif',
+            fontSize: 14,
+            color: 'var(--blush-deep)',
+            fontWeight: 600,
+            letterSpacing: '0.02em',
+          }}>
+            {taken} already taken
+          </div>
+        </div>
+
+        <div style={{
+          height: 12,
+          borderRadius: 999,
+          background: 'var(--cream-deep)',
+          overflow: 'hidden',
+        }}>
+          <div style={{
+            width: pct + '%',
+            height: '100%',
+            borderRadius: 999,
+            background: 'linear-gradient(90deg, var(--terracotta) 0%, var(--blush-deep) 100%)',
+          }} />
+        </div>
+
+        <Body size={14} style={{ marginTop: 12 }}>
+          Places are limited to {total} so everyone gets proper coaching. When they&rsquo;re gone, they&rsquo;re gone —
+          the next round won&rsquo;t be at this price.
+        </Body>
+      </div>
+    </section>
+  );
+};
+
 const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading = null, phase: phaseProp }) => {
   const phase = phaseProp || (typeof window !== 'undefined' && window.getCampaignPhase ? window.getCampaignPhase() : 'open');
   const isOpen = phase === 'open';
@@ -497,4 +566,4 @@ const Footer = () => (
   </footer>
 );
 
-Object.assign(window, { PricingSection, FAQSection, FinalCTA, StickyCTA, Footer, CountdownSection });
+Object.assign(window, { PricingSection, SpotsRemainingSection, FAQSection, FinalCTA, StickyCTA, Footer, CountdownSection });

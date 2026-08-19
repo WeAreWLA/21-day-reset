@@ -106,7 +106,14 @@ const CAMPAIGN_START = new Date('2026-08-31T00:00:00+01:00').getTime();
 const OFFER_HOURS = Math.round((OFFER_END - OFFER_START) / 3600000);
 
 // Scarcity
+//   SPOTS_AVAILABLE — total places on this round of the Reset.
+//   SPOTS_TAKEN     — how many have gone. ⚠️ Update this by hand as real sales
+//                     come in. It must reflect actual numbers: under the
+//                     Digital Markets, Competition and Consumers Act 2024,
+//                     invented scarcity is an offence, so never inflate it.
 const SPOTS_AVAILABLE = 100;
+const SPOTS_TAKEN     = 10;
+const SPOTS_LEFT      = Math.max(0, SPOTS_AVAILABLE - SPOTS_TAKEN);
 
 // Build the Thrivecart checkout URL, forwarding any UTM parameters
 // from the current page's query string so attribution carries through.
@@ -251,6 +258,7 @@ const Divider = ({ style = {} }) => (
 Object.assign(window, {
   Eyebrow, SerifH, Italic, Body, PrimaryCTA, Placeholder, SoftCard, QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
-  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, CAMPAIGN_START, SPOTS_AVAILABLE,
+  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, CAMPAIGN_START,
+  SPOTS_AVAILABLE, SPOTS_TAKEN, SPOTS_LEFT,
   PRICE, PRICE_WAS, PRICE_SAVING,
 });

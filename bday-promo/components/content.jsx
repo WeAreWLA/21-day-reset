@@ -228,6 +228,11 @@ const MembersAreaBlock = () => (
       }}>
         {MEMBERS_PERKS.map((perk, i) => (
           <div key={i} style={{
+            // A trailing odd item spans both columns and centres, rather than
+            // hanging on the left with a gap beside it.
+            ...(i === MEMBERS_PERKS.length - 1 && MEMBERS_PERKS.length % 2
+              ? { gridColumn: '1 / -1', justifySelf: 'center', maxWidth: 420, width: '100%' }
+              : null),
             display: 'flex', gap: 12, alignItems: 'flex-start',
             background: 'rgba(253, 251, 248, 0.7)',
             border: '1px solid rgba(232, 127, 99, 0.35)',

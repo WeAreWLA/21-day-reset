@@ -108,6 +108,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .whathappens-section { padding-top: 32px !important; padding-bottom: 24px !important; }
     .included-section { padding-top: 32px !important; padding-bottom: 20px !important; }
     .results-grid-section { padding: 40px 14px 44px !important; }
+    .spots-section { padding: 34px 16px 4px !important; }
+    .announcement-bar { padding: 8px 10px !important; gap: 8px !important; }
     .bonus-card { padding: 40px 18px 30px !important; }
     section.countdown-section .countdown-heading { font-size: 30px !important; }
     section.countdown-section .countdown-facts { padding: 0 !important; }
@@ -359,6 +361,7 @@ function App() {
       <TweakableHero headline={headline} phase={phase} />
       <ResultsGridSection />
       <CountdownSection />
+      {phase === 'open' && <SpotsRemainingSection />}
       <WhatChangesIn21DaysSection />
       <ProblemSection />
       <HonestTruthSection />
