@@ -201,7 +201,7 @@ const GuaranteeNote = ({ align = 'center', style = {} }) => (
     ...style,
   }}>
     <span style={{ flexShrink: 0, marginTop: 1 }}><Tick color="var(--blush-deep)" /></span>
-    <span><strong style={{ color: 'var(--ink)' }}>7-day money-back guarantee</strong> — join, look around, and if it&rsquo;s not for you we refund in full.</span>
+    <span><strong style={{ color: 'var(--ink)' }}>7-day money-back guarantee.</strong> Join, look around, and if it&rsquo;s not for you we refund in full.</span>
   </div>
 );
 

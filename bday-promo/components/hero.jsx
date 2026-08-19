@@ -63,17 +63,13 @@ const AnnouncementBar = () => {
     }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
         <span className="announcement-dot" />
-        🎂 Anna&rsquo;s Birthday Promo
-      </span>
-      <span style={{ opacity: 0.5 }}>·</span>
-      <span>
         Just <strong style={{ color: 'var(--peach)', fontSize: '1.05em' }}>£7</strong>
         {' '}<span style={{ opacity: 0.65, textDecoration: 'line-through' }}>£97</span>
       </span>
       <span style={{ opacity: 0.5 }}>·</span>
       {isOpen ? (
         <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 13 }}>Price rises in</span>
+          <span style={{ fontSize: 13 }}>Price increases in</span>
           <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 4 }}>
             <BarDigit n={t.d} label="days" />
             <BarDigit n={t.h} label="hrs" />
@@ -167,7 +163,7 @@ const Hero = () => (
     <div>
       <Eyebrow>A 21-day reset for women 45+</Eyebrow>
       <SerifH as="h1" size={76} style={{ marginTop: 22, marginBottom: 24 }}>
-        If you've started over <Italic>more times</Italic> than you can count —
+        If you've started over <Italic>more times</Italic> than you can count,
         this is the one that finishes.
       </SerifH>
       <Body size={19} muted style={{ maxWidth: 560, marginBottom: 36 }}>
@@ -175,7 +171,7 @@ const Hero = () => (
       </Body>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap', marginBottom: 44 }}>
-        <PrimaryCTA>Grab your birthday place — £7</PrimaryCTA>
+        <PrimaryCTA>Join now for only £7</PrimaryCTA>
         <div style={{
           fontFamily: '"Alegreya Sans", sans-serif',
           fontSize: 13,
@@ -280,7 +276,7 @@ const Hero = () => (
           color: 'var(--ink-muted)',
           marginTop: 6,
           letterSpacing: '0.06em',
-        }}>— RUTH, 54</div>
+        }}>RUTH, 54</div>
       </div>
     </div>
   </section>

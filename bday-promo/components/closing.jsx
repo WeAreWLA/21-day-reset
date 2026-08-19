@@ -174,8 +174,8 @@ const SpotsRemainingSection = () => {
         </div>
 
         <Body size={14} style={{ marginTop: 12 }}>
-          Places are limited to {total} so everyone gets proper coaching. When they&rsquo;re gone, they&rsquo;re gone —
-          the next round won&rsquo;t be at this price.
+          Places are limited to {total} so everyone gets proper coaching. When they&rsquo;re gone, they&rsquo;re gone,
+          and the next round won&rsquo;t be at this price.
         </Body>
       </div>
     </section>
@@ -199,7 +199,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             {isOpen
-              ? `It’s my birthday, so the whole 21 Day Reset is £7 — for ${window.OFFER_HOURS} hours only, and only 100 spots are available. The price increases when the timer runs out. Pre-week starts Monday 31st August.`
+              ? `It’s my birthday, so the whole 21 Day Reset is £7 for ${window.OFFER_HOURS} hours only, and only 100 spots are available. The price increases when the timer runs out. Pre-week starts Monday 31st August.`
               : 'Join today for £7 and start the 21 Day Reset with us.'}
           </Body>
         </>
@@ -232,7 +232,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           fontStyle: 'italic',
           fontWeight: 400,
           letterSpacing: '0.04em',
-        }}>🎂 Birthday offer · save £90</div>}
+        }}>🎂 Birthday promo · save £90</div>}
 
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 14, marginBottom: 10 }}>
           <div style={{
@@ -272,7 +272,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         </div>
 
         <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 460 }}>
-          Join the Reset — £7
+          Join the Reset for £7
         </PrimaryCTA>
 
         <PayPalCTA location="pricing" style={{ maxWidth: 460, margin: '10px auto 0' }} />
@@ -327,7 +327,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         <div>
           <SerifH size={22} style={{ marginBottom: 6 }}>Our 7-day money-back guarantee</SerifH>
           <Body size={15} muted>
-            Join, open the materials, show up to the first live call. If within 7 days you don't feel this is for you, email us — full refund, no questions, no hoops.
+            Join, open the materials, show up to the first live call. If within 7 days you don't feel this is for you, just email us. Full refund, no questions, no hoops.
           </Body>
         </div>
       </div>
@@ -347,11 +347,11 @@ const FAQ_ITEMS = [
   },
   {
     q: "Do I need to exercise?",
-    a: "No. 80% of results come from nutrition. If you already move, keep moving. If you don't, the Reset works without it — and we'll guide you gently if and when you want to add simple strength work to protect muscle through midlife.",
+    a: "No. 80% of results come from nutrition. If you already move, keep moving. If you don't, the Reset works without it, and we'll guide you gently if and when you want to add simple strength work to protect muscle through midlife.",
   },
   {
     q: "I'm short on time and cook for a family.",
-    a: "The meal guides are batch-cookable, family-friendly, and flexible. You'll cook one meal — family eats it too, you just portion differently. There's also a no-prep food list and freezer dinner pack for busy days.",
+    a: "The meal guides are batch-cookable, family-friendly, and flexible. You'll cook one meal, the family eats it too, you just portion differently. There's also a no-prep food list and freezer dinner pack for busy days.",
   },
   {
     q: "I'm vegetarian / fussy / don't like some ingredients.",
@@ -359,15 +359,15 @@ const FAQ_ITEMS = [
   },
   {
     q: "What if I don't get results?",
-    a: "You're covered by our 7-day money-back guarantee — show up, open the materials, and if it's not for you we refund in full. If you complete the 21 days and show up to the coaching, typical members report cravings calmer by day 3 and visible changes within the first 7 days.",
+    a: "You're covered by our 7-day money-back guarantee. Show up, open the materials, and if it's not for you we refund in full. If you complete the 21 days and show up to the coaching, typical members report cravings calmer by day 3 and visible changes within the first 7 days.",
   },
   {
     q: "Why is it only £7?",
-    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset — nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for a few days only and there are just 100 spots — the price increases when the timer runs out.",
+    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset, nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for a few days only and there are just 100 spots, and the price increases when the timer runs out.",
   },
   {
     q: "When does it start?",
-    a: "Pre-week starts Monday 31st August. You'll get your materials — and instant access to the WLA Members' Area — as soon as you join, so you can read through and get set up before Day 1.",
+    a: "Pre-week starts Monday 31st August. You'll get your materials, plus instant access to the WLA Members' Area, as soon as you join, so you can read through and get set up before Day 1.",
   },
   {
     q: "Will my grocery bill go up?",
@@ -442,7 +442,7 @@ const FAQSection = () => {
             Questions from<br /><Italic>women like you.</Italic>
           </SerifH>
           <Body size={15}>
-            Can't find what you're looking for? Email <a href="mailto:support@theweightloss-academy.com" style={{ color: 'var(--blush-deep)', textDecoration: 'none' }}>support@theweightloss-academy.com</a> — we answer every message.
+            Can't find what you're looking for? Email <a href="mailto:support@theweightloss-academy.com" style={{ color: 'var(--blush-deep)', textDecoration: 'none' }}>support@theweightloss-academy.com</a> and we answer every message.
           </Body>
         </div>
         <div>
@@ -470,14 +470,14 @@ const FinalCTA = () => (
     <div style={{ maxWidth: 860, margin: '0 auto' }}>
       <Divider style={{ marginBottom: 32 }} />
       <SerifH size={76} style={{ marginBottom: 32 }}>
-        It’s my birthday{'\u00a0'}— <Italic>the gift is yours.</Italic>
+        It’s my birthday.<br /><Italic>The gift is yours.</Italic>
         <br />You don’t need to start over again.
         <br />You need something you can stick to.
       </SerifH>
       <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
-        21 days. £7 — for {window.OFFER_HOURS} hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
+        21 days. £7, for {window.OFFER_HOURS} hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
       </Body>
-      <PrimaryCTA location="final">Join the 21 Day Reset — £7</PrimaryCTA>
+      <PrimaryCTA location="final">Join the 21 Day Reset for £7</PrimaryCTA>
       <PayPalCTA location="final" style={{ maxWidth: 340, margin: '12px auto 0' }} />
       <PriceAnchor style={{ marginTop: 16 }} />
       <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
@@ -522,7 +522,7 @@ const StickyCTA = ({ visible }) => (
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }}>
-      <span style={{ color: 'var(--peach)' }}>●</span> 🎂 Birthday offer · <strong>£7</strong>
+      <span style={{ color: 'var(--peach)' }}>●</span> 🎂 Birthday promo · <strong>£7</strong>
       <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>{window.OFFER_HOURS} hrs only</span>
     </div>
     <a href={typeof window !== 'undefined' && window.getCheckoutUrl ? window.getCheckoutUrl() : '#'} target="_blank" rel="noopener" className="sticky-cta-button"
@@ -652,7 +652,7 @@ const ExitIntentModal = () => {
 
         <div style={{ fontSize: 34, marginBottom: 10 }}>🎂</div>
         <SerifH size={34} style={{ lineHeight: 1.2, marginBottom: 12 }}>
-          Before you go —<br /><Italic>the £7 price is still open</Italic>
+          Before you go,<br /><Italic>the £7 price is still open</Italic>
         </SerifH>
         <Body size={16} style={{ marginBottom: 22 }}>
           The whole 21 Day Fat Loss Reset, both bonuses included. When this timer runs out the price increases.
@@ -666,7 +666,7 @@ const ExitIntentModal = () => {
         </div>
 
         <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
-          Join the Reset — £7
+          Join the Reset for £7
         </PrimaryCTA>
         <PayPalCTA location="exit-intent" style={{ marginTop: 10 }} />
         <GuaranteeNote style={{ marginTop: 12 }} />
