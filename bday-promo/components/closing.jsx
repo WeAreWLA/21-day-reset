@@ -250,6 +250,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             textDecoration: 'line-through',
           }}>£97</div>}
         </div>
+        <PriceAnchor style={{ marginBottom: 6 }} />
         <Body size={15} style={{ marginBottom: 32 }}>
           One-time payment · full access
         </Body>
@@ -273,6 +274,8 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 460 }}>
           Join the Reset — £7
         </PrimaryCTA>
+
+        <GuaranteeNote style={{ maxWidth: 460, margin: '12px auto 0' }} />
 
         <div style={{
           marginTop: 24,
@@ -473,13 +476,15 @@ const FinalCTA = () => (
         21 days. £7 — for {window.OFFER_HOURS} hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
       </Body>
       <PrimaryCTA location="final">Join the 21 Day Reset — £7</PrimaryCTA>
+      <PriceAnchor style={{ marginTop: 16 }} />
+      <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
       <div style={{
-        marginTop: 22,
+        marginTop: 8,
         fontFamily: '"Alegreya Sans", sans-serif',
         fontSize: 13,
         color: 'var(--ink-muted)',
       }}>
-        7-day money-back guarantee · Pre-week starts Monday 31st August
+        Pre-week starts Monday 31st August
       </div>
     </div>
   </section>
@@ -537,6 +542,135 @@ const StickyCTA = ({ visible }) => (
   </div>
 );
 
+// Exit-intent modal — desktop only, once per browser session.
+// Triggers when the cursor leaves through the top of the viewport, which on a
+// desktop means heading for the tab bar / close button.
+const ExitIntentModal = () => {
+  const [open, setOpen] = React.useState(false);
+  const [tick, setTick] = React.useState(null);
+
+  React.useEffect(() => {
+    // Desktop only: skip touch devices and anything narrow.
+    const isDesktop = window.matchMedia('(min-width: 961px) and (hover: hover) and (pointer: fine)').matches;
+    if (!isDesktop) return;
+    if (window.getCampaignPhase && window.getCampaignPhase() !== 'open') return;
+    try { if (sessionStorage.getItem('wla_exit_shown')) return; } catch (e) { /* private mode */ }
+
+    let armed = false;
+    const arm = setTimeout(() => { armed = true; }, 8000); // don't fire on an instant bounce
+
+    const onLeave = (e) => {
+      if (!armed || e.clientY > 0 || e.relatedTarget) return;
+      setOpen(true);
+      try { sessionStorage.setItem('wla_exit_shown', '1'); } catch (err) { /* ignore */ }
+      document.removeEventListener('mouseout', onLeave);
+    };
+    document.addEventListener('mouseout', onLeave);
+    return () => { clearTimeout(arm); document.removeEventListener('mouseout', onLeave); };
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const compute = () => {
+      const diff = Math.max(0, window.OFFER_END - Date.now());
+      return {
+        d: Math.floor(diff / 86400000),
+        h: Math.floor((diff % 86400000) / 3600000),
+        m: Math.floor((diff % 3600000) / 60000),
+        s: Math.floor((diff % 60000) / 1000),
+      };
+    };
+    setTick(compute());
+    const id = setInterval(() => setTick(compute()), 1000);
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('keydown', onKey);
+    return () => { clearInterval(id); document.removeEventListener('keydown', onKey); };
+  }, [open]);
+
+  if (!open || !tick) return null;
+
+  const Box = ({ n, l }) => (
+    <div style={{
+      background: 'var(--paper)',
+      border: '1px solid var(--blush-deep)',
+      borderRadius: 12,
+      padding: '14px 6px',
+      minWidth: 68,
+    }}>
+      <div style={{
+        fontFamily: '"Libre Baskerville", serif',
+        fontWeight: 700, fontSize: 32, lineHeight: 1,
+        color: 'var(--ink)', fontVariantNumeric: 'tabular-nums',
+      }}>{String(n).padStart(2, '0')}</div>
+      <div style={{
+        fontFamily: '"Alegreya Sans", sans-serif',
+        fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+        color: 'var(--blush-deep)', fontWeight: 600, marginTop: 8,
+      }}>{l}</div>
+    </div>
+  );
+
+  return (
+    <div
+      className="exit-intent-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Before you go"
+      onClick={() => setOpen(false)}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 300,
+        background: 'rgba(0, 48, 96, 0.55)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: 24,
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: 'relative',
+          maxWidth: 560, width: '100%',
+          background: `linear-gradient(160deg, var(--paper) 0%, var(--peach) 100%)`,
+          border: '2px solid var(--blush-deep)',
+          borderRadius: 22,
+          padding: '44px 48px 40px',
+          textAlign: 'center',
+          boxShadow: '0 40px 80px -30px rgba(0, 0, 0, 0.5)',
+        }}
+      >
+        <button
+          onClick={() => setOpen(false)}
+          aria-label="Close"
+          style={{
+            position: 'absolute', top: 14, right: 16,
+            background: 'transparent', border: 'none', cursor: 'pointer',
+            fontSize: 26, lineHeight: 1, color: 'var(--ink-muted)',
+          }}
+        >×</button>
+
+        <div style={{ fontSize: 34, marginBottom: 10 }}>🎂</div>
+        <SerifH size={34} style={{ lineHeight: 1.2, marginBottom: 12 }}>
+          Before you go —<br /><Italic>the £7 price is still open</Italic>
+        </SerifH>
+        <Body size={16} style={{ marginBottom: 22 }}>
+          The whole 21 Day Fat Loss Reset, both bonuses included. When this timer runs out the price increases.
+        </Body>
+
+        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 24 }}>
+          <Box n={tick.d} l="days" />
+          <Box n={tick.h} l="hrs" />
+          <Box n={tick.m} l="min" />
+          <Box n={tick.s} l="sec" />
+        </div>
+
+        <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
+          Join the Reset — £7
+        </PrimaryCTA>
+        <GuaranteeNote style={{ marginTop: 12 }} />
+      </div>
+    </div>
+  );
+};
+
 const Footer = () => (
   <footer style={{
     background: 'var(--ink)',
@@ -566,4 +700,4 @@ const Footer = () => (
   </footer>
 );
 
-Object.assign(window, { PricingSection, SpotsRemainingSection, FAQSection, FinalCTA, StickyCTA, Footer, CountdownSection });
+Object.assign(window, { PricingSection, SpotsRemainingSection, ExitIntentModal, FAQSection, FinalCTA, StickyCTA, Footer, CountdownSection });

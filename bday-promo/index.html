@@ -109,6 +109,17 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .included-section { padding-top: 32px !important; padding-bottom: 20px !important; }
     .results-grid-section { padding: 40px 14px 44px !important; }
     .spots-section { padding: 34px 16px 4px !important; }
+    /* Above the fold on a phone: badge, headline, results, CTA — then detail.
+       Every child needs an explicit order, or an ordered one jumps the lot. */
+    .hero-left .hero-badge       { order: 1 !important; }
+    .hero-left .hero-title       { order: 2 !important; }
+    .hero-left .programme-results{ order: 3 !important; }
+    .hero-left .hero-cta-block   { order: 4 !important; margin-bottom: 26px !important; }
+    .hero-left .hero-key-facts   { order: 5 !important; }
+    .hero-left .hero-stats       { order: 6 !important; }
+    .hero-title { margin-bottom: 18px !important; }
+    .programme-results { margin-bottom: 24px !important; }
+    .exit-intent-backdrop { display: none !important; }
     .announcement-bar { padding: 8px 10px !important; gap: 8px !important; }
     .bonus-card { padding: 40px 18px 30px !important; }
     section.countdown-section .countdown-heading { font-size: 30px !important; }
@@ -385,6 +396,7 @@ function App() {
       <FinalCTA />
       <Footer />
       {tweaks.showStickyCTA && <StickyCTA visible={stickyVisible} />}
+      <ExitIntentModal />
 
       {tweaksOpen &&
       <div className="tweaks-panel">
@@ -427,9 +439,10 @@ function TweakableHero({ headline, phase = 'open' }) {
       gap: 72,
       alignItems: 'center'
     }}>
-      <div>
-        <div style={{
+      <div className="hero-left" style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className="hero-badge" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
+          alignSelf: 'flex-start',
           background: 'var(--peach)',
           border: '1px solid var(--blush-deep)',
           borderRadius: 999,
@@ -446,7 +459,7 @@ function TweakableHero({ headline, phase = 'open' }) {
             lineHeight: 1.2,
           }}>{headline.eyebrow}</span>
         </div>
-        <SerifH as="h1" size={76} style={{ marginTop: 0, marginBottom: 24 }}>
+        <SerifH as="h1" className="hero-title" size={76} style={{ marginTop: 0, marginBottom: 24 }}>
           {headline.title}
         </SerifH>
         <div className="programme-results" style={{
@@ -487,17 +500,18 @@ function TweakableHero({ headline, phase = 'open' }) {
           ))}
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap', marginBottom: 44 }}>
-          <PrimaryCTA location="hero">Grab your birthday place — £7</PrimaryCTA>
-          <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 13, color: 'var(--ink-muted)', lineHeight: 1.5 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Tick /> 7-day money-back guarantee
-            </div>
-            <div style={{ marginTop: 4, opacity: 0.75 }}>{phase === 'open' ? 'Regular price £97 · Pre-week Mon 31 Aug' : 'Price has increased · Pre-week Mon 31 Aug'}</div>
+        <div className="hero-cta-block" style={{ marginBottom: 44 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
+            <PrimaryCTA location="hero">Grab your birthday place — £7</PrimaryCTA>
+            <PriceAnchor />
+          </div>
+          <GuaranteeNote align="left" style={{ maxWidth: 480 }} />
+          <div style={{ marginTop: 6, fontFamily: '"Alegreya Sans", sans-serif', fontSize: 13, color: 'var(--ink-muted)', opacity: 0.8 }}>
+            {phase === 'open' ? 'Regular price £97 · Pre-week Mon 31 Aug' : 'Price has increased · Pre-week Mon 31 Aug'}
           </div>
         </div>
 
-        <div style={{
+        <div className="hero-stats" style={{
           display: 'flex', gap: 48, paddingTop: 28, borderTop: '1px solid var(--hairline)'
         }}>
           <div><div style={{ fontFamily: '"Libre Baskerville", serif', fontSize: 32, lineHeight: 1 }}>50,000+</div><div style={{ fontSize: 12, color: 'var(--ink-muted)', letterSpacing: '0.04em', marginTop: 8 }}>WOMEN SUPPORTED</div></div>
