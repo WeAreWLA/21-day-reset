@@ -283,9 +283,13 @@ title, fanned guide covers, device, starburst price, scarcity pill, navy footer)
 are `assets/bday-promo-square.png` (1080) and `assets/bday-promo-square@2x.png` (2160).
 
 Regenerate by serving the repo root and screenshotting the `.card` element at
-`deviceScaleFactor: 2`. It pulls the guide-cover photos and the app screen from `/assets`,
-so it must be served rather than opened as a file. The scarcity pill currently reads
-"ONLY 100 PLACES" — swap it for a real places-left figure only once that figure is true.
+`deviceScaleFactor: 2`. It pulls the guide-cover photos from `/assets`, so it must be
+served rather than opened as a file.
+
+Two content rules for this graphic: it shows **only what the £7 offer includes** — no app
+or Members' Area screens, since those belong to the upsell — and the scarcity pill reads
+"ONLY 100 PLACES" rather than a places-left count, which should only appear once the
+figure is true.
 
 ### Recipe photos
 
