@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WLA Birthday Promo · 21 Day Fat Loss Reset Ad (1080×1080 square)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0e2746; --navy-deep: #003060;
+    --coral: #d97757; --coral-soft: #e5917a; --coral-light: #F2A48B;
+    --cream: #F4EEE2; --cream-2: #E9DFD3; --beige-top: #E8DCC4;
+    --paper: #FDFBF8; --muted: #5a6478;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #2a2a2a; font-family: "Alegreya Sans", sans-serif; }
+  body { display: grid; place-items: center; min-height: 100vh; padding: 24px; }
+  .serif { font-family: 'Libre Baskerville', serif; }
+
+  /* 1080x1080 ad canvas */
+  .ad {
+    width: 1080px; height: 1080px;
+    position: relative;
+    background: #F8F2E5;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    color: var(--navy-deep);
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 1140px) {
+    body { padding: 12px; }
+    .ad { transform: scale(calc((100vw - 24px) / 1080)); transform-origin: top center; margin-bottom: calc((100vw - 24px) * (-1080 / 1080) + 24px); }
+  }
+
+  /* TOP BEIGE BANNER */
+  .top-banner {
+    background: linear-gradient(180deg, #EFE2CB 0%, #E8DCC4 100%);
+    text-align: center;
+    padding: 36px 40px;
+    position: relative;
+    border-bottom: 1px solid rgba(14,39,70,0.06);
+  }
+  /* subtle paper texture via overlapping subtle dots */
+  .top-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(140,110,70,0.05) 1px, transparent 1px),
+      radial-gradient(rgba(140,110,70,0.04) 1px, transparent 1px);
+    background-size: 6px 6px, 11px 11px;
+    background-position: 0 0, 3px 3px;
+    pointer-events: none;
+  }
+  .top-banner-text {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--navy-deep);
+    font-size: 64px;
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* BODY */
+  .body {
+    flex: 1;
+    text-align: center;
+    padding: 38px 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F4EEE2;
+    position: relative;
+  }
+  .body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(140,110,70,0.035) 1px, transparent 1px);
+    background-size: 8px 8px;
+    pointer-events: none;
+  }
+  .body > * { position: relative; z-index: 1; }
+
+  .title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    color: var(--navy-deep);
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    margin: 0 0 22px;
+  }
+  .title em {
+    color: var(--coral-light);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .urgency {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--navy-deep);
+    font-size: 30px;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    font-weight: 400;
+  }
+  .urgency em { font-style: italic; font-weight: 700; }
+
+  .free-line {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--navy-deep);
+    font-size: 46px;
+    line-height: 1.1;
+    font-weight: 700;
+    margin: 0 0 22px;
+  }
+  .free-line .big {
+    font-weight: 800;
+  }
+
+  /* IMAGE COLLAGE */
+  .collage {
+    position: relative;
+    width: 100%;
+    margin-top: 6px;
+    flex: 1;
+    min-height: 0;
+  }
+  .collage .card {
+    position: absolute;
+    background: #fff;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    box-shadow: 0 18px 36px -16px rgba(14,39,70,0.35);
+    overflow: hidden;
+  }
+  .collage .card img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  /* fanned card positions */
+  .c1 { left: 4%;   top: 14%; width: 230px; height: 280px; transform: rotate(-14deg); z-index: 2; }
+  .c2 { left: 18%;  top: 4%;  width: 240px; height: 300px; transform: rotate(-7deg); z-index: 3; }
+  .c3 { left: 36%;  top: 0;   width: 240px; height: 300px; transform: rotate(0deg);  z-index: 4; }
+  .c4 { left: 54%;  top: 4%;  width: 240px; height: 300px; transform: rotate(7deg);  z-index: 3; }
+  .c5 { left: 68%;  top: 14%; width: 230px; height: 280px; transform: rotate(14deg); z-index: 2; }
+  /* foreground guide covers (the app is upsell-only, so it is not shown here) */
+  .collage .guide { position: absolute; width: 250px; height: 330px; background: #fff;
+    border-radius: 10px; box-shadow: 0 24px 46px -16px rgba(14,39,70,0.45);
+    overflow: hidden; display: flex; flex-direction: column; }
+  .collage .guide .g-top { padding: 20px 18px 0; flex: 1; }
+  .collage .guide .kicker { font-size: 13px; font-weight: 800; letter-spacing: .14em;
+    color: var(--coral); text-transform: uppercase; }
+  .collage .guide .g-title { font-family: 'Libre Baskerville', serif; color: var(--navy-deep);
+    font-weight: 700; font-size: 27px; line-height: 1.14; margin-top: 10px; }
+  .collage .guide .g-title i { color: var(--coral); font-weight: 400; }
+  .collage .guide .g-img { height: 164px; background-size: cover; background-position: center; }
+  .gA { left: 12%; top: 40%; transform: rotate(-6deg); z-index: 6; }
+  .gB { left: 37%; top: 36%; transform: rotate(0deg);  z-index: 8; }
+  .gC { left: 62%; top: 40%; transform: rotate(6deg);  z-index: 6; }
+
+  /* Small caption */
+  .product-caption {
+    position: absolute;
+    bottom: 20px; left: 0; right: 0;
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 14px;
+    z-index: 5;
+  }
+
+  /* BOTTOM NAVY BAR */
+  .bottom-bar {
+    background: var(--navy-deep);
+    color: #fff;
+    text-align: center;
+    padding: 24px 20px;
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 28px;
+  }
+  .bottom-bar .light { font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="ad">
+
+  <div class="top-banner">
+    <div class="top-banner-text"><em>Anna's Birthday Promo</em> · Just £7</div>
+  </div>
+
+  <div class="body">
+
+    <h1 class="title serif">The 21 Day <em>Fat Loss</em> Reset</h1>
+
+    <div class="urgency"><em>Only 100</em> places<br/>Price <em>increases</em> when the promo ends</div>
+
+    <div class="free-line serif">Plus A Full Pre-Week &amp; 2 Bonuses <span class="big">FREE</span></div>
+
+    <div class="collage">
+      <div class="card c1"><img src="/assets/jill-before-after.jpg" alt="" /></div>
+      <div class="card c2"><img src="/assets/vicky-before-after.png" alt="" /></div>
+      <div class="card c3"><img src="/assets/anna-before-after.png" alt="" /></div>
+      <div class="card c4"><img src="/assets/barbara-before-after.png" alt="" /></div>
+      <div class="card c5"><img src="/assets/ruth-before-after.jpg" alt="" /></div>
+
+      <div class="guide gA">
+        <div class="g-top"><div class="kicker">Guide 01</div><div class="g-title">Meal <i>Guide</i></div></div>
+        <div class="g-img" style="background-image:url('/assets/members-recipe-03.jpg')"></div>
+      </div>
+      <div class="guide gB">
+        <div class="g-top"><div class="kicker">Guide 02</div><div class="g-title">Snacks &amp; <i>Swaps</i></div></div>
+        <div class="g-img" style="background-image:url('/assets/members-recipe-01.jpg')"></div>
+      </div>
+      <div class="guide gC">
+        <div class="g-top"><div class="kicker">Guide 03</div><div class="g-title">The <i>Workbook</i></div></div>
+        <div class="g-img" style="background-image:url('/assets/members-recipe-05.jpg')"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-bar">Starts <span class="light">Monday 31st August</span></div>
+
+</div>
+
+</body>
+</html>
