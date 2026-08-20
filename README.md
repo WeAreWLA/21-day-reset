@@ -291,6 +291,18 @@ or Members' Area screens, since those belong to the upsell — and the scarcity 
 "ONLY 100 PLACES" rather than a places-left count, which should only appear once the
 figure is true.
 
+### Last-chance ad
+
+`bday-promo/ad-square/index.html` is the birthday version of the existing
+`summer-challenge-ad/last-chance-square` ad, so both campaigns share one layout: beige
+banner, title, urgency lines, fanned before/after collage, navy footer. Only the copy and
+the foreground cards differ. Exports are `assets/bday-promo-ad.png` (1080) and
+`assets/bday-promo-ad@2x.png` (2160).
+
+The summer ad puts a laptop and phone showing the app in the foreground. Those are
+replaced here with three guide covers, because the app is part of the upsell rather than
+the £7 reset.
+
 ### Recipe photos
 
 The WLA Members' Area block showcases five recipe photos. Drop these files into `/assets/`:
