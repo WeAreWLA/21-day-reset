@@ -1,0 +1,123 @@
+<!--
+  Birthday promo graphic, 1080x1080, for Instagram/Facebook/email.
+
+  Exports live at assets/bday-promo-square.png (1080) and
+  assets/bday-promo-square@2x.png (2160).
+
+  To regenerate after an edit, serve the repo root and screenshot the .card
+  element at deviceScaleFactor 2, e.g.:
+
+    python3 -m http.server 8899
+    # then in Playwright: goto http://127.0.0.1:8899/bday-promo/promo-graphic.html
+    #                     page.locator('.card').screenshot(...)
+
+  Image paths are absolute (/assets/...), so it must be served from the repo
+  root rather than opened as a file. Fonts come from Google Fonts, so the
+  render needs network access or the serif falls back and the layout shifts.
+-->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#003060; --navy-d:#00203f; --coral:#E87F63; --coral-s:#F79F83;
+         --peach:#F5D9CE; --cream:#FBF3ED; --paper:#FFFFFF; --ink:#333; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1080px;height:1080px;overflow:hidden;font-family:"Alegreya Sans",sans-serif;background:var(--cream)}
+  .card{position:relative;width:1080px;height:1080px;display:flex;flex-direction:column;background:var(--cream);overflow:hidden}
+
+  .topbar{background:var(--coral);color:#fff;text-align:center;padding:20px 0 18px;
+    font-weight:800;letter-spacing:.16em;font-size:33px;display:flex;align-items:center;justify-content:center;gap:14px}
+
+  .body{flex:1;position:relative;padding:30px 40px 30px;display:flex;flex-direction:column;align-items:center;justify-content:space-between}
+  h1{font-family:"Libre Baskerville",serif;color:var(--navy);font-weight:700;font-size:74px;line-height:1.05;letter-spacing:-.01em}
+  h2{font-family:"Libre Baskerville",serif;color:var(--coral);font-style:italic;font-weight:400;font-size:88px;line-height:1.02;margin-top:2px;letter-spacing:-.015em}
+
+  .stage{position:relative;width:1010px;height:496px}
+
+  /* fanned guide covers */
+  .guide{position:absolute;width:196px;height:262px;background:var(--paper);border-radius:6px;
+    box-shadow:0 22px 44px -20px rgba(0,48,96,.45);overflow:hidden;display:flex;flex-direction:column}
+  .guide .g-top{padding:16px 15px 0;flex:1}
+  .guide .kicker{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--coral);text-transform:uppercase}
+  .guide .g-title{font-family:"Libre Baskerville",serif;color:var(--navy);font-weight:700;font-size:23px;line-height:1.15;margin-top:8px}
+  .guide .g-title i{color:var(--coral);font-weight:400}
+  .guide .g-img{height:112px;background-size:cover;background-position:center}
+
+  .g1{left:16px;top:104px;transform:rotate(-8deg);z-index:1}
+  .g2{left:186px;top:80px;transform:rotate(-3deg);z-index:3}
+  .g3{left:356px;top:104px;transform:rotate(4deg);z-index:2}
+
+  /* device card: full app screen, no cropping */
+  .device{position:absolute;right:10px;top:44px;width:296px;height:411px;background:var(--navy);
+    border-radius:24px;padding:10px;box-shadow:0 32px 58px -24px rgba(0,48,96,.55);z-index:5}
+  .device .screen{width:100%;height:100%;border-radius:16px;overflow:hidden;background:#fff}
+  .device .screen img{width:100%;height:100%;object-fit:contain;object-position:top center;display:block;background:#fff}
+  .device .cap{position:absolute;left:0;right:0;bottom:-34px;text-align:center;
+    font-weight:700;letter-spacing:.10em;font-size:15px;color:var(--navy);text-transform:uppercase;opacity:.75}
+
+  /* starburst */
+  .burst{position:absolute;left:452px;top:266px;width:226px;height:226px;z-index:7;
+    filter:drop-shadow(0 20px 30px rgba(0,48,96,.45))}
+  .burst .txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+  .burst .amt{font-family:"Libre Baskerville",serif;font-weight:700;font-size:76px;line-height:1;letter-spacing:-.02em}
+  .burst .amt sup{font-size:36px;vertical-align:top;position:relative;top:11px;margin-right:1px}
+  .burst .was{font-family:"Libre Baskerville",serif;font-style:italic;font-size:22px;color:var(--coral-s);text-decoration:line-through;margin-top:2px}
+  .burst .lab{font-weight:800;letter-spacing:.14em;font-size:15px;margin-top:6px}
+
+  .pill{margin:0 auto;background:var(--coral);color:#fff;border-radius:999px;
+    padding:19px 54px;font-weight:800;letter-spacing:.10em;font-size:31px;box-shadow:0 18px 34px -18px rgba(232,127,99,.75)}
+
+  .footer{background:var(--navy);color:#fff;text-align:center;padding:20px 0 22px}
+  .footer .starts{font-family:"Libre Baskerville",serif;font-size:36px}
+  .footer .starts i{color:var(--coral-s);font-style:italic}
+  .footer .brand{font-weight:800;letter-spacing:.14em;font-size:23px;margin-top:8px;color:#fff}
+  .footer .brand i{color:var(--coral-s);font-style:italic;font-family:"Libre Baskerville",serif;font-weight:400;letter-spacing:.04em}
+</style></head>
+<body>
+<div class="card">
+  <div class="topbar">🎂 ANNA'S BIRTHDAY PROMO</div>
+
+  <div class="body">
+    <h1>The 21 Day</h1>
+    <h2>Fat Loss Reset</h2>
+
+    <div class="stage">
+      <div class="guide g1">
+        <div class="g-top"><div class="kicker">Guide 01</div><div class="g-title">Meal <i>Guide</i></div></div>
+        <div class="g-img" style="background-image:url('/assets/members-recipe-03.jpg')"></div>
+      </div>
+      <div class="guide g2">
+        <div class="g-top"><div class="kicker">Guide 02</div><div class="g-title">Snacks &amp; <i>Swaps</i></div></div>
+        <div class="g-img" style="background-image:url('/assets/members-recipe-01.jpg')"></div>
+      </div>
+      <div class="guide g3">
+        <div class="g-top"><div class="kicker">Guide 03</div><div class="g-title">The <i>Workbook</i></div></div>
+        <div class="g-img" style="background-image:url('/assets/members-recipe-05.jpg')"></div>
+      </div>
+
+      <div class="device">
+        <div class="screen"><img src="/assets/app-03-meal-plan.jpg" alt=""></div>
+        <div class="cap">Plus the WLA app</div>
+      </div>
+
+      <div class="burst">
+        <svg viewBox="0 0 200 200" width="226" height="226"><polygon fill="#003060" points="100,4 114,28 141,17 147,45 176,46 171,74 197,88 178,109 197,130 171,144 176,172 147,173 141,201 114,190 100,214 86,190 59,201 53,173 24,172 29,144 3,130 22,109 3,88 29,74 24,46 53,45 59,17 86,28"/></svg>
+        <div class="txt">
+          <div class="amt"><sup>£</sup>7</div>
+          <div class="was">£97</div>
+          <div class="lab">JOIN TODAY</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pill">ONLY 100 PLACES</div>
+  </div>
+
+  <div class="footer">
+    <div class="starts">Starts <i>Monday 31st August</i></div>
+    <div class="brand">WEIGHT LOSS &amp; LIFESTYLE <i>ACADEMY</i></div>
+  </div>
+</div>
+</body></html>

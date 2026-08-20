@@ -276,6 +276,17 @@ re-checks every minute, so when the window closes it switches itself over withou
 redeploy: the countdown, the birthday-bonus banner, the "save £90" pill and the
 struck-through £97 all drop away.
 
+### Promo graphic
+
+`bday-promo/promo-graphic.html` is the source for the 1:1 campaign graphic (coral banner,
+title, fanned guide covers, device, starburst price, scarcity pill, navy footer). Exports
+are `assets/bday-promo-square.png` (1080) and `assets/bday-promo-square@2x.png` (2160).
+
+Regenerate by serving the repo root and screenshotting the `.card` element at
+`deviceScaleFactor: 2`. It pulls the guide-cover photos and the app screen from `/assets`,
+so it must be served rather than opened as a file. The scarcity pill currently reads
+"ONLY 100 PLACES" — swap it for a real places-left figure only once that figure is true.
+
 ### Recipe photos
 
 The WLA Members' Area block showcases five recipe photos. Drop these files into `/assets/`:
