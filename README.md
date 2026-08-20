@@ -278,9 +278,14 @@ struck-through £97 all drop away.
 
 ### Promo graphic
 
-`bday-promo/promo-graphic.html` is the source for the 1:1 campaign graphic (coral banner,
-title, fanned guide covers, device, starburst price, scarcity pill, navy footer). Exports
+`bday-promo/promo-graphic.html` is the source for the 1:1 campaign graphic. It mirrors the
+Sugar Cravings last-chance ad: coral banner, two-line title, three fanned PDF covers with
+a laptop and phone in front, starburst price, coral scarcity pill, navy footer. Exports
 are `assets/bday-promo-square.png` (1080) and `assets/bday-promo-square@2x.png` (2160).
+
+The laptop and phone screens are built in HTML rather than being screenshots, so they show
+the meal guide — something the £7 offer actually includes — rather than the app, which
+belongs to the upsell.
 
 Regenerate by serving the repo root and screenshotting the `.card` element at
 `deviceScaleFactor: 2`. It pulls the guide-cover photos from `/assets`, so it must be

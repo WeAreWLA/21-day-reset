@@ -1,19 +1,15 @@
 <!--
   Birthday promo graphic, 1080x1080, for Instagram/Facebook/email.
+  Structure mirrors the Sugar Cravings last-chance ad: coral banner, two-line
+  title, three fanned PDF covers with a laptop and phone in front, starburst
+  price, coral scarcity pill, navy footer.
 
-  Exports live at assets/bday-promo-square.png (1080) and
-  assets/bday-promo-square@2x.png (2160).
+  Exports: assets/bday-promo-square.png (1080) and @2x.png (2160).
 
-  To regenerate after an edit, serve the repo root and screenshot the .card
-  element at deviceScaleFactor 2, e.g.:
-
-    python3 -m http.server 8899
-    # then in Playwright: goto http://127.0.0.1:8899/bday-promo/promo-graphic.html
-    #                     page.locator('.card').screenshot(...)
-
-  Image paths are absolute (/assets/...), so it must be served from the repo
-  root rather than opened as a file. Fonts come from Google Fonts, so the
-  render needs network access or the serif falls back and the layout shifts.
+  Regenerate by serving the repo root and screenshotting the .card element at
+  deviceScaleFactor 2. Image paths are absolute (/assets/...), so it must be
+  served rather than opened as a file, and the render needs network access for
+  Google Fonts or the serif falls back and the layout shifts.
 -->
 <!doctype html>
 <html><head><meta charset="utf-8">
@@ -22,81 +18,96 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
   :root{ --navy:#003060; --navy-d:#00203f; --coral:#E87F63; --coral-s:#F79F83;
-         --peach:#F5D9CE; --cream:#FBF3ED; --paper:#FFFFFF; --ink:#333; }
+         --peach:#F5D9CE; --cream:#FBF3ED; --paper:#FFFFFF; --grey:#DEE3E8; }
   *{box-sizing:border-box;margin:0;padding:0}
   body{width:1080px;height:1080px;overflow:hidden;font-family:"Alegreya Sans",sans-serif;background:var(--cream)}
   .card{position:relative;width:1080px;height:1080px;display:flex;flex-direction:column;background:var(--cream);overflow:hidden}
 
-  .topbar{background:var(--coral);color:#fff;text-align:center;padding:20px 0 18px;
-    font-weight:800;letter-spacing:.16em;font-size:33px;display:flex;align-items:center;justify-content:center;gap:14px}
+  .topbar{background:var(--coral);color:#fff;text-align:center;padding:19px 0 17px;
+    font-weight:800;letter-spacing:.17em;font-size:34px;display:flex;align-items:center;justify-content:center;gap:14px}
 
-  .body{flex:1;position:relative;padding:30px 40px 30px;display:flex;flex-direction:column;align-items:center;justify-content:space-between}
-  h1{font-family:"Libre Baskerville",serif;color:var(--navy);font-weight:700;font-size:66px;line-height:1.04;letter-spacing:-.01em}
-  h2{font-family:"Libre Baskerville",serif;color:var(--coral);font-style:italic;font-weight:400;font-size:80px;line-height:1.02;margin-top:2px;letter-spacing:-.015em}
+  .body{flex:1;position:relative;padding:20px 34px 24px;display:flex;flex-direction:column;align-items:center}
+  h1{font-family:"Libre Baskerville",serif;color:var(--navy);font-weight:700;font-size:62px;line-height:1.04;letter-spacing:-.015em}
+  h2{font-family:"Libre Baskerville",serif;color:var(--coral);font-style:italic;font-weight:400;font-size:68px;line-height:1.02;margin-top:4px;letter-spacing:-.02em}
 
-  /* benefit row */
-  .benefits{display:flex;gap:34px;justify-content:center;align-items:center;margin-top:20px}
-  .benefit{display:flex;align-items:center;gap:11px;font-size:27px;color:var(--navy);font-weight:500}
-  .benefit b{font-weight:800}
-  .benefit .tick{width:30px;height:30px;border-radius:50%;background:var(--coral);flex:0 0 30px;
-    display:flex;align-items:center;justify-content:center}
-  .benefit .tick svg{width:16px;height:16px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .stage{position:relative;width:1012px;height:562px;margin-top:14px}
 
-  .plusline{margin-top:16px;font-family:"Libre Baskerville",serif;font-style:italic;font-size:27px;color:var(--coral)}
-  .plusline b{font-style:normal;font-weight:700;color:var(--navy)}
-
-  .stage{position:relative;width:1010px;height:452px}
-  .stage::before{content:'';position:absolute;left:34px;right:34px;top:104px;bottom:6px;
-    background:radial-gradient(ellipse at 42% 58%, rgba(245,217,206,.95) 0%, rgba(245,217,206,.55) 46%, rgba(245,217,206,0) 72%);
-    border-radius:50%;z-index:0}
-
-  /* fanned guide covers */
-  .guide{position:absolute;width:236px;height:314px;background:var(--paper);border-radius:7px;
-    box-shadow:0 24px 46px -20px rgba(0,48,96,.45);overflow:hidden;display:flex;flex-direction:column}
-  .guide .g-top{padding:18px 17px 0;flex:1}
-  .guide .kicker{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--coral);text-transform:uppercase}
-  .guide .g-title{font-family:"Libre Baskerville",serif;color:var(--navy);font-weight:700;font-size:25px;line-height:1.14;margin-top:9px}
+  /* three PDF covers, fanned across the top */
+  .guide{position:absolute;width:196px;height:232px;background:var(--paper);border-radius:5px;
+    box-shadow:0 18px 34px -16px rgba(0,48,96,.42);overflow:hidden;display:flex;flex-direction:column}
+  .guide .g-top{padding:15px 14px 0;flex:1}
+  .guide .kicker{font-size:10.5px;font-weight:800;letter-spacing:.13em;color:var(--coral);text-transform:uppercase}
+  .guide .g-title{font-family:"Libre Baskerville",serif;color:var(--navy);font-weight:700;font-size:21px;line-height:1.14;margin-top:7px}
   .guide .g-title i{color:var(--coral);font-weight:400}
-  .guide .g-img{height:158px;background-size:cover;background-position:center}
+  .guide .g-img{height:98px;background-size:cover;background-position:center}
+  .g1{left:186px;top:12px;transform:rotate(-5deg);z-index:2}
+  .g2{left:392px;top:0;z-index:3}
+  .g3{left:598px;top:12px;transform:rotate(5deg);z-index:2}
 
-  .g1{left:60px;top:126px;transform:rotate(-9deg);z-index:1}
-  .g2{left:300px;top:98px;transform:rotate(-3deg);z-index:3}
-  .g3{left:540px;top:126px;transform:rotate(6deg);z-index:2}
-  /* the burst sits over this card's right edge, so keep its title clear of it */
-  .g3 .g-top{padding-right:74px}
+  /* laptop */
+  .laptop{position:absolute;left:150px;top:212px;width:600px;z-index:6}
+  .laptop .lid{background:var(--navy);border-radius:16px;padding:13px 13px 15px;
+    box-shadow:0 28px 52px -20px rgba(0,48,96,.5)}
+  .laptop .screen{background:var(--paper);border-radius:7px;height:290px;display:flex;overflow:hidden}
+  .laptop .s-left{flex:1.05;padding:26px 22px;display:flex;flex-direction:column}
+  .laptop .tag{align-self:flex-start;background:var(--peach);color:var(--navy);border-radius:999px;
+    padding:6px 13px;font-size:11.5px;font-weight:800;letter-spacing:.10em;text-transform:uppercase}
+  .laptop .s-title{font-family:"Libre Baskerville",serif;color:var(--navy);font-weight:700;font-size:37px;line-height:1.12;margin-top:16px}
+  .laptop .s-title i{color:var(--coral);font-weight:400}
+  .laptop .s-sub{font-family:"Libre Baskerville",serif;font-style:italic;color:var(--navy);opacity:.72;font-size:17px;line-height:1.35;margin-top:12px}
+  .laptop .lines{margin-top:auto;display:flex;flex-direction:column;gap:9px}
+  .laptop .lines span{height:9px;border-radius:999px;background:var(--grey)}
+  .laptop .lines span:nth-child(1){width:88%}
+  .laptop .lines span:nth-child(2){width:70%}
+  .laptop .s-right{flex:1;background-size:cover;background-position:center}
+  .laptop .base{width:684px;height:15px;margin:0 auto;background:linear-gradient(180deg,#C9D2DA,#AEB9C4);
+    border-radius:0 0 12px 12px;position:relative;left:-42px}
+  .laptop .base::after{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);
+    width:104px;height:6px;background:#94A2B0;border-radius:0 0 8px 8px}
 
-  /* starburst price, top right, as on the reference */
-  .burst{position:absolute;right:-8px;top:26px;width:318px;height:318px;z-index:9;
-    filter:drop-shadow(0 22px 34px rgba(0,48,96,.5))}
+  /* phone, in front of the laptop */
+  .phone{position:absolute;left:648px;top:292px;width:168px;height:256px;background:var(--navy);
+    border-radius:26px;padding:9px;z-index:8;box-shadow:0 26px 46px -16px rgba(0,48,96,.55)}
+  .phone .p-screen{width:100%;height:100%;background:var(--paper);border-radius:19px;overflow:hidden;
+    display:flex;flex-direction:column}
+  .phone .p-head{padding:16px 13px 10px}
+  .phone .p-brand{font-family:"Libre Baskerville",serif;font-weight:700;color:var(--navy);font-size:15px}
+  .phone .p-sub{font-size:9.5px;color:#7A8794;line-height:1.3;margin-top:3px}
+  .phone .p-rule{height:3px;width:34px;background:var(--coral);border-radius:999px;margin:9px 0 0 13px}
+  .phone .p-chips{display:flex;gap:5px;padding:11px 13px 0}
+  .phone .p-chips b{font-size:8.5px;font-weight:700;padding:4px 8px;border-radius:999px;background:var(--peach);color:var(--navy)}
+  .phone .p-chips b.on{background:var(--navy);color:#fff}
+  .phone .p-img{margin:10px 13px 0;height:74px;border-radius:9px;background-size:cover;background-position:center}
+  .phone .p-rows{padding:9px 13px 0;display:flex;flex-direction:column;gap:6px}
+  .phone .p-rows span{height:7px;border-radius:999px;background:var(--grey)}
+  .phone .p-rows span:nth-child(2){width:76%}
+  .phone .p-rows span:nth-child(3){width:58%}
+
+  /* starburst */
+  .burst{position:absolute;right:-12px;top:-10px;width:284px;height:284px;z-index:10;
+    filter:drop-shadow(0 20px 32px rgba(0,48,96,.45))}
   .burst .txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
-  .burst .amt{font-family:"Libre Baskerville",serif;font-weight:700;font-size:120px;line-height:.92;letter-spacing:-.03em}
-  .burst .amt sup{font-size:54px;vertical-align:top;position:relative;top:18px;margin-right:2px}
-  .burst .was{font-family:"Libre Baskerville",serif;font-style:italic;font-size:30px;color:var(--coral-s);text-decoration:line-through;margin-top:4px}
-  .burst .lab{font-weight:800;letter-spacing:.16em;font-size:19px;margin-top:9px}
+  .burst .amt{font-family:"Libre Baskerville",serif;font-weight:700;font-size:110px;line-height:.92;letter-spacing:-.03em}
+  .burst .amt sup{font-size:50px;vertical-align:top;position:relative;top:16px;margin-right:2px}
+  .burst .lab{font-weight:800;letter-spacing:.16em;font-size:19px;margin-top:10px}
 
-  .pill{margin:0 auto;background:var(--coral);color:#fff;border-radius:999px;
-    padding:19px 54px;font-weight:800;letter-spacing:.10em;font-size:31px;box-shadow:0 18px 34px -18px rgba(232,127,99,.75)}
+  .pill{margin-top:auto;background:var(--coral);color:#fff;border-radius:999px;
+    padding:19px 56px;font-weight:800;letter-spacing:.10em;font-size:32px;
+    box-shadow:0 18px 34px -18px rgba(232,127,99,.8)}
 
-  .footer{background:var(--navy);color:#fff;text-align:center;padding:20px 0 22px}
-  .footer .starts{font-family:"Libre Baskerville",serif;font-size:36px}
+  .footer{background:var(--navy);color:#fff;text-align:center;padding:19px 0 21px}
+  .footer .starts{font-family:"Libre Baskerville",serif;font-size:37px}
   .footer .starts i{color:var(--coral-s);font-style:italic}
-  .footer .brand{font-weight:800;letter-spacing:.14em;font-size:23px;margin-top:8px;color:#fff}
+  .footer .brand{font-weight:800;letter-spacing:.14em;font-size:23px;margin-top:7px}
   .footer .brand i{color:var(--coral-s);font-style:italic;font-family:"Libre Baskerville",serif;font-weight:400;letter-spacing:.04em}
 </style></head>
 <body>
 <div class="card">
-  <div class="topbar">🎂 ANNA'S BIRTHDAY PROMO</div>
+  <div class="topbar">🎂 LAST CHANCE TO JOIN</div>
 
   <div class="body">
-    <h1>The 21 Day</h1>
-    <h2>Fat Loss Reset</h2>
-
-    <div class="benefits">
-      <div class="benefit"><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5"/></svg></span>Lose up to <b>1 stone</b></div>
-      <div class="benefit"><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5"/></svg></span>Curb <b>cravings</b></div>
-      <div class="benefit"><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5"/></svg></span>More <b>energy</b></div>
-    </div>
-    <div class="plusline">Plus a <b>free pre-week</b> and <b>2 birthday bonuses</b></div>
+    <h1>The 21 Day Reset</h1>
+    <h2>Birthday Promo</h2>
 
     <div class="stage">
       <div class="guide g1">
@@ -111,17 +122,45 @@
         <div class="g-top"><div class="kicker">Guide 03</div><div class="g-title">The <i>Workbook</i></div></div>
         <div class="g-img" style="background-image:url('/assets/members-recipe-05.jpg')"></div>
       </div>
+
+      <div class="laptop">
+        <div class="lid">
+          <div class="screen">
+            <div class="s-left">
+              <div class="tag">21 Day Fat Loss Reset</div>
+              <div class="s-title">Your <i>Week 1</i><br/>guide</div>
+              <div class="s-sub">Lose up to 1 stone, without the willpower.</div>
+              <div class="lines"><span></span><span></span></div>
+            </div>
+            <div class="s-right" style="background-image:url('/assets/members-recipe-02.jpg')"></div>
+          </div>
+        </div>
+        <div class="base"></div>
+      </div>
+
+      <div class="phone">
+        <div class="p-screen">
+          <div class="p-head">
+            <div class="p-brand">Your meal guide</div>
+            <div class="p-sub">Breakfasts, lunches and dinners, planned for you.</div>
+          </div>
+          <div class="p-rule"></div>
+          <div class="p-chips"><b class="on">Week 1</b><b>Week 2</b><b>Week 3</b></div>
+          <div class="p-img" style="background-image:url('/assets/members-recipe-04.jpg')"></div>
+          <div class="p-rows"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+
       <div class="burst">
-        <svg viewBox="0 0 200 200" width="318" height="318"><polygon fill="#003060" points="100,4 114,28 141,17 147,45 176,46 171,74 197,88 178,109 197,130 171,144 176,172 147,173 141,201 114,190 100,214 86,190 59,201 53,173 24,172 29,144 3,130 22,109 3,88 29,74 24,46 53,45 59,17 86,28"/></svg>
+        <svg viewBox="0 0 200 200" width="284" height="284"><polygon fill="#003060" points="100,4 114,28 141,17 147,45 176,46 171,74 197,88 178,109 197,130 171,144 176,172 147,173 141,201 114,190 100,214 86,190 59,201 53,173 24,172 29,144 3,130 22,109 3,88 29,74 24,46 53,45 59,17 86,28"/></svg>
         <div class="txt">
           <div class="amt"><sup>£</sup>7</div>
-          <div class="was">£97</div>
           <div class="lab">JOIN TODAY</div>
         </div>
       </div>
     </div>
 
-    <div class="pill">ONLY 100 PLACES</div>
+    <div class="pill">LESS THAN 50 PLACES LEFT</div>
   </div>
 
   <div class="footer">
