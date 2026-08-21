@@ -318,7 +318,7 @@ const PROGRAMME_RESULTS = [
 const HERO_KEY_FACTS = [
   { icon: '🎂', label: <>Discounted to <strong>£7</strong> <span style={{ color: 'var(--ink-muted)' }}>(normally £97)</span> for <strong>{window.OFFER_HOURS} hours only</strong></>, note: 'The price increases when the timer runs out' },
   { icon: '📅', label: <>Pre-week starts <strong>Monday 31st August</strong></>, note: 'A free extra week before Day 1, so 4 weeks of support in total' },
-  { icon: '🎟️', label: <><strong>100 spots</strong> available</>, note: 'Once they’re gone, they’re gone' },
+  { icon: '🎟️', label: <>Only <strong>{window.SPOTS_LEFT} spots left</strong> of {window.SPOTS_AVAILABLE}</>, note: 'Once they’re gone, they’re gone' },
 ];
 
 function App() {

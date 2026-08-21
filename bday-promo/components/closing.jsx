@@ -86,7 +86,7 @@ const CountdownSection = () => {
         }}>
           {[
             { k: `${window.OFFER_HOURS} hours`, v: 'then the price increases' },
-            { k: '100 spots', v: 'and no more after that' },
+            { k: `${window.SPOTS_LEFT} spots left`, v: `of ${window.SPOTS_AVAILABLE}, and no more after that` },
             { k: 'Mon 31 Aug', v: 'free pre-week starts' },
           ].map((f, i) => (
             <div key={i} style={{
@@ -199,7 +199,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             {isOpen
-              ? `It’s my birthday, so the whole 21 Day Reset is £7 for ${window.OFFER_HOURS} hours only, and only 100 spots are available. The free pre-week starts Monday 31st August, giving you 4 weeks of support in total. The price increases when the timer runs out.`
+              ? `It’s my birthday, so the whole 21 Day Reset is £7 for ${window.OFFER_HOURS} hours only, and only ${window.SPOTS_LEFT} spots are left. The free pre-week starts Monday 31st August, giving you 4 weeks of support in total. The price increases when the timer runs out.`
               : 'Join today for £7 and start the 21 Day Reset with us.'}
           </Body>
         </>
@@ -358,7 +358,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Why is it only £7?",
-    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset, nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for a few days only and there are just 100 spots, and the price increases when the timer runs out.",
+    a: "Because it's my birthday, and this is how I like to celebrate it. Every year I open the Reset up at a price that makes it a no-brainer, so that money is never the reason a woman puts herself last again. It's the full 21 Day Reset, nothing stripped out, nothing held back, plus instant access to the WLA Members' Area. It's £7 for a few days only and places are limited, and the price increases when the timer runs out.",
   },
   {
     q: "When does it start?",
@@ -470,7 +470,7 @@ const FinalCTA = () => (
         <br />You need something you can stick to.
       </SerifH>
       <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
-        21 days. £7, for {window.OFFER_HOURS} hours, for 100 women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
+        21 days. £7, for {window.OFFER_HOURS} hours, for {window.SPOTS_AVAILABLE} women. The whole Reset, led by a registered nutritionist who has walked 50,000 women through it. The price increases when the timer runs out.
       </Body>
       <PrimaryCTA location="final">Join the 21 Day Reset for £7</PrimaryCTA>
       <PayPalCTA location="final" style={{ maxWidth: 340, margin: '12px auto 0' }} />
