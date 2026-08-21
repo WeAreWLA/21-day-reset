@@ -260,12 +260,17 @@ All five values live in one block at the top of `bday-promo/components/sections.
 | `OFFER_HOURS` | *derived* | `OFFER_END − OFFER_START`, rounded to whole hours (88) |
 | `CAMPAIGN_START` | Mon 31 Aug 2026 | Pre-week start date shown in copy |
 | `SPOTS_AVAILABLE` | `100` | Total places |
-| `SPOTS_TAKEN` | `10` | Places gone — **update by hand as real sales come in** |
+| `SPOTS_TAKEN` | `60` | Places gone — **update by hand as real sales come in** |
 | `SPOTS_LEFT` | *derived* | `SPOTS_AVAILABLE − SPOTS_TAKEN` |
 
-⚠️ `SPOTS_TAKEN` drives the "X of 100 places left" bar above *What can change in 21 days*.
+⚠️ `SPOTS_TAKEN` is the single source for every places-left figure on the page: the
+progress bar above *What can change in 21 days*, the hero key facts, the countdown tile
+and the pricing intro all read `SPOTS_LEFT`. Change it in one place and they all follow.
+
 It must reflect real numbers: under the Digital Markets, Competition and Consumers Act
-2024 invented scarcity is an offence, so never inflate it.
+2024 invented scarcity is an offence, so never inflate it. The cart page and the promo
+graphic carry their own copies of the figure, since they render outside this codebase —
+update those too.
 
 **Never hard-code an hour count in copy.** Every "for N hours only" line reads
 `window.OFFER_HOURS`, so changing `OFFER_START` or `OFFER_END` updates the announcement
