@@ -114,7 +114,7 @@ const OFFER_HOURS = Math.round((OFFER_END - OFFER_START) / 3600000);
 //                     Digital Markets, Competition and Consumers Act 2024,
 //                     invented scarcity is an offence, so never inflate it.
 const SPOTS_AVAILABLE = 100;
-const SPOTS_TAKEN     = 60;
+const SPOTS_TAKEN     = 91;
 const SPOTS_LEFT      = Math.max(0, SPOTS_AVAILABLE - SPOTS_TAKEN);
 
 // Build the Thrivecart checkout URL, forwarding any UTM parameters

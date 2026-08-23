@@ -260,7 +260,7 @@ All five values live in one block at the top of `bday-promo/components/sections.
 | `OFFER_HOURS` | *derived* | `OFFER_END − OFFER_START`, rounded to whole hours (88) |
 | `CAMPAIGN_START` | Mon 31 Aug 2026 | Pre-week start date shown in copy |
 | `SPOTS_AVAILABLE` | `100` | Total places |
-| `SPOTS_TAKEN` | `60` | Places gone — **update by hand as real sales come in** |
+| `SPOTS_TAKEN` | `91` | Places gone — **update by hand as real sales come in** |
 | `SPOTS_LEFT` | *derived* | `SPOTS_AVAILABLE − SPOTS_TAKEN` |
 
 ⚠️ `SPOTS_TAKEN` is the single source for every places-left figure on the page: the
