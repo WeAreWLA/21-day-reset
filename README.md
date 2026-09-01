@@ -255,10 +255,10 @@ All five values live in one block at the top of `bday-promo/components/sections.
 | `PRICE` | `£7` | Offer price |
 | `PRICE_WAS` | `£97` | Struck-through regular price |
 | `PRICE_SAVING` | `£90` | "save £90" pill |
-| `OFFER_START` | Thu 20 Aug 2026 08:00 BST | Cart opens |
-| `OFFER_END` | Sun 23 Aug 2026 23:59 BST | Cart closes — countdown target + phase switch |
+| `OFFER_START` | Sat 29 Aug 2026 08:08 BST | Cart opened |
+| `OFFER_END` | Wed 2 Sep 2026 00:08 BST | Cart closes — countdown target + phase switch |
 | `OFFER_HOURS` | *derived* | `OFFER_END − OFFER_START`, rounded to whole hours (88) |
-| `CAMPAIGN_START` | Mon 31 Aug 2026 | Pre-week start date shown in copy |
+| `CAMPAIGN_START` | Mon 7 Sep 2026 | Pre-week start date shown in copy |
 | `SPOTS_AVAILABLE` | `100` | Total places |
 | `SPOTS_TAKEN` | `91` | Places gone — **update by hand as real sales come in** |
 | `SPOTS_LEFT` | *derived* | `SPOTS_AVAILABLE − SPOTS_TAKEN` |

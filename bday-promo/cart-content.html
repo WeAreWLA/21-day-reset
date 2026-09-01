@@ -7,8 +7,8 @@
   All CSS is scoped under .wla-cart so it won't clash with ThriveCart's stylesheet.
 
   ⚠️ The countdown reads WLA_OFFER_END at the bottom of this file. It must match
-  OFFER_END in /bday-promo/components/sections.jsx — currently Sun 23 Aug 2026
-  23:59 BST. Change both together or the cart and the sales page will disagree.
+  OFFER_END in /bday-promo/components/sections.jsx — currently Wed 2 Sep 2026
+  00:08 BST. Change both together or the cart and the sales page will disagree.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -154,14 +154,14 @@
         <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>Increase your <strong>energy &amp; confidence</strong></span></div>
       </div>
 
-      <p class="lede" style="margin-top: 18px;"><strong>Free pre-week starts Monday 31st August</strong>, so it's 4 weeks of support in total.</p>
+      <p class="lede" style="margin-top: 18px;"><strong>Free pre-week starts Monday 7th September</strong>, so it's 4 weeks of support in total.</p>
     </div>
 
     <!-- ORDER SUMMARY -->
     <div class="order-card">
       <div class="order-head">
         <div class="title">The 21 Day Fat Loss Reset</div>
-        <div class="meta">Pre-week: Mon 31 Aug</div>
+        <div class="meta">Pre-week: Mon 7 Sep</div>
       </div>
 
       <ul class="items">
@@ -256,7 +256,7 @@
 <script>
 (function(){
   /* Countdown. Must match OFFER_END in /bday-promo/components/sections.jsx. */
-  var WLA_OFFER_END = new Date('2026-08-23T23:59:00+01:00').getTime();
+  var WLA_OFFER_END = new Date('2026-09-02T00:08:00+01:00').getTime();
 
   document.querySelectorAll('.wla-cart [data-wla-clock]').forEach(function(clock){
     var d = clock.querySelector('[data-d]'), h = clock.querySelector('[data-h]'),

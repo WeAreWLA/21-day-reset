@@ -178,7 +178,7 @@ const Hero = () => (
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <Tick /> 7-day money-back guarantee
           </div>
-          <div style={{ marginTop: 4, opacity: 0.75 }}>Regular price £97 · Starts Mon 31 Aug</div>
+          <div style={{ marginTop: 4, opacity: 0.75 }}>Regular price £97 · Starts Mon 7 Sep</div>
         </div>
       </div>
 

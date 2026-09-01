@@ -94,16 +94,16 @@ const PRICE_WAS      = '£97';  // regular price, shown struck through
 const PRICE_SAVING   = '£90';  // PRICE_WAS − PRICE
 
 // Timeline
-//   OFFER_START    — cart opens Thursday morning.
-//   OFFER_END      — cart closes Sunday night; the £7 price increases.
-//   CAMPAIGN_START — pre-week starts Monday 31st August 2026.
+//   OFFER_START    — cart opened Saturday morning.
+//   OFFER_END      — cart closes tonight; the £7 price increases.
+//   CAMPAIGN_START — pre-week starts Monday 7th September 2026.
 //
 // OFFER_HOURS is derived from the two, so every "for N hours only" line on the
 // page states the true length of the window. Change OFFER_START and the whole
 // page follows — never hard-code an hour count anywhere else.
-const OFFER_START    = new Date('2026-08-20T08:00:00+01:00').getTime();
-const OFFER_END      = new Date('2026-08-23T23:59:00+01:00').getTime();
-const CAMPAIGN_START = new Date('2026-08-31T00:00:00+01:00').getTime();
+const OFFER_START    = new Date('2026-08-29T08:08:00+01:00').getTime();
+const OFFER_END      = new Date('2026-09-02T00:08:00+01:00').getTime();
+const CAMPAIGN_START = new Date('2026-09-07T00:00:00+01:00').getTime();
 
 const OFFER_HOURS = Math.round((OFFER_END - OFFER_START) / 3600000);
 
