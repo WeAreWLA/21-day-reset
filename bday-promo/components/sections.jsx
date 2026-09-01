@@ -96,7 +96,7 @@ const PRICE_SAVING   = '£90';  // PRICE_WAS − PRICE
 // Timeline
 //   OFFER_START    — cart opened Saturday morning.
 //   OFFER_END      — cart closes tonight; the £7 price increases.
-//   CAMPAIGN_START — pre-week starts Monday 7th September 2026.
+//   CAMPAIGN_START — kick-off, Monday 7th September 2026.
 //
 // OFFER_HOURS is derived from the two, so every "for N hours only" line on the
 // page states the true length of the window. Change OFFER_START and the whole
