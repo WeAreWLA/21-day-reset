@@ -317,7 +317,7 @@ const PROGRAMME_RESULTS = [
 // The three key facts under the hero headline.
 const HERO_KEY_FACTS = [
   { icon: '🎂', label: <>Discounted to <strong>£7</strong> <span style={{ color: 'var(--ink-muted)' }}>(normally £97)</span> for <strong>{window.OFFER_HOURS} hours only</strong></>, note: 'The price increases when the timer runs out' },
-  { icon: '📅', label: <>Pre-week starts <strong>Monday 7th September</strong></>, note: 'A free extra week before Day 1, so 4 weeks of support in total' },
+  { icon: '📅', label: <>Kick-off on <strong>Monday 7th September</strong></>, note: null },
   { icon: '🎟️', label: <>Only <strong>{window.SPOTS_LEFT} spots left</strong> of {window.SPOTS_AVAILABLE}</>, note: 'Once they’re gone, they’re gone' },
 ];
 
@@ -506,7 +506,7 @@ function TweakableHero({ headline, phase = 'open' }) {
               <span style={{ fontSize: 17, lineHeight: 1.4, flexShrink: 0 }}>{f.icon}</span>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 17, color: 'var(--ink)', lineHeight: 1.35 }}>{f.label}</div>
-                <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 13, color: 'var(--ink-muted)', marginTop: 1 }}>{f.note}</div>
+                {f.note && <div style={{ fontFamily: '"Alegreya Sans", sans-serif', fontSize: 13, color: 'var(--ink-muted)', marginTop: 1 }}>{f.note}</div>}
               </div>
             </div>
           ))}
