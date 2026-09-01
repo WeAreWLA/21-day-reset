@@ -258,7 +258,7 @@ All five values live in one block at the top of `bday-promo/components/sections.
 | `OFFER_START` | Sat 29 Aug 2026 08:08 BST | Cart opened |
 | `OFFER_END` | Wed 2 Sep 2026 00:08 BST | Cart closes — countdown target + phase switch |
 | `OFFER_HOURS` | *derived* | `OFFER_END − OFFER_START`, rounded to whole hours (88) |
-| `CAMPAIGN_START` | Mon 7 Sep 2026 | Pre-week start date shown in copy |
+| `CAMPAIGN_START` | Mon 7 Sep 2026 | Kick-off date shown in copy |
 | `SPOTS_AVAILABLE` | `100` | Total places |
 | `SPOTS_TAKEN` | `91` | Places gone — **update by hand as real sales come in** |
 | `SPOTS_LEFT` | *derived* | `SPOTS_AVAILABLE − SPOTS_TAKEN` |
@@ -337,7 +337,7 @@ if the photos are swapped.
 
 ### Page order
 
-1. Hero — title, promise line, key-facts panel (£7 / OFFER_HOURS, pre-week Mon 31 Aug, 100 spots)
+1. Hero — title, promise line, key-facts panel (£7 / OFFER_HOURS, kick-off Mon 7 Sep, spots left)
 2. **Real results from women just like you** — 12 before/after photos on navy (`ResultsGridSection`)
 3. Countdown — live timer to `OFFER_END`
 4. What changes in 21 days → Problem → Honest truth → Why this works → Method → What happens
@@ -357,7 +357,7 @@ child needs an explicit order there or an ordered one jumps the whole column.
 
 - Birthday framing throughout — announcement bar, hero, pricing eyebrow, final CTA.
 - £7 / £97 / save £90 in place of £17 / £97 / save £80.
-- Single countdown to Monday 31st August (the original had a two-stage pre-week/kickoff timeline).
+- Single countdown to the cart close (the original had a two-stage pre-week/kickoff timeline).
 - "Early-bird bonus" renamed to "Birthday bonus" (`BirthdayBonusSection`).
 - Extra FAQ: *"Why is it only £7?"*; the start-date FAQ answer points at 31st August.
 - Meta Pixel `1159782482636500` (matching the current campaign pages) rather than the older `410999599864541`.
