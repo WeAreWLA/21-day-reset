@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Birthday Promo · The 21 Day Fat Loss Reset for £7 · Weight Loss Academy</title>
-<meta name="description" content="Anna's Birthday Promo: the full 21 Day Fat Loss Reset for £7. Lose up to 1 stone, curb your cravings, increase your energy and confidence. Pre-week starts Monday 31st August." />
+<meta name="description" content="Anna's Birthday Promo: the full 21 Day Fat Loss Reset for £7. Lose up to 1 stone, curb your cravings, increase your energy and confidence. Pre-week starts Monday 7th September." />
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -317,7 +317,7 @@ const PROGRAMME_RESULTS = [
 // The three key facts under the hero headline.
 const HERO_KEY_FACTS = [
   { icon: '🎂', label: <>Discounted to <strong>£7</strong> <span style={{ color: 'var(--ink-muted)' }}>(normally £97)</span> for <strong>{window.OFFER_HOURS} hours only</strong></>, note: 'The price increases when the timer runs out' },
-  { icon: '📅', label: <>Pre-week starts <strong>Monday 31st August</strong></>, note: 'A free extra week before Day 1, so 4 weeks of support in total' },
+  { icon: '📅', label: <>Pre-week starts <strong>Monday 7th September</strong></>, note: 'A free extra week before Day 1, so 4 weeks of support in total' },
   { icon: '🎟️', label: <>Only <strong>{window.SPOTS_LEFT} spots left</strong> of {window.SPOTS_AVAILABLE}</>, note: 'Once they’re gone, they’re gone' },
 ];
 
@@ -328,7 +328,7 @@ function App() {
   const [phase, setPhase] = React.useState(() => (window.getCampaignPhase ? window.getCampaignPhase() : 'open'));
 
   // Re-check the campaign phase every minute so the page flips from the
-  // birthday offer to the started state across 31 Aug midnight without a refresh.
+  // birthday promo to the started state when the timer runs out, without a refresh.
   React.useEffect(() => {
     if (!window.getCampaignPhase) return;
     const id = setInterval(() => {

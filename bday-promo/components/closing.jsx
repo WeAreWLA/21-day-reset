@@ -87,7 +87,7 @@ const CountdownSection = () => {
           {[
             { k: `${window.OFFER_HOURS} hours`, v: 'then the price increases' },
             { k: `${window.SPOTS_LEFT} spots left`, v: `of ${window.SPOTS_AVAILABLE}, and no more after that` },
-            { k: 'Mon 31 Aug', v: 'free pre-week starts' },
+            { k: 'Mon 7 Sep', v: 'free pre-week starts' },
           ].map((f, i) => (
             <div key={i} style={{
               background: 'rgba(253, 251, 248, 0.65)',
@@ -199,7 +199,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
             {isOpen
-              ? `It’s my birthday, so the whole 21 Day Reset is £7 for ${window.OFFER_HOURS} hours only, and only ${window.SPOTS_LEFT} spots are left. The free pre-week starts Monday 31st August, giving you 4 weeks of support in total. The price increases when the timer runs out.`
+              ? `It’s my birthday, so the whole 21 Day Reset is £7 for ${window.OFFER_HOURS} hours only, and only ${window.SPOTS_LEFT} spots are left. The free pre-week starts Monday 7th September, giving you 4 weeks of support in total. The price increases when the timer runs out.`
               : 'Join today for £7 and start the 21 Day Reset with us.'}
           </Body>
         </>
@@ -293,7 +293,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           {[
             { icon: '🔒', k: 'Secure checkout', v: 'Card or PayPal' },
             { icon: '↩️', k: '7-day guarantee', v: 'Full refund' },
-            { icon: '📅', k: 'Free pre-week', v: 'Mon 31 Aug' },
+            { icon: '📅', k: 'Free pre-week', v: 'Mon 7 Sep' },
           ].map((t, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 15, lineHeight: 1.2, marginBottom: 5 }}>{t.icon}</div>
@@ -362,7 +362,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "When does it start?",
-    a: "Pre-week starts Monday 31st August, and it's included free. That's a whole extra week before the 21 days begin, so you can get set up, ask questions and build a bit of momentum rather than scrambling on Day 1. It works out at 4 weeks of support in total. You'll get your materials, plus instant access to the WLA Members' Area, as soon as you join.",
+    a: "Pre-week starts Monday 7th September, and it's included free. That's a whole extra week before the 21 days begin, so you can get set up, ask questions and build a bit of momentum rather than scrambling on Day 1. It works out at 4 weeks of support in total. You'll get your materials, plus instant access to the WLA Members' Area, as soon as you join.",
   },
   {
     q: "Will my grocery bill go up?",
@@ -482,7 +482,7 @@ const FinalCTA = () => (
         fontSize: 13,
         color: 'var(--ink-muted)',
       }}>
-        Free pre-week starts Monday 31st August
+        Free pre-week starts Monday 7th September
       </div>
     </div>
   </section>
