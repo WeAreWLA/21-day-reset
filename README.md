@@ -369,3 +369,47 @@ child needs an explicit order there or an ordered one jumps the whole column.
 success tick, "you're in" tag, start-date card, welcome-email preview, and the two next
 steps (whitelist the email, join the private Facebook group `446785765084694`). It fires
 a Meta `Purchase` event with `value: 7, currency: GBP`, and is `noindex`.
+
+---
+
+## WLA App — `/wla-app`
+
+**Live:** https://join.wearewla.com/wla-app
+**Thank you page:** https://join.wearewla.com/wla-app/ty
+
+Scaffolded from `/bday-promo`, so it carries the same design system and its own private
+copy of the components. **Every piece of copy is a placeholder pending final text** — the
+page is structurally complete and renders, but nothing on it is ready to publish.
+
+```
+wla-app/
+├── index.html                  # Page entry — HEADLINES, App shell, responsive CSS, analytics
+├── components/
+│   ├── sections.jsx            # ⭐ CAMPAIGN CONFIG — all values are TODO placeholders
+│   ├── hero.jsx                # AnnouncementBar with live countdown
+│   ├── app.jsx                 # AppGallerySection — the four real app screenshots
+│   ├── method.jsx              # present but not rendered; Reset-specific
+│   ├── content.jsx             # Included grid, testimonials, About, results wall
+│   └── closing.jsx             # Countdown, spots bar, Pricing, FAQ, FinalCTA, Sticky, exit intent
+└── ty/
+    └── index.html              # Thank-you page (static HTML, no React)
+```
+
+### Still to do before this can go live
+
+Everything marked `⚠️ TODO` or `Placeholder`:
+
+- `CHECKOUT_BASE_URL`, `PAYPAL_URL`, `PRICE`, `PRICE_WAS`, `PRICE_SAVING`
+- `OFFER_START`, `OFFER_END`, `CAMPAIGN_START`, `SPOTS_AVAILABLE`, `SPOTS_TAKEN`
+- Hero headline variants, programme results, key facts
+- App gallery heading and the four captions
+- Included grid (8 features), pricing copy, FAQ, final CTA, exit-intent modal
+- Thank-you page copy and the Purchase pixel's `content_name` / `value`
+
+### Differences from `/bday-promo`
+
+- Adds `AppGallerySection`, showing the four real app screenshots in 4:5 frames
+- Drops the Reset-specific sections from the render order: what-changes, problem,
+  honest-truth, why-this-works, method, what-happens, transform. The components are
+  still in the folder if any are wanted back.
+- Drops the two birthday bonus blocks. `BonusCard` remains as the shell to build on.
