@@ -26,6 +26,8 @@ const CountdownSection = () => {
     return () => clearInterval(id);
   }, [phase]);
 
+  // No confirmed closing date yet, so no countdown. See OFFER_END_CONFIRMED.
+  if (!window.OFFER_END_CONFIRMED) return null;
   if (phase !== 'open' || !tick) return null;
 
   return (
@@ -36,7 +38,7 @@ const CountdownSection = () => {
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <SerifH size={46} className="countdown-heading" style={{ marginBottom: 26, lineHeight: 1.2 }}>
-          Placeholder: <Italic>offer closes</Italic> in
+          Founding Member pricing <Italic>closes in</Italic>
         </SerifH>
         <div className="countdown-grid" style={{
           display: 'grid',
@@ -85,9 +87,9 @@ const CountdownSection = () => {
           margin: '0 auto',
         }}>
           {[
-            { k: `${window.OFFER_HOURS} hours`, v: 'then the price increases' },
-            { k: `${window.SPOTS_LEFT} spots left`, v: `of ${window.SPOTS_AVAILABLE}, and no more after that` },
-            { k: 'Placeholder', v: 'kick-off' },
+            { k: `${window.SPOTS_LEFT} places left`, v: `of ${window.SPOTS_AVAILABLE} in this first round` },
+            { k: 'Mon 19 Oct', v: 'the 8 Week Challenge kicks off' },
+            { k: `${window.PRICE} locked in`, v: `every year you renew, instead of ${window.PRICE_WAS}` },
           ].map((f, i) => (
             <div key={i} style={{
               background: 'rgba(253, 251, 248, 0.65)',
@@ -148,58 +150,70 @@ const SpotsRemainingSection = () => {
           }}>
             <Italic>{left}</Italic> of {total} places left
           </div>
-          <div style={{
-            fontFamily: '"Alegreya Sans", sans-serif',
-            fontSize: 14,
-            color: 'var(--blush-deep)',
-            fontWeight: 600,
-            letterSpacing: '0.02em',
-          }}>
-            {taken} already taken
-          </div>
+          {taken > 0 && (
+            <div style={{
+              fontFamily: '"Alegreya Sans", sans-serif',
+              fontSize: 14,
+              color: 'var(--blush-deep)',
+              fontWeight: 600,
+              letterSpacing: '0.02em',
+            }}>
+              {taken} already taken
+            </div>
+          )}
         </div>
 
         <div style={{
-          height: 12,
-          borderRadius: 999,
-          background: 'var(--cream-deep)',
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            width: pct + '%',
-            height: '100%',
+            height: 12,
             borderRadius: 999,
-            background: 'linear-gradient(90deg, var(--terracotta) 0%, var(--blush-deep) 100%)',
-          }} />
-        </div>
+            background: 'var(--cream-deep)',
+            overflow: 'hidden',
+          }}>
+            <div style={{
+              width: pct + '%',
+              height: '100%',
+              borderRadius: 999,
+              background: 'linear-gradient(90deg, var(--terracotta) 0%, var(--blush-deep) 100%)',
+            }} />
+          </div>
 
         <Body size={14} style={{ marginTop: 12 }}>
-          Placeholder scarcity line.
+          This first Founding Member round is capped at {total} places. Once they are gone, the app opens to
+          everyone at {window.PRICE_WAS} a year.
         </Body>
       </div>
     </section>
   );
 };
 
+const PRICING_INCLUDES = [
+  '12 months of WLA app access',
+  'FREE 8 Week Fat Loss Challenge, starting Monday 19th October (worth £197)',
+  'FREE January Reset and the first Challenge of 2027 (worth £297 combined)',
+  'Your £97 annual rate locked in for as long as you remain a member',
+  'Founding Member status, early access to new features and feedback rounds',
+  '7-day money-back guarantee',
+];
+
 const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading = null, phase: phaseProp }) => {
   const phase = phaseProp || (typeof window !== 'undefined' && window.getCampaignPhase ? window.getCampaignPhase() : 'open');
   const isOpen = phase === 'open';
   return (
   <section id={sectionId} className={bridgeHeading ? 'pricing-bridge' : ''} style={{
-    padding: bridgeHeading ? '48px 32px 120px' : '120px 32px',
+    padding: bridgeHeading ? '48px 32px 120px' : '110px 32px',
     background: 'var(--cream-deep)',
   }}>
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
       {showHeading && (
         <>
-          <Eyebrow>Placeholder eyebrow</Eyebrow>
-          <SerifH size={62} style={{ marginTop: 20, marginBottom: 16 }}>
-            Placeholder.<br /><Italic>Pricing heading.</Italic><br />Everything included.
+          <Eyebrow>Founding Member launch</Eyebrow>
+          <SerifH size={58} style={{ marginTop: 20, marginBottom: 16 }}>
+            Secure your<br /><Italic>Founding Member place</Italic>
           </SerifH>
-          <Body size={18} style={{ maxWidth: 560, margin: '0 auto 48px' }}>
+          <Body size={18} style={{ maxWidth: 580, margin: '0 auto 48px' }}>
             {isOpen
-              ? `Placeholder pricing intro. ${window.OFFER_HOURS} hours, ${window.SPOTS_LEFT} spots left.`
-              : 'Placeholder pricing intro, offer closed.'}
+              ? <>Only {window.SPOTS_AVAILABLE} places in this first round. You get first access before doors open to everyone next week.</>
+              : <>Founding Member pricing has closed. The WLA App is now {window.PRICE_WAS} for 12 months.</>}
           </Body>
         </>
       )}
@@ -231,13 +245,14 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           fontStyle: 'italic',
           fontWeight: 400,
           letterSpacing: '0.04em',
-        }}>Placeholder · save {window.PRICE_SAVING}</div>}
+          whiteSpace: 'nowrap',
+        }}>Founding Member rate · save {window.PRICE_SAVING} a year</div>}
 
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 14, marginBottom: 10 }}>
           <div style={{
             fontFamily: '"Libre Baskerville", serif',
             fontWeight: 700,
-              fontSize: 100,
+            fontSize: 100,
             color: 'var(--ink)',
             lineHeight: 1,
           }}>{window.PRICE}</div>
@@ -249,19 +264,13 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             textDecoration: 'line-through',
           }}>{window.PRICE_WAS}</div>}
         </div>
-        <PriceAnchor style={{ marginBottom: 6 }} />
-        <Body size={15} style={{ marginBottom: 32 }}>
-          One-time payment · full access
+        <Body size={15} style={{ marginBottom: 4 }}>
+          for 12 months{isOpen ? <> · regular price {window.PRICE_WAS} a year</> : null}
         </Body>
+        <PriceAnchor style={{ marginBottom: 32 }} />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, textAlign: 'left', maxWidth: 460, margin: '0 auto 36px' }}>
-          {[
-            'Placeholder feature one',
-            'Placeholder feature two',
-            'Placeholder feature three',
-            'Placeholder feature four',
-            '7-day money-back guarantee',
-          ].filter(Boolean).map((f, i) => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, textAlign: 'left', maxWidth: 480, margin: '0 auto 32px' }}>
+          {PRICING_INCLUDES.map((f, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
               <Tick />
               <Body size={16}>{f}</Body>
@@ -269,28 +278,42 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           ))}
         </div>
 
-        <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 460 }}>
-          Placeholder CTA
+        <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 480 }}>
+          Claim My Founding Member Place
         </PrimaryCTA>
+        <GuaranteeNote style={{ maxWidth: 480, margin: '12px auto 0' }} />
 
-        <PayPalCTA location="pricing" style={{ maxWidth: 460, margin: '10px auto 0' }} />
+        <Body size={14} muted style={{ maxWidth: 480, margin: '14px auto 0' }}>
+          Full WLA app access and all Founding Member bonuses included. If you choose to renew, your price
+          stays {window.PRICE} for another year.
+        </Body>
 
-        <GuaranteeNote style={{ maxWidth: 460, margin: '12px auto 0' }} />
+        {isOpen && (
+          <div style={{
+            marginTop: 18,
+            fontFamily: '"Libre Baskerville", serif',
+            fontWeight: 700,
+            fontSize: 17,
+            color: 'var(--blush-deep)',
+          }}>
+            {window.SPOTS_LEFT} of {window.SPOTS_AVAILABLE} places remaining
+          </div>
+        )}
 
         <div className="pricing-trust-row" style={{
           marginTop: 26,
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: 10,
-          maxWidth: 460,
+          maxWidth: 480,
           margin: '26px auto 0',
           borderTop: '1px solid var(--hairline)',
           paddingTop: 18,
         }}>
           {[
-            { icon: '🔒', k: 'Secure checkout', v: 'Card or PayPal' },
+            { icon: '🔒', k: 'Secure checkout', v: 'One payment' },
             { icon: '↩️', k: '7-day guarantee', v: 'Full refund' },
-            { icon: '📅', k: 'Kick-off', v: 'Placeholder' },
+            { icon: '📅', k: 'Challenge starts', v: 'Mon 19 Oct' },
           ].map((t, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 15, lineHeight: 1.2, marginBottom: 5 }}>{t.icon}</div>
@@ -320,7 +343,8 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
       }}>
         <SerifH size={22} className="callout-title" style={{ marginBottom: 8 }}>Our 7-day money-back guarantee</SerifH>
         <Body size={15} muted>
-          Join, open the materials, show up to the first live call. If within 7 days you don't feel this is for you, just email us. Full refund, no questions, no hoops.
+          Join, open the app, have a proper look around. If within 7 days you don&rsquo;t feel this is for you,
+          just email us. Full refund, no questions, no hoops.
         </Body>
       </div>
     </div>
@@ -328,14 +352,23 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
   );
 };
 
-// ⚠️ PLACEHOLDER questions and answers — awaiting final copy.
 const FAQ_ITEMS = [
-  { q: 'Placeholder question one?', a: 'Placeholder answer one.' },
-  { q: 'Placeholder question two?', a: 'Placeholder answer two.' },
-  { q: 'Placeholder question three?', a: 'Placeholder answer three.' },
-  { q: 'Placeholder question four?', a: 'Placeholder answer four.' },
-  { q: 'When does it start?', a: 'Placeholder answer about the start date.' },
-  { q: 'What if it is not for me?', a: 'Placeholder answer about the guarantee.' },
+  { q: 'What does "locked in" mean?',
+    a: 'You pay £97 for your first year. If you want to renew after year one, you keep paying £97, even when the regular price is £297.' },
+  { q: 'When does the 8 Week Fat Loss Challenge start?',
+    a: 'We start together on Monday 19th October, so you have a full eight weeks to Christmas.' },
+  { q: 'Do I need to count calories?',
+    a: 'No. The WLA Formula is about carb balancing your meals and focusing on adequate amounts of protein, fibre and healthy fats.' },
+  { q: 'Can my family eat the same meals?',
+    a: 'Yes. WLA recipes are real, everyday food the whole family will enjoy.' },
+  { q: "What if I'm not very techy?",
+    a: 'The app is simple to use, and my team and I are here to help if you get stuck.' },
+  { q: 'Will this promo come back?',
+    a: 'No. Founding Member pricing, status and the free challenge are only available in this first round. Future members will pay £297 a year.' },
+  { q: "What if it's not for me?",
+    a: "You're covered by our 7-day money-back guarantee. Join, open the app and look around, and if it isn't for you, email us within 7 days for a full refund." },
+  { q: 'What happens when all 500 places are gone?',
+    a: 'Founding Member pricing closes for good and the app will open later at £297 a year.' },
 ];
 
 const FAQItem = ({ item, isOpen, onToggle }) => (
@@ -432,23 +465,23 @@ const FinalCTA = () => (
   }}>
     <div style={{ maxWidth: 860, margin: '0 auto' }}>
       <Divider style={{ marginBottom: 32 }} />
-      <SerifH size={76} style={{ marginBottom: 32 }}>
-        Placeholder closing line.<br /><Italic>Placeholder emphasis.</Italic>
+      <SerifH size={72} style={{ marginBottom: 32 }}>
+        Be one of the first 500.<br /><Italic>Start the challenge on 19th October.</Italic>
       </SerifH>
       <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
-        Placeholder closing paragraph.
+        You don’t need to have it all together to join. You just need to be ready to take the next step
+        with support.
       </Body>
-      <PrimaryCTA location="final">Placeholder CTA</PrimaryCTA>
-      <PayPalCTA location="final" style={{ maxWidth: 340, margin: '12px auto 0' }} />
-      <PriceAnchor style={{ marginTop: 16 }} />
+      <PrimaryCTA location="final">Become a Founding Member {window.PRICE}</PrimaryCTA>
       <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
+      <PriceAnchor style={{ marginTop: 16 }} />
       <div style={{
         marginTop: 8,
         fontFamily: '"Alegreya Sans", sans-serif',
         fontSize: 13,
         color: 'var(--ink-muted)',
       }}>
-        Placeholder start line
+        {window.SPOTS_LEFT} of {window.SPOTS_AVAILABLE} Founding Member places remaining
       </div>
     </div>
   </section>
@@ -483,13 +516,13 @@ const StickyCTA = ({ visible }) => (
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }}>
-      <span style={{ color: 'var(--peach)' }}>●</span> Placeholder · <strong>{window.PRICE}</strong>
-      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>{window.OFFER_HOURS} hrs only</span>
+      <span style={{ color: 'var(--peach)' }}>●</span> Founding Member · <strong>{window.PRICE}</strong>
+      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>for 12 months</span>
     </div>
     <a href={typeof window !== 'undefined' && window.getCheckoutUrl ? window.getCheckoutUrl() : '#'} target="_blank" rel="noopener" className="sticky-cta-button"
       onClick={(e) => {
         if (window.getCheckoutUrl) e.currentTarget.href = window.getCheckoutUrl();
-        if (window.trackCtaClick) window.trackCtaClick('sticky', 'Secure your place');
+        if (window.trackCtaClick) window.trackCtaClick('sticky', 'Claim my place');
       }}
       style={{
       background: 'var(--blush-deep)',
@@ -502,7 +535,7 @@ const StickyCTA = ({ visible }) => (
       textDecoration: 'none',
       whiteSpace: 'nowrap',
       flexShrink: 0,
-    }}>Secure your place →</a>
+    }}>Claim my place →</a>
   </div>
 );
 
@@ -535,6 +568,11 @@ const ExitIntentModal = () => {
 
   React.useEffect(() => {
     if (!open) return;
+    const onKeyOnly = (e) => { if (e.key === 'Escape') setOpen(false); };
+    if (!window.OFFER_END_CONFIRMED) {
+      document.addEventListener('keydown', onKeyOnly);
+      return () => document.removeEventListener('keydown', onKeyOnly);
+    }
     const compute = () => {
       const diff = Math.max(0, window.OFFER_END - Date.now());
       return {
@@ -551,7 +589,7 @@ const ExitIntentModal = () => {
     return () => { clearInterval(id); document.removeEventListener('keydown', onKey); };
   }, [open]);
 
-  if (!open || !tick) return null;
+  if (!open) return null;
 
   const Box = ({ n, l }) => (
     <div style={{
@@ -611,25 +649,28 @@ const ExitIntentModal = () => {
           }}
         >×</button>
 
-        <div style={{ fontSize: 34, marginBottom: 10 }}>🎂</div>
+        <div style={{ fontSize: 34, marginBottom: 10 }}>✨</div>
         <SerifH size={34} style={{ lineHeight: 1.2, marginBottom: 12 }}>
-          Before you go,<br /><Italic>placeholder line</Italic>
+          Before you go,<br /><Italic>the challenge is included free</Italic>
         </SerifH>
         <Body size={16} style={{ marginBottom: 22 }}>
-          Placeholder exit-intent paragraph.
+          Founding Members get the 8 Week Fat Loss Challenge, starting Monday 19th October, at no extra cost,
+          plus a full year of the app for {window.PRICE} instead of {window.PRICE_WAS}. This first round is
+          capped at {window.SPOTS_AVAILABLE} places.
         </Body>
 
-        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 24 }}>
-          <Box n={tick.d} l="days" />
-          <Box n={tick.h} l="hrs" />
-          <Box n={tick.m} l="min" />
-          <Box n={tick.s} l="sec" />
-        </div>
+        {tick && (
+          <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 24 }}>
+            <Box n={tick.d} l="days" />
+            <Box n={tick.h} l="hrs" />
+            <Box n={tick.m} l="min" />
+            <Box n={tick.s} l="sec" />
+          </div>
+        )}
 
         <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
-          Placeholder CTA
+          Claim My Founding Member Place
         </PrimaryCTA>
-        <PayPalCTA location="exit-intent" style={{ marginTop: 10 }} />
         <GuaranteeNote style={{ marginTop: 12 }} />
       </div>
     </div>
@@ -651,7 +692,7 @@ const Footer = () => (
               fontSize: 22,
       color: 'var(--paper)',
       marginBottom: 12,
-    }}>Weight Loss Academy</div>
+    }}>Weight Loss &amp; Lifestyle Academy</div>
     <div style={{ opacity: 0.7, marginBottom: 20 }}>
       © 2026 AW Nutrition Solutions Limited · All rights reserved
     </div>

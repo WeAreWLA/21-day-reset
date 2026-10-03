@@ -1,130 +1,6 @@
 // Included, testimonials, about — WLA App page (/wla-app)
 
-// Line icons for the "What's inside" grid. Single stroke weight, brand navy,
-// so they read as one set rather than clip-art.
-const IncludedIcon = ({ name }) => {
-  const paths = {
-    // fork + knife
-    plate: <><path d="M6 3v7a2.5 2.5 0 0 0 5 0V3M8.5 3v6M8.5 12.5V21" /><path d="M17.5 21V3c-1.8 1-2.8 3-2.8 5.5s1 3.5 2.8 3.5" /></>,
-    chat: <><path d="M20 14.5a2 2 0 0 1-2 2H8l-4 3.5v-14a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" /><path d="M8.5 9.5h7M8.5 12.5h4.5" /></>,
-    video: <><rect x="2.5" y="6" width="12.5" height="12" rx="2" /><path d="M15 11l6-3.5v9L15 13z" /></>,
-    // spiral notebook
-    book: <><rect x="5.5" y="3.5" width="14" height="17" rx="2" /><path d="M9.5 3.5v17" /><path d="M12.5 8.5h4M12.5 12h4M12.5 15.5h2.5" /></>,
-    swap: <><path d="M4 8.5h13l-3.5-3.5" /><path d="M20 15.5H7l3.5 3.5" /></>,
-    // water droplet
-    drink: <><path d="M12 3.2c3.4 4 5.5 6.6 5.5 9.3a5.5 5.5 0 0 1-11 0c0-2.7 2.1-5.3 5.5-9.3z" /><path d="M9.5 13.5a2.5 2.5 0 0 0 2.5 2.5" /></>,
-    snow: <><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" /><path d="M12 6.6l-2 -2M12 6.6l2 -2M12 17.4l-2 2M12 17.4l2 2" /></>,
-    list: <><path d="M9 6.5h11M9 12h11M9 17.5h11" /><path d="M3.8 6.3l1.2 1.2 2-2.4M3.8 11.8l1.2 1.2 2-2.4M3.8 17.3l1.2 1.2 2-2.4" /></>,
-  };
-  return (
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
-      stroke="var(--blush-deep)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-      aria-hidden="true" style={{ flexShrink: 0 }}>
-      {paths[name]}
-    </svg>
-  );
-};
-
-// ⚠️ PLACEHOLDER — awaiting final feature list.
-const INCLUDED = [
-  { title: 'Placeholder feature one',   icon: 'plate', body: 'Placeholder description.' },
-  { title: 'Placeholder feature two',   icon: 'chat',  body: 'Placeholder description.' },
-  { title: 'Placeholder feature three', icon: 'video', body: 'Placeholder description.' },
-  { title: 'Placeholder feature four',  icon: 'book',  body: 'Placeholder description.' },
-  { title: 'Placeholder feature five',  icon: 'swap',  body: 'Placeholder description.' },
-  { title: 'Placeholder feature six',   icon: 'drink', body: 'Placeholder description.' },
-  { title: 'Placeholder feature seven', icon: 'snow',  body: 'Placeholder description.' },
-  { title: 'Placeholder feature eight', icon: 'list',  body: 'Placeholder description.' },
-];
-
-const IncludedSection = () => (
-  <section id="included" className="included-section" style={{
-    padding: '40px 32px 40px',
-    background: 'var(--bg)',
-  }}>
-    <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80, alignItems: 'end', marginBottom: 56 }}>
-        <div>
-          <Eyebrow>What's inside</Eyebrow>
-          <SerifH size={58} style={{ marginTop: 20 }}>
-            Placeholder heading.<br /><Italic>Placeholder emphasis.</Italic>
-          </SerifH>
-        </div>
-      </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 1,
-        background: 'var(--hairline)',
-        border: '1px solid var(--hairline)',
-        borderRadius: 16,
-        overflow: 'hidden',
-      }}>
-        {INCLUDED.map((item, i) => (
-          <div key={i} style={{
-            background: 'var(--paper)',
-            padding: '32px 28px',
-            minHeight: 220,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 14,
-          }}>
-            {/* Icon sits beside the title, body aligns under the title. */}
-            <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-              <span style={{ flexShrink: 0, marginTop: 2 }}><IncludedIcon name={item.icon} /></span>
-              <SerifH size={21} className="card-title" style={{ lineHeight: 1.25 }}>{item.title}</SerifH>
-            </div>
-            <Body size={14} muted style={{ marginTop: 'auto' }}>{item.body}</Body>
-          </div>
-        ))}
-      </div>
-
-
-    </div>
-  </section>
-);
-
-// Shared shell so both bonuses read as a matched pair.
-const BonusCard = ({ number, label, title, lead, children }) => (
-  <div className="bonus-card" style={{
-    background: `linear-gradient(135deg, var(--peach) 0%, #F8C4B0 100%)`,
-    border: '2px dashed var(--blush-deep)',
-    borderRadius: 22,
-    padding: '46px 44px 40px',
-    position: 'relative',
-    boxShadow: '0 30px 60px -30px rgba(232, 127, 99, 0.35)',
-  }}>
-    <div style={{
-      position: 'absolute',
-      top: -16, left: '50%', transform: 'translateX(-50%)',
-      background: 'var(--blush-deep)', color: 'var(--paper)',
-      padding: '8px 22px', borderRadius: 999,
-      fontFamily: '"Alegreya Sans", sans-serif',
-      fontSize: 12, fontWeight: 600,
-      letterSpacing: '0.16em', textTransform: 'uppercase',
-      whiteSpace: 'nowrap',
-    }}>
-      🎂 Bonus {number} · {label}
-    </div>
-
-    <div style={{ textAlign: 'center', marginTop: 10, marginBottom: 28 }}>
-      <SerifH size={38} style={{ lineHeight: 1.2, marginBottom: lead ? 14 : 0 }}>
-        {title}
-      </SerifH>
-      {lead && (
-        <Body size={17} style={{ maxWidth: 640, margin: '0 auto' }}>{lead}</Body>
-      )}
-    </div>
-
-    {children}
-  </div>
-);
-
-// ⚠️ No bonus blocks on this page yet. BonusCard above is the shell to use
-// when the offer has them — see /bday-promo for a worked example.
-
-// Testimonials// Testimonials
+// Testimonials
 const TESTIMONIALS = [
   {
     quote: "I lost 12 pounds, sugar cravings vanished and my menopause symptoms significantly improved.",
@@ -333,7 +209,7 @@ const AboutSection = () => (
           overflow: 'hidden',
           background: '#F9F7F4',
         }}>
-          <img src="/assets/anna-portrait.jpg" alt="Anna Wareham" loading="lazy" decoding="async" style={{
+          <img src="/assets/anna-portrait.jpg" alt="Anna Wallace" loading="lazy" decoding="async" style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
           }} />
         </div>
@@ -371,21 +247,28 @@ const AboutSection = () => (
       <div>
         <Eyebrow>Meet your nutritionist</Eyebrow>
         <SerifH size={58} style={{ marginTop: 20, marginBottom: 24 }}>
-          I'm Anna and I've been the woman <Italic>starting over every Monday.</Italic>
+          Hi, <Italic>I’m Anna</Italic>
         </SerifH>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <Body size={18}>
-            I used to try a new diet every week. By evening I'd be bingeing and by Monday I'd be starting again. Exhausting. Shame-filled. Getting nowhere.
+            I’m the founder of The Weight Loss &amp; Lifestyle Academy, a Registered Associate Nutritionist (ANutr)
+            with a BSc in Food &amp; Nutrition and over 11 years’ experience.
           </Body>
           <Body size={18}>
-            So I went back to university. Four years. A degree in Food &amp; Nutrition. I became a Registered Associate Nutritionist and have spent over 10 years helping women get real, lasting results.
+            I’ve helped over 50,000 women around the world lose weight with satisfying food, practical habits and
+            support that fits real life, without counting calories.
           </Body>
           <Body size={18}>
-            Especially for women in midlife, where most advice simply misses the mark.
+            For years, my members have asked for one place to plan their meals, find recipes, track their habits and
+            get support. <strong>The WLA app brings it all together, making our Formula easier than ever to follow.</strong>
           </Body>
-          <Body size={18} style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', color: 'var(--blush-deep)', fontSize: 21 }}>
-            50,000 clients later, this is the simplest approach that actually gets results.
+          <Body size={18}>
+            I’ve built it with you in mind, and I’d love to welcome you as one of our Founding Members.
           </Body>
+          <div style={{
+            fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic',
+            fontSize: 24, color: 'var(--blush-deep)', marginTop: 4,
+          }}>Anna</div>
         </div>
       </div>
     </div>
@@ -489,4 +372,4 @@ const VideoTestimonialsSection = () => (
   </section>
 );
 
-Object.assign(window, { IncludedSection, BonusCard, TestimonialsSection, ResultsGridSection, AboutSection, VideoTestimonialsSection });
+Object.assign(window, { TestimonialsSection, ResultsGridSection, AboutSection, VideoTestimonialsSection });
