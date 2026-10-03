@@ -377,39 +377,52 @@ a Meta `Purchase` event with `value: 7, currency: GBP`, and is `noindex`.
 **Live:** https://join.wearewla.com/wla-app
 **Thank you page:** https://join.wearewla.com/wla-app/ty
 
-Scaffolded from `/bday-promo`, so it carries the same design system and its own private
-copy of the components. **Every piece of copy is a placeholder pending final text** — the
-page is structurally complete and renders, but nothing on it is ready to publish.
+The Founding Member launch of the WLA app. Scaffolded from `/bday-promo`, so it carries
+the same design system and its own private copy of the components. Copy comes from the
+Founding Members copy doc.
+
+The offer: **£97 for 12 months** (regular £297, so £200 saved on every renewal, £1.87 a
+week), capped at **500 Founding Member places**, with the **8 Week Fat Loss Challenge free
+from Monday 19th October**, the January Reset and the first Challenge of 2027 free, and the
+£97 annual rate locked in for as long as the member renews.
 
 ```
 wla-app/
-├── index.html                  # Page entry — HEADLINES, App shell, responsive CSS, analytics
+├── index.html                  # Page entry — HEADLINES, hero, App shell, responsive CSS, analytics
 ├── components/
-│   ├── sections.jsx            # ⭐ CAMPAIGN CONFIG — all values are TODO placeholders
-│   ├── hero.jsx                # AnnouncementBar with live countdown
-│   ├── app.jsx                 # AppGallerySection — the four real app screenshots
-│   ├── method.jsx              # present but not rendered; Reset-specific
-│   ├── content.jsx             # Included grid, testimonials, About, results wall
-│   └── closing.jsx             # Countdown, spots bar, Pricing, FAQ, FinalCTA, Sticky, exit intent
+│   ├── sections.jsx            # ⭐ CAMPAIGN CONFIG — price, dates, places, checkout URL
+│   ├── hero.jsx                # AnnouncementBar
+│   ├── app.jsx                 # Gallery, intro + pillars, challenge bonus, 12 features,
+│   │                           #   5 bonuses, why-join-now table, "for you if…"
+│   ├── content.jsx             # Results wall, testimonials, About Anna, video testimonials
+│   └── closing.jsx             # Countdown, places bar, Pricing, FAQ, FinalCTA, Sticky, exit intent
 └── ty/
     └── index.html              # Thank-you page (static HTML, no React)
 ```
 
 ### Still to do before this can go live
 
-Everything marked `⚠️ TODO` or `Placeholder`:
-
-- `CHECKOUT_BASE_URL`, `PAYPAL_URL`, `PRICE`, `PRICE_WAS`, `PRICE_SAVING`
-- `OFFER_START`, `OFFER_END`, `CAMPAIGN_START`, `SPOTS_AVAILABLE`, `SPOTS_TAKEN`
-- Hero headline variants, programme results, key facts
-- App gallery heading and the four captions
-- Included grid (8 features), pricing copy, FAQ, final CTA, exit-intent modal
-- Thank-you page copy and the Purchase pixel's `content_name` / `value`
+- **`CHECKOUT_BASE_URL`** in `wla-app/components/sections.jsx` is a guess
+  (`https://sales.thewlacademy.com/wla-app/`). Every card button on the page points at it,
+  so it must be replaced with the real ThriveCart URL.
+- **No countdown is shown.** `OFFER_END_CONFIRMED` is `false`, which suppresses the
+  announcement-bar timer, the whole countdown section and the timer inside the exit-intent
+  modal. Set a real `OFFER_END` and flip the flag to turn all three on at once. Until
+  then the bar carries the places message instead of a deadline.
+- **No guarantee and no PayPal button.** The Reset pages carry both; neither is confirmed
+  for this offer, so both were left out rather than promising terms nobody has agreed. See
+  the note in `sections.jsx` where they would go.
+- **`SPOTS_TAKEN` is 0.** While it is 0 the page says "500 Founding Member places" rather
+  than "500 of 500 remaining", and the progress bar is hidden. It must track real sales —
+  under the DMCC Act 2024 invented scarcity is an offence.
 
 ### Differences from `/bday-promo`
 
-- Adds `AppGallerySection`, showing the four real app screenshots in 4:5 frames
-- Drops the Reset-specific sections from the render order: what-changes, problem,
-  honest-truth, why-this-works, method, what-happens, transform. The components are
-  still in the folder if any are wanted back.
-- Drops the two birthday bonus blocks. `BonusCard` remains as the shell to build on.
+- `app.jsx` carries this page's own sections: the screenshot gallery, the three pillars,
+  the free-challenge bonus block, the 12-feature grid, the five Founding Member bonuses,
+  the founding-versus-regular comparison and "The WLA App is for you if…".
+- Drops the Reset-specific sections entirely: what-changes, problem, honest-truth,
+  why-this-works, method, what-happens, transform. `method.jsx` has been deleted; pull it
+  from git history if any of it is wanted back.
+- Hero carries a subheadline (`.hero-sub`). On mobile every hero child has an explicit
+  flex `order`; a new one without an order jumps to the top of the stack.

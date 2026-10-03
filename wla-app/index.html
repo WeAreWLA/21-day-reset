@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The WLA App · Weight Loss Academy</title>
-<meta name="description" content="PLACEHOLDER — meta description for the WLA App page, pending final copy." />
+<title>Become a WLA App Founding Member · Weight Loss &amp; Lifestyle Academy</title>
+<meta name="description" content="Join the WLA App as a Founding Member for £97 for 12 months and get my 8 Week Fat Loss Challenge free. Start on 19th October and lose up to a stone before Christmas, without counting calories." />
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -115,10 +115,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
        Every child needs an explicit order, or an ordered one jumps the lot. */
     .hero-left .hero-badge       { order: 1 !important; }
     .hero-left .hero-title       { order: 2 !important; }
-    .hero-left .programme-results{ order: 3 !important; }
-    .hero-left .hero-cta-block   { order: 4 !important; margin-bottom: 26px !important; }
-    .hero-left .hero-key-facts   { order: 5 !important; }
-    .hero-left .hero-stats       { order: 6 !important; }
+    .hero-left .hero-sub         { order: 3 !important; font-size: 17px !important; margin-bottom: 20px !important; }
+    .hero-left .programme-results{ order: 4 !important; }
+    .hero-left .hero-cta-block   { order: 5 !important; margin-bottom: 26px !important; }
+    .hero-left .hero-key-facts   { order: 6 !important; }
+    .hero-left .hero-stats       { order: 7 !important; }
     .hero-title { margin-bottom: 18px !important; }
     /* Card headings are h2s, so the blanket h1/h2 clamp above blows them up.
        Keep them clearly below the section heading. */
@@ -238,6 +239,13 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
       gap: 8px !important;
     }
     .hero-key-facts { max-width: 100% !important; }
+    /* The blanket 32px gap above is far too airy for these tight lists. */
+    section div.christmas-grid,
+    section div.pillars,
+    section div.features-grid,
+    section div.compare-grid { gap: 14px !important; }
+    section div.bonus-row { grid-template-columns: 52px 1fr !important; gap: 16px !important; padding: 22px 22px !important; }
+    section div.bonus-row > div:first-child { width: 52px !important; height: 52px !important; font-size: 20px !important; }
   }
   @media (max-width: 640px) {
     section.results-grid-section div[style*="grid-template-columns"] {
@@ -282,7 +290,6 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 
 <script type="text/babel" src="/wla-app/components/sections.jsx"></script>
 <script type="text/babel" src="/wla-app/components/hero.jsx"></script>
-<script type="text/babel" src="/wla-app/components/method.jsx"></script>
 <script type="text/babel" src="/wla-app/components/content.jsx"></script>
 <script type="text/babel" src="/wla-app/components/closing.jsx"></script>
 <script type="text/babel" src="/wla-app/components/app.jsx"></script>
@@ -296,33 +303,34 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 } /*EDITMODE-END*/;
 
 const HEADLINES = {
-  // ⚠️ PLACEHOLDER copy — awaiting final text.
   "default": {
-    eyebrow: "The WLA App",
-    title: <>Your whole plan,<br /><Italic>in one place.</Italic></>,
+    eyebrow: "Exclusive Founding Member invitation · Only 500 places",
+    title: <>Become a WLA App Founding Member.<br /><Italic>Get my 8 Week Fat Loss Challenge free.</Italic></>,
   },
   "alt-a": {
-    eyebrow: "The WLA App",
-    title: <>The <Italic>WLA App</Italic><br />is here.</>,
+    eyebrow: "Exclusive Founding Member invitation · Only 500 places",
+    title: <>Lose up to a stone<br /><Italic>before Christmas.</Italic></>,
   },
   "alt-b": {
-    eyebrow: "The WLA App",
-    title: <>Track it. Plan it.<br /><Italic>Stick to it.</Italic></>,
+    eyebrow: "Exclusive Founding Member invitation · Only 500 places",
+    title: <>The new WLA App is here.<br /><Italic>Be one of the first 500.</Italic></>,
   }
 };
 
-// ⚠️ PLACEHOLDER — the three headline outcomes.
+const SUBHEADLINE = <>Join for <strong>£97 for 12 months</strong>. Start the challenge on <strong>19th October</strong> and lose up to a stone before Christmas, without counting calories.</>;
+
+// The four things a Founding Member gets, straight under the headline.
 const PROGRAMME_RESULTS = [
-  <>Placeholder benefit <strong>one</strong></>,
-  <>Placeholder benefit <strong>two</strong></>,
-  <>Placeholder benefit <strong>three</strong></>,
+  <><strong>12 months</strong> of WLA app access</>,
+  <><strong>FREE 8 Week Fat Loss Challenge</strong> (worth £197)</>,
+  <><strong>FREE January Reset + first 2027 Challenge</strong> (worth £297 combined)</>,
+  <><strong>Your £97 annual price locked in</strong> for as long as you remain a member</>,
 ];
 
-// ⚠️ PLACEHOLDER — the key facts under the hero headline.
 const HERO_KEY_FACTS = [
-  { icon: '📱', label: <>Placeholder: what it costs</>, note: 'Placeholder supporting line' },
-  { icon: '📅', label: <>Placeholder: when it opens</>, note: null },
-  { icon: '✨', label: <>Placeholder: what is included</>, note: 'Placeholder supporting line' },
+  { icon: '💷', label: <><strong>£97 for 12 months</strong> <span style={{ color: 'var(--ink-muted)' }}>(regular price £297 a year)</span></>, note: 'One payment, just £1.87 a week' },
+  { icon: '📅', label: <>The 8 Week Fat Loss Challenge starts <strong>Monday 19th October</strong></>, note: null },
+  { icon: '🎟️', label: <>Only <strong>{window.SPOTS_AVAILABLE} Founding Member places</strong> in this first round</>, note: 'You get first access before doors open to everyone next week' },
 ];
 
 function App() {
@@ -386,19 +394,25 @@ function App() {
       <AnnouncementBar />
       {/* Tweakable hero wrapper */}
       <TweakableHero headline={headline} phase={phase} />
-      <AppGallerySection />
       <ResultsGridSection />
+      <AppIntroSection />
+      <AppGallerySection />
+      <ChallengeBonusSection />
+      <FeaturesSection />
+      <BonusesSection />
+      {/* Renders nothing until OFFER_END_CONFIRMED is set in sections.jsx. */}
       <CountdownSection />
       {phase === 'open' && <SpotsRemainingSection />}
-      <IncludedSection />
       <PricingSection sectionId="join-early" phase={phase} />
+      <WhyJoinNowSection />
+      <ForYouSection />
       <TestimonialsSection />
       <AboutSection />
       <PricingSection showHeading={false} phase={phase} bridgeHeading={
         <SerifH size={40} style={{ lineHeight: 1.3 }}>
           {phase === 'open'
-            ? <>Placeholder: <Italic>bridge heading</Italic></>
-            : <>Placeholder: <Italic>bridge heading</Italic></>}
+            ? <>Join the first 500 and start the challenge on <Italic>Monday 19th October.</Italic></>
+            : <>The WLA App is open to <Italic>everyone.</Italic></>}
         </SerifH>
       } />
       <VideoTestimonialsSection />
@@ -422,9 +436,9 @@ function App() {
           <select value={tweaks.headlineVariant}
         onChange={(e) => updateTweak('headlineVariant', e.target.value)}
         style={{ marginBottom: 14 }}>
-            <option value="default">"Your whole plan, in one place"</option>
-            <option value="alt-a">"The WLA App is here"</option>
-            <option value="alt-b">"Track it. Plan it. Stick to it."</option>
+            <option value="default">"Become a WLA App Founding Member"</option>
+            <option value="alt-a">"Lose up to a stone before Christmas"</option>
+            <option value="alt-b">"The new WLA App is here"</option>
           </select>
           <label style={{ display: 'flex', alignItems: 'center', gap: 8, textTransform: 'none', letterSpacing: 0, fontSize: 13, color: 'var(--ink)' }}>
             <input type="checkbox" checked={tweaks.showStickyCTA}
@@ -459,19 +473,27 @@ function TweakableHero({ headline, phase = 'open' }) {
           padding: '10px 22px',
           marginBottom: 20,
         }}>
-          <span style={{ fontSize: 24, lineHeight: 1 }}>🎂</span>
+          <span style={{ fontSize: 20, lineHeight: 1 }}>✨</span>
           <span style={{
             fontFamily: '"Libre Baskerville", serif',
             fontWeight: 700,
-            fontSize: 22,
+            fontSize: 15,
             letterSpacing: '0.01em',
             color: 'var(--ink)',
-            lineHeight: 1.2,
+            lineHeight: 1.3,
           }}>{headline.eyebrow}</span>
         </div>
-        <SerifH as="h1" className="hero-title" size={76} style={{ marginTop: 0, marginBottom: 24 }}>
+        <SerifH as="h1" className="hero-title" size={60} style={{ marginTop: 0, marginBottom: 18 }}>
           {headline.title}
         </SerifH>
+        <div className="hero-sub" style={{
+          fontFamily: '"Alegreya Sans", sans-serif',
+          fontSize: 20,
+          lineHeight: 1.5,
+          color: 'var(--body-ink)',
+          maxWidth: 560,
+          marginBottom: 26,
+        }}>{SUBHEADLINE}</div>
         <div className="programme-results" style={{
           display: 'flex', flexDirection: 'column', gap: 12,
           maxWidth: 560, marginBottom: 32,
@@ -481,8 +503,8 @@ function TweakableHero({ headline, phase = 'open' }) {
               <span style={{ flexShrink: 0, marginTop: 6 }}><Tick color="var(--blush-deep)" /></span>
               <div style={{
                 fontFamily: '"Alegreya Sans", sans-serif',
-                fontSize: 24,
-                lineHeight: 1.3,
+                fontSize: 19,
+                lineHeight: 1.35,
                 color: 'var(--ink)',
               }}>{r}</div>
             </div>
@@ -511,18 +533,25 @@ function TweakableHero({ headline, phase = 'open' }) {
         </div>
 
         <div className="hero-cta-block" style={{ marginBottom: 44 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 320 }}>
-            <PrimaryCTA location="hero" style={{ width: '100%' }}>Placeholder CTA</PrimaryCTA>
-            <PayPalCTA location="hero" />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 360 }}>
+            <PrimaryCTA location="hero" style={{ width: '100%' }}>Become a Founding Member {window.PRICE}</PrimaryCTA>
+            <div style={{
+              fontFamily: '"Alegreya Sans", sans-serif',
+              fontSize: 13.5,
+              lineHeight: 1.45,
+              color: 'var(--ink-muted)',
+            }}>
+              You get first access. Doors open to everyone next week, only {window.SPOTS_AVAILABLE} Founding
+              Member places available.
+            </div>
           </div>
-          <GuaranteeNote align="left" style={{ maxWidth: 480 }} />
         </div>
 
         <div className="hero-stats" style={{
           display: 'flex', gap: 48, paddingTop: 28, borderTop: '1px solid var(--hairline)'
         }}>
           <div><div style={{ fontFamily: '"Libre Baskerville", serif', fontSize: 32, lineHeight: 1 }}>50,000+</div><div style={{ fontSize: 12, color: 'var(--ink-muted)', letterSpacing: '0.04em', marginTop: 8 }}>WOMEN SUPPORTED</div></div>
-          <div><div style={{ fontFamily: '"Libre Baskerville", serif', fontSize: 32, lineHeight: 1 }}>10 yrs</div><div style={{ fontSize: 12, color: 'var(--ink-muted)', letterSpacing: '0.04em', marginTop: 8 }}>CLINICAL PRACTICE</div></div>
+          <div><div style={{ fontFamily: '"Libre Baskerville", serif', fontSize: 32, lineHeight: 1 }}>11 yrs</div><div style={{ fontSize: 12, color: 'var(--ink-muted)', letterSpacing: '0.04em', marginTop: 8 }}>CLINICAL PRACTICE</div></div>
           <div><div style={{ fontFamily: '"Libre Baskerville", serif', fontSize: 32, lineHeight: 1 }}>4.9 ★</div><div style={{ fontSize: 12, color: 'var(--ink-muted)', letterSpacing: '0.04em', marginTop: 8 }}>MEMBER RATING</div></div>
         </div>
       </div>
@@ -534,7 +563,7 @@ function TweakableHero({ headline, phase = 'open' }) {
           overflow: 'hidden',
           background: '#F9F7F4',
         }}>
-          <img src="/assets/anna-hero.jpg" alt="Anna Wareham" className="hero-img" fetchpriority="high" decoding="async" style={{
+          <img src="/assets/anna-hero.jpg" alt="Anna Wallace" className="hero-img" fetchpriority="high" decoding="async" style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
           }} />
         </div>

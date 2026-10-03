@@ -2,7 +2,7 @@
 
 const Eyebrow = ({ children, color = 'var(--blush-deep)' }) => (
   <div style={{
-    fontFamily: 'Work Sans, sans-serif',
+    fontFamily: '"Alegreya Sans", sans-serif',
     fontSize: 12,
     fontWeight: 600,
     letterSpacing: '0.18em',
@@ -77,34 +77,39 @@ function trackCtaClick(location, label) {
 }
 
 // ---------------------------------------------------------------------------
-// CAMPAIGN CONFIG — edit these values, nothing else.
-// ⚠️ Every value below is a PLACEHOLDER pending the real offer details.
+// CAMPAIGN CONFIG — WLA App Founding Members
 // ---------------------------------------------------------------------------
 
-// ⚠️ TODO: the real checkout link for the WLA App offer.
+// ⚠️ TODO: the real Thrivecart link for the Founding Member offer.
 const CHECKOUT_BASE_URL = 'https://sales.thewlacademy.com/wla-app/';
 
-// ⚠️ TODO: PayPal link for this offer, or drop PayPalCTA from the page.
-const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2XLQ9AUVKQHJL';
+// Pricing
+const PRICE          = '£97';   // 12 months, Founding Member rate
+const PRICE_WAS      = '£297';  // regular annual price
+const PRICE_SAVING   = '£200';  // saved every year on renewal
+const PRICE_WEEKLY   = '£1.87'; // per week, for the smaller-chunk framing
 
-// Pricing — ⚠️ TODO
-const PRICE          = '£XX';
-const PRICE_WAS      = '£XX';
-const PRICE_SAVING   = '£XX';
-
-// Timeline — ⚠️ TODO
-//   OFFER_START / OFFER_END bracket the window the price is live for.
-//   OFFER_HOURS is derived, so no hour count is ever hard-coded in copy.
-//   CAMPAIGN_START is the date shown in copy.
-const OFFER_START    = new Date('2026-10-01T09:00:00+01:00').getTime();
-const OFFER_END      = new Date('2026-10-08T23:59:00+01:00').getTime();
-const CAMPAIGN_START = new Date('2026-10-12T00:00:00+01:00').getTime();
+// Timeline
+//   OFFER_END      — ⚠️ TODO: when Founding Member pricing closes. The copy says
+//                    doors open to everyone "next week", so this is a placeholder.
+//   CAMPAIGN_START — the 8 Week Fat Loss Challenge starts Monday 19th October.
+const OFFER_START    = new Date('2026-10-03T09:00:00+01:00').getTime();
+const OFFER_END      = new Date('2026-10-11T23:59:00+01:00').getTime();
+const CAMPAIGN_START = new Date('2026-10-19T00:00:00+01:00').getTime();
 
 const OFFER_HOURS = Math.round((OFFER_END - OFFER_START) / 3600000);
 
-// Scarcity — ⚠️ TODO. Must track real numbers: under the Digital Markets,
-// Competition and Consumers Act 2024 invented scarcity is an offence.
-const SPOTS_AVAILABLE = 100;
+// Flip to true only once Anna has committed to a public closing date and time.
+// While it is false the page shows no countdown anywhere: the announcement bar
+// carries the places message instead, and the countdown section is not
+// rendered. A deadline we invent is both unconvincing and, under the DMCC Act
+// 2024, unlawful.
+const OFFER_END_CONFIRMED = false;
+
+// Scarcity — 500 Founding Member places in this first round.
+// ⚠️ SPOTS_TAKEN must track real sales. Under the Digital Markets, Competition
+// and Consumers Act 2024, invented scarcity is an offence.
+const SPOTS_AVAILABLE = 500;
 const SPOTS_TAKEN     = 0;
 const SPOTS_LEFT      = Math.max(0, SPOTS_AVAILABLE - SPOTS_TAKEN);
 
@@ -127,6 +132,7 @@ function getCheckoutUrl() {
 //   started → now ≥ OFFER_END  (price has increased; countdown, "save £90" pill,
 //             struck-through was-price and any bonus all drop away)
 function getCampaignPhase() {
+  if (!OFFER_END_CONFIRMED) return 'open';
   return Date.now() < OFFER_END ? 'open' : 'started';
 }
 
@@ -178,68 +184,15 @@ const PrimaryCTA = ({ children, small = false, onClick, style = {}, location = '
   </a>
 );
 
-// Reassurance line that sits directly under every CTA on the page.
-const GuaranteeNote = ({ align = 'center', style = {} }) => (
-  <div style={{
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: align === 'center' ? 'center' : 'flex-start',
-    gap: 8,
-    marginTop: 12,
-    fontFamily: '"Alegreya Sans", sans-serif',
-    fontSize: 13.5,
-    color: 'var(--ink-muted)',
-    lineHeight: 1.45,
-    textAlign: align === 'center' ? 'center' : 'left',
-    ...style,
-  }}>
-    <span style={{ flexShrink: 0, marginTop: 1 }}><Tick color="var(--blush-deep)" /></span>
-    <span><strong style={{ color: 'var(--ink)' }}>7-day money-back guarantee.</strong> Join, look around, and if it&rsquo;s not for you we refund in full.</span>
-  </div>
-);
+// NOTE: the Reset pages carry a GuaranteeNote and a PayPalCTA here. Both are
+// deliberately absent on this page:
+//   • No guarantee is confirmed for the Founding Member offer. The copy doc
+//     only raises a 14-day guarantee as an idea to consider.
+//   • No PayPal link exists for this offer. The Reset's link would take money
+//     for the wrong product.
+// Add them back once Anna confirms the guarantee wording and a PayPal link.
 
-// PayPal button — sits under the main CTA wherever one appears.
-const PayPalCTA = ({ location = 'primary', style = {} }) => (
-  <a
-    href={PAYPAL_URL}
-    target="_blank"
-    rel="noopener"
-    aria-label="Pay with PayPal"
-    onClick={() => trackCtaClick(location + '-paypal', 'PayPal')}
-    style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 8,
-      width: '100%',
-      background: '#FFC439',
-      color: '#003087',
-      fontFamily: '"Alegreya Sans", sans-serif',
-      fontSize: 16,
-      fontWeight: 600,
-      letterSpacing: '0.04em',
-      padding: '0 30px',
-      minHeight: 56,
-      boxSizing: 'border-box',
-      borderRadius: 999,
-      lineHeight: 1.25,
-      textDecoration: 'none',
-      border: '1px solid #E5AC28',
-      transition: 'background .15s, transform .15s',
-      cursor: 'pointer',
-      ...style,
-    }}
-    onMouseEnter={(e) => { e.currentTarget.style.background = '#F0B62A'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-    onMouseLeave={(e) => { e.currentTarget.style.background = '#FFC439'; e.currentTarget.style.transform = 'translateY(0)'; }}
-  >
-    <span>or pay with</span>
-    <span style={{ fontStyle: 'italic', fontWeight: 800, fontSize: 17, letterSpacing: '-0.02em' }}>
-      <span style={{ color: '#003087' }}>Pay</span><span style={{ color: '#009CDE' }}>Pal</span>
-    </span>
-  </a>
-);
-
-// Price anchor — ⚠️ PLACEHOLDER text, awaiting final copy.
+// Price anchor — the smaller-chunk framing.
 const PriceAnchor = ({ style = {} }) => (
   <div style={{
     fontFamily: '"Libre Baskerville", serif',
@@ -248,7 +201,7 @@ const PriceAnchor = ({ style = {} }) => (
     color: 'var(--blush-deep)',
     ...style,
   }}>
-    Placeholder price anchor.
+    One payment, just {PRICE_WEEKLY} a week.
   </div>
 );
 
@@ -327,11 +280,11 @@ const Divider = ({ style = {} }) => (
 );
 
 Object.assign(window, {
-  Eyebrow, SerifH, Italic, Body, PrimaryCTA, PayPalCTA, PAYPAL_URL, GuaranteeNote, PriceAnchor,
+  Eyebrow, SerifH, Italic, Body, PrimaryCTA, PriceAnchor,
   Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
-  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, CAMPAIGN_START,
+  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, OFFER_END_CONFIRMED, CAMPAIGN_START, PRICE_WEEKLY,
   SPOTS_AVAILABLE, SPOTS_TAKEN, SPOTS_LEFT,
   PRICE, PRICE_WAS, PRICE_SAVING,
 });
