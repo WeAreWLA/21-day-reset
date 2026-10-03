@@ -382,16 +382,18 @@ the same design system and its own private copy of the components. Copy comes fr
 Founding Members copy doc.
 
 The offer: **£97 for 12 months** (regular £297, so £200 saved on every renewal, £1.87 a
-week), capped at **500 Founding Member places**, with the **8 Week Fat Loss Challenge free
-from Monday 19th October**, the January Reset and the first Challenge of 2027 free, and the
-£97 annual rate locked in for as long as the member renews.
+week), capped at **500 Founding Member places**, closing **midnight at the end of Sunday
+11th October**, with the **8 Week Fat Loss Challenge free from Monday 19th October**, the
+January Reset and the first Challenge of 2027 free, the £97 annual rate locked in for as
+long as the member renews, and a 7-day money-back guarantee.
 
 ```
 wla-app/
 ├── index.html                  # Page entry — HEADLINES, hero, App shell, responsive CSS, analytics
+├── cart-content.html           # ThriveCart cart page snippet (paste into ThriveCart)
 ├── components/
 │   ├── sections.jsx            # ⭐ CAMPAIGN CONFIG — price, dates, places, checkout URL
-│   ├── hero.jsx                # AnnouncementBar
+│   ├── hero.jsx                # AnnouncementBar with the live countdown
 │   ├── app.jsx                 # Gallery, intro + pillars, challenge bonus, 12 features,
 │   │                           #   5 bonuses, why-join-now table, "for you if…"
 │   ├── content.jsx             # Results wall, testimonials, About Anna, video testimonials
@@ -400,21 +402,29 @@ wla-app/
     └── index.html              # Thank-you page (static HTML, no React)
 ```
 
-### Still to do before this can go live
+### Campaign config — `wla-app/components/sections.jsx`
 
-- **`CHECKOUT_BASE_URL`** in `wla-app/components/sections.jsx` is a guess
-  (`https://sales.thewlacademy.com/wla-app/`). Every card button on the page points at it,
-  so it must be replaced with the real ThriveCart URL.
-- **No countdown is shown.** `OFFER_END_CONFIRMED` is `false`, which suppresses the
-  announcement-bar timer, the whole countdown section and the timer inside the exit-intent
-  modal. Set a real `OFFER_END` and flip the flag to turn all three on at once. Until
-  then the bar carries the places message instead of a deadline.
-- **No guarantee and no PayPal button.** The Reset pages carry both; neither is confirmed
-  for this offer, so both were left out rather than promising terms nobody has agreed. See
-  the note in `sections.jsx` where they would go.
-- **`SPOTS_TAKEN` is 0.** While it is 0 the page says "500 Founding Member places" rather
-  than "500 of 500 remaining", and the progress bar is hidden. It must track real sales —
-  under the DMCC Act 2024 invented scarcity is an offence.
+| Value | Current | Notes |
+| --- | --- | --- |
+| `CHECKOUT_BASE_URL` | `https://sales.thewlacademy.com/wla-app/` | Every button on the page |
+| `PRICE` / `PRICE_WAS` / `PRICE_SAVING` | `£97` / `£297` / `£200` | |
+| `PRICE_WEEKLY` | `£1.87` | The smaller-chunk framing |
+| `OFFER_END` | Mon 12 Oct 2026 00:00 BST | Midnight at the end of Sunday the 11th |
+| `OFFER_END_CONFIRMED` | `true` | `false` switches off all three countdowns at once |
+| `CAMPAIGN_START` | Mon 19 Oct 2026 | The 8 Week Fat Loss Challenge |
+| `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `0` | |
+
+`SPOTS_TAKEN` must track real sales. Under the DMCC Act 2024, invented scarcity is an
+offence.
+
+### Things that hold their own copy of these values
+
+- **`wla-app/cart-content.html`** — the ThriveCart cart page carries its own
+  `WLA_OFFER_END` and its own places figure. Change them with the sales page, or the two
+  will disagree.
+- There is **no PayPal button** on this page. The Reset's PayPal link would take money for
+  the wrong product, and no link exists yet for the Founding Member offer. See the note in
+  `sections.jsx` where it would go.
 
 ### Differences from `/bday-promo`
 

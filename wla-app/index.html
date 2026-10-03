@@ -329,6 +329,7 @@ const PROGRAMME_RESULTS = [
 
 const HERO_KEY_FACTS = [
   { icon: '💷', label: <><strong>£97 for 12 months</strong> <span style={{ color: 'var(--ink-muted)' }}>(regular price £297 a year)</span></>, note: 'One payment, just £1.87 a week' },
+  { icon: '⏳', label: <>Founding Member pricing closes <strong>midnight on Sunday 11th October</strong></>, note: 'The price goes to £297 a year when the timer runs out' },
   { icon: '📅', label: <>The 8 Week Fat Loss Challenge starts <strong>Monday 19th October</strong></>, note: null },
   { icon: '🎟️', label: <>Only <strong>{window.SPOTS_AVAILABLE} Founding Member places</strong> in this first round</>, note: 'You get first access before doors open to everyone next week' },
 ];
@@ -544,6 +545,7 @@ function TweakableHero({ headline, phase = 'open' }) {
               You get first access. Doors open to everyone next week, only {window.SPOTS_AVAILABLE} Founding
               Member places available.
             </div>
+            <GuaranteeNote align="left" style={{ marginTop: 0, maxWidth: 480 }} />
           </div>
         </div>
 

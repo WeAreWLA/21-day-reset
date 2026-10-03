@@ -87,7 +87,7 @@ const CountdownSection = () => {
           margin: '0 auto',
         }}>
           {[
-            { k: window.SPOTS_TAKEN > 0 ? `${window.SPOTS_LEFT} places left` : `${window.SPOTS_AVAILABLE} places`, v: 'in this first round' },
+            { k: `${window.SPOTS_LEFT} places left`, v: `of ${window.SPOTS_AVAILABLE} in this first round` },
             { k: 'Mon 19 Oct', v: 'the 8 Week Challenge kicks off' },
             { k: `${window.PRICE} locked in`, v: `every year you renew, instead of ${window.PRICE_WAS}` },
           ].map((f, i) => (
@@ -148,9 +148,7 @@ const SpotsRemainingSection = () => {
             color: 'var(--ink)',
             lineHeight: 1.3,
           }}>
-            {taken > 0
-              ? <><Italic>{left}</Italic> of {total} places left</>
-              : <><Italic>{total}</Italic> Founding Member places</>}
+            <Italic>{left}</Italic> of {total} places left
           </div>
           {taken > 0 && (
             <div style={{
@@ -165,8 +163,7 @@ const SpotsRemainingSection = () => {
           )}
         </div>
 
-        {taken > 0 && (
-          <div style={{
+        <div style={{
             height: 12,
             borderRadius: 999,
             background: 'var(--cream-deep)',
@@ -179,7 +176,6 @@ const SpotsRemainingSection = () => {
               background: 'linear-gradient(90deg, var(--terracotta) 0%, var(--blush-deep) 100%)',
             }} />
           </div>
-        )}
 
         <Body size={14} style={{ marginTop: 12 }}>
           This first Founding Member round is capped at {total} places. Once they are gone, the app opens to
@@ -196,6 +192,7 @@ const PRICING_INCLUDES = [
   'FREE January Reset and the first Challenge of 2027 (worth £297 combined)',
   'Your £97 annual rate locked in for as long as you remain a member',
   'Founding Member status, early access to new features and feedback rounds',
+  '7-day money-back guarantee',
 ];
 
 const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading = null, phase: phaseProp }) => {
@@ -284,6 +281,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 480 }}>
           Claim My Founding Member Place
         </PrimaryCTA>
+        <GuaranteeNote style={{ maxWidth: 480, margin: '12px auto 0' }} />
 
         <Body size={14} muted style={{ maxWidth: 480, margin: '14px auto 0' }}>
           Full WLA app access and all Founding Member bonuses included. If you choose to renew, your price
@@ -298,9 +296,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             fontSize: 17,
             color: 'var(--blush-deep)',
           }}>
-            {window.SPOTS_TAKEN > 0
-              ? `${window.SPOTS_LEFT} of ${window.SPOTS_AVAILABLE} places remaining`
-              : `Only ${window.SPOTS_AVAILABLE} places in this first round`}
+            {window.SPOTS_LEFT} of {window.SPOTS_AVAILABLE} places remaining
           </div>
         )}
 
@@ -316,8 +312,8 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         }}>
           {[
             { icon: '🔒', k: 'Secure checkout', v: 'One payment' },
+            { icon: '↩️', k: '7-day guarantee', v: 'Full refund' },
             { icon: '📅', k: 'Challenge starts', v: 'Mon 19 Oct' },
-            { icon: '🎟️', k: 'First round', v: `${window.SPOTS_AVAILABLE} places` },
           ].map((t, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 15, lineHeight: 1.2, marginBottom: 5 }}>{t.icon}</div>
@@ -334,6 +330,22 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Guarantee callout */}
+      <div style={{
+        marginTop: 48,
+        background: 'var(--paper)',
+        border: '1px dashed var(--blush-deep)',
+        borderRadius: 16,
+        padding: '28px 36px',
+        textAlign: 'left',
+      }}>
+        <SerifH size={22} className="callout-title" style={{ marginBottom: 8 }}>Our 7-day money-back guarantee</SerifH>
+        <Body size={15} muted>
+          Join, open the app, have a proper look around. If within 7 days you don&rsquo;t feel this is for you,
+          just email us. Full refund, no questions, no hoops.
+        </Body>
       </div>
     </div>
   </section>
@@ -353,6 +365,8 @@ const FAQ_ITEMS = [
     a: 'The app is simple to use, and my team and I are here to help if you get stuck.' },
   { q: 'Will this promo come back?',
     a: 'No. Founding Member pricing, status and the free challenge are only available in this first round. Future members will pay £297 a year.' },
+  { q: "What if it's not for me?",
+    a: "You're covered by our 7-day money-back guarantee. Join, open the app and look around, and if it isn't for you, email us within 7 days for a full refund." },
   { q: 'What happens when all 500 places are gone?',
     a: 'Founding Member pricing closes for good and the app will open later at £297 a year.' },
 ];
@@ -459,6 +473,7 @@ const FinalCTA = () => (
         with support.
       </Body>
       <PrimaryCTA location="final">Become a Founding Member {window.PRICE}</PrimaryCTA>
+      <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
       <PriceAnchor style={{ marginTop: 16 }} />
       <div style={{
         marginTop: 8,
@@ -466,9 +481,7 @@ const FinalCTA = () => (
         fontSize: 13,
         color: 'var(--ink-muted)',
       }}>
-        {window.SPOTS_TAKEN > 0
-          ? `${window.SPOTS_LEFT} of ${window.SPOTS_AVAILABLE} Founding Member places remaining`
-          : `Only ${window.SPOTS_AVAILABLE} Founding Member places in this first round`}
+        {window.SPOTS_LEFT} of {window.SPOTS_AVAILABLE} Founding Member places remaining
       </div>
     </div>
   </section>
@@ -658,6 +671,7 @@ const ExitIntentModal = () => {
         <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
           Claim My Founding Member Place
         </PrimaryCTA>
+        <GuaranteeNote style={{ marginTop: 12 }} />
       </div>
     </div>
   );

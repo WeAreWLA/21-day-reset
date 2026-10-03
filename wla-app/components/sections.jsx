@@ -90,21 +90,19 @@ const PRICE_SAVING   = '£200';  // saved every year on renewal
 const PRICE_WEEKLY   = '£1.87'; // per week, for the smaller-chunk framing
 
 // Timeline
-//   OFFER_END      — ⚠️ TODO: when Founding Member pricing closes. The copy says
-//                    doors open to everyone "next week", so this is a placeholder.
+//   OFFER_END      — Founding Member pricing closes at midnight at the end of
+//                    Sunday 11th October, i.e. 00:00 on Monday the 12th.
 //   CAMPAIGN_START — the 8 Week Fat Loss Challenge starts Monday 19th October.
 const OFFER_START    = new Date('2026-10-03T09:00:00+01:00').getTime();
-const OFFER_END      = new Date('2026-10-11T23:59:00+01:00').getTime();
+const OFFER_END      = new Date('2026-10-12T00:00:00+01:00').getTime();
 const CAMPAIGN_START = new Date('2026-10-19T00:00:00+01:00').getTime();
 
 const OFFER_HOURS = Math.round((OFFER_END - OFFER_START) / 3600000);
 
-// Flip to true only once Anna has committed to a public closing date and time.
-// While it is false the page shows no countdown anywhere: the announcement bar
-// carries the places message instead, and the countdown section is not
-// rendered. A deadline we invent is both unconvincing and, under the DMCC Act
-// 2024, unlawful.
-const OFFER_END_CONFIRMED = false;
+// The closing date is confirmed, so every countdown on the page is live: the
+// announcement-bar timer, the countdown section and the timer inside the
+// exit-intent modal. Setting this back to false switches all three off at once.
+const OFFER_END_CONFIRMED = true;
 
 // Scarcity — 500 Founding Member places in this first round.
 // ⚠️ SPOTS_TAKEN must track real sales. Under the Digital Markets, Competition
@@ -184,13 +182,28 @@ const PrimaryCTA = ({ children, small = false, onClick, style = {}, location = '
   </a>
 );
 
-// NOTE: the Reset pages carry a GuaranteeNote and a PayPalCTA here. Both are
-// deliberately absent on this page:
-//   • No guarantee is confirmed for the Founding Member offer. The copy doc
-//     only raises a 14-day guarantee as an idea to consider.
-//   • No PayPal link exists for this offer. The Reset's link would take money
-//     for the wrong product.
-// Add them back once Anna confirms the guarantee wording and a PayPal link.
+// Guarantee line — sits under every CTA on the page.
+const GuaranteeNote = ({ align = 'center', style = {} }) => (
+  <div style={{
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: align === 'center' ? 'center' : 'flex-start',
+    gap: 8,
+    marginTop: 12,
+    fontFamily: '"Alegreya Sans", sans-serif',
+    fontSize: 13.5,
+    color: 'var(--ink-muted)',
+    lineHeight: 1.45,
+    textAlign: align === 'center' ? 'center' : 'left',
+    ...style,
+  }}>
+    <span style={{ flexShrink: 0, marginTop: 1 }}><Tick color="var(--blush-deep)" /></span>
+    <span><strong style={{ color: 'var(--ink)' }}>7-day money-back guarantee.</strong> Join, look around, and if it&rsquo;s not for you we refund in full.</span>
+  </div>
+);
+
+// NOTE: no PayPal button on this page. The Reset's PayPal link would take money
+// for the wrong product, and no link exists yet for the Founding Member offer.
 
 // Price anchor — the smaller-chunk framing.
 const PriceAnchor = ({ style = {} }) => (
@@ -280,7 +293,7 @@ const Divider = ({ style = {} }) => (
 );
 
 Object.assign(window, {
-  Eyebrow, SerifH, Italic, Body, PrimaryCTA, PriceAnchor,
+  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor,
   Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
