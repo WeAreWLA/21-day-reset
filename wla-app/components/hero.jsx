@@ -69,7 +69,9 @@ const AnnouncementBar = () => {
       }}>
         {timed && isOpen ? (
           <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ fontSize: 13 }}>Your exclusive early-access window ends in</span>
+            <span style={{ fontSize: 13 }}>
+              Your exclusive early-access<br className="bar-break" /> window ends in
+            </span>
             <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 4 }}>
               <BarDigit n={t.d} label="days" />
               <BarDigit n={t.h} label="hrs" />

@@ -227,7 +227,7 @@ const AppClipsSection = () => {
   }, []);
 
   return (
-    <section className="app-clips-section" style={{ padding: '64px 32px 72px', background: 'var(--bg)' }}>
+    <section className="app-clips-section" style={{ padding: '64px 32px 48px', background: 'var(--bg)' }}>
       <div style={{ maxWidth: 900, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <Eyebrow>See it in action</Eyebrow>
@@ -242,6 +242,8 @@ const AppClipsSection = () => {
         }}>
           {APP_CLIPS.map((c) => (
             <div key={c.stem} style={{ textAlign: 'center' }}>
+              <SerifH size={21} className="card-title" style={{ marginBottom: 2 }}>{c.tab}</SerifH>
+              <Body size={15} muted style={{ marginBottom: 16 }}>{c.cap}</Body>
               <div className="app-clip-phone" style={{
                 aspectRatio: '1004 / 2000',
                 borderRadius: 30,
@@ -263,8 +265,6 @@ const AppClipsSection = () => {
                   <source src={c.stem + '.mp4'} type="video/mp4" />
                 </video>
               </div>
-              <SerifH size={21} className="card-title" style={{ marginTop: 20 }}>{c.tab}</SerifH>
-              <Body size={15} muted style={{ marginTop: 4 }}>{c.cap}</Body>
             </div>
           ))}
         </div>
@@ -334,7 +334,7 @@ const CHRISTMAS_OUTCOMES = [
 ];
 
 const ChallengeBonusSection = () => (
-  <section className="challenge-section" style={{ padding: '72px 32px', background: 'var(--bg)' }}>
+  <section className="challenge-section" style={{ padding: '48px 32px 72px', background: 'var(--bg)' }}>
     <div style={{
       maxWidth: 940, margin: '0 auto',
       background: `linear-gradient(135deg, var(--peach) 0%, #F8C4B0 100%)`,
