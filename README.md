@@ -394,7 +394,7 @@ wla-app/
 ├── components/
 │   ├── sections.jsx            # ⭐ CAMPAIGN CONFIG — price, dates, places, checkout URL
 │   ├── hero.jsx                # AnnouncementBar with the live countdown
-│   ├── app.jsx                 # Gallery, intro + pillars, challenge bonus, 12 features,
+│   ├── app.jsx                 # Screen carousel, intro + pillars, challenge bonus, 12 features,
 │   │                           #   5 bonuses, why-join-now table, "for you if…"
 │   ├── content.jsx             # Results wall, testimonials, About Anna, video testimonials
 │   └── closing.jsx             # Countdown, places bar, Pricing, FAQ, FinalCTA, Sticky, exit intent
@@ -408,14 +408,28 @@ wla-app/
 | --- | --- | --- |
 | `CHECKOUT_BASE_URL` | `https://sales.thewlacademy.com/wla-app/` | Every button on the page |
 | `PRICE` / `PRICE_WAS` / `PRICE_SAVING` | `£97` / `£297` / `£200` | |
-| `PRICE_WEEKLY` | `£1.87` | The smaller-chunk framing |
+| `PRICE_WEEKLY` | `£1.86` | £97 ÷ 52.14 weeks |
 | `OFFER_END` | Mon 12 Oct 2026 00:00 BST | Midnight at the end of Sunday the 11th |
 | `OFFER_END_CONFIRMED` | `true` | `false` switches off all three countdowns at once |
 | `CAMPAIGN_START` | Mon 19 Oct 2026 | The 8 Week Fat Loss Challenge |
-| `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `0` | |
+| `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `0` | The places bar is not rendered; see below |
 
 `SPOTS_TAKEN` must track real sales. Under the DMCC Act 2024, invented scarcity is an
 offence.
+
+### The places bar is switched off
+
+`SpotsRemainingSection` is commented out of the render order in `index.html`. Anna will
+say when to put it back and with what number; set `SPOTS_TAKEN` at the same time.
+
+### App screen carousel
+
+`AppGallerySection` in `app.jsx` is a tabbed carousel: feature tabs on the left, a phone
+frame on the right that cross-fades, auto-advancing every 4.5s until the visitor clicks a
+tab, a dot or hovers. On mobile the tabs are hidden and it becomes a swipeable phone with
+dots and a caption underneath. Screens are listed in `APP_SCREENS`; each image must be
+1004×2000 so it fills the frame. Two more screens (recipes and community) are still to
+come, plus three short clips for the hero and the meal-planner and tracker slides.
 
 ### Things that hold their own copy of these values
 

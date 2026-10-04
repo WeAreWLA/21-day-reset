@@ -54,39 +54,39 @@ const AnnouncementBar = () => {
   const timed = !!window.OFFER_END_CONFIRMED;
   const t = useOfferRemaining();
   return (
-    <div className="announcement-bar" style={{
-      color: 'var(--paper)',
-      fontFamily: '"Alegreya Sans", sans-serif',
-      textAlign: 'center',
-      letterSpacing: '0.04em',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 16,
-      flexWrap: 'wrap',
-    }}>
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-        <span className="announcement-dot" />
-      </span>
-      {timed && isOpen ? (
-        <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 13 }}>Founding Member price increases in</span>
-          <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 4 }}>
-            <BarDigit n={t.d} label="days" />
-            <BarDigit n={t.h} label="hrs" />
-            <BarDigit n={t.m} label="min" />
-            <BarDigit n={t.s} label="sec" />
+    <div className="announcement-bar" style={{ color: 'var(--paper)' }}>
+      <div className="announcement-inner" style={{
+        maxWidth: 1240,
+        margin: '0 auto',
+        fontFamily: '"Alegreya Sans", sans-serif',
+        textAlign: 'left',
+        letterSpacing: '0.04em',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        gap: 14,
+        flexWrap: 'wrap',
+      }}>
+        {timed && isOpen ? (
+          <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: 13 }}>Your exclusive early-access window ends in</span>
+            <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 4 }}>
+              <BarDigit n={t.d} label="days" />
+              <BarDigit n={t.h} label="hrs" />
+              <BarDigit n={t.m} label="min" />
+              <BarDigit n={t.s} label="sec" />
+            </span>
           </span>
-        </span>
-      ) : isOpen ? (
-        <span style={{ fontSize: 13 }}>
-          Founding Member launch &middot; Only {window.SPOTS_AVAILABLE} places &middot; 8 Week Fat Loss Challenge included free
-        </span>
-      ) : (
-        <span style={{ fontSize: 13 }}>
-          Founding Member pricing has closed &middot; The WLA App is now {window.PRICE_WAS} a year
-        </span>
-      )}
+        ) : isOpen ? (
+          <span style={{ fontSize: 13 }}>
+            Founding Member launch &middot; Only {window.SPOTS_AVAILABLE} places &middot; 8 Week Fat Loss Challenge included free
+          </span>
+        ) : (
+          <span style={{ fontSize: 13 }}>
+            Founding Member pricing has closed &middot; The WLA App is now {window.PRICE_WAS} a year
+          </span>
+        )}
+      </div>
     </div>
   );
 };

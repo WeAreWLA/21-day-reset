@@ -38,7 +38,7 @@ const CountdownSection = () => {
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <SerifH size={46} className="countdown-heading" style={{ marginBottom: 26, lineHeight: 1.2 }}>
-          Founding Member pricing <Italic>closes in</Italic>
+          Doors open to <Italic>everyone in</Italic>
         </SerifH>
         <div className="countdown-grid" style={{
           display: 'grid',
@@ -79,36 +79,12 @@ const CountdownSection = () => {
             </div>
           ))}
         </div>
-        <div className="countdown-facts" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 12,
-          maxWidth: 720,
-          margin: '0 auto',
+        <div className="countdown-note" style={{
+          maxWidth: 640, margin: '0 auto',
+          fontFamily: '"Libre Baskerville", serif',
+          fontSize: 19, lineHeight: 1.45, color: 'var(--ink)',
         }}>
-          {[
-            { k: `${window.SPOTS_LEFT} places left`, v: `of ${window.SPOTS_AVAILABLE} in this first round` },
-            { k: 'Mon 19 Oct', v: 'the 8 Week Challenge kicks off' },
-            { k: `${window.PRICE} locked in`, v: `every year you renew, instead of ${window.PRICE_WAS}` },
-          ].map((f, i) => (
-            <div key={i} style={{
-              background: 'rgba(253, 251, 248, 0.65)',
-              border: '1px solid var(--blush-deep)',
-              borderRadius: 12,
-              padding: '14px 10px',
-            }}>
-              <div style={{
-                fontFamily: '"Libre Baskerville", serif',
-                fontWeight: 700, fontSize: 19,
-                color: 'var(--ink)', lineHeight: 1.2,
-              }}>{f.k}</div>
-              <div style={{
-                fontFamily: '"Alegreya Sans", sans-serif',
-                fontSize: 13, color: 'var(--ink)',
-                opacity: 0.75, marginTop: 4, lineHeight: 1.35,
-              }}>{f.v}</div>
-            </div>
-          ))}
+          Secure your Founding Member place before we open to the wider community.
         </div>
       </div>
     </section>
@@ -187,7 +163,7 @@ const SpotsRemainingSection = () => {
 };
 
 const PRICING_INCLUDES = [
-  '12 months of WLA app access',
+  '12 months of WLA app access for a one off payment of £97',
   'FREE 8 Week Fat Loss Challenge, starting Monday 19th October (worth £197)',
   'FREE January Reset and the first Challenge of 2027 (worth £297 combined)',
   'Your £97 annual rate locked in for as long as you remain a member',
@@ -200,7 +176,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
   const isOpen = phase === 'open';
   return (
   <section id={sectionId} className={bridgeHeading ? 'pricing-bridge' : ''} style={{
-    padding: bridgeHeading ? '48px 32px 120px' : '110px 32px',
+    padding: bridgeHeading ? '48px 32px 120px' : '110px 32px 56px',
     background: 'var(--cream-deep)',
   }}>
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
@@ -288,18 +264,6 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           stays {window.PRICE} for another year.
         </Body>
 
-        {isOpen && (
-          <div style={{
-            marginTop: 18,
-            fontFamily: '"Libre Baskerville", serif',
-            fontWeight: 700,
-            fontSize: 17,
-            color: 'var(--blush-deep)',
-          }}>
-            {window.SPOTS_LEFT} of {window.SPOTS_AVAILABLE} places remaining
-          </div>
-        )}
-
         <div className="pricing-trust-row" style={{
           marginTop: 26,
           display: 'grid',
@@ -365,6 +329,8 @@ const FAQ_ITEMS = [
     a: 'The app is simple to use, and my team and I are here to help if you get stuck.' },
   { q: 'Will this promo come back?',
     a: 'No. Founding Member pricing, status and the free challenge are only available in this first round. Future members will pay £297 a year.' },
+  { q: 'Is this an annual subscription?',
+    a: 'No. You make a one-off payment of £97 for 12 months of access, with no automatic renewal. If you choose to renew after your year ends, you can get another 12 months for £97. Your Founding Member renewal rate stays £97 each year you continue, rather than the regular price of £297.' },
   { q: "What if it's not for me?",
     a: "You're covered by our 7-day money-back guarantee. Join, open the app and look around, and if it isn't for you, email us within 7 days for a full refund." },
   { q: 'What happens when all 500 places are gone?',
@@ -475,14 +441,6 @@ const FinalCTA = () => (
       <PrimaryCTA location="final">Become a Founding Member {window.PRICE}</PrimaryCTA>
       <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
       <PriceAnchor style={{ marginTop: 16 }} />
-      <div style={{
-        marginTop: 8,
-        fontFamily: '"Alegreya Sans", sans-serif',
-        fontSize: 13,
-        color: 'var(--ink-muted)',
-      }}>
-        {window.SPOTS_LEFT} of {window.SPOTS_AVAILABLE} Founding Member places remaining
-      </div>
     </div>
   </section>
 );
@@ -516,8 +474,7 @@ const StickyCTA = ({ visible }) => (
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }}>
-      <span style={{ color: 'var(--peach)' }}>●</span> Founding Member · <strong>{window.PRICE}</strong>
-      <span className="sticky-cta-secondary" style={{ opacity: 0.6, marginLeft: 8, fontSize: 12 }}>for 12 months</span>
+      Founding Members · only <strong>{window.PRICE}</strong>
     </div>
     <a href={typeof window !== 'undefined' && window.getCheckoutUrl ? window.getCheckoutUrl() : '#'} target="_blank" rel="noopener" className="sticky-cta-button"
       onClick={(e) => {
@@ -547,23 +504,49 @@ const ExitIntentModal = () => {
   const [tick, setTick] = React.useState(null);
 
   React.useEffect(() => {
-    // Desktop only: skip touch devices and anything narrow.
-    const isDesktop = window.matchMedia('(min-width: 961px) and (hover: hover) and (pointer: fine)').matches;
-    if (!isDesktop) return;
     if (window.getCampaignPhase && window.getCampaignPhase() !== 'open') return;
     try { if (sessionStorage.getItem('wla_exit_shown')) return; } catch (e) { /* private mode */ }
 
-    let armed = false;
-    const arm = setTimeout(() => { armed = true; }, 8000); // don't fire on an instant bounce
+    const isDesktop = window.matchMedia('(min-width: 961px) and (hover: hover) and (pointer: fine)').matches;
 
-    const onLeave = (e) => {
-      if (!armed || e.clientY > 0 || e.relatedTarget) return;
+    let armed = false;
+    const arm = setTimeout(() => { armed = true; }, isDesktop ? 8000 : 20000);
+
+    const fire = () => {
       setOpen(true);
       try { sessionStorage.setItem('wla_exit_shown', '1'); } catch (err) { /* ignore */ }
-      document.removeEventListener('mouseout', onLeave);
+      cleanup();
     };
-    document.addEventListener('mouseout', onLeave);
-    return () => { clearTimeout(arm); document.removeEventListener('mouseout', onLeave); };
+
+    // Desktop: the cursor leaves through the top of the viewport, heading for
+    // the tab bar. Mobile has no cursor, so the nearest signal is a fast scroll
+    // back up the page after the visitor has got some way down it.
+    const onLeave = (e) => {
+      if (!armed || e.clientY > 0 || e.relatedTarget) return;
+      fire();
+    };
+
+    let lastY = window.scrollY;
+    let lastT = Date.now();
+    const onScroll = () => {
+      const y = window.scrollY, t = Date.now();
+      const dy = lastY - y, dt = Math.max(1, t - lastT);
+      lastY = y; lastT = t;
+      if (!armed) return;
+      const depth = y / Math.max(1, document.body.scrollHeight - window.innerHeight);
+      if (depth > 0.12 && dy > 60 && dy / dt > 1.2) fire();
+    };
+
+    function cleanup() {
+      clearTimeout(arm);
+      document.removeEventListener('mouseout', onLeave);
+      window.removeEventListener('scroll', onScroll);
+    }
+
+    if (isDesktop) document.addEventListener('mouseout', onLeave);
+    else window.addEventListener('scroll', onScroll, { passive: true });
+
+    return cleanup;
   }, []);
 
   React.useEffect(() => {

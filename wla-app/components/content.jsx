@@ -50,7 +50,7 @@ const TestimonialsSection = () => (
       <div style={{ textAlign: 'center', marginBottom: 80 }}>
         <Eyebrow color="var(--peach)">Real women · real results</Eyebrow>
         <SerifH size={62} style={{ color: 'var(--paper)', marginTop: 20 }}>
-          50,000 women. <Italic>One reset.</Italic>
+          Real Women. <Italic>Real Results with the WLA Formula.</Italic>
         </SerifH>
       </div>
 
@@ -150,7 +150,7 @@ const ResultsGridSection = () => (
     <div style={{ maxWidth: 1160, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: 40 }}>
         <SerifH size={44} style={{ color: 'var(--paper)', lineHeight: 1.2 }}>
-          Real results from women <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--peach)' }}>just like you</em>
+          Real Women. <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--peach)' }}>Real WLA Results</em>
         </SerifH>
       </div>
       <div style={{
