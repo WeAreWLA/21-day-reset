@@ -2,44 +2,159 @@
 // Copy lifted from the Founding Members copy doc.
 
 // ---------------------------------------------------------------------------
-// App screenshot gallery
+// App screenshot carousel — tabs on the left, a phone that changes on the
+// right, auto-advancing until the visitor takes over.
 // ---------------------------------------------------------------------------
 const APP_SCREENS = [
-  { img: '/assets/app-01-daily-tracker.jpg', cap: 'The WLA Daily Tracker' },
-  { img: '/assets/app-02-log-meal.jpg',      cap: 'Log a meal in seconds' },
-  { img: '/assets/app-03-meal-plan.jpg',     cap: 'Your personalised meal planner' },
-  { img: '/assets/app-04-recipes.jpg',       cap: '500+ WLA recipes' },
+  { tab: 'Daily tracker',  img: '/assets/app-home-tracker.jpg',  cap: 'Check in, in seconds' },
+  { tab: 'Log a meal',     img: '/assets/app-log-meal.jpg',      cap: 'Log what you ate, straight from your meal plan' },
+  { tab: 'Meal planner',   img: '/assets/app-meal-planner.jpg',  cap: 'Your week, planned in one tap' },
+  { tab: 'Nutrition hub',  img: '/assets/app-nutrition-hub.jpg', cap: 'A fresh WLA meal guide every Friday' },
+  { tab: 'Your progress',  img: '/assets/app-progress.jpg',      cap: 'See your results, even when the scales stand still' },
 ];
 
-const AppGallerySection = () => (
-  <section className="app-gallery-section" style={{ padding: '64px 32px 56px', background: 'var(--cream-deep)' }}>
-    <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: 40 }}>
-        <Eyebrow>Inside the app</Eyebrow>
-        <SerifH size={46} style={{ marginTop: 18, lineHeight: 1.2 }}>
-          Everything you need to lose weight<br />and keep it off, <Italic>in one simple app.</Italic>
-        </SerifH>
-      </div>
-      <div className="app-screens" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
-        {APP_SCREENS.map((s, i) => (
-          <div key={i} style={{ textAlign: 'center' }}>
-            <div style={{
-              aspectRatio: '4 / 5', borderRadius: 18, overflow: 'hidden',
-              background: 'var(--paper)', border: '1px solid var(--hairline)',
-              boxShadow: '0 22px 44px -26px rgba(0, 48, 96, 0.35)', padding: 10,
-            }}>
-              <img src={s.img} alt={s.cap} loading="lazy" decoding="async" style={{
-                width: '100%', height: '100%', objectFit: 'contain',
-                objectPosition: 'top center', display: 'block', background: '#fff',
-              }} />
-            </div>
-            <Body size={14} style={{ marginTop: 10, fontWeight: 600, color: 'var(--ink)' }}>{s.cap}</Body>
+const AppGallerySection = () => {
+  const [i, setI] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
+  const touch = React.useRef(null);
+  const n = APP_SCREENS.length;
+
+  React.useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setI((p) => (p + 1) % n), 4500);
+    return () => clearInterval(id);
+  }, [paused, n]);
+
+  const go = (next) => { setPaused(true); setI(((next % n) + n) % n); };
+
+  const onTouchStart = (e) => { touch.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    if (touch.current === null) return;
+    const dx = e.changedTouches[0].clientX - touch.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? i + 1 : i - 1);
+    touch.current = null;
+  };
+
+  return (
+    <section className="app-gallery-section" style={{ padding: '72px 32px 64px', background: 'var(--cream-deep)' }}>
+      <div style={{ maxWidth: 1060, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <Eyebrow>Inside the app</Eyebrow>
+          <SerifH size={46} style={{ marginTop: 18, lineHeight: 1.2 }}>
+            Everything you need to lose weight<br />and keep it off, <Italic>in one simple app.</Italic>
+          </SerifH>
+        </div>
+
+        <div className="app-carousel" style={{
+          display: 'grid', gridTemplateColumns: '1fr 320px', gap: 56, alignItems: 'center',
+        }}>
+          {/* Tabs */}
+          <div className="app-tabs" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {APP_SCREENS.map((sc, idx) => {
+              const on = idx === i;
+              return (
+                <button
+                  key={sc.tab}
+                  type="button"
+                  onClick={() => go(idx)}
+                  className={on ? 'app-tab is-on' : 'app-tab'}
+                  style={{
+                    textAlign: 'left',
+                    border: on ? '1px solid var(--blush-deep)' : '1px solid var(--hairline)',
+                    background: on ? 'var(--paper)' : 'rgba(253, 251, 248, 0.45)',
+                    borderLeft: on ? '4px solid var(--blush-deep)' : '4px solid transparent',
+                    borderRadius: 14,
+                    padding: '16px 20px',
+                    cursor: 'pointer',
+                    font: 'inherit',
+                    display: 'flex',
+                    alignItems: 'baseline',
+                    gap: 12,
+                    transition: 'background .2s, border-color .2s',
+                  }}
+                >
+                  <span style={{
+                    fontFamily: '"Libre Baskerville", serif',
+                    fontWeight: 700, fontSize: 18,
+                    color: 'var(--ink)', flexShrink: 0,
+                  }}>{sc.tab}</span>
+                  <span style={{
+                    fontFamily: '"Alegreya Sans", sans-serif',
+                    fontSize: 15, lineHeight: 1.35,
+                    color: on ? 'var(--blush-deep)' : 'var(--ink-muted)',
+                  }}>{sc.cap}</span>
+                </button>
+              );
+            })}
           </div>
-        ))}
+
+          {/* Phone */}
+          <div
+            onMouseEnter={() => setPaused(true)}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+            style={{ position: 'relative' }}
+          >
+            <div className="app-phone" style={{
+              aspectRatio: '1004 / 2000',
+              borderRadius: 34,
+              border: '9px solid var(--ink)',
+              overflow: 'hidden',
+              background: 'var(--bg)',
+              boxShadow: '0 34px 64px -28px rgba(0, 48, 96, 0.5)',
+              position: 'relative',
+            }}>
+              {APP_SCREENS.map((sc, idx) => (
+                <img
+                  key={sc.img}
+                  src={sc.img}
+                  alt={sc.tab + ' \u2014 ' + sc.cap}
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  style={{
+                    position: 'absolute', inset: 0,
+                    width: '100%', height: '100%',
+                    objectFit: 'cover', objectPosition: 'top center',
+                    opacity: idx === i ? 1 : 0,
+                    transition: 'opacity .45s ease',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Dots */}
+            <div className="app-dots" style={{
+              display: 'flex', justifyContent: 'center', gap: 8, marginTop: 18,
+            }}>
+              {APP_SCREENS.map((sc, idx) => (
+                <button
+                  key={sc.tab}
+                  type="button"
+                  aria-label={sc.tab}
+                  onClick={() => go(idx)}
+                  style={{
+                    width: idx === i ? 26 : 9, height: 9, borderRadius: 999,
+                    border: 'none', padding: 0, cursor: 'pointer',
+                    background: idx === i ? 'var(--blush-deep)' : 'rgba(0, 48, 96, 0.22)',
+                    transition: 'width .25s, background .25s',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Caption, mobile only — the tabs carry it on desktop */}
+            <div className="app-phone-caption" style={{
+              display: 'none',
+              textAlign: 'center', marginTop: 12,
+              fontFamily: '"Libre Baskerville", serif',
+              fontStyle: 'italic', fontSize: 17, color: 'var(--ink)',
+            }}>{APP_SCREENS[i].cap}</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // ---------------------------------------------------------------------------
 // The brand new WLA app — intro and the three pillars
@@ -283,7 +398,7 @@ const COMPARISON = [
 ];
 
 const WhyJoinNowSection = () => (
-  <section className="whyjoin-section" style={{ padding: '72px 32px 64px', background: 'var(--cream-deep)' }}>
+  <section className="whyjoin-section" style={{ padding: '56px 32px 64px', background: 'var(--cream-deep)' }}>
     <div style={{ maxWidth: 940, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: 40 }}>
         <Eyebrow>Why join now</Eyebrow>
