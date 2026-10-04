@@ -23,10 +23,7 @@ const CarouselArrow = ({ side, onClick }) => (
     onClick={onClick}
     aria-label={side === 'prev' ? 'Previous screen' : 'Next screen'}
     style={{
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      [side === 'prev' ? 'left' : 'right']: -22,
+      flexShrink: 0,
       width: 44,
       height: 44,
       borderRadius: '50%',
@@ -37,7 +34,6 @@ const CarouselArrow = ({ side, onClick }) => (
       placeItems: 'center',
       cursor: 'pointer',
       padding: 0,
-      zIndex: 3,
       boxShadow: '0 14px 28px -14px rgba(0, 48, 96, 0.45)',
     }}
   >
@@ -82,7 +78,7 @@ const AppGallerySection = () => {
         </div>
 
         <div className="app-carousel" style={{
-          display: 'grid', gridTemplateColumns: '1fr 320px', gap: 56, alignItems: 'center',
+          display: 'grid', gridTemplateColumns: '1fr 412px', gap: 44, alignItems: 'center',
         }}>
           {/* Tabs */}
           <div className="app-tabs" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -129,12 +125,11 @@ const AppGallerySection = () => {
             onMouseEnter={() => setPaused(true)}
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
-            style={{ position: 'relative' }}
           >
+           <div className="app-stage" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <CarouselArrow side="prev" onClick={() => go(i - 1)} />
-            <CarouselArrow side="next" onClick={() => go(i + 1)} />
-
             <div className="app-phone" style={{
+              flex: 1, minWidth: 0,
               aspectRatio: '1004 / 2000',
               borderRadius: 34,
               border: '9px solid var(--ink)',
@@ -160,6 +155,8 @@ const AppGallerySection = () => {
                 />
               ))}
             </div>
+            <CarouselArrow side="next" onClick={() => go(i + 1)} />
+           </div>
 
             {/* Dots */}
             <div className="app-dots" style={{
