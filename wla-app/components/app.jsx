@@ -10,6 +10,8 @@ const APP_SCREENS = [
   { tab: 'Log a meal',     img: '/assets/app-log-meal.jpg',      cap: 'Log what you ate, straight from your meal plan' },
   { tab: 'Meal planner',   img: '/assets/app-meal-planner.jpg',  cap: 'Your week, planned in one tap' },
   { tab: 'Nutrition hub',  img: '/assets/app-nutrition-hub.jpg', cap: 'A fresh WLA meal guide every Friday' },
+  { tab: 'Recipes',        img: '/assets/app-recipes-hub.jpg',   cap: '500+ WLA recipes, filtered to suit you' },
+  { tab: 'The community',  img: '/assets/app-community.jpg',     cap: 'Daily support and evening check-ins' },
   { tab: 'Your progress',  img: '/assets/app-progress.jpg',      cap: 'See your results, even when the scales stand still' },
 ];
 

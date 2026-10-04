@@ -428,8 +428,8 @@ say when to put it back and with what number; set `SPOTS_TAKEN` at the same time
 frame on the right that cross-fades, auto-advancing every 4.5s until the visitor clicks a
 tab, a dot or hovers. On mobile the tabs are hidden and it becomes a swipeable phone with
 dots and a caption underneath. Screens are listed in `APP_SCREENS`; each image must be
-1004×2000 so it fills the frame. Two more screens (recipes and community) are still to
-come, plus three short clips for the hero and the meal-planner and tracker slides.
+1004×2000 so it fills the frame. Seven screens are in; three short clips (hero homepage,
+meal planner, daily tracker) are still to come.
 
 ### Things that hold their own copy of these values
 
