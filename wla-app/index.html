@@ -40,6 +40,10 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <script>window.WLA_NOTIFICATIONS = { offer: 'WLA App' };</script>
 <script defer src="/assets/notifications.js"></script>
 
+<!-- Warm the TCP/TLS connection to Thrivecart while the visitor reads, so the
+     click goes straight to the cart rather than waiting on a handshake. -->
+<link rel="preconnect" href="https://sales.thewlacademy.com" crossorigin>
+<link rel="dns-prefetch" href="https://sales.thewlacademy.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
