@@ -445,6 +445,18 @@ wide, 30fps, and 350–800KB each.
 Re-cutting one: the originals are in Anna's Drive, and the segments used are home 0–19s,
 planner 53.5–68s, tracker 25–48s.
 
+### Image weight
+
+The before/after wall and the cart carousel load from `assets/results-sm/`, 700px JPEGs
+at ~80KB each rather than the 1080px PNGs in `assets/`, which run to 15.5MB for the
+twelve. The originals stay for the other campaigns and the ad graphics. `anna-hero.jpg`
+was an 8192px camera original at 13.5MB, shared by thirteen pages; it is now 2400px and
+210KB, which is still generous for every container it appears in.
+
+The sales page preconnects to `sales.thewlacademy.com` so the hop to Thrivecart does not
+start with a cold handshake, and the cart snippet loads its Google Fonts stylesheet
+asynchronously so it never blocks Thrivecart's own first paint.
+
 ### Things that hold their own copy of these values
 
 - **`wla-app/cart-content.html`** — the ThriveCart cart page carries its own

@@ -127,18 +127,18 @@ const TestimonialsSection = () => (
 
 // Before/after photo wall — sits directly under the hero so results land first.
 const RESULTS_PHOTOS = [
-  { name: 'VICKY, 56', img: '/assets/vicky-before-after.png' },
-  { name: 'LAURA, 52', img: '/assets/jill-before-after.jpg' },
-  { name: 'RUTH, 54', img: '/assets/ruth-before-after.jpg' },
-  { name: 'BARBARA, 58', img: '/assets/barbara-before-after.png' },
-  { name: 'MEMBER, 5', img: '/assets/member-05-before-after.png' },
-  { name: 'MEMBER, 6', img: '/assets/member-06-before-after.png' },
-  { name: 'MEMBER, 7', img: '/assets/member-07-before-after.png', fit: 'cover', pos: 'center 25%' },
-  { name: 'MEMBER, 8', img: '/assets/member-08-before-after.jpeg' },
-  { name: 'MEMBER, 9', img: '/assets/member-09-before-after.png', fit: 'cover', pos: 'center 25%' },
-  { name: 'MEMBER, 10', img: '/assets/member-10-before-after.png', fit: 'cover' },
-  { name: 'MEMBER, 11', img: '/assets/member-11-before-after.png', fit: 'cover', pos: 'center 25%' },
-  { name: 'MEMBER, 12', img: '/assets/member-12-before-after.png' },
+  { name: 'VICKY, 56', img: '/assets/results-sm/vicky-before-after.jpg' },
+  { name: 'LAURA, 52', img: '/assets/results-sm/jill-before-after.jpg' },
+  { name: 'RUTH, 54', img: '/assets/results-sm/ruth-before-after.jpg' },
+  { name: 'BARBARA, 58', img: '/assets/results-sm/barbara-before-after.jpg' },
+  { name: 'MEMBER, 5', img: '/assets/results-sm/member-05-before-after.jpg' },
+  { name: 'MEMBER, 6', img: '/assets/results-sm/member-06-before-after.jpg' },
+  { name: 'MEMBER, 7', img: '/assets/results-sm/member-07-before-after.jpg', fit: 'cover', pos: 'center 25%' },
+  { name: 'MEMBER, 8', img: '/assets/results-sm/member-08-before-after.jpg' },
+  { name: 'MEMBER, 9', img: '/assets/results-sm/member-09-before-after.jpg', fit: 'cover', pos: 'center 25%' },
+  { name: 'MEMBER, 10', img: '/assets/results-sm/member-10-before-after.jpg', fit: 'cover' },
+  { name: 'MEMBER, 11', img: '/assets/results-sm/member-11-before-after.jpg', fit: 'cover', pos: 'center 25%' },
+  { name: 'MEMBER, 12', img: '/assets/results-sm/member-12-before-after.jpg' },
 ];
 
 const ResultsGridSection = () => (
