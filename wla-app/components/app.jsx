@@ -6,9 +6,9 @@
 // right, auto-advancing until the visitor takes over.
 // ---------------------------------------------------------------------------
 const APP_SCREENS = [
-  { tab: 'Daily tracker',  img: '/assets/app-home-tracker.jpg',  cap: 'Check in, in seconds' },
+  { tab: 'Daily tracker',  img: '/assets/app-clip-tracker-poster.jpg', video: '/assets/app-clip-tracker', cap: 'Check in, in seconds' },
   { tab: 'Log a meal',     img: '/assets/app-log-meal.jpg',      cap: 'Log what you ate, straight from your meal plan' },
-  { tab: 'Meal planner',   img: '/assets/app-meal-planner.jpg',  cap: 'Your week, planned in one tap' },
+  { tab: 'Meal planner',   img: '/assets/app-clip-planner-poster.jpg', video: '/assets/app-clip-planner', cap: 'Your week, planned in one tap' },
   { tab: 'Nutrition hub',  img: '/assets/app-nutrition-hub.jpg', cap: 'A fresh WLA meal guide every Friday' },
   { tab: 'Recipes',        img: '/assets/app-recipes-hub.jpg',   cap: '500+ WLA recipes, filtered to suit you' },
   { tab: 'The community',  img: '/assets/app-community.jpg',     cap: 'Daily support and evening check-ins' },
@@ -21,11 +21,24 @@ const AppGallerySection = () => {
   const touch = React.useRef(null);
   const n = APP_SCREENS.length;
 
+  const vids = React.useRef([]);
+
   React.useEffect(() => {
     if (paused) return;
-    const id = setInterval(() => setI((p) => (p + 1) % n), 4500);
-    return () => clearInterval(id);
-  }, [paused, n]);
+    // A clip gets long enough to tell its story; a still screen gets 4.5s.
+    const hold = APP_SCREENS[i].video ? 15000 : 4500;
+    const id = setTimeout(() => setI((p) => (p + 1) % n), hold);
+    return () => clearTimeout(id);
+  }, [paused, i, n]);
+
+  // Only the slide on screen plays. The rest rewind and sit still.
+  React.useEffect(() => {
+    vids.current.forEach((v, idx) => {
+      if (!v) return;
+      if (idx === i) { const r = v.play(); if (r && r.catch) r.catch(() => {}); }
+      else { v.pause(); try { v.currentTime = 0; } catch (e) { /* not loaded yet */ } }
+    });
+  }, [i]);
 
   const go = (next) => { setPaused(true); setI(((next % n) + n) % n); };
 
@@ -106,22 +119,41 @@ const AppGallerySection = () => {
               boxShadow: '0 34px 64px -28px rgba(0, 48, 96, 0.5)',
               position: 'relative',
             }}>
-              {APP_SCREENS.map((sc, idx) => (
-                <img
-                  key={sc.img}
-                  src={sc.img}
-                  alt={sc.tab + ' \u2014 ' + sc.cap}
-                  loading={idx === 0 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  style={{
-                    position: 'absolute', inset: 0,
-                    width: '100%', height: '100%',
-                    objectFit: 'cover', objectPosition: 'top center',
-                    opacity: idx === i ? 1 : 0,
-                    transition: 'opacity .45s ease',
-                  }}
-                />
-              ))}
+              {APP_SCREENS.map((sc, idx) => {
+                const frame = {
+                  position: 'absolute', inset: 0,
+                  width: '100%', height: '100%',
+                  objectFit: 'cover', objectPosition: 'top center',
+                  opacity: idx === i ? 1 : 0,
+                  transition: 'opacity .45s ease',
+                };
+                const label = sc.tab + ' \u2014 ' + sc.cap;
+                return sc.video ? (
+                  <video
+                    key={sc.video}
+                    ref={(el) => { vids.current[idx] = el; }}
+                    poster={sc.img}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={label}
+                    style={frame}
+                  >
+                    <source src={sc.video + '.webm'} type="video/webm" />
+                    <source src={sc.video + '.mp4'} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    key={sc.img}
+                    src={sc.img}
+                    alt={label}
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    style={frame}
+                  />
+                );
+              })}
             </div>
 
             {/* Dots */}
