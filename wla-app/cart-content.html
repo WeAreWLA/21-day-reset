@@ -76,11 +76,14 @@
   .wla-cart .total-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
   .wla-cart .total-row.line { color: var(--muted); font-size: 14px; padding-bottom: 6px; }
   .wla-cart .total-row.line s { color: var(--muted); }
-  .wla-cart .total-row.you-pay { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; padding-top: 10px; }
-  .wla-cart .total-row.you-pay .price { font-size: 38px; color: var(--navy); line-height: 1; letter-spacing: -0.01em; }
+  /* Stacked: the label on one line, the price under it. Side by side, both
+     wrapped awkwardly once the cart column got narrow. */
+  .wla-cart .total-row.you-pay { display: block; font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--navy); font-weight: 700; padding-top: 10px; }
+  .wla-cart .total-row.you-pay .label-pay { display: block; white-space: nowrap; letter-spacing: 0.02em; }
+  .wla-cart .total-row.you-pay .price { display: block; white-space: nowrap; margin-top: 4px; font-size: 38px; color: var(--navy); line-height: 1.1; letter-spacing: -0.01em; }
   .wla-cart .total-row.you-pay .price .currency { font-size: 22px; vertical-align: top; color: var(--coral); font-style: italic; font-weight: 500; margin-right: 2px; }
   .wla-cart .total-row.you-pay .price .term { font-size: 13px; color: var(--muted); font-weight: 600; }
-  .wla-cart .anchor { text-align: right; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14px; color: var(--coral); margin-top: 6px; }
+  .wla-cart .anchor { text-align: left; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14px; color: var(--coral); margin-top: 6px; }
 
   /* Scarcity strip */
   .wla-cart .scarcity { display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: center; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; margin-bottom: 24px; }
@@ -135,7 +138,7 @@
     .wla-cart .items li .value { grid-column: 2; justify-self: start; margin-top: 2px; }
     .wla-cart .trust { grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .wla-cart .trust-item .num { font-size: 20px; }
-    .wla-cart .anchor { text-align: center; }
+    .wla-cart .anchor { text-align: left; }
   }
 </style>
 
@@ -200,7 +203,7 @@
       <div class="totals">
         <div class="total-row line"><span>Regular price</span><span><s>£297 a year</s></span></div>
         <div class="total-row you-pay">
-          <span>You pay today</span>
+          <span class="label-pay">You pay today</span>
           <span class="price"><span class="currency">£</span>97<span class="term"> for 12 months</span></span>
         </div>
         <div class="anchor">One-off payment. That works out at less than £2 a week.</div>
