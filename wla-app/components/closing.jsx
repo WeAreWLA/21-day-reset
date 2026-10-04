@@ -33,7 +33,7 @@ const CountdownSection = () => {
   return (
     <section className="countdown-section" style={{
       background: 'var(--peach)',
-      padding: '60px 32px',
+      padding: '60px 32px 44px',
       textAlign: 'center',
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
@@ -176,7 +176,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
   const isOpen = phase === 'open';
   return (
   <section id={sectionId} className={bridgeHeading ? 'pricing-bridge' : ''} style={{
-    padding: bridgeHeading ? '48px 32px 120px' : '110px 32px 56px',
+    padding: bridgeHeading ? '48px 32px 120px' : '52px 32px 56px',
     background: 'var(--cream-deep)',
   }}>
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>

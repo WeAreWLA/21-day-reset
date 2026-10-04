@@ -59,11 +59,11 @@ const AnnouncementBar = () => {
         maxWidth: 1240,
         margin: '0 auto',
         fontFamily: '"Alegreya Sans", sans-serif',
-        textAlign: 'left',
+        textAlign: 'center',
         letterSpacing: '0.04em',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         gap: 14,
         flexWrap: 'wrap',
       }}>
