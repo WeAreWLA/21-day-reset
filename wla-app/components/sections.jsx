@@ -87,7 +87,8 @@ const CHECKOUT_BASE_URL = 'https://sales.thewlacademy.com/wla-app/';
 const PRICE          = '£97';   // 12 months, Founding Member rate
 const PRICE_WAS      = '£297';  // regular annual price
 const PRICE_SAVING   = '£200';  // saved every year on renewal
-const PRICE_WEEKLY   = '£1.86'; // £97 ÷ 52.14 weeks, for the smaller-chunk framing
+const PRICE_WEEKLY   = '£1.86'; // £97 ÷ 52.14 weeks. The page says "less than £2 a week";
+                                //   this is the figure that claim rests on.
 
 // Timeline
 //   OFFER_END      — Founding Member pricing closes at midnight at the end of
@@ -214,7 +215,7 @@ const PriceAnchor = ({ style = {} }) => (
     color: 'var(--blush-deep)',
     ...style,
   }}>
-    One-off payment. That works out at {PRICE_WEEKLY} a week.
+    One-off payment. That works out at less than £2 a week.
   </div>
 );
 
