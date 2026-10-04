@@ -102,8 +102,13 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     section div.app-carousel { grid-template-columns: 1fr !important; gap: 26px !important; }
     .app-carousel .app-tabs { display: none !important; }
     .app-carousel .app-phone-caption { display: block !important; }
-    .app-carousel > div:last-child { width: min(300px, 80vw) !important; max-width: none; margin: 0 auto; }
+    .app-carousel > div:last-child { width: min(300px, 76vw) !important; max-width: none; margin: 0 auto; }
     .app-carousel .app-phone { width: 100% !important; }
+    .app-carousel .app-arrow-prev { left: -26px !important; }
+    .app-carousel .app-arrow-next { right: -26px !important; }
+    /* Two phones side by side at 390px are unreadable; stack them. */
+    section div.app-clip-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .app-clip-grid > div { width: min(270px, 72vw); margin: 0 auto; }
     .spots-section { padding: 34px 16px 4px !important; }
     /* Above the fold on a phone: badge, headline, results, CTA — then detail.
        Every child needs an explicit order, or an ordered one jumps the lot. */
@@ -394,6 +399,7 @@ function App() {
       <ResultsGridSection />
       <AppIntroSection />
       <AppGallerySection />
+      <AppClipsSection />
       <ChallengeBonusSection />
       <FeaturesSection />
       <BonusesSection />

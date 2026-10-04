@@ -2,18 +2,52 @@
 // Copy lifted from the Founding Members copy doc.
 
 // ---------------------------------------------------------------------------
-// App screenshot carousel — tabs on the left, a phone that changes on the
-// right, auto-advancing until the visitor takes over.
+// App screenshot carousel — the seven screens. Tabs on the left and a phone
+// that cross-fades on the right, auto-advancing until the visitor takes over.
+// Arrows flank the phone so it is obvious it moves, on a phone most of all.
 // ---------------------------------------------------------------------------
 const APP_SCREENS = [
-  { tab: 'Daily tracker',  img: '/assets/app-clip-tracker-poster.jpg', video: '/assets/app-clip-tracker', cap: 'Check in, in seconds' },
+  { tab: 'Daily tracker',  img: '/assets/app-home-tracker.jpg',  cap: 'Check in, in seconds' },
   { tab: 'Log a meal',     img: '/assets/app-log-meal.jpg',      cap: 'Log what you ate, straight from your meal plan' },
-  { tab: 'Meal planner',   img: '/assets/app-clip-planner-poster.jpg', video: '/assets/app-clip-planner', cap: 'Your week, planned in one tap' },
+  { tab: 'Meal planner',   img: '/assets/app-meal-planner.jpg',  cap: 'Your week, planned in one tap' },
   { tab: 'Nutrition hub',  img: '/assets/app-nutrition-hub.jpg', cap: 'A fresh WLA meal guide every Friday' },
   { tab: 'Recipes',        img: '/assets/app-recipes-hub.jpg',   cap: '500+ WLA recipes, filtered to suit you' },
   { tab: 'The community',  img: '/assets/app-community.jpg',     cap: 'Daily support and evening check-ins' },
   { tab: 'Your progress',  img: '/assets/app-progress.jpg',      cap: 'See your results, even when the scales stand still' },
 ];
+
+const CarouselArrow = ({ side, onClick }) => (
+  <button
+    type="button"
+    className={'app-arrow app-arrow-' + side}
+    onClick={onClick}
+    aria-label={side === 'prev' ? 'Previous screen' : 'Next screen'}
+    style={{
+      position: 'absolute',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      [side === 'prev' ? 'left' : 'right']: -22,
+      width: 44,
+      height: 44,
+      borderRadius: '50%',
+      border: '1px solid var(--hairline)',
+      background: 'var(--paper)',
+      color: 'var(--ink)',
+      display: 'grid',
+      placeItems: 'center',
+      cursor: 'pointer',
+      padding: 0,
+      zIndex: 3,
+      boxShadow: '0 14px 28px -14px rgba(0, 48, 96, 0.45)',
+    }}
+  >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"
+         style={{ transform: side === 'prev' ? 'translateX(-1px)' : 'translateX(1px)' }}>
+      {side === 'prev' ? <polyline points="15 5 8 12 15 19" /> : <polyline points="9 5 16 12 9 19" />}
+    </svg>
+  </button>
+);
 
 const AppGallerySection = () => {
   const [i, setI] = React.useState(0);
@@ -21,24 +55,11 @@ const AppGallerySection = () => {
   const touch = React.useRef(null);
   const n = APP_SCREENS.length;
 
-  const vids = React.useRef([]);
-
   React.useEffect(() => {
     if (paused) return;
-    // A clip gets long enough to tell its story; a still screen gets 4.5s.
-    const hold = APP_SCREENS[i].video ? 15000 : 4500;
-    const id = setTimeout(() => setI((p) => (p + 1) % n), hold);
+    const id = setTimeout(() => setI((p) => (p + 1) % n), 4500);
     return () => clearTimeout(id);
   }, [paused, i, n]);
-
-  // Only the slide on screen plays. The rest rewind and sit still.
-  React.useEffect(() => {
-    vids.current.forEach((v, idx) => {
-      if (!v) return;
-      if (idx === i) { const r = v.play(); if (r && r.catch) r.catch(() => {}); }
-      else { v.pause(); try { v.currentTime = 0; } catch (e) { /* not loaded yet */ } }
-    });
-  }, [i]);
 
   const go = (next) => { setPaused(true); setI(((next % n) + n) % n); };
 
@@ -110,6 +131,9 @@ const AppGallerySection = () => {
             onTouchEnd={onTouchEnd}
             style={{ position: 'relative' }}
           >
+            <CarouselArrow side="prev" onClick={() => go(i - 1)} />
+            <CarouselArrow side="next" onClick={() => go(i + 1)} />
+
             <div className="app-phone" style={{
               aspectRatio: '1004 / 2000',
               borderRadius: 34,
@@ -119,41 +143,22 @@ const AppGallerySection = () => {
               boxShadow: '0 34px 64px -28px rgba(0, 48, 96, 0.5)',
               position: 'relative',
             }}>
-              {APP_SCREENS.map((sc, idx) => {
-                const frame = {
-                  position: 'absolute', inset: 0,
-                  width: '100%', height: '100%',
-                  objectFit: 'cover', objectPosition: 'top center',
-                  opacity: idx === i ? 1 : 0,
-                  transition: 'opacity .45s ease',
-                };
-                const label = sc.tab + ' \u2014 ' + sc.cap;
-                return sc.video ? (
-                  <video
-                    key={sc.video}
-                    ref={(el) => { vids.current[idx] = el; }}
-                    poster={sc.img}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label={label}
-                    style={frame}
-                  >
-                    <source src={sc.video + '.webm'} type="video/webm" />
-                    <source src={sc.video + '.mp4'} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img
-                    key={sc.img}
-                    src={sc.img}
-                    alt={label}
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                    style={frame}
-                  />
-                );
-              })}
+              {APP_SCREENS.map((sc, idx) => (
+                <img
+                  key={sc.img}
+                  src={sc.img}
+                  alt={sc.tab + ' \u2014 ' + sc.cap}
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  style={{
+                    position: 'absolute', inset: 0,
+                    width: '100%', height: '100%',
+                    objectFit: 'cover', objectPosition: 'top center',
+                    opacity: idx === i ? 1 : 0,
+                    transition: 'opacity .45s ease',
+                  }}
+                />
+              ))}
             </div>
 
             {/* Dots */}
@@ -176,14 +181,95 @@ const AppGallerySection = () => {
               ))}
             </div>
 
-            {/* Caption, mobile only — the tabs carry it on desktop */}
+            {/* Caption and swipe hint, mobile only — the tabs carry this on desktop */}
             <div className="app-phone-caption" style={{
               display: 'none',
               textAlign: 'center', marginTop: 12,
-              fontFamily: '"Libre Baskerville", serif',
-              fontStyle: 'italic', fontSize: 17, color: 'var(--ink)',
-            }}>{APP_SCREENS[i].cap}</div>
+            }}>
+              <div style={{
+                fontFamily: '"Libre Baskerville", serif',
+                fontStyle: 'italic', fontSize: 17, color: 'var(--ink)',
+              }}>{APP_SCREENS[i].cap}</div>
+              <div style={{
+                fontFamily: '"Alegreya Sans", sans-serif',
+                fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: 'var(--ink-muted)', marginTop: 8,
+              }}>Swipe or tap the arrows</div>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------------------------------------------------------------------------
+// Two short clips of the app in use, below the screens. Each plays muted on a
+// loop, and only once it has scrolled into view.
+// ---------------------------------------------------------------------------
+const APP_CLIPS = [
+  { tab: 'Meal planner', stem: '/assets/app-clip-planner', cap: 'Your week, planned in one tap' },
+  { tab: 'Daily tracker', stem: '/assets/app-clip-tracker', cap: 'Check in, in seconds' },
+];
+
+const AppClipsSection = () => {
+  const wrap = React.useRef(null);
+
+  React.useEffect(() => {
+    const el = wrap.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const v = entry.target;
+        if (entry.isIntersecting) { const r = v.play(); if (r && r.catch) r.catch(() => {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.35 });
+    el.querySelectorAll('video').forEach((v) => io.observe(v));
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <section className="app-clips-section" style={{ padding: '64px 32px 72px', background: 'var(--bg)' }}>
+      <div style={{ maxWidth: 900, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 40 }}>
+          <Eyebrow>See it in action</Eyebrow>
+          <SerifH size={42} style={{ marginTop: 18, lineHeight: 1.2 }}>
+            Two taps, <Italic>and your week is sorted.</Italic>
+          </SerifH>
+        </div>
+
+        <div ref={wrap} className="app-clip-grid" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 48,
+          maxWidth: 680, margin: '0 auto',
+        }}>
+          {APP_CLIPS.map((c) => (
+            <div key={c.stem} style={{ textAlign: 'center' }}>
+              <div className="app-clip-phone" style={{
+                aspectRatio: '1004 / 2000',
+                borderRadius: 30,
+                border: '8px solid var(--ink)',
+                overflow: 'hidden',
+                background: 'var(--bg)',
+                boxShadow: '0 30px 60px -26px rgba(0, 48, 96, 0.5)',
+              }}>
+                <video
+                  poster={c.stem + '-poster.jpg'}
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  aria-label={c.tab + ' \u2014 ' + c.cap}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
+                >
+                  <source src={c.stem + '.webm'} type="video/webm" />
+                  <source src={c.stem + '.mp4'} type="video/mp4" />
+                </video>
+              </div>
+              <SerifH size={21} className="card-title" style={{ marginTop: 20 }}>{c.tab}</SerifH>
+              <Body size={15} muted style={{ marginTop: 4 }}>{c.cap}</Body>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -521,6 +607,6 @@ const ForYouSection = () => (
 );
 
 Object.assign(window, {
-  AppGallerySection, AppIntroSection, ChallengeBonusSection,
+  AppGallerySection, AppClipsSection, AppIntroSection, ChallengeBonusSection,
   FeaturesSection, BonusesSection, WhyJoinNowSection, ForYouSection,
 });

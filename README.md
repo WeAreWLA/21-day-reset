@@ -428,16 +428,17 @@ say when to put it back and with what number; set `SPOTS_TAKEN` at the same time
 frame on the right that cross-fades, auto-advancing every 4.5s until the visitor clicks a
 tab, a dot or hovers. On mobile the tabs are hidden and it becomes a swipeable phone with
 dots and a caption underneath. Screens are listed in `APP_SCREENS`; each image must be
-1004×2000 so it fills the frame. Seven screens are in, two of them short clips rather
-than stills: the daily tracker and the meal planner. A slide with a `video` key renders a
-`<video>` instead of an `<img>`, only the slide on screen plays, and a clip holds for 15s
-before the carousel advances where a still holds for 4.5s.
+1004×2000 so it fills the frame. All seven slides are stills, holding 4.5s each, with
+arrows either side of the phone and a "swipe or tap the arrows" hint on mobile so the
+affordance is obvious.
 
 ### Video clips
 
-Three clips cut from Anna's screen recordings, each muted, looping and autoplaying:
-`app-clip-home` in the hero phone, `app-clip-planner` and `app-clip-tracker` in the
-carousel. Each ships as `.webm` (VP9) and `.mp4` (H.264) with a `-poster.jpg`; the WebM
+Three clips cut from Anna's screen recordings, each muted and looping: `app-clip-home`
+in the hero phone, and `app-clip-planner` and `app-clip-tracker` in `AppClipsSection`,
+their own two-phone block below the carousel. The two in that block carry
+`preload="none"` and an IntersectionObserver starts them only once they scroll into
+view, so nothing downloads for a visitor who never reaches them. Each ships as `.webm` (VP9) and `.mp4` (H.264) with a `-poster.jpg`; the WebM
 comes first in the `<source>` list and Safari falls through to the MP4. They are 600px
 wide, 30fps, and 350–800KB each.
 
