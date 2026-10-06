@@ -66,16 +66,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .ty-sub { font-size: 17px; line-height: 1.6; color: #333333; text-align: center; max-width: 600px; margin: 0 auto 40px; }
   .ty-sub strong { color: var(--navy); }
 
-  .stores { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 0 auto 44px; }
-  .store-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--navy); color: #fff !important; padding: 14px 22px; border-radius: 14px; min-width: 220px; transition: background .15s, transform .15s; box-shadow: 0 14px 28px -16px rgba(14,39,70,0.5); }
-  .store-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
-  .store-btn .ic { width: 30px; height: 30px; flex: none; display: grid; place-items: center; }
-  .store-btn .ic svg { width: 28px; height: 28px; }
-  .store-btn .lab { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
-  .store-btn .lab .top { font-size: 11px; letter-spacing: 0.04em; opacity: 0.85; }
-  .store-btn .lab .bot { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; }
-
-  .email-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 22px 26px; margin: 0 auto 40px; max-width: 520px; box-shadow: 0 18px 36px -22px rgba(14,39,70,0.2); }
+  .email-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 22px 26px; margin: 28px auto 0; max-width: 520px; box-shadow: 0 18px 36px -22px rgba(14,39,70,0.2); }
   .email-card .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
   .email-card .subject { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--navy); font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
   .email-card .from { font-size: 13px; color: var(--muted); }
@@ -89,9 +80,6 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .steps li .title { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: 16px; line-height: 1.3; margin-bottom: 4px; }
   .steps li .desc { font-size: 15px; line-height: 1.55; color: #333333; }
   .steps li .desc strong { color: var(--navy); }
-  .step-btn { display: inline-flex; align-items: center; gap: 12px; margin-top: 16px; background: var(--navy); color: #fff !important; padding: 14px 26px; border-radius: 999px; font-size: 16px; font-weight: 700; letter-spacing: 0.01em; text-decoration: none !important; transition: background .15s, transform .15s; box-shadow: 0 12px 24px -12px rgba(14,39,70,0.4); }
-  .step-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
-  .step-btn svg { width: 22px; height: 22px; flex: none; }
 
   .small-print { font-size: 15px; color: var(--muted); text-align: center; margin-top: 36px; line-height: 1.6; }
   .small-print a { color: var(--coral); }
@@ -105,8 +93,6 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .ty-wrap { padding: 40px 20px 64px; }
     .steps { padding: 26px 22px; }
     .email-card { padding: 18px 20px; }
-    .stores { gap: 12px; }
-    .store-btn { min-width: 0; width: 100%; max-width: 320px; }
   }
 </style>
 </head>
@@ -116,91 +102,43 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   <div class="check-circle">
     <svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg>
   </div>
-  <div class="founding-tag-wrap"><div class="founding-tag">✦ Your Access Is Ready ✦</div></div>
-  <h1 class="ty-title serif">You're in!<br />Welcome to the<br /><em>5 Day Reset</em></h1>
-  <p class="ty-sub">You're registered as a tester. Your welcome email is on its way with your access &mdash; download the <strong>WLA app</strong> below, log in with the email you just used, and your <strong>5 Day Reset Protocol</strong>, recipes, live coaching and daily check-ins will be waiting inside.</p>
-
-  <div class="stores">
-    <!-- Apple App Store -->
-    <a class="store-btn" href="https://apps.apple.com/ae/app/the-wla-app/id6770700032" target="_blank" rel="noopener" aria-label="Download on the App Store">
-      <span class="ic">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="#fff" d="M17.564 12.78c.02-2.21 1.81-3.27 1.89-3.32-1.03-1.5-2.64-1.71-3.21-1.73-1.36-.14-2.66.8-3.35.8-.69 0-1.76-.78-2.9-.76-1.49.02-2.87.87-3.64 2.2-1.55 2.69-.4 6.68 1.12 8.86.74 1.07 1.62 2.27 2.77 2.23 1.11-.04 1.53-.72 2.87-.72 1.34 0 1.72.72 2.9.7 1.2-.02 1.96-1.09 2.69-2.17.85-1.24 1.2-2.45 1.22-2.52-.03-.01-2.34-.9-2.36-3.57zm-2.21-6.55c.61-.74 1.02-1.78.91-2.81-.88.04-1.95.59-2.58 1.33-.56.65-1.06 1.7-.93 2.71.99.08 1.99-.5 2.6-1.23z"/>
-        </svg>
-      </span>
-      <span class="lab">
-        <span class="top">Download on the</span>
-        <span class="bot">App Store</span>
-      </span>
-    </a>
-
-    <!-- Google Play -->
-    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.base69d3fdd8748ee8a62692ea47.app" target="_blank" rel="noopener" aria-label="Get it on Google Play">
-      <span class="ic">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <defs>
-            <linearGradient id="gp1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#00C2FF"/><stop offset="1" stop-color="#0070FF"/>
-            </linearGradient>
-            <linearGradient id="gp2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#FFD400"/><stop offset="1" stop-color="#FF9C00"/>
-            </linearGradient>
-            <linearGradient id="gp3" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#FF3A3A"/><stop offset="1" stop-color="#C8001E"/>
-            </linearGradient>
-            <linearGradient id="gp4" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#00E07A"/><stop offset="1" stop-color="#008B4D"/>
-            </linearGradient>
-          </defs>
-          <path fill="url(#gp1)" d="M3.6 2.3c-.3.3-.5.7-.5 1.3v16.8c0 .6.2 1 .5 1.3l.1.1 9.4-9.4v-.2L3.6 2.3z"/>
-          <path fill="url(#gp2)" d="M16.2 15.3l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1.1.6 1.1 1.6 0 2.2l-3.7 2.1z"/>
-          <path fill="url(#gp3)" d="M16.3 15.2L13.1 12l-9.5 9.5c.4.4 1 .4 1.7.1l11-6.4z"/>
-          <path fill="url(#gp4)" d="M16.3 8.8L5.3 2.4c-.7-.4-1.3-.3-1.7.1L13.1 12l3.2-3.2z"/>
-        </svg>
-      </span>
-      <span class="lab">
-        <span class="top">Get it on</span>
-        <span class="bot">Google Play</span>
-      </span>
-    </a>
-  </div>
-
-  <div class="email-card">
-    <div class="label">Check your inbox</div>
-    <div class="subject">You're in 🎉 Here's your access + everything for your 5 Day Reset</div>
-    <div class="from">from <strong>Anna Wallace · The Weight Loss Academy</strong></div>
-  </div>
+  <div class="founding-tag-wrap"><div class="founding-tag">✦ Your Tester Place Is Reserved ✦</div></div>
+  <h1 class="ty-title serif">You're in! 🎉<br />Your tester place is <em>reserved</em></h1>
+  <p class="ty-sub" style="margin-bottom: 16px;">Welcome to our brand-new <strong>WLA 5 Day Fat Loss Reset</strong>. We're so excited to get started on <strong>Monday 12th October</strong>!</p>
+  <p class="ty-sub">This is our tester round, so your feedback really matters. Take part, explore the app and tell us how you get on &mdash; what you love and anything we could make better.</p>
 
   <div class="steps">
-    <h2>Your next 3 steps</h2>
+    <h2>What happens next</h2>
     <ol>
       <li>
         <div>
-          <div class="title">Download the app and log in</div>
-          <div class="desc">Tap your store button above, install the <strong>WLA app</strong>, and log in with the <strong>same email</strong> you just signed up with. Your 5 Day Reset will be waiting inside ready for kick-off on Monday 12th October.</div>
+          <div class="title">Right now &mdash; nothing to do</div>
+          <div class="desc">Your place is secure. There's nothing you need to do today, just keep an eye on your inbox.</div>
         </div>
       </li>
       <li>
         <div>
-          <div class="title">Confirm your email and whitelist us</div>
-          <div class="desc">Heads up: our emails sometimes land in <strong>spam</strong>, <strong>Promotions</strong> or <strong>Updates</strong>. Have a quick look there too. Once you find the one from <strong>Anna Wallace</strong>, reply with a quick "yes" so your inbox knows we're a real sender.</div>
+          <div class="title">Friday 9th October &mdash; your access arrives</div>
+          <div class="desc">We'll email you with your <strong>reset access</strong>, plus all the tools you need to get ready. Everything happens inside the brand new WLA app.</div>
         </div>
       </li>
       <li>
         <div>
-          <div class="title">Join the private Facebook group</div>
-          <div class="desc">This is where the live coaching, daily focus and check-ins happen alongside the app. Get in now so you don't miss a thing, the link is in your welcome email too.</div>
-          <a class="step-btn" href="https://www.facebook.com/groups/2422943604534979" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.14 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22c4.78-.8 8.43-4.94 8.43-9.94Z"/></svg>
-            Join the Facebook group
-          </a>
+          <div class="title">Monday 12th October &mdash; we kick off</div>
+          <div class="desc">The 5 Day Reset begins. We've given it a major overhaul, and I can't wait for you to experience it.</div>
         </div>
       </li>
     </ol>
   </div>
 
+  <div class="email-card">
+    <div class="label">Watch your inbox on Friday</div>
+    <div class="subject">Your tester place is reserved &mdash; your access lands Friday 9th October</div>
+    <div class="from">from <strong>Anna Wallace · The Weight Loss Academy</strong></div>
+  </div>
+
   <p class="small-print">
-    Didn't get the email within 10 minutes? Check spam and promotions, then drop a note to <a href="mailto:support@theweightloss-academy.com">support@theweightloss-academy.com</a> and we'll get you sorted.
+    Add <a href="mailto:support@theweightloss-academy.com">support@theweightloss-academy.com</a> to your contacts so Friday's email doesn't slip into spam or promotions. Any questions in the meantime? Just reply to your confirmation email.
   </p>
 </div>
 
