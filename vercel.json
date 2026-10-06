@@ -1,3 +1,7 @@
 {
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/free-7reset", "destination": "/tester-reset", "permanent": false },
+    { "source": "/free-7reset/ty", "destination": "/tester-reset/ty", "permanent": false }
+  ]
 }
