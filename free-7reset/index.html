@@ -379,10 +379,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .hero-section { grid-template-columns: 1fr !important; gap: 36px !important; padding: 28px 18px 48px !important; }
     .hero-left .hero-badge        { order: 1; }
     .hero-left .hero-title        { order: 2; }
-    .hero-left .hero-sub          { order: 3; font-size: 17px !important; margin-bottom: 20px !important; }
-    .hero-left .programme-results { order: 4; }
-    .hero-left .hero-cta-block    { order: 5; margin-bottom: 26px !important; }
-    .hero-left .hero-stats        { order: 6; gap: 22px !important; }
+    .hero-left .hero-sub          { order: 3; font-size: 19px !important; margin-bottom: 10px !important; }
+    .hero-left .hero-kickoff      { order: 4; }
+    .hero-left .programme-results { order: 5; }
+    .hero-left .hero-cta-block    { order: 6; margin-bottom: 26px !important; }
+    .hero-left .hero-stats        { order: 7; gap: 22px !important; }
     .hero-media { display: flex !important; flex-direction: column !important; }
     .hero-media .hero-quote { order: 1; position: static !important; transform: none !important; margin: 0 auto 14px !important; max-width: none !important; }
     .hero-media .hero-photo { order: 2; width: 100%; max-width: 420px; margin: 0 auto; }
@@ -484,18 +485,25 @@ function Hero() {
         </div>
 
         <h1 className="hero-title serif" style={{
-          margin: '0 0 18px', color: 'var(--navy)', fontWeight: 700,
-          fontSize: 'clamp(38px, 4.6vw, 60px)', lineHeight: 1.12, letterSpacing: '-0.01em'
+          margin: '0 0 14px', color: 'var(--navy)', fontWeight: 700,
+          fontSize: 'clamp(30px, 4.2vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.01em'
         }}>
-          5 Day Fat Loss Reset<br />
-          <span style={{ color: 'var(--coral)', fontStyle: 'italic', fontWeight: 500 }}>Kicks off Monday 12th October.</span>
+          5 Day Fat Loss Reset
         </h1>
 
         <div className="hero-sub" style={{
-          fontFamily: "'Alegreya Sans', sans-serif", fontSize: 20, lineHeight: 1.5,
-          color: '#333', maxWidth: 560, marginBottom: 26,
+          fontFamily: "'Alegreya Sans', sans-serif", fontWeight: 700,
+          fontSize: 'clamp(20px, 2.2vw, 25px)', lineHeight: 1.4,
+          color: 'var(--coral)', maxWidth: 560, marginBottom: 12,
         }}>
-          Lose up to <strong>5 pounds</strong>, gain <strong>energy</strong> and <strong>confidence</strong>, and say goodbye to <strong>sugar cravings</strong> in 5 days.
+          Lose up to 5 pounds, gain energy and confidence, and say goodbye to sugar cravings in 5 days.
+        </div>
+
+        <div className="hero-kickoff" style={{
+          fontFamily: "'Libre Baskerville', serif", fontStyle: 'italic',
+          fontSize: 18, lineHeight: 1.4, color: 'var(--coral)', marginBottom: 26,
+        }}>
+          Kicks off Monday 12th October
         </div>
 
         <div className="programme-results" style={{
