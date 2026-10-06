@@ -374,6 +374,24 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .sticky-cta .text .sec { display: none; }
     .sticky-cta-card { width: 100%; }
   }
+  /* App-style hero (ported from /wla-app) responsive behaviour */
+  @media (max-width: 900px) {
+    .hero-section { grid-template-columns: 1fr !important; gap: 36px !important; padding: 28px 18px 48px !important; }
+    .hero-left .hero-badge        { order: 1; }
+    .hero-left .hero-title        { order: 2; }
+    .hero-left .hero-sub          { order: 3; font-size: 17px !important; margin-bottom: 20px !important; }
+    .hero-left .programme-results { order: 4; }
+    .hero-left .hero-cta-block    { order: 5; margin-bottom: 26px !important; }
+    .hero-left .hero-stats        { order: 6; gap: 22px !important; }
+    .hero-media { display: flex !important; flex-direction: column !important; }
+    .hero-media .hero-quote { order: 1; position: static !important; transform: none !important; margin: 0 auto 14px !important; max-width: none !important; }
+    .hero-media .hero-photo { order: 2; width: 100%; max-width: 420px; margin: 0 auto; }
+    .hero-media .hero-cred  { order: 3; position: static !important; margin: 18px auto 0 !important; max-width: none !important; }
+    .hero-media .hero-phone { order: 4; position: static !important; width: 190px !important; margin: 22px auto 0 !important; }
+  }
+  @media (max-width: 420px) {
+    .hero-img { object-position: 25% center; }
+  }
 </style>
 </head>
 <body>
@@ -442,24 +460,113 @@ function UrgencyBanner() {
 }
 
 function Hero() {
+  const bullets = [
+    <>The <strong>5 Day Reset Protocol</strong>, laid out in the WLA app</>,
+    <><strong>Live coaching</strong> + a <strong>private Facebook group</strong></>,
+    <>The <strong>WLA Weight Loss Cookbook</strong> (bonus)</>,
+    <><strong>Daily check-ins</strong> to keep you on track</>,
+  ];
   return (
-    <section className="hero" id="top">
-      <div className="hero-image-wrap">
-        <img src="/assets/anna-sofa.jpg" alt="Anna Wallace, founder of The Weight Loss Academy" loading="eager" />
+    <section className="hero-section" id="top" style={{
+      maxWidth: 1240, margin: '0 auto', padding: '40px 32px 80px',
+      display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 72, alignItems: 'center'
+    }}>
+      <div className="hero-left" style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className="hero-badge" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10, alignSelf: 'flex-start',
+          background: '#F5D9CE', border: '1px solid var(--coral)', borderRadius: 999,
+          padding: '10px 22px', marginBottom: 20,
+        }}>
+          <span style={{ fontSize: 20, lineHeight: 1 }}>✨</span>
+          <span style={{ fontFamily: "'Libre Baskerville', serif", fontWeight: 700, fontSize: 15, letterSpacing: '0.01em', color: 'var(--navy)', lineHeight: 1.3 }}>
+            Looking for limited testers · Brand new reset
+          </span>
+        </div>
+
+        <h1 className="hero-title serif" style={{
+          margin: '0 0 18px', color: 'var(--navy)', fontWeight: 700,
+          fontSize: 'clamp(38px, 4.6vw, 60px)', lineHeight: 1.12, letterSpacing: '-0.01em'
+        }}>
+          5 Day Fat Loss Reset<br />
+          <span style={{ color: 'var(--coral)', fontStyle: 'italic', fontWeight: 500 }}>Kicks off Monday 12th October.</span>
+        </h1>
+
+        <div className="hero-sub" style={{
+          fontFamily: "'Alegreya Sans', sans-serif", fontSize: 20, lineHeight: 1.5,
+          color: '#333', maxWidth: 560, marginBottom: 26,
+        }}>
+          Lose up to <strong>5 pounds</strong>, gain <strong>energy</strong> and <strong>confidence</strong>, and say goodbye to <strong>sugar cravings</strong> in 5 days.
+        </div>
+
+        <div className="programme-results" style={{
+          display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 560, marginBottom: 30,
+          background: 'var(--paper)', border: '1px solid var(--rule)', borderLeft: '4px solid var(--coral)',
+          borderRadius: 14, padding: '22px 26px',
+        }}>
+          {bullets.map((r, i) => (
+            <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+              <span style={{ flexShrink: 0, marginTop: 3 }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="4 12.5 10 18 20 6.5" /></svg>
+              </span>
+              <div style={{ fontFamily: "'Alegreya Sans', sans-serif", fontSize: 18, lineHeight: 1.35, color: 'var(--navy)' }}>{r}</div>
+            </div>
+          ))}
+          <div style={{ marginTop: 6, paddingTop: 14, borderTop: '1px solid var(--rule)', fontFamily: "'Libre Baskerville', serif", fontStyle: 'italic', fontSize: 16, color: 'var(--coral)' }}>
+            We kick off together on Monday 12th October.
+          </div>
+        </div>
+
+        <div className="hero-cta-block" style={{ marginBottom: 44 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 360 }}>
+            <PrimaryCTA label="Test New Reset" showFoot={false} />
+            <div style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.5 }}>Limited tester spots. All we ask is your honest feedback at the end.</div>
+          </div>
+        </div>
+
+        <div className="hero-stats" style={{ display: 'flex', gap: 48, paddingTop: 28, borderTop: '1px solid var(--rule)' }}>
+          <div><div style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 32, lineHeight: 1, color: 'var(--navy)' }}>50,000+</div><div style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '0.04em', marginTop: 8 }}>WOMEN SUPPORTED</div></div>
+          <div><div style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 32, lineHeight: 1, color: 'var(--navy)' }}>10 yrs</div><div style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '0.04em', marginTop: 8 }}>CLINICAL PRACTICE</div></div>
+          <div><div style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 32, lineHeight: 1, color: 'var(--navy)' }}>4.9 ★</div><div style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '0.04em', marginTop: 8 }}>MEMBER RATING</div></div>
+        </div>
       </div>
 
-      <div className="form-wrap">
-        <div className="form-card v2" id="signup">
-          <h1 className="v2-title">5 Day Fat Loss Reset</h1>
-          <div className="v2-offer">
-            <span className="v2-offer-line v2-coral">Kicks Off <em>Monday 12th October</em></span>
+      <div className="hero-media" style={{ position: 'relative' }}>
+        <div className="hero-photo" style={{ aspectRatio: '4/5', borderRadius: 4, overflow: 'hidden', background: 'var(--cream)' }}>
+          <img src="/assets/anna-hero.jpg" alt="Anna Wallace, founder of The Weight Loss Academy" className="hero-img" fetchpriority="high" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        </div>
+
+        {/* The WLA app itself, playing, over the left edge of the photo. */}
+        <div className="hero-phone" style={{
+          position: 'absolute', left: -46, bottom: 54, width: 184, aspectRatio: '1004 / 2000',
+          borderRadius: 24, border: '7px solid var(--navy)', overflow: 'hidden', background: 'var(--cream)',
+          boxShadow: '0 30px 56px -22px rgba(14, 39, 70, 0.55)',
+        }}>
+          <video poster="/assets/app-clip-home-poster.jpg" autoPlay muted loop playsInline preload="metadata" aria-label="The WLA app home screen"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}>
+            <source src="/assets/app-clip-home.webm" type="video/webm" />
+            <source src="/assets/app-clip-home.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div className="hero-cred" style={{
+          position: 'absolute', bottom: -28, right: -20, background: 'var(--paper)', padding: '18px 22px',
+          borderRadius: 12, boxShadow: '0 20px 40px -18px rgba(80, 40, 20, 0.25)', border: '1px solid var(--rule)', maxWidth: 260,
+        }}>
+          <div style={{ fontFamily: "'Libre Baskerville', serif", fontStyle: 'italic', fontSize: 13, color: 'var(--coral)', marginBottom: 6 }}>Led by</div>
+          <div style={{ fontFamily: "'Libre Baskerville', serif", fontSize: 22, color: 'var(--navy)', marginBottom: 2 }}>Anna Wallace</div>
+          <div style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '0.02em', lineHeight: 1.4 }}>
+            BSc Food &amp; Nutrition<br />Registered Associate Nutritionist
           </div>
-          <p className="v2-kickoff">Looking for limited testers for a brand new fat loss reset</p>
-          <p className="v2-body">
-            Lose Up To <strong>5 Pounds</strong>, <strong>Gain Energy</strong> and <strong>Confidence</strong>, and <span className="v2-underline">Say Goodbye To Sugar Cravings</span> in 5 Days
-          </p>
-          <PrimaryCTA showFoot={false} />
-          <p className="v2-foot">Limited tester spots · We kick off together on Monday 12th October</p>
+        </div>
+
+        <div className="hero-quote" style={{
+          position: 'absolute', top: -26, left: 8, background: 'var(--cream-2)', padding: '14px 18px',
+          borderRadius: 10, maxWidth: 220, border: '1px solid var(--rule)', transform: 'rotate(-2deg)',
+        }}>
+          <div style={{ fontFamily: "'Libre Baskerville', serif", fontStyle: 'italic', fontSize: 14, color: 'var(--navy)', lineHeight: 1.4 }}>
+            "5lbs down this week — and I can satisfy my sweet cravings without the sugar."
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 6, letterSpacing: '0.06em' }}>HOLLY</div>
         </div>
       </div>
     </section>
@@ -921,7 +1028,7 @@ function StickyCTA() {
 }
 
 function App() {
-  return (<><UrgencyBanner /><Hero /><Trust /><Results /><Problem /><Outcomes /><Testimonials /><Inside /><Why /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /><StickyCTA /></>);
+  return (<><UrgencyBanner /><Hero /><Results /><Problem /><Outcomes /><Testimonials /><Inside /><Why /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /><StickyCTA /></>);
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
