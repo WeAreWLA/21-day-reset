@@ -88,17 +88,23 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   button { font: inherit; cursor: pointer; }
   img { max-width: 100%; display: block; }
 
-  .urgency-banner { position: relative; overflow: hidden; background: #F79F83; color: #003060; text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
+  .urgency-banner { position: relative; overflow: hidden; background: #F79F83; color: #003060; padding: 9px 28px; box-shadow: inset 0 -1px 0 rgba(14,39,70,0.12); }
   .urgency-banner::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .urgency-banner > * { position: relative; z-index: 1; }
+  .urgency-inner { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .urgency-banner .urg-label { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; text-align: left; }
+  .urgency-banner .urg-timer { display: inline-flex; align-items: flex-start; gap: 12px; flex: none; }
+  .urgency-banner .cd { display: inline-flex; flex-direction: column; align-items: center; min-width: 38px; }
+  .urgency-banner .cd b { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 20px; line-height: 1; }
+  .urgency-banner .cd i { font-style: normal; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-top: 3px; }
   .urgency-banner .urg-flag { display: inline-flex; align-items: center; background: rgba(0,0,0,0.22); color: #fff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; padding: 5px 11px; border-radius: 999px; flex: none; }
   .urgency-banner .urg-pulse { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,0.85); animation: urgPulse 1.6s infinite; flex: none; }
   @keyframes urgPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.85);} 70% { box-shadow: 0 0 0 8px rgba(255,255,255,0);} 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0);} }
   .urgency-banner .urg-icon { width: 18px; height: 18px; stroke: #003060; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   .urgency-banner strong { font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
   .urgency-banner .sep { opacity: 0.55; padding: 0 2px; }
-  @media (max-width: 640px) { .urgency-banner { font-size: 13px; letter-spacing: 0.03em; padding: 10px 12px; gap: 10px; flex-wrap: wrap; } .urgency-banner .urg-flag { font-size: 10px; padding: 4px 9px; letter-spacing: 0.14em; } .urgency-banner .urg-icon { width: 16px; height: 16px; } }
+  @media (max-width: 640px) { .urgency-banner { padding: 8px 16px; } .urgency-inner { gap: 10px; } .urgency-banner .urg-label { font-size: 12px; line-height: 1.25; } .urgency-banner .urg-timer { gap: 8px; } .urgency-banner .cd { min-width: 30px; } .urgency-banner .cd b { font-size: 16px; } .urgency-banner .cd i { font-size: 8px; } }
 
   .nav { position: sticky; top: 0; z-index: 40; background: var(--cream); border-bottom: 1px solid rgba(14,39,70,0.06); }
   .nav-inner { max-width: 1240px; margin: 0 auto; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
@@ -389,10 +395,19 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .hero-media .hero-photo { order: 2; width: 100%; max-width: 420px; margin: 0 auto; }
     .hero-media .hero-cred  { order: 3; position: static !important; margin: 18px auto 0 !important; max-width: none !important; }
     .hero-media .hero-phone { order: 4; position: static !important; width: 190px !important; margin: 22px auto 0 !important; }
+    /* Centre the hero copy on mobile */
+    .hero-left { text-align: center; }
+    .hero-left .hero-badge { align-self: center !important; }
+    .hero-left .hero-sub { margin-left: auto !important; margin-right: auto !important; }
+    .hero-left .programme-results { margin-left: auto !important; margin-right: auto !important; text-align: left; }
+    .hero-left .hero-cta-block > div { margin-left: auto !important; margin-right: auto !important; align-items: center; }
+    .hero-left .hero-stats { justify-content: center; }
   }
   @media (max-width: 420px) {
     .hero-img { object-position: 25% center; }
   }
+  .badge-mobile-br { display: none; }
+  @media (max-width: 640px) { .badge-mobile-br { display: inline; } }
   /* "See it in action" app-demo clips */
   @media (max-width: 640px) {
     .app-clips { padding: 56px 20px 60px !important; }
@@ -457,11 +472,30 @@ function PrimaryCTA({ label = 'Test New Reset', className = 'cta-btn', showFoot 
 }
 
 function UrgencyBanner() {
+  // Free tester registration closes at kick-off: 9am London, Mon 12 Oct 2026.
+  const REG_CLOSE = React.useMemo(() => new Date('2026-10-12T09:00:00+01:00').getTime(), []);
+  const [left, setLeft] = useState(() => Math.max(0, REG_CLOSE - Date.now()));
+  useEffect(() => {
+    const id = setInterval(() => setLeft(Math.max(0, REG_CLOSE - Date.now())), 1000);
+    return () => clearInterval(id);
+  }, [REG_CLOSE]);
+  const pad = (n) => String(n).padStart(2, '0');
+  const units = [
+    [Math.floor(left / 86400000), 'days'],
+    [pad(Math.floor((left % 86400000) / 3600000)), 'hrs'],
+    [pad(Math.floor((left % 3600000) / 60000)), 'mins'],
+    [pad(Math.floor((left % 60000) / 1000)), 'secs'],
+  ];
   return (
     <div className="urgency-banner" role="alert">
-      <span className="urg-flag"><span className="urg-pulse" aria-hidden="true"></span>&nbsp;Testers Wanted</span>
-      <svg className="urg-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-      <span><strong>Brand New 5 Day Reset</strong></span>
+      <div className="urgency-inner">
+        <span className="urg-label">Free Tester Registration Closes In</span>
+        <span className="urg-timer">
+          {units.map(([v, l], i) => (
+            <span className="cd" key={i}><b>{v}</b><i>{l}</i></span>
+          ))}
+        </span>
+      </div>
     </div>
   );
 }
@@ -486,7 +520,7 @@ function Hero() {
         }}>
           <span style={{ fontSize: 20, lineHeight: 1 }}>✨</span>
           <span style={{ fontFamily: "'Libre Baskerville', serif", fontWeight: 700, fontSize: 15, letterSpacing: '0.01em', color: 'var(--navy)', lineHeight: 1.3 }}>
-            Looking for limited testers · Brand new reset
+            Looking for limited testers ·<br className="badge-mobile-br" /> Brand new reset
           </span>
         </div>
 
