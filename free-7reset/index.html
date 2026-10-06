@@ -393,6 +393,12 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 420px) {
     .hero-img { object-position: 25% center; }
   }
+  /* "See it in action" app-demo clips */
+  @media (max-width: 640px) {
+    .app-clips { padding: 56px 20px 60px !important; }
+    .app-clip-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .app-clip-grid > div { width: min(280px, 78vw); margin: 0 auto; }
+  }
 </style>
 </head>
 <body>
@@ -768,6 +774,36 @@ function Inside() {
   );
 }
 
+const APP_CLIPS = [
+  { tab: 'Meal planner', stem: '/assets/app-clip-planner', cap: 'Your week, planned in one tap' },
+  { tab: 'Daily tracker', stem: '/assets/app-clip-tracker', cap: 'Check in, in seconds' },
+];
+
+function AppClips() {
+  return (
+    <section className="app-clips" style={{ padding: '72px 28px 80px', background: 'var(--cream)' }}>
+      <div className="section-head">
+        <span className="eyebrow">See it in action</span>
+        <h2 className="serif">Two taps, <em>and your week is sorted.</em></h2>
+      </div>
+      <div className="app-clip-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 48, maxWidth: 680, margin: '0 auto' }}>
+        {APP_CLIPS.map((c) => (
+          <div key={c.stem} style={{ textAlign: 'center' }}>
+            <h3 className="serif" style={{ fontSize: 21, color: 'var(--navy)', fontWeight: 700, margin: '0 0 4px' }}>{c.tab}</h3>
+            <p style={{ fontSize: 15, color: 'var(--muted)', lineHeight: 1.4, margin: '0 0 16px' }}>{c.cap}</p>
+            <div className="app-clip-phone" style={{ aspectRatio: '1004 / 2000', borderRadius: 30, border: '8px solid var(--navy)', overflow: 'hidden', background: 'var(--cream)', boxShadow: '0 30px 60px -26px rgba(14, 39, 70, 0.5)' }}>
+              <video poster={c.stem + '-poster.jpg'} autoPlay muted loop playsInline preload="metadata" aria-label={c.tab + ' — ' + c.cap} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}>
+                <source src={c.stem + '.webm'} type="video/webm" />
+                <source src={c.stem + '.mp4'} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Why() {
   const pillars = [
     { t: 'Built for women over 45',     d: 'Designed around midlife hormones, slower recovery and stubborn middle weight, not a 25-year-old metabolism.' },
@@ -1035,7 +1071,7 @@ function StickyCTA() {
 }
 
 function App() {
-  return (<><UrgencyBanner /><Hero /><Results /><Problem /><Outcomes /><Testimonials /><Inside /><Why /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /><StickyCTA /></>);
+  return (<><UrgencyBanner /><Hero /><Results /><Problem /><Outcomes /><Testimonials /><Inside /><AppClips /><Why /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /><StickyCTA /></>);
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
