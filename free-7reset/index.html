@@ -441,21 +441,6 @@ function UrgencyBanner() {
   );
 }
 
-function Nav() {
-  return (
-    <nav className="nav">
-      <div className="nav-inner">
-        <a className="brand" href="#top">Weight Loss Academy<span className="brand-by">by Anna Wallace</span></a>
-        <div className="nav-links">
-          <a href="#whats-inside">What you get</a>
-          <a href="#schedule">Schedule</a>
-          <a href="#faq">FAQ</a>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
 function Hero() {
   return (
     <section className="hero" id="top">
@@ -936,7 +921,7 @@ function StickyCTA() {
 }
 
 function App() {
-  return (<><UrgencyBanner /><Nav /><Hero /><Trust /><Results /><Problem /><Outcomes /><Testimonials /><Inside /><Why /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /><StickyCTA /></>);
+  return (<><UrgencyBanner /><Hero /><Trust /><Results /><Problem /><Outcomes /><Testimonials /><Inside /><Why /><Schedule /><Founder /><FAQ /><BottomCTA /><Footer /><StickyCTA /></>);
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
