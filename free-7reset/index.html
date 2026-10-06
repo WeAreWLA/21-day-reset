@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Free 7 Day Fat Loss Reset · Women Over 45 — Weight Loss Academy</title>
-<meta name="description" content="A free 7 day fat loss reset for women over 45. Instant access in the WLA app, live coaching, daily check-ins, a batch-cook cookbook and a private Facebook group. Start today." />
+<title>5 Day Fat Loss Reset · Testers Wanted · Weight Loss Academy</title>
+<meta name="description" content="We're looking for a limited group of testers for our brand new 5 day fat loss reset. Kicks off Monday 12th October. Lose up to 5 pounds, gain energy and say goodbye to sugar cravings in 5 days. For women over 45." />
 
 <!-- Open Graph / Social share preview -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://join.wearewla.com/free-7reset" />
-<meta property="og:title" content="Free 7 Day Fat Loss Reset · Start Today" />
-<meta property="og:description" content="Lose up to 7 pounds, gain energy and say goodbye to sugar cravings in 7 days. Free instant access in the WLA app. For women over 45." />
+<meta property="og:title" content="5 Day Fat Loss Reset · Testers Wanted · Kicks Off Mon 12th Oct" />
+<meta property="og:description" content="We're looking for limited testers for our brand new 5 day fat loss reset. Lose up to 5 pounds, gain energy and say goodbye to sugar cravings in 5 days. Kicks off Monday 12th October." />
 <meta property="og:image" content="https://join.wearewla.com/assets/anna-before-after.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="The Weight Loss &amp; Lifestyle Academy" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Free 7 Day Fat Loss Reset · Start Today" />
-<meta name="twitter:description" content="Lose up to 7 pounds, gain energy and say goodbye to sugar cravings in 7 days. Free instant access in the WLA app." />
+<meta name="twitter:title" content="5 Day Fat Loss Reset · Testers Wanted · Kicks Off Mon 12th Oct" />
+<meta name="twitter:description" content="We're looking for limited testers for our brand new 5 day fat loss reset. Lose up to 5 pounds and say goodbye to sugar cravings in 5 days. Kicks off Monday 12th October." />
 <meta name="twitter:image" content="https://join.wearewla.com/assets/anna-before-after.png" />
 
 <!-- Google Analytics 4 -->
@@ -54,10 +54,10 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <!-- WLA social-proof notifications -->
 <script>
   window.WLA_NOTIFICATIONS = {
-    offer: 'Free 7 Day Reset',
-    action: 'got instant access to the',
-    ctaUrl: 'https://sales.thewlacademy.com/free-7reset/',
-    ctaLabel: 'Get Instant Free Access',
+    offer: '5 Day Reset',
+    action: 'signed up to test the',
+    ctaUrl: 'https://join.wearewla.com/free-7reset',
+    ctaLabel: 'Test New Reset',
     firstDelay: 6000,
     showFor: 8000,
     gapMin: 20000,
@@ -267,7 +267,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 720px) { .why .pillar-grid { grid-template-columns: 1fr; } .why { padding: 64px 22px; } }
 
   .schedule { padding: 56px 28px 96px; background: var(--cream); }
-  .schedule-grid { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; }
+  .schedule-grid { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .day-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 14px; padding: 20px 15px; display: flex; flex-direction: column; gap: 8px; min-height: 190px; }
   .day-card.prep { background: var(--cream-2); border-color: var(--coral); }
   .day-card .date { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--navy); line-height: 1; font-weight: 700; }
@@ -386,12 +386,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <script type="text/babel">
 const { useState, useEffect } = React;
 
-const CHECKOUT_URL = 'https://sales.thewlacademy.com/free-7reset/';
-// Carry any UTM / tracking params through to ThriveCart so attribution isn't lost.
-const checkoutHref = CHECKOUT_URL + (typeof window !== 'undefined' && window.location.search ? window.location.search : '');
+// TODO: replace '#' with the ThriveCart tester sign-up link once it's ready.
+const SIGNUP_URL = '#';
 const trackLead = () => {
-  try { if (window.fbq) window.fbq('track', 'Lead', { content_name: 'Free 7 Day Reset', content_category: 'optin' }); } catch (e) {}
-  try { if (window.gtag) window.gtag('event', 'generate_lead', { freebie: 'free_7_day_reset' }); } catch (e) {}
+  try { if (window.fbq) window.fbq('track', 'Lead', { content_name: '5 Day Reset Tester', content_category: 'optin' }); } catch (e) {}
+  try { if (window.gtag) window.gtag('event', 'generate_lead', { freebie: 'five_day_reset_tester' }); } catch (e) {}
 };
 
 const Check = () => (<svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg>);
@@ -414,63 +413,30 @@ const IcWhatsApp = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="
 const IcCheckBox = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><polyline points="8 12.5 11 15.5 16 9.5"/></svg>);
 const IcPhone = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><line x1="11" y1="18.5" x2="13" y2="18.5"/><path d="M9.5 6.2c.6.5 1.5.8 2.5.8s1.9-.3 2.5-.8"/></svg>);
 
-// Smooth-scroll the page up to the inline sign-up form in the hero.
-const scrollToSignup = (e) => {
-  const el = document.getElementById('signup');
-  if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-};
-
-function PrimaryCTA({ label = 'Get Instant Free Access', className = 'cta-btn', showFoot = true }) {
+function PrimaryCTA({ label = 'Test New Reset', className = 'cta-btn', showFoot = true }) {
   return (
     <>
-      <a href="#signup" className={className} onClick={scrollToSignup}>
+      <a href={SIGNUP_URL} className={className} onClick={trackLead}>
         {label} <Arrow />
       </a>
       {showFoot && (
         <div className="micro-foot">
-          <span className="item free"><Check /> 100% free</span>
-          <span className="item"><Bolt /> Instant access</span>
-          <span className="item"><CardIcon /> No card needed</span>
+          <span className="item"><Bolt /> Kicks off Mon 12th Oct</span>
+          <span className="item"><Check /> Limited tester spots</span>
         </div>
       )}
     </>
   );
 }
 
-// ThriveCart inline embeddable sign-up form. Rendered once, in the hero card.
-function ThriveCartEmbed() {
-  useEffect(() => {
-    const id = 'tc-wlacademy-493-TF1Y3I';
-    if (document.getElementById(id)) return;
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://tinder.thrivecart.com/embed/v1/thrivecart.js';
-    s.id = id;
-    document.body.appendChild(s);
-  }, []);
-  return (
-    <div className="tc-embed-wrap">
-      <div className="tc-loading">Loading your free sign-up…</div>
-      <div
-        data-thrivecart-account="wlacademy"
-        data-thrivecart-tpl="v2"
-        data-thrivecart-product="493"
-        className="thrivecart-embeddable"
-        data-thrivecart-embeddable="tc-wlacademy-493-TF1Y3I"
-      ></div>
-      <p className="tc-fallback">Form not loading? <a href={checkoutHref} onClick={trackLead}>Open your free sign-up here →</a></p>
-    </div>
-  );
-}
-
 function UrgencyBanner() {
   return (
     <div className="urgency-banner" role="alert">
-      <span className="urg-flag"><span className="urg-pulse" aria-hidden="true"></span>&nbsp;Free Access</span>
+      <span className="urg-flag"><span className="urg-pulse" aria-hidden="true"></span>&nbsp;Testers Wanted</span>
       <svg className="urg-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-      <span><strong>100% Free</strong></span>
+      <span><strong>Brand New 5 Day Reset</strong></span>
       <span className="sep" aria-hidden="true">·</span>
-      <span>Instant Access · Start Today</span>
+      <span>Kicks Off Monday 12th October</span>
     </div>
   );
 }
@@ -499,17 +465,16 @@ function Hero() {
 
       <div className="form-wrap">
         <div className="form-card v2" id="signup">
-          <h1 className="v2-title"><span className="v2-title-free">FREE</span><span className="v2-title-sep"> - </span>7 Day Fat Loss Reset</h1>
+          <h1 className="v2-title">5 Day Fat Loss Reset</h1>
           <div className="v2-offer">
-            <span className="v2-offer-line v2-coral">Normally £47 &mdash; <em>Yours Free</em></span>
-            <span className="v2-offer-line v2-navy">Instant Access In The App</span>
+            <span className="v2-offer-line v2-coral">Kicks Off <em>Monday 12th October</em></span>
           </div>
+          <p className="v2-kickoff">Looking for limited testers for a brand new fat loss reset</p>
           <p className="v2-body">
-            Lose Up To <strong>7 Pounds</strong>, <strong>Gain Energy</strong>, <strong>Confidence</strong> and <span className="v2-underline">Say Goodbye To Sugar Cravings</span> in 7 Days
+            Lose Up To <strong>5 Pounds</strong>, <strong>Gain Energy</strong> and <strong>Confidence</strong>, and <span className="v2-underline">Say Goodbye To Sugar Cravings</span> in 5 Days
           </p>
-          <p className="v2-kickoff">Enter your details below. Your free access is instant</p>
-          <ThriveCartEmbed />
-          <p className="v2-foot">100% free · instant access · no card needed. Everything opens up inside the WLA app the moment you sign up.</p>
+          <PrimaryCTA showFoot={false} />
+          <p className="v2-foot">Limited tester spots · We kick off together on Monday 12th October</p>
         </div>
       </div>
     </section>
@@ -543,7 +508,7 @@ function Problem() {
         </ul>
         <div className="verdict">
           <p>None of this is laziness. None of it is willpower. It's hormones, blood sugar, and a body that needs a different approach to the one that worked in your thirties.</p>
-          <p>That's exactly what these 7 days are for.</p>
+          <p>That's exactly what these 5 days are for.</p>
         </div>
       </div>
     </section>
@@ -552,18 +517,18 @@ function Problem() {
 
 function Outcomes() {
   const items = [
-    { stat: '3–7 lbs',     t: 'Scales shift by day 7',           d: 'Many women notice the scales drop over the 7 days, largely from reduced bloating and water retention that builds up from processed foods, sugar and inconsistent eating habits.' },
+    { stat: '2–5 lbs',     t: 'Scales shift by day 5',           d: 'Many women notice the scales drop by day 5, largely from reduced bloating and water retention that builds up from processed foods, sugar and inconsistent eating habits.' },
     { stat: '1–3 days',    t: 'Sugar cravings handled',          d: 'Within the first 1–3 days, the afternoon snacking pull starts to fade and the snack cycle breaks.' },
     { stat: 'All day',     t: 'Steady, balanced energy',         d: 'No more afternoon crashes or evening energy dips. Feel fuller, clearer, and more in control throughout the day.' },
     { stat: 'Real food',   t: 'No banned lists',                 d: 'Proper meals built around protein, vegetables and the right carbs at the right time.' },
     { stat: 'Real life',   t: 'Food you\'ll actually enjoy',     d: 'Flexible meals that work around work, kids, social plans and busy days, without feeling like you\'re "on a diet".' },
-    { stat: '7 days +',    t: 'A reset you can keep going',      d: 'Habits that compound for the weeks after. Not a one-off you start over from on Monday.' },
+    { stat: '5 days +',    t: 'A reset you can keep going',      d: 'Habits that compound for the weeks after. Not a one-off you start over from on Monday.' },
   ];
   return (
     <section className="outcomes" id="outcomes">
       <div className="section-head">
         <span className="eyebrow">What you'll walk away with</span>
-        <h2 className="serif">Your <em>7-day wins.</em></h2>
+        <h2 className="serif">Your <em>5-day wins.</em></h2>
         <p>What most women experience by the end of the week. Yours might vary but this is what real previous resetters have reported.</p>
       </div>
       <div className="outcomes-grid">
@@ -673,18 +638,18 @@ function Results() {
 
 function Inside() {
   const items = [
-    { ic: <IcBook />,     t: '7 Day Reset Protocol Guide',        d: 'Your exact eating rhythm, macro balance and meal structure for the 7 days, laid out in the app. Designed to cut sugar cravings within 72 hours and put real fat loss on the scale by the end of the week.' },
-    { ic: <IcPhone />,    t: 'Instant Access In The WLA App',     d: 'Everything in one place, right on your phone. Open the app and your reset, recipes, coaching and check-ins are ready and waiting, whenever you are.' },
+    { ic: <IcBook />,     t: '5 Day Reset Protocol Guide',        d: 'Your exact eating rhythm, macro balance and meal structure for the 5 days, laid out in the app. Designed to cut sugar cravings within 72 hours and put real fat loss on the scale by the end of the week.' },
+    { ic: <IcPhone />,    t: 'Access In The WLA App',             d: 'Everything in one place, right on your phone. Open the app and your reset, recipes, coaching and check-ins are ready and waiting, whenever you are.' },
     { ic: <IcLive />,     t: 'Live Coaching',                     d: 'Show up for live sessions with me, plus the ongoing coaching inside the community. Q&A, mindset, the day\'s focus, and how to handle the inevitable wobble.' },
     { ic: <IcChef />,     t: 'The WLA Weight Loss Cookbook',      d: 'Simple batch-cooked meals designed to save time, reduce temptation, and make weight loss easier to stick to.', bonus: true },
-    { ic: <IcWhatsApp />, t: 'Private Facebook Group',            d: 'Real-time support, the other women resetting alongside you, and a place to ask the questions you\'ve been Googling at 11pm.' },
-    { ic: <IcCheckBox />, t: 'Daily Check-Ins',                   d: 'Daily accountability to keep you focused, consistent, and following through. Seven days of support, momentum, and staying on track with your goals.' },
+    { ic: <IcWhatsApp />, t: 'Private Facebook Group',            d: 'Real-time support, the other women testing alongside you, and a place to ask the questions you\'ve been Googling at 11pm.' },
+    { ic: <IcCheckBox />, t: 'Daily Check-Ins',                   d: 'Daily accountability to keep you focused, consistent, and following through. Five days of support, momentum, and staying on track with your goals.' },
   ];
   return (
     <section className="inside" id="whats-inside">
       <div className="section-head">
-        <span className="eyebrow">What you get when you sign up</span>
-        <h2 className="serif">See <em>your first few pounds</em> gone in 7 days.</h2>
+        <span className="eyebrow">What you get as a tester</span>
+        <h2 className="serif">See <em>your first few pounds</em> gone in 5 days.</h2>
         <p>Real coaching, a proven food plan and the structure to break the sugar cycle, shift the scale and feel like yourself again, all inside the WLA app.</p>
       </div>
       <div className="inside-grid">
@@ -709,14 +674,14 @@ function Why() {
     { t: 'Built for women over 45',     d: 'Designed around midlife hormones, slower recovery and stubborn middle weight, not a 25-year-old metabolism.' },
     { t: 'No 1,200-calorie plans',       d: 'You\'ll eat enough to function, sleep and think. Restriction creates rebounds. We\'re doing the opposite.' },
     { t: 'Real food, no cutting carbs',  d: 'A blood-sugar-friendly plate built around proper meals, not shakes, replacements or "diet versions" of anything.' },
-    { t: 'Coached, not handed a PDF',    d: 'You get live sessions, a Facebook group and a daily check-in, all in the app. Seven days, properly supported.' },
+    { t: 'Coached, not handed a PDF',    d: 'You get live sessions, a Facebook group and a daily check-in, all in the app. Five days, properly supported.' },
   ];
   return (
     <section className="why">
       <div className="why-inner">
         <div className="section-head">
           <span className="eyebrow">Why this reset is different</span>
-          <h2 className="serif">A 7-day reset that <em>doesn't feel like a diet.</em></h2>
+          <h2 className="serif">A 5-day reset that <em>doesn't feel like a diet.</em></h2>
         </div>
         <div className="pillar-grid">
           {pillars.map((p, i) => (
@@ -733,24 +698,24 @@ function Why() {
 
 function Schedule() {
   const days = [
-    { label: 'Day 1', prep: true, what: 'Instant access. Set up the app, meet the plan for the week, and start straight away, no waiting for a start date.' },
-    { label: 'Day 2', what: 'Blood sugar starts to stabilise and the constant sugar cravings begin to quieten down. That intense 4pm pull for snacks starts losing its grip.' },
-    { label: 'Day 3', what: 'Energy feels steadier and more consistent throughout the day. Less crashing, less sluggishness, and more feeling like yourself again.' },
-    { label: 'Day 4', what: 'Bloating starts to settle and you begin feeling lighter, more comfortable, and less puffy in your clothes.' },
-    { label: 'Day 5', what: 'Momentum kicks in. Meals feel easy, cravings are under control, and you\'re proving to yourself this actually works.' },
-    { label: 'Day 6', what: 'The scales are moving, clothes are fitting better, and you feel more in control than you have in months.' },
-    { label: 'Day 7', what: 'Wrap. You finish the week feeling lighter, more in control and proud of yourself, with the habits to keep going.' },
+    { weekday: 'Mon', date: '12th Oct', label: 'Day 1', prep: true, what: 'Reset begins. Kickoff coaching, the plan explained in plain English, and your first steps for the week.' },
+    { weekday: 'Tue', date: '13th Oct', label: 'Day 2', what: 'Blood sugar starts to stabilise and the constant sugar cravings begin to quieten down. That intense 4pm pull for snacks starts losing its grip.' },
+    { weekday: 'Wed', date: '14th Oct', label: 'Day 3', what: 'Energy feels steadier and more consistent throughout the day. Less crashing, less sluggishness, and more feeling like yourself again.' },
+    { weekday: 'Thu', date: '15th Oct', label: 'Day 4', what: 'Bloating starts to settle and you begin feeling lighter, more comfortable, and less puffy in your clothes.' },
+    { weekday: 'Fri', date: '16th Oct', label: 'Wrap', what: 'The scales are moving, clothes are fitting better, and you finish the week feeling lighter, more in control, and proud of yourself again.' },
   ];
   return (
     <section className="schedule" id="schedule">
       <div className="section-head">
-        <span className="eyebrow">Your 7-day schedule</span>
-        <h2 className="serif">Day 1 → Day 7.</h2>
-        <p>Go at your own pace and start today. Live sessions and check-ins run in the group and the app, show up live or catch up whenever suits you.</p>
+        <span className="eyebrow">Your 5-day schedule</span>
+        <h2 className="serif">Mon 12th → Fri 16th October.</h2>
+        <p>Live sessions and check-ins run in the group and the app. Show up live or catch up whenever suits you.</p>
       </div>
       <div className="schedule-grid">
         {days.map((d, i) => (
           <div className={'day-card' + (d.prep ? ' prep' : '')} key={i}>
+            <div className="weekday">{d.weekday}</div>
+            <div className="date">{d.date}</div>
             <div className="label">{d.label}</div>
             <div className="what">{d.what}</div>
           </div>
@@ -772,8 +737,8 @@ function Founder() {
           <h2 className="serif"><span className="founder-intro">Hi, I'm Anna</span>This is the reset I built from <em>10 years coaching women over 45.</em></h2>
           <div className="body">
             <p>I'm a Registered Associate Nutritionist (BSc Food &amp; Nutrition) and the founder of The Weight Loss Academy. Over the last 10 years my team and I have supported over <strong>50,000 women</strong>, the majority of them in midlife, to lose weight without 1,200-calorie plans, banned food lists or starting over every Monday.</p>
-            <p>This 7 Day Reset is the entry point. It's the exact rhythm I use with paying clients to break the sugar cycle in 72 hours, settle blood sugar, and put a structure in place that actually fits a midlife week.</p>
-            <p>It's normally a paid programme. Right now it's completely free, delivered inside the WLA app with live coaching and a community behind you the whole way.</p>
+            <p>This 5 Day Reset is brand new, and before we open it up more widely I'm looking for a small group of testers to run through it with me. It's the exact rhythm I use with paying clients to break the sugar cycle in 72 hours, settle blood sugar, and put a structure in place that actually fits a midlife week.</p>
+            <p>As a tester you get the full thing free, delivered inside the WLA app with live coaching and a community behind you the whole way, in exchange for your honest feedback at the end.</p>
           </div>
           <div className="signature">— Anna</div>
         </div>
@@ -890,17 +855,18 @@ function Testimonials() {
 
 function FAQ() {
   const qs = [
-    { q: 'When does it start, and how much time do I need?', a: 'It starts the moment you sign up. There\'s no fixed start date, you get instant access in the app and can begin today or whenever suits you. Each day is light: a short daily focus, a check-in, and live sessions you can watch live or catch up on later.' },
-    { q: 'Is this actually free? What\'s the catch?',         a: 'Yes, completely free (it\'s normally £47). No catch. You sign up on the next page with your name and email, and your access is instant. At the end of the 7 days I\'ll show you what we offer next if you\'d like to keep going, but you\'re not obligated to take it, and the reset stands on its own.' },
-    { q: 'How do I get access after I sign up?',              a: 'You add your name and email on the next page, and access is created instantly inside the WLA app. Check your email for your login and the link to download the app, then everything, the plan, recipes, coaching and check-ins, is right there on your phone.' },
+    { q: 'When does it start, and how much time do I need?', a: 'It kicks off Monday 12th October and runs five days (Mon 12th–Fri 16th). Each day is light: a short daily focus, a check-in, and live sessions you can watch live or catch up on later.' },
+    { q: 'What does being a tester involve?',                 a: 'You run through the full 5 day reset with us and share your honest feedback at the end, what worked, what didn\'t, what you\'d change. That\'s it. Your feedback helps us make it even better before a wider launch.' },
+    { q: 'Is it free? What\'s the catch?',                    a: 'Yes, it\'s free for testers. There\'s no catch and no obligation to buy anything. All we ask is your honest feedback at the end.' },
+    { q: 'How do I get access after I sign up?',              a: 'You sign up on the next page, and before we kick off on the 12th we\'ll email your access to the WLA app plus the link to the private Facebook group. Everything, the plan, recipes, coaching and check-ins, lives in one place on your phone.' },
     { q: 'I\'m on HRT / perimenopausal / post-menopause. Is this suitable?', a: 'Yes. The whole reset is designed around midlife hormones and the way your body responds in your 40s, 50s and beyond. Speak to your GP if you have a specific medical condition, but the food plan is real food in proper portions, nothing extreme.' },
     { q: 'I\'m under 45. Can I still join?',                  a: 'Absolutely. The structure works for any woman, but it\'s been specifically designed around the needs of women 45+. If that\'s you, you\'ll feel the difference.' },
-    { q: 'How much weight can I lose?',                       a: 'Many women notice a scale drop, reduced bloating and better energy within the first 7 days. The biggest win though is usually feeling back in control and building momentum again. Results vary from person to person.' },
+    { q: 'How much weight can I lose?',                       a: 'Many women notice a scale drop, reduced bloating and better energy within the first 5 days. The biggest win though is usually feeling back in control and building momentum again. Results vary from person to person.' },
     { q: 'I\'m busy / I have to feed a family. Will this work?', a: 'Yes, the recipes are family-friendly, and the batch-cook cookbook makes evenings easier. Plus there are no-cook options. The Facebook group is full of women navigating the same.' },
     { q: 'Do I need to count calories or cut out carbs?',     a: 'No to both. You\'ll eat real meals built around protein, vegetables, healthy fats and the right carbs at the right time. No calorie counting, no banned food lists.' },
-    { q: 'Do I need the app?',                                a: 'The reset is delivered through the free WLA app so everything lives in one place on your phone. When you sign up you\'ll get the link to download it (Apple and Android) along with your login.' },
+    { q: 'Do I need the app?',                                a: 'The reset is delivered through the WLA app so everything lives in one place on your phone. When you sign up you\'ll get the link to download it (Apple and Android) along with your login.' },
     { q: 'Is there exercise involved?',                       a: 'No required exercise. Movement is encouraged, a daily walk is ideal, but this isn\'t a workout programme.' },
-    { q: 'Do I need any equipment or supplements?',           a: 'Just food, water, your phone, and 7 days of commitment.' },
+    { q: 'Do I need any equipment or supplements?',           a: 'Just food, water, your phone, and 5 days of commitment.' },
   ];
   return (
     <section className="faq" id="faq">
@@ -926,9 +892,9 @@ function BottomCTA() {
   return (
     <section className="bottom-cta">
       <div className="bottom-cta-inner">
-        <span className="doors-pill">100% Free · Instant access · Start today</span>
-        <h2 className="serif">Come and reset with us, <em>starting today.</em></h2>
-        <p>Free, delivered in the app. Real coaching and a proper structure to break the sugar cycle and feel like yourself again in 7 days.</p>
+        <span className="doors-pill">Limited tester spots · Kicks off Mon 12th October</span>
+        <h2 className="serif">Be one of our testers, <em>from Monday 12th October.</em></h2>
+        <p>Free for testers, delivered in the app. Real coaching and a proper structure to break the sugar cycle and feel like yourself again in 5 days.</p>
         <PrimaryCTA />
       </div>
     </section>
@@ -961,10 +927,10 @@ function StickyCTA() {
   return (
     <div className={'sticky-cta' + (show ? ' show' : '')}>
       <div className="text">
-        <strong>Free 7 Day Reset · Instant Access</strong>
-        <span className="sec">100% free · start today, no card needed</span>
+        <strong>5 Day Reset · Testers Wanted</strong>
+        <span className="sec">Kicks off Mon 12th October · limited spots</span>
       </div>
-      <a href="#signup" className="sticky-cta-card" onClick={scrollToSignup}><Bolt /> Get Free Access</a>
+      <a href={SIGNUP_URL} className="sticky-cta-card" onClick={trackLead}><Bolt /> Test New Reset</a>
     </div>
   );
 }
