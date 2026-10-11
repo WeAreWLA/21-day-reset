@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preload" as="script" href="/assets/vendor/react-18.3.1.production.min.js" />
+<link rel="preload" as="script" href="/assets/vendor/react-dom-18.3.1.production.min.js" />
 <title>5 Day Fat Loss Reset · Testers Wanted · Weight Loss Academy</title>
 <meta name="description" content="We're looking for a limited group of testers for our brand new 5 day fat loss reset. Kicks off Monday 12th October. Lose up to 5 pounds, gain energy and say goodbye to sugar cravings in 5 days. For women over 45." />
 
@@ -66,7 +68,6 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 </script>
 <script defer src="/assets/notifications.js"></script>
 
-<link rel="preconnect" href="https://unpkg.com" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
@@ -575,8 +576,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
 <script>fetch("https://assets.mailerlite.com/jsonp/1287540/forms/200607239663257301/takel")</script>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="/assets/vendor/react-18.3.1.production.min.js" crossorigin="anonymous"></script>
+<script src="/assets/vendor/react-dom-18.3.1.production.min.js" crossorigin="anonymous"></script>
 
 <script>
 const {
@@ -1511,6 +1512,22 @@ const APP_CLIPS = [{
   cap: 'Check in, in seconds'
 }];
 function AppClips() {
+  React.useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const v = e.target;
+        if (e.isIntersecting) {
+          const r = v.play();
+          if (r && r.catch) r.catch(() => {});
+        } else v.pause();
+      });
+    }, {
+      threshold: 0.3
+    });
+    document.querySelectorAll('.app-clip-phone video').forEach(v => io.observe(v));
+    return () => io.disconnect();
+  }, []);
   return /*#__PURE__*/React.createElement("section", {
     className: "app-clips",
     style: {
@@ -1564,11 +1581,10 @@ function AppClips() {
     }
   }, /*#__PURE__*/React.createElement("video", {
     poster: c.stem + '-poster.jpg',
-    autoPlay: true,
     muted: true,
     loop: true,
     playsInline: true,
-    preload: "metadata",
+    preload: "none",
     "aria-label": c.tab + ' — ' + c.cap,
     style: {
       width: '100%',
