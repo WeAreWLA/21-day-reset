@@ -461,9 +461,10 @@ asynchronously so it never blocks Thrivecart's own first paint.
 
 ### Things that hold their own copy of these values
 
-- **`wla-app/cart-content.html`** — the ThriveCart cart page carries its own
-  `WLA_OFFER_END` and its own places figure. Change them with the sales page, or the two
-  will disagree.
+- **`wla-app/cart-content.html`** — the ThriveCart cart page mirrors the sales page's
+  value block and places bar, but it is plain HTML, so it carries its own copies of
+  `WLA_OFFER_END`, the places figures (200 / 500 / 40% fill) and the prices. Change them
+  with the sales page, or the two will disagree.
 - There is **no PayPal button** on this page. The Reset's PayPal link would take money for
   the wrong product, and no link exists yet for the Founding Member offer. See the note in
   `sections.jsx` where it would go.

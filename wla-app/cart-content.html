@@ -91,6 +91,27 @@
   .wla-cart .scarcity .copy { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: 15px; line-height: 1.4; }
   .wla-cart .scarcity .copy strong { color: var(--coral); }
 
+  /* Hero value box — mirrors the sales page block */
+  .wla-cart .value-box { max-width: 560px; margin: 24px auto 0; text-align: left; background: var(--paper); border: 1px solid rgba(0,48,96,0.10); border-left: 4px solid var(--coral); border-radius: 14px; padding: 22px 26px; }
+  .wla-cart .value-head { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 17px; line-height: 1.4; color: var(--navy); padding-bottom: 14px; margin-bottom: 4px; border-bottom: 1px solid rgba(0,48,96,0.10); }
+  .wla-cart .value-head .value-price { font-size: 30px; letter-spacing: -0.01em; vertical-align: -2px; }
+  .wla-cart .value-head .value-worth { color: var(--coral); white-space: nowrap; }
+  .wla-cart .value-box .results { margin: 14px 0 0; gap: 10px; max-width: none; }
+  .wla-cart .value-box .results div { font-size: 16px; }
+  .wla-cart .value-box .muted { color: var(--muted); font-weight: 400; }
+  .wla-cart .free { display: inline-block; background: var(--coral); color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; line-height: 1; padding: 4px 8px; border-radius: 5px; margin-left: 2px; }
+  .wla-cart .value-foot { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(0,48,96,0.10); font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: var(--coral); }
+
+  /* Places — mirrors the sales page bar */
+  .wla-cart .places { background: var(--paper); border: 1px solid rgba(0,48,96,0.10); border-left: 4px solid var(--coral); border-radius: 16px; padding: 26px 30px; margin-bottom: 24px; box-shadow: 0 24px 48px -32px rgba(0,48,96,0.28); }
+  .wla-cart .places-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .wla-cart .places-count { font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 26px; line-height: 1.25; color: var(--navy); }
+  .wla-cart .places-count em { color: var(--coral); font-style: italic; font-weight: 500; }
+  .wla-cart .places-left { font-size: 15.5px; font-weight: 700; letter-spacing: 0.02em; color: #fff; background: var(--coral); border-radius: 999px; padding: 6px 14px; white-space: nowrap; }
+  .wla-cart .places-track { height: 16px; border-radius: 999px; background: var(--cream-2); overflow: hidden; }
+  .wla-cart .places-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--coral-soft) 0%, var(--coral) 100%); }
+  .wla-cart .places-note { margin: 14px 0 0; font-size: 15px; line-height: 1.55; color: #333; }
+
   /* Guarantee */
   .wla-cart .guarantee { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: center; padding: 22px 24px; background: var(--paper); border: 1px solid rgba(0,48,96,0.08); border-radius: 14px; margin-bottom: 24px; box-shadow: 0 12px 24px -18px rgba(0,48,96,0.15); }
   .wla-cart .guarantee .badge { width: 48px; height: 48px; border-radius: 12px; background: rgba(46,125,91,0.12); color: var(--ok); display: grid; place-items: center; }
@@ -139,6 +160,9 @@
     .wla-cart .trust { grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .wla-cart .trust-item .num { font-size: 20px; }
     .wla-cart .anchor { text-align: left; }
+    .wla-cart .value-box { padding: 18px 20px; }
+    .wla-cart .places { padding: 20px 22px; }
+    .wla-cart .places-count { font-size: 23px; }
   }
 </style>
 
@@ -160,11 +184,15 @@
       <div class="pill">✨ The WLA 8-Week Fat Loss Challenge ✨</div>
       <h1 class="serif">Join the <span class="accent">WLA 8-Week Fat Loss Challenge</span> for £97 <span class="normally">(regular price £297 a year)</span></h1>
 
-      <div class="results" style="margin-top: 22px;">
-        <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>The 8-Week Fat Loss Challenge</strong>, kicking off Monday 26th October</span></div>
-        <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>12 months of the WLA app £97</strong> (regular price £297)</span></div>
-        <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>FREE January Reset</strong> + first 2027 Challenge</span></div>
-        <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>Renew for £97 (never £297)</strong> if you want to stay in the future</span></div>
+      <div class="value-box">
+        <div class="value-head">Get it all for ONLY <span class="value-price">£97</span> <span class="value-worth">(worth £594)</span></div>
+        <div class="results">
+          <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>The WLA 8-Week Fat Loss Challenge</strong></span></div>
+          <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>12 months of the WLA app</strong> <span class="muted">(regular price £297)</span> <span class="free">FREE</span></span></div>
+          <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>January Reset + First Challenge of 2027</strong> <span class="muted">(regular price £297)</span> <span class="free">FREE</span></span></div>
+          <div><span class="tick"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>Your £97 Annual Rate, Locked In.</strong> Never pay £297 if you want to stay</span></div>
+        </div>
+        <div class="value-foot">That works out at less than £2 a week.</div>
       </div>
 
       <p class="lede" style="margin-top: 18px;"><strong>Pre-Week starts Monday 19th October. Official kickoff is Monday 26th October.</strong> Lose up to a stone, slip back into your favourite Christmas outfits and finish the year proud of your progress.</p>
@@ -209,10 +237,16 @@
       </div>
     </div>
 
-    <!-- SCARCITY -->
-    <div class="scarcity">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
-      <div class="copy">Doors close on <strong>Sunday 25th October</strong> and we officially kick off on Monday 26th. Once this Founding Member round closes, the app opens at <strong>£297 for 12 months</strong> and the challenge is not included.</div>
+    <!-- PLACES -->
+    <!-- ⚠️ These three numbers must match SPOTS_TAKEN / SPOTS_AVAILABLE on the
+         sales page. They are hard-coded here, so change them together. -->
+    <div class="places">
+      <div class="places-head">
+        <div class="places-count"><em>200</em> of 500 places gone</div>
+        <div class="places-left">300 places left</div>
+      </div>
+      <div class="places-track"><div class="places-fill" style="width: 40%"></div></div>
+      <p class="places-note">This first Founding Member round is capped at 500 places. Once they are gone, we close and then re-open later at £297 a year. Doors close on <strong>Sunday 25th October</strong> and we officially kick off on Monday 26th.</p>
     </div>
 
     <!-- GUARANTEE -->
