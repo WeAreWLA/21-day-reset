@@ -91,12 +91,15 @@ const PRICE_WEEKLY   = '£1.86'; // £97 ÷ 52.14 weeks. The page says "less tha
                                 //   this is the figure that claim rests on.
 
 // Timeline
-//   OFFER_END      — Founding Member pricing closes at midnight at the end of
-//                    Sunday 11th October, i.e. 00:00 on Monday the 12th.
-//   CAMPAIGN_START — the 8 Week Fat Loss Challenge starts Monday 19th October.
+//   OFFER_END      — doors close at midnight at the end of Sunday 25th October.
+//                    The clocks go back that morning, so the rest of that Sunday
+//                    is GMT and midnight is 00:00Z on Monday the 26th.
+//   PREWEEK_START  — Pre-Week, Monday 19th October.
+//   CAMPAIGN_START — official kickoff, Monday 26th October.
 const OFFER_START    = new Date('2026-10-03T09:00:00+01:00').getTime();
-const OFFER_END      = new Date('2026-10-12T00:00:00+01:00').getTime();
-const CAMPAIGN_START = new Date('2026-10-19T00:00:00+01:00').getTime();
+const OFFER_END      = new Date('2026-10-26T00:00:00Z').getTime();
+const PREWEEK_START  = new Date('2026-10-19T00:00:00+01:00').getTime();
+const CAMPAIGN_START = new Date('2026-10-26T00:00:00Z').getTime();
 
 const OFFER_HOURS = Math.round((OFFER_END - OFFER_START) / 3600000);
 
@@ -298,7 +301,7 @@ Object.assign(window, {
   Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
-  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, OFFER_END_CONFIRMED, CAMPAIGN_START, PRICE_WEEKLY,
+  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, OFFER_END_CONFIRMED, PREWEEK_START, CAMPAIGN_START, PRICE_WEEKLY,
   SPOTS_AVAILABLE, SPOTS_TAKEN, SPOTS_LEFT,
   PRICE, PRICE_WAS, PRICE_SAVING,
 });

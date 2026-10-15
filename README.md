@@ -381,11 +381,12 @@ The Founding Member launch of the WLA app. Scaffolded from `/bday-promo`, so it 
 the same design system and its own private copy of the components. Copy comes from the
 Founding Members copy doc.
 
-The offer: **£97 for 12 months** (regular £297, so £200 saved on every renewal, £1.87 a
-week), capped at **500 Founding Member places**, closing **midnight at the end of Sunday
-11th October**, with the **8 Week Fat Loss Challenge free from Monday 19th October**, the
-January Reset and the first Challenge of 2027 free, the £97 annual rate locked in for as
-long as the member renews, and a 7-day money-back guarantee.
+The offer leads with the challenge, not the app. **The WLA 8-Week Fat Loss Challenge**,
+**£97** one-off (regular £297 a year), with **12 months of the WLA app included**,
+**Pre-Week from Monday 19th October**, **official kickoff Monday 26th October**, doors
+closing **midnight at the end of Sunday 25th October**, the January Reset and the first
+Challenge of 2027 included, the £97 renewal rate locked in, and a 7-day money-back
+guarantee.
 
 ```
 wla-app/
@@ -409,9 +410,10 @@ wla-app/
 | `CHECKOUT_BASE_URL` | `https://sales.thewlacademy.com/wla-app/` | Every button on the page |
 | `PRICE` / `PRICE_WAS` / `PRICE_SAVING` | `£97` / `£297` / `£200` | |
 | `PRICE_WEEKLY` | `£1.86` | £97 ÷ 52.14 weeks |
-| `OFFER_END` | Mon 12 Oct 2026 00:00 BST | Midnight at the end of Sunday the 11th |
+| `OFFER_END` | Mon 26 Oct 2026 00:00Z | Midnight at the end of Sunday the 25th. The clocks go back that morning, so it is GMT |
 | `OFFER_END_CONFIRMED` | `true` | `false` switches off all three countdowns at once |
-| `CAMPAIGN_START` | Mon 19 Oct 2026 | The 8 Week Fat Loss Challenge |
+| `PREWEEK_START` | Mon 19 Oct 2026 | Pre-Week |
+| `CAMPAIGN_START` | Mon 26 Oct 2026 | Official kickoff |
 | `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `0` | The places bar is not rendered; see below |
 
 `SPOTS_TAKEN` must track real sales. Under the DMCC Act 2024, invented scarcity is an

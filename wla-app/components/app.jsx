@@ -322,7 +322,7 @@ const AppIntroSection = () => (
 );
 
 // ---------------------------------------------------------------------------
-// Headline bonus — the 8 Week Fat Loss Challenge
+// The challenge itself — the thing being sold
 // ---------------------------------------------------------------------------
 const CHRISTMAS_OUTCOMES = [
   'Up to a stone lighter, with visible progress towards your goal.',
@@ -349,19 +349,19 @@ const ChallengeBonusSection = () => (
         fontFamily: '"Alegreya Sans", sans-serif', fontSize: 12, fontWeight: 600,
         letterSpacing: '0.16em', textTransform: 'uppercase', whiteSpace: 'nowrap',
       }}>
-        Your Founding Member bonus
+        The challenge
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
         <SerifH size={40} style={{ lineHeight: 1.2, marginBottom: 14 }}>
-          Get FREE access to my<br /><Italic>8 Week Fat Loss Challenge</Italic>
+          Eight weeks to<br /><Italic>finish the year proud of your progress</Italic>
         </SerifH>
         <Body size={18} style={{ maxWidth: 640, margin: '0 auto 14px', fontWeight: 600, color: 'var(--ink)' }}>
-          Starting Monday 19th October, work towards losing up to a stone before Christmas.
+          Pre-Week starts Monday 19th October. We officially kick off together on Monday 26th October.
         </Body>
         <Body size={16} style={{ maxWidth: 640, margin: '0 auto' }}>
-          Put your new WLA app into action with a focused challenge to help you finish the year feeling
-          lighter, more confident and in control.
+          Use the Pre-Week to get set up, shop and settle in. Then eight focused weeks with me, my coaching
+          team and the WLA app to help you finish the year feeling lighter, more confident and in control.
         </Body>
       </div>
 
@@ -393,7 +393,7 @@ const ChallengeBonusSection = () => (
         textAlign: 'center', fontFamily: '"Libre Baskerville", serif',
         fontWeight: 700, fontSize: 19, color: 'var(--ink)',
       }}>
-        Included FREE when you join as a WLA App Founding Member.
+        Your place includes 12 months of the WLA app, so the support carries on long after week eight.
       </div>
     </div>
   </section>
@@ -454,15 +454,13 @@ const FeaturesSection = () => (
 // The five Founding Member bonuses
 // ---------------------------------------------------------------------------
 const BONUSES = [
-  { n: 1, t: 'The 8 Week Fat Loss Challenge (FREE)', meta: 'Normally £197 · Starts Monday 19th October',
-    b: 'Start with a clear goal: work towards losing up to a stone before Christmas. Feel more confident in your party outfits, see progress in how your clothes fit and head into January closer to where you want to be.' },
-  { n: 2, t: 'A Full Year of WLA App Access', meta: 'Your support continues long after the eight-week challenge',
+  { n: 1, t: 'A Full Year of the WLA App', meta: 'Your support continues long after the eight weeks',
     b: 'Get 12 months of meal planning, 500+ recipes, daily tracking, weekly live Zoom coaching and community support. Keep working towards your goal after Christmas, with fresh meal guides and ongoing support to help you maintain your progress.' },
-  { n: 3, t: 'January Reset + First Challenge of 2027 (FREE)', meta: 'Combined value £297',
+  { n: 2, t: 'January Reset + First Challenge of 2027 (FREE)', meta: 'Combined value £297',
     b: 'Your next steps are already included. Rebuild your routine after Christmas, then keep progressing with the first challenge of 2027 without another payment.' },
-  { n: 4, t: 'Your £97 Annual Rate, Locked In', meta: 'Regular price £297 a year',
+  { n: 3, t: 'Your £97 Annual Rate, Locked In', meta: 'Regular price £297 a year',
     b: 'Join now and renew at £97 a year for as long as you remain a member, a £200 saving every year you renew. Keep your access to the app, fresh content, coaching and community at your Founding Member rate. This £97 is not a recurring subscription; you can extend at the Founding Member rate once your year is finished.' },
-  { n: 5, t: 'Your Chance to Shape What Comes Next', meta: 'This first round is limited to 500 Founding Members',
+  { n: 4, t: 'Your Chance to Shape What Comes Next', meta: 'This first round is limited to 500 Founding Members',
     b: 'Get early access to new features and share your ideas through Founding Member feedback rounds.' },
 ];
 
@@ -470,9 +468,9 @@ const BonusesSection = () => (
   <section className="bonuses-section" style={{ padding: '72px 32px 64px', background: 'var(--bg)' }}>
     <div style={{ maxWidth: 940, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: 44 }}>
-        <Eyebrow>Your Founding Member bonuses</Eyebrow>
+        <Eyebrow>What comes with your place</Eyebrow>
         <SerifH size={46} style={{ marginTop: 18, lineHeight: 1.2 }}>
-          One year of WLA support.<br />A goal before Christmas.<br /><Italic>A founding rate you can keep.</Italic>
+          Eight weeks to Christmas.<br />A year of WLA support.<br /><Italic>A founding rate you can keep.</Italic>
         </SerifH>
       </div>
 
@@ -506,8 +504,8 @@ const BonusesSection = () => (
 const COMPARISON = [
   { f: '£97 for 12 months. Renewal price locked in while you remain a member.',
     l: '£297 for 12 months, with no locked-in renewal price.' },
-  { f: 'FREE 8 Week Fat Loss Challenge',
-    l: 'The 8 Week Fat Loss Challenge, £197 separately.' },
+  { f: 'A place on the 8-Week Fat Loss Challenge, kicking off Monday 26th October',
+    l: 'No challenge place. The app on its own.' },
   { f: 'FREE January Reset + first Challenge of 2027',
     l: 'January Reset and the first Challenge of 2027, £297 combined, separately.' },
   { f: 'Founding Member status, early feature access and feedback opportunities',
@@ -531,7 +529,7 @@ const WhyJoinNowSection = () => (
           boxShadow: '0 24px 48px -30px rgba(232, 127, 99, 0.45)',
         }}>
           <SerifH size={22} className="card-title" style={{ marginBottom: 18, color: 'var(--blush-deep)' }}>
-            Join now as a Founding Member
+            Join this round as a Founding Member
           </SerifH>
           {COMPARISON.map((c, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
@@ -578,7 +576,7 @@ const ForYouSection = () => (
     <div style={{ maxWidth: 880, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: 40 }}>
         <SerifH size={48} style={{ lineHeight: 1.2 }}>
-          The WLA App is <Italic>for you if…</Italic>
+          This challenge is <Italic>for you if…</Italic>
         </SerifH>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>

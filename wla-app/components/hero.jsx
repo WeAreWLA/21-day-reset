@@ -70,7 +70,7 @@ const AnnouncementBar = () => {
         {timed && isOpen ? (
           <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
             <span style={{ fontSize: 13 }}>
-              Your exclusive early-access<br className="bar-break" /> window ends in
+              Doors close Sunday 25th October<br className="bar-break" /> · closing in
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 4 }}>
               <BarDigit n={t.d} label="days" />
@@ -81,11 +81,11 @@ const AnnouncementBar = () => {
           </span>
         ) : isOpen ? (
           <span style={{ fontSize: 13 }}>
-            Founding Member launch &middot; Only {window.SPOTS_AVAILABLE} places &middot; 8 Week Fat Loss Challenge included free
+            The WLA 8-Week Fat Loss Challenge &middot; Pre-Week Monday 19th October &middot; Kickoff Monday 26th October
           </span>
         ) : (
           <span style={{ fontSize: 13 }}>
-            Founding Member pricing has closed &middot; The WLA App is now {window.PRICE_WAS} a year
+            Doors are closed for this round &middot; The WLA App is {window.PRICE_WAS} a year
           </span>
         )}
       </div>
