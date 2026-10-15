@@ -469,8 +469,8 @@ const BonusesSection = () => (
     <div style={{ maxWidth: 940, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: 44 }}>
         <Eyebrow>What comes with your place</Eyebrow>
-        <SerifH size={46} style={{ marginTop: 18, lineHeight: 1.2 }}>
-          Eight weeks to Christmas.<br />A year of WLA support.<br /><Italic>A founding rate you can keep.</Italic>
+        <SerifH size={44} style={{ marginTop: 18, lineHeight: 1.2 }}>
+          Access to WLA 8 Week Fat Loss Challenge<br /><Italic>&amp; One Year Access to WLA app</Italic>
         </SerifH>
       </div>
 
