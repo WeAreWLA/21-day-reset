@@ -222,6 +222,24 @@ const PriceAnchor = ({ style = {} }) => (
   </div>
 );
 
+// FREE tag, for the things included at no extra cost.
+const Free = () => (
+  <span style={{
+    display: 'inline-block',
+    verticalAlign: 'baseline',
+    background: 'var(--blush-deep)',
+    color: 'var(--paper)',
+    fontFamily: '"Alegreya Sans", sans-serif',
+    fontSize: 11.5,
+    fontWeight: 700,
+    letterSpacing: '0.1em',
+    lineHeight: 1,
+    padding: '4px 8px',
+    borderRadius: 5,
+    marginLeft: 2,
+  }}>FREE</span>
+);
+
 const Placeholder = ({ label, ratio = '4/5', style = {} }) => (
   <div style={{
     aspectRatio: ratio,
@@ -297,7 +315,7 @@ const Divider = ({ style = {} }) => (
 );
 
 Object.assign(window, {
-  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor,
+  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor, Free,
   Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
