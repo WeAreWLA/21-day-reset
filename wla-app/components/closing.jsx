@@ -156,8 +156,8 @@ const SpotsRemainingSection = () => {
           </div>
 
         <Body size={15} style={{ marginTop: 14 }}>
-          This first Founding Member round is capped at {total} places. Once they are gone, the app opens to
-          everyone at {window.PRICE_WAS} a year.
+          This first Founding Member round is capped at {total} places. Once they are gone, we close and then
+          re-open later at {window.PRICE_WAS} a year.
         </Body>
       </div>
     </section>
