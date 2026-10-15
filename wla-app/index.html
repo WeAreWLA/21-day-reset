@@ -335,15 +335,15 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 const HEADLINES = {
   "default": {
-    eyebrow: "Founding Member round · doors close Sunday 25th October",
+    eyebrow: "Founding Member Round",
     title: <>The WLA<br /><Italic>8-Week Fat Loss Challenge</Italic></>,
   },
   "alt-a": {
-    eyebrow: "Founding Member round · doors close Sunday 25th October",
+    eyebrow: "Founding Member Round",
     title: <>Lose up to a stone<br /><Italic>before Christmas.</Italic></>,
   },
   "alt-b": {
-    eyebrow: "Founding Member round · doors close Sunday 25th October",
+    eyebrow: "Founding Member Round",
     title: <>Finish the year<br /><Italic>proud of your progress.</Italic></>,
   }
 };
@@ -357,12 +357,12 @@ const HERO_DATES = [
 ];
 
 // Everything that comes with the challenge.
+const HERO_POINTS_HEADING = <>Here&rsquo;s what you get for a one off payment of <strong>£97</strong></>;
 const HERO_POINTS = [
-  <><strong>The 8-Week Fat Loss Challenge</strong>, kicking off Monday 26th October</>,
-  <><strong>12 months of the WLA app</strong> £97 <span style={{ color: 'var(--ink-muted)' }}>(regular price £297)</span></>,
-  <><strong>Personalised meal planner</strong>, daily tracker and progress tools</>,
-  <><strong>Weekly Zoom coaching</strong> and evening accountability</>,
-  <><strong>January Reset</strong> + first Challenge of 2027</>,
+  <><strong>The WLA 8-Week Fat Loss Challenge</strong></>,
+  <><strong>12 months of the WLA app</strong> <span style={{ color: 'var(--ink-muted)' }}>(regular price £297)</span> <Free /></>,
+  <><strong>January Reset + First Challenge of 2027</strong> <span style={{ color: 'var(--ink-muted)' }}>(regular price £297)</span> <Free /></>,
+  <><strong>Your £97 Annual Rate, Locked In.</strong> Never pay £297 if you want to stay</>,
 ];
 
 function App() {
@@ -561,6 +561,16 @@ function TweakableHero({ headline, phase = 'open' }) {
           borderRadius: 14,
           padding: '22px 26px',
         }}>
+          <div style={{
+            fontFamily: '"Libre Baskerville", serif',
+            fontWeight: 700,
+            fontSize: 17,
+            lineHeight: 1.4,
+            color: 'var(--ink)',
+            paddingBottom: 14,
+            marginBottom: 4,
+            borderBottom: '1px solid var(--hairline)',
+          }}>{HERO_POINTS_HEADING}</div>
           {HERO_POINTS.map((r, i) => (
             <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
               <span style={{ flexShrink: 0, marginTop: 4 }}><Tick color="var(--blush-deep)" /></span>
@@ -581,7 +591,7 @@ function TweakableHero({ headline, phase = 'open' }) {
             fontSize: 16,
             color: 'var(--blush-deep)',
           }}>
-            One-off payment. That works out at less than £2 a week.
+            That works out at less than £2 a week.
           </div>
         </div>
 

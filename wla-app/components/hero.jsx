@@ -70,7 +70,7 @@ const AnnouncementBar = () => {
         {timed && isOpen ? (
           <span className="announcement-timer" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
             <span style={{ fontSize: 13 }}>
-              Doors close Sunday 25th October<br className="bar-break" /> · closing in
+              Doors closing in
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 4 }}>
               <BarDigit n={t.d} label="days" />
