@@ -335,6 +335,10 @@ const FAQ_ITEMS = [
     a: 'No. You make a one-off payment of £97 for 12 months of access, with no automatic renewal. If you choose to renew after your year ends, you can get another 12 months for £97. Your Founding Member renewal rate stays £97 each year you continue, rather than the regular price of £297.' },
   { q: "What if it's not for me?",
     a: "You're covered by our 7-day money-back guarantee. Join, open the app and look around, and if it isn't for you, email us within 7 days for a full refund." },
+  { q: 'Are you a previous Shift & Sustain member with an active paying membership?',
+    a: 'You can take advantage of the founding member promo, which will extend your current access. Plus it gives you access to the founding member yearly rate of £97 for life (never pay £297).' },
+  { q: 'Are you a Lifetime Academy member?',
+    a: 'Your Lifetime Academy access remains unchanged. You can still access your programme on its existing platform. The new WLA app replaces Shift & Sustain, our paid membership, and is separate from the Lifetime Academy programme. It includes new recipes and meal guides every week, weekly live coaching and our new planning and tracking tools. Lifetime Academy access does not include the new app or ongoing membership. If you’d like to continue using the app and join our WLA 8-Week Fat Loss Challenge, you’re welcome to take advantage of the Founding Member offer: £97 for 12 months, with a one-off payment.' },
   { q: 'What happens when the doors close?',
     a: 'Founding Member pricing closes for good on Sunday 25th October and the app opens later at £297 a year.' },
 ];
