@@ -439,10 +439,13 @@ function App() {
       {/* Tweakable hero wrapper */}
       <TweakableHero headline={headline} phase={phase} />
       <ResultsGridSection />
+      {/* The challenge comes before the app sections: it is what is being sold,
+          and "the Formula works, now it's easier to follow" then reads as the
+          bridge from the eight weeks into the app that supports them. */}
+      <ChallengeBonusSection />
       <AppIntroSection />
       <AppGallerySection />
       <AppClipsSection />
-      <ChallengeBonusSection />
       <FeaturesSection />
       <BonusesSection />
       {/* Renders nothing until OFFER_END_CONFIRMED is set in sections.jsx. */}
