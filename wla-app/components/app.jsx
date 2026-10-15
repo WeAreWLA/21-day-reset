@@ -353,6 +353,16 @@ const ChallengeBonusSection = () => (
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
+        <div className="challenge-name" style={{
+          fontFamily: '"Libre Baskerville", serif',
+          fontWeight: 700,
+          fontSize: 21,
+          lineHeight: 1.3,
+          color: 'var(--ink)',
+          marginBottom: 12,
+        }}>
+          The WLA 8 Week Fat Loss Challenge
+        </div>
         <SerifH size={40} style={{ lineHeight: 1.2, marginBottom: 14 }}>
           Eight weeks to<br /><Italic>finish the year proud of your progress</Italic>
         </SerifH>
