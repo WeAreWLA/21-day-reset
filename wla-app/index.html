@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Become a WLA App Founding Member · Weight Loss &amp; Lifestyle Academy</title>
-<meta name="description" content="Join the WLA App as a Founding Member for £97 for 12 months and get my 8 Week Fat Loss Challenge free. Start on 19th October and lose up to a stone before Christmas, without counting calories." />
+<title>The WLA 8-Week Fat Loss Challenge · Weight Loss &amp; Lifestyle Academy</title>
+<meta name="description" content="Join the WLA 8-Week Fat Loss Challenge for £97, with 12 months of the WLA app included. Pre-Week starts Monday 19th October, official kickoff Monday 26th October. Lose up to a stone before Christmas." />
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSBKM60YTB"></script>
@@ -119,9 +119,10 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .hero-left .hero-badge       { order: 1 !important; }
     .hero-left .hero-title       { order: 2 !important; }
     .hero-left .hero-sub         { order: 3 !important; font-size: 17px !important; margin-bottom: 20px !important; }
-    .hero-left .programme-results{ order: 4 !important; }
-    .hero-left .hero-cta-block   { order: 5 !important; margin-bottom: 26px !important; }
-    .hero-left .hero-stats       { order: 6 !important; }
+    .hero-left .hero-dates       { order: 4 !important; gap: 8px !important; margin-bottom: 20px !important; }
+    .hero-left .programme-results{ order: 5 !important; }
+    .hero-left .hero-cta-block   { order: 6 !important; margin-bottom: 26px !important; }
+    .hero-left .hero-stats       { order: 7 !important; }
     .hero-media { display: flex !important; flex-direction: column !important; }
     .hero-media .hero-quote { order: 1; margin-bottom: 14px !important; }
     .hero-media .hero-photo { order: 2; }
@@ -334,27 +335,34 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 const HEADLINES = {
   "default": {
-    eyebrow: "Exclusive Founding Member invitation · Only 500 places",
-    title: <>Become a WLA App Founding Member.<br /><Italic>Get my 8 Week Fat Loss Challenge FREE.</Italic></>,
+    eyebrow: "Founding Member round · doors close Sunday 25th October",
+    title: <>The WLA<br /><Italic>8-Week Fat Loss Challenge</Italic></>,
   },
   "alt-a": {
-    eyebrow: "Exclusive Founding Member invitation · Only 500 places",
+    eyebrow: "Founding Member round · doors close Sunday 25th October",
     title: <>Lose up to a stone<br /><Italic>before Christmas.</Italic></>,
   },
   "alt-b": {
-    eyebrow: "Exclusive Founding Member invitation · Only 500 places",
-    title: <>The new WLA App is here.<br /><Italic>Be one of the first 500.</Italic></>,
+    eyebrow: "Founding Member round · doors close Sunday 25th October",
+    title: <>Finish the year<br /><Italic>proud of your progress.</Italic></>,
   }
 };
 
-const SUBHEADLINE = <>Join for <strong>£97 for 12 months</strong>. Start the challenge on <strong>19th October</strong> and lose up to a stone before Christmas, without counting calories.</>;
+const SUBHEADLINE = <>Lose up to a stone, slip back into your favourite Christmas outfits, improve confidence, energy and finish the year proud of your progress.</>;
 
-// The four things a Founding Member gets, in one block under the headline.
+// The two dates, as their own chips above the value block.
+const HERO_DATES = [
+  { icon: '📅', k: 'Pre-Week', v: 'Monday 19th October' },
+  { icon: '🚀', k: 'Official Kickoff', v: 'Monday 26th October' },
+];
+
+// Everything that comes with the challenge.
 const HERO_POINTS = [
-  <><strong>12 months of WLA app access £97</strong> <span style={{ color: 'var(--ink-muted)' }}>(regular price £297)</span></>,
-  <><strong>FREE 8 Week Fat Loss Challenge</strong>, starts 19th October</>,
-  <><strong>FREE January Reset</strong> + first 2027 Challenge</>,
-  <><strong>Renew for £97 (never £297)</strong> if you want to stay in the future</>,
+  <><strong>The 8-Week Fat Loss Challenge</strong>, kicking off Monday 26th October</>,
+  <><strong>12 months of the WLA app</strong> £97 <span style={{ color: 'var(--ink-muted)' }}>(regular price £297)</span></>,
+  <><strong>Personalised meal planner</strong>, daily tracker and progress tools</>,
+  <><strong>Weekly Zoom coaching</strong> and evening accountability</>,
+  <><strong>January Reset</strong> + first Challenge of 2027</>,
 ];
 
 function App() {
@@ -437,7 +445,7 @@ function App() {
       <PricingSection showHeading={false} phase={phase} bridgeHeading={
         <SerifH size={40} style={{ lineHeight: 1.3 }}>
           {phase === 'open'
-            ? <>Join the first 500 and start the challenge on <Italic>Monday 19th October.</Italic></>
+            ? <>Pre-Week starts Monday 19th. We kick off <Italic>Monday 26th October.</Italic></>
             : <>The WLA App is open to <Italic>everyone.</Italic></>}
         </SerifH>
       } />
@@ -462,9 +470,9 @@ function App() {
           <select value={tweaks.headlineVariant}
         onChange={(e) => updateTweak('headlineVariant', e.target.value)}
         style={{ marginBottom: 14 }}>
-            <option value="default">"Become a WLA App Founding Member"</option>
+            <option value="default">"The WLA 8-Week Fat Loss Challenge"</option>
             <option value="alt-a">"Lose up to a stone before Christmas"</option>
-            <option value="alt-b">"The new WLA App is here"</option>
+            <option value="alt-b">"Finish the year proud of your progress"</option>
           </select>
           <label style={{ display: 'flex', alignItems: 'center', gap: 8, textTransform: 'none', letterSpacing: 0, fontSize: 13, color: 'var(--ink)' }}>
             <input type="checkbox" checked={tweaks.showStickyCTA}
@@ -520,6 +528,30 @@ function TweakableHero({ headline, phase = 'open' }) {
           maxWidth: 560,
           marginBottom: 26,
         }}>{SUBHEADLINE}</div>
+        <div className="hero-dates" style={{
+          display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 22,
+        }}>
+          {HERO_DATES.map((d) => (
+            <div key={d.k} style={{
+              display: 'inline-flex', alignItems: 'baseline', gap: 8,
+              background: 'var(--peach)',
+              border: '1px solid var(--blush-deep)',
+              borderRadius: 999,
+              padding: '9px 18px',
+            }}>
+              <span style={{ fontSize: 14, lineHeight: 1 }}>{d.icon}</span>
+              <span style={{
+                fontFamily: '"Alegreya Sans", sans-serif', fontSize: 15,
+                fontWeight: 600, color: 'var(--ink)',
+              }}>{d.k}:</span>
+              <span style={{
+                fontFamily: '"Alegreya Sans", sans-serif', fontSize: 15,
+                color: 'var(--ink)',
+              }}>{d.v}</span>
+            </div>
+          ))}
+        </div>
+
         <div className="programme-results" style={{
           display: 'flex', flexDirection: 'column', gap: 10,
           maxWidth: 560, marginBottom: 30,
@@ -555,7 +587,7 @@ function TweakableHero({ headline, phase = 'open' }) {
 
         <div className="hero-cta-block" style={{ marginBottom: 44 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 360 }}>
-            <PrimaryCTA location="hero" style={{ width: '100%' }}>Become a Founding Member {window.PRICE}</PrimaryCTA>
+            <PrimaryCTA location="hero" style={{ width: '100%' }}>Join the Challenge {window.PRICE}</PrimaryCTA>
             <GuaranteeNote align="left" style={{ marginTop: 0, maxWidth: 480 }} />
           </div>
         </div>

@@ -38,7 +38,7 @@ const CountdownSection = () => {
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <SerifH size={46} className="countdown-heading" style={{ marginBottom: 26, lineHeight: 1.2 }}>
-          Doors open to <Italic>everyone in</Italic>
+          Doors close <Italic>in</Italic>
         </SerifH>
         <div className="countdown-grid" style={{
           display: 'grid',
@@ -84,7 +84,7 @@ const CountdownSection = () => {
           fontFamily: '"Libre Baskerville", serif',
           fontSize: 19, lineHeight: 1.45, color: 'var(--ink)',
         }}>
-          Secure your Founding Member place before we open to the wider community.
+          Join before Sunday 25th October. We officially kick off together on Monday 26th.
         </div>
       </div>
     </section>
@@ -163,11 +163,11 @@ const SpotsRemainingSection = () => {
 };
 
 const PRICING_INCLUDES = [
-  '12 months of WLA app access for a one off payment of £97',
-  'FREE 8 Week Fat Loss Challenge, starting Monday 19th October (worth £197)',
-  'FREE January Reset and the first Challenge of 2027 (worth £297 combined)',
-  'Your £97 annual rate locked in for as long as you remain a member',
-  'Founding Member status, early access to new features and feedback rounds',
+  'The 8-Week Fat Loss Challenge, kicking off Monday 26th October',
+  '12 months of the WLA app',
+  'Personalised meal planner, daily tracker and progress tools',
+  'Weekly Zoom coaching and evening accountability',
+  'January Reset + first Challenge of 2027',
   '7-day money-back guarantee',
 ];
 
@@ -182,14 +182,14 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
     <div style={{ maxWidth: 820, margin: '0 auto', textAlign: 'center' }}>
       {showHeading && (
         <>
-          <Eyebrow>Founding Member launch</Eyebrow>
+          <Eyebrow>Join the challenge</Eyebrow>
           <SerifH size={58} style={{ marginTop: 20, marginBottom: 16 }}>
-            Secure your<br /><Italic>Founding Member place</Italic>
+            Join the WLA<br /><Italic>8-Week Fat Loss Challenge</Italic>
           </SerifH>
           <Body size={18} style={{ maxWidth: 580, margin: '0 auto 48px' }}>
             {isOpen
-              ? <>Only {window.SPOTS_AVAILABLE} places in this first round. You get first access before doors open to everyone next week.</>
-              : <>Founding Member pricing has closed. The WLA App is now {window.PRICE_WAS} for 12 months.</>}
+              ? <>Pre-Week starts Monday 19th October and we officially kick off on Monday 26th. Doors close on Sunday 25th October.</>
+              : <>Doors are closed for this round. The WLA App is {window.PRICE_WAS} for 12 months.</>}
           </Body>
         </>
       )}
@@ -241,7 +241,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           }}>{window.PRICE_WAS}</div>}
         </div>
         <Body size={15} style={{ marginBottom: 4 }}>
-          for 12 months{isOpen ? <> · regular price {window.PRICE_WAS} a year</> : null}
+          12 months&rsquo; access{isOpen ? <> · regular price {window.PRICE_WAS}</> : null}
         </Body>
         <PriceAnchor style={{ marginBottom: 32 }} />
 
@@ -255,13 +255,13 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         </div>
 
         <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 480 }}>
-          Claim My Founding Member Place
+          Join the Challenge
         </PrimaryCTA>
         <GuaranteeNote style={{ maxWidth: 480, margin: '12px auto 0' }} />
 
         <Body size={14} muted style={{ maxWidth: 480, margin: '14px auto 0' }}>
-          Full WLA app access and all Founding Member bonuses included. If you choose to renew, your price
-          stays {window.PRICE} for another year.
+          <strong>No automatic renewal.</strong> Choose to renew at {window.PRICE} after your first year,
+          rather than the regular {window.PRICE_WAS}.
         </Body>
 
         <div className="pricing-trust-row" style={{
@@ -275,9 +275,9 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           paddingTop: 18,
         }}>
           {[
-            { icon: '🔒', k: 'Secure checkout', v: 'One payment' },
             { icon: '↩️', k: '7-day guarantee', v: 'Full refund' },
-            { icon: '📅', k: 'Challenge starts', v: 'Mon 19 Oct' },
+            { icon: '📅', k: 'Pre-Week', v: 'Mon 19 Oct' },
+            { icon: '🚀', k: 'Kickoff', v: 'Mon 26 Oct' },
           ].map((t, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 15, lineHeight: 1.2, marginBottom: 5 }}>{t.icon}</div>
@@ -319,22 +319,22 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
 const FAQ_ITEMS = [
   { q: 'What does "locked in" mean?',
     a: 'You pay £97 for your first year. If you want to renew after year one, you keep paying £97, even when the regular price is £297.' },
-  { q: 'When does the 8 Week Fat Loss Challenge start?',
-    a: 'We start together on Monday 19th October, so you have a full eight weeks to Christmas.' },
+  { q: 'When does the challenge start?',
+    a: 'Pre-Week starts on Monday 19th October, so you have time to get set up, shop and settle in. We officially kick off together on Monday 26th October, which gives you a full eight weeks to Christmas.' },
   { q: 'Do I need to count calories?',
     a: 'No. The WLA Formula is about carb balancing your meals and focusing on adequate amounts of protein, fibre and healthy fats.' },
   { q: 'Can my family eat the same meals?',
     a: 'Yes. WLA recipes are real, everyday food the whole family will enjoy.' },
   { q: "What if I'm not very techy?",
     a: 'The app is simple to use, and my team and I are here to help if you get stuck.' },
-  { q: 'Will this promo come back?',
-    a: 'No. Founding Member pricing, status and the free challenge are only available in this first round. Future members will pay £297 a year.' },
+  { q: 'Will this come back at this price?',
+    a: 'No. This Founding Member round closes on Sunday 25th October. After that the app opens at £297 a year, and the challenge is not included.' },
   { q: 'Is this an annual subscription?',
     a: 'No. You make a one-off payment of £97 for 12 months of access, with no automatic renewal. If you choose to renew after your year ends, you can get another 12 months for £97. Your Founding Member renewal rate stays £97 each year you continue, rather than the regular price of £297.' },
   { q: "What if it's not for me?",
     a: "You're covered by our 7-day money-back guarantee. Join, open the app and look around, and if it isn't for you, email us within 7 days for a full refund." },
-  { q: 'What happens when all 500 places are gone?',
-    a: 'Founding Member pricing closes for good and the app will open later at £297 a year.' },
+  { q: 'What happens when the doors close?',
+    a: 'Founding Member pricing closes for good on Sunday 25th October and the app opens later at £297 a year.' },
 ];
 
 const FAQItem = ({ item, isOpen, onToggle }) => (
@@ -432,13 +432,13 @@ const FinalCTA = () => (
     <div style={{ maxWidth: 860, margin: '0 auto' }}>
       <Divider style={{ marginBottom: 32 }} />
       <SerifH size={72} style={{ marginBottom: 32 }}>
-        Be one of the first 500.<br /><Italic>Start the challenge on 19th October.</Italic>
+        Pre-Week starts Monday 19th.<br /><Italic>We kick off Monday 26th October.</Italic>
       </SerifH>
       <Body size={19} style={{ maxWidth: 620, margin: '0 auto 40px' }}>
         You don’t need to have it all together to join. You just need to be ready to take the next step
         with support.
       </Body>
-      <PrimaryCTA location="final">Become a Founding Member {window.PRICE}</PrimaryCTA>
+      <PrimaryCTA location="final">Join the Challenge {window.PRICE}</PrimaryCTA>
       <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
       <PriceAnchor style={{ marginTop: 16 }} />
     </div>
@@ -474,7 +474,7 @@ const StickyCTA = ({ visible }) => (
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }}>
-      Founding Members · only <strong>{window.PRICE}</strong>
+      8-Week Challenge · only <strong>{window.PRICE}</strong>
     </div>
     <a href={typeof window !== 'undefined' && window.getCheckoutUrl ? window.getCheckoutUrl() : '#'} target="_blank" rel="noopener" className="sticky-cta-button"
       onClick={(e) => {
@@ -634,12 +634,12 @@ const ExitIntentModal = () => {
 
         <div style={{ fontSize: 34, marginBottom: 10 }}>✨</div>
         <SerifH size={34} style={{ lineHeight: 1.2, marginBottom: 12 }}>
-          Before you go,<br /><Italic>the challenge is included free</Italic>
+          Before you go,<br /><Italic>doors close on Sunday</Italic>
         </SerifH>
         <Body size={16} style={{ marginBottom: 22 }}>
-          Founding Members get the 8 Week Fat Loss Challenge, starting Monday 19th October, at no extra cost,
-          plus a full year of the app for {window.PRICE} instead of {window.PRICE_WAS}. This first round is
-          capped at {window.SPOTS_AVAILABLE} places.
+          Your place in the 8-Week Fat Loss Challenge comes with a full year of the WLA app for
+          {' '}{window.PRICE} instead of {window.PRICE_WAS}. Pre-Week starts Monday 19th October and we kick
+          off on Monday 26th.
         </Body>
 
         {tick && (
@@ -652,7 +652,7 @@ const ExitIntentModal = () => {
         )}
 
         <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
-          Claim My Founding Member Place
+          Join the Challenge
         </PrimaryCTA>
         <GuaranteeNote style={{ marginTop: 12 }} />
       </div>
