@@ -100,7 +100,7 @@ const SpotsRemainingSection = () => {
   const pct   = Math.round((taken / total) * 100);
   return (
     <section className="spots-section" style={{
-      padding: '52px 32px 12px',
+      padding: '52px 32px 20px',
       background: 'var(--bg)',
     }}>
       <div style={{
@@ -110,7 +110,7 @@ const SpotsRemainingSection = () => {
         border: '1px solid var(--hairline)',
         borderLeft: '4px solid var(--blush-deep)',
         borderRadius: 16,
-        padding: '26px 30px',
+        padding: '30px 34px',
         boxShadow: '0 24px 48px -32px rgba(80, 40, 20, 0.28)',
       }}>
         <div className="spots-head" style={{
@@ -120,19 +120,23 @@ const SpotsRemainingSection = () => {
           <div style={{
             fontFamily: '"Libre Baskerville", serif',
             fontWeight: 700,
-            fontSize: 22,
+            fontSize: 29,
             color: 'var(--ink)',
-            lineHeight: 1.3,
+            lineHeight: 1.25,
           }}>
             <Italic>{left}</Italic> of {total} places left
           </div>
           {taken > 0 && (
             <div style={{
               fontFamily: '"Alegreya Sans", sans-serif',
-              fontSize: 14,
-              color: 'var(--blush-deep)',
-              fontWeight: 600,
+              fontSize: 15.5,
+              color: 'var(--paper)',
+              background: 'var(--blush-deep)',
+              fontWeight: 700,
               letterSpacing: '0.02em',
+              borderRadius: 999,
+              padding: '6px 14px',
+              whiteSpace: 'nowrap',
             }}>
               {taken} already taken
             </div>
@@ -140,7 +144,7 @@ const SpotsRemainingSection = () => {
         </div>
 
         <div style={{
-            height: 12,
+            height: 16,
             borderRadius: 999,
             background: 'var(--cream-deep)',
             overflow: 'hidden',
@@ -153,7 +157,7 @@ const SpotsRemainingSection = () => {
             }} />
           </div>
 
-        <Body size={14} style={{ marginTop: 12 }}>
+        <Body size={15} style={{ marginTop: 14 }}>
           This first Founding Member round is capped at {total} places. Once they are gone, the app opens to
           everyone at {window.PRICE_WAS} a year.
         </Body>

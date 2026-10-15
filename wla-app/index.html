@@ -450,8 +450,7 @@ function App() {
       <BonusesSection />
       {/* Renders nothing until OFFER_END_CONFIRMED is set in sections.jsx. */}
       <CountdownSection />
-      {/* The places bar is off until Anna has a real number to show.
-          Put <SpotsRemainingSection /> back here and set SPOTS_TAKEN. */}
+      {phase === 'open' && <SpotsRemainingSection />}
       <PricingSection sectionId="join-early" phase={phase} />
       <WhyJoinNowSection />
       <ForYouSection />
