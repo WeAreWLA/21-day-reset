@@ -124,23 +124,21 @@ const SpotsRemainingSection = () => {
             color: 'var(--ink)',
             lineHeight: 1.25,
           }}>
-            <Italic>{left}</Italic> of {total} places left
+            <Italic>{taken}</Italic> of {total} places gone
           </div>
-          {taken > 0 && (
-            <div style={{
-              fontFamily: '"Alegreya Sans", sans-serif',
-              fontSize: 15.5,
-              color: 'var(--paper)',
-              background: 'var(--blush-deep)',
-              fontWeight: 700,
-              letterSpacing: '0.02em',
-              borderRadius: 999,
-              padding: '6px 14px',
-              whiteSpace: 'nowrap',
-            }}>
-              {taken} already taken
-            </div>
-          )}
+          <div style={{
+            fontFamily: '"Alegreya Sans", sans-serif',
+            fontSize: 15.5,
+            color: 'var(--paper)',
+            background: 'var(--blush-deep)',
+            fontWeight: 700,
+            letterSpacing: '0.02em',
+            borderRadius: 999,
+            padding: '6px 14px',
+            whiteSpace: 'nowrap',
+          }}>
+            {left} places left
+          </div>
         </div>
 
         <div style={{
