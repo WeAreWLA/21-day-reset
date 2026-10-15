@@ -443,6 +443,7 @@ function App() {
           and "the Formula works, now it's easier to follow" then reads as the
           bridge from the eight weeks into the app that supports them. */}
       <ChallengeBonusSection />
+      {phase === 'open' && <SpotsRemainingSection />}
       <AppIntroSection />
       <AppGallerySection />
       <AppClipsSection />
@@ -450,7 +451,6 @@ function App() {
       <BonusesSection />
       {/* Renders nothing until OFFER_END_CONFIRMED is set in sections.jsx. */}
       <CountdownSection />
-      {phase === 'open' && <SpotsRemainingSection />}
       <PricingSection sectionId="join-early" phase={phase} />
       <WhyJoinNowSection />
       <ForYouSection />
