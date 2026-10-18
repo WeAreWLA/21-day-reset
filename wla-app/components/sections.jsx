@@ -99,11 +99,12 @@ const PRICE_WEEKLY   = '£1.86'; // £97 ÷ 52.14 weeks. The page says "less tha
 const OFFER_START    = new Date('2026-10-03T09:00:00+01:00').getTime();
 const OFFER_END      = new Date('2026-10-26T00:00:00Z').getTime();
 // COUNTDOWN_END — what the banner and the countdown section count down to.
-// Founding Member early access ends at midnight tonight; from Monday the 19th
-// the doors are open to the whole community. It is deliberately separate from
-// OFFER_END, which is when the price actually goes up, so the page does not
-// flip into its closed state tomorrow morning.
-const COUNTDOWN_END  = new Date('2026-10-19T00:00:00+01:00').getTime();
+// Founding Member early access ends at 9am on Monday the 19th, when the doors
+// open to the whole community. It is deliberately separate from OFFER_END,
+// which is when the price actually goes up, so the page does not flip into its
+// closed state once this passes. Nothing else changes at 9am by design: the
+// clocks simply sit at zero.
+const COUNTDOWN_END  = new Date('2026-10-19T09:00:00+01:00').getTime();
 const PREWEEK_START  = new Date('2026-10-19T00:00:00+01:00').getTime();
 const CAMPAIGN_START = new Date('2026-10-26T00:00:00Z').getTime();
 
