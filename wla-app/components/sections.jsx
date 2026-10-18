@@ -112,7 +112,7 @@ const OFFER_END_CONFIRMED = true;
 // ⚠️ SPOTS_TAKEN must track real sales. Under the Digital Markets, Competition
 // and Consumers Act 2024, invented scarcity is an offence.
 const SPOTS_AVAILABLE = 500;
-const SPOTS_TAKEN     = 200;
+const SPOTS_TAKEN     = 300;
 const SPOTS_LEFT      = Math.max(0, SPOTS_AVAILABLE - SPOTS_TAKEN);
 
 // Build the Thrivecart checkout URL, forwarding any UTM parameters
@@ -222,24 +222,6 @@ const PriceAnchor = ({ style = {} }) => (
   </div>
 );
 
-// FREE tag, for the things included at no extra cost.
-const Free = () => (
-  <span style={{
-    display: 'inline-block',
-    verticalAlign: 'baseline',
-    background: 'var(--blush-deep)',
-    color: 'var(--paper)',
-    fontFamily: '"Alegreya Sans", sans-serif',
-    fontSize: 11.5,
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    lineHeight: 1,
-    padding: '4px 8px',
-    borderRadius: 5,
-    marginLeft: 2,
-  }}>FREE</span>
-);
-
 const Placeholder = ({ label, ratio = '4/5', style = {} }) => (
   <div style={{
     aspectRatio: ratio,
@@ -315,7 +297,7 @@ const Divider = ({ style = {} }) => (
 );
 
 Object.assign(window, {
-  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor, Free,
+  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor,
   Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,

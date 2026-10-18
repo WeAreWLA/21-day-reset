@@ -381,12 +381,12 @@ The Founding Member launch of the WLA app. Scaffolded from `/bday-promo`, so it 
 the same design system and its own private copy of the components. Copy comes from the
 Founding Members copy doc.
 
-The offer leads with the challenge, not the app. **The WLA 8-Week Fat Loss Challenge**,
-**£97** one-off (regular £297 a year), with **12 months of the WLA app included**,
-**Pre-Week from Monday 19th October**, **official kickoff Monday 26th October**, doors
-closing **midnight at the end of Sunday 25th October**, the January Reset and the first
-Challenge of 2027 included, the £97 renewal rate locked in, and a 7-day money-back
-guarantee.
+The offer leads with the app: **Become a WLA App Founding Member, get the 8 Week Fat
+Loss Challenge FREE**. **£97** for 12 months (regular £297), capped at **500 Founding
+Member places**, with **Pre-Week from Monday 19th October**, **official kickoff Monday
+26th October**, doors closing **midnight at the end of Sunday 25th October**, the January
+Reset and the first Challenge of 2027 included, the £97 renewal rate locked in, and a
+7-day money-back guarantee.
 
 ```
 wla-app/
@@ -414,15 +414,10 @@ wla-app/
 | `OFFER_END_CONFIRMED` | `true` | `false` switches off all three countdowns at once |
 | `PREWEEK_START` | Mon 19 Oct 2026 | Pre-Week |
 | `CAMPAIGN_START` | Mon 26 Oct 2026 | Official kickoff |
-| `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `0` | The places bar is not rendered; see below |
+| `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `300` | Drives the places bar |
 
 `SPOTS_TAKEN` must track real sales. Under the DMCC Act 2024, invented scarcity is an
 offence.
-
-### The places bar is switched off
-
-`SpotsRemainingSection` is commented out of the render order in `index.html`. Anna will
-say when to put it back and with what number; set `SPOTS_TAKEN` at the same time.
 
 ### App screen carousel
 
