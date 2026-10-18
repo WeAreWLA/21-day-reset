@@ -418,6 +418,8 @@ function App() {
       <AnnouncementBar />
       {/* Tweakable hero wrapper */}
       <TweakableHero headline={headline} phase={phase} />
+      {/* Straight under the hero: buried halfway down the page, nobody saw it. */}
+      {phase === 'open' && <SpotsRemainingSection />}
       <ResultsGridSection />
       <AppIntroSection />
       <AppGallerySection />
@@ -427,7 +429,6 @@ function App() {
       <BonusesSection />
       {/* Renders nothing until OFFER_END_CONFIRMED is set in sections.jsx. */}
       <CountdownSection />
-      {phase === 'open' && <SpotsRemainingSection />}
       <PricingSection sectionId="join-early" phase={phase} />
       <WhyJoinNowSection />
       <ForYouSection />
