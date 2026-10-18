@@ -94,9 +94,9 @@ function App() {
       <AnnouncementBar />
       {/* Tweakable hero wrapper */}
       <TweakableHero headline={headline} phase={phase} />
-      {/* Straight under the hero: buried halfway down the page, nobody saw it. */}
-      {phase === 'open' && <SpotsRemainingSection />}
       <ResultsGridSection />
+      {/* After the first proof block: seen early, but belief before urgency. */}
+      {phase === 'open' && <SpotsRemainingSection />}
       <AppIntroSection />
       <AppGallerySection />
       <AppClipsSection />
