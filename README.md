@@ -411,7 +411,7 @@ wla-app/
 | `PRICE` / `PRICE_WAS` / `PRICE_SAVING` | `£97` / `£297` / `£200` | |
 | `PRICE_WEEKLY` | `£1.86` | £97 ÷ 52.14 weeks |
 | `OFFER_END` | Mon 26 Oct 2026 00:00Z | When the price goes up. Drives the open/closed phase |
-| `COUNTDOWN_END` | Mon 19 Oct 2026 00:00 BST | What the banner and countdown show: the end of Founding Member early access. Kept separate so the page does not close when it passes |
+| `COUNTDOWN_END` | Mon 19 Oct 2026 09:00 BST | What the banner and countdown show: the end of Founding Member early access. Kept separate so the page does not close when it passes. Nothing changes at 9am by design; the clocks sit at zero |
 | `OFFER_END_CONFIRMED` | `true` | `false` switches off all three countdowns at once |
 | `PREWEEK_START` | Mon 19 Oct 2026 | Pre-Week |
 | `CAMPAIGN_START` | Mon 26 Oct 2026 | Official kickoff |
