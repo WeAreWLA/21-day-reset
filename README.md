@@ -410,11 +410,12 @@ wla-app/
 | `CHECKOUT_BASE_URL` | `https://sales.thewlacademy.com/wla-app/` | Every button on the page |
 | `PRICE` / `PRICE_WAS` / `PRICE_SAVING` | `£97` / `£297` / `£200` | |
 | `PRICE_WEEKLY` | `£1.86` | £97 ÷ 52.14 weeks |
-| `OFFER_END` | Mon 26 Oct 2026 00:00Z | Midnight at the end of Sunday the 25th. The clocks go back that morning, so it is GMT |
+| `OFFER_END` | Mon 26 Oct 2026 00:00Z | When the price goes up. Drives the open/closed phase |
+| `COUNTDOWN_END` | Mon 19 Oct 2026 00:00 BST | What the banner and countdown show: the end of Founding Member early access. Kept separate so the page does not close when it passes |
 | `OFFER_END_CONFIRMED` | `true` | `false` switches off all three countdowns at once |
 | `PREWEEK_START` | Mon 19 Oct 2026 | Pre-Week |
 | `CAMPAIGN_START` | Mon 26 Oct 2026 | Official kickoff |
-| `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `300` | Drives the places bar |
+| `SPOTS_AVAILABLE` / `SPOTS_TAKEN` | `500` / `265` | Drives the places bar |
 
 `SPOTS_TAKEN` must track real sales. Under the DMCC Act 2024, invented scarcity is an
 offence.

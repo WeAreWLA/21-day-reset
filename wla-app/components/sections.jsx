@@ -98,6 +98,12 @@ const PRICE_WEEKLY   = '£1.86'; // £97 ÷ 52.14 weeks. The page says "less tha
 //   CAMPAIGN_START — official kickoff, Monday 26th October.
 const OFFER_START    = new Date('2026-10-03T09:00:00+01:00').getTime();
 const OFFER_END      = new Date('2026-10-26T00:00:00Z').getTime();
+// COUNTDOWN_END — what the banner and the countdown section count down to.
+// Founding Member early access ends at midnight tonight; from Monday the 19th
+// the doors are open to the whole community. It is deliberately separate from
+// OFFER_END, which is when the price actually goes up, so the page does not
+// flip into its closed state tomorrow morning.
+const COUNTDOWN_END  = new Date('2026-10-19T00:00:00+01:00').getTime();
 const PREWEEK_START  = new Date('2026-10-19T00:00:00+01:00').getTime();
 const CAMPAIGN_START = new Date('2026-10-26T00:00:00Z').getTime();
 
@@ -112,7 +118,7 @@ const OFFER_END_CONFIRMED = true;
 // ⚠️ SPOTS_TAKEN must track real sales. Under the Digital Markets, Competition
 // and Consumers Act 2024, invented scarcity is an offence.
 const SPOTS_AVAILABLE = 500;
-const SPOTS_TAKEN     = 300;
+const SPOTS_TAKEN     = 265;
 const SPOTS_LEFT      = Math.max(0, SPOTS_AVAILABLE - SPOTS_TAKEN);
 
 // Build the Thrivecart checkout URL, forwarding any UTM parameters
@@ -301,7 +307,7 @@ Object.assign(window, {
   Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
-  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, OFFER_HOURS, OFFER_END_CONFIRMED, PREWEEK_START, CAMPAIGN_START, PRICE_WEEKLY,
+  CHECKOUT_BASE_URL, OFFER_START, OFFER_END, COUNTDOWN_END, OFFER_HOURS, OFFER_END_CONFIRMED, PREWEEK_START, CAMPAIGN_START, PRICE_WEEKLY,
   SPOTS_AVAILABLE, SPOTS_TAKEN, SPOTS_LEFT,
   PRICE, PRICE_WAS, PRICE_SAVING,
 });

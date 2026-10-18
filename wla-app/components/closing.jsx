@@ -4,7 +4,7 @@
 // has gone up. Phase is recomputed every second so it transitions without a
 // page refresh.
 function computeCountdownTick() {
-  const diff = Math.max(0, window.OFFER_END - Date.now());
+  const diff = Math.max(0, window.COUNTDOWN_END - Date.now());
   return {
     days:    Math.floor(diff / 86400000),
     hours:   Math.floor((diff % 86400000) / 3600000),
@@ -38,7 +38,7 @@ const CountdownSection = () => {
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <SerifH size={46} className="countdown-heading" style={{ marginBottom: 26, lineHeight: 1.2 }}>
-          Doors close <Italic>in</Italic>
+          Doors open to <Italic>everyone in</Italic>
         </SerifH>
         <div className="countdown-grid" style={{
           display: 'grid',
@@ -84,7 +84,7 @@ const CountdownSection = () => {
           fontFamily: '"Libre Baskerville", serif',
           fontSize: 19, lineHeight: 1.45, color: 'var(--ink)',
         }}>
-          Join before Sunday 25th October. We officially kick off together on Monday 26th.
+          Claim your Founding Member place before we open to the whole community tomorrow.
         </div>
       </div>
     </section>
@@ -563,7 +563,7 @@ const ExitIntentModal = () => {
       return () => document.removeEventListener('keydown', onKeyOnly);
     }
     const compute = () => {
-      const diff = Math.max(0, window.OFFER_END - Date.now());
+      const diff = Math.max(0, window.COUNTDOWN_END - Date.now());
       return {
         d: Math.floor(diff / 86400000),
         h: Math.floor((diff % 86400000) / 3600000),

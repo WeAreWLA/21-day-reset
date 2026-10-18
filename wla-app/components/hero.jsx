@@ -3,7 +3,7 @@
 // Ticks once a second so the bar always shows live time remaining.
 function useOfferRemaining() {
   const compute = () => {
-    const diff = Math.max(0, window.OFFER_END - Date.now());
+    const diff = Math.max(0, window.COUNTDOWN_END - Date.now());
     return {
       expired: diff <= 0,
       d: Math.floor(diff / 86400000),
