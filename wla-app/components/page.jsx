@@ -10,15 +10,12 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 const HEADLINES = {
   "default": {
-    eyebrow: "Exclusive Founding Member invitation",
     title: <>Become a WLA App Founding Member.<br /><Italic>Get my 8 Week Fat Loss Challenge FREE.</Italic></>,
   },
   "alt-a": {
-    eyebrow: "Exclusive Founding Member invitation",
     title: <>Lose up to a stone<br /><Italic>before Christmas.</Italic></>,
   },
   "alt-b": {
-    eyebrow: "Exclusive Founding Member invitation",
     title: <>The new WLA App is here.<br /><Italic>Be one of the first 500.</Italic></>,
   }
 };
@@ -166,25 +163,6 @@ function TweakableHero({ headline, phase = 'open' }) {
       alignItems: 'center'
     }}>
       <div className="hero-left" style={{ display: 'flex', flexDirection: 'column' }}>
-        <div className="hero-badge" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          alignSelf: 'flex-start',
-          background: 'var(--peach)',
-          border: '1px solid var(--blush-deep)',
-          borderRadius: 999,
-          padding: '10px 22px',
-          marginBottom: 20,
-        }}>
-          <span style={{ fontSize: 20, lineHeight: 1 }}>✨</span>
-          <span style={{
-            fontFamily: '"Libre Baskerville", serif',
-            fontWeight: 700,
-            fontSize: 15,
-            letterSpacing: '0.01em',
-            color: 'var(--ink)',
-            lineHeight: 1.3,
-          }}>{headline.eyebrow}</span>
-        </div>
         <SerifH as="h1" className="hero-title" size={60} style={{ marginTop: 0, marginBottom: 18 }}>
           {headline.title}
         </SerifH>
