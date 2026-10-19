@@ -213,8 +213,69 @@ const GuaranteeNote = ({ align = 'center', style = {} }) => (
   </div>
 );
 
-// NOTE: no PayPal button on this page. The Reset's PayPal link would take money
-// for the wrong product, and no link exists yet for the Founding Member offer.
+// Secondary checkout route. Thrivecart is the card route and the one that
+// fulfils automatically; this is a plain PayPal payment link, so anyone paying
+// this way has to be matched up and given access by hand.
+const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/W4PLSYES2A7JC';
+
+const PayPalCTA = ({ location = 'primary', align = 'center', style = {} }) => (
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: align === 'center' ? 'center' : 'flex-start',
+    gap: 10,
+    marginTop: 14,
+    flexWrap: 'wrap',
+    ...style,
+  }}>
+    <span style={{
+      fontFamily: '"Alegreya Sans", sans-serif',
+      fontSize: 14,
+      color: 'var(--ink-muted)',
+    }}>or pay with</span>
+    <a
+      href={PAYPAL_URL}
+      target="_blank"
+      rel="noopener"
+      aria-label="Pay with PayPal"
+      onClick={() => trackCtaClick(location + '-paypal', 'PayPal')}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#FFC439',
+        minHeight: 40,
+        padding: '0 22px',
+        boxSizing: 'border-box',
+        borderRadius: 999,
+        border: '1px solid transparent',
+        textDecoration: 'none',
+        boxShadow: '0 6px 18px -10px rgba(0, 48, 135, 0.5)',
+        transition: 'background .15s, transform .2s',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = '#F0B62A';
+        e.currentTarget.style.transform = 'translateY(-1px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = '#FFC439';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      <span style={{
+        fontFamily: '"Alegreya Sans", sans-serif',
+        fontStyle: 'italic',
+        fontWeight: 800,
+        fontSize: 17,
+        letterSpacing: '-0.02em',
+        lineHeight: 1,
+      }}>
+        <span style={{ color: '#003087' }}>Pay</span><span style={{ color: '#009CDE' }}>Pal</span>
+      </span>
+    </a>
+  </div>
+);
 
 // Price anchor — the smaller-chunk framing.
 const PriceAnchor = ({ style = {} }) => (
@@ -304,7 +365,7 @@ const Divider = ({ style = {} }) => (
 );
 
 Object.assign(window, {
-  Eyebrow, SerifH, Italic, Body, PrimaryCTA, GuaranteeNote, PriceAnchor,
+  Eyebrow, SerifH, Italic, Body, PrimaryCTA, PayPalCTA, PAYPAL_URL, GuaranteeNote, PriceAnchor,
   Placeholder, SoftCard,
   QuoteMark, Tick, Cross, Divider,
   trackCtaClick, getCheckoutUrl, getCampaignPhase,
