@@ -3007,15 +3007,12 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 } /*EDITMODE-END*/;
 const HEADLINES = {
   "default": {
-    eyebrow: "Exclusive Founding Member invitation",
     title: /*#__PURE__*/React.createElement(React.Fragment, null, "Become a WLA App Founding Member.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Italic, null, "Get my 8 Week Fat Loss Challenge FREE."))
   },
   "alt-a": {
-    eyebrow: "Exclusive Founding Member invitation",
     title: /*#__PURE__*/React.createElement(React.Fragment, null, "Lose up to a stone", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Italic, null, "before Christmas."))
   },
   "alt-b": {
-    eyebrow: "Exclusive Founding Member invitation",
     title: /*#__PURE__*/React.createElement(React.Fragment, null, "The new WLA App is here.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Italic, null, "Be one of the first 500."))
   }
 };
@@ -3169,34 +3166,7 @@ function TweakableHero({
       display: 'flex',
       flexDirection: 'column'
     }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "hero-badge",
-    style: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: 10,
-      alignSelf: 'flex-start',
-      background: 'var(--peach)',
-      border: '1px solid var(--blush-deep)',
-      borderRadius: 999,
-      padding: '10px 22px',
-      marginBottom: 20
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 20,
-      lineHeight: 1
-    }
-  }, "✨"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: '"Libre Baskerville", serif',
-      fontWeight: 700,
-      fontSize: 15,
-      letterSpacing: '0.01em',
-      color: 'var(--ink)',
-      lineHeight: 1.3
-    }
-  }, headline.eyebrow)), /*#__PURE__*/React.createElement(SerifH, {
+  }, /*#__PURE__*/React.createElement(SerifH, {
     as: "h1",
     className: "hero-title",
     size: 60,
