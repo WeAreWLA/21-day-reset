@@ -232,7 +232,7 @@ function TweakableHero({ headline, phase = 'open' }) {
         <div className="hero-cta-block" style={{ marginBottom: 44 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxWidth: 360 }}>
             <PrimaryCTA location="hero" style={{ width: '100%' }}>Become a Founding Member {window.PRICE}</PrimaryCTA>
-            <PayPalCTA location="hero" align="left" style={{ marginTop: 0 }} />
+            <PayPalCTA location="hero" style={{ width: '100%' }} />
             <GuaranteeNote align="left" style={{ marginTop: 0, maxWidth: 480 }} />
           </div>
         </div>

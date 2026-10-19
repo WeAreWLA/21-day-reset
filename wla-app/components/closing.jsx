@@ -38,7 +38,7 @@ const CountdownSection = () => {
     }}>
       <div style={{ maxWidth: 920, margin: '0 auto' }}>
         <SerifH size={46} className="countdown-heading" style={{ marginBottom: 26, lineHeight: 1.2 }}>
-          Doors open to <Italic>everyone in</Italic>
+          Doors <Italic>closing in</Italic>
         </SerifH>
         <div className="countdown-grid" style={{
           display: 'grid',
@@ -259,7 +259,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 480 }}>
           Claim My Founding Member Place
         </PrimaryCTA>
-        <PayPalCTA location="pricing" />
+        <PayPalCTA location="pricing" style={{ width: '100%', maxWidth: 480, marginTop: 10 }} />
         <GuaranteeNote style={{ maxWidth: 480, margin: '12px auto 0' }} />
 
         <Body size={14} muted style={{ maxWidth: 480, margin: '14px auto 0' }}>
@@ -445,8 +445,10 @@ const FinalCTA = () => (
         You don’t need to have it all together to join. You just need to be ready to take the next step
         with support.
       </Body>
-      <PrimaryCTA location="final">Become a Founding Member {window.PRICE}</PrimaryCTA>
-      <PayPalCTA location="final" />
+      <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'stretch', gap: 10 }}>
+        <PrimaryCTA location="final">Become a Founding Member {window.PRICE}</PrimaryCTA>
+        <PayPalCTA location="final" />
+      </div>
       <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
       <PriceAnchor style={{ marginTop: 16 }} />
     </div>
@@ -662,7 +664,7 @@ const ExitIntentModal = () => {
         <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
           Claim My Founding Member Place
         </PrimaryCTA>
-        <PayPalCTA location="exit-intent" />
+        <PayPalCTA location="exit-intent" style={{ width: '100%', marginTop: 10 }} />
         <GuaranteeNote style={{ marginTop: 12 }} />
       </div>
     </div>

@@ -91,20 +91,18 @@ const PRICE_WEEKLY   = '£1.86'; // £97 ÷ 52.14 weeks. The page says "less tha
                                 //   this is the figure that claim rests on.
 
 // Timeline
-//   OFFER_END      — doors close at midnight at the end of Sunday 25th October.
-//                    The clocks go back that morning, so the rest of that Sunday
-//                    is GMT and midnight is 00:00Z on Monday the 26th.
+//   OFFER_END      — doors close at 12 noon on Monday 26th October, kickoff day.
+//                    The clocks went back on Sunday the 25th, so the 26th is GMT
+//                    and noon is 12:00Z.
 //   PREWEEK_START  — Pre-Week, Monday 19th October.
 //   CAMPAIGN_START — official kickoff, Monday 26th October.
 const OFFER_START    = new Date('2026-10-03T09:00:00+01:00').getTime();
-const OFFER_END      = new Date('2026-10-26T00:00:00Z').getTime();
+const OFFER_END      = new Date('2026-10-26T12:00:00Z').getTime();
 // COUNTDOWN_END — what the banner and the countdown section count down to.
-// Founding Member early access ends at 9am on Monday the 19th, when the doors
-// open to the whole community. It is deliberately separate from OFFER_END,
-// which is when the price actually goes up, so the page does not flip into its
-// closed state once this passes. Nothing else changes at 9am by design: the
-// clocks simply sit at zero.
-const COUNTDOWN_END  = new Date('2026-10-19T09:00:00+01:00').getTime();
+// Kept as its own constant so the visible clocks and the open/closed phase can
+// be moved independently; right now both land on the same moment, so the page
+// flips to its closed state exactly as the clocks reach zero.
+const COUNTDOWN_END  = new Date('2026-10-26T12:00:00Z').getTime();
 const PREWEEK_START  = new Date('2026-10-19T00:00:00+01:00').getTime();
 const CAMPAIGN_START = new Date('2026-10-26T00:00:00Z').getTime();
 
@@ -119,7 +117,7 @@ const OFFER_END_CONFIRMED = true;
 // ⚠️ SPOTS_TAKEN must track real sales. Under the Digital Markets, Competition
 // and Consumers Act 2024, invented scarcity is an offence.
 const SPOTS_AVAILABLE = 500;
-const SPOTS_TAKEN     = 265;
+const SPOTS_TAKEN     = 325;
 const SPOTS_LEFT      = Math.max(0, SPOTS_AVAILABLE - SPOTS_TAKEN);
 
 // Build the Thrivecart checkout URL, forwarding any UTM parameters
@@ -218,63 +216,59 @@ const GuaranteeNote = ({ align = 'center', style = {} }) => (
 // this way has to be matched up and given access by hand.
 const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/W4PLSYES2A7JC';
 
-const PayPalCTA = ({ location = 'primary', align = 'center', style = {} }) => (
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: align === 'center' ? 'center' : 'flex-start',
-    gap: 10,
-    marginTop: 14,
-    flexWrap: 'wrap',
-    ...style,
-  }}>
-    <span style={{
+const PayPalCTA = ({ location = 'primary', small = false, style = {} }) => (
+  <a
+    href={PAYPAL_URL}
+    target="_blank"
+    rel="noopener"
+    aria-label="Pay with PayPal"
+    onClick={() => trackCtaClick(location + '-paypal', 'PayPal')}
+    style={{
+      // Deliberately mirrors PrimaryCTA's box so the two sit as a matched pair.
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 8,
+      background: '#FFC439',
+      color: '#003087',
       fontFamily: '"Alegreya Sans", sans-serif',
-      fontSize: 14,
-      color: 'var(--ink-muted)',
-    }}>or pay with</span>
-    <a
-      href={PAYPAL_URL}
-      target="_blank"
-      rel="noopener"
-      aria-label="Pay with PayPal"
-      onClick={() => trackCtaClick(location + '-paypal', 'PayPal')}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#FFC439',
-        minHeight: 40,
-        padding: '0 22px',
-        boxSizing: 'border-box',
-        borderRadius: 999,
-        border: '1px solid transparent',
-        textDecoration: 'none',
-        boxShadow: '0 6px 18px -10px rgba(0, 48, 135, 0.5)',
-        transition: 'background .15s, transform .2s',
-        cursor: 'pointer',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = '#F0B62A';
-        e.currentTarget.style.transform = 'translateY(-1px)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = '#FFC439';
-        e.currentTarget.style.transform = 'translateY(0)';
-      }}
-    >
-      <span style={{
-        fontFamily: '"Alegreya Sans", sans-serif',
-        fontStyle: 'italic',
-        fontWeight: 800,
-        fontSize: 17,
-        letterSpacing: '-0.02em',
-        lineHeight: 1,
-      }}>
-        <span style={{ color: '#003087' }}>Pay</span><span style={{ color: '#009CDE' }}>Pal</span>
-      </span>
-    </a>
-  </div>
+      fontSize: small ? 15 : 16,
+      fontWeight: 600,
+      letterSpacing: '0.04em',
+      padding: small ? '14px 24px' : '0 30px',
+      minHeight: small ? 46 : 56,
+      boxSizing: 'border-box',
+      borderRadius: 999,
+      border: '1px solid transparent',
+      lineHeight: 1.25,
+      textDecoration: 'none',
+      boxShadow: '0 8px 24px -10px rgba(0, 48, 135, 0.4)',
+      transition: 'background .15s, transform .2s, box-shadow .2s',
+      cursor: 'pointer',
+      ...style,
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.background = '#F0B62A';
+      e.currentTarget.style.transform = 'translateY(-2px)';
+      e.currentTarget.style.boxShadow = '0 14px 32px -10px rgba(0, 48, 135, 0.55)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.background = '#FFC439';
+      e.currentTarget.style.transform = 'translateY(0)';
+      e.currentTarget.style.boxShadow = '0 8px 24px -10px rgba(0, 48, 135, 0.4)';
+    }}
+  >
+    <span>Pay with</span>
+    <span style={{
+      fontStyle: 'italic',
+      fontWeight: 800,
+      fontSize: small ? 17 : 19,
+      letterSpacing: '-0.02em',
+      lineHeight: 1,
+    }}>
+      <span style={{ color: '#003087' }}>Pay</span><span style={{ color: '#009CDE' }}>Pal</span>
+    </span>
+  </a>
 );
 
 // Price anchor — the smaller-chunk framing.
