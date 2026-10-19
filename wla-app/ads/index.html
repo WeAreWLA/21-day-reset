@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>WLA 8 Week Fat Loss Challenge · Facebook ad set</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #003060; --navy-deep: #00203f;
+    --coral: #E87F63; --coral-soft: #F79F83; --peach: #F5D9CE;
+    --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8; --muted: #5B6B82;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #2a2a2a; font-family: "Alegreya Sans", sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 48px 24px; }
+  .serif { font-family: 'Libre Baskerville', serif; }
+
+  .ad { position: relative; overflow: hidden; background: var(--cream);
+        color: var(--navy); display: flex; flex-direction: column;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+  #ad-square   { width: 1080px; height: 1080px; }
+  #ad-portrait { width: 1080px; height: 1350px; }
+  #ad-story    { width: 1080px; height: 1920px; }
+
+  /* deadline strip */
+  .strip { background: var(--navy); color: var(--paper); text-align: center;
+           font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  .body { flex: 1; display: flex; flex-direction: column; align-items: center;
+          text-align: center; min-height: 0; }
+
+  h1 { margin: 0; font-family: 'Libre Baskerville', serif; font-weight: 700;
+       line-height: 1.08; letter-spacing: -0.01em; color: var(--navy); }
+  h1 em { font-style: italic; font-weight: 400; color: var(--coral); }
+
+  .kicker { font-family: 'Libre Baskerville', serif; font-style: italic;
+            color: var(--coral); }
+
+  /* proof photos */
+  /* Pull out of the body padding so the proof runs edge to edge, and let it
+     take whatever height is left rather than leaving a hole above the offer. */
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+           width: auto; align-self: stretch; flex: 1; min-height: 0; }
+  .shots .f { overflow: hidden; background: var(--cream-2); min-height: 0; }
+  .shots img { width: 100%; height: 100%; object-fit: cover;
+               object-position: center 18%; display: block; }
+
+  /* offer block */
+  .offer { width: 100%; background: var(--peach); display: flex;
+           align-items: center; justify-content: center; gap: 36px; }
+  .offer .lines { text-align: left; }
+  .offer .l1 { font-weight: 700; color: var(--navy); line-height: 1.25; }
+  .offer .l2 { color: var(--navy); opacity: .78; line-height: 1.35; }
+  .price { font-family: 'Libre Baskerville', serif; font-weight: 700;
+           color: var(--navy); line-height: .9; letter-spacing: -0.02em; }
+  .price small { display: block; font-family: "Alegreya Sans", sans-serif;
+                 font-size: .22em; font-weight: 600; opacity: .62;
+                 letter-spacing: .02em; margin-top: .1em; }
+
+  .foot { background: var(--navy); color: var(--paper); text-align: center;
+          font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  /* ---------- square 1080x1080 ---------- */
+  #ad-square .strip { padding: 22px; font-size: 25px; }
+  #ad-square .body  { padding: 46px 70px 0; }
+  #ad-square .shots { margin: 36px -70px 0; }
+  #ad-square .kicker { font-size: 31px; margin-bottom: 16px; }
+  #ad-square h1 { font-size: 74px; }
+  #ad-square .offer { padding: 30px 60px; margin-top: 34px; }
+  #ad-square .price { font-size: 104px; }
+  #ad-square .offer .l1 { font-size: 31px; }
+  #ad-square .offer .l2 { font-size: 25px; }
+  #ad-square .foot { padding: 20px; font-size: 21px; }
+
+  /* ---------- portrait 1080x1350 ---------- */
+  #ad-portrait .strip { padding: 26px; font-size: 27px; }
+  #ad-portrait .body  { padding: 62px 80px 0; }
+  #ad-portrait .shots { margin: 52px -80px 0; }
+  #ad-portrait .kicker { font-size: 34px; margin-bottom: 20px; }
+  #ad-portrait h1 { font-size: 86px; }
+  #ad-portrait .offer { padding: 40px 70px; margin-top: 46px; }
+  #ad-portrait .price { font-size: 124px; }
+  #ad-portrait .offer .l1 { font-size: 35px; }
+  #ad-portrait .offer .l2 { font-size: 28px; }
+  #ad-portrait .foot { padding: 24px; font-size: 23px; }
+
+  /* ---------- story 1080x1920 ---------- */
+  #ad-story .strip { padding: 34px; font-size: 30px; }
+  #ad-story .body  { padding: 120px 90px 0; }
+  #ad-story .shots { margin: 0 -90px; flex: none;
+                     grid-template-columns: repeat(2, 1fr); }
+  #ad-story .shots .f { aspect-ratio: 1/1; }
+  #ad-story .shots .f:nth-child(3) { display: none; }
+  #ad-story .body { justify-content: space-evenly; }
+  /* Instagram's controls sit over the bottom ~300px, so the brand bar gets a
+     cream margin under it rather than running to the edge. */
+  #ad-story .foot { margin-bottom: 150px; }
+  #ad-story .kicker { font-size: 40px; margin-bottom: 26px; }
+  #ad-story h1 { font-size: 104px; }
+  #ad-story .offer { padding: 56px 56px; margin-top: 0; }
+  #ad-story .price { font-size: 150px; }
+  #ad-story .offer .l1 { font-size: 36px; }
+  #ad-story .offer .l2 { font-size: 32px; }
+  #ad-story .foot { padding: 34px; font-size: 26px; }
+</style>
+</head>
+<body>
+
+<!-- Three Facebook/Instagram sizes, one concept, rendered at 2x:
+       #ad-square   1080x1080  feed
+       #ad-portrait 1080x1350  feed, the most space on a phone
+       #ad-story    1080x1920  Stories and Reels
+     Exports live at assets/wla-ad-{square,portrait,story}.jpg.
+
+     ⚠️ The copy here is fixed text, not read from the campaign config. The
+     deadline, the start date and the price have to be changed by hand and
+     the images re-rendered. -->
+
+<div class="ad" id="ad-square">
+  <div class="strip">Doors close Sunday</div>
+  <div class="body">
+    <div class="kicker">The WLA 8 Week Fat Loss Challenge</div>
+    <h1>Lose up to a stone<br /><em>before Christmas</em></h1>
+    <div class="shots">
+      <div class="f"><img src="/assets/results-sm/member-09-before-after.jpg" alt="" /></div>
+      <div class="f"><img src="/assets/results-sm/vicky-before-after.jpg" alt="" /></div>
+      <div class="f"><img src="/assets/results-sm/member-11-before-after.jpg" alt="" /></div>
+    </div>
+  </div>
+  <div class="offer">
+    <div class="price">£97<small>instead of £297 a year</small></div>
+    <div class="lines">
+      <div class="l1">8 week challenge + 12 months<br />of the WLA app</div>
+      <div class="l2">Starts Monday 26th October</div>
+    </div>
+  </div>
+  <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
+</div>
+
+<div class="ad" id="ad-portrait">
+  <div class="strip">Doors close Sunday</div>
+  <div class="body">
+    <div class="kicker">The WLA 8 Week Fat Loss Challenge</div>
+    <h1>Lose up to a stone<br /><em>before Christmas</em></h1>
+    <div class="shots">
+      <div class="f"><img src="/assets/results-sm/member-09-before-after.jpg" alt="" /></div>
+      <div class="f"><img src="/assets/results-sm/vicky-before-after.jpg" alt="" /></div>
+      <div class="f"><img src="/assets/results-sm/member-11-before-after.jpg" alt="" /></div>
+    </div>
+  </div>
+  <div class="offer">
+    <div class="price">£97<small>instead of £297 a year</small></div>
+    <div class="lines">
+      <div class="l1">8 week challenge + 12 months<br />of the WLA app</div>
+      <div class="l2">Starts Monday 26th October</div>
+    </div>
+  </div>
+  <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
+</div>
+
+<div class="ad" id="ad-story">
+  <div class="strip">Doors close Sunday</div>
+  <div class="body">
+    <div class="kicker">The WLA 8 Week Fat Loss Challenge</div>
+    <h1>Lose up to a stone<br /><em>before Christmas</em></h1>
+    <div class="shots">
+      <div class="f"><img src="/assets/results-sm/member-09-before-after.jpg" alt="" /></div>
+      <div class="f"><img src="/assets/results-sm/vicky-before-after.jpg" alt="" /></div>
+      <div class="f"><img src="/assets/results-sm/member-11-before-after.jpg" alt="" /></div>
+    </div>
+  </div>
+  <div class="offer">
+    <div class="price">£97<small>instead of £297 a year</small></div>
+    <div class="lines">
+      <div class="l1">8 week challenge + 12 months<br />of the WLA app</div>
+      <div class="l2">Starts Monday 26th October</div>
+    </div>
+  </div>
+  <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
+</div>
+
+</body>
+</html>
