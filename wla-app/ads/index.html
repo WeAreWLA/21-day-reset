@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>WLA 8 Week Fat Loss Challenge · Facebook ad set</title>
+<title>WLA App · last chance ad set</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -10,123 +10,123 @@
   :root {
     --navy: #003060; --navy-deep: #00203f;
     --coral: #E87F63; --coral-soft: #F79F83; --peach: #F5D9CE;
-    --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8; --muted: #5B6B82;
+    --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8;
   }
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #2a2a2a; font-family: "Alegreya Sans", sans-serif; }
   body { display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 48px 24px; }
-  .serif { font-family: 'Libre Baskerville', serif; }
 
-  .ad { position: relative; overflow: hidden; background: var(--cream);
-        color: var(--navy); display: flex; flex-direction: column;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+  .ad { position: relative; overflow: hidden; display: flex; flex-direction: column;
+        background: var(--cream); color: var(--navy);
+        box-shadow: 0 30px 80px rgba(0,0,0,.5); }
   #ad-square   { width: 1080px; height: 1080px; }
   #ad-portrait { width: 1080px; height: 1350px; }
   #ad-story    { width: 1080px; height: 1920px; }
 
-  /* deadline strip */
-  .strip { background: var(--navy); color: var(--paper); text-align: center;
-           font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+  /* last-chance strip */
+  .strip { background: var(--coral); color: #fff; text-align: center;
+           font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
 
-  .body { flex: 1; display: flex; flex-direction: column; align-items: center;
-          text-align: center; min-height: 0; }
+  .body { flex: 1; min-height: 0; display: flex; flex-direction: column;
+          align-items: center; text-align: center; position: relative; }
 
   h1 { margin: 0; font-family: 'Libre Baskerville', serif; font-weight: 700;
-       line-height: 1.08; letter-spacing: -0.01em; color: var(--navy); }
+       line-height: 1.08; letter-spacing: -.01em; }
   h1 em { font-style: italic; font-weight: 400; color: var(--coral); }
+  .kicker { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--coral); }
 
-  .kicker { font-family: 'Libre Baskerville', serif; font-style: italic;
-            color: var(--coral); }
+  /* phone cluster */
+  .phones { position: relative; width: 100%; flex: 1; min-height: 0;
+            display: flex; align-items: flex-start; justify-content: center; }
+  .phone { border-radius: 30px; overflow: hidden; background: #fff;
+           border: 8px solid var(--navy); flex: none;
+           box-shadow: 0 34px 60px -24px rgba(0,48,96,.55); }
+  .phone img { width: 100%; display: block; }
+  .phone.side { opacity: .97; }
+  .phone.left  { transform: rotate(-7deg); z-index: 1; }
+  .phone.mid   { z-index: 3; }
+  .phone.right { transform: rotate(7deg); z-index: 2; }
 
-  /* proof photos */
-  /* Pull out of the body padding so the proof runs edge to edge, and let it
-     take whatever height is left rather than leaving a hole above the offer. */
-  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
-           width: auto; align-self: stretch; flex: 1; min-height: 0; }
-  .shots .f { overflow: hidden; background: var(--cream-2); min-height: 0; }
-  .shots img { width: 100%; height: 100%; object-fit: cover;
-               object-position: center 18%; display: block; }
-
-  /* offer block */
+  /* offer bar */
   .offer { width: 100%; background: var(--peach); display: flex;
-           align-items: center; justify-content: center; gap: 36px; }
+           align-items: center; justify-content: center; gap: 36px; position: relative; z-index: 5; }
   .offer .lines { text-align: left; }
-  .offer .l1 { font-weight: 700; color: var(--navy); line-height: 1.25; }
-  .offer .l2 { color: var(--navy); opacity: .78; line-height: 1.35; }
+  .offer .l1 { font-weight: 700; line-height: 1.25; }
+  .offer .l2 { opacity: .78; line-height: 1.35; }
   .price { font-family: 'Libre Baskerville', serif; font-weight: 700;
-           color: var(--navy); line-height: .9; letter-spacing: -0.02em; }
+           line-height: .9; letter-spacing: -.02em; }
   .price small { display: block; font-family: "Alegreya Sans", sans-serif;
-                 font-size: .22em; font-weight: 600; opacity: .62;
-                 letter-spacing: .02em; margin-top: .1em; }
+                 font-weight: 600; opacity: .62; margin-top: .1em; }
 
   .foot { background: var(--navy); color: var(--paper); text-align: center;
-          font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+          font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
 
-  /* ---------- square 1080x1080 ---------- */
-  #ad-square .strip { padding: 22px; font-size: 25px; }
-  #ad-square .body  { padding: 46px 70px 0; }
-  #ad-square .shots { margin: 36px -70px 0; }
-  #ad-square .kicker { font-size: 31px; margin-bottom: 16px; }
-  #ad-square h1 { font-size: 74px; }
-  #ad-square .offer { padding: 30px 60px; margin-top: 34px; }
-  #ad-square .price { font-size: 104px; }
-  #ad-square .offer .l1 { font-size: 31px; }
-  #ad-square .offer .l2 { font-size: 25px; }
+  /* ---- square 1080x1080 ---- */
+  #ad-square .strip { padding: 22px; font-size: 26px; }
+  #ad-square .body { padding: 44px 60px 0; }
+  #ad-square .kicker { font-size: 30px; margin-bottom: 12px; }
+  #ad-square h1 { font-size: 72px; }
+  #ad-square .phones { margin-top: 34px; }
+  #ad-square .phone.mid { width: 258px; margin: 0 -26px; }
+  #ad-square .phone.side { width: 228px; margin-top: 44px; }
+  #ad-square .offer { padding: 28px 56px; }
+  #ad-square .price { font-size: 100px; }
+  #ad-square .price small { font-size: .21em; }
+  #ad-square .offer .l1 { font-size: 30px; }
+  #ad-square .offer .l2 { font-size: 24px; }
   #ad-square .foot { padding: 20px; font-size: 21px; }
 
-  /* ---------- portrait 1080x1350 ---------- */
-  #ad-portrait .strip { padding: 26px; font-size: 27px; }
-  #ad-portrait .body  { padding: 62px 80px 0; }
-  #ad-portrait .shots { margin: 52px -80px 0; }
-  #ad-portrait .kicker { font-size: 34px; margin-bottom: 20px; }
-  #ad-portrait h1 { font-size: 86px; }
-  #ad-portrait .offer { padding: 40px 70px; margin-top: 46px; }
-  #ad-portrait .price { font-size: 124px; }
-  #ad-portrait .offer .l1 { font-size: 35px; }
-  #ad-portrait .offer .l2 { font-size: 28px; }
+  /* ---- portrait 1080x1350 ---- */
+  #ad-portrait .strip { padding: 26px; font-size: 28px; }
+  #ad-portrait .body { padding: 60px 70px 0; }
+  #ad-portrait .kicker { font-size: 33px; margin-bottom: 16px; }
+  #ad-portrait h1 { font-size: 84px; }
+  #ad-portrait .phones { margin-top: 50px; }
+  #ad-portrait .phone.mid { width: 300px; margin: 0 -30px; }
+  #ad-portrait .phone.side { width: 264px; margin-top: 52px; }
+  #ad-portrait .offer { padding: 38px 64px; }
+  #ad-portrait .price { font-size: 120px; }
+  #ad-portrait .price small { font-size: .21em; }
+  #ad-portrait .offer .l1 { font-size: 34px; }
+  #ad-portrait .offer .l2 { font-size: 27px; }
   #ad-portrait .foot { padding: 24px; font-size: 23px; }
 
-  /* ---------- story 1080x1920 ---------- */
-  #ad-story .strip { padding: 34px; font-size: 30px; }
-  #ad-story .body  { padding: 120px 90px 0; }
-  #ad-story .shots { margin: 0 -90px; flex: none;
-                     grid-template-columns: repeat(2, 1fr); }
-  #ad-story .shots .f { aspect-ratio: 1/1; }
-  #ad-story .shots .f:nth-child(3) { display: none; }
-  #ad-story .body { justify-content: space-evenly; }
-  /* Instagram's controls sit over the bottom ~300px, so the brand bar gets a
-     cream margin under it rather than running to the edge. */
-  #ad-story .foot { margin-bottom: 150px; }
-  #ad-story .kicker { font-size: 40px; margin-bottom: 26px; }
-  #ad-story h1 { font-size: 104px; }
-  #ad-story .offer { padding: 56px 56px; margin-top: 0; }
-  #ad-story .price { font-size: 150px; }
+  /* ---- story 1080x1920 ---- */
+  #ad-story .strip { padding: 32px; font-size: 30px; }
+  #ad-story .body { padding: 130px 80px 0; }
+  #ad-story .kicker { font-size: 38px; margin-bottom: 20px; }
+  #ad-story h1 { font-size: 100px; }
+  #ad-story .phones { margin-top: 80px; align-items: flex-start; }
+  #ad-story .phone.mid { width: 350px; margin: 0 -34px; }
+  #ad-story .phone.side { width: 300px; margin-top: 60px; }
+  #ad-story .offer { padding: 50px 56px; }
+  #ad-story .price { font-size: 140px; }
+  #ad-story .price small { font-size: .2em; }
   #ad-story .offer .l1 { font-size: 36px; }
-  #ad-story .offer .l2 { font-size: 32px; }
-  #ad-story .foot { padding: 34px; font-size: 26px; }
+  #ad-story .offer .l2 { font-size: 30px; }
+  #ad-story .foot { padding: 32px; font-size: 26px; margin-bottom: 150px; }
 </style>
 </head>
 <body>
 
-<!-- Three Facebook/Instagram sizes, one concept, rendered at 2x:
+<!-- Last-chance ad set for the WLA App, three Meta sizes, one concept:
        #ad-square   1080x1080  feed
        #ad-portrait 1080x1350  feed, the most space on a phone
        #ad-story    1080x1920  Stories and Reels
-     Exports live at assets/wla-ad-{square,portrait,story}.jpg.
+     Exports: assets/wla-ad-{square,portrait,story}.jpg, rendered at 2x.
 
-     ⚠️ The copy here is fixed text, not read from the campaign config. The
-     deadline, the start date and the price have to be changed by hand and
-     the images re-rendered. -->
+     ⚠️ The copy is fixed text, not read from the campaign config. The
+     deadline, the start date and the price change by hand, then re-render. -->
 
 <div class="ad" id="ad-square">
-  <div class="strip">Doors close Sunday</div>
+  <div class="strip">Last chance</div>
   <div class="body">
-    <div class="kicker">The WLA 8 Week Fat Loss Challenge</div>
-    <h1>Lose up to a stone<br /><em>before Christmas</em></h1>
-    <div class="shots">
-      <div class="f"><img src="/assets/results-sm/member-09-before-after.jpg" alt="" /></div>
-      <div class="f"><img src="/assets/results-sm/vicky-before-after.jpg" alt="" /></div>
-      <div class="f"><img src="/assets/results-sm/member-11-before-after.jpg" alt="" /></div>
+    <div class="kicker">Doors close Sunday</div>
+    <h1>Your whole plan,<br /><em>in one app</em></h1>
+    <div class="phones">
+      <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
+      <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
+      <div class="phone side right"><img src="/assets/app-recipes-hub.jpg" alt="" /></div>
     </div>
   </div>
   <div class="offer">
@@ -140,14 +140,14 @@
 </div>
 
 <div class="ad" id="ad-portrait">
-  <div class="strip">Doors close Sunday</div>
+  <div class="strip">Last chance</div>
   <div class="body">
-    <div class="kicker">The WLA 8 Week Fat Loss Challenge</div>
-    <h1>Lose up to a stone<br /><em>before Christmas</em></h1>
-    <div class="shots">
-      <div class="f"><img src="/assets/results-sm/member-09-before-after.jpg" alt="" /></div>
-      <div class="f"><img src="/assets/results-sm/vicky-before-after.jpg" alt="" /></div>
-      <div class="f"><img src="/assets/results-sm/member-11-before-after.jpg" alt="" /></div>
+    <div class="kicker">Doors close Sunday</div>
+    <h1>Your whole plan,<br /><em>in one app</em></h1>
+    <div class="phones">
+      <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
+      <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
+      <div class="phone side right"><img src="/assets/app-recipes-hub.jpg" alt="" /></div>
     </div>
   </div>
   <div class="offer">
@@ -161,14 +161,14 @@
 </div>
 
 <div class="ad" id="ad-story">
-  <div class="strip">Doors close Sunday</div>
+  <div class="strip">Last chance</div>
   <div class="body">
-    <div class="kicker">The WLA 8 Week Fat Loss Challenge</div>
-    <h1>Lose up to a stone<br /><em>before Christmas</em></h1>
-    <div class="shots">
-      <div class="f"><img src="/assets/results-sm/member-09-before-after.jpg" alt="" /></div>
-      <div class="f"><img src="/assets/results-sm/vicky-before-after.jpg" alt="" /></div>
-      <div class="f"><img src="/assets/results-sm/member-11-before-after.jpg" alt="" /></div>
+    <div class="kicker">Doors close Sunday</div>
+    <h1>Your whole plan,<br /><em>in one app</em></h1>
+    <div class="phones">
+      <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
+      <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
+      <div class="phone side right"><img src="/assets/app-recipes-hub.jpg" alt="" /></div>
     </div>
   </div>
   <div class="offer">
