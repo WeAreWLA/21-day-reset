@@ -48,62 +48,54 @@
   .phone.right { transform: rotate(7deg); z-index: 2; }
 
   /* offer bar */
-  .offer { width: 100%; background: var(--peach); display: flex;
-           align-items: center; justify-content: center; gap: 36px; position: relative; z-index: 5; }
-  .offer .lines { text-align: left; }
-  .offer .l1 { font-weight: 700; line-height: 1.25; }
-  .offer .l2 { opacity: .78; line-height: 1.35; }
-  .price { font-family: 'Libre Baskerville', serif; font-weight: 700;
-           line-height: .9; letter-spacing: -.02em; }
-  .price small { display: block; font-family: "Alegreya Sans", sans-serif;
-                 font-weight: 600; opacity: .62; margin-top: .1em; }
+  .offer { width: 100%; background: var(--peach); text-align: center;
+           position: relative; z-index: 5; }
+  .offer-line { font-family: 'Libre Baskerville', serif; line-height: 1.1;
+                letter-spacing: -.01em; }
+  .offer-line strong { font-weight: 700; }
+  .offer-line .was { font-weight: 400; opacity: .6; }
+  .offer-sub { font-weight: 700; color: var(--coral); letter-spacing: .02em; }
 
   .foot { background: var(--navy); color: var(--paper); text-align: center;
           font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
 
   /* ---- square 1080x1080 ---- */
   #ad-square .strip { padding: 22px; font-size: 26px; }
-  #ad-square .body { padding: 44px 60px 0; }
+  #ad-square .body { padding: 40px 70px 0; }
   #ad-square .kicker { font-size: 30px; margin-bottom: 12px; }
-  #ad-square h1 { font-size: 72px; }
+  #ad-square h1 { font-size: 46px; }
   #ad-square .phones { margin-top: 34px; }
-  #ad-square .phone.mid { width: 258px; margin: 0 -26px; }
-  #ad-square .phone.side { width: 228px; margin-top: 44px; }
-  #ad-square .offer { padding: 28px 56px; }
-  #ad-square .price { font-size: 100px; }
-  #ad-square .price small { font-size: .21em; }
-  #ad-square .offer .l1 { font-size: 30px; }
-  #ad-square .offer .l2 { font-size: 24px; }
+  #ad-square .phone.mid { width: 292px; margin: 0 -30px; }
+  #ad-square .phone.side { width: 256px; margin-top: 48px; }
+  #ad-square .offer { padding: 30px 50px; }
+  #ad-square .offer-line { font-size: 62px; }
+  #ad-square .offer-sub { font-size: 30px; margin-top: 10px; }
   #ad-square .foot { padding: 20px; font-size: 21px; }
 
   /* ---- portrait 1080x1350 ---- */
   #ad-portrait .strip { padding: 26px; font-size: 28px; }
-  #ad-portrait .body { padding: 60px 70px 0; }
+  #ad-portrait .body { padding: 56px 56px 0; }
   #ad-portrait .kicker { font-size: 33px; margin-bottom: 16px; }
-  #ad-portrait h1 { font-size: 84px; }
+  #ad-portrait h1 { font-size: 47px; }
   #ad-portrait .phones { margin-top: 50px; }
-  #ad-portrait .phone.mid { width: 300px; margin: 0 -30px; }
-  #ad-portrait .phone.side { width: 264px; margin-top: 52px; }
-  #ad-portrait .offer { padding: 38px 64px; }
-  #ad-portrait .price { font-size: 120px; }
-  #ad-portrait .price small { font-size: .21em; }
-  #ad-portrait .offer .l1 { font-size: 34px; }
-  #ad-portrait .offer .l2 { font-size: 27px; }
+  #ad-portrait .phone.mid { width: 352px; margin: 0 -36px; }
+  #ad-portrait .phone.side { width: 310px; margin-top: 60px; }
+  #ad-portrait .offer { padding: 40px 60px; }
+  #ad-portrait .offer-line { font-size: 72px; }
+  #ad-portrait .offer-sub { font-size: 34px; margin-top: 10px; }
   #ad-portrait .foot { padding: 24px; font-size: 23px; }
 
   /* ---- story 1080x1920 ---- */
   #ad-story .strip { padding: 32px; font-size: 30px; }
-  #ad-story .body { padding: 130px 80px 0; }
+  #ad-story .body { padding: 110px 48px 0; }
   #ad-story .kicker { font-size: 38px; margin-bottom: 20px; }
-  #ad-story h1 { font-size: 100px; }
-  #ad-story .phones { margin-top: 80px; align-items: flex-start; }
-  #ad-story .phone.mid { width: 350px; margin: 0 -34px; }
-  #ad-story .phone.side { width: 300px; margin-top: 60px; }
-  #ad-story .offer { padding: 50px 56px; }
-  #ad-story .price { font-size: 140px; }
-  #ad-story .price small { font-size: .2em; }
-  #ad-story .offer .l1 { font-size: 36px; }
-  #ad-story .offer .l2 { font-size: 30px; }
+  #ad-story h1 { font-size: 48px; }
+  #ad-story .phones { margin-top: 70px; align-items: flex-start; }
+  #ad-story .phone.mid { width: 452px; margin: 0 -42px; }
+  #ad-story .phone.side { width: 394px; margin-top: 76px; }
+  #ad-story .offer { padding: 52px 56px; }
+  #ad-story .offer-line { font-size: 86px; }
+  #ad-story .offer-sub { font-size: 40px; margin-top: 10px; }
   #ad-story .foot { padding: 32px; font-size: 26px; margin-bottom: 150px; }
 </style>
 </head>
@@ -119,10 +111,9 @@
      deadline, the start date and the price change by hand, then re-render. -->
 
 <div class="ad" id="ad-square">
-  <div class="strip">Last chance</div>
+  <div class="strip">Last Chance &middot; Founding Members Promo</div>
   <div class="body">
-    <div class="kicker">Doors close Sunday</div>
-    <h1>Your whole plan,<br /><em>in one app</em></h1>
+    <h1>Join WLA&rsquo;s new app as a Founding Member<br /><em>&amp; get 8 Week Fat Loss Challenge FREE</em></h1>
     <div class="phones">
       <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
       <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
@@ -130,20 +121,16 @@
     </div>
   </div>
   <div class="offer">
-    <div class="price">£97<small>instead of £297 a year</small></div>
-    <div class="lines">
-      <div class="l1">8 week challenge + 12 months<br />of the WLA app</div>
-      <div class="l2">Starts Monday 26th October</div>
-    </div>
+    <div class="offer-line">Only <strong>£97</strong> <span class="was">(instead of £297)</span></div>
+    <div class="offer-sub">Limited places left!</div>
   </div>
   <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
 </div>
 
 <div class="ad" id="ad-portrait">
-  <div class="strip">Last chance</div>
+  <div class="strip">Last Chance &middot; Founding Members Promo</div>
   <div class="body">
-    <div class="kicker">Doors close Sunday</div>
-    <h1>Your whole plan,<br /><em>in one app</em></h1>
+    <h1>Join WLA&rsquo;s new app as a Founding Member<br /><em>&amp; get 8 Week Fat Loss Challenge FREE</em></h1>
     <div class="phones">
       <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
       <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
@@ -151,20 +138,16 @@
     </div>
   </div>
   <div class="offer">
-    <div class="price">£97<small>instead of £297 a year</small></div>
-    <div class="lines">
-      <div class="l1">8 week challenge + 12 months<br />of the WLA app</div>
-      <div class="l2">Starts Monday 26th October</div>
-    </div>
+    <div class="offer-line">Only <strong>£97</strong> <span class="was">(instead of £297)</span></div>
+    <div class="offer-sub">Limited places left!</div>
   </div>
   <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
 </div>
 
 <div class="ad" id="ad-story">
-  <div class="strip">Last chance</div>
+  <div class="strip">Last Chance &middot; Founding Members Promo</div>
   <div class="body">
-    <div class="kicker">Doors close Sunday</div>
-    <h1>Your whole plan,<br /><em>in one app</em></h1>
+    <h1>Join WLA&rsquo;s new app as a Founding Member<br /><em>&amp; get 8 Week Fat Loss Challenge FREE</em></h1>
     <div class="phones">
       <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
       <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
@@ -172,11 +155,8 @@
     </div>
   </div>
   <div class="offer">
-    <div class="price">£97<small>instead of £297 a year</small></div>
-    <div class="lines">
-      <div class="l1">8 week challenge + 12 months<br />of the WLA app</div>
-      <div class="l2">Starts Monday 26th October</div>
-    </div>
+    <div class="offer-line">Only <strong>£97</strong> <span class="was">(instead of £297)</span></div>
+    <div class="offer-sub">Limited places left!</div>
   </div>
   <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
 </div>
