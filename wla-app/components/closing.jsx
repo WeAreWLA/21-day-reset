@@ -259,6 +259,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         <PrimaryCTA location="pricing" style={{ width: '100%', maxWidth: 480 }}>
           Claim My Founding Member Place
         </PrimaryCTA>
+        <PayPalCTA location="pricing" />
         <GuaranteeNote style={{ maxWidth: 480, margin: '12px auto 0' }} />
 
         <Body size={14} muted style={{ maxWidth: 480, margin: '14px auto 0' }}>
@@ -445,6 +446,7 @@ const FinalCTA = () => (
         with support.
       </Body>
       <PrimaryCTA location="final">Become a Founding Member {window.PRICE}</PrimaryCTA>
+      <PayPalCTA location="final" />
       <GuaranteeNote style={{ maxWidth: 520, margin: '10px auto 0' }} />
       <PriceAnchor style={{ marginTop: 16 }} />
     </div>
@@ -660,6 +662,7 @@ const ExitIntentModal = () => {
         <PrimaryCTA location="exit-intent" onClick={() => setOpen(false)} style={{ width: '100%' }}>
           Claim My Founding Member Place
         </PrimaryCTA>
+        <PayPalCTA location="exit-intent" />
         <GuaranteeNote style={{ marginTop: 12 }} />
       </div>
     </div>

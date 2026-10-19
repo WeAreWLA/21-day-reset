@@ -247,8 +247,77 @@ const GuaranteeNote = ({
   }
 }, "7-day money-back guarantee."), " Join, look around, and if it’s not for you we refund in full."));
 
-// NOTE: no PayPal button on this page. The Reset's PayPal link would take money
-// for the wrong product, and no link exists yet for the Founding Member offer.
+// Secondary checkout route. Thrivecart is the card route and the one that
+// fulfils automatically; this is a plain PayPal payment link, so anyone paying
+// this way has to be matched up and given access by hand.
+const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/W4PLSYES2A7JC';
+const PayPalCTA = ({
+  location = 'primary',
+  align = 'center',
+  style = {}
+}) => /*#__PURE__*/React.createElement("div", {
+  style: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: align === 'center' ? 'center' : 'flex-start',
+    gap: 10,
+    marginTop: 14,
+    flexWrap: 'wrap',
+    ...style
+  }
+}, /*#__PURE__*/React.createElement("span", {
+  style: {
+    fontFamily: '"Alegreya Sans", sans-serif',
+    fontSize: 14,
+    color: 'var(--ink-muted)'
+  }
+}, "or pay with"), /*#__PURE__*/React.createElement("a", {
+  href: PAYPAL_URL,
+  target: "_blank",
+  rel: "noopener",
+  "aria-label": "Pay with PayPal",
+  onClick: () => trackCtaClick(location + '-paypal', 'PayPal'),
+  style: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '#FFC439',
+    minHeight: 40,
+    padding: '0 22px',
+    boxSizing: 'border-box',
+    borderRadius: 999,
+    border: '1px solid transparent',
+    textDecoration: 'none',
+    boxShadow: '0 6px 18px -10px rgba(0, 48, 135, 0.5)',
+    transition: 'background .15s, transform .2s',
+    cursor: 'pointer'
+  },
+  onMouseEnter: e => {
+    e.currentTarget.style.background = '#F0B62A';
+    e.currentTarget.style.transform = 'translateY(-1px)';
+  },
+  onMouseLeave: e => {
+    e.currentTarget.style.background = '#FFC439';
+    e.currentTarget.style.transform = 'translateY(0)';
+  }
+}, /*#__PURE__*/React.createElement("span", {
+  style: {
+    fontFamily: '"Alegreya Sans", sans-serif',
+    fontStyle: 'italic',
+    fontWeight: 800,
+    fontSize: 17,
+    letterSpacing: '-0.02em',
+    lineHeight: 1
+  }
+}, /*#__PURE__*/React.createElement("span", {
+  style: {
+    color: '#003087'
+  }
+}, "Pay"), /*#__PURE__*/React.createElement("span", {
+  style: {
+    color: '#009CDE'
+  }
+}, "Pal"))));
 
 // Price anchor — the smaller-chunk framing.
 const PriceAnchor = ({
@@ -409,6 +478,8 @@ Object.assign(window, {
   Italic,
   Body,
   PrimaryCTA,
+  PayPalCTA,
+  PAYPAL_URL,
   GuaranteeNote,
   PriceAnchor,
   Placeholder,
@@ -1326,7 +1397,9 @@ const PricingSection = ({
       width: '100%',
       maxWidth: 480
     }
-  }, "Claim My Founding Member Place"), /*#__PURE__*/React.createElement(GuaranteeNote, {
+  }, "Claim My Founding Member Place"), /*#__PURE__*/React.createElement(PayPalCTA, {
+    location: "pricing"
+  }), /*#__PURE__*/React.createElement(GuaranteeNote, {
     style: {
       maxWidth: 480,
       margin: '12px auto 0'
@@ -1571,7 +1644,9 @@ const FinalCTA = () => /*#__PURE__*/React.createElement("section", {
   }
 }, "You don’t need to have it all together to join. You just need to be ready to take the next step with support."), /*#__PURE__*/React.createElement(PrimaryCTA, {
   location: "final"
-}, "Become a Founding Member ", window.PRICE), /*#__PURE__*/React.createElement(GuaranteeNote, {
+}, "Become a Founding Member ", window.PRICE), /*#__PURE__*/React.createElement(PayPalCTA, {
+  location: "final"
+}), /*#__PURE__*/React.createElement(GuaranteeNote, {
   style: {
     maxWidth: 520,
     margin: '10px auto 0'
@@ -1837,7 +1912,9 @@ const ExitIntentModal = () => {
     style: {
       width: '100%'
     }
-  }, "Claim My Founding Member Place"), /*#__PURE__*/React.createElement(GuaranteeNote, {
+  }, "Claim My Founding Member Place"), /*#__PURE__*/React.createElement(PayPalCTA, {
+    location: "exit-intent"
+  }), /*#__PURE__*/React.createElement(GuaranteeNote, {
     style: {
       marginTop: 12
     }
@@ -3193,7 +3270,13 @@ function TweakableHero({
     style: {
       width: '100%'
     }
-  }, "Become a Founding Member ", window.PRICE), /*#__PURE__*/React.createElement(GuaranteeNote, {
+  }, "Become a Founding Member ", window.PRICE), /*#__PURE__*/React.createElement(PayPalCTA, {
+    location: "hero",
+    align: "left",
+    style: {
+      marginTop: 0
+    }
+  }), /*#__PURE__*/React.createElement(GuaranteeNote, {
     align: "left",
     style: {
       marginTop: 0,

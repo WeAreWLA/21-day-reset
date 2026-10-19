@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>WLA App · last chance ad set, colours flipped</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #003060; --navy-deep: #00203f;
+    --coral: #E87F63; --coral-soft: #F79F83; --coral-deep: #D9694B;
+    --peach: #F5D9CE; --peach-light: #F8E7DF;
+    --cream: #F9F7F4; --cream-2: #E9DFD3; --paper: #FDFBF8;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #2a2a2a; font-family: "Alegreya Sans", sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; gap: 48px; padding: 48px 24px; }
+
+  /* Same layout as index.html, the palette turned around:
+       strip   coral  -> navy
+       body    cream  -> soft peach
+       phones  navy frames -> coral frames
+       offer   peach  -> navy
+       foot    navy   -> coral                                        */
+  .ad { position: relative; overflow: hidden; display: flex; flex-direction: column;
+        background: var(--peach-light); color: var(--navy);
+        box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  #ad-square   { width: 1080px; height: 1080px; }
+  #ad-portrait { width: 1080px; height: 1350px; }
+  #ad-story    { width: 1080px; height: 1920px; }
+
+  .strip { background: var(--navy); color: var(--paper); text-align: center;
+           font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+
+  .body { flex: 1; min-height: 0; display: flex; flex-direction: column;
+          align-items: center; text-align: center; position: relative; }
+
+  h1 { margin: 0; font-family: 'Libre Baskerville', serif; font-weight: 700;
+       line-height: 1.08; letter-spacing: -.01em; }
+  h1 em { font-style: italic; font-weight: 400; color: var(--coral-deep); }
+
+  .phones { position: relative; width: 100%; flex: 1; min-height: 0;
+            display: flex; align-items: flex-start; justify-content: center; }
+  .phone { border-radius: 30px; overflow: hidden; background: #fff;
+           border: 8px solid var(--coral-deep); flex: none;
+           box-shadow: 0 34px 60px -24px rgba(0,48,96,.45); }
+  .phone img { width: 100%; display: block; }
+  .phone.side { opacity: .97; }
+  .phone.left  { transform: rotate(-7deg); z-index: 1; }
+  .phone.mid   { z-index: 3; }
+  .phone.right { transform: rotate(7deg); z-index: 2; }
+
+  .offer { width: 100%; background: var(--navy); color: var(--paper);
+           text-align: center; position: relative; z-index: 5; }
+  .offer-line { font-family: 'Libre Baskerville', serif; line-height: 1.1;
+                letter-spacing: -.01em; }
+  .offer-line strong { font-weight: 700; color: var(--peach); }
+  .offer-line .was { font-weight: 400; opacity: .72; }
+  .offer-sub { font-weight: 700; color: var(--coral-soft); letter-spacing: .02em; }
+
+  .foot { background: var(--coral); color: #fff; text-align: center;
+          font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+
+  /* ---- square 1080x1080 ---- */
+  #ad-square .strip { padding: 22px; font-size: 26px; }
+  #ad-square .body { padding: 40px 70px 0; }
+  #ad-square h1 { font-size: 46px; }
+  #ad-square .phones { margin-top: 34px; }
+  #ad-square .phone.mid { width: 292px; margin: 0 -30px; }
+  #ad-square .phone.side { width: 256px; margin-top: 48px; }
+  #ad-square .offer { padding: 30px 50px; }
+  #ad-square .offer-line { font-size: 62px; }
+  #ad-square .offer-sub { font-size: 30px; margin-top: 10px; }
+  #ad-square .foot { padding: 20px; font-size: 21px; }
+
+  /* ---- portrait 1080x1350 ---- */
+  #ad-portrait .strip { padding: 26px; font-size: 28px; }
+  #ad-portrait .body { padding: 56px 56px 0; }
+  #ad-portrait h1 { font-size: 47px; }
+  #ad-portrait .phones { margin-top: 50px; }
+  #ad-portrait .phone.mid { width: 352px; margin: 0 -36px; }
+  #ad-portrait .phone.side { width: 310px; margin-top: 60px; }
+  #ad-portrait .offer { padding: 40px 60px; }
+  #ad-portrait .offer-line { font-size: 72px; }
+  #ad-portrait .offer-sub { font-size: 34px; margin-top: 10px; }
+  #ad-portrait .foot { padding: 24px; font-size: 23px; }
+
+  /* ---- story 1080x1920 ---- */
+  #ad-story .strip { padding: 32px; font-size: 30px; }
+  #ad-story .body { padding: 110px 48px 0; }
+  #ad-story h1 { font-size: 48px; }
+  #ad-story .phones { margin-top: 70px; align-items: flex-start; }
+  #ad-story .phone.mid { width: 452px; margin: 0 -42px; }
+  #ad-story .phone.side { width: 394px; margin-top: 76px; }
+  #ad-story .offer { padding: 52px 56px; }
+  #ad-story .offer-line { font-size: 86px; }
+  #ad-story .offer-sub { font-size: 40px; margin-top: 10px; }
+  #ad-story .foot { padding: 32px; font-size: 26px; margin-bottom: 150px; }
+</style>
+</head>
+<body>
+
+<!-- Variant 4: the three-phone concept from index.html with the palette
+     turned around. Copy is identical, so it stays a clean colour test.
+     Exports: assets/wla-ad-v4-{square,portrait,story}.jpg, rendered at 2x.
+
+     ⚠️ The copy is fixed text, not read from the campaign config. The
+     deadline, the start date and the price change by hand, then re-render. -->
+
+<div class="ad" id="ad-square">
+  <div class="strip">Last Chance &middot; Founding Members Promo</div>
+  <div class="body">
+    <h1>Join WLA&rsquo;s new app as a Founding Member<br /><em>&amp; get 8 Week Fat Loss Challenge FREE</em></h1>
+    <div class="phones">
+      <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
+      <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
+      <div class="phone side right"><img src="/assets/app-recipes-hub.jpg" alt="" /></div>
+    </div>
+  </div>
+  <div class="offer">
+    <div class="offer-line">Only <strong>£97</strong> <span class="was">(instead of £297)</span></div>
+    <div class="offer-sub">Limited places left!</div>
+  </div>
+  <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
+</div>
+
+<div class="ad" id="ad-portrait">
+  <div class="strip">Last Chance &middot; Founding Members Promo</div>
+  <div class="body">
+    <h1>Join WLA&rsquo;s new app as a Founding Member<br /><em>&amp; get 8 Week Fat Loss Challenge FREE</em></h1>
+    <div class="phones">
+      <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
+      <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
+      <div class="phone side right"><img src="/assets/app-recipes-hub.jpg" alt="" /></div>
+    </div>
+  </div>
+  <div class="offer">
+    <div class="offer-line">Only <strong>£97</strong> <span class="was">(instead of £297)</span></div>
+    <div class="offer-sub">Limited places left!</div>
+  </div>
+  <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
+</div>
+
+<div class="ad" id="ad-story">
+  <div class="strip">Last Chance &middot; Founding Members Promo</div>
+  <div class="body">
+    <h1>Join WLA&rsquo;s new app as a Founding Member<br /><em>&amp; get 8 Week Fat Loss Challenge FREE</em></h1>
+    <div class="phones">
+      <div class="phone side left"><img src="/assets/app-meal-planner.jpg" alt="" /></div>
+      <div class="phone mid"><img src="/assets/app-home-tracker.jpg" alt="" /></div>
+      <div class="phone side right"><img src="/assets/app-recipes-hub.jpg" alt="" /></div>
+    </div>
+  </div>
+  <div class="offer">
+    <div class="offer-line">Only <strong>£97</strong> <span class="was">(instead of £297)</span></div>
+    <div class="offer-sub">Limited places left!</div>
+  </div>
+  <div class="foot">Weight Loss &amp; Lifestyle Academy</div>
+</div>
+
+</body>
+</html>
