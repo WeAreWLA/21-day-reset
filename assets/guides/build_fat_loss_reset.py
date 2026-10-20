@@ -1,0 +1,2040 @@
+#!/usr/bin/env python3
+"""The 5 Day Fat Loss Reset Guide, WLA house style (No-Fuss Cookbook).
+
+A scaffold matching the editorial design of the No-Fuss Batch Cookbook.
+Framing content (mission, founder note, tips, guidelines, swap list,
+drink / snack tips, educational pages) is fully written. Member-results
+photos and the recipe content are intentionally left as placeholders.
+"""
+import os
+import fitz
+from wla_style import (Guide, PAGE_W, PAGE_H, LEFT, RIGHT, CW, MARGIN,
+                       CONTENT_TOP, CONTENT_BOTTOM,
+                       NAVY, BLUSH, INK, BEIGE, CREAM, RULE,
+                       wrap, tw, fit_size)
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+TESTI_PHOTOS = os.path.join(HERE, "testimonials", "before-after")
+TESTI_SHOTS = os.path.join(HERE, "testimonials", "screenshots")
+SNACK_IMAGES = os.path.join(HERE, "recommended-snacks")
+RECIPE_IMAGES = os.path.join(HERE, "recipes")
+DIAGRAMS = os.path.join(HERE, "diagrams")
+OUT = os.path.join(HERE, "..", "5-Day-Fat-Loss-Reset-Guide.pdf")
+
+
+def recipe_image(section, stem):
+    return find_file(os.path.join(RECIPE_IMAGES, section), stem)
+
+
+def find_file(folder, stem):
+    """Find first image file in folder whose name starts with stem
+    (case-insensitive). Returns full path or None."""
+    if not os.path.isdir(folder):
+        return None
+    stem = stem.lower()
+    for f in sorted(os.listdir(folder)):
+        if (f.lower().startswith(stem)
+                and f.lower().endswith((".jpg", ".jpeg", ".png"))):
+            return os.path.join(folder, f)
+    return None
+
+
+def find_snack_image(stem):
+    return find_file(SNACK_IMAGES, stem)
+
+
+def find_founder_photo():
+    """Look for the founder photo in a few sensible places."""
+    for folder in (TESTI_PHOTOS, HERE,
+                   os.path.join(HERE, "testimonials")):
+        f = find_file(folder, "anna-before-after")
+        if f:
+            return f
+    return None
+
+g = Guide(OUT)
+
+
+# --------------------------------------------------- small helpers
+def toc(items):
+    g._new_content_page()
+    g.heading([[("Table of ", False), ("Contents", True)]])
+    for label, pages in items:
+        g.ensure(20)
+        y = g.y + 12
+        g.text(LEFT + 4, y, label, "as", 10.8, INK)
+        # dotted leader
+        x = LEFT + tw(label, "as", 10.8) + 10
+        while x < RIGHT - tw(pages, "as", 10.8) - 10:
+            g.page.draw_circle((x, y - 3), 0.6, color=None, fill=(0.6, 0.6, 0.6))
+            x += 3.3
+        g.text_right(RIGHT - 2, y, pages, "as", 10.8, INK)
+        g.add_link(fitz.Rect(LEFT, y - 14, RIGHT, y + 6), label)
+        g.y += 19
+
+
+def photo_placeholder(width=CW, height=240, caption="[ photo ]"):
+    g.ensure(height + 16)
+    g.page.draw_rect(fitz.Rect(LEFT, g.y, LEFT + width, g.y + height),
+                     color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+    g.text_center(LEFT + width / 2, g.y + height / 2 + 4, caption,
+                  "lbi", 12, (0.55, 0.55, 0.55))
+    g.y += height + 16
+
+
+def grid_placeholder(rows, cols, item_h=180, caption="[ photo ]",
+                     gap=14):
+    """Image grid placeholder, used for member-results pages."""
+    cw = (CW - gap * (cols - 1)) / cols
+    total_h = rows * item_h + (rows - 1) * gap
+    g.ensure(total_h + 8)
+    top = g.y
+    for r in range(rows):
+        for c in range(cols):
+            x0 = LEFT + c * (cw + gap)
+            y0 = top + r * (item_h + gap)
+            g.page.draw_rect(fitz.Rect(x0, y0, x0 + cw, y0 + item_h),
+                             color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+            g.text_center(x0 + cw / 2, y0 + item_h / 2 + 4,
+                          caption, "lbi", 11, (0.55, 0.55, 0.55))
+    g.y = top + total_h + 12
+
+
+def kicker(text):
+    """Small tracked coral kicker above a content block."""
+    g.ensure(20)
+    g.tracked(LEFT, g.y + 10, text.upper(), "asb", 8.5, BLUSH, 1.4)
+    g.y += 18
+
+
+def stat_block(label, value):
+    """Coral small-caps label + navy value, side by side."""
+    g.tracked(LEFT, g.y + 10, label.upper(), "asb", 8.5, BLUSH, 1.4)
+    g.text(LEFT, g.y + 28, value, "lb", 14, NAVY)
+    g.y += 38
+
+
+# =========================================================== cover
+# clean cover, no top kicker
+page = g._blank_page()
+g.page = page
+title_lines = [("The 5 Day", "lb", NAVY),
+               ("Fat Loss", "lbi", BLUSH),
+               ("Reset", "lb", NAVY)]
+target = 408
+T = min(fit_size(t[0], t[1], target) for t in title_lines)
+T = min(T, 78)
+LH = T * 1.18
+b1 = 286
+for i, (txt, font, color) in enumerate(title_lines):
+    g.text(LEFT, b1 + i * LH, txt, font, T, color)
+subtitle = ("Start today, kickstart fat loss and lose up to 5lbs in "
+            "5 days. A simple, no-fluff reset for women ready to "
+            "feel lighter and more in control.")
+sy = b1 + (len(title_lines) - 1) * LH + 56
+for ln in wrap(subtitle, "lbi", 13, 348):
+    g.text(LEFT, sy, ln, "lbi", 13, NAVY)
+    sy += 20.5
+
+
+# =========================================================== table of contents
+toc([
+    ("About Us",                                       "03"),
+    ("The WLA Mission",                                "04"),
+    ("Our Three Pillars",                              "05"),
+    ("A Note From Our Founder, Anna Wallace",          "06"),
+    ("WLA Members Results / Our Community Success",    "07-09"),
+    ("Important Tips for Getting Started",             "10-11"),
+    ("The 5 Day Fat Loss Reset Guidelines",            "12"),
+    ("The 5 Day Fat Loss Reset Meal Overview",         "13"),
+    ("Breakfast Recipes",                              "14-18"),
+    ("Lunch Recipes",                                  "19-23"),
+    ("Dinner Recipes",                                 "24-28"),
+    ("The Swap List",                                  "29-45"),
+    ("Drink Tips",                                     "46"),
+    ("Snack Tips",                                     "47-50"),
+    ("What Balanced Blood Sugar Gives You",            "51"),
+    ("Easily Reduce Sugar Cravings in 5 Days",         "52-53"),
+    ("Why Breakfast is Important",                     "54"),
+    ("Why Snacking is Important",                      "55"),
+    ("The WLA Nutrition Formula",                      "56"),
+])
+
+
+# =========================================================== welcome
+g._new_content_page()
+g.register_target("About Us")
+g.heading([[("Hello, ", False), ("Welcome to", True)],
+           [("The WLA Community!", False)]])
+g.paragraph("Really excited that you've registered for the 5 Day Fat "
+            "Loss Reset, a midlife-friendly week designed to break "
+            "the sugar cycle, settle your blood sugar and get the "
+            "scales moving again.")
+g.paragraph("No 1,200-calorie plans. No banned food lists. No "
+            "starting over every Monday. Real food, real life, "
+            "and a structure that actually fits a busy week.")
+
+g.subhead([("Your 5-day wins", "lbi")])
+WINS = [
+    "Lose up to 5 pounds",
+    "Calmer cravings in 72 hours",
+    "More stable energy",
+    "Less mindless snacking",
+    "Less bloated feeling",
+    "Brighter skin",
+]
+# 3 col × 2 row mini-cards with coral check badge + navy benefit text
+wcols = 3
+wgap = 14
+wcw = (CW - wgap * (wcols - 1)) / wcols
+wch = 80
+g.ensure(2 * wch + wgap + 8)
+top = g.y
+for i, w in enumerate(WINS):
+    r = i // wcols
+    c = i % wcols
+    x0 = LEFT + c * (wcw + wgap)
+    y0 = top + r * (wch + wgap)
+    # coral left strip
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + wch),
+                     color=None, fill=BLUSH)
+    # cream cell
+    g.page.draw_rect(fitz.Rect(x0 + 4, y0, x0 + wcw, y0 + wch),
+                     color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+    # coral check disc top-left
+    cx, cy, r_ = x0 + 24, y0 + 24, 10
+    g.page.draw_circle((cx, cy), r_, color=None, fill=BLUSH)
+    g.page.draw_line((cx - 4, cy + 0.5), (cx - 1, cy + 4),
+                     color=(1, 1, 1), width=1.6)
+    g.page.draw_line((cx - 1, cy + 4), (cx + 5, cy - 3),
+                     color=(1, 1, 1), width=1.6)
+    # benefit label
+    for j, ln in enumerate(wrap(w, "lb", 11.5, wcw - 28)):
+        g.text(x0 + 14, y0 + 56 + j * 14, ln, "lb", 11.5, NAVY)
+g.y = top + 2 * (wch + wgap) + 4
+
+# closing lines
+g.gap(8)
+g.paragraph("Ready to feel better faster?", font="asb", size=13,
+            color=NAVY, lh=18, gap_after=4)
+g.paragraph("Let's dive in.", font="lbi", size=18, color=BLUSH,
+            lh=24, gap_after=14)
+g.paragraph("Before you start the reset, we want to introduce The "
+            "Weight Loss Academy (WLA) very briefly and share "
+            "useful tips for getting started in the easiest way.")
+
+
+# =========================================================== mission
+g._new_content_page()
+g.register_target("The WLA Mission")
+g.heading([[("The ", False), ("WLA Mission", True)]])
+g.paragraph("Our mission at The WLA is to help women lose weight for "
+            "the last time.")
+g.paragraph("Empowering women to achieve sustainable and easy weight "
+            "loss through a simple approach that focuses on flexible "
+            "nutrition, behavioural change strategies that promote "
+            "long-lasting results, and coaching that empowers you to "
+            "take control of your lifestyle.")
+g.paragraph("Say goodbye to traditional diets and hello to freedom.",
+            font="asb", color=NAVY)
+g.paragraph("The Weight Loss Academy is focused on maximum effortless "
+            "results without deprivation.")
+g.subhead([("Helping our clients", "lbi")])
+g.bullets([
+    "Burn body fat",
+    "Build confidence",
+    "Slay cravings naturally",
+    "Skyrocket energy",
+])
+
+g._new_content_page()
+g.register_target("Our Three Pillars")
+g.heading([[("Our ", False), ("Three Pillars", True)]])
+g.paragraph("The WLA focuses on three main core strategies in our "
+            "signature WLA Approach to support clients with every "
+            "tool needed for long-lasting, transformative change.")
+g.subhead([("The WLA Nutrition Formula", "lbi")])
+g.paragraph("Promotes easy weight loss with a flexible approach to "
+            "nutrition using everyday foods. Feel lighter within "
+            "days, say hello to confidence, lose weight "
+            "consistently, increase your energy and say goodbye to "
+            "fad diets.")
+g.subhead([("Behavioural Change Strategies", "lbi")])
+g.paragraph("Centred around the psychology behind weight loss, lose "
+            "weight but keep it off. Have food freedom and say "
+            "goodbye to self-sabotaging food guilt.")
+g.subhead([("Expert Coaching", "lbi")])
+g.paragraph("Focuses on consistency strategies so you finally stop "
+            "“falling off track”. We guide you every step of the "
+            "way with our professional, women-only and "
+            "non-judgemental coaching community, focusing on "
+            "accountability, staying on track and empowerment.")
+# pull-quote callout
+g.gap(14)
+g.ensure(110)
+_qtop = g.y
+_qh = 96
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, RIGHT, _qtop + _qh),
+                 color=None, fill=BEIGE)
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, LEFT + 5, _qtop + _qh),
+                 color=None, fill=BLUSH)
+_qx = LEFT + 22
+_qmax = CW - 36
+_qtext = ("Join us on a journey back to your happy place in your "
+          "body. It's time to feel lighter, more confident, "
+          "healthier and more energised, without minimal calories "
+          "or extreme workouts.")
+_lines = wrap(_qtext, "lbi", 13, _qmax)
+_ty = _qtop + (_qh - (len(_lines) - 1) * 19) / 2 + 4
+for ln in _lines:
+    g.text(_qx, _ty, ln, "lbi", 13, NAVY)
+    _ty += 19
+g.y = _qtop + _qh + 14
+
+
+# =========================================================== founder
+g._new_content_page()
+g.register_target("A Note From Our Founder, Anna Wallace")
+g.heading([[("A Note From ", False), ("Our Founder", True)]])
+# square portrait + body
+photo_w = 240
+photo_h = 240
+photo_top = g.y
+photo_path = find_founder_photo()
+if photo_path:
+    g.page.insert_image(fitz.Rect(LEFT, photo_top, LEFT + photo_w,
+                                  photo_top + photo_h),
+                        filename=photo_path, keep_proportion=True)
+else:
+    g.page.draw_rect(fitz.Rect(LEFT, photo_top, LEFT + photo_w,
+                               photo_top + photo_h),
+                     color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+    g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 - 6,
+                  "[ image placeholder ]", "lbi", 11,
+                  (0.5, 0.5, 0.55))
+    g.text_center(LEFT + photo_w / 2, photo_top + photo_h / 2 + 12,
+                  "upload as: anna-before-after.png", "asi", 9.5,
+                  (0.55, 0.55, 0.6))
+# white signature card sitting OVER the bottom edge of the photo
+# (drawn after the image so it renders on top), most of it extends
+# below the photo so it doesn't obscure the portrait
+pill_y = photo_top + photo_h - 12
+g.page.draw_rect(fitz.Rect(LEFT, pill_y, LEFT + photo_w,
+                           pill_y + 50),
+                 color=None, fill=(1, 1, 1))
+g.page.draw_rect(fitz.Rect(LEFT, pill_y, LEFT + 4, pill_y + 50),
+                 color=None, fill=BLUSH)
+g.text(LEFT + 14, pill_y + 18, "Anna Wallace", "lbi", 12, BLUSH)
+g.text(LEFT + 14, pill_y + 32, "BSc Food & Nutrition", "asi", 9, NAVY)
+g.text(LEFT + 14, pill_y + 43, "Registered Associate Nutritionist",
+       "asi", 9, NAVY)
+# body, right column then full width
+tx_narrow = LEFT + photo_w + 26
+tw_narrow = CW - photo_w - 26
+tx_full = LEFT
+tw_full = CW
+ty = photo_top + 4
+photo_bottom = photo_top + photo_h + 56  # photo + overlapping card
+intro = ("This is the reset I built from 10 years coaching "
+         "women over 45.")
+for ln in wrap(intro, "lbi", 13.5, tw_narrow):
+    g.text(tx_narrow, ty + 11, ln, "lbi", 13.5, NAVY)
+    ty += 19
+ty += 8
+paragraphs = [
+    "I once struggled with my weight, starting each day with "
+    "determination but often resorting to unhealthy habits like "
+    "the Special K diet or just going hours without food.",
+    "Evenings would often end with takeaway, excessive eating, "
+    "or alcohol to cope.",
+    "Feeling lost and unhappy, I believed I was the \"fat\" one "
+    "in my family and didn't know how to change.",
+    "After hitting rock bottom, I enrolled in University to study "
+    "Food and Nutrition. This decision transformed me. I lost "
+    "weight and maintained it, even after pregnancy.",
+    "I founded The Weight Loss Academy, supporting over 50,000 "
+    "clients globally over 10 years.",
+    "Our WLA Approach helps to burn body fat simply and flexibly, "
+    "restoring confidence and eliminating sugar cravings.",
+]
+for txt in paragraphs:
+    use_full = ty > photo_bottom - 14
+    tx = tx_full if use_full else tx_narrow
+    twb = tw_full if use_full else tw_narrow
+    for ln in wrap(txt, "as", 10.6, twb):
+        g.text(tx, ty + 8, ln, "as", 10.6, INK)
+        ty += 14.6
+    ty += 7
+g.y = max(photo_bottom + 22, ty + 8)
+
+# closing pull-quote that stands out — two sentences with a gap
+g.gap(8)
+_qparas = [
+    ("If you're reading this, know that achieving your goals is "
+     "possible, even if you've tried everything and feel like "
+     "giving up."),
+    ("Your journey matters, and like mine, finding the right "
+     "weight loss approach can change everything."),
+]
+_qlines = []
+for p in _qparas:
+    _qlines.append(wrap(p, "lbi", 12.5, CW - 36))
+_total_lines = sum(len(L) for L in _qlines)
+_qh = 24 + _total_lines * 18 + (len(_qparas) - 1) * 10
+g.ensure(_qh)
+_qtop = g.y
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, RIGHT, _qtop + _qh),
+                 color=None, fill=BEIGE)
+g.page.draw_rect(fitz.Rect(LEFT, _qtop, LEFT + 5, _qtop + _qh),
+                 color=None, fill=BLUSH)
+_ty = _qtop + 20
+for lines in _qlines:
+    for ln in lines:
+        g.text(LEFT + 22, _ty, ln, "lbi", 12.5, NAVY)
+        _ty += 18
+    _ty += 10
+g.y = _qtop + _qh + 8
+
+
+# =========================================================== member results
+def _images_in(folder):
+    if not os.path.isdir(folder):
+        return []
+    return sorted([os.path.join(folder, f)
+                   for f in os.listdir(folder)
+                   if f.lower().endswith((".jpg", ".jpeg", ".png"))])
+
+
+def image_grid(files, rows, cols, item_h=265, gap=14, caption=""):
+    """Tile up to rows*cols image files into a grid.  Pads with empty
+    placeholders when fewer files are provided."""
+    cw = (CW - gap * (cols - 1)) / cols
+    total_h = rows * item_h + (rows - 1) * gap
+    g.ensure(total_h + 8)
+    top = g.y
+    n = rows * cols
+    for i in range(n):
+        r = i // cols
+        c = i % cols
+        x0 = LEFT + c * (cw + gap)
+        y0 = top + r * (item_h + gap)
+        rect = fitz.Rect(x0, y0, x0 + cw, y0 + item_h)
+        if i < len(files):
+            g.page.insert_image(rect, filename=files[i], keep_proportion=True)
+        else:
+            g.page.draw_rect(rect, color=RULE,
+                             fill=(0.97, 0.93, 0.90), width=0.6)
+            g.text_center(x0 + cw / 2, y0 + item_h / 2 + 4,
+                          caption, "lbi", 11, (0.55, 0.55, 0.55))
+    g.y = top + total_h + 12
+
+
+_photos = _images_in(TESTI_PHOTOS)
+_shots = _images_in(TESTI_SHOTS)
+
+g._new_content_page()
+g.register_target("WLA Members Results / Our Community Success")
+g.heading([[("WLA Members ", False), ("Results", True)]])
+# square cells, no padding mismatch with the 1080x1080 sources
+_cw = (CW - 14) / 2
+image_grid(_photos[:4], 2, 2, item_h=_cw,
+           caption="[ Member before / after photo ]")
+
+g._new_content_page()
+g.heading([[("WLA Members ", False), ("Results", True)]])
+image_grid(_photos[4:8], 2, 2, item_h=_cw,
+           caption="[ Member before / after photo ]")
+
+g._new_content_page()
+g.heading([[("Our ", False), ("Community Success", True)]])
+if not _shots:
+    g.paragraph("Real posts and messages from our community, to be "
+                "added.", font="asi")
+image_grid(_shots[:6], 3, 2, item_h=150,
+           caption="[ Member post screenshot ]")
+
+
+# =========================================================== tips
+g._new_content_page()
+g.register_target("Important Tips for Getting Started")
+g.heading([[("Important Tips for", False)],
+           [("Getting Started", True)]])
+g.paragraph("The 5 Day Fat Loss Reset meal guide can include "
+            "whatever variation of the meal options you want, it's "
+            "fully adjustable depending on the recipes and "
+            "ingredients you like.")
+g.paragraph("Pick the recipe you like most from the reset meal "
+            "overview for each meal (breakfast, lunch, dinner and "
+            "snack). Feel free to duplicate recipes that are easy to "
+            "batch.")
+g.paragraph("Feel free to swap each ingredient around. Or leave out "
+            "ingredients you don't like. Season foods more if "
+            "required.")
+g.note("Go with the flow of the recipes in the guide in terms of "
+       "variety, or adjust and simplify by repeating meals more "
+       "often. This will not impact results.")
+
+g.subhead([("Meals", "lbi")])
+g.bullets([
+    "Pick one breakfast for 5 days, or pick and choose from the "
+    "guide if you want more variety.",
+    "If unable to have one of the lunch recipes due to being out "
+    "or busy, go for a protein-based salad, soup, or any egg dish.",
+    "Repeat lunches more often if that's easier (e.g. an easy-batch "
+    "recipe can cover multiple days).",
+    "Always have a portion of protein in each meal. If having "
+    "soup, have a piece of protein on the side such as a boiled "
+    "egg or some meat / fish.",
+])
+g.subhead([("Drinks", "lbi")])
+g.bullets([
+    "Aim to have only one milky coffee per day (i.e. latte / "
+    "cappuccino). Tea and coffee with small amounts of milk are "
+    "fine.",
+    "Aim for 8 glasses of water per day approximately if you can "
+    "(see the Drink Tips section for ideas on how to drink more "
+    "water).",
+])
+g.subhead([("Snacks", "lbi")])
+g.bullets([
+    "Aim for one bigger snack between lunch and dinner to manage "
+    "appetite and sugar cravings. Snacking at other times of the "
+    "day is fine, but only when physically hungry.",
+])
+g.keep_together(140)
+g.subhead([("Portions", "lbi")])
+g.bullets([
+    "If you feel it's too much food for you, don't eat it all. "
+    "Listen to your body and don't eat just for the sake of eating.",
+    "Eat until you've had enough and feel satisfied. Recipes are "
+    "for 1 serving unless stated otherwise.",
+])
+g.subhead([("A note on perfection", "lbi")])
+g.bullets([
+    "Don't expect perfection, just do your best. Five focused "
+    "days beat five perfect ones you never start.",
+    "If you slip up at lunch, the next meal is your chance to "
+    "reset. Nothing is ruined.",
+])
+
+
+# =========================================================== guidelines
+g._new_content_page()
+g.register_target("The 5 Day Fat Loss Reset Guidelines")
+g.heading([[("The 5 Day Fat Loss", False)],
+           [("Reset ", False), ("Guidelines", True)]])
+g.paragraph("Stick to these eight simple principles and the reset "
+            "will do the heavy lifting for you.")
+
+CARDS = [
+    ("01", "Eat breakfast",
+     "Within 1 hour of waking, every day."),
+    ("02", "Protein at breakfast",
+     "Sets satiety and steadies blood sugar for the day."),
+    ("03", "Protein at every meal",
+     "The single biggest lever for staying full."),
+    ("04", "Reduce processed foods",
+     "And added sugars, cut packaged shortcuts where you can."),
+    ("05", "3 meals + smart snacks",
+     "Eat 3 meals; snack only when truly hungry."),
+    ("06", "Hydrate",
+     "At least 8 glasses of water per day."),
+    ("07", "Move daily",
+     "Even a 20-minute walk counts."),
+    ("08", "Dairy-free at breakfast?",
+     "Add a scoop of protein powder to keep protein up."),
+]
+
+CG = 18          # gap between cards
+CH = 110         # card height
+ccw = (CW - CG) / 2
+
+g.ensure(CH * 4 + CG * 3 + 8)
+top = g.y
+for i, (num, title, desc) in enumerate(CARDS):
+    r = i // 2
+    c = i % 2
+    x0 = LEFT + c * (ccw + CG)
+    y0 = top + r * (CH + CG)
+    # subtle border + cream fill
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + ccw, y0 + CH),
+                     color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+    # coral left accent strip
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + CH),
+                     color=None, fill=BLUSH)
+    # coral number, tracked
+    g.tracked(x0 + 22, y0 + 30, num, "asb", 11, BLUSH, 1.6)
+    # navy title
+    g.text(x0 + 22, y0 + 58, title, "lb", 15, NAVY)
+    # italic descriptor (wrapped)
+    desc_lines = wrap(desc, "asi", 10.5, ccw - 44)
+    ty = y0 + 79
+    for ln in desc_lines:
+        g.text(x0 + 22, ty, ln, "asi", 10.5, INK)
+        ty += 13.5
+g.y = top + 4 * (CH + CG)
+g.gap(4)
+
+
+# =========================================================== meal overview
+def option_grid(items, with_header=True, gap=8, gap_after=12):
+    """Small per-meal table. items = list of (number, tag, recipe).
+    with_header=False renders a single-row grid with just recipe names."""
+    n = len(items)
+    cw = (CW - gap * (n - 1)) / n
+    if with_header:
+        head_h = 36
+        body_h = 56
+        total_h = head_h + body_h
+    else:
+        total_h = 60
+    g.ensure(total_h + gap_after)
+    top = g.y
+    for i, (num, tag, recipe) in enumerate(items):
+        x0 = LEFT + i * (cw + gap)
+        if with_header:
+            # navy header
+            g.page.draw_rect(fitz.Rect(x0, top, x0 + cw, top + head_h),
+                             color=None, fill=NAVY)
+            g.text_center(x0 + cw / 2, top + 16, f"Option {num}",
+                          "asb", 10, (1, 1, 1))
+            if tag:
+                g.text_center(x0 + cw / 2, top + 29,
+                              f"[ {tag} ]", "asi", 9, BLUSH)
+            # cream body with hairline border
+            g.page.draw_rect(fitz.Rect(x0, top + head_h, x0 + cw,
+                                       top + total_h),
+                             color=RULE,
+                             fill=(0.985, 0.97, 0.95), width=0.7)
+            # recipe name (wrapped, centred)
+            r_lines = wrap(recipe, "lb", 11, cw - 12)
+            ty = top + head_h + body_h / 2 - (len(r_lines) - 1) * 7 + 3
+            for ln in r_lines:
+                g.text_center(x0 + cw / 2, ty, ln, "lb", 11, NAVY)
+                ty += 14
+        else:
+            g.page.draw_rect(fitz.Rect(x0, top, x0 + cw, top + total_h),
+                             color=RULE,
+                             fill=(0.985, 0.97, 0.95), width=0.7)
+            g.page.draw_rect(fitz.Rect(x0, top, x0 + 4, top + total_h),
+                             color=None, fill=BLUSH)
+            r_lines = wrap(recipe, "lb", 11, cw - 16)
+            ty = top + total_h / 2 - (len(r_lines) - 1) * 7 + 3
+            for ln in r_lines:
+                g.text_center(x0 + cw / 2, ty, ln, "lb", 11, NAVY)
+                ty += 14
+        g.add_link(fitz.Rect(x0, top, x0 + cw, top + total_h), recipe)
+    g.y = top + total_h + gap_after
+
+
+g._new_content_page()
+g.register_target("The 5 Day Fat Loss Reset Meal Overview")
+g.heading([[("The Reset ", False), ("Meal Overview", True)]])
+g.paragraph("Choose any breakfast, lunch or dinner option for each "
+            "day from the overview below. Feel free to mix and match. "
+            "Batch cook to repeat a recipe or choose a new one each "
+            "day.")
+
+g.subhead([("Breakfast Options", "lbi")], gap_after=8)
+option_grid([
+    ("1", None, "High Fibre Air Fryer Granola"),
+    ("2", None, "Protein & Fibre Yoghurt Bowl"),
+    ("3", None, "Pina Colada Smoothie"),
+    ("4", None, "Multigrain Hoops Cereal and Fruit"),
+], with_header=False)
+
+g.subhead([("Lunch Options", "lbi")], gap_after=8)
+option_grid([
+    ("1", "Family Fav",   "Weekend Brunch"),
+    ("2", "10 Min Option","Cheesy Fried Eggs"),
+    ("3", "Batch Prep",   "Coronation Chicken Salad"),
+    ("4", "No Cook",      "M&S Naked Chicken Caesar Salad"),
+])
+
+g.subhead([("Dinner Options", "lbi")], gap_after=8)
+option_grid([
+    ("1", "20 Min Option",  "Chicken Caesar Air Fryer Gnocchi"),
+    ("2", "Fakeaway Inspo", "One Pan Thai Red Curry Salmon"),
+    ("3", "Easy Option",    "Lazy Snacky Plate"),
+    ("4", "No Fuss Option", "No Cook Freezer Dinner"),
+])
+
+
+# =========================================================== recipes
+def placeholder_recipe(slot=None):
+    ingredients = [f"[ ingredient {i + 1} ]" for i in range(8)]
+    instructions = [f"[ step {i + 1} ]" for i in range(6)]
+    g.recipe("[ Recipe Name ]", "?", ingredients, instructions,
+             note=(f"[ {slot}, Anna to add recipe ]" if slot
+                   else "[ Anna to add recipe ]"))
+
+
+g.divider("Breakfast", "Recipes.")
+
+g.recipe(
+    "High Fibre Air Fryer Granola", "4",
+    [
+        "80g oats",
+        "2 tbsp ground flaxseeds",
+        "2 tbsp mixed seeds (pumpkin, sunflower, etc.)",
+        "60g mixed nuts, roughly chopped",
+        "2 tbsp desiccated coconut",
+        "1/2 tsp ground cinnamon",
+        "20ml olive oil",
+        "30ml honey",
+        "1 tsp vanilla essence",
+        "40g goji berries",
+    ],
+    [
+        "Preheat the air fryer to 160C.",
+        "In a large mixing bowl, combine the oats, "
+        "flaxseeds, mixed seeds, mixed nuts, desiccated "
+        "coconut and cinnamon. Mix well so everything is "
+        "evenly distributed.",
+        "Pour the olive oil, honey and vanilla essence "
+        "into the dry ingredients and stir until evenly "
+        "coated.",
+        "Line the air fryer basket with parchment paper "
+        "and spread the granola mixture evenly (you may "
+        "need to cook in batches depending on the size of "
+        "your air fryer).",
+        "Cook for 10 to 12 minutes, stirring every 2 to 3 "
+        "minutes for even cooking and to prevent burning.",
+        "Once golden and slightly crisp, remove from the "
+        "air fryer, stir through the goji berries and "
+        "allow to cool completely. It will crisp up "
+        "further as it cools.",
+        "Serve each portion with Greek yoghurt and a "
+        "portion of fruit of your choice.",
+    ],
+    kicker=("Recipe 01", "Breakfast"),
+    time="20 mins",
+    subtitle="Crunchy, naturally sweet, batched once and "
+             "ready all week.",
+    to_serve=[
+        "125g full-fat Greek yoghurt",
+        "A portion of fruit of your choice",
+    ],
+    note="Makes 4 portions. Store any leftovers in an "
+         "airtight container for up to 2 weeks.",
+    image=recipe_image("breakfast", "air-fryer-granola"),
+)
+
+g.recipe(
+    "Protein and Fibre Yoghurt Bowl", "1",
+    [
+        "125g full-fat Greek yoghurt",
+        "80g vanilla kefir",
+        "1 tsp mixed seeds",
+        "1 tsp peanut butter",
+        "1 tsp honey",
+        "Handful of fresh raspberries",
+        "Handful of fresh blueberries",
+    ],
+    [
+        "Add the Greek yoghurt and kefir to a bowl and "
+        "mix until smooth and combined.",
+        "Top with the mixed seeds, peanut butter, honey, "
+        "raspberries and blueberries and serve.",
+    ],
+    kicker=("Recipe 02", "Breakfast"),
+    time="5 mins",
+    subtitle="A high-protein bowl that keeps you full for "
+             "hours.",
+    note="Best enjoyed fresh. Swap the berries for "
+         "whatever you have available. The vanilla kefir "
+         "from Tesco is a great option, highly rated and "
+         "easy to enjoy on its own as a quick drink snack. "
+         "You can also use plain kefir if you prefer.",
+    image=recipe_image("breakfast", "protein-fibre-yoghurt"),
+)
+
+g.recipe(
+    "Pina Colada Smoothie", "1",
+    [
+        "1 banana",
+        "80g pineapple chunks, canned or fresh",
+        "150ml coconut milk",
+        "2 tbsp full-fat Greek yoghurt",
+        "A few ice cubes",
+        "1 heaped tsp desiccated coconut",
+    ],
+    [
+        "Combine all ingredients in a blender.",
+        "Blend until smooth, around 1 minute. Serve "
+        "immediately.",
+    ],
+    kicker=("Recipe 03", "Breakfast"),
+    time="2 mins",
+    subtitle="Sunshine in a glass, blended in under two "
+             "minutes.",
+    note="Advance prep. Freeze some ice cubes the night "
+         "before so the smoothie blends thick and cold.",
+    image=recipe_image("breakfast", "pina-colada-smoothie"),
+)
+
+g.recipe(
+    "Multigrain Hoops Cereal and Fruit", "1",
+    [
+        "30g M&S Only... Ingredients Multigrain Hoops",
+        "125ml milk of your choice",
+        "Your choice of topping (a handful of berries, "
+        "1 banana, 30g dried fruit, etc.)",
+    ],
+    [
+        "Place the cereal in a serving bowl and pour over "
+        "the milk.",
+        "Add your fruit to the bowl, or serve on the "
+        "side, and enjoy.",
+    ],
+    kicker=("Recipe 04", "Breakfast"),
+    time="2 mins",
+    subtitle="A lower-sugar cereal that still feels like a "
+             "treat.",
+    image=recipe_image("breakfast", "multigrain-hoops"),
+)
+
+g.divider("Lunch", "Recipes.")
+
+g.recipe(
+    "Weekend Brunch", "1",
+    [
+        "2 sausages (chicken, pork, turkey or "
+        "vegetarian)",
+        "4 mushrooms",
+        "4 cherry tomatoes",
+        "2 eggs",
+        "1/2 avocado",
+    ],
+    [
+        "Cook the sausages as per the packet instructions.",
+        "Grill the mushrooms and tomatoes.",
+        "Slice the avocado.",
+        "Poach the eggs (eggs can also be fried, "
+        "scrambled, made into an omelette or boiled).",
+        "Serve everything together and enjoy.",
+    ],
+    kicker=("Recipe 05", "Lunch  ·  Family Fav"),
+    time="15 mins",
+    subtitle="A proper weekend plate, full of flavour and "
+             "no bloat.",
+    note="Want to remove the meat? Replace the sausages "
+         "with 2 vegetarian sausages or any vegetarian "
+         "alternative from the food swap list.",
+    image=recipe_image("lunch", "weekend-brunch"),
+)
+
+g.recipe(
+    "Cheesy Fried Eggs", "1",
+    [
+        "1 tsp olive oil",
+        "2 eggs",
+        "Salt and pepper for seasoning",
+        "30g cheddar cheese, grated",
+    ],
+    [
+        "Heat a non-stick frying pan over medium-low "
+        "heat and add the olive oil.",
+        "Crack the eggs into the pan and cook to your "
+        "preference (sunny side up or over easy).",
+        "Season lightly with salt and pepper, then "
+        "sprinkle the grated cheddar evenly over the "
+        "eggs.",
+        "Cover the pan with a lid for 30 to 60 seconds to "
+        "let the cheese melt.",
+        "Add the rocket, tomatoes and avocado to a plate "
+        "for a simple side salad. Drizzle with balsamic "
+        "vinegar if using.",
+        "Once the eggs are cooked and the cheese has "
+        "melted, carefully transfer them onto the plate "
+        "and serve immediately.",
+    ],
+    kicker=("Recipe 06", "Lunch  ·  10 Min Option"),
+    time="10 mins",
+    subtitle="Melty cheese, runny yolks, fresh side salad.",
+    to_serve=[
+        "Handful of rocket",
+        "6 cherry tomatoes, halved",
+        "1/2 small avocado, sliced",
+        "1 tsp balsamic vinegar (optional)",
+        "Or any salad ingredients you have",
+    ],
+    image=recipe_image("lunch", "cheesy-fried-eggs"),
+)
+
+g.recipe(
+    "Coronation Chicken Salad", "1",
+    [
+        "1 heaped tsp mayonnaise",
+        "1 heaped tbsp full-fat Greek yoghurt",
+        "1 heaped tbsp mango chutney",
+        "1/2 tsp curry powder",
+        "1 tsp soy sauce",
+        "Black pepper for seasoning",
+        "100-130g cooked chicken breast, sliced",
+        "1/2 red onion, thinly sliced (optional)",
+        "1 handful of mixed salad leaves",
+        "6 cherry tomatoes, quartered",
+        "1/2 pepper (any colour), thinly sliced",
+        "1/2 cucumber, diced into bite-sized pieces",
+        "1 heaped tbsp flaked almonds",
+    ],
+    [
+        "Add the mayonnaise, Greek yoghurt, mango "
+        "chutney, curry powder, black pepper, soy sauce "
+        "and a drop of water to a bowl.",
+        "Mix together, taste and add more black pepper "
+        "to season if you like.",
+        "Add the sliced chicken and red onion (optional) "
+        "to the bowl and mix to coat.",
+        "To serve, arrange the mixed leaves, tomatoes, "
+        "peppers and cucumber on a plate, spoon over the "
+        "chicken mixture and top with flaked almonds.",
+    ],
+    kicker=("Recipe 07", "Lunch  ·  Batch Prep"),
+    time="10 mins",
+    subtitle="Lightly spiced, batch friendly, perfect for "
+             "the prep.",
+    note="Eat straight away or store the chicken mixture "
+         "in the fridge until its best-before date.",
+    image=recipe_image("lunch", "coronation-chicken-salad"),
+)
+
+g.recipe(
+    "M&S Naked Chicken Caesar Salad", "1",
+    [
+        "1 M&S Naked Chicken Caesar Salad, or any "
+        "ready-made salad",
+        "Optional extra protein (cooked chicken, tuna, "
+        "boiled eggs or cheese)",
+        "Dressing on the side if possible",
+    ],
+    [
+        "Choose ready-made salads with a base of plenty "
+        "of vegetables or salad leaves and avoid those "
+        "with starchy carbohydrates like pasta, couscous, "
+        "rice or potatoes.",
+        "If the salad doesn't already include a protein "
+        "source, add one of your own. Cooked chicken, "
+        "tuna, boiled eggs or cheese are great additions.",
+        "Be mindful of dressings, sauces and mayonnaise "
+        "that often come with pre-packed salads. Ideally, "
+        "pick a salad where the dressing is packaged "
+        "separately so you can control how much you use.",
+        "Check the front of the packaging for the "
+        "traffic-light system, which gives a quick "
+        "overview of fat, saturated fat, salt and sugar. "
+        "The more green on the label, the healthier the "
+        "choice.",
+        "This works when eating out too. Choose a salad "
+        "at a restaurant and ask for the dressing on the "
+        "side.",
+    ],
+    kicker=("Recipe 08", "Lunch  ·  No Cook"),
+    time="2 mins",
+    subtitle="A shop-bought win, pick smart and eat well.",
+    image=recipe_image("lunch", "m-and-s-naked-chicken-caesar-salad"),
+)
+
+g.divider("Dinner", "Recipes.")
+
+g.recipe(
+    "Chicken Caesar Air Fryer Gnocchi", "1",
+    [
+        "125g fresh gnocchi",
+        "1 tsp olive oil",
+        "Black pepper, to taste",
+        "100-130g cooked or roasted chicken, diced or "
+        "shredded",
+        "2 bacon slices, grilled and diced",
+        "6 cherry tomatoes, halved",
+        "1/2 red onion, finely sliced",
+        "1 tsp Italian herbs",
+        "1 heaped tbsp real Caesar dressing",
+        "1 heaped tbsp Greek yoghurt",
+        "A large handful of rocket",
+        "30g parmesan",
+    ],
+    [
+        "Preheat the air fryer to 200C / 392F.",
+        "Toss the gnocchi with the olive oil and a pinch "
+        "of black pepper. Spread out in a single layer in "
+        "the air fryer basket and cook for 10 to 15 "
+        "minutes, shaking halfway through, until golden "
+        "and crispy on the outside.",
+        "Prepare the salad base. In a large bowl, add the "
+        "chicken, grilled bacon, cherry tomatoes and red "
+        "onion. Season with black pepper and Italian "
+        "herbs.",
+        "Add the Caesar dressing and Greek yoghurt to the "
+        "bowl and toss everything together until evenly "
+        "coated.",
+        "Add the rocket and crispy gnocchi to the bowl "
+        "and gently toss through.",
+        "Taste and add additional seasoning if needed.",
+        "Transfer to a bowl, sprinkle with parmesan and "
+        "serve immediately.",
+    ],
+    kicker=("Recipe 09", "Dinner  ·  20 Min Option"),
+    time="20 mins",
+    subtitle="Crispy gnocchi, smoky bacon, all the Caesar "
+             "feels.",
+    note="No air fryer? Heat 1 tsp olive oil in a "
+         "non-stick pan over medium-high heat and cook "
+         "the gnocchi for 8 to 10 minutes, turning "
+         "occasionally, until golden and crispy. To "
+         "batch, store the prepped ingredients "
+         "separately in airtight containers in the "
+         "fridge for up to 3 days, then cook a fresh "
+         "portion of gnocchi when ready to eat.",
+    image=recipe_image("dinner", "chicken-caesar-gnocchi"),
+)
+
+g.recipe(
+    "One Pan Thai Red Curry Salmon", "1",
+    [
+        "60g wholegrain rice",
+        "1 salmon fillet (approx 110g)",
+        "Black pepper, to taste",
+        "1 tsp olive oil",
+        "1/2 onion, sliced",
+        "1/2 tsp garlic powder",
+        "1 tbsp Thai red curry paste",
+        "1 tsp soy sauce, reduced sodium",
+        "1/2 tin coconut milk",
+        "1/2 stock cube, low sodium",
+        "1 tsp fish sauce",
+        "1 tsp honey",
+        "140g broccolini or regular broccoli",
+        "80g green beans",
+        "Handful of spinach",
+        "Juice of 1/2 lime",
+        "Handful of fresh coriander, chopped (optional)",
+    ],
+    [
+        "Cook the wholegrain rice according to packet "
+        "instructions.",
+        "Season the salmon with black pepper. Heat the "
+        "olive oil in a large frying pan over medium "
+        "heat and cook the salmon for 2 to 3 minutes on "
+        "each side until golden but not fully cooked "
+        "through. Remove from the pan and set aside.",
+        "In the same pan, add the sliced onion and "
+        "garlic powder. Cook for 2 to 3 minutes until "
+        "softened.",
+        "Stir in the Thai red curry paste and soy sauce "
+        "and cook for 1 minute, stirring continuously "
+        "until fragrant.",
+        "Pour in the coconut milk and crumble in the "
+        "stock cube. Add the fish sauce and honey, stir "
+        "well and bring to a gentle simmer.",
+        "Add the broccolini and green beans and simmer "
+        "for 4 to 5 minutes until just tender.",
+        "Return the salmon to the pan, nestling it into "
+        "the sauce. Add the spinach and cook for a "
+        "further 2 to 3 minutes until the spinach has "
+        "wilted and the salmon is cooked through.",
+        "Stir through the lime juice and taste test. "
+        "Add extra lime for freshness or a little more "
+        "soy sauce if preferred.",
+        "Serve over the wholegrain rice and scatter with "
+        "fresh coriander if using.",
+    ],
+    kicker=("Recipe 10", "Dinner  ·  Fakeaway Inspo"),
+    time="25 mins",
+    subtitle="One pan, rich and warming, takeaway feels at "
+             "home.",
+    note="Store in an airtight container in the fridge "
+         "for up to 2 days. Reheat thoroughly before "
+         "serving. The sauce may naturally thicken in "
+         "the fridge, so add a splash of water before "
+         "reheating if needed.",
+    image=recipe_image("dinner", "thai-red-curry-salmon"),
+)
+
+g.recipe(
+    "Lazy Snacky Plate", "1",
+    [
+        "1/4 Spanish tortilla (shop bought)",
+        "Large handful of rocket",
+        "1 tomato, sliced",
+        "4 slices roasted peppers",
+        "1 tbsp pickled red onions",
+        "4 to 5 slices of pickled beetroot",
+        "1 tbsp coleslaw",
+        "1/4 large or 1/2 small avocado",
+        "30g cheese, grated",
+    ],
+    [
+        "Heat the Spanish tortilla in a pan until warmed "
+        "through.",
+        "Add the rocket, sliced tomato, roasted peppers, "
+        "pickled red onions, pickled beetroot, coleslaw, "
+        "avocado and cheese to a plate.",
+        "Add the cooked Spanish tortilla on the side and "
+        "serve.",
+    ],
+    kicker=("Recipe 11", "Dinner  ·  Easy Option"),
+    time="5 mins",
+    subtitle="Big-board energy with zero cooking required.",
+    note="Best enjoyed fresh. Swap the tortilla for 1/4 "
+         "of a quiche or another protein option such as "
+         "chicken, tuna, eggs or halloumi depending on "
+         "what you have available.",
+    image=recipe_image("dinner", "lazy-snacky-plate"),
+)
+
+g.recipe(
+    "No Cook Freezer Dinner", "1",
+    [
+        "Any protein from this list:",
+        "1 piece of breaded fish",
+        "1 fish cake",
+        "3 chicken goujons",
+        "3 fish goujons",
+        "1 chicken Kiev",
+        "1/4 quiche (with pastry)",
+        "1 vegetarian burger",
+        "4 falafels",
+        "2 sausages",
+        "1 plain fish fillet",
+        "1 plain chicken fillet",
+        "Frozen vegetables or salad",
+        "1 tbsp tzatziki, coleslaw or low-sugar tomato "
+        "sauce",
+    ],
+    [
+        "Pick any one of the protein elements from the "
+        "ingredients list.",
+        "Add frozen vegetables or salad alongside.",
+        "Serve with 1 tbsp tzatziki, coleslaw or "
+        "low-sugar tomato sauce and enjoy.",
+    ],
+    kicker=("Recipe 12", "Dinner  ·  No Fuss Option"),
+    time="15 mins",
+    subtitle="The pick-and-mix plate for evenings off.",
+    note="If you choose 2 sausages, 1 plain fish fillet "
+         "or 1 plain chicken fillet as your protein, add "
+         "a carbohydrate element from the food swap list "
+         "to keep the plate balanced.",
+    image=recipe_image("dinner", "no-cook-freezer-dinner"),
+)
+
+# =========================================================== swap list
+g._new_content_page()
+g.register_target("The Swap List")
+g.heading([[("The Food ", False), ("Swap List", True)]])
+g.coral_heading("Every single ingredient can easily be changed, just "
+                "swap with foods from the same group.")
+g.paragraph("The meals and recipes are flexible. Leave out any "
+            "ingredients you do not enjoy, or replace with another "
+            "alternative. Reduce or increase flavours to your own "
+            "liking.")
+g.paragraph("Fruits and vegetables can be changed. If you do not "
+            "like carrots, swap with peppers; courgettes with peas, "
+            "etc.")
+g.paragraph("If you do not want chicken, swap with another meat. If "
+            "you do not like fish, swap with another protein. Use "
+            "vegetarian sausages if you don't eat meat.")
+g.paragraph("You can leave out ingredients you do not want, add or "
+            "decrease herbs and spices, and taste everything to suit "
+            "your preferences.")
+g.paragraph("Everything can be adjusted, as long as the adjustment "
+            "is done within the right group, you can still get the "
+            "best possible results.")
+
+# the swap tables, using list_table for 2-col, select_table for 3-col
+PROTEIN_ANIMAL = [
+    ("Beef, lamb or pork mince", "100g (3½ oz) to 140g (5 oz)"),
+    ("Beef pieces", "100g (3½ oz)"),
+    ("Beef sirloin steak", "1 small, approx. 120g (4 oz)"),
+    ("Chicken fillet", "Medium sized, 100g (3½ oz) to 130g (4¾ oz)"),
+    ("Chicken thigh", "1 large or 2 small"),
+    ("Chorizo", "30g (1 oz)"),
+    ("Cod fillet", "175g (6 oz) approx"),
+    ("Cubed lamb", "100g (3½ oz)"),
+    ("Duck", "Small sized, 220 to 250g"),
+    ("Eggs", "2 eggs"),
+    ("Ham", "2 slices"),
+    ("Lean bacon / rashers", "2 pieces"),
+    ("Mackerel", "1 fillet"),
+    ("Pork", "Around 130g pork chop"),
+    ("Pork (beef or chicken) sausages", "2 sausages"),
+    ("Prawns", "140g (5 oz)"),
+    ("Protein powders", "1 scoop / 25g"),
+    ("Salmon fillet", "1 small approx. 110g (3¾ oz)"),
+    ("Salmon (tinned)", "Around 155g / tin"),
+    ("Sardines", "1 small can, approx. 120g"),
+    ("Small beef, stewing steak", "110g (4 oz) approx."),
+    ("Smoked salmon", "55g (2 oz)"),
+    ("Tuna steak", "1 small approx. 110g (3¾ oz)"),
+    ("Tuna (tinned)", "1 small can approx. 70g (2½ oz)"),
+    ("Turkey or chicken mince", "100g (3½ oz) to 130g (4¾ oz)"),
+    ("White fish fillets", "185g (6½ oz)"),
+]
+PROTEIN_VEGGIE = [
+    ("Full-fat Greek yoghurt", "125g (½ cup)"),
+    ("Full-fat cottage cheese", "100g (⅔ cup)"),
+    ("Halloumi", "70g (2½ oz)"),
+    ("Kefir", "125g"),
+    ("Nut roast", "150g (1 cup)"),
+    ("Paneer cheese", "70g (2½ oz)"),
+    ("Quorn fillet", "1 piece"),
+    ("Quorn mince", "75g (3 oz)"),
+    ("Quorn pieces", "75g (3 oz)"),
+    ("Ricotta cheese", "30g (2 tablespoons)"),
+    ("Semi-skimmed milk", "100ml to 250ml (1 cup)"),
+    ("Seitan", "100g (⅔ cup)"),
+    ("Tempeh", "100g (⅔ cup)"),
+    ("Tofu", "¼ block (115g (4 oz) approx) to 125g (½ cup)"),
+    ("Vegetarian sausages", "2 sausages"),
+]
+PROTEIN_CARB = [
+    ("Breaded or battered fish", "1 fillet"),
+    ("Breaded chicken fillet", "1 fillet"),
+    ("Chicken goujons", "> 3 goujons"),
+    ("Chicken Kiev", "1 Kiev"),
+    ("Fish goujons", "> 3 goujons"),
+    ("Quiche (with pastry)", "¼ large quiche"),
+]
+LEGUMES = [
+    ("Baked beans, reduced sugar", "> 3 tablespoons"),
+    ("Black beans", "> 3 tablespoons"),
+    ("Butter beans", "> 3 tablespoons"),
+    ("Cannellini beans", "> 3 tablespoons"),
+    ("Chickpeas", "> 3 tablespoons"),
+    ("Falafels", "> 3 pieces"),
+    ("Haricot beans", "> 3 tablespoons"),
+    ("Hummus", "> 3 tablespoons"),
+    ("Pinto beans", "> 3 tablespoons"),
+    ("Red kidney beans", "> 3 tablespoons"),
+    ("Red lentils", "> 3 tablespoons"),
+    ("Soya or edamame beans", "> 3 tablespoons"),
+    ("Split peas", "> 3 tablespoons"),
+    ("Mixed beans", "> 3 tablespoons"),
+]
+CARBS = [
+    ("Bagels", "1 bagel"),
+    ("Brown bread", "2 medium slices"),
+    ("Breadcrumbs", "> 40g"),
+    ("Brown bread roll", "1 large"),
+    ("Brown rice", "> 40g"),
+    ("Buckwheat", "> 40g"),
+    ("Bulgar wheat", "> 40g"),
+    ("Burger buns", "1 burger bun"),
+    ("Couscous, whole wheat", "> 40g"),
+    ("Crackers (cream crackers, rye crispbread etc.)", "> 3 pieces"),
+    ("Flour, wholewheat", "> 2 tablespoons"),
+    ("Giant couscous, whole wheat", "> 40g"),
+    ("Gnocchi", "> 100g"),
+    ("Hash browns", "> 3 hash browns"),
+    ("Lasagne sheets", "2 lasagne sheets"),
+    ("Naan bread", "1 regular sized naan bread"),
+    ("Oat flakes", "> 40g"),
+    ("Orzo", "> 40g"),
+    ("Pitta bread", "1 regular sized pitta bread"),
+    ("Porridge oats", "> 40g"),
+    ("Potatoes", "> 100g"),
+    ("Puff pastry", "¼ sheet"),
+    ("Quinoa", "> 40g"),
+    ("Rice cakes", "> 3 rice cakes"),
+    ("Soba noodles", "> 40g"),
+    ("Sourdough", "2 small slices"),
+    ("Sugar free muesli or granola", "> 30g"),
+    ("Sweet potato", "> 100g"),
+    ("Whole grain rice", "> 40g"),
+    ("Whole wheat tortilla wrap", "1 large wrap"),
+    ("Whole wheat pasta", "> 40g"),
+    ("Wholewheat bread", "2 slices"),
+    ("Wholewheat noodles", "> 40g"),
+    ("Wholewheat spaghetti", "> 40g"),
+]
+FRUITS_VEG = [
+    ("Apple", "1 small"),
+    ("Artichokes", "½ average"),
+    ("Aubergine", "½ average"),
+    ("Avocado", "½ small / ¼ large"),
+    ("Banana", "½ to 1 small"),
+    ("Beansprouts", "100g (1¼ cups)"),
+    ("Beetroot", "1 large / 2 small"),
+    ("Blueberries", "15 pieces"),
+    ("Broccoli", "140g (2 cups)"),
+    ("Brussels sprouts", "8 pieces"),
+    ("Butternut squash / pumpkin", "70g (½ cup) to 140g (1 cup)"),
+    ("Cabbage", "80g"),
+    ("Canned tomatoes", "150g (¾ cup) to 200g (1 cup)"),
+    ("Carrot", "1 medium"),
+    ("Cauliflower", "100g (½ cup)"),
+    ("Cherry tomatoes", "6 pieces"),
+    ("Clementines / satsumas", "1 to 2 small"),
+    ("Chopped tomatoes", "100g (½ cup)"),
+    ("Corn on the cob", "1 medium sized"),
+    ("Courgette", "80g (½ cup)"),
+    ("Cranberries, fresh or frozen", "40g (½ cup)"),
+    ("Cucumber", "½ average or 4 mini"),
+    ("Dates", "2 to 3 dates"),
+    ("Dried fruit (raisins, sultanas)", "1 tablespoon to 30g"),
+    ("Frozen mango", "70g (½ cup) to 125g (¾ cup)"),
+    ("Frozen peas", "3 tablespoons"),
+    ("Fruit salad of your choice", "100g (¾ cup)"),
+    ("Grapefruit", "½ average"),
+    ("Green beans", "4 tablespoons to 80g (1 cup)"),
+    ("Green pepper", "½ average"),
+    ("Kale", "4 tablespoons"),
+    ("Kiwi", "1 to 2 small"),
+    ("Leeks", "½ average"),
+    ("Mangetout", "10 pieces"),
+    ("Mixed berries, frozen", "3 tablespoons"),
+    ("Mixed salad leaves", "50g (2 cups)"),
+    ("Mushrooms", "75g (⅔ cup)"),
+    ("Parsnip", "1 small"),
+    ("Peaches / nectarines", "1 average"),
+    ("Pineapple", "4 rings"),
+    ("Plums", "1 to 2 small"),
+    ("Pomegranate", "½ average"),
+    ("Portobello mushrooms", "2 mushrooms"),
+    ("Radish", "6 pieces"),
+    ("Raspberries", "50g (½ cup)"),
+    ("Red pepper", "½ average"),
+    ("Rocket", "50g (2 cups)"),
+    ("Sauté vegetables", "250g (2 cups)"),
+    ("Spinach leaves", "1 cup to 40g (1¼ cup) / 1 cereal bowl"),
+    ("Strawberries", "7 to 8 pieces"),
+    ("Sundried tomato", "3 pieces"),
+    ("Sweetcorn", "2 tablespoons"),
+    ("Vegetable stir-fry packet", "200g"),
+    ("Watercress", "1 cup"),
+]
+FATS = [
+    ("Almond butter", "1 tablespoon"),
+    ("Avocado", "¼ or 35g frozen"),
+    ("Butter, unsalted", "1 teaspoon"),
+    ("Cheddar cheese", "15 to 30g (⅕ cup)"),
+    ("Chia seeds", "1 teaspoon to 1 tablespoon"),
+    ("Chocolate chips, dark", "1 teaspoon up to 80g (⅓ cup)"),
+    ("Coconut milk, canned", "100g (½ cup) to 200g (1 cup)"),
+    ("Cream", "> 4 tablespoons"),
+    ("Cream cheese", "1 tablespoon"),
+    ("Creme fraiche, full-fat", "1 tablespoon"),
+    ("Desiccated coconut", "1 teaspoon up to 45g (½ cup)"),
+    ("Feta cheese", "30g (¼ cup)"),
+    ("Flaxseeds", "1 teaspoon to 1 tablespoon"),
+    ("Full-fat goats cheese", "30g (¼ cup)"),
+    ("Green pesto", "1 tablespoon"),
+    ("Mayonnaise, full-fat", "1 teaspoon"),
+    ("Mixed nuts", "1 tablespoon to 30g"),
+    ("Olive oil", "1 teaspoon"),
+    ("Olives", "6 pieces"),
+    ("Parmesan cheese", "15 to 30g (⅕ cup)"),
+    ("Peanut butter", "1 teaspoon to 1 tablespoon"),
+    ("Salad cream, full-fat", "1 teaspoon"),
+    ("Sesame seeds", "1 teaspoon to 1 tablespoon"),
+    ("Shredded mozzarella cheese", "30g (⅕ cup)"),
+    ("Sour cream, full-fat", "1 tablespoon"),
+    ("Sunflower and pumpkin seed mix", "1 teaspoon to 1 tablespoon"),
+    ("Sunflower seeds", "1 teaspoon to 1 tablespoon"),
+    ("Tzatziki", "1 tablespoon"),
+    ("Vegetarian cheddar cheese", "15 to 30g (⅕ cup)"),
+]
+OTHER = [
+    ("Balsamic vinegar", "1 tablespoon"),
+    ("Brown sauce", "1 teaspoon"),
+    ("Chilli sauce", "1 teaspoon"),
+    ("Cornflakes", "30g"),
+    ("Curry paste", "1 tablespoon"),
+    ("Ghee", "1 teaspoon"),
+    ("Herbs / spices",
+     "¼ teaspoon to 1 teaspoon (adjust to taste / preference)"),
+    ("Honey", "1 teaspoon"),
+    ("Jam", "1 teaspoon"),
+    ("Lentil crisps", "20 to 25g"),
+    ("Maple syrup", "1 teaspoon"),
+    ("Mustard", "1 teaspoon"),
+    ("Popcorn, plain", "20 to 25g"),
+    ("Salad dressing (Caesar, vinaigrette etc.)", "1 teaspoon"),
+    ("Salsa or tomato relish, reduced sugar", "1 tablespoon"),
+    ("Sauerkraut", "1 tablespoon"),
+    ("Soy sauce, reduced-salt", "1 tablespoon"),
+    ("Stock cube (chicken, vegetable, low sodium)",
+     "¼ to ½ stock cube"),
+    ("Teriyaki sauce", "1 teaspoon to 1 tablespoon"),
+    ("Tomato ketchup, reduced sugar", "1 teaspoon"),
+    ("Tomato puree", "1 teaspoon to 1 tablespoon"),
+    ("Worcestershire sauce", "1 tablespoon"),
+]
+
+
+def two_col(items, header_right="Portion"):
+    """Render a 2-column food/portion list as a select_table."""
+    g.select_table(["Food", header_right],
+                   [[a for a, _ in items], [b for _, b in items]])
+
+
+g._new_content_page()
+g.subhead([("Protein, Animal Sources", "lbi")], gap_before=0)
+two_col(PROTEIN_ANIMAL)
+g._new_content_page()
+g.subhead([("Protein, Vegetarian Sources", "lbi")], gap_before=0)
+two_col(PROTEIN_VEGGIE)
+g._new_content_page()
+g.subhead([("Protein & Carbohydrates", "lbi")], gap_before=0)
+two_col(PROTEIN_CARB, header_right="High Carb")
+g._new_content_page()
+g.subhead([("Legumes", "lbi")], gap_before=0)
+two_col(LEGUMES, header_right="High Carb")
+g._new_content_page()
+g.subhead([("Carbohydrate Types", "lbi")], gap_before=0)
+two_col(CARBS, header_right="High Carb")
+g._new_content_page()
+g.subhead([("Fruit & Vegetables", "lbi")], gap_before=0)
+two_col(FRUITS_VEG)
+g._new_content_page()
+g.subhead([("Fat Types", "lbi")], gap_before=0)
+two_col(FATS)
+g._new_content_page()
+g.subhead([("Other Foods", "lbi")], gap_before=0)
+two_col(OTHER)
+g.note("Please note: portion sizes listed are only guidelines and may "
+       "be adjusted to suit individual needs.",
+       gap_before=10, font="as", size=10.5)
+
+
+# --------------------------------------------------- card layout helpers
+def numbered_cards(cards, ch=120, gap=18, cols=2):
+    """2-column (or other) card grid: coral number, navy title, italic body."""
+    cw = (CW - gap * (cols - 1)) / cols
+    rows = (len(cards) + cols - 1) // cols
+    g.ensure(ch * rows + gap * (rows - 1) + 8)
+    top = g.y
+    for i, (num, title, desc) in enumerate(cards):
+        r = i // cols
+        c = i % cols
+        x0 = LEFT + c * (cw + gap)
+        y0 = top + r * (ch + gap)
+        g.page.draw_rect(fitz.Rect(x0, y0, x0 + cw, y0 + ch),
+                         color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+        g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + ch),
+                         color=None, fill=BLUSH)
+        g.tracked(x0 + 22, y0 + 30, num, "asb", 11, BLUSH, 1.6)
+        # title
+        title_lines = wrap(title, "lb", 15, cw - 44)
+        ty = y0 + 56
+        for ln in title_lines:
+            g.text(x0 + 22, ty, ln, "lb", 15, NAVY)
+            ty += 18
+        # descriptor
+        ty += 4
+        for ln in wrap(desc, "as", 10.5, cw - 44):
+            g.text(x0 + 22, ty, ln, "as", 10.5, INK)
+            ty += 13.5
+    g.y = top + rows * ch + (rows - 1) * gap + 4
+
+
+def diagram_tall(name, max_h=560, max_w=CW, gap_before=4, gap_after=14):
+    """Embed a diagram with a higher height cap than g.diagram()."""
+    path = os.path.join(DIAGRAMS, f"{name}.png")
+    pm = fitz.Pixmap(path)
+    ar = pm.width / pm.height
+    w = min(max_w, CW)
+    h = w / ar
+    if h > max_h:
+        h = max_h
+        w = h * ar
+    g.ensure(h + gap_before + gap_after)
+    g.y += gap_before
+    x0 = LEFT + (CW - w) / 2
+    g.page.insert_image(fitz.Rect(x0, g.y, x0 + w, g.y + h),
+                        filename=path, keep_proportion=True)
+    g.y += h + gap_after
+
+
+def callout(text, font="asi", size=10.8, lh=14.5,
+            fill=BEIGE, gap_before=14, pad=14):
+    g.y += gap_before
+    lines = wrap(text, font, size, CW - 2 * pad)
+    h = lh * len(lines) + 2 * pad
+    g.ensure(h + 4)
+    top = g.y
+    g.page.draw_rect(fitz.Rect(LEFT, top, RIGHT, top + h),
+                     color=None, fill=fill)
+    ty = top + pad + size * 0.6
+    for ln in lines:
+        g.text(LEFT + pad, ty, ln, font, size, INK)
+        ty += lh
+    g.y = top + h + 6
+
+
+# =========================================================== drink tips
+g._new_content_page()
+g.register_target("Drink Tips")
+g.heading([[("Drink ", False), ("Tips", True)]])
+g.coral_heading("Hydration is one of the quickest wins of the reset.")
+g.paragraph("Four small habits make hitting eight glasses a day "
+            "almost automatic.")
+numbered_cards([
+    ("01", "Get a pretty reusable bottle",
+     "A bottle on your desk or in your bag is a constant nudge to "
+     "sip. Fill it before you leave home and you're already winning."),
+    ("02", "Anchor water to your routine",
+     "First thing on waking, before each meal, while you're at the "
+     "computer. Tie it to things you already do and it sticks."),
+    ("03", "Make it fruity",
+     "Lemon, lime, orange, cucumber, watermelon, kiwi or "
+     "strawberries. A few fresh mint leaves work beautifully too."),
+    ("04", "Eat your water",
+     "Lettuce, celery, cucumber, watermelon and grapefruit are "
+     "loaded with water plus vitamins, minerals and antioxidants."),
+], ch=128)
+callout("Tea & coffee count, sort of. You can have one milky "
+        "coffee (latte or cappuccino) per day. Multiple teas with a "
+        "little milk are fine, just keep drinking water alongside.",
+        gap_before=20)
+
+
+# =========================================================== snack tips
+g._new_content_page()
+g.register_target("Snack Tips")
+g.heading([[("Snack ", False), ("Tips", True)]])
+g.coral_heading("Three balanced meals, with snacks only when truly "
+                "hungry.")
+g.paragraph("Listen to your body and respond to your own hunger "
+            "signals, not the clock or the biscuit tin.")
+numbered_cards([
+    ("01", "Mid-morning",
+     "Most people don't need a snack between breakfast and lunch. "
+     "If you're genuinely hungry, a piece of fruit or raw veg is "
+     "plenty."),
+    ("02", "Afternoon",
+     "The lunch to dinner gap is longer, this is where the "
+     "afternoon \"bigger\" snack lives. It heads off the 3pm slump "
+     "and stops you reaching for sugar."),
+    ("03", "Very active?",
+     "If you exercise regularly, you'll likely benefit from an "
+     "additional bigger snack to fuel your energy needs."),
+    ("04", "Less active?",
+     "If you're mostly sedentary, you may find you need fewer "
+     "snacks. Hunger is the dial, not habit."),
+], ch=128)
+callout("Bananas only once a day, please. They're more calorie-"
+        "dense than other fruits, one is plenty.",
+        gap_before=18)
+g.subhead([("Final tips", "lbi")], gap_before=14)
+g.bullets([
+    "Eat when you're hungry, not out of boredom or habit.",
+    "Pause and check in with your body before reaching for a snack.",
+    "Aim for nourishment, every bite is a chance to fuel your "
+    "body well.",
+])
+
+# fruit & veg snack inspiration table
+g._new_content_page()
+g.heading([[("Fruit & Veg ", False), ("Snack Inspiration", True)]])
+FV = ["Apples", "Asparagus", "Aubergine",
+      "Banana (max 1 per day)", "Beetroot", "Blackberries",
+      "Blueberries", "Bok choy", "Broccoli", "Carrots",
+      "Celery", "Cherries", "Courgette", "Cranberries (fresh)",
+      "Cucumber", "Grapefruit", "Grapes (1 cup)", "Kelp",
+      "Kiwi", "Mandarins", "Mango", "Melon", "Mushrooms",
+      "Onions", "Orange (1 large)", "Pears", "Peppers",
+      "Pineapple (1 cup)", "Plums", "Radishes", "Raspberries",
+      "Spinach", "Strawberries", "Sugar snap peas (1 cup)",
+      "Tomatoes", "Watercress"]
+# arrange into 3 columns
+cols = [[], [], []]
+for i, item in enumerate(FV):
+    cols[i % 3].append(item)
+# pad
+maxlen = max(len(c) for c in cols)
+for c in cols:
+    while len(c) < maxlen:
+        c.append("")
+g.select_table(None, cols)
+
+g._new_content_page()
+g.heading([[("Bigger ", False), ("Snack Inspiration", True)]])
+g.paragraph("Some women only need one bigger snack per day, others "
+            "more. If you exercise regularly you may need more than "
+            "someone less mobile.")
+g.paragraph("We recommend a bigger snack between lunch and dinner to "
+            "prevent sugar cravings. You may need another in the "
+            "evening. Some days you may need two bigger snacks and "
+            "some days one, tune in and be flexible.")
+diagram_tall("bigger-snack-inspiration", max_h=640, max_w=CW * 0.85)
+
+g._new_content_page()
+g.heading([[("Some ", False), ("Recommended Snacks", True)]])
+g.paragraph("Brands we genuinely like for when you want something "
+            "from the shop.")
+
+SNACKS = [
+    ("lindt",     "Lindt Dark Chocolate", "70%+ cocoa"),
+    ("propercorn","Propercorn", "Sweet & Salty"),
+    ("nakd",      "Nakd Bars", "natural fruit & nut"),
+    ("hazelnut",  "Deliciously Ella", "Hazelnut Bites"),
+    ("almonds",   "Deliciously Ella", "Dipped Almonds"),
+    ("nush",      "Nush", "Strawberry yoghurt + berries"),
+    ("bear",      "Bear Fruit Rolls", "yoyos & strips"),
+    ("oat-bars",  "Deliciously Ella", "Oat Bars"),
+]
+cols, rows = 4, 2
+gap = 14
+cw = (CW - gap * (cols - 1)) / cols
+img_h = 140
+label_h = 38
+ch = img_h + label_h
+g.ensure(rows * (ch + gap) + 8)
+top = g.y
+for i, (stem, name, sub) in enumerate(SNACKS):
+    r = i // cols
+    c = i % cols
+    x0 = LEFT + c * (cw + gap)
+    y0 = top + r * (ch + gap)
+    img = find_snack_image(stem)
+    if img:
+        g.page.insert_image(fitz.Rect(x0, y0, x0 + cw, y0 + img_h),
+                            filename=img, keep_proportion=True)
+    else:
+        g.page.draw_rect(fitz.Rect(x0, y0, x0 + cw, y0 + img_h),
+                         color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+        g.text_center(x0 + cw / 2, y0 + img_h / 2 + 4,
+                      "[ product ]", "lbi", 10, (0.55, 0.55, 0.55))
+    # name + sub
+    g.text_center(x0 + cw / 2, y0 + img_h + 14, name, "lb", 9.5, NAVY)
+    g.text_center(x0 + cw / 2, y0 + img_h + 28, sub, "asi", 9, INK)
+g.y = top + rows * (ch + gap) + 8
+
+
+# --------------------------------------------------- check-list helper
+def check_box(x, y, size=14):
+    """Draw a navy outline check box."""
+    g.page.draw_rect(fitz.Rect(x, y, x + size, y + size),
+                     color=NAVY, fill=None, width=1.0)
+
+
+def image_with_checks(image_name, items, image_w=0.5,
+                      img_max_h=320, gap_after=14,
+                      image_y=0, text_y=0):
+    """Place an image on the left and a checkbox list on the right.
+    Falls back to a labelled placeholder if the image isn't present.
+    image_y/text_y let callers shift each column vertically."""
+    path = os.path.join(DIAGRAMS, f"{image_name}.png")
+    have_image = os.path.exists(path)
+    tx0 = LEFT + CW * image_w + 12
+    tw_box = CW - (CW * image_w) - 12
+    line_size = 11
+    line_h = 15.5
+    item_gap = 10
+    items_h = 0
+    for it in items:
+        ln_count = len(wrap(it, "as", line_size, tw_box - 26))
+        items_h += max(ln_count * line_h, 22) + item_gap
+    if have_image:
+        pm = fitz.Pixmap(path)
+        ar = pm.width / pm.height
+        w = CW * image_w
+        h = w / ar
+        if h > img_max_h:
+            h = img_max_h
+            w = h * ar
+    else:
+        w = CW * image_w
+        h = min(img_max_h, max(items_h, 200))
+    block_h = max(h + max(0, image_y),
+                  items_h + max(0, text_y))
+    g.ensure(block_h + gap_after)
+    top = g.y
+    x0 = LEFT
+    img_top = top + image_y
+    if have_image:
+        g.page.insert_image(fitz.Rect(x0, img_top, x0 + w,
+                                      img_top + h),
+                            filename=path, keep_proportion=True)
+    else:
+        g.page.draw_rect(fitz.Rect(x0, img_top, x0 + w, img_top + h),
+                         color=RULE, fill=(0.97, 0.93, 0.90), width=0.6)
+        g.text_center(x0 + w / 2, img_top + h / 2 - 6,
+                      "[ image placeholder ]", "lbi", 11,
+                      (0.5, 0.5, 0.55))
+        g.text_center(x0 + w / 2, img_top + h / 2 + 12,
+                      f"upload as: {image_name}.png", "asi", 9.5,
+                      (0.55, 0.55, 0.6))
+    ty = top + 4 + text_y
+    for it in items:
+        ln_count = len(wrap(it, "as", line_size, tw_box - 26))
+        row_h = max(ln_count * line_h, 22)
+        check_box(tx0, ty + 2, size=14)
+        lines = wrap(it, "as", line_size, tw_box - 26)
+        ly = ty + 12
+        for ln in lines:
+            g.text(tx0 + 22, ly, ln, "as", line_size, INK)
+            ly += line_h
+        ty += row_h + item_gap
+    g.y = top + block_h + gap_after
+
+
+def image_above_checks(image_name, items, image_w=0.7,
+                       img_max_h=360, gap_after=18, gap_between=14):
+    """Big image centred on top, with the checkbox list below it."""
+    path = os.path.join(DIAGRAMS, f"{image_name}.png")
+    have_image = os.path.exists(path)
+    if have_image:
+        pm = fitz.Pixmap(path)
+        ar = pm.width / pm.height
+        w = CW * image_w
+        h = w / ar
+        if h > img_max_h:
+            h = img_max_h
+            w = h * ar
+    else:
+        w = CW * image_w
+        h = 240
+    line_size = 11
+    line_h = 15.5
+    item_gap = 4
+    items_h = 0
+    for it in items:
+        ln_count = len(wrap(it, "as", line_size, CW - 30))
+        items_h += ln_count * line_h + item_gap
+    g.ensure(h + gap_between + items_h + gap_after)
+    top = g.y
+    # image centred horizontally
+    x0 = LEFT + (CW - w) / 2
+    if have_image:
+        g.page.insert_image(fitz.Rect(x0, top, x0 + w, top + h),
+                            filename=path, keep_proportion=True)
+    else:
+        g.page.draw_rect(fitz.Rect(x0, top, x0 + w, top + h),
+                         color=RULE, fill=(0.97, 0.93, 0.90),
+                         width=0.6)
+        g.text_center(x0 + w / 2, top + h / 2 - 6,
+                      "[ image placeholder ]", "lbi", 11,
+                      (0.5, 0.5, 0.55))
+        g.text_center(x0 + w / 2, top + h / 2 + 12,
+                      f"upload as: {image_name}.png", "asi", 9.5,
+                      (0.55, 0.55, 0.6))
+    # checkbox list, full-width below
+    ty = top + h + gap_between
+    for it in items:
+        check_box(LEFT, ty + 2, size=14)
+        for ln in wrap(it, "as", line_size, CW - 30):
+            g.text(LEFT + 22, ty + 12, ln, "as", line_size, INK)
+            ty += line_h
+        ty += item_gap
+    g.y = top + h + gap_between + items_h + gap_after
+
+
+# =========================================================== Why balanced blood sugar
+def _icon_sugar_cubes(cx, cy, s=14):
+    """3 stacked cube outlines."""
+    g.page.draw_rect(fitz.Rect(cx - s + 1, cy - s/3, cx - 1, cy + s/3),
+                     color=NAVY, fill=None, width=1.0)
+    g.page.draw_rect(fitz.Rect(cx + 1, cy - s/3, cx + s - 1, cy + s/3),
+                     color=NAVY, fill=None, width=1.0)
+    g.page.draw_rect(fitz.Rect(cx - s/2, cy - s, cx + s/2, cy - s/3),
+                     color=NAVY, fill=None, width=1.0)
+
+
+def _icon_smile(cx, cy, s=14):
+    g.page.draw_circle((cx, cy), s, color=NAVY, fill=None, width=1.0)
+    g.page.draw_circle((cx - s/3, cy - s/4), 0.9,
+                       color=None, fill=NAVY)
+    g.page.draw_circle((cx + s/3, cy - s/4), 0.9,
+                       color=None, fill=NAVY)
+    # smile arc — short bezier as 4 line segments
+    pts = [(cx - s/2.2, cy + s/5), (cx - s/4, cy + s/2.2),
+           (cx + s/4, cy + s/2.2), (cx + s/2.2, cy + s/5)]
+    for a, b in zip(pts, pts[1:]):
+        g.page.draw_line(a, b, color=NAVY, width=1.0)
+
+
+def _icon_plate(cx, cy, s=14):
+    # plate (circle) with fork left and knife right
+    g.page.draw_circle((cx, cy), s * 0.85, color=NAVY, fill=None,
+                       width=1.0)
+    # pie slice marker inside plate (small line)
+    g.page.draw_line((cx, cy), (cx + s/2, cy - s/3),
+                     color=NAVY, width=0.8)
+    # fork
+    fx = cx - s * 1.4
+    g.page.draw_line((fx, cy - s), (fx, cy + s),
+                     color=NAVY, width=1.0)
+    for dx in (-0.3, 0, 0.3):
+        g.page.draw_line((fx + dx * s/2, cy - s),
+                         (fx + dx * s/2, cy - s/2),
+                         color=NAVY, width=0.8)
+    # knife
+    kx = cx + s * 1.4
+    g.page.draw_line((kx, cy - s), (kx, cy + s),
+                     color=NAVY, width=1.0)
+    g.page.draw_line((kx - s/4, cy - s), (kx, cy - s/2),
+                     color=NAVY, width=0.8)
+    g.page.draw_line((kx, cy - s/2), (kx, cy - s),
+                     color=NAVY, width=0.8)
+
+
+def _icon_scale(cx, cy, s=14):
+    # bathroom scale — rectangle with display circle
+    g.page.draw_rect(fitz.Rect(cx - s, cy - s*0.7, cx + s, cy + s*0.7),
+                     color=NAVY, fill=None, width=1.0)
+    g.page.draw_circle((cx, cy + s*0.1), s * 0.35,
+                       color=NAVY, fill=None, width=0.8)
+    # display tick at top
+    g.page.draw_line((cx, cy + s*0.1 - s*0.35),
+                     (cx + s*0.15, cy + s*0.1 - s*0.18),
+                     color=NAVY, width=0.8)
+
+
+def _icon_donut(cx, cy, s=14):
+    # outer + inner circle
+    g.page.draw_circle((cx, cy), s, color=NAVY, fill=None, width=1.2)
+    g.page.draw_circle((cx, cy), s * 0.38, color=NAVY, fill=None,
+                       width=1.0)
+    # sprinkle marks
+    for ang_deg, _ in [(40, 1), (130, 1), (220, 1), (310, 1)]:
+        import math
+        ang = math.radians(ang_deg)
+        x1, y1 = cx + s*0.65*math.cos(ang), cy + s*0.65*math.sin(ang)
+        x2, y2 = cx + s*0.8*math.cos(ang), cy + s*0.8*math.sin(ang)
+        g.page.draw_line((x1, y1), (x2, y2), color=NAVY, width=0.9)
+
+
+def _icon_appetite(cx, cy, s=14):
+    # fork + down arrow
+    fx = cx - s * 0.55
+    g.page.draw_line((fx, cy - s), (fx, cy + s),
+                     color=NAVY, width=1.0)
+    for dx in (-1, 0, 1):
+        g.page.draw_line((fx + dx * s*0.25, cy - s),
+                         (fx + dx * s*0.25, cy - s*0.45),
+                         color=NAVY, width=0.8)
+    # down arrow on right
+    ax = cx + s * 0.6
+    g.page.draw_line((ax, cy - s*0.8), (ax, cy + s*0.8),
+                     color=NAVY, width=1.2)
+    g.page.draw_line((ax - s*0.35, cy + s*0.3),
+                     (ax, cy + s*0.8), color=NAVY, width=1.2)
+    g.page.draw_line((ax + s*0.35, cy + s*0.3),
+                     (ax, cy + s*0.8), color=NAVY, width=1.2)
+
+
+def _icon_chart_down(cx, cy, s=14):
+    # zigzag down with arrowhead
+    pts = [(cx - s*0.95, cy - s*0.6), (cx - s*0.3, cy + s*0.1),
+           (cx + s*0.2, cy - s*0.35), (cx + s*0.95, cy + s*0.6)]
+    for a, b in zip(pts, pts[1:]):
+        g.page.draw_line(a, b, color=NAVY, width=1.2)
+    # arrowhead at last point
+    ex, ey = pts[-1]
+    g.page.draw_line((ex, ey), (ex - s*0.35, ey + s*0.05),
+                     color=NAVY, width=1.0)
+    g.page.draw_line((ex, ey), (ex - s*0.1, ey - s*0.32),
+                     color=NAVY, width=1.0)
+
+
+def icon_card(x0, y0, w, h, draw_fn, label):
+    """Beige badge with the icon + 2-line label below."""
+    badge_r = 28
+    cx = x0 + w / 2
+    cy = y0 + badge_r + 6
+    g.page.draw_circle((cx, cy), badge_r, color=None,
+                       fill=(0.93, 0.88, 0.83))
+    draw_fn(cx, cy, s=14)
+    # label below
+    lines = wrap(label, "as", 10.5, w - 14)
+    ty = y0 + badge_r + 22
+    for ln in lines:
+        g.text_center(cx, ty + 10, ln, "as", 10.5, INK)
+        ty += 13
+
+
+g._new_content_page()
+g.register_target("What Balanced Blood Sugar Gives You")
+g.heading([[("What balanced ", False), ("blood sugar", True)],
+           [("gives you.", False)]])
+g.paragraph("Maintaining balanced blood sugar levels is a key "
+            "component of overall health and wellness. Fluctuations "
+            "in blood sugar can impact many aspects of your daily "
+            "life, from your energy levels to your mood and even "
+            "your long-term health. By focusing on keeping your "
+            "blood sugar steady, you can enhance your well-being "
+            "and support your fat loss goals.")
+g.paragraph("Here's why balanced blood sugar is so important:",
+            font="asb", color=NAVY, gap_after=22)
+
+BENEFITS = [
+    ("01", "Reduced desire for sugar"),
+    ("02", "Improved mood"),
+    ("03", "More control around food"),
+    ("04", "Weight stabilises / weight reduction"),
+    ("05", "Reduced cravings"),
+    ("06", "Appetite falls and stabilises"),
+    ("07", "No extreme highs followed by severe plummets"),
+]
+
+# 7 numbered cards — same pattern as the Guidelines page
+bcols = 2
+bgap = 16
+bcw = (CW - bgap * (bcols - 1)) / bcols
+bch = 76
+rows = (len(BENEFITS) + bcols - 1) // bcols
+g.ensure(rows * bch + (rows - 1) * bgap + 8)
+top = g.y
+for i, (num, label) in enumerate(BENEFITS):
+    r = i // bcols
+    c = i % bcols
+    x0 = LEFT + c * (bcw + bgap)
+    y0 = top + r * (bch + bgap)
+    # cream card + coral left accent
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + bcw, y0 + bch),
+                     color=RULE, fill=(0.985, 0.97, 0.95), width=0.7)
+    g.page.draw_rect(fitz.Rect(x0, y0, x0 + 4, y0 + bch),
+                     color=None, fill=BLUSH)
+    g.tracked(x0 + 22, y0 + 26, num, "asb", 11, BLUSH, 1.6)
+    # label, possibly wrapped
+    for j, ln in enumerate(wrap(label, "lb", 13, bcw - 44)):
+        g.text(x0 + 22, y0 + 50 + j * 17, ln, "lb", 13, NAVY)
+g.y = top + rows * bch + (rows - 1) * bgap + 8
+
+
+# =========================================================== easily reduce sugar cravings
+g._new_content_page()
+g.register_target("Easily Reduce Sugar Cravings in 5 Days")
+g.heading([[("Easily ", False), ("Reduce Sugar Cravings", True),
+            (" in 5 Days", False)]])
+g.paragraph("When the right amount of food is consumed at the right "
+            "times this will result in balanced blood sugar levels "
+            "throughout the day (when less sugar is consumed "
+            "overall). The body can handle some sugar but excessive "
+            "amounts have an impact.")
+image_above_checks("ideal-blood-sugar", [
+    "Peaks after each meal or snack (think balanced meals).",
+    "Small peaks and troughs.",
+    "Blood sugar level dips = signal to eat.",
+], image_w=0.55, img_max_h=270, gap_between=4, gap_after=16)
+
+image_above_checks("rollercoaster-danger", [
+    "High spike, a more volatile reaction to the muffin.",
+    "Body releases a big hit of insulin to clear the sugar.",
+    "Extreme high followed by extreme slump.",
+], image_w=0.55, img_max_h=270, gap_between=4)
+
+g._new_content_page()
+g.subhead([("The Rollercoaster, ", "lbi"),
+           ("Highs and Lows", "lb")], gap_before=0)
+image_above_checks("rollercoaster-highs-lows", [
+    "Extreme highs.",
+    "Extreme lows.",
+    "Low mood / high mood.",
+    "Unbalanced overall.",
+    "More sugar cravings and generally eating more sugar overall.",
+], image_w=0.55, img_max_h=270, gap_between=4)
+callout("Side note, weight loss can be extremely difficult here.",
+        font="asi", gap_before=10)
+
+
+# =========================================================== why breakfast
+g._new_content_page()
+g.register_target("Why Breakfast is Important")
+g.heading([[("Why ", False), ("Breakfast", True),
+            (" Is Important", False)]])
+g.paragraph("When breakfast is skipped, blood sugar levels will "
+            "continue to dip and it will be more likely that foods "
+            "high in sugar for energy will be consumed. Having "
+            "breakfast within an hour of waking will allow blood "
+            "sugar and insulin levels to stabilise.")
+g.paragraph("In addition, having a protein element with breakfast "
+            "will help with satiety levels (feeling of fullness) "
+            "and sets the body up for the day, meaning there will "
+            "likely be less snacking on less nutrient-dense options "
+            "throughout the day.")
+image_with_checks("breakfast-sugar-insulin", [
+    "Blood sugar levels dip due to skipping breakfast.",
+    "This results in looking for something to give a quick \"hit\" "
+    "to stop feeling shaky, hungry, tired, have crazy cravings and "
+    "so more sugar is reached for.",
+    "High spike followed by a big hit of insulin to remove the "
+    "sugar from the blood to the cells.",
+    "Extreme high followed by extreme slump.",
+    "The cycle continues.",
+], image_w=0.45, img_max_h=240)
+
+
+# =========================================================== why snacking
+g._new_content_page()
+g.register_target("Why Snacking is Important")
+g.heading([[("Why ", False), ("Snacking", True),
+            (" Is Important", False)]])
+g.paragraph("Snacking is really important as it helps keep blood "
+            "sugar levels steady during the day. If food is eaten "
+            "at regular intervals throughout the day, having a dip "
+            "in the blood sugar levels will be less likely and "
+            "therefore reaching for less nutrient-dense foods for a "
+            "kick of energy will not happen.")
+g.paragraph("Snacking is important to bridge the gap between "
+            "breakfast and lunch and then lunch and dinner. "
+            "However, snacks should not be eaten just for the sake "
+            "of it, snacking is supposed to tide the body over "
+            "until the next meal.")
+image_with_checks("snacking-curves", [
+    "Gentle peaks after each meal or snack (think balanced meals).",
+    "Small peaks and troughs.",
+    "A blood sugar dip is your body's signal to eat, not stress.",
+], image_w=0.55, img_max_h=240, text_y=30)
+
+
+# =========================================================== nutrition formula
+g._new_content_page()
+g.register_target("The WLA Nutrition Formula")
+g.heading([[("The ", False), ("WLA Nutrition", True)],
+           [("Formula.", False)]])
+g.paragraph("At The WLA, we use our unique Nutrition Formula to "
+            "help reduce sugar cravings in as little as 3 days and "
+            "support visible weight loss within 5 days.")
+g.paragraph("This formula is built around portion control and a "
+            "healthy balance of all food groups, carbohydrates, "
+            "protein, and fats, rather than restriction or "
+            "elimination.")
+g.paragraph("The WLA Nutrition Formula focuses on building meals "
+            "that are high in protein and adjusted to be low, "
+            "medium, or higher in carbohydrates, depending on the "
+            "meal and the individual. This structure teaches you "
+            "how to create nutritionally balanced meals that "
+            "support fat loss, improve health, and help reduce "
+            "sugar cravings, while still being realistic and "
+            "sustainable long term.")
+g.paragraph("Your 5 Day Fat Loss Reset Guide has been designed "
+            "using this formula for maximum results. You don't "
+            "need to calculate or overthink anything, simply "
+            "follow the guide and the setup provided.")
+g.subhead([("The WLA Nutrition Formula focuses on", "lbi")])
+g.bullets([
+    "Reducing carbohydrate intake (not eliminating carbohydrates, "
+    "just adjusting amounts).",
+    "Reducing processed foods and added sugars.",
+    "Prioritising whole, nourishing foods including:",
+], gap_after=0)
+# nested sub-items (tight, no extra gap above)
+for sub in ["Wholegrain carbohydrates", "Lean meats and fish",
+            "Full-fat dairy", "Healthy fats",
+            "Fruits and vegetables"]:
+    g.page.draw_circle((LEFT + 30, g.y + 9), 1.4, color=None,
+                       fill=BLUSH)
+    g.text(LEFT + 42, g.y + 13, sub, "as", 11, INK)
+    g.y += 16
+g.y += 8
+g.bullets([
+    "Including snacks when guided by hunger signals.",
+    "Using an 80:20 approach across the week.",
+    "Drinking adequate water (around 8 glasses per day).",
+    "Including regular daily movement.",
+])
+
+
+# =========================================================== save
+g.save({
+    "title": "The 5 Day Fat Loss Reset Guide",
+    "author": "The Weight Loss Academy",
+    "subject": "A simple 5 day fat loss reset",
+    "keywords": "fat loss, reset, 5 day, nutrition, weight loss",
+    "creator": "The Weight Loss Academy",
+})
