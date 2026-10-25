@@ -1301,7 +1301,7 @@ const PricingSection = ({
       maxWidth: 580,
       margin: '0 auto 48px'
     }
-  }, isOpen ? /*#__PURE__*/React.createElement(React.Fragment, null, "Only ", window.SPOTS_AVAILABLE, " places in this first round. Pre-Week starts Monday 19th October, we kick off on Monday 26th, and doors close on Sunday 25th.") : /*#__PURE__*/React.createElement(React.Fragment, null, "Founding Member pricing has closed. The WLA App is now ", window.PRICE_WAS, " for 12 months."))), bridgeHeading && /*#__PURE__*/React.createElement("div", {
+  }, isOpen ? /*#__PURE__*/React.createElement(React.Fragment, null, "Only ", window.SPOTS_AVAILABLE, " places in this first round. We kick off on Monday 26th October, and doors close at 12 noon that day.") : /*#__PURE__*/React.createElement(React.Fragment, null, "Founding Member pricing has closed. The WLA App is now ", window.PRICE_WAS, " for 12 months."))), bridgeHeading && /*#__PURE__*/React.createElement("div", {
     style: {
       marginBottom: 48
     }
@@ -1412,7 +1412,7 @@ const PricingSection = ({
     style: {
       marginTop: 26,
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: 10,
       maxWidth: 480,
       margin: '26px auto 0',
@@ -1423,10 +1423,6 @@ const PricingSection = ({
     icon: '↩️',
     k: '7-day guarantee',
     v: 'Full refund'
-  }, {
-    icon: '📅',
-    k: 'Pre-Week',
-    v: 'Mon 19 Oct'
   }, {
     icon: '🚀',
     k: 'Kickoff',
@@ -1483,7 +1479,7 @@ const FAQ_ITEMS = [{
   a: 'You pay £97 for your first year. If you want to renew after year one, you keep paying £97, even when the regular price is £297.'
 }, {
   q: 'When does the 8 Week Fat Loss Challenge start?',
-  a: 'Pre-Week starts on Monday 19th October, so you have time to get set up, shop and settle in. We officially kick off together on Monday 26th October, which gives you a full eight weeks to Christmas.'
+  a: 'We officially kick off together on Monday 26th October, which gives you a full eight weeks to Christmas. You get access to the app straight away, so you can get set up, shop and settle in before we begin.'
 }, {
   q: 'Do I need to count calories?',
   a: 'No. The WLA Formula is about carb balancing your meals and focusing on adequate amounts of protein, fibre and healthy fats.'
@@ -1890,7 +1886,7 @@ const ExitIntentModal = () => {
     style: {
       marginBottom: 22
     }
-  }, "Founding Members get the 8 Week Fat Loss Challenge at no extra cost, plus a full year of the app for", ' ', window.PRICE, " instead of ", window.PRICE_WAS, ". Pre-Week starts Monday 19th October and we kick off on Monday 26th."), tick && /*#__PURE__*/React.createElement("div", {
+  }, "Founding Members get the 8 Week Fat Loss Challenge at no extra cost, plus a full year of the app for", ' ', window.PRICE, " instead of ", window.PRICE_WAS, ". We kick off on Monday 26th October."), tick && /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 10,
@@ -2511,7 +2507,7 @@ const ChallengeBonusSection = () => /*#__PURE__*/React.createElement("section", 
     fontWeight: 600,
     color: 'var(--ink)'
   }
-}, "Pre-Week starts Monday 19th October and we officially kick off on Monday 26th. Work towards losing up to a stone before Christmas."), /*#__PURE__*/React.createElement(Body, {
+}, "We officially kick off on Monday 26th October. Work towards losing up to a stone before Christmas."), /*#__PURE__*/React.createElement(Body, {
   size: 16,
   style: {
     maxWidth: 640,
@@ -2713,7 +2709,7 @@ const FeaturesSection = () => /*#__PURE__*/React.createElement("section", {
 const BONUSES = [{
   n: 1,
   t: 'The 8 Week Fat Loss Challenge (FREE)',
-  meta: 'Normally £197 · Pre-Week Mon 19 Oct · Kickoff Mon 26 Oct',
+  meta: 'Normally £197 · Kickoff Mon 26 Oct',
   b: 'Start with a clear goal: work towards losing up to a stone before Christmas. Feel more confident in your party outfits, see progress in how your clothes fit and head into January closer to where you want to be.'
 }, {
   n: 2,
@@ -3070,7 +3066,7 @@ const HeroClip = () => {
     type: "video/mp4"
   }));
 };
-const SUBHEADLINE = /*#__PURE__*/React.createElement(React.Fragment, null, "Join for ", /*#__PURE__*/React.createElement("strong", null, "£97 for 12 months"), ". Pre-Week starts ", /*#__PURE__*/React.createElement("strong", null, "Monday 19th October"), " and we kick off on ", /*#__PURE__*/React.createElement("strong", null, "Monday 26th"), ". Lose up to a stone before Christmas, without counting calories.");
+const SUBHEADLINE = /*#__PURE__*/React.createElement(React.Fragment, null, "Join for ", /*#__PURE__*/React.createElement("strong", null, "£97 for 12 months"), ". We kick off on ", /*#__PURE__*/React.createElement("strong", null, "Monday 26th October"), ". Lose up to a stone before Christmas, without counting calories.");
 
 // The four things a Founding Member gets, in one block under the headline.
 const HERO_POINTS = [/*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("strong", null, "12 months of WLA app access £97"), " ", /*#__PURE__*/React.createElement("span", {
@@ -3156,7 +3152,7 @@ function App() {
       style: {
         lineHeight: 1.3
       }
-    }, phase === 'open' ? /*#__PURE__*/React.createElement(React.Fragment, null, "Join the first 500. Pre-Week starts Monday 19th, we kick off ", /*#__PURE__*/React.createElement(Italic, null, "Monday 26th October.")) : /*#__PURE__*/React.createElement(React.Fragment, null, "The WLA App is open to ", /*#__PURE__*/React.createElement(Italic, null, "everyone.")))
+    }, phase === 'open' ? /*#__PURE__*/React.createElement(React.Fragment, null, "Join the first 500. We kick off ", /*#__PURE__*/React.createElement(Italic, null, "Monday 26th October.")) : /*#__PURE__*/React.createElement(React.Fragment, null, "The WLA App is open to ", /*#__PURE__*/React.createElement(Italic, null, "everyone.")))
   }), /*#__PURE__*/React.createElement(VideoTestimonialsSection, null), /*#__PURE__*/React.createElement(FAQSection, null), /*#__PURE__*/React.createElement(FinalCTA, null), /*#__PURE__*/React.createElement(Footer, null), tweaks.showStickyCTA && /*#__PURE__*/React.createElement(StickyCTA, {
     visible: stickyVisible
   }), /*#__PURE__*/React.createElement(ExitIntentModal, null), tweaksOpen && /*#__PURE__*/React.createElement("div", {
