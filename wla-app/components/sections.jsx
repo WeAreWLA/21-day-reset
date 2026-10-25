@@ -117,7 +117,7 @@ const OFFER_END_CONFIRMED = true;
 // ⚠️ SPOTS_TAKEN must track real sales. Under the Digital Markets, Competition
 // and Consumers Act 2024, invented scarcity is an offence.
 const SPOTS_AVAILABLE = 500;
-const SPOTS_TAKEN     = 421;
+const SPOTS_TAKEN     = 473;
 const SPOTS_LEFT      = Math.max(0, SPOTS_AVAILABLE - SPOTS_TAKEN);
 
 // Build the Thrivecart checkout URL, forwarding any UTM parameters
