@@ -20,6 +20,51 @@ const HEADLINES = {
   }
 };
 
+// The hero clip is the heaviest asset on the page (~800KB) and it sits behind
+// a poster frame, so nothing is visible until it plays. Holding the fetch back
+// until the page has loaded keeps it out of the way of the hero image, the
+// fonts and the JS; the poster covers the gap and it starts on its own.
+const HeroClip = () => {
+  const [armed, setArmed] = React.useState(false);
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    let id;
+    const idle = () => {
+      id = window.requestIdleCallback
+        ? window.requestIdleCallback(() => setArmed(true), { timeout: 2000 })
+        : setTimeout(() => setArmed(true), 400);
+    };
+    if (document.readyState === 'complete') idle();
+    else window.addEventListener('load', idle, { once: true });
+    return () => {
+      window.removeEventListener('load', idle);
+      if (id && window.cancelIdleCallback) window.cancelIdleCallback(id);
+      else clearTimeout(id);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (!armed || !ref.current) return;
+    ref.current.load();
+    const played = ref.current.play();
+    if (played && played.catch) played.catch(() => { /* autoplay refused */ });
+  }, [armed]);
+
+  return (
+    <video
+      ref={ref}
+      poster="/assets/app-clip-home-poster.jpg"
+      autoPlay muted loop playsInline preload="none"
+      aria-label="The WLA app home screen"
+      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
+    >
+      {armed && <source src="/assets/app-clip-home.webm" type="video/webm" />}
+      {armed && <source src="/assets/app-clip-home.mp4" type="video/mp4" />}
+    </video>
+  );
+};
+
 const SUBHEADLINE = <>Join for <strong>£97 for 12 months</strong>. Pre-Week starts <strong>Monday 19th October</strong> and we kick off on <strong>Monday 26th</strong>. Lose up to a stone before Christmas, without counting calories.</>;
 
 // The four things a Founding Member gets, in one block under the headline.
@@ -247,15 +292,7 @@ function TweakableHero({ headline, phase = 'open' }) {
           background: 'var(--bg)',
           boxShadow: '0 30px 56px -22px rgba(0, 48, 96, 0.55)',
         }}>
-          <video
-            poster="/assets/app-clip-home-poster.jpg"
-            autoPlay muted loop playsInline preload="metadata"
-            aria-label="The WLA app home screen"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
-          >
-            <source src="/assets/app-clip-home.webm" type="video/webm" />
-            <source src="/assets/app-clip-home.mp4" type="video/mp4" />
-          </video>
+          <HeroClip />
         </div>
 
         <div className="hero-cred" style={{

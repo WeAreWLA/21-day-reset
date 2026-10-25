@@ -298,7 +298,7 @@ const Placeholder = ({ label, ratio = '4/5', style = {} }) => (
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: '"JetBrains Mono", monospace',
+    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
     fontSize: 11,
     color: 'oklch(0.35 0.04 50)',
     letterSpacing: '0.06em',

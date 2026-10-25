@@ -341,7 +341,7 @@ const Placeholder = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: '"JetBrains Mono", monospace',
+    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
     fontSize: 11,
     color: 'oklch(0.35 0.04 50)',
     letterSpacing: '0.06em',
@@ -857,6 +857,7 @@ const ResultsGridSection = () => /*#__PURE__*/React.createElement("section", {
   alt: `Before and after of ${item.name}`,
   loading: "lazy",
   decoding: "async",
+  fetchpriority: "low",
   style: {
     width: '100%',
     height: '100%',
@@ -3016,6 +3017,59 @@ const HEADLINES = {
     title: /*#__PURE__*/React.createElement(React.Fragment, null, "The new WLA App is here.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Italic, null, "Be one of the first 500."))
   }
 };
+
+// The hero clip is the heaviest asset on the page (~800KB) and it sits behind
+// a poster frame, so nothing is visible until it plays. Holding the fetch back
+// until the page has loaded keeps it out of the way of the hero image, the
+// fonts and the JS; the poster covers the gap and it starts on its own.
+const HeroClip = () => {
+  const [armed, setArmed] = React.useState(false);
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    let id;
+    const idle = () => {
+      id = window.requestIdleCallback ? window.requestIdleCallback(() => setArmed(true), {
+        timeout: 2000
+      }) : setTimeout(() => setArmed(true), 400);
+    };
+    if (document.readyState === 'complete') idle();else window.addEventListener('load', idle, {
+      once: true
+    });
+    return () => {
+      window.removeEventListener('load', idle);
+      if (id && window.cancelIdleCallback) window.cancelIdleCallback(id);else clearTimeout(id);
+    };
+  }, []);
+  React.useEffect(() => {
+    if (!armed || !ref.current) return;
+    ref.current.load();
+    const played = ref.current.play();
+    if (played && played.catch) played.catch(() => {/* autoplay refused */});
+  }, [armed]);
+  return /*#__PURE__*/React.createElement("video", {
+    ref: ref,
+    poster: "/assets/app-clip-home-poster.jpg",
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    preload: "none",
+    "aria-label": "The WLA app home screen",
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'top center',
+      display: 'block'
+    }
+  }, armed && /*#__PURE__*/React.createElement("source", {
+    src: "/assets/app-clip-home.webm",
+    type: "video/webm"
+  }), armed && /*#__PURE__*/React.createElement("source", {
+    src: "/assets/app-clip-home.mp4",
+    type: "video/mp4"
+  }));
+};
 const SUBHEADLINE = /*#__PURE__*/React.createElement(React.Fragment, null, "Join for ", /*#__PURE__*/React.createElement("strong", null, "£97 for 12 months"), ". Pre-Week starts ", /*#__PURE__*/React.createElement("strong", null, "Monday 19th October"), " and we kick off on ", /*#__PURE__*/React.createElement("strong", null, "Monday 26th"), ". Lose up to a stone before Christmas, without counting calories.");
 
 // The four things a Founding Member gets, in one block under the headline.
@@ -3343,28 +3397,7 @@ function TweakableHero({
       background: 'var(--bg)',
       boxShadow: '0 30px 56px -22px rgba(0, 48, 96, 0.55)'
     }
-  }, /*#__PURE__*/React.createElement("video", {
-    poster: "/assets/app-clip-home-poster.jpg",
-    autoPlay: true,
-    muted: true,
-    loop: true,
-    playsInline: true,
-    preload: "metadata",
-    "aria-label": "The WLA app home screen",
-    style: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'top center',
-      display: 'block'
-    }
-  }, /*#__PURE__*/React.createElement("source", {
-    src: "/assets/app-clip-home.webm",
-    type: "video/webm"
-  }), /*#__PURE__*/React.createElement("source", {
-    src: "/assets/app-clip-home.mp4",
-    type: "video/mp4"
-  }))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(HeroClip, null)), /*#__PURE__*/React.createElement("div", {
     className: "hero-cred",
     style: {
       position: 'absolute',
