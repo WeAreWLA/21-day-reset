@@ -190,7 +190,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
           </SerifH>
           <Body size={18} style={{ maxWidth: 580, margin: '0 auto 48px' }}>
             {isOpen
-              ? <>Only {window.SPOTS_AVAILABLE} places in this first round. Pre-Week starts Monday 19th October, we kick off on Monday 26th, and doors close on Sunday 25th.</>
+              ? <>Only {window.SPOTS_AVAILABLE} places in this first round. We kick off on Monday 26th October, and doors close at 12 noon that day.</>
               : <>Founding Member pricing has closed. The WLA App is now {window.PRICE_WAS} for 12 months.</>}
           </Body>
         </>
@@ -270,7 +270,7 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         <div className="pricing-trust-row" style={{
           marginTop: 26,
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 10,
           maxWidth: 480,
           margin: '26px auto 0',
@@ -279,7 +279,6 @@ const PricingSection = ({ sectionId = "join", showHeading = true, bridgeHeading 
         }}>
           {[
             { icon: '↩️', k: '7-day guarantee', v: 'Full refund' },
-            { icon: '📅', k: 'Pre-Week', v: 'Mon 19 Oct' },
             { icon: '🚀', k: 'Kickoff', v: 'Mon 26 Oct' },
           ].map((t, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
@@ -323,7 +322,7 @@ const FAQ_ITEMS = [
   { q: 'What does "locked in" mean?',
     a: 'You pay £97 for your first year. If you want to renew after year one, you keep paying £97, even when the regular price is £297.' },
   { q: 'When does the 8 Week Fat Loss Challenge start?',
-    a: 'Pre-Week starts on Monday 19th October, so you have time to get set up, shop and settle in. We officially kick off together on Monday 26th October, which gives you a full eight weeks to Christmas.' },
+    a: 'We officially kick off together on Monday 26th October, which gives you a full eight weeks to Christmas. You get access to the app straight away, so you can get set up, shop and settle in before we begin.' },
   { q: 'Do I need to count calories?',
     a: 'No. The WLA Formula is about carb balancing your meals and focusing on adequate amounts of protein, fibre and healthy fats.' },
   { q: 'Can my family eat the same meals?',
@@ -648,8 +647,7 @@ const ExitIntentModal = () => {
         </SerifH>
         <Body size={16} style={{ marginBottom: 22 }}>
           Founding Members get the 8 Week Fat Loss Challenge at no extra cost, plus a full year of the app for
-          {' '}{window.PRICE} instead of {window.PRICE_WAS}. Pre-Week starts Monday 19th October and we kick off
-          on Monday 26th.
+          {' '}{window.PRICE} instead of {window.PRICE_WAS}. We kick off on Monday 26th October.
         </Body>
 
         {tick && (

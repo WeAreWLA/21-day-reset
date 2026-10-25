@@ -357,7 +357,7 @@ const ChallengeBonusSection = () => (
           Get FREE access to my<br /><Italic>8 Week Fat Loss Challenge</Italic>
         </SerifH>
         <Body size={18} style={{ maxWidth: 640, margin: '0 auto 14px', fontWeight: 600, color: 'var(--ink)' }}>
-          Pre-Week starts Monday 19th October and we officially kick off on Monday 26th. Work towards losing up to a stone before Christmas.
+          We officially kick off on Monday 26th October. Work towards losing up to a stone before Christmas.
         </Body>
         <Body size={16} style={{ maxWidth: 640, margin: '0 auto' }}>
           Put your new WLA app into action with a focused challenge to help you finish the year feeling
@@ -454,7 +454,7 @@ const FeaturesSection = () => (
 // The five Founding Member bonuses
 // ---------------------------------------------------------------------------
 const BONUSES = [
-  { n: 1, t: 'The 8 Week Fat Loss Challenge (FREE)', meta: 'Normally £197 · Pre-Week Mon 19 Oct · Kickoff Mon 26 Oct',
+  { n: 1, t: 'The 8 Week Fat Loss Challenge (FREE)', meta: 'Normally £197 · Kickoff Mon 26 Oct',
     b: 'Start with a clear goal: work towards losing up to a stone before Christmas. Feel more confident in your party outfits, see progress in how your clothes fit and head into January closer to where you want to be.' },
   { n: 2, t: 'A Full Year of WLA App Access', meta: 'Your support continues long after the eight-week challenge',
     b: 'Get 12 months of meal planning, 500+ recipes, daily tracking, weekly live Zoom coaching and community support. Keep working towards your goal after Christmas, with fresh meal guides and ongoing support to help you maintain your progress.' },

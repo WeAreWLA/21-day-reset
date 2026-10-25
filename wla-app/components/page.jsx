@@ -65,7 +65,7 @@ const HeroClip = () => {
   );
 };
 
-const SUBHEADLINE = <>Join for <strong>£97 for 12 months</strong>. Pre-Week starts <strong>Monday 19th October</strong> and we kick off on <strong>Monday 26th</strong>. Lose up to a stone before Christmas, without counting calories.</>;
+const SUBHEADLINE = <>Join for <strong>£97 for 12 months</strong>. We kick off on <strong>Monday 26th October</strong>. Lose up to a stone before Christmas, without counting calories.</>;
 
 // The four things a Founding Member gets, in one block under the headline.
 const HERO_POINTS = [
@@ -155,7 +155,7 @@ function App() {
       <PricingSection showHeading={false} phase={phase} bridgeHeading={
         <SerifH size={40} style={{ lineHeight: 1.3 }}>
           {phase === 'open'
-            ? <>Join the first 500. Pre-Week starts Monday 19th, we kick off <Italic>Monday 26th October.</Italic></>
+            ? <>Join the first 500. We kick off <Italic>Monday 26th October.</Italic></>
             : <>The WLA App is open to <Italic>everyone.</Italic></>}
         </SerifH>
       } />
