@@ -166,7 +166,7 @@ const ResultsGridSection = () => (
               overflow: 'hidden',
               background: '#F9F7F4',
             }}>
-              <img src={item.img} alt={`Before and after of ${item.name}`} loading="lazy" decoding="async" style={{
+              <img src={item.img} alt={`Before and after of ${item.name}`} loading="lazy" decoding="async" fetchpriority="low" style={{
                 width: '100%', height: '100%', objectFit: item.fit || 'contain', objectPosition: item.pos || 'center center', display: 'block',
               }} />
             </div>
