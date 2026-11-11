@@ -614,6 +614,15 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .receive-card h3 { font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--navy); margin: 0 0 6px; font-weight: 700; line-height: 1.25; }
   .receive-card h3 em { color: var(--coral); font-style: italic; font-weight: 500; }
   .receive-card p { font-size: 15.5px; line-height: 1.55; color: #333; margin: 0; }
+  /* App features grid (copied from /wla-app "Plus all this inside the new WLA app") */
+  .app-features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 40px; }
+  .app-feature { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 16px; padding: 26px 24px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
+  .app-feature-num { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15px; color: var(--coral); }
+  .app-feature h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--navy); margin: 0; font-weight: 700; line-height: 1.25; }
+  .app-feature p { font-size: 14.5px; line-height: 1.55; color: var(--muted); margin: 0; }
+  .app-feature p.app-feature-hook { font-size: 15px; font-weight: 600; color: var(--ink); }
+  @media (max-width: 900px) { .app-features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .app-features-grid { grid-template-columns: 1fr; gap: 14px; } .app-feature { padding: 22px 20px; } }
   .receive-card .value-pill { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: 10px; padding: 5px 12px; border-radius: 999px; background: rgba(14,48,96,0.10); color: #003060; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
   .receive-card .value-pill .lab { font-family: "Alegreya Sans", sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 10px; color: #003060; opacity: 0.7; }
   /* Total value reveal */
@@ -1291,51 +1300,37 @@ function EightWeekTimeline() {
   );
 }
 
+const APP_FEATURES = [
+  { t: 'The WLA Daily Tracker',          h: 'Understand what’s helping and what needs adjusting.', b: 'Track your meals using the Formula alongside sleep, stress and movement, so you can spot patterns behind your hunger and habits and make focused changes.' },
+  { t: 'Your Personalised Meal Planner', h: 'Know what you’re eating before hunger makes the decision.', b: 'Plan meals around your week, so a busy day doesn’t have to turn into a last-minute takeaway or another “I’ll start tomorrow”.' },
+  { t: 'A Fresh Meal Guide Every Friday', h: 'Stay on track without planning from scratch.', b: 'Add a ready-made week of WLA Formula-balanced meals to your planner, making consistency easier when you’re short on time or ideas.' },
+  { t: 'Smart Shopping Lists',           h: 'Have the food you need to follow your plan.', b: 'Turn your meal plan into a shopping list in one tap, so you’re ready to cook instead of opening the fridge and wondering what to eat.' },
+  { t: '500+ WLA Recipes',               h: 'Lose weight eating meals you look forward to.', b: 'Find filling lunches, family dinners and fakeaway favourites that help you follow the Formula without boring diet food or cooking a separate meal for yourself.' },
+  { t: 'Your Progress Tracker',          h: 'See your results even when the scales stand still.', b: 'Track measurements, dress size and photos alongside your weight, so you can recognise changes in your body and keep going through frustrating weeks.' },
+  { t: 'Maintenance Mode',               h: 'Reach your goal with a plan for what comes next.', b: 'Shift your focus to maintaining your progress, with continued tools and support to help you keep the habits that got you there.' },
+  { t: 'The WLA Community',              h: 'Get support before a difficult day becomes a difficult week.', b: 'Use daily encouragement and evening check-ins with me, my coaching team and fellow members to stay accountable and find your focus again.' },
+  { t: 'The WLA Forum',                  h: 'Get help with the things that keep tripping you up.', b: 'Ask questions and get practical guidance, so uncertainty about meals, portions or habits doesn’t leave you stuck.' },
+  { t: 'The Private WLA Podcast',        h: 'Give your motivation a boost while you get on with your day.', b: 'Listen to member-only coaching on your walk or commute to help you refocus when old habits creep in.' },
+  { t: 'The WLA Toolkit',                h: 'Feel confident about portions, meals and snacks.', b: 'Use the Formula, portion and snack guides to make choices that support your goal, without counting calories or second-guessing every plate.' },
+  { t: 'Weekly Live Zoom Coaching',      h: 'Leave each week knowing what to focus on next.', b: 'Join me and the WLA coaching team for practical guidance, answers to your questions and a weekly boost to help you overcome obstacles and keep progressing towards your weight loss goal.' },
+];
+
 function WhatsIncluded() {
-  const items = [
-    { ic: <IcCalendar />,  t: 'The 8 Week WLA January Challenge',
-      d: 'Lose up to a stone in 8 weeks, reduce cravings and start the new year feeling more confident, without miserable diets or intense exercise.', v: 147 },
-    { ic: <IcDoc />,       t: 'Monthly Accountability + Results Tracker',
-      d: 'A simple monthly check-in tool to track your progress, measurements and wins so you stay accountable and clearly see how far you have come.', v: 97 },
-    { ic: <IcChef />,      t: 'New Recipes Added Every Week',
-      d: 'A fresh batch of simple, family-friendly fat loss recipes added to your collection every single week so meals stay exciting and easy.', v: 297 },
-    { ic: <IcFork />,      t: 'New Fat Loss Meal Guide Dropped Every Friday',
-      d: 'A brand new done-for-you meal guide every Friday so you head into the weekend with your week planned and zero guesswork.', v: 397 },
-    { ic: <IcCoach />,     t: 'Weekly LIVE Coaching Sessions With Anna',
-      d: 'Stay accountable, motivated and consistent with weekly coaching, Q&As and expert guidance from Anna.', v: 1997 },
-    { ic: <IcInfinity />,  t: 'Daily Coaching & Accountability Support',
-      d: 'Feel supported every single day with ongoing accountability, coaching and motivation inside WLA.', v: 997 },
-    { ic: <IcCommunity />, t: 'Female-Only WLA Community',
-      d: 'Surround yourself with women on the same journey who truly understand the struggles and goals.', v: 997 },
-    { ic: <IcMedal />,     t: 'Access To WLA Resets & Challenges',
-      d: 'Resets, challenges, accountability sprints and motivation boosts to keep your momentum going from the day you join.', v: 497 },
-    { ic: <IcSparkle />,   t: 'The WLA Nutrition Formula Masterclass',
-      d: 'Learn the exact WLA approach to flexible fat loss and long-term consistency.', v: 197 },
-    { ic: <IcChef />,      t: 'Access To The WLA Recipe Collection',
-      d: '500+ simple, family-friendly recipes designed to support fat loss without overcomplicating nutrition.', v: 197 },
-    { ic: <IcMove />,      t: 'WLA Movement Classes With Linda',
-      d: 'Live and on-demand fitness classes run by our personal trainer Linda. Strength, mobility and feel-good workouts you can do from home, designed to complement your fat loss without long hours in the gym.', v: 297 },
-    { ic: <IcDoc />,       t: 'WLA Nutrition & Lifestyle Guides',
-      d: 'Snack guides, food swaps, fat loss boosters and practical tools to support your results.', v: 27 },
-    { ic: <IcPhone />,     t: 'Instant Access To The WLA App',
-      d: 'Instant access the moment you join. Advanced daily tracking, lifestyle tracking, progress dashboards, habit tracking, meal planning, shopping lists, and future feature updates.', v: 297 },
-  ];
   return (
-    <section className="receive" style={{ paddingTop: 56 }}>
+    <section className="receive" id="features" style={{ paddingTop: 56 }}>
       <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">What's Included</span>
-          <h2 className="serif">Check out what you get <em>immediate access to for £37</em>.</h2>
+          <span className="eyebrow">What's Inside</span>
+          <h2 className="serif">Plus all this inside<br/><em>the new WLA app</em></h2>
+          <p style={{ fontWeight: 600, color: 'var(--ink)' }}>Less guesswork. More consistency. Support to reach your goals.</p>
         </div>
-        <div className="receive-grid">
-          {items.map((it, i) => (
-            <div className="receive-card" key={i}>
-              <div className="check-ic">{it.ic}</div>
-              <div>
-                <h3>{it.t}</h3>
-                <p>{it.d}</p>
-                <div className="value-pill"><span className="lab">Value</span>£{it.v.toLocaleString()}</div>
-              </div>
+        <div className="app-features-grid">
+          {APP_FEATURES.map((f, i) => (
+            <div className="app-feature" key={i}>
+              <div className="app-feature-num">{String(i + 1).padStart(2, '0')}</div>
+              <h3>{f.t}</h3>
+              <p className="app-feature-hook">{f.h}</p>
+              <p>{f.b}</p>
             </div>
           ))}
         </div>
