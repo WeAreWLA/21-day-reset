@@ -852,6 +852,13 @@ const { useState, useEffect, useRef, useCallback } = React;
 
 const CHECKOUT_URL = 'https://sales.thewlacademy.com/summer-challenge/';
 
+// Black Friday deadline. Change these two lines to move the end of the offer:
+// the countdown and every "ends ..." line on the page read from them.
+// (cart-content.html has the same date written out by hand.)
+const OFFER_END = new Date('2026-11-30T23:59:59').getTime();
+const OFFER_END_TEXT = 'midnight, Monday 30th November';
+const OFFER_END_SHORT = 'Monday 30th November';
+
 // PayPal checkout (NCP / "No-Code" payment link from the founding-member offer)
 const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2AX2J47CZPLKA';
 
@@ -903,13 +910,11 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The January Ch
 const CardIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><line x1="2" y1="10.5" x2="22" y2="10.5"/><line x1="6" y1="16" x2="10" y2="16"/></svg>);
 
 function CountdownBanner() {
-  // Black Friday offer countdown. PLACEHOLDER DATES: confirm when the offer ends.
-  // Phase 1: now < midnight Mon 30 Nov -> count down to midnight, label "Black Friday Offer Ends In"
-  // Phase 2: midnight Mon 30 Nov <= now < noon Mon 30 Nov -> count down to noon, label "Last Chance · Black Friday Ends Soon"
-  // Phase 3: now >= noon Mon 30 Nov -> static "Black Friday offer · Limited spaces left"
-  const midnight = new Date('2026-11-30T00:00:00').getTime();
-  const noon     = new Date('2026-11-30T12:00:00').getTime();
-  const computePhase = (now) => (now < midnight ? 1 : now < noon ? 2 : 3);
+  // Counts down to OFFER_END.
+  // Phase 1: more than 24 hours left -> "Black Friday Offer Ends In"
+  // Phase 2: final 24 hours          -> "Last Chance · Black Friday Price Ends Tonight"
+  // Phase 3: deadline passed         -> static "The Black Friday offer has now ended"
+  const computePhase = (now) => (now >= OFFER_END ? 3 : OFFER_END - now <= 86400000 ? 2 : 1);
 
   const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, phase: computePhase(Date.now()) });
   useEffect(() => {
@@ -917,8 +922,7 @@ function CountdownBanner() {
       const now = Date.now();
       const phase = computePhase(now);
       if (phase === 3) { setTime({ days: 0, hours: 0, minutes: 0, seconds: 0, phase }); return; }
-      const target = phase === 1 ? midnight : noon;
-      const diff = Math.max(0, target - now);
+      const diff = Math.max(0, OFFER_END - now);
       setTime({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
@@ -936,13 +940,13 @@ function CountdownBanner() {
     return (
       <div className="countdown-banner">
         <div className="countdown-inner">
-          <span className="countdown-label">Black Friday offer · Limited spaces left</span>
+          <span className="countdown-label">The Black Friday offer has now ended</span>
         </div>
       </div>
     );
   }
   const label = time.phase === 2
-    ? 'Last Chance · Black Friday Ends Soon'
+    ? 'Last Chance · Black Friday Price Ends Tonight'
     : 'Black Friday Offer Ends In';
   return (
     <div className="countdown-banner">
@@ -1386,7 +1390,7 @@ function FoundingMembersAlsoGet() {
   const items = [
     { ic: <IcSparkle />, t: 'Future app updates & new features', d: "Every update we ship while you're a member, included." },
     { ic: <IcRocket />,  t: 'Early access before public launch', d: "You're in before doors open to the wider audience." },
-    { ic: <IcMedal />,   t: 'The lowest price for The January Challenge', d: 'This pricing never returns once these spaces are gone.' },
+    { ic: <IcMedal />,   t: 'The lowest price for The January Challenge', d: 'This pricing never returns once Black Friday ends.' },
   ];
   return (
     <section className="explainer" style={{ background: 'var(--cream-2)' }}>
@@ -1659,16 +1663,9 @@ function WhyJoinNow() {
 
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>And because you get <strong>instant access</strong>, you can use the app, weekly meal guides, recipes and live coaching from today, long before the <strong>January Challenge</strong> starts.</p>
 
-        <div className="places-meter" aria-label="Founding member places remaining">
-          <div className="places-top">
-            <span className="places-label">Places taken</span>
-            <span className="places-count"><em>453</em> of 500</span>
-          </div>
-          <div className="places-bar"><div className="places-fill" /></div>
-        </div>
-        <div className="story-callout" style={{ maxWidth: 980, margin: '24px auto 0' }}>
-          <strong>Less than 50 spaces left.</strong>
-          <p>Once the places are gone, this promo finishes.</p>
+        <div className="story-callout" style={{ maxWidth: 980, margin: '28px auto 0' }}>
+          <strong>The Black Friday price ends at {OFFER_END_TEXT}.</strong>
+          <p>After that, the price goes back to £197.</p>
         </div>
       </div>
     </section>
@@ -1825,24 +1822,23 @@ function Limited() {
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
-          <h2 className="serif">Less Than 50 Spaces Left For<br/><em>January Challenge.</em></h2>
-          <p className="lead">Once these places are gone, the promo ends and pricing returns to standard.</p>
+          <h2 className="serif">The Black Friday price<br/><em>ends {OFFER_END_SHORT}.</em></h2>
+          <p className="lead">Join for £37 before {OFFER_END_TEXT}. After that, pricing returns to £197.</p>
         </div>
 
-        <div className="scarcity" aria-label="Black Friday spaces remaining">
+        <div className="scarcity" aria-label="Black Friday deadline">
           <div className="scarcity-top">
-            <span className="label">Less than 50 spaces left</span>
+            <span className="label">Offer ends {OFFER_END_TEXT}</span>
           </div>
-          <div className="scarcity-bar"><div className="fill" /></div>
           <div className="scarcity-foot">
-            <span>Filling fast</span>
-            <span><strong>Doors close once full</strong></span>
+            <span><strong>£37</strong> until then</span>
+            <span><strong>£197</strong> after</span>
           </div>
         </div>
 
         <div className="limited-cards">
           <div className="limited-card warn">
-            <div className="card-tag">Once Spots Fill</div>
+            <div className="card-tag">After Black Friday</div>
             <h3>This exact offer disappears</h3>
             <ul>
               <li>£37 Black Friday pricing disappears</li>
@@ -1851,7 +1847,7 @@ function Limited() {
             </ul>
           </div>
           <div className="limited-card win">
-            <div className="card-tag">January Challenge Members Lock In</div>
+            <div className="card-tag">Join Before It Ends</div>
             <h3>The full <em>Black Friday Offer</em></h3>
             <ul>
               <li>The 8 Week January Challenge</li>
@@ -1972,7 +1968,7 @@ function FinalCTA() {
   return (
     <section className="final-cta" style={{ paddingTop: 56 }}>
       <div className="final-cta-inner">
-        <div className="founding-tag" style={{ marginBottom: 18 }}>Black Friday · Limited Spots</div>
+        <div className="founding-tag" style={{ marginBottom: 18 }}>Black Friday · Ends {OFFER_END_SHORT}</div>
         <h2 className="serif">This isn't about<br/><em>starting over again.</em></h2>
         <p>It's about finally finding the structure, support and accountability that makes your results last. <strong>Instant access today, plus 8 weeks of coaching in January, for a one-off £37.</strong></p>
         <div className="final-buttons">
