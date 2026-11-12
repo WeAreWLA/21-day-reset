@@ -191,6 +191,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero-offer-line-3 { font-family: 'Libre Baskerville', serif; font-weight: 700; color: var(--navy); font-size: clamp(19px, 2.1vw, 24px); line-height: 1.3; margin-top: 6px; }
   .hero-offer-line-3 s { color: var(--muted); font-weight: 500; text-decoration-thickness: 1.5px; }
   .hero-offer-line-3 strong { color: var(--coral); font-style: italic; font-weight: 700; }
+  .hero-offer-limit { display: inline-block; margin-top: 12px; padding: 6px 14px; background: var(--coral); color: #fff; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 
   .hero-offer { margin: 4px 0 12px; padding: 18px 22px; background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-left: 4px solid var(--coral); border-radius: 12px; max-width: 540px; box-shadow: 0 12px 24px -20px rgba(14,39,70,0.18); }
   .hero-offer-line { font-family: 'Libre Baskerville', serif; font-size: clamp(20px, 2.1vw, 24px); line-height: 1.3; color: var(--navy); font-weight: 700; margin-bottom: 6px; }
@@ -1010,6 +1011,7 @@ function Hero() {
           <div className="hero-offer-line-1">Join The <em>January Challenge</em> +</div>
           <div className="hero-offer-line-2">Get <em>Instant Access</em> Today</div>
           <div className="hero-offer-line-3">(normally <s>£197</s>, Black Friday price <strong>£37</strong>)</div>
+          <div className="hero-offer-limit">First 100 women only</div>
         </div>
         <div className="hero-cta-row">
           <CTAButtons size="compact" />
@@ -1376,7 +1378,7 @@ function WhatsIncluded() {
             <span className="offer-now-lab">Black Friday price</span>
             <span className="offer-now"><em>£37</em></span>
           </div>
-          <div className="offer-note">Don't miss this Black Friday promo. <strong>Price returns to £197 once it ends.</strong></div>
+          <div className="offer-note">Only £37 for the first 100 women to join. <strong>Price returns to £197 once the places are gone, or after {OFFER_END_SHORT}.</strong></div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The January Challenge <Arrow /></a>
@@ -1664,8 +1666,8 @@ function WhyJoinNow() {
         <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>And because you get <strong>instant access</strong>, you can use the app, weekly meal guides, recipes and live coaching from today, long before the <strong>January Challenge</strong> starts.</p>
 
         <div className="story-callout" style={{ maxWidth: 980, margin: '28px auto 0' }}>
-          <strong>The Black Friday price ends at {OFFER_END_TEXT}.</strong>
-          <p>After that, the price goes back to £197.</p>
+          <strong>Only £37 for the first 100 women to join.</strong>
+          <p>Once the 100 places are gone, or at {OFFER_END_TEXT} (whichever comes first), the price goes back to £197.</p>
         </div>
       </div>
     </section>
@@ -1822,23 +1824,22 @@ function Limited() {
     <section className="limited" style={{ paddingTop: 56, paddingBottom: 56 }}>
       <div className="limited-inner">
         <div className="limited-head">
-          <h2 className="serif">The Black Friday price<br/><em>ends {OFFER_END_SHORT}.</em></h2>
-          <p className="lead">Join for £37 before {OFFER_END_TEXT}. After that, pricing returns to £197.</p>
+          <h2 className="serif">Only £37 for the<br/><em>first 100 women.</em></h2>
+          <p className="lead">Once the 100 places are gone, or at {OFFER_END_TEXT} (whichever comes first), pricing returns to £197.</p>
         </div>
 
         <div className="scarcity" aria-label="Black Friday deadline">
           <div className="scarcity-top">
-            <span className="label">Offer ends {OFFER_END_TEXT}</span>
+            <span className="label">Only 100 places at £37</span>
           </div>
           <div className="scarcity-foot">
-            <span><strong>£37</strong> until then</span>
-            <span><strong>£197</strong> after</span>
+            <span>Ends once all 100 are gone, or at {OFFER_END_TEXT}, whichever comes first.</span>
           </div>
         </div>
 
         <div className="limited-cards">
           <div className="limited-card warn">
-            <div className="card-tag">After Black Friday</div>
+            <div className="card-tag">Once The 100 Places Go</div>
             <h3>This exact offer disappears</h3>
             <ul>
               <li>£37 Black Friday pricing disappears</li>
@@ -1968,7 +1969,7 @@ function FinalCTA() {
   return (
     <section className="final-cta" style={{ paddingTop: 56 }}>
       <div className="final-cta-inner">
-        <div className="founding-tag" style={{ marginBottom: 18 }}>Black Friday · Ends {OFFER_END_SHORT}</div>
+        <div className="founding-tag" style={{ marginBottom: 18 }}>Black Friday · First 100 Only</div>
         <h2 className="serif">This isn't about<br/><em>starting over again.</em></h2>
         <p>It's about finally finding the structure, support and accountability that makes your results last. <strong>Instant access today, plus 8 weeks of coaching in January, for a one-off £37.</strong></p>
         <div className="final-buttons">
