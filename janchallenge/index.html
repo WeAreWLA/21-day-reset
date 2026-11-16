@@ -162,8 +162,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Hero */
   .hero { max-width: 1240px; margin: 0 auto; padding: 48px 28px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
   .hero-image-wrap { position: relative; }
-  .hero-image { aspect-ratio: 1/1; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
-  .hero-image img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--cream-2); }
+  /* Frame matches the photo's 4:5, so it fills edge to edge with no letterbox. */
+  .hero-image { aspect-ratio: 1080 / 1350; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* Hero overlays: the app playing, a member quote and Anna's credentials,
      the same arrangement as /wla-app. */
