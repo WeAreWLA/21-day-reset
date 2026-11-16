@@ -162,17 +162,17 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Hero */
   .hero { max-width: 1240px; margin: 0 auto; padding: 48px 28px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
   .hero-image-wrap { position: relative; }
-  .hero-image { aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
-  .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--cream-2); }
+  .hero-image { aspect-ratio: 1/1; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
+  .hero-image img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--cream-2); }
 
   /* Hero overlays: the app playing, a member quote and Anna's credentials,
      the same arrangement as /wla-app. */
-  .hero-phone { position: absolute; left: -46px; bottom: 54px; width: 184px; aspect-ratio: 1004 / 2000; border-radius: 24px; border: 7px solid var(--navy); overflow: hidden; background: var(--cream); box-shadow: 0 30px 56px -22px rgba(14,39,70,0.55); z-index: 2; }
+  .hero-phone { position: absolute; left: -128px; bottom: 4px; width: 132px; aspect-ratio: 1004 / 2000; border-radius: 24px; border: 7px solid var(--navy); overflow: hidden; background: var(--cream); box-shadow: 0 30px 56px -22px rgba(14,39,70,0.55); z-index: 2; }
   .hero-phone video { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-  .hero-quote { position: absolute; top: -26px; left: 8px; max-width: 220px; background: var(--cream-2); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 18px; transform: rotate(-2deg); z-index: 3; }
+  .hero-quote { position: absolute; top: -40px; left: -78px; max-width: 212px; background: var(--cream-2); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 18px; transform: rotate(-2deg); z-index: 3; }
   .hero-quote p { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 14px; line-height: 1.4; color: var(--navy); margin: 0; }
   .hero-quote span { display: block; font-size: 11px; color: var(--muted); margin-top: 6px; letter-spacing: 0.06em; }
-  .hero-cred { position: absolute; bottom: -28px; right: -20px; max-width: 260px; background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 22px; box-shadow: 0 20px 40px -18px rgba(80,40,20,0.25); z-index: 3; }
+  .hero-cred { position: absolute; bottom: -52px; right: -26px; max-width: 236px; background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 22px; box-shadow: 0 20px 40px -18px rgba(80,40,20,0.25); z-index: 3; }
   .hero-cred-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; color: var(--coral); margin-bottom: 6px; }
   .hero-cred-name { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); margin-bottom: 2px; }
   .hero-cred-sub { font-size: 12px; color: var(--muted); letter-spacing: 0.02em; line-height: 1.4; }
@@ -351,10 +351,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     .hero { grid-template-columns: 1fr; gap: 32px; padding: 64px 18px 48px; }
     .hero-card { padding: 30px 22px 24px; margin-top: 8px; }
     /* The overlays hang outside the photo, so give them room and pull them in. */
-    .hero-image-wrap { padding: 26px 22px 34px; }
-    .hero-phone { left: -10px; bottom: 36px; width: 132px; }
-    .hero-quote { top: 0; left: 0; max-width: 190px; }
-    .hero-cred { bottom: 0; right: 0; padding: 14px 16px; max-width: 220px; }
+    /* No room to sit the overlays beside the before/after on a phone, and
+       over it they cover both photos. Lay them out instead: quote, image,
+       then the app and the credentials side by side underneath. */
+    .hero-image-wrap { padding: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 14px; }
+    .hero-quote { position: static; width: 100%; max-width: 320px; order: 0; }
+    .hero-image { width: 100%; order: 1; margin: 0; }
+    .hero-phone { position: static; order: 2; width: 120px; flex: none; }
+    .hero-cred { position: static; order: 3; flex: 1; min-width: 190px; padding: 14px 16px; max-width: none; }
     .hero-cred-name { font-size: 19px; }
   }
 
@@ -940,7 +944,6 @@ const Arrow = ({ className = 'arrow' }) => (
   </svg>
 );
 const Check = () => (<svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5"/></svg>);
-const Lock = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>);
 const Shield = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>);
 
 function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The January Challenge' }) {
@@ -956,7 +959,6 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The January Ch
           </a>
         </div>
         <div className="micro-foot compact">
-          <span className="item"><Lock /> Secure checkout</span>
           <span className="risk-pill"><Shield /> 7-Day Risk-Free Guarantee</span>
         </div>
       </>
@@ -972,7 +974,6 @@ function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The January Ch
         Pay With <span className="pp-logo"><span className="pp-pay">Pay</span><span className="pp-pal">Pal</span></span>
       </a>
       <div className="micro-foot">
-        <span className="item"><Lock /> Secure checkout</span>
         <span className="risk-pill"><Shield /> 7-Day Risk-Free Guarantee</span>
       </div>
     </>
@@ -1135,7 +1136,7 @@ function Hero() {
       </div>
       <div className="hero-image-wrap">
         <div className="hero-image">
-          <img src="/assets/anna-hero.jpg" alt="Anna Wallace" fetchpriority="high" decoding="async" />
+          <img src="/assets/anna-before-after.png" alt="Anna Wallace · Before and After" fetchpriority="high" decoding="async" />
         </div>
         <div className="hero-phone"><HeroClip /></div>
         <div className="hero-quote">
@@ -1973,7 +1974,7 @@ function GuaranteeSection() {
         <div>
           <span className="g-eyebrow">7-Day Risk-Free Guarantee</span>
           <h2 className="serif">Try the <em>January Challenge</em> risk-free.</h2>
-          <p>You have <strong>7 days</strong> to experience the challenge and decide if it's right for you.</p>
+          <p>You have <strong>7 days</strong> to experience our approach and decide if it's right for you.</p>
           <p>If you genuinely feel it's not for you, simply email us for a <strong>full refund</strong>.</p>
           <p>No awkward conversations. No questions asked.</p>
           <p className="g-close">You have absolutely nothing to lose by trying.</p>
