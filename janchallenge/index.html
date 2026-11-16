@@ -862,6 +862,9 @@ const OFFER_END = new Date('2026-12-07T00:00:00').getTime(); // price increases 
 const OFFER_END_TEXT = 'midnight on Sunday 6th December';
 const OFFER_END_SHORT = 'Sunday 6th December';
 
+// Countdown numbers in the top banner. Off for now; set to true to bring the timer back.
+const SHOW_TIMER = false;
+
 // PayPal checkout (NCP / "No-Code" payment link from the founding-member offer)
 const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2AX2J47CZPLKA';
 
@@ -955,12 +958,12 @@ function CountdownBanner() {
     <div className="countdown-banner">
       <div className="countdown-inner">
         <span className="countdown-label">{label}</span>
-        <div className="countdown-row">
+        {SHOW_TIMER && <div className="countdown-row">
           <div className="cd-item"><span className="cd-num">{time.days}</span><span className="cd-lab">days</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.hours)}</span><span className="cd-lab">hrs</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.minutes)}</span><span className="cd-lab">mins</span></div>
           <div className="cd-item"><span className="cd-num">{pad(time.seconds)}</span><span className="cd-lab">secs</span></div>
-        </div>
+        </div>}
       </div>
     </div>
   );
@@ -1004,9 +1007,9 @@ function Hero() {
         <h1 className="h1 serif">The WLA 8 Week<br/><span className="accent italic">January Challenge</span></h1>
         <ul className="hero-promises">
           <li><span className="hp-mark">✦</span><span><strong>Lose up to a stone</strong> in 8 weeks</span></li>
-          <li><span className="hp-mark">✦</span><span><strong>Reduce cravings</strong> &amp; increase confidence</span></li>
-          <li><span className="hp-mark">✦</span><span><strong>Join Jan Challenge</strong>, get rest of 2026 <strong>FREE</strong></span></li>
-          <li><span className="hp-mark">✦</span><span><strong>First 100 women</strong> join for only <strong>£37</strong> (normally <s>£197</s>)</span></li>
+          <li><span className="hp-mark">✦</span><span><strong>Reduce cravings</strong> within days</span></li>
+          <li><span className="hp-mark">✦</span><span><strong>Feel less bloated</strong>, fit back into your jeans</span></li>
+          <li><span className="hp-mark">✦</span><span><strong>Improve energy</strong>, health and confidence</span></li>
         </ul>
 
         <div className="hero-offer-card">
