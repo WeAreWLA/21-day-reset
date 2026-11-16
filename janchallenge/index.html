@@ -439,25 +439,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 
   /* Achievement blocks (Here's What You Can Achieve) */
   /* Achievement columns (refreshed design) */
-  .achieve-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1080px; margin: 0 auto; }
-  .achieve-col { background: var(--paper); border: 1px solid rgba(14,39,70,0.08); border-radius: 18px; padding: 28px 28px 22px; box-shadow: 0 18px 36px -24px rgba(14,39,70,0.18); }
-  .achieve-col-head { text-align: center; padding-bottom: 18px; border-bottom: 1px solid rgba(14,39,70,0.08); margin-bottom: 18px; }
-  .achieve-col-tag { display: inline-block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); font-weight: 700; padding: 5px 14px; background: rgba(217,119,87,0.14); border-radius: 999px; margin-bottom: 10px; }
-  .achieve-col-head h3 { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; margin: 0; line-height: 1.2; }
-  .achieve-card-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-  .achieve-card-list li { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.4; color: var(--navy); white-space: nowrap; }
-  .achieve-card-list li > span:last-child { overflow: hidden; text-overflow: ellipsis; }
-  @media (max-width: 1024px) { .achieve-card-list li { white-space: normal; align-items: flex-start; } }
-  .achieve-check { flex: none; width: 26px; height: 26px; border-radius: 50%; background: rgba(217,119,87,0.18); color: var(--coral); display: grid; place-items: center; margin-top: 1px; }
-  .achieve-check svg { width: 13px; height: 13px; stroke: var(--coral); stroke-width: 2.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .achieve-closer { max-width: 760px; margin: 32px auto 0; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; line-height: 1.55; color: var(--navy); }
-  .achieve-closer strong { color: var(--coral); font-style: normal; font-weight: 700; }
-  .achieve-closer .closer-strong { font-style: normal; font-weight: 700; color: var(--navy); }
-  .achieve-columns-single { grid-template-columns: 1fr; max-width: 620px; }
-  @media (max-width: 880px) { .achieve-columns { grid-template-columns: 1fr; } }
   /* legacy fallbacks (kept for backwards compat) */
-  .achieve-block { margin-bottom: 32px; max-width: 920px; margin-inline: auto; }
-  .achieve-title { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); font-weight: 700; margin: 0 0 18px; text-align: center; }
 
   /* Why Now boxes */
   .why-now-boxes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 980px; margin: 0 auto; }
@@ -949,7 +931,6 @@ const Arrow = ({ className = 'arrow' }) => (
     <line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" />
   </svg>
 );
-const Check = () => (<svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5"/></svg>);
 const Shield = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>);
 
 function CTAButtons({ size = 'large', primaryLabel = 'Yes! I Want The January Challenge' }) {
@@ -1862,37 +1843,6 @@ function WhyJoinNow() {
   );
 }
 
-function HereIsWhatYouCanAchieve() {
-  const longTerm = [
-    'Instant access to the WLA app',
-    'Meal guides and recipes straight away',
-    'Weekly LIVE coaching with Anna from day one',
-    'Support through Christmas and New Year',
-    'Build healthy habits before the challenge starts',
-    'Start January ahead, not from scratch',
-  ];
-  return (
-    <section className="receive mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
-      <div className="receive-inner">
-        <div className="section-head">
-          <span className="eyebrow">From The Day You Join</span>
-          <h2 className="serif">Start today,<br/><em>feel better within days.</em></h2>
-        </div>
-
-        <div className="achieve-columns achieve-columns-single">
-          <div className="achieve-col">
-            <ul className="achieve-card-list">
-              {longTerm.map((it, i) => (
-                <li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function GuaranteeSection() {
   return (
     <section className="guarantee-section">
@@ -2195,7 +2145,6 @@ function Page() {
       <DoesThisSoundLikeYou />
       <TheRealityIs />
       <WhyTheChallengeWorks />
-      <HereIsWhatYouCanAchieve />
       <EightWeekTimeline />
       <HowItWorks />
       <WhatsIncluded />
