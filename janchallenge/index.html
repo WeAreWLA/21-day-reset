@@ -1595,19 +1595,40 @@ function TheRealityIs() {
   );
 }
 
-function EightWeekJanuaryChallenge() {
+function WhyTheChallengeWorks() {
+  const pillars = [
+    { ic: <IcCalendar />,  t: 'A time-bound goal',
+      d: '8 weeks, starting Monday 11th January. A clear start, a clear finish line and one goal to work towards: lose up to a stone.' },
+    { ic: <IcCoach />,     t: 'High accountability',
+      d: 'Weekly LIVE coaching with Anna and daily support from the coaching team, so you never have to figure it out on your own.' },
+    { ic: <IcCommunity />, t: 'A high-energy community',
+      d: 'Women all starting together on the same day, going through the same weeks as you and cheering each other on.' },
+    { ic: <IcPhone />,     t: 'Personalised support',
+      d: 'The WLA app, your meal planner, a new meal guide every Friday and 500+ recipes, so you always know what to eat next.' },
+  ];
   return (
-    <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
-      <div className="explainer-inner">
+    <section className="receive" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
+      <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">8 Week January Challenge</span>
-          <h2 className="serif">Lose up to<br className="mobile-br"/> <em>a stone in 8 weeks.</em></h2>
+          <span className="eyebrow">Why The January Challenge Works</span>
+          <h2 className="serif">Built to keep you<br/><em>consistent for 8 weeks.</em></h2>
+          <p>The January Challenge gives you all four, so this time you don't just start. You keep going.</p>
         </div>
-        <p>Drop inches, feel confident in your clothes, ditch bloating, wake up energised, and sustain your new happy place. Without complicated, tasteless nutrition or over-exercising.</p>
-
-        <div className="pull">"Empowering women to achieve sustainable, easy weight loss through a simple approach that focuses on flexible nutrition, behavioural-change strategies that promote long-lasting results, and coaching that empowers you to take control of your lifestyle."</div>
-
-        <p style={{ fontFamily: '"Libre Baskerville", serif', fontStyle: 'italic', fontSize: 20, color: 'var(--coral)', textAlign: 'center', marginTop: 24 }}>Say goodbye to traditional diets and hello to freedom.</p>
+        <div className="receive-grid two-col">
+          {pillars.map((it, i) => (
+            <div className="receive-card" key={i}>
+              <div className="check-ic">{it.ic}</div>
+              <div>
+                <h3>{it.t}</h3>
+                <p>{it.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="story-callout" style={{ maxWidth: 820, margin: '32px auto 0' }}>
+          <strong>Why January?</strong>
+          <p>Most people start the new year with good intentions and no plan. A few weeks in, life gets busy and the motivation fades. This time you start with a plan, a group of women beside you and a head start from today, so January is the month it finally sticks.</p>
+        </div>
       </div>
     </section>
   );
@@ -2046,7 +2067,7 @@ function Page() {
       <Results />
       <DoesThisSoundLikeYou />
       <TheRealityIs />
-      <EightWeekJanuaryChallenge />
+      <WhyTheChallengeWorks />
       <HowItWorks />
       <JoinToday />
       <HereIsWhatYouCanAchieve />
