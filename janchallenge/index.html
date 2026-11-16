@@ -167,8 +167,6 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 
   /* Hero overlays: the app playing, a member quote and Anna's credentials,
      the same arrangement as /wla-app. */
-  .hero-phone { position: absolute; left: -74px; bottom: -18px; width: 138px; aspect-ratio: 1004 / 2000; border-radius: 24px; border: 7px solid var(--navy); overflow: hidden; background: var(--cream); box-shadow: 0 30px 56px -22px rgba(14,39,70,0.55); z-index: 2; }
-  .hero-phone video { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
   .hero-cred { position: absolute; bottom: -52px; right: -26px; max-width: 236px; background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 22px; box-shadow: 0 20px 40px -18px rgba(80,40,20,0.25); z-index: 3; }
   .hero-cred-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 13px; color: var(--coral); margin-bottom: 6px; }
   .hero-cred-name { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); margin-bottom: 2px; }
@@ -347,14 +345,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 980px) {
     .hero { grid-template-columns: 1fr; gap: 32px; padding: 64px 18px 48px; }
     .hero-card { padding: 30px 22px 24px; margin-top: 8px; }
-    /* The overlays hang outside the photo, so give them room and pull them in. */
-    /* No room to sit the overlays beside the before/after on a phone, and
-       over it they cover both photos. Lay them out instead: quote, image,
-       then the app and the credentials side by side underneath. */
-    .hero-image-wrap { padding: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 14px; }
-    .hero-image { width: 100%; order: 1; margin: 0; }
-    .hero-phone { position: static; order: 2; width: 120px; flex: none; }
-    .hero-cred { position: static; order: 3; flex: 1; min-width: 190px; padding: 14px 16px; max-width: none; }
+    /* Over the before/after the credentials card covers one of the photos,
+       so on a phone it sits underneath instead. */
+    .hero-image-wrap { padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .hero-image { width: 100%; margin: 0; }
+    .hero-cred { position: static; padding: 14px 16px; max-width: none; }
     .hero-cred-name { font-size: 19px; }
   }
 
@@ -1063,46 +1058,6 @@ function Bonuses() {
   );
 }
 
-// The hero clip is the heaviest asset on the page, and it sits behind a poster
-// frame, so nothing is visible until it plays. Holding the fetch back until the
-// page has loaded keeps it out of the way of the hero image, the fonts and the
-// JS; the poster covers the gap and it starts on its own.
-function HeroClip() {
-  const [armed, setArmed] = React.useState(false);
-  const ref = React.useRef(null);
-
-  React.useEffect(() => {
-    let id;
-    const idle = () => {
-      id = window.requestIdleCallback
-        ? window.requestIdleCallback(() => setArmed(true), { timeout: 2000 })
-        : setTimeout(() => setArmed(true), 400);
-    };
-    if (document.readyState === 'complete') idle();
-    else window.addEventListener('load', idle, { once: true });
-    return () => {
-      window.removeEventListener('load', idle);
-      if (id && window.cancelIdleCallback) window.cancelIdleCallback(id);
-      else clearTimeout(id);
-    };
-  }, []);
-
-  React.useEffect(() => {
-    if (!armed || !ref.current) return;
-    ref.current.load();
-    const played = ref.current.play();
-    if (played && played.catch) played.catch(() => {});
-  }, [armed]);
-
-  return (
-    <video ref={ref} poster="/assets/app-clip-home-poster.jpg" autoPlay muted loop playsInline
-           preload="none" aria-label="The WLA app home screen">
-      {armed && <source src="/assets/app-clip-home.webm" type="video/webm" />}
-      {armed && <source src="/assets/app-clip-home.mp4" type="video/mp4" />}
-    </video>
-  );
-}
-
 function Hero() {
   return (
     <section className="hero" id="top">
@@ -1134,7 +1089,6 @@ function Hero() {
         <div className="hero-image">
           <img src="/assets/anna-before-after.png" alt="Anna Wallace · Before and After" fetchpriority="high" decoding="async" />
         </div>
-        <div className="hero-phone"><HeroClip /></div>
         <div className="hero-cred">
           <div className="hero-cred-lab">Led by</div>
           <div className="hero-cred-name">Anna Wallace</div>
