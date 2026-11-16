@@ -134,7 +134,8 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .countdown-banner::before { content: ''; position: absolute; top: 0; left: -40%; width: 40%; height: 100%; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%); transform: skewX(-18deg); animation: urgSheen 4.8s ease-in-out infinite; pointer-events: none; }
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .countdown-inner { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
-  .countdown-label { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: clamp(12px, 1.3vw, 14px); color: #003060; }
+  .countdown-label { font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: clamp(12px, 1.3vw, 14px); color: #003060; text-align: center; }
+  .countdown-label .cd-nowrap { white-space: nowrap; }
   .countdown-row { display: flex; gap: 8px; }
   .cd-item { background: rgba(0,48,96,0.10); border: 1px solid rgba(0,48,96,0.18); padding: 4px 10px; border-radius: 8px; text-align: center; min-width: 44px; }
   .cd-num { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 18px; color: #003060; line-height: 1.05; }
@@ -948,7 +949,7 @@ function CountdownBanner() {
   }
   const label = time.phase === 2
     ? 'Last Chance · Black Friday Price Ends Tonight'
-    : 'Black Friday Offer Ends In';
+    : <><span className="cd-nowrap">Black Friday Promo ·</span> <span className="cd-nowrap">First 100 Places at £37</span></>;
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
@@ -1004,6 +1005,7 @@ function Hero() {
           <li><span className="hp-mark">✦</span><span><strong>Lose up to a stone</strong> in 8 weeks</span></li>
           <li><span className="hp-mark">✦</span><span><strong>Feel confident</strong> in your clothes again</span></li>
           <li><span className="hp-mark">✦</span><span><strong>Take back control</strong> around food without miserable diets</span></li>
+          <li><span className="hp-mark">✦</span><span><strong>Join Jan Challenge</strong>, get rest of 2026 <strong>FREE</strong></span></li>
           <li><span className="hp-mark">✦</span><span><strong>First 100 women</strong> join for only <strong>£37</strong> (normally <s>£197</s>)</span></li>
         </ul>
 
