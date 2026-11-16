@@ -1131,20 +1131,6 @@ function NextChapter() {
   );
 }
 
-function AppBonus() {
-  return (
-    <section className="explainer" style={{ paddingTop: 24, paddingBottom: 24 }}>
-      <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
-        <div className="app-bonus-card">
-          <div className="app-bonus-pill">★ Included</div>
-          <h2 className="serif"><em>Instant access</em> to the WLA app</h2>
-          <p className="app-bonus-sub">January challengers get instant access to the WLA app as soon as they join, so you can start planning, tracking and building momentum straight away.</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function EvolvingInside() {
   const items = [
     { ic: <IcSparkle />,   t: 'WLA is evolving',                              d: 'The Weight Loss Academy is becoming The Weight Loss & Lifestyle Academy.' },
@@ -1339,8 +1325,7 @@ function WhatsIncluded() {
     <section className="receive" id="features" style={{ paddingTop: 56 }}>
       <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">What's Inside</span>
-          <h2 className="serif">Plus all this inside<br/><em>the WLA app</em></h2>
+          <h2 className="serif">Join The January 8 Week Fat Loss Challenge<br/><em>&amp; Access All This Instantly</em></h2>
           <p style={{ fontWeight: 600, color: 'var(--ink)' }}>Less guesswork. More consistency. Support to reach your goals.</p>
         </div>
         <div className="app-features-grid">
@@ -1352,35 +1337,6 @@ function WhatsIncluded() {
               <p>{f.b}</p>
             </div>
           ))}
-        </div>
-
-        <div className="year-block">
-          <div className="year-block-head">
-            <span className="year-block-eyebrow">Black Friday Offer · Access From Today</span>
-            <h3>Start today, not in January.</h3>
-            <p>Join today and get the <strong>rest of 2026 FREE</strong>: the app, meal guides and coaching through December, before the challenge starts on Monday 11th January. Here's what you can use straight away:</p>
-          </div>
-          <div className="receive-grid" style={{ marginBottom: 0 }}>
-            <div className="receive-card"><div className="check-ic"><IcPhone /></div><div><h3>The WLA App, Today</h3><p>Start planning, tracking and building habits the moment you join.</p></div></div>
-            <div className="receive-card"><div className="check-ic"><IcFork /></div><div><h3>Weekly Fat Loss Meal Guides</h3><p>A new done-for-you meal guide every Friday, starting this week.</p></div></div>
-            <div className="receive-card"><div className="check-ic"><IcChef /></div><div><h3>The WLA Recipe Collection</h3><p>500+ simple, family-friendly recipes, plus new ones added every week.</p></div></div>
-            <div className="receive-card"><div className="check-ic"><IcCoach /></div><div><h3>Weekly LIVE Coaching Zooms with Anna</h3><p>Join the very next session. You don't have to wait for January.</p></div></div>
-            <div className="receive-card"><div className="check-ic"><IcInfinity /></div><div><h3>Daily Coaching &amp; Support</h3><p>Inside the accountability group, right through December and the Christmas break.</p></div></div>
-            <div className="receive-card"><div className="check-ic"><IcCommunity /></div><div><h3>The WLA Community</h3><p>Meet the women you'll be doing the challenge with before it even begins.</p></div></div>
-          </div>
-
-          <div className="year-why">
-            <div className="year-why-head">
-              <span className="year-why-mark">✦</span>
-              <h4>Why this matters</h4>
-            </div>
-            <p>Most people spend December "starting on Monday" and January starting from scratch. With instant access you'll:</p>
-            <ul>
-              <li>Have support through Christmas instead of undoing all your progress.</li>
-              <li>Build your routines now, so the challenge feels easier from week 1.</li>
-              <li>Walk into January feeling ready, motivated and already ahead.</li>
-            </ul>
-          </div>
         </div>
 
         <div className="offer-block">
@@ -1395,7 +1351,7 @@ function WhatsIncluded() {
             <span className="offer-now-lab">Black Friday price</span>
             <span className="offer-now"><em>£37</em></span>
           </div>
-          <div className="offer-note">Only £37 for the first 100 women to join. <strong>Price returns to £197 once the places are gone, or after {OFFER_END_SHORT}.</strong></div>
+          <div className="offer-note">Only £37 for the first 100 women to join. <strong>Price increases once the places are gone, or after {OFFER_END_SHORT}.</strong></div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The January Challenge <Arrow /></a>
@@ -1671,18 +1627,6 @@ function HowItWorks() {
   );
 }
 
-function JoinToday() {
-  return (
-    <section className="explainer" style={{ paddingTop: 56, paddingBottom: 56 }}>
-      <div className="explainer-inner" style={{ maxWidth: 760, textAlign: 'center' }}>
-        <p style={{ fontFamily: '"Libre Baskerville", serif', fontSize: 'clamp(20px, 2.4vw, 28px)', fontStyle: 'italic', color: 'var(--navy)', lineHeight: 1.4, margin: 0 }}>
-          Join the <strong style={{ fontStyle: 'normal' }}>8 Week January Challenge today</strong> and get <em style={{ color: 'var(--coral)' }}>instant access</em>, so you can start right now instead of waiting for January.
-        </p>
-      </div>
-    </section>
-  );
-}
-
 function WhyJoinNow() {
   return (
     <section className="explainer" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
@@ -1755,12 +1699,6 @@ function HereIsWhatYouCanAchieve() {
             </ul>
           </div>
         </div>
-
-        <p className="achieve-closer">
-          Instant access today, plus the full 8 Week Challenge in January, all for a <strong>one-off £37</strong>. This price is only for the <strong>first 100 women</strong> to join. Once the places are filled, the price goes up.
-          <br/><br/>
-          <span className="closer-strong">You don't have to wait for January to start feeling better. You can start today.</span>
-        </p>
       </div>
     </section>
   );
@@ -2069,12 +2007,10 @@ function Page() {
       <TheRealityIs />
       <WhyTheChallengeWorks />
       <HowItWorks />
-      <JoinToday />
       <HereIsWhatYouCanAchieve />
       <EightWeekTimeline />
-      <WomanWhoKeepsItOff />
-      <AppBonus />
       <WhatsIncluded />
+      <WomanWhoKeepsItOff />
       <GuaranteeSection />
       <ClientAchievements12Wk />
       <WhyJoinNow />
