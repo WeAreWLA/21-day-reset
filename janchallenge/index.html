@@ -453,6 +453,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .achieve-closer { max-width: 760px; margin: 32px auto 0; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; line-height: 1.55; color: var(--navy); }
   .achieve-closer strong { color: var(--coral); font-style: normal; font-weight: 700; }
   .achieve-closer .closer-strong { font-style: normal; font-weight: 700; color: var(--navy); }
+  .achieve-columns-single { grid-template-columns: 1fr; max-width: 620px; }
   @media (max-width: 880px) { .achieve-columns { grid-template-columns: 1fr; } }
   /* legacy fallbacks (kept for backwards compat) */
   .achieve-block { margin-bottom: 32px; max-width: 920px; margin-inline: auto; }
@@ -724,7 +725,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .offer-now-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: #fff; margin-top: 8px; }
   .offer-now { font-family: 'Libre Baskerville', serif; line-height: 1; margin-top: 2px; }
   .offer-now em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: clamp(54px, 6vw, 76px); line-height: 1; }
-  .offer-block .offer-note { display: inline-block; margin: 22px auto 0; max-width: 640px; padding: 12px 24px; border-radius: 999px; background: rgba(217,119,87,0.12); border: 1px solid rgba(217,119,87,0.34); font-family: 'Libre Baskerville', serif; font-size: 15px; color: var(--navy); line-height: 1.45; }
+  .offer-block .offer-note { display: inline-block; margin: 22px auto 0; max-width: 640px; padding: 14px 28px; border-radius: 20px; background: rgba(217,119,87,0.12); border: 1px solid rgba(217,119,87,0.34); font-family: 'Libre Baskerville', serif; font-size: 15px; color: var(--navy); line-height: 1.45; }
   .offer-block .offer-note strong { color: var(--coral); font-weight: 700; }
   @media (max-width: 760px) {
     .offer-card { grid-template-columns: 1fr; }
@@ -1569,7 +1570,7 @@ function WhatsIncluded() {
               <span className="offer-now"><em>£37</em></span>
             </div>
           </div>
-          <div className="offer-note">Only <strong>£37</strong> for the first 100 women to join. Price increases once the places are gone</div>
+          <div className="offer-note">Only <strong>£37</strong> for the first 100 women to join.<br />Price increases once the places are gone</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The January Challenge <Arrow /></a>
@@ -1740,7 +1741,7 @@ function TheRealityIs() {
       <div className="section-inner">
         <div className="section-head">
           <span className="eyebrow">Why January Never Sticks</span>
-          <h2 className="serif">It's not a knowledge problem. <em>It's an action problem.</em></h2>
+          <h2 className="serif">It's not a knowledge problem. <em>It's a consistency problem.</em></h2>
         </div>
 
         <p>Here's the strange part: you already have everything you need. The cookbooks. The gym membership. The plan saved on your phone. None of that is a knowledge gap. You could write the plan yourself.</p>
@@ -1862,14 +1863,6 @@ function WhyJoinNow() {
 }
 
 function HereIsWhatYouCanAchieve() {
-  const physical = [
-    'Lose up to a stone in 8 weeks',
-    'Drop inches from waist, hips, thighs',
-    'Reduce bloating, feel lighter',
-    'Improve body composition and tone',
-    'Wake up confident and energised',
-    'Clothes that fit and feel great',
-  ];
   const longTerm = [
     'Instant access to the WLA app',
     'Meal guides and recipes straight away',
@@ -1882,21 +1875,12 @@ function HereIsWhatYouCanAchieve() {
     <section className="receive mobile-tight-top" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <div className="receive-inner">
         <div className="section-head">
-          <span className="eyebrow">Here's What You Can Achieve</span>
+          <span className="eyebrow">From The Day You Join</span>
           <h2 className="serif">Start today,<br/><em>feel better within days.</em></h2>
         </div>
 
-        <div className="achieve-columns">
+        <div className="achieve-columns achieve-columns-single">
           <div className="achieve-col">
-            <div className="achieve-col-head"><span className="achieve-col-tag">In 8 Weeks</span><h3>Physical Results</h3></div>
-            <ul className="achieve-card-list">
-              {physical.map((it, i) => (
-                <li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>
-              ))}
-            </ul>
-          </div>
-          <div className="achieve-col">
-            <div className="achieve-col-head"><span className="achieve-col-tag">From The Day You Join</span><h3>Your Head Start</h3></div>
             <ul className="achieve-card-list">
               {longTerm.map((it, i) => (
                 <li key={i}><span className="achieve-check"><Check /></span><span>{it}</span></li>
