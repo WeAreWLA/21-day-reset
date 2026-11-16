@@ -990,9 +990,9 @@ const CardIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="no
 
 function CountdownBanner() {
   // Counts down to OFFER_END.
-  // Phase 1: more than 24 hours left -> "Black Friday Offer Ends In"
+  // Phase 1: more than 24 hours left -> "Black Friday Promo · First 100 Places at £37"
   // Phase 2: final 24 hours          -> "Last Chance · Black Friday Price Ends Tonight"
-  // Phase 3: deadline passed         -> static "The Black Friday offer has now ended"
+  // Phase 3: deadline passed         -> static "The Black Friday promo has now ended"
   const computePhase = (now) => (now >= OFFER_END ? 3 : OFFER_END - now <= 86400000 ? 2 : 1);
 
   const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, phase: computePhase(Date.now()) });
@@ -2040,7 +2040,7 @@ function FAQ() {
     { q: 'When does it start?',
       a: 'Today! Your access starts the moment you join, so you can use the WLA app, meal guides, recipes and coaching straight away. The 8 Week Challenge itself kicks off on Monday 11th January.' },
     { q: 'How long is the program?',
-      a: '8 weeks, starting Monday 11th January. But with this Black Friday offer you get instant access the day you join, so you can start straight away, all for just £37.' },
+      a: '8 weeks, starting Monday 11th January. But with this Black Friday promo you get instant access the day you join, so you can start straight away, all for just £37.' },
     { q: 'Do you have a refund policy?',
       a: "I'm so confident this can help you reach your goals that we have a rock-solid 7-day try-it-out option. If you implement (yes, you have to do the work) and decide it's not for you, get your fee back, no questions asked." },
     { q: 'Will I get results?',
