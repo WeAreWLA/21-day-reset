@@ -163,7 +163,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .hero { max-width: 1240px; margin: 0 auto; padding: 48px 28px 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
   .hero-image-wrap { position: relative; }
   /* Frame matches the photo's 4:5, so it fills edge to edge with no letterbox. */
-  .hero-image { aspect-ratio: 1080 / 1350; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
+  .hero-image { aspect-ratio: 1080 / 1350; max-width: 430px; margin-left: auto; border-radius: 16px; overflow: hidden; background: var(--cream-2); box-shadow: 0 30px 60px -28px rgba(14,39,70,0.30); }
   .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* Hero overlays: the app playing, a member quote and Anna's credentials,
@@ -724,13 +724,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .offer-now-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: #fff; margin-top: 8px; }
   .offer-now { font-family: 'Libre Baskerville', serif; line-height: 1; margin-top: 2px; }
   .offer-now em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: clamp(54px, 6vw, 76px); line-height: 1; }
-  .offer-block .offer-note { margin: 20px auto 0; max-width: 620px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15.5px; color: var(--muted); line-height: 1.5; }
-  .offer-block .offer-note strong { color: var(--coral); font-style: normal; font-weight: 700; }
+  .offer-block .offer-note { display: inline-block; margin: 22px auto 0; max-width: 640px; padding: 12px 24px; border-radius: 999px; background: rgba(217,119,87,0.12); border: 1px solid rgba(217,119,87,0.34); font-family: 'Libre Baskerville', serif; font-size: 15px; color: var(--navy); line-height: 1.45; }
+  .offer-block .offer-note strong { color: var(--coral); font-weight: 700; }
   @media (max-width: 760px) {
     .offer-card { grid-template-columns: 1fr; }
     .offer-block .offer-stack { padding: 26px 22px; }
     .offer-price { padding: 26px 20px; }
-    .offer-block .offer-note { font-size: 14.5px; }
+    /* The pill wraps to two lines here, so square it off a little. */
+    .offer-block .offer-note { font-size: 14px; padding: 12px 20px; border-radius: 20px; }
   }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
@@ -1017,7 +1018,7 @@ function CountdownBanner() {
     return (
       <div className="countdown-banner">
         <div className="countdown-inner">
-          <span className="countdown-label">The Black Friday offer has now ended</span>
+          <span className="countdown-label">The Black Friday promo has now ended</span>
         </div>
       </div>
     );
@@ -1555,7 +1556,7 @@ function WhatsIncluded() {
         </div>
 
         <div className="offer-block">
-          <h3 className="offer-title serif">Your <em>Black Friday</em> Offer</h3>
+          <h3 className="offer-title serif">Your <em>Black Friday</em> Promo</h3>
           <div className="offer-card">
             <ul className="offer-stack">
               <li><span className="offer-tick">✔</span><span>The WLA <strong>8 Week January Challenge</strong></span></li>
@@ -1568,7 +1569,7 @@ function WhatsIncluded() {
               <span className="offer-now"><em>£37</em></span>
             </div>
           </div>
-          <div className="offer-note">Only £37 for the first 100 women to join. <strong>Price increases once the places are gone, or after {OFFER_END_SHORT}.</strong></div>
+          <div className="offer-note">Only <strong>£37</strong> for the first 100 women to join. Price increases once the places are gone</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Yes! I Want The January Challenge <Arrow /></a>
@@ -2033,7 +2034,7 @@ function Limited() {
         <div className="limited-cards">
           <div className="limited-card warn">
             <div className="card-tag">Once The 100 Places Go</div>
-            <h3>This exact offer disappears</h3>
+            <h3>This exact promo disappears</h3>
             <ul>
               <li>£37 Black Friday pricing disappears</li>
               <li>Pricing returns to £197</li>
@@ -2042,7 +2043,7 @@ function Limited() {
           </div>
           <div className="limited-card win">
             <div className="card-tag">Join Before It Ends</div>
-            <h3>The full <em>Black Friday Offer</em></h3>
+            <h3>The full <em>Black Friday Promo</em></h3>
             <ul>
               <li>The 8 Week January Challenge</li>
               <li>Instant access to the WLA app</li>
