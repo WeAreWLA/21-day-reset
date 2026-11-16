@@ -1,0 +1,4 @@
+# Local render harness: a generated copy of a page rewritten to use the
+# vendored React in assets/vendor so it can be screenshotted offline.
+# Regenerated on demand; publishing it would serve a broken duplicate page.
+_jan-test.html
