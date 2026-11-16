@@ -176,6 +176,11 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Inside the app: tabbed screenshot carousel, then the two clips. */
   .app-gallery-section { padding: 72px 28px 64px; background: var(--cream-2); }
   .app-gallery-inner { max-width: 1060px; margin: 0 auto; }
+  /* Wide enough, and sized down just enough, to hold the heading on two lines.
+     Doubled-up selectors so these beat the generic .section-head rules, which
+     are declared later in the sheet. */
+  .section-head.app-gallery-head { max-width: 900px; }
+  .section-head.app-gallery-head h2 { font-size: clamp(25px, 3.9vw, 46px); }
   .app-carousel { display: grid; grid-template-columns: 1fr 412px; gap: 44px; align-items: center; }
   .app-tabs { display: flex; flex-direction: column; gap: 10px; }
   .app-tab { text-align: left; border: 1px solid var(--rule); border-left: 4px solid transparent; background: rgba(253,251,248,0.45); border-radius: 14px; padding: 16px 20px; display: flex; align-items: baseline; gap: 12px; transition: background .2s, border-color .2s; }
@@ -702,24 +707,31 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .total-value .you-pay em { color: var(--coral-soft); font-style: italic; font-weight: 500; }
   .total-value .price-sub { display: block; margin-top: 8px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--coral-soft); position: relative; z-index: 1; }
   .total-value .price-note { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13.5px; letter-spacing: 0.04em; color: rgba(244,235,220,0.85); font-family: "Alegreya Sans", sans-serif; position: relative; z-index: 1; }
-  .offer-block { margin: 48px auto 0; max-width: 720px; text-align: center; }
-  .offer-block .offer-title { font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 40px); color: var(--navy); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 20px; }
+  /* One bounded offer panel: what you get on the left, the price on the right. */
+  .offer-block { margin: 48px auto 0; max-width: 860px; text-align: center; }
+  .offer-block .offer-title { font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 40px); color: var(--navy); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 24px; }
   .offer-block .offer-title em { color: var(--coral); font-style: italic; font-weight: 500; }
-  .offer-block .offer-stack { list-style: none; padding: 0; margin: 0 auto 26px; display: grid; gap: 8px; max-width: 560px; }
-  .offer-block .offer-stack li { font-family: 'Libre Baskerville', serif; font-size: clamp(17px, 1.9vw, 20px); line-height: 1.35; color: var(--navy); text-align: center; }
+  .offer-card { display: grid; grid-template-columns: 1.12fr 0.88fr; align-items: stretch; text-align: left; background: var(--paper); border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; box-shadow: 0 26px 52px -30px rgba(14,39,70,0.3); }
+  .offer-block .offer-stack { list-style: none; margin: 0; padding: 32px 30px; display: grid; gap: 16px; align-content: center; }
+  .offer-block .offer-stack li { display: flex; align-items: flex-start; gap: 12px; font-family: 'Libre Baskerville', serif; font-size: clamp(16px, 1.6vw, 18px); line-height: 1.4; color: var(--navy); text-align: left; }
   .offer-block .offer-stack li strong { color: var(--navy); font-weight: 700; }
-  .offer-block .offer-plus { color: var(--coral); font-style: italic; font-weight: 500; margin-left: 4px; }
-  .offer-price { margin: 0 auto; max-width: 480px; padding: 26px 28px; background: var(--navy); color: #fff; border-radius: 16px; box-shadow: 0 24px 48px -28px rgba(14,39,70,0.34); position: relative; overflow: hidden; display: grid; gap: 4px; justify-items: center; }
-  .offer-price::before { content: ''; position: absolute; top: -80px; right: -80px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
+  .offer-tick { flex: none; width: 24px; height: 24px; border-radius: 50%; background: rgba(217,119,87,0.16); color: var(--coral); display: grid; place-items: center; font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .offer-price { padding: 32px 24px; background: var(--navy); color: #fff; position: relative; overflow: hidden; display: grid; gap: 2px; justify-items: center; align-content: center; }
+  .offer-price::before { content: ''; position: absolute; top: -70px; right: -70px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(229,145,122,0.3), transparent 65%); pointer-events: none; }
   .offer-price > * { position: relative; z-index: 1; }
-  .offer-was { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: #fff; }
-  .offer-was s { text-decoration-thickness: 2px; color: #fff; }
-  .offer-now-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: #fff; margin-top: 6px; }
+  .offer-was { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 16px; color: rgba(255,255,255,0.82); }
+  .offer-was s { text-decoration-thickness: 2px; }
+  .offer-now-lab { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: #fff; margin-top: 8px; }
   .offer-now { font-family: 'Libre Baskerville', serif; line-height: 1; margin-top: 2px; }
-  .offer-now em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: clamp(56px, 7vw, 84px); line-height: 1; }
-  .offer-block .offer-note { margin: 18px auto 0; max-width: 560px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15.5px; color: var(--muted); line-height: 1.5; }
+  .offer-now em { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: clamp(54px, 6vw, 76px); line-height: 1; }
+  .offer-block .offer-note { margin: 20px auto 0; max-width: 620px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 15.5px; color: var(--muted); line-height: 1.5; }
   .offer-block .offer-note strong { color: var(--coral); font-style: normal; font-weight: 700; }
-  @media (max-width: 640px) { .offer-price { padding: 22px 20px; } .offer-block .offer-note { font-size: 14.5px; } }
+  @media (max-width: 760px) {
+    .offer-card { grid-template-columns: 1fr; }
+    .offer-block .offer-stack { padding: 26px 22px; }
+    .offer-price { padding: 26px 20px; }
+    .offer-block .offer-note { font-size: 14.5px; }
+  }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
@@ -1429,9 +1441,9 @@ function AppGallery() {
   return (
     <section className="app-gallery-section">
       <div className="app-gallery-inner">
-        <div className="section-head">
+        <div className="section-head app-gallery-head">
           <span className="eyebrow">Inside the app</span>
-          <h2 className="serif">Everything you need to lose weight<br/>and keep it off, <em>in one simple app.</em></h2>
+          <h2 className="serif">Everything you need to lose weight<br/><em>&amp; keep it off, in one simple app.</em></h2>
         </div>
 
         <div className="app-carousel">
@@ -1528,9 +1540,8 @@ function WhatsIncluded() {
   return (
     <section className="receive" id="features" style={{ paddingTop: 56 }}>
       <div className="receive-inner">
-        <div className="section-head">
-          <h2 className="serif">Join The January 8 Week Fat Loss Challenge<br/><em>&amp; Access All This Instantly</em></h2>
-          <p style={{ fontWeight: 600, color: 'var(--ink)' }}>Less guesswork. More consistency. Support to reach your goals.</p>
+        <div className="section-head" style={{ maxWidth: 940 }}>
+          <h2 className="serif">Join The January 8 Week Fat Loss Challenge<br/><em>&amp; Access All This Instantly Inside The WLA app</em></h2>
         </div>
         <div className="app-features-grid">
           {APP_FEATURES.map((f, i) => (
@@ -1545,15 +1556,17 @@ function WhatsIncluded() {
 
         <div className="offer-block">
           <h3 className="offer-title serif">Your <em>Black Friday</em> Offer</h3>
-          <ul className="offer-stack">
-            <li>The WLA <strong>8 Week January Challenge</strong> <span className="offer-plus">+</span></li>
-            <li><strong>Instant Access Today</strong> To Coaching, Meal Guides &amp; Recipes <span className="offer-plus">+</span></li>
-            <li><strong>Instant Access</strong> To The WLA App</li>
-          </ul>
-          <div className="offer-price">
-            <span className="offer-was">normally <s>£197</s></span>
-            <span className="offer-now-lab">Black Friday price</span>
-            <span className="offer-now"><em>£37</em></span>
+          <div className="offer-card">
+            <ul className="offer-stack">
+              <li><span className="offer-tick">✔</span><span>The WLA <strong>8 Week January Challenge</strong></span></li>
+              <li><span className="offer-tick">✔</span><span><strong>Instant Access Today</strong> to coaching, meal guides &amp; recipes</span></li>
+              <li><span className="offer-tick">✔</span><span><strong>Instant Access</strong> to the WLA app</span></li>
+            </ul>
+            <div className="offer-price">
+              <span className="offer-was">normally <s>£197</s></span>
+              <span className="offer-now-lab">Black Friday price</span>
+              <span className="offer-now"><em>£37</em></span>
+            </div>
           </div>
           <div className="offer-note">Only £37 for the first 100 women to join. <strong>Price increases once the places are gone, or after {OFFER_END_SHORT}.</strong></div>
         </div>
@@ -2115,7 +2128,7 @@ function MeetAnna() {
             </figcaption>
           </figure>
           <div className="meet-anna-text">
-            <p><strong>Hello and welcome!</strong> I'm Anna Wallace, founder of The Weight Loss Academy, where we're transforming how women lose weight, boost energy and regain confidence, without low-calorie diets or restrictive plans.</p>
+            <p><strong>Hello and welcome!</strong> I'm Anna Wallace, founder of The WLA, The Weight Loss &amp; Lifestyle Academy, where we're transforming how women lose weight, boost energy and regain confidence, without low-calorie diets or restrictive plans.</p>
             <p>My personal journey into health coaching started much like many of the women I now work with. I used to be trapped in a relentless dieting cycle, starting new diets every Monday, taking laxatives to lose weight, stepping on the scale every day, and struggling with emotional eating. My weight was constantly fluctuating and I felt like I had no control.</p>
             <p>I pursued a degree in Food and Nutrition at the University of Ulster in Northern Ireland. Over the years I transformed my relationship with food, lost weight, and have maintained it even post-pregnancy.</p>
             <p>With qualifications as a <strong>Registered Associate Nutritionist</strong>, <strong>NLP Practitioner</strong> and <strong>Clinical Hypnotherapist</strong>, I've combined my expertise with my personal experience to help over <strong>50,000 women worldwide</strong> break free from restrictive dieting.</p>
