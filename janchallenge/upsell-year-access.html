@@ -86,6 +86,18 @@
   .wla-upsell .result-card .shot { padding: 0 26px 26px; }
   .wla-upsell .result-card img { display: block; width: 100%; max-width: 460px; height: auto; margin: 0 auto; border-radius: 12px; }
 
+  /* Today vs March */
+  .wla-upsell .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .wla-upsell .compare .opt { border-radius: 14px; padding: 26px 22px; text-align: center; border: 1px solid rgba(14,39,70,0.1); background: var(--paper); }
+  .wla-upsell .compare .opt.now { border: 2px solid var(--coral); background: rgba(217,119,87,0.08); }
+  .wla-upsell .compare .when { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  .wla-upsell .compare .opt.now .when { color: var(--coral); }
+  .wla-upsell .compare .amt { display: block; margin: 10px 0 6px; font-family: 'Libre Baskerville', serif; font-size: clamp(34px, 4.4vw, 46px); font-weight: 700; line-height: 1; color: var(--navy); }
+  .wla-upsell .compare .opt.now .amt { color: var(--coral); }
+  .wla-upsell .compare .what { font-size: 15px; line-height: 1.4; color: var(--navy); }
+  .wla-upsell .compare-note { margin-top: 14px; text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: var(--navy); }
+  .wla-upsell .compare-note strong { color: var(--coral); font-style: normal; font-weight: 700; }
+
   /* Section spacing */
   .wla-upsell .section { margin-top: 40px; }
 
@@ -165,7 +177,7 @@
         <div class="count"><span class="n">58</span><span class="l">weekly meal guides</span></div>
         <div class="count"><span class="n">58</span><span class="l">live Zooms with Anna</span></div>
         <div class="count"><span class="n">175+</span><span class="l">brand new recipes</span></div>
-        <div class="count"><span class="n">406</span><span class="l">days of meals already planned</span></div>
+        <div class="count"><span class="n">410</span><span class="l">days of access, starting today</span></div>
         <div class="count"><span class="n">4+</span><span class="l">full challenges, not just one</span></div>
         <div class="count"><span class="n">2</span><span class="l">21-day resets</span></div>
       </div>
@@ -175,11 +187,11 @@
     <div class="section">
       <div class="sec-head">
         <span class="eyebrow">Why it works</span>
-        <h2 class="serif">Six fresh starts, <em>not one.</em></h2>
+        <h2 class="serif">Never back to <em>square one.</em></h2>
       </div>
       <div class="inside-card">
         <ul class="checks">
-          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>At least <strong>four full challenges</strong> and <strong>two 21-day resets</strong> across the year, so whenever life knocks you off course there's another one starting</span></li>
+          <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>At least <strong>four full challenges</strong> and <strong>two 21-day resets</strong> through the year, so there is always something to aim at &mdash; and daily support in between, not only during</span></li>
           <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>A <strong>new meal guide every Friday</strong>, for 58 weeks — you'll never plan a week of meals from scratch again</span></li>
           <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span><strong>Weekly live coaching</strong> with me and the WLA team, every week of the year</span></li>
           <li><span class="check-ic"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span>At least <strong>three new recipes every week</strong>, on top of the 500+ already in the app</span></li>
@@ -203,6 +215,27 @@
       </div>
     </div>
 
+    <!-- TODAY VS MARCH -->
+    <div class="section">
+      <div class="sec-head">
+        <span class="eyebrow">The real choice</span>
+        <h2 class="serif">£110 today. <em>Or £297 in March.</em></h2>
+      </div>
+      <div class="compare">
+        <div class="opt now">
+          <span class="when">Today</span>
+          <span class="amt">£110</span>
+          <span class="what">Added to what you have already paid</span>
+        </div>
+        <div class="opt">
+          <span class="when">In March</span>
+          <span class="amt">£297</span>
+          <span class="what">The standard price to join for a year</span>
+        </div>
+      </div>
+      <p class="compare-note">You will be standing here again when the challenge ends. Same year, same support, same app &mdash; waiting just costs you <strong>£187 more</strong>.</p>
+    </div>
+
     <!-- PRICE -->
     <div class="price-block">
       <div class="label">Add a full year</div>
@@ -218,7 +251,7 @@
     <!-- REASSURANCE -->
     <div class="lead" style="margin-top: 28px;">
       <p>Your access starts <strong>today</strong>, so the rest of this year is on me. Your paid year doesn't begin until January.</p>
-      <p>No rejoining in March at full price. No deciding all over again when the challenge ends.</p>
+      <p>No deciding all over again when the challenge ends.</p>
       <p>Just <strong>one year of not doing it on your own</strong>.</p>
     </div>
 
