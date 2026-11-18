@@ -709,13 +709,17 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .recipe-wall-rows { display: flex; flex-direction: column; gap: 10px; }
   .recipe-wall-row { display: flex; gap: 10px; width: max-content; }
   .recipe-wall-row.is-offset { margin-left: -84px; }
-  .recipe-tile { width: 152px; height: 152px; flex: none; border-radius: 10px; overflow: hidden; background: var(--cream-2); box-shadow: 0 12px 24px -18px rgba(14,39,70,0.45); }
+  .recipe-cell { width: 152px; flex: none; }
+  .recipe-tile { width: 152px; height: 152px; border-radius: 10px; overflow: hidden; background: var(--cream-2); box-shadow: 0 12px 24px -18px rgba(14,39,70,0.45); }
   .recipe-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .recipe-name { margin: 8px 2px 0; font-size: 12.5px; line-height: 1.3; color: var(--navy); text-align: center; min-height: 32px; }
   .recipe-wall-names { font-size: 15.5px; line-height: 1.7; color: var(--muted); max-width: 860px; margin: 0 auto 8px; text-align: center; }
   .recipe-wall-names b { color: var(--navy); font-weight: 500; }
   .recipe-wall-count { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--navy); text-align: center; margin-top: 8px; }
   @media (max-width: 640px) {
+    .recipe-cell { width: 108px; }
     .recipe-tile { width: 108px; height: 108px; border-radius: 8px; }
+    .recipe-name { font-size: 11px; margin-top: 6px; min-height: 29px; }
     .recipe-wall-row { gap: 8px; }
     .recipe-wall-row.is-offset { margin-left: -56px; }
     .recipe-wall-names { font-size: 14.5px; }
@@ -1590,21 +1594,26 @@ function RecipeWall() {
   // Two rows, each holding every photo once, in a different order, so no tile
   // sits beside or directly above a copy of itself. Add files to assets/recipe-wall
   // and extend TILES; nothing else needs changing.
+  // n is the name shown under the tile; keep them short so they fit two lines
+  // at 108px on a phone. 06-10 are descriptions of the photo, not library names
+  // — swap them for the real recipe titles.
   const TILES = [
-    { f: '01', a: 'Steak fajita wrap' },
-    { f: '02', a: 'Strawberry overnight oats' },
-    { f: '03', a: 'Creamy chicken and broccoli pasta' },
-    { f: '04', a: 'Raspberry baked oat muffins' },
-    { f: '05', a: 'Cheeseburger gnocchi' },
-    { f: '06', a: 'Chicken with sweet potato mash and greens' },
-    { f: '07', a: 'Beef and broccoli pasta' },
-    { f: '08', a: 'Chocolate peanut butter smoothie' },
-    { f: '09', a: 'Thai chicken curry with rice' },
-    { f: '10', a: 'Beef chilli with avocado and cheese' },
+    { f: '01', n: 'Steak fajita wraps' },
+    { f: '02', n: 'Strawberry overnight oats' },
+    { f: '03', n: 'Chicken & broccoli pasta' },
+    { f: '04', n: 'Raspberry oat muffins' },
+    { f: '05', n: 'Cheeseburger gnocchi' },
+    { f: '06', n: 'Chicken & sweet potato mash' },
+    { f: '07', n: 'Beef & broccoli pasta' },
+    { f: '08', n: 'Chocolate peanut butter shake' },
+    { f: '09', n: 'Thai chicken curry' },
+    { f: '10', n: 'Beef chilli bowl' },
   ];
+  // One row while the library here is ten photos: a second row has to repeat,
+  // and a repeat is obvious once every tile carries its name. Add photos, then
+  // add a second row — [0,5,1,6,2,7,3,8,4,9] and a shuffle of the rest.
   const rows = [
     [0, 5, 1, 6, 2, 7, 3, 8, 4, 9],
-    [7, 2, 9, 4, 6, 0, 8, 3, 5, 1],
   ];
   return (
     <section className="story section" style={{ paddingTop: 56, paddingBottom: 56 }}>
@@ -1620,8 +1629,11 @@ function RecipeWall() {
           {rows.map((row, r) => (
             <div className={'recipe-wall-row' + (r ? ' is-offset' : '')} key={r}>
               {row.map((i, j) => (
-                <div className="recipe-tile" key={j}>
-                  <img src={'/assets/recipe-wall/' + TILES[i].f + '.webp'} alt={TILES[i].a} loading="lazy" decoding="async" width="320" height="320" />
+                <div className="recipe-cell" key={j}>
+                  <div className="recipe-tile">
+                    <img src={'/assets/recipe-wall/' + TILES[i].f + '.webp'} alt={TILES[i].n} loading="lazy" decoding="async" width="320" height="320" />
+                  </div>
+                  <div className="recipe-name">{TILES[i].n}</div>
                 </div>
               ))}
             </div>
@@ -1629,7 +1641,6 @@ function RecipeWall() {
         </div>
       </div>
       <div className="section-inner">
-        <p className="recipe-wall-names"><b>Steak fajita wraps</b> &middot; <b>Cheeseburger gnocchi</b> &middot; <b>Creamy chicken &amp; broccoli pasta</b> &middot; <b>Thai chicken curry</b> &middot; <b>Raspberry baked oat muffins</b> &middot; and hundreds more</p>
         <div className="recipe-wall-count">Over 500 recipes, all built to work for fat loss.</div>
       </div>
     </section>
