@@ -1613,12 +1613,18 @@ function RecipeWall() {
     { f: '11', n: 'Gnocchi & sausage bake' },
     { f: '12', n: 'Beef stew with mash' },
     { f: '13', n: 'Chicken & halloumi tagliatelle' },
+    { f: '14', n: 'Eggs & hummus bowl' },
+    { f: '15', n: 'Banana & cinnamon shake' },
+    { f: '16', n: 'Blueberry baked oats' },
+    { f: '17', n: 'Cashew turkey stir fry' },
+    { f: '18', n: 'One-pot chilli rice' },
   ];
-  // One row while the library here is ten photos: a second row has to repeat,
-  // and a repeat is obvious once every tile carries its name. Add photos, then
-  // add a second row — [0,5,1,6,2,7,3,8,4,9] and a shuffle of the rest.
+  // Eighteen photos is two rows of nine with nothing repeated. Ordered so
+  // neighbours look different — no two pastas, bowls or shakes side by side,
+  // and nothing sitting directly above its lookalike.
   const rows = [
-    [0, 5, 1, 10, 6, 2, 11, 7, 3, 12, 8, 4, 9],
+    [0, 5, 1, 10, 6, 13, 8, 3, 16],
+    [12, 7, 11, 4, 15, 2, 17, 14, 9],
   ];
   return (
     <section className="story section" style={{ paddingTop: 56, paddingBottom: 56 }}>
