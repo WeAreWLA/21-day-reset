@@ -24,6 +24,15 @@
   .wla-cart h1 { font-family: 'Libre Baskerville', serif; color: var(--navy); font-size: clamp(30px, 4vw, 44px); line-height: 1.1; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
   .wla-cart h1 .accent { color: var(--coral); font-style: italic; font-weight: 500; }
   .wla-cart .lede { font-size: 16.5px; line-height: 1.55; color: #333; margin: 0 auto; max-width: 560px; }
+  /* Price block directly under the headline, so the number is visible without
+     scrolling to the order summary. */
+  .wla-cart .price-flash { display: inline-flex; align-items: baseline; gap: 14px; flex-wrap: wrap; justify-content: center; margin: 22px auto 0; padding: 14px 26px; background: var(--navy); border-radius: 14px; }
+  .wla-cart .price-flash .pf-lab { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--coral-soft); }
+  .wla-cart .price-flash .pf-now { font-family: 'Libre Baskerville', serif; font-size: 34px; font-weight: 700; color: #fff; line-height: 1; }
+  .wla-cart .price-flash .pf-was { font-size: 14px; color: rgba(255,255,255,0.72); }
+  .wla-cart .price-flash .pf-was s { opacity: 0.85; }
+  .wla-cart .pf-note { margin: 12px auto 0; font-size: 14px; color: var(--muted); max-width: 460px; }
+  @media (max-width: 520px) { .wla-cart .price-flash { gap: 8px; padding: 14px 20px; } .wla-cart .price-flash .pf-now { font-size: 30px; } }
 
   /* Order summary card */
   .wla-cart .order-card { background: var(--paper); border: 1px solid rgba(14,39,70,0.10); border-radius: 18px; padding: 32px 36px; box-shadow: 0 24px 50px -28px rgba(14,39,70,0.22); margin-bottom: 28px; }
@@ -109,9 +118,15 @@
 
     <!-- HERO -->
     <div class="hero">
-      <div class="pill">✦ Only £37 for the first 100 women to join ✦</div>
-      <h1 class="serif">You're joining the<br /><span class="accent">WLA 8 Week January Challenge</span></h1>
-      <p class="lede">Plus <strong>instant access today</strong>. A one-off Black Friday price of <strong>£37</strong> (normally £197) for 8 weeks of coaching in January, with the WLA app, meal guides, recipes and coaching available from the moment you join.</p>
+      <div class="pill">✦ Black Friday Promo ✦</div>
+      <h1 class="serif">Join the January 8-Week Challenge<br /><span class="accent">+ get the rest of 2026 free</span></h1>
+      <p class="lede">Instant access to the WLA App from the moment you join — the app, meal guides, recipes and coaching are yours for the rest of this year, then the 8 week challenge starts on Monday 11th January.</p>
+      <div class="price-flash">
+        <span class="pf-lab">You pay today</span>
+        <span class="pf-now">£37</span>
+        <span class="pf-was">normally <s>£197</s></span>
+      </div>
+      <p class="pf-note">First 100 places at £37. The price goes up once they're filled.</p>
     </div>
 
     <!-- ORDER SUMMARY -->
