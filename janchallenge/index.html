@@ -700,6 +700,27 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* What you receive - vertical stack of cards */
   .receive { padding: 96px 28px; background: var(--cream); border-top: 1px solid rgba(14,39,70,0.06); }
   .receive-inner { max-width: 920px; margin: 0 auto; }
+  /* Recipe wall: a full-bleed band of tiles that runs off both edges, so it
+     reads as a fragment of a much bigger library rather than a tidy gallery.
+     Rows are wider than the viewport by design; .recipe-wall clips them. */
+  /* Negative margins cancel .section's horizontal padding so the band reaches
+     both screen edges; they track the 28px/22px padding at each breakpoint. */
+  .recipe-wall { overflow: hidden; margin: 0 -28px 26px; }
+  .recipe-wall-rows { display: flex; flex-direction: column; gap: 10px; }
+  .recipe-wall-row { display: flex; gap: 10px; width: max-content; }
+  .recipe-wall-row.is-offset { margin-left: -84px; }
+  .recipe-tile { width: 152px; height: 152px; flex: none; border-radius: 10px; overflow: hidden; background: var(--cream-2); box-shadow: 0 12px 24px -18px rgba(14,39,70,0.45); }
+  .recipe-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .recipe-wall-names { font-size: 15.5px; line-height: 1.7; color: var(--muted); max-width: 860px; margin: 0 auto 8px; text-align: center; }
+  .recipe-wall-names b { color: var(--navy); font-weight: 500; }
+  .recipe-wall-count { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 19px; color: var(--navy); text-align: center; margin-top: 8px; }
+  @media (max-width: 640px) {
+    .recipe-tile { width: 108px; height: 108px; border-radius: 8px; }
+    .recipe-wall-row { gap: 8px; }
+    .recipe-wall-row.is-offset { margin-left: -56px; }
+    .recipe-wall-names { font-size: 14.5px; }
+    .recipe-wall-count { font-size: 17px; }
+  }
   .receive-grid { display: grid; gap: 18px; margin-bottom: 36px; }
   .receive-grid.two-col { grid-template-columns: repeat(2, 1fr); }
   .receive-grid.two-col .receive-card.span-2 { grid-column: 1 / -1; }
@@ -940,6 +961,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   /* Global section spacing tweaks on mobile */
   @media (max-width: 880px) {
     .section, .story, .reason, .explainer, .challenge, .receive, .app, .coming, .compare, .limited, .final-cta, .faq { padding: 64px 22px; }
+    .recipe-wall { margin-left: -22px; margin-right: -22px; }
   }
 </style>
 </head>
@@ -1559,6 +1581,56 @@ function AppClips() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function RecipeWall() {
+  // Two rows, each holding every photo once, in a different order, so no tile
+  // sits beside or directly above a copy of itself. Add files to assets/recipe-wall
+  // and extend TILES; nothing else needs changing.
+  const TILES = [
+    { f: '01', a: 'Steak fajita wrap' },
+    { f: '02', a: 'Strawberry overnight oats' },
+    { f: '03', a: 'Creamy chicken and broccoli pasta' },
+    { f: '04', a: 'Raspberry baked oat muffins' },
+    { f: '05', a: 'Cheeseburger gnocchi' },
+    { f: '06', a: 'Chicken with sweet potato mash and greens' },
+    { f: '07', a: 'Beef and broccoli pasta' },
+    { f: '08', a: 'Chocolate peanut butter smoothie' },
+    { f: '09', a: 'Thai chicken curry with rice' },
+    { f: '10', a: 'Beef chilli with avocado and cheese' },
+  ];
+  const rows = [
+    [0, 5, 1, 6, 2, 7, 3, 8, 4, 9],
+    [7, 2, 9, 4, 6, 0, 8, 3, 5, 1],
+  ];
+  return (
+    <section className="story section" style={{ paddingTop: 56, paddingBottom: 56 }}>
+      <div className="section-inner">
+        <div className="section-head">
+          <span className="eyebrow">What You'll Actually Be Eating</span>
+          <h2 className="serif">No weighing. No sad salads.<br/><em>Just food you'd eat anyway.</em></h2>
+          <p>A new meal guide every Friday, and a library you can search whenever you need a quick dinner or something the whole family will eat.</p>
+        </div>
+      </div>
+      <div className="recipe-wall">
+        <div className="recipe-wall-rows">
+          {rows.map((row, r) => (
+            <div className={'recipe-wall-row' + (r ? ' is-offset' : '')} key={r}>
+              {row.map((i, j) => (
+                <div className="recipe-tile" key={j}>
+                  <img src={'/assets/recipe-wall/' + TILES[i].f + '.webp'} alt={TILES[i].a} loading="lazy" decoding="async" width="320" height="320" />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="section-inner">
+        <p className="recipe-wall-names"><b>Steak fajita wraps</b> &middot; <b>Cheeseburger gnocchi</b> &middot; <b>Creamy chicken &amp; broccoli pasta</b> &middot; <b>Thai chicken curry</b> &middot; <b>Raspberry baked oat muffins</b> &middot; and hundreds more</p>
+        <div className="recipe-wall-count">Over 500 recipes, all built to work for fat loss.</div>
       </div>
     </section>
   );
@@ -2223,6 +2295,7 @@ function Page() {
       <EightWeekTimeline />
       <HowItWorks />
       <WhatsIncluded />
+      <RecipeWall />
       <AppGallery />
       <AppClips />
       <WomanWhoKeepsItOff />
