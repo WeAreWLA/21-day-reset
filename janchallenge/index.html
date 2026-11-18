@@ -782,6 +782,9 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
     /* The pill wraps to two lines here, so square it off a little. */
     .offer-block .offer-note { font-size: 14px; padding: 12px 20px; border-radius: 20px; }
   }
+  .inline-cta { text-align: center; margin-top: 30px; }
+  .inline-cta-note { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 18px; color: var(--navy); margin: 0 0 16px; }
+  .inline-cta-foot { margin-top: 12px; font-size: 13.5px; color: var(--muted); }
   .receive-cta-wrap { text-align: center; margin-top: 24px; }
   .receive-pricing { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 20px; color: var(--navy); margin-bottom: 32px; }
   .receive-pricing strong { color: var(--coral); font-style: normal; font-weight: 700; }
@@ -1679,8 +1682,7 @@ function WhatsIncluded() {
           <div className="offer-card">
             <ul className="offer-stack">
               <li><span className="offer-tick">✔</span><span>The WLA <strong>8 Week January Challenge</strong></span></li>
-              <li><span className="offer-tick">✔</span><span><strong>Instant Access Today</strong> to coaching, meal guides &amp; recipes</span></li>
-              <li><span className="offer-tick">✔</span><span><strong>Instant Access</strong> to the WLA app</span></li>
+              <li><span className="offer-tick">✔</span><span><strong>Instant Access Today</strong> to the WLA app, coaching, meal guides &amp; recipes</span></li>
             </ul>
             <div className="offer-price">
               <span className="offer-was">normally <s>£197</s></span>
@@ -1980,7 +1982,6 @@ function WhyJoinNow() {
           <div className="why-now-box"><div className="why-now-lab">Feel</div><div className="why-now-num">Confident</div></div>
         </div>
 
-        <p style={{ textAlign: 'center', maxWidth: 760, margin: '28px auto 0' }}>And because you get <strong>instant access</strong>, you can use the app, weekly meal guides, recipes and live coaching from today, long before the <strong>January Challenge</strong> starts.</p>
 
         <div className="story-callout" style={{ maxWidth: 980, margin: '28px auto 0' }}>
           <strong>Only £37 for the first 100 women to join.</strong>
@@ -1988,6 +1989,16 @@ function WhyJoinNow() {
         </div>
       </div>
     </section>
+  );
+}
+
+function InlineCTA({ note, foot = '7-day risk-free guarantee \u00b7 one payment, no subscription' }) {
+  return (
+    <div className="inline-cta">
+      {note && <p className="inline-cta-note">{note}</p>}
+      <a href={CHECKOUT_URL} className="receive-cta-btn">Claim My Place &mdash; &pound;37 <Arrow /></a>
+      <div className="inline-cta-foot">{foot}</div>
+    </div>
   );
 }
 
@@ -2008,6 +2019,7 @@ function GuaranteeSection() {
           <p>If you genuinely feel it's not for you, simply email us for a <strong>full refund</strong>.</p>
           <p>No awkward conversations. No questions asked.</p>
           <p className="g-close">You have absolutely nothing to lose by trying.</p>
+          <InlineCTA foot={'One payment of \u00a337. No subscription.'} />
         </div>
       </div>
     </section>
@@ -2078,6 +2090,7 @@ function VideoTestimonials() {
           </div>
         ))}
       </div>
+      <InlineCTA note="Join them on Monday 11th January." />
     </section>
   );
 }
@@ -2099,7 +2112,7 @@ function FAQ() {
   const qs = [
     { q: 'When does it start?',
       a: 'Today! Your access starts the moment you join, so you can use the WLA app, meal guides, recipes and coaching straight away. The 8 Week Challenge itself kicks off on Monday 11th January.' },
-    { q: 'How long is the program?',
+    { q: 'How long is the challenge?',
       a: '8 weeks, starting Monday 11th January. But with this Black Friday promo you get instant access the day you join, so you can start straight away, all for just £37.' },
     { q: 'Do you have a refund policy?',
       a: "I'm so confident this can help you reach your goals that we have a rock-solid 7-day try-it-out option. If you implement (yes, you have to do the work) and decide it's not for you, get your fee back, no questions asked." },
@@ -2114,13 +2127,13 @@ function FAQ() {
     { q: 'Concerned about cost?',
       a: "We've got you covered with our budgeting tips. Planning your meals actually decreases the cost of your groceries, you don't run into the supermarket daily picking up random foods. You'll already have most of the staples in your cupboard, it's just regular food. If any ingredient feels too costly, leave it out or swap it." },
     { q: "I can't do a lot of exercise…",
-      a: "Not a problem. Your fat-loss results mostly come down to what you're eating. Yes, around 80% nutrition. If you have an existing exercise routine, keep it going alongside the program. If you're not currently exercising, let's just focus on your nutrition for maximum results." },
+      a: "Not a problem. Your fat-loss results mostly come down to what you're eating. Yes, around 80% nutrition. If you have an existing exercise routine, keep it going alongside the challenge. If you're not currently exercising, let's just focus on your nutrition for maximum results." },
     { q: "I'm a fussy eater…",
       a: "Every single recipe in The Weight Loss & Lifestyle Academy can be adjusted. If you love flavour, keep the recipes pimped up. If you prefer food that's more bland, leave out spices, flavours and herbs. Total flexibility." },
     { q: 'I need to feed my family…',
       a: "Use the meal guides with your family, just increase portion sizes and we can support you with that in our coaching group. The recipes are family-friendly. Any recipes you don't like, leave out and swap with others." },
     { q: "Will I get Anna's hands-on support?",
-      a: "Yes. This is the only coaching program where you get direct, live coaching and support from Anna herself. You'll have the chance to ask questions, get personalised feedback, and stay on track every step of the way. Anna's proven strategies, accountability and encouragement will keep you motivated, focused and moving toward your goals, no more trying to figure it out alone." },
+      a: "Yes. You get direct, live coaching and support from Anna herself. You'll have the chance to ask questions, get personalised feedback, and stay on track every step of the way. Anna's proven strategies, accountability and encouragement will keep you motivated, focused and moving toward your goals, no more trying to figure it out alone." },
   ];
   return (
     <section className="faq" id="faq">
