@@ -50,8 +50,10 @@
   .wla-cart .order-head .meta { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 
   /* Item list */
-  .wla-cart .items { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-  .wla-cart .items li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; font-size: 14.5px; color: var(--navy); line-height: 1.4; padding: 4px 0; }
+  /* Two per line: the same twelve features the sales page lists, in the same
+     words and the same order, so nothing changes name between page and cart. */
+  .wla-cart .items { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 26px; }
+  .wla-cart .items li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; font-size: 14.5px; color: var(--navy); line-height: 1.4; padding: 4px 0; }
   .wla-cart .items li .check { width: 18px; height: 18px; border-radius: 50%; background: rgba(46,125,91,0.14); color: var(--ok); display: grid; place-items: center; margin-top: 2px; }
   .wla-cart .items li .check svg { width: 10px; height: 10px; stroke: var(--ok); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .wla-cart .items li .name { line-height: 1.4; }
@@ -115,12 +117,16 @@
   .wla-cart .disclaimer { margin: 6px 0 0; text-align: center; font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em; }
   @media (max-width: 640px) { .wla-cart .carousel-track { grid-auto-columns: calc((100% - 12px) / 2); } .wla-cart .carousel-nav.prev { left: -6px; } .wla-cart .carousel-nav.next { right: -6px; } }
 
+  /* The feature labels are short, so two columns hold well below the general
+     mobile breakpoint. ThriveCart's column is often around 640px wide, and
+     collapsing to one there would make the card needlessly long. */
+  @media (max-width: 470px) { .wla-cart .items { grid-template-columns: 1fr; } }
+
   /* Mobile */
   @media (max-width: 640px) {
     .wla-cart { padding: 28px 16px; }
     .wla-cart .order-card { padding: 22px 20px; }
     .wla-cart .order-head { flex-direction: column; align-items: flex-start; gap: 4px; }
-    .wla-cart .items li { grid-template-columns: 20px 1fr; }
     .wla-cart .trust { grid-template-columns: 1fr; gap: 12px; }
   }
 </style>
@@ -149,19 +155,18 @@
       </div>
 
       <ul class="items">
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The 8 Week WLA January Challenge</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Monthly Accountability + Results Tracker</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">New Recipes Added Every Week</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">New Fat Loss Meal Guide Dropped Every Friday</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Weekly LIVE Coaching Sessions With Anna</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Daily Coaching &amp; Accountability Support</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Female-Only WLA Community</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To WLA Resets &amp; Challenges</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Nutrition Formula Masterclass</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To The WLA Recipe Collection (500+ recipes)</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">WLA Movement Classes With Linda</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">WLA Nutrition &amp; Lifestyle Guides</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Instant Access To The WLA App</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Daily Tracker</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Your Personalised Meal Planner</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">A Fresh Meal Guide Every Friday</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Smart Shopping Lists</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">500+ WLA Recipes</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Your Progress Tracker</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Maintenance Mode</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Community</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Forum</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The Private WLA Podcast</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Toolkit</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Weekly Live Zoom Coaching</span></li>
       </ul>
 
       <div class="totals">
