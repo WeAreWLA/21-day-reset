@@ -985,9 +985,9 @@ const { useState, useEffect, useRef, useCallback } = React;
 
 const CHECKOUT_URL = 'https://sales.thewlacademy.com/summer-challenge/';
 
-// Black Friday deadline. Change these two lines to move the end of the offer:
-// the countdown and every "ends ..." line on the page read from them.
-// (cart-content.html has the same date written out by hand.)
+// The promo has no end date. It runs until the 100 places are filled, so there
+// is no deadline constant here and the banner does not count down. If a real
+// closing date is ever set, add it here and say it in words on the page too.
 
 // Countdown numbers in the top banner. Off for now; set to true to bring the timer back.
 
