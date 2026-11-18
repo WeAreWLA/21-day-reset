@@ -515,6 +515,19 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   @media (max-width: 720px) { .keeps-list { grid-template-columns: 1fr; } }
 
   /* 12 Week Timeline */
+  /* The January drop-off: deliberately the 8 week timeline's shape with the
+     colour taken out, so the arc she has lived reads against the one she is
+     buying further down the page. */
+  .drop-lead { text-align: center; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(18px, 2vw, 21px); color: var(--navy); margin: 30px 0 20px; }
+  .drop-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 8px; }
+  .drop-col { background: var(--paper); border: 1px solid rgba(14,39,70,0.1); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 14px 28px -24px rgba(14,39,70,0.2); }
+  .drop-col-head { background: rgba(14,39,70,0.62); color: #fff; font-family: "Alegreya Sans", sans-serif; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; font-size: 13px; text-align: center; padding: 13px 10px; }
+  .drop-col.is-end .drop-col-head { background: var(--navy); }
+  .drop-col.is-end { background: var(--cream-2); }
+  .drop-body { padding: 20px 20px 22px; font-size: 16px; line-height: 1.45; color: var(--navy); flex: 1; }
+  @media (max-width: 900px) { .drop-cols { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .drop-cols { grid-template-columns: 1fr; } }
+
   .timeline-section { background: var(--cream); }
   .timeline-inner { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
   .timeline-title { font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 4vw, 46px); color: var(--navy); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; text-align: center; margin: 0 0 36px; }
@@ -1728,7 +1741,26 @@ function TheRealityIs() {
         </div>
 
         <p>You already have everything you need. The cookbooks. The gym membership. The plan saved on your phone. You could write the plan yourself.</p>
-        <p>What runs out is momentum. The newness wears off, work gets busy, one bad evening turns into a bad week, and the plan quietly stops. By the end of the month you're back where you started, frustrated, because you wanted it badly enough. You just couldn't keep it going long enough to see it work.</p>
+        <p className="drop-lead">What runs out isn't knowledge. It's momentum.</p>
+
+        <div className="drop-cols">
+          <div className="drop-col">
+            <div className="drop-col-head">Week 1</div>
+            <div className="drop-body">Motivated. The fridge is full, the plan is on your phone and you feel brilliant.</div>
+          </div>
+          <div className="drop-col">
+            <div className="drop-col-head">Week 2</div>
+            <div className="drop-body">Still going, but it's taking more effort than it did a week ago.</div>
+          </div>
+          <div className="drop-col">
+            <div className="drop-col-head">Week 3</div>
+            <div className="drop-body">Work gets busy. One bad evening turns into a bad week, and the plan quietly stops.</div>
+          </div>
+          <div className="drop-col is-end">
+            <div className="drop-col-head">End of January</div>
+            <div className="drop-body">Back where you started, frustrated, because you did want it badly enough.</div>
+          </div>
+        </div>
 
         <div className="story-callout">
           <strong>Here's what 11+ years and 50,000+ clients have taught us.</strong>
