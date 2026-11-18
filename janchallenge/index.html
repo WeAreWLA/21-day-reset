@@ -1618,13 +1618,18 @@ function RecipeWall() {
     { f: '16', n: 'Blueberry baked oats' },
     { f: '17', n: 'Cashew turkey stir fry' },
     { f: '18', n: 'One-pot chilli rice' },
+    { f: '19', n: 'Lentil bolognese' },
+    { f: '20', n: 'Sweet potato & ricotta bowl' },
+    { f: '21', n: 'Chicken & broccoli farfalle' },
+    { f: '22', n: 'Chicken & potato curry' },
   ];
-  // Eighteen photos is two rows of nine with nothing repeated. Ordered so
-  // neighbours look different — no two pastas, bowls or shakes side by side,
-  // and nothing sitting directly above its lookalike.
+  // Twenty-two photos is two rows of eleven with nothing repeated. Ordered so
+  // neighbours look different — the five pasta dishes are spread three and
+  // two across the rows and never adjacent, the two shakes sit at opposite
+  // ends, and no tile sits directly above its lookalike.
   const rows = [
-    [0, 5, 1, 10, 6, 13, 8, 3, 16],
-    [12, 7, 11, 4, 15, 2, 17, 14, 9],
+    [0, 5, 1, 10, 6, 13, 8, 3, 16, 18, 19],
+    [12, 7, 11, 2, 15, 4, 9, 14, 20, 21, 17],
   ];
   return (
     <section className="story section" style={{ paddingTop: 56, paddingBottom: 56 }}>
