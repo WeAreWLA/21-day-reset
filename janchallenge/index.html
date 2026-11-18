@@ -1610,12 +1610,15 @@ function RecipeWall() {
     { f: '08', n: 'Chocolate peanut butter shake' },
     { f: '09', n: 'Thai chicken curry' },
     { f: '10', n: 'Beef chilli bowl' },
+    { f: '11', n: 'Gnocchi & sausage bake' },
+    { f: '12', n: 'Beef stew with mash' },
+    { f: '13', n: 'Chicken & halloumi tagliatelle' },
   ];
   // One row while the library here is ten photos: a second row has to repeat,
   // and a repeat is obvious once every tile carries its name. Add photos, then
   // add a second row — [0,5,1,6,2,7,3,8,4,9] and a shuffle of the rest.
   const rows = [
-    [0, 5, 1, 6, 2, 7, 3, 8, 4, 9],
+    [0, 5, 1, 10, 6, 2, 11, 7, 3, 12, 8, 4, 9],
   ];
   return (
     <section className="story section" style={{ paddingTop: 56, paddingBottom: 56 }}>
