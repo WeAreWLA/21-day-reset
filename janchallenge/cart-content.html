@@ -51,11 +51,10 @@
 
   /* Item list */
   .wla-cart .items { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-  .wla-cart .items li { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: start; font-size: 14.5px; color: var(--navy); line-height: 1.4; padding: 4px 0; }
+  .wla-cart .items li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; font-size: 14.5px; color: var(--navy); line-height: 1.4; padding: 4px 0; }
   .wla-cart .items li .check { width: 18px; height: 18px; border-radius: 50%; background: rgba(46,125,91,0.14); color: var(--ok); display: grid; place-items: center; margin-top: 2px; }
   .wla-cart .items li .check svg { width: 10px; height: 10px; stroke: var(--ok); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .wla-cart .items li .name { line-height: 1.4; }
-  .wla-cart .items li .value { font-family: 'Libre Baskerville', serif; font-weight: 700; color: #003060; font-size: 13.5px; padding: 3px 10px; border-radius: 999px; background: rgba(14,48,96,0.08); white-space: nowrap; }
 
   /* Total summary */
   .wla-cart .totals { margin-top: 22px; padding-top: 22px; border-top: 1px solid rgba(14,39,70,0.08); }
@@ -66,6 +65,8 @@
   .wla-cart .total-row.you-pay .price { font-size: 38px; color: #003060; line-height: 1; letter-spacing: -0.01em; }
   .wla-cart .total-row.you-pay .price .currency { font-size: 22px; vertical-align: top; color: var(--coral); font-style: italic; font-weight: 500; margin-right: 2px; }
   .wla-cart .total-row.you-pay .term { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .wla-cart .per-week { margin: 14px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+  .wla-cart .per-week strong { color: var(--navy); }
 
   /* Scarcity strip */
   .wla-cart .scarcity { display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: center; padding: 18px 22px; background: var(--cream-2); border-left: 4px solid var(--coral); border-radius: 12px; margin-bottom: 24px; }
@@ -120,7 +121,6 @@
     .wla-cart .order-card { padding: 22px 20px; }
     .wla-cart .order-head { flex-direction: column; align-items: flex-start; gap: 4px; }
     .wla-cart .items li { grid-template-columns: 20px 1fr; }
-    .wla-cart .items li .value { grid-column: 2; justify-self: start; margin-top: 2px; }
     .wla-cart .trust { grid-template-columns: 1fr; gap: 12px; }
   }
 </style>
@@ -149,27 +149,28 @@
       </div>
 
       <ul class="items">
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The 8 Week WLA January Challenge</span><span class="value">£147</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Monthly Accountability + Results Tracker</span><span class="value">£97</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">New Recipes Added Every Week</span><span class="value">£297</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">New Fat Loss Meal Guide Dropped Every Friday</span><span class="value">£397</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Weekly LIVE Coaching Sessions With Anna</span><span class="value">£1,997</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Daily Coaching &amp; Accountability Support</span><span class="value">£997</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Female-Only WLA Community</span><span class="value">£997</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To WLA Resets &amp; Challenges</span><span class="value">£497</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Nutrition Formula Masterclass</span><span class="value">£197</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To The WLA Recipe Collection (500+ recipes)</span><span class="value">£197</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">WLA Movement Classes With Linda</span><span class="value">£297</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">WLA Nutrition &amp; Lifestyle Guides</span><span class="value">£27</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Instant Access To The WLA App</span><span class="value">£297</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The 8 Week WLA January Challenge</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Monthly Accountability + Results Tracker</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">New Recipes Added Every Week</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">New Fat Loss Meal Guide Dropped Every Friday</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Weekly LIVE Coaching Sessions With Anna</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Daily Coaching &amp; Accountability Support</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Female-Only WLA Community</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To WLA Resets &amp; Challenges</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">The WLA Nutrition Formula Masterclass</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Access To The WLA Recipe Collection (500+ recipes)</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">WLA Movement Classes With Linda</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">WLA Nutrition &amp; Lifestyle Guides</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="4 12.5 10 18 20 6.5" /></svg></span><span class="name">Instant Access To The WLA App</span></li>
       </ul>
 
       <div class="totals">
-        <div class="total-row line"><span>Total Value</span><span><s>£6,441+</s></span></div>
+        <div class="total-row line"><span>Normal price</span><span><s>£197</s></span></div>
         <div class="total-row you-pay">
           <span>You pay today</span>
           <span class="price"><span class="currency">£</span>37<span class="term"> one-off</span></span>
         </div>
+        <p class="per-week">That is <strong>34p a day</strong> for everything above, from today right through to the end of the challenge on 8th March.</p>
       </div>
     </div>
 
