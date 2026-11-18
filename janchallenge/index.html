@@ -1819,26 +1819,28 @@ function TheRealityIs() {
 
 function WhyTheChallengeWorks() {
   const pillars = [
-    { ic: <IcCommunity />, t: 'You all start on the same day',
+    { ic: <IcCalendar />,  t: 'You have a start date',
       d: 'Monday 11th January, together. The same weeks, the same finish line, and one goal to work towards: lose up to a stone. Nobody drifting off on their own timetable.' },
-    { ic: <IcFork />,      t: 'It never feels like a diet',
-      d: 'A new meal guide every Friday and 500+ recipes you will actually look forward to. Family dinners, proper lunches, fakeaway favourites \u2014 the food you already love, balanced so it works for you instead of against you.' },
+    { ic: <IcFork />,      t: 'No boring diet food',
+      d: 'A new meal guide every Friday and access to over 500 recipes you will actually love. Weight loss is easy when you enjoy your meals. Family dinners, proper lunches, fakeaway favourites \u2014 the food you already love, balanced for fat loss so it works for you instead of against you.' },
+    { ic: <IcCoach />,     t: 'You get help with the moments that usually trip you up',
+      d: 'Afternoon grazing. Weekends that undo your routine. One difficult day that turns into a week of giving up. Weekly live coaching with Anna and daily support from the team give you somewhere to work through these situations and decide what to do next.' },
     { ic: <IcPhone />,     t: 'You see what is actually working',
-      d: 'The WLA Daily Tracker puts your food alongside your sleep, stress and movement, so you can spot the patterns behind your hunger. No counting calories. Staying motivated is easy when you can see progress.' },
-    { ic: <IcCoach />,     t: 'A daily check-in that keeps you consistent',
-      d: 'Log what you have done each day on the accountability thread. One minute, every day \u2014 the small habit that holds it together once the motivation fades. Weekly live coaching with Anna and daily support from the team behind it.' },
+      d: 'The WLA Daily Tracker puts your food alongside your sleep, stress and movement, so you can spot the patterns behind your hunger. No counting calories \u2014 just seeing it work, which is what keeps you going.' },
+    { ic: <IcCommunity />, t: 'A daily check-in that keeps you consistent',
+      d: 'Log what you have done each day on the accountability thread. One minute, every day \u2014 the small habit that holds it together once the motivation fades.' },
   ];
   return (
     <section className="receive" style={{ background: 'var(--cream-2)', paddingTop: 64, paddingBottom: 64 }}>
       <div className="receive-inner">
         <div className="section-head">
           <span className="eyebrow">Why The January Challenge Works</span>
-          <h2 className="serif">Built to keep you<br/><em>consistent for 8 weeks.</em></h2>
-          <p>Four things turn a January start into a January finish. The challenge is built on all four, so this time you don't just start. You keep going.</p>
+          <h2 className="serif">Built to get you results,<br/><em>not just another fresh start.</em></h2>
+          <p>A clear, simple fat loss approach, the weekly tools to put it into practice, and the support to keep it going &mdash; even when January motivation wears off.</p>
         </div>
         <div className="receive-grid two-col">
           {pillars.map((it, i) => (
-            <div className="receive-card" key={i}>
+            <div className={'receive-card' + (i === pillars.length - 1 && pillars.length % 2 === 1 ? ' span-2' : '')} key={i}>
               <div className="check-ic">{it.ic}</div>
               <div>
                 <h3>{it.t}</h3>
