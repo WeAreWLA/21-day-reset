@@ -35,7 +35,10 @@
   .wla-upsell .urgency .note { display: block; margin-top: 4px; font-weight: 700; text-transform: none; letter-spacing: 0.02em; font-size: 13px; color: rgba(0,48,96,0.85); font-family: 'Libre Baskerville', serif; font-style: italic; }
   .wla-upsell .urgency .u-wait { display: block; font-size: clamp(15px, 1.9vw, 19px); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 6px; }
   .wla-upsell .urgency .u-main { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; text-transform: none; letter-spacing: 0; font-size: clamp(19px, 2.9vw, 31px); line-height: 1.25; }
-  .wla-upsell .urgency .u-main strong { font-weight: 700; box-shadow: inset 0 -0.42em 0 rgba(255,255,255,0.55); }
+  /* One loud thing only. 'all of 2027' keeps a soft highlight; the price gets
+     the white chip, because the price is what she is deciding about. */
+  .wla-upsell .urgency .u-main strong { font-weight: 700; box-shadow: inset 0 -0.34em 0 rgba(255,255,255,0.45); }
+  .wla-upsell .urgency .u-price { display: inline-block; background: #fff; color: var(--navy); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 1.32em; line-height: 1; padding: 0.14em 0.4em 0.2em; border-radius: 10px; margin-left: 2px; box-shadow: 0 6px 16px -8px rgba(14,39,70,0.5); }
   @media (max-width: 620px) { .wla-upsell .urgency .u-br { display: none; } }
   /* Confirmation first: she has already paid, so reassure before asking again. */
   /* ThriveCart sets text-align on h1, p, div and span, and a rule on the element
@@ -176,7 +179,7 @@
     <!-- URGENCY BANNER -->
     <div class="urgency">
       <span class="u-wait">Wait!</span>
-      <span class="u-main">Upgrade your WLA access for <strong>all of 2027</strong><br class="u-br" /> for only an extra <strong>£110</strong></span>
+      <span class="u-main">Upgrade your WLA access for <strong>all of 2027</strong><br class="u-br" /> for only an extra <span class="u-price">£110</span></span>
       <span class="note">normally £297</span>
     </div>
 
