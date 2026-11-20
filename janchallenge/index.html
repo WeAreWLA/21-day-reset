@@ -983,7 +983,7 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
-const CHECKOUT_URL = 'https://sales.thewlacademy.com/summer-challenge/';
+const CHECKOUT_URL = 'https://sales.thewlacademy.com/janchallenge/';
 
 // The promo has no end date. It runs until the 100 places are filled, so there
 // is no deadline constant here and the banner does not count down. If a real
@@ -992,6 +992,9 @@ const CHECKOUT_URL = 'https://sales.thewlacademy.com/summer-challenge/';
 // Countdown numbers in the top banner. Off for now; set to true to bring the timer back.
 
 // PayPal checkout (NCP / "No-Code" payment link from the founding-member offer)
+// TODO: this PayPal link is shared with summer-challenge, founding-members and
+// summer-challenge-preview. It is not a January Challenge link and the amount
+// it charges is not £37. Replace it before relying on the PayPal buttons.
 const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2AX2J47CZPLKA';
 
 const Arrow = ({ className = 'arrow' }) => (
