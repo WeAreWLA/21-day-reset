@@ -155,13 +155,13 @@
   /* Closing price block */
   .wla-upsell .price-block { margin-top: 44px; padding: 36px 40px; background: var(--navy); color: #fff; border-radius: 18px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 28px 56px -28px rgba(14,39,70,0.38); }
   .wla-upsell .price-block::before { content: ''; position: absolute; top: -100px; right: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(229,145,122,0.28), transparent 65%); pointer-events: none; }
-  .wla-upsell .price-block .label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral-soft); font-weight: 700; margin-bottom: 12px; position: relative; z-index: 1; }
   .wla-upsell .price-block .name { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; margin: 0 0 14px; color: #fff; position: relative; z-index: 1; }
-  /* Sits under the headline and above the number: it says what the GBP110 is
-     and, just as importantly, that it is being added to an order rather than
-     charged on its own. */
-  .wla-upsell .price-block .name-sub { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.80); margin: -4px 0 16px; position: relative; z-index: 1; }
-  .wla-upsell .price-block .name-sub strong { color: #fff; font-weight: 700; }
+  /* "extra today" sits beside the number, not inside it: without its own size
+     it inherits the 72px price and reads as one giant run-on word. */
+  .wla-upsell .price-block .price-suffix { display: inline-block; margin-left: 12px; font-family: "Alegreya Sans", sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 0.02em; color: var(--coral-soft); }
+  .wla-upsell .price-block .tl-sum { display: block; font-size: 18px; margin-bottom: 14px; }
+  .wla-upsell .price-block .tl-p { display: block; font-size: 16px; line-height: 1.6; margin-bottom: 10px; }
+  .wla-upsell .price-block .tl-p:last-child { margin-bottom: 0; }
   .wla-upsell .price-block .price { font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 6vw, 72px); font-weight: 700; line-height: 1; color: #fff; position: relative; z-index: 1; }
   .wla-upsell .price-block .price .currency { color: var(--coral-soft); font-style: italic; font-weight: 500; font-size: 0.55em; vertical-align: top; margin-right: 4px; }
   .wla-upsell .price-block .total-line { display: block; margin-top: 16px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 17px; color: rgba(244,235,220,0.92); position: relative; z-index: 1; line-height: 1.45; }
@@ -282,14 +282,12 @@
 
     <!-- PRICE -->
     <div class="price-block">
-      <div class="label">Add a full year</div>
-      <div class="name">One more decision, and all of 2027 is handled</div>
-      <div class="name-sub">for an extra <strong>£110</strong> added to your challenge order</div>
-      <div class="price"><span class="currency">£</span>110</div>
+      <div class="name">Add WLA App access for all of 2027</div>
+      <div class="price"><span class="currency">£</span>110<span class="price-suffix">extra today</span></div>
       <span class="total-line">
-        £37 for the challenge + £110 for the year = <strong>£147 charged today</strong><br />
-        Just over <strong>40p a day</strong> across 2027, including your challenge, and the rest of 2026 free on top.<br />
-        Join for a year later instead and it is £297 on its own — waiting costs you <strong>£187 more</strong>.
+        <span class="tl-sum">£37 for your January Challenge + £110 for the upgrade = <strong>£147 total</strong>.</span>
+        <span class="tl-p">That works out at just over <strong>40p a day</strong> across 2027, including your January Challenge. You&rsquo;ll also get app access for the rest of 2026 free.</span>
+        <span class="tl-p">Annual app access usually costs £297. Add it to your challenge order today for £110 and <strong>save £187</strong> on the upgrade.</span>
       </span>
       <span class="scarcity">This page will not appear again</span>
     </div>
