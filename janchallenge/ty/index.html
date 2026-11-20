@@ -82,6 +82,12 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .steps li .desc { font-size: 15px; line-height: 1.55; color: #333333; }
   .steps li .desc strong { color: var(--navy); }
 
+  /* The group link is the one thing on this page she has to click, so it is a
+     button inside the step rather than a link buried in the sentence. */
+  .group-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 14px; padding: 14px 26px; background: var(--navy); color: #fff; border-radius: 999px; font-weight: 700; font-size: 16px; line-height: 1.25; text-decoration: none; box-shadow: 0 16px 30px -18px rgba(14,39,70,0.6); transition: background .15s, transform .15s; }
+  .group-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
+  .group-btn .gb-arrow { font-size: 18px; line-height: 1; }
+  @media (max-width: 480px) { .group-btn { font-size: 15px; padding: 14px 20px; } }
   .small-print { font-size: 15px; color: var(--muted); text-align: center; margin-top: 36px; line-height: 1.6; }
   .small-print a { color: var(--coral); }
   .small-print a:hover { text-decoration: underline; }
@@ -115,8 +121,15 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   </div>
 
   <div class="steps">
-    <h2>Your next 2 steps</h2>
+    <h2>Your next 3 steps</h2>
     <ol>
+      <li>
+        <div>
+          <div class="title">Join the WLA coaching group</div>
+          <div class="desc">This is where the daily accountability, the coaching and the rest of the women are. Join now so you are in before the challenge starts.</div>
+          <a class="group-btn" href="https://www.facebook.com/groups/446785765084694" target="_blank" rel="noopener">Join The WLA Coaching Group Here <span class="gb-arrow">&rarr;</span></a>
+        </div>
+      </li>
       <li>
         <div>
           <div class="title">Open your welcome email and whitelist us</div>
