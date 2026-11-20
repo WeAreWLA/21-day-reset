@@ -35,11 +35,12 @@
   @keyframes urgSheen { 0% { left: -40%; } 60% { left: 120%; } 100% { left: 120%; } }
   .wla-upsell .urgency > * { position: relative; z-index: 1; }
   .wla-upsell .urgency .note { display: block; margin-top: 4px; font-weight: 700; text-transform: none; letter-spacing: 0.02em; font-size: 13px; color: rgba(0,48,96,0.85); font-family: 'Libre Baskerville', serif; font-style: italic; }
+  .wla-upsell .urgency .u-spark { letter-spacing: 0; }
   .wla-upsell .urgency .u-wait { display: block; font-size: clamp(15px, 1.9vw, 19px); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 6px; }
   .wla-upsell .urgency .u-main { display: block; font-family: 'Libre Baskerville', serif; font-weight: 700; text-transform: none; letter-spacing: 0; font-size: clamp(19px, 2.9vw, 31px); line-height: 1.25; }
-  /* One loud thing only. 'all of 2027' keeps a soft highlight; the price gets
-     the white chip, because the price is what she is deciding about. */
-  .wla-upsell .urgency .u-main strong { font-weight: 700; box-shadow: inset 0 -0.34em 0 rgba(255,255,255,0.45); }
+  /* One loud thing only: the white chip on the price. Everything else in the
+     banner is plain, so nothing competes with the number she is deciding on. */
+  .wla-upsell .urgency .u-main strong { font-weight: 700; }
   .wla-upsell .urgency .u-price { display: inline-block; background: #fff; color: var(--navy); font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 1.32em; line-height: 1; padding: 0.14em 0.4em 0.2em; border-radius: 10px; margin-left: 2px; box-shadow: 0 6px 16px -8px rgba(14,39,70,0.5); }
   @media (max-width: 620px) { .wla-upsell .urgency .u-br { display: none; } }
   /* Her place is in the order, so confirm that before asking for anything more.
@@ -181,9 +182,9 @@
 
     <!-- URGENCY BANNER -->
     <div class="urgency">
-      <span class="u-wait">Wait!</span>
+      <span class="u-wait"><span class="u-spark">✨</span> Wait! <span class="u-spark">✨</span></span>
       <span class="u-main">Upgrade your WLA access for <strong>all of 2027</strong><br class="u-br" /> for only an extra <span class="u-price">£110</span></span>
-      <span class="note">normally £297</span>
+      <span class="note">⏳ One-time offer &middot; normally £297</span>
     </div>
 
     <!-- HERO -->
