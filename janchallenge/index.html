@@ -991,11 +991,11 @@ const CHECKOUT_URL = 'https://sales.thewlacademy.com/janchallenge/';
 
 // Countdown numbers in the top banner. Off for now; set to true to bring the timer back.
 
-// PayPal checkout (NCP / "No-Code" payment link from the founding-member offer)
-// TODO: this PayPal link is shared with summer-challenge, founding-members and
-// summer-challenge-preview. It is not a January Challenge link and the amount
-// it charges is not £37. Replace it before relying on the PayPal buttons.
-const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/2AX2J47CZPLKA';
+// PayPal checkout (NCP / "No-Code" payment link), January Challenge only.
+// Not shared with any other campaign: the founding-members, summer-challenge
+// and summer-challenge-preview pages use a different link. If a new campaign
+// is built from this page, replace this before it goes live.
+const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/3SFV5YU9NWX2A';
 
 const Arrow = ({ className = 'arrow' }) => (
   <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
