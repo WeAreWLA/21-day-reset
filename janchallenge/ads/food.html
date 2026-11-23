@@ -101,7 +101,7 @@
 
   /* ---- story 1080x1920 ---- */
   #ad-story .strip { padding: 32px; font-size: 30px; }
-  #ad-story .body { padding: 110px 48px 0; }
+  #ad-story .body { padding: 86px 48px 0; }
   #ad-story h1 { font-size: 46px; line-height: 1.22; }
   #ad-story .grid { margin-top: 70px; }
   #ad-story .phones { margin-top: 70px; align-items: flex-start; }
@@ -110,7 +110,11 @@
   #ad-story .offer { padding: 52px 56px; }
   #ad-story .offer-line { font-size: 86px; }
   #ad-story .offer-sub { font-size: 40px; margin-top: 10px; }
-  #ad-story .foot { padding: 32px; font-size: 26px; margin-bottom: 150px; }
+  /* No margin under the foot. It was 150px of bare background at the bottom
+     of a 1920px frame -- 7% of the ad showing nothing, which reads as the
+     image having been padded rather than designed. Safe areas for story UI
+     are Meta's job at placement, not something to bake into the file. */
+  #ad-story .foot { padding: 32px; font-size: 26px; }
 </style>
 </head>
 <body>
