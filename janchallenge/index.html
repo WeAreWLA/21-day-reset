@@ -996,7 +996,14 @@ const { useState, useEffect, useRef, useCallback } = React;
 // remove the countdown with it -- a clock running down to a date that does
 // not exist is what the DMCC Act 2024 treats as false urgency.
 const OFFER_END = new Date('2026-11-30T11:00:00Z').getTime();
+// Only used as the countdown's screen-reader label; the deadline is not
+// written out anywhere on the page.
 const OFFER_END_TEXT = '11am on Monday 30th November';
+
+// Places remaining, shown by the offer card and the closing section.
+// Change this one number as they sell. It must match the real figure:
+// invented scarcity is an offence under the DMCC Act 2024.
+const PLACES_LEFT = 64;
 
 const CHECKOUT_URL = 'https://sales.thewlacademy.com/janchallenge/';
 
@@ -1687,7 +1694,7 @@ function WhatsIncluded() {
               <span className="offer-now"><em>£37</em></span>
             </div>
           </div>
-          <div className="offer-note">Only <strong>£37</strong> for the first 100 women to join.<br />Price increases at {OFFER_END_TEXT}, or once the places are gone</div>
+          <div className="offer-note">Only <strong>£37</strong> for the first 100 women to join.<br /><strong>{PLACES_LEFT} places left</strong> &middot; price increases once they are gone</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Claim My Place &mdash; &pound;37 <Arrow /></a>
@@ -2098,7 +2105,7 @@ function Limited() {
       <div className="limited-inner">
         <div className="limited-head">
           <h2 className="serif">Only £37 for the<br/><em>first 100 women.</em></h2>
-          <p className="lead">The price increases at {OFFER_END_TEXT}, or once the places are filled.</p>
+          <p className="lead"><strong>{PLACES_LEFT} places left.</strong> The price increases once they are filled.</p>
         </div>
       </div>
     </section>
