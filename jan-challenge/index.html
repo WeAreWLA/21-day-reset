@@ -781,6 +781,10 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
   .offer-block .offer-stack { list-style: none; margin: 0; padding: 32px 30px; display: grid; gap: 16px; align-content: center; }
   .offer-block .offer-stack li { display: flex; align-items: flex-start; gap: 12px; font-family: 'Libre Baskerville', serif; font-size: clamp(16px, 1.6vw, 18px); line-height: 1.4; color: var(--navy); text-align: left; }
   .offer-block .offer-stack li strong { color: var(--navy); font-weight: 700; }
+  /* The bonus is the only line here that is not part of the core offer, so
+     it is marked rather than left to look like a third feature. */
+  .offer-block .offer-stack li.offer-bonus { padding-top: 14px; border-top: 1px solid rgba(14,39,70,0.10); }
+  .offer-block .bonus-tag { display: inline-block; margin-right: 6px; padding: 2px 9px; border-radius: 999px; background: var(--coral); color: #fff; font-family: "Alegreya Sans", sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; vertical-align: 2px; }
   .offer-tick { flex: none; width: 24px; height: 24px; border-radius: 50%; background: rgba(217,119,87,0.16); color: var(--coral); display: grid; place-items: center; font-size: 12px; font-weight: 700; margin-top: 2px; }
   .offer-price { padding: 32px 24px; background: var(--navy); color: #fff; position: relative; overflow: hidden; display: grid; gap: 2px; justify-items: center; align-content: center; }
   .offer-price::before { content: ''; position: absolute; top: -70px; right: -70px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(229,145,122,0.3), transparent 65%); pointer-events: none; }
@@ -1000,6 +1004,14 @@ src="https://www.facebook.com/tr?id=1159782482636500&ev=PageView&noscript=1"
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
+// The Black Friday price ends at 11am UK on Monday 30 November 2026. UK is
+// on GMT from 25 Oct until late March, so 11:00Z is 11:00 UK exactly.
+// This is a real deadline: if it moves, change it here. If it is removed,
+// remove the countdown with it -- a clock running down to a date that does
+// not exist is what the DMCC Act 2024 treats as false urgency.
+const OFFER_END = new Date('2026-11-30T11:00:00Z').getTime();
+const OFFER_END_TEXT = '11am on Monday 30th November';
+
 const CHECKOUT_URL = 'https://sales.thewlacademy.com/jan-challenge/';
 
 // The promo has no end date. It runs until the 100 places are filled, so there
@@ -1058,11 +1070,21 @@ function CTAButtons({ size = 'large', primaryLabel = 'Claim My Place \u2014 \u00
 const CardIcon = () => (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><line x1="2" y1="10.5" x2="22" y2="10.5"/><line x1="6" y1="16" x2="10" y2="16"/></svg>);
 
 function CountdownBanner() {
-  // The promo has no closing date: the price rises when the 100 places are
-  // filled, and only then. So this is a static strip, not a countdown. Do not
-  // reintroduce a timer or an "ends tonight" state unless a real deadline is
-  // set -- a clock running down to a date that does not exist is exactly what
-  // the DMCC Act 2024 treats as false urgency.
+  // Counts down to OFFER_END. Once it passes, the strip goes back to the plain
+  // promo line: it does NOT announce that the promo has ended, because whether
+  // the price actually changes at that moment is Anna's decision, not the
+  // clock's. A banner that closes the sale on its own was a real bug here once.
+  const [left, setLeft] = useState(Math.max(0, OFFER_END - Date.now()));
+  useEffect(() => {
+    const id = setInterval(() => setLeft(Math.max(0, OFFER_END - Date.now())), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const pad = (n) => String(n).padStart(2, '0');
+  const over = left <= 0;
+  const d = Math.floor(left / 86400000);
+  const h = Math.floor((left % 86400000) / 3600000);
+  const m = Math.floor((left % 3600000) / 60000);
+  const sec = Math.floor((left % 60000) / 1000);
   return (
     <div className="countdown-banner">
       <div className="countdown-inner">
@@ -1070,6 +1092,14 @@ function CountdownBanner() {
           <span className="cd-nowrap">Black Friday Promo &middot;</span>{' '}
           <span className="cd-nowrap">First 100 Places at &pound;37</span>
         </span>
+        {!over && (
+          <div className="countdown-row" aria-label={'Black Friday price ends at ' + OFFER_END_TEXT}>
+            <div className="cd-item"><span className="cd-num">{d}</span><span className="cd-lab">days</span></div>
+            <div className="cd-item"><span className="cd-num">{pad(h)}</span><span className="cd-lab">hrs</span></div>
+            <div className="cd-item"><span className="cd-num">{pad(m)}</span><span className="cd-lab">mins</span></div>
+            <div className="cd-item"><span className="cd-num">{pad(sec)}</span><span className="cd-lab">secs</span></div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -1663,6 +1693,7 @@ function WhatsIncluded() {
             <ul className="offer-stack">
               <li><span className="offer-tick">✔</span><span>The WLA <strong>8 Week January Challenge</strong></span></li>
               <li><span className="offer-tick">✔</span><span><strong>Instant Access Today</strong> to the WLA app, coaching, meal guides &amp; recipes</span></li>
+              <li className="offer-bonus"><span className="offer-tick">✔</span><span><span className="bonus-tag">Bonus</span> <strong>FREE access to the 21 Day Fat Loss Reset</strong></span></li>
             </ul>
             <div className="offer-price">
               <span className="offer-was">normally <s>£197</s></span>
@@ -1670,7 +1701,7 @@ function WhatsIncluded() {
               <span className="offer-now"><em>£37</em></span>
             </div>
           </div>
-          <div className="offer-note">Only <strong>£37</strong> for the first 100 women to join.<br />Price increases once the places are gone</div>
+          <div className="offer-note">Only <strong>£37</strong> for the first 100 women to join.<br />Price increases at {OFFER_END_TEXT}, or once the places are gone</div>
         </div>
         <div className="receive-cta-wrap" style={{ marginTop: 40 }}>
           <a href={CHECKOUT_URL} className="receive-cta-btn">Claim My Place &mdash; &pound;37 <Arrow /></a>
@@ -2081,7 +2112,7 @@ function Limited() {
       <div className="limited-inner">
         <div className="limited-head">
           <h2 className="serif">Only £37 for the<br/><em>first 100 women.</em></h2>
-          <p className="lead">The price increases once the places are filled.</p>
+          <p className="lead">The price increases at {OFFER_END_TEXT}, or once the places are filled.</p>
         </div>
       </div>
     </section>
